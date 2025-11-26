@@ -26,6 +26,7 @@ while ( have_posts() ) :
 	// Additional meta fields (with defaults)
 	$hero_subtitle     = get_post_meta( $location_id, 'location_hero_subtitle', true ) ?: "Now Enrolling: Pre-K & Toddlers";
 	$hero_gallery_raw  = get_post_meta( $location_id, 'location_hero_gallery', true );
+	$virtual_tour_embed = get_post_meta( $location_id, 'location_virtual_tour_embed', true );
 	$tagline          = get_post_meta( $location_id, 'location_tagline', true ) ?: "{$city}'s home for brilliant beginnings.";
 	$description      = get_post_meta( $location_id, 'location_description', true ) ?: get_the_excerpt();
 
@@ -272,6 +273,46 @@ while ( have_posts() ) :
 						<p>Campus Director</p>
 					</div>
 				</div>
+			</div>
+		</div>
+	</section>
+	<?php endif; ?>
+
+	<?php if ( ! empty( $virtual_tour_embed ) ) : ?>
+	<!-- Virtual Tour -->
+	<section id="virtual-tour" class="py-20 bg-white">
+		<div class="max-w-6xl mx-auto px-4 lg:px-6">
+			<div class="text-center mb-12">
+				<span class="text-chroma-blue font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Explore Our Campus</span>
+				<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-4">Take a Virtual Tour</h2>
+				<p class="text-brand-ink/70 max-w-2xl mx-auto">Walk through our <?php echo esc_html( $city ); ?> campus from the comfort of your home. Explore our classrooms, outdoor play areas, and learning spaces.</p>
+			</div>
+
+			<div class="relative rounded-3xl overflow-hidden shadow-2xl border border-chroma-blue/10 bg-brand-cream">
+				<?php
+				// Allow safe HTML tags for embeds (iframe, script)
+				$allowed_tags = wp_kses_allowed_html( 'post' );
+				$allowed_tags['iframe'] = array(
+					'src'             => true,
+					'width'           => true,
+					'height'          => true,
+					'frameborder'     => true,
+					'allowfullscreen' => true,
+					'allow'           => true,
+					'loading'         => true,
+					'style'           => true,
+					'class'           => true,
+					'title'           => true,
+				);
+				$allowed_tags['script'] = array(
+					'src'   => true,
+					'type'  => true,
+					'async' => true,
+					'defer' => true,
+				);
+
+				echo wp_kses( $virtual_tour_embed, $allowed_tags );
+				?>
 			</div>
 		</div>
 	</section>
