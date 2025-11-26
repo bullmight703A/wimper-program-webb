@@ -308,13 +308,22 @@ These are **NOT issues** - they are improvements made during our work:
 
 ## ISSUES SUMMARY
 
-### 🔴 CRITICAL ISSUES (1)
+### 🔴 CRITICAL ISSUES (2)
 1. **Stats Strip Color Mismatch**
    - File: template-parts/home/stats-strip.php:19
    - Issue: All stats use `text-chroma-red` instead of varied colors
    - Expected: red, yellow, blue, green (one per stat)
    - Impact: Visual design inconsistency
    - Status: **REQUIRES FIX**
+
+2. **Missing Hero Video File**
+   - File: assets/video/hero-classroom.mp4
+   - Issue: Video directory and file do not exist
+   - Expected: MP4 video for hero section background
+   - Impact: Hero section missing primary visual element
+   - Fallback: Featured image will display if set
+   - Status: **REQUIRES UPLOAD**
+   - Details: See AUDIT-2-MEDIA-ASSETS.md
 
 ### 🟡 MEDIUM PRIORITY (5)
 2. **Schedule Tabs - Timeline Vertical Line Color**
@@ -367,6 +376,7 @@ All 10 homepage sections have been audited with line-by-line comparison:
 - [x] Locations Preview - ⚠️ 2 minor differences
 - [x] Tour CTA - ✅ Perfect
 - [x] FAQ Section - ✅ Excellent
+- [x] **Media Assets (Videos, Photos, Icons)** - ❌ 1 critical issue (see AUDIT-2-MEDIA-ASSETS.md)
 
 ---
 
