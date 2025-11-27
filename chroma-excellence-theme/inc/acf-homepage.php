@@ -162,17 +162,18 @@ function chroma_home_prismpath_panels() {
                         $default_card = $defaults['cards'][ $index ] ?? array();
 
                         // Explicitly set each field, preferring saved data but falling back to defaults
+                        // Use ?: operator for icons to handle empty strings, not just null
                         return array(
                                 'badge'      => sanitize_text_field( $card['badge'] ?? $default_card['badge'] ?? '' ),
                                 'heading'    => sanitize_text_field( $card['heading'] ?? $default_card['heading'] ?? '' ),
                                 'text'       => sanitize_textarea_field( $card['text'] ?? $default_card['text'] ?? '' ),
                                 'button'     => sanitize_text_field( $card['button'] ?? $default_card['button'] ?? '' ),
                                 'url'        => esc_url_raw( $card['url'] ?? $default_card['url'] ?? '' ),
-                                // ALWAYS use default icons if not explicitly set in customizer
-                                'icon'       => sanitize_text_field( $card['icon'] ?? $default_card['icon'] ?? '' ),
-                                'icon_bg'    => sanitize_text_field( $card['icon_bg'] ?? $default_card['icon_bg'] ?? '' ),
-                                'icon_badge' => sanitize_text_field( $card['icon_badge'] ?? $default_card['icon_badge'] ?? '' ),
-                                'icon_check' => sanitize_text_field( $card['icon_check'] ?? $default_card['icon_check'] ?? '' ),
+                                // Use ?: to check for empty strings, not just null - falls back to defaults
+                                'icon'       => sanitize_text_field( ( $card['icon'] ?? '' ) ?: ( $default_card['icon'] ?? '' ) ),
+                                'icon_bg'    => sanitize_text_field( ( $card['icon_bg'] ?? '' ) ?: ( $default_card['icon_bg'] ?? '' ) ),
+                                'icon_badge' => sanitize_text_field( ( $card['icon_badge'] ?? '' ) ?: ( $default_card['icon_badge'] ?? '' ) ),
+                                'icon_check' => sanitize_text_field( ( $card['icon_check'] ?? '' ) ?: ( $default_card['icon_check'] ?? '' ) ),
                         );
                 },
                 $cards,
