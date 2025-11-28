@@ -15,4 +15,4 @@ function chroma_print_critical_css()
         }
     }
 }
-add_action('wp_head', 'chroma_print_critical_css', 1);
+// add_action('wp_head', 'chroma_print_critical_css', 1);
