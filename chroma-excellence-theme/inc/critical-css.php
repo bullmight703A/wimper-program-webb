@@ -320,5 +320,6 @@ function chroma_print_critical_css()
     </style>
     <?php
 }
-add_action('wp_head', 'chroma_print_critical_css', 1);
+// DISABLED - Critical CSS causes FOUC, keep disabled
+// add_action('wp_head', 'chroma_print_critical_css', 1);
 

@@ -40,5 +40,14 @@ module.exports = {
       },
     },
   },
+  safelist: [
+    // Pulse animation classes for status indicators
+    'animate-pulse',
+    'w-2',
+    'h-2',
+    'bg-chroma-green',
+    'bg-chroma-blue',
+    'rounded-full',
+  ],
   plugins: [],
 };
