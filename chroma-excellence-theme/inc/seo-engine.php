@@ -504,42 +504,54 @@ function chroma_meta_keywords()
         $post_id = get_the_ID();
         $manual_keywords = $post_id ? get_post_meta($post_id, 'meta_keywords', true) : '';
 
-        if (!empty($manual_keywords)) {
-                echo '<meta name="keywords" content="' . esc_attr(wp_strip_all_tags($manual_keywords)) . '" />' . "\n";
-                return;
+        if (!empty($slug) && isset($keyword_map[$slug]) && is_array($keyword_map[$slug])) {
+                $keywords = array_merge($keywords, $keyword_map[$slug]);
         }
 
-        // 2. Dynamic Templates
-        $keywords = array();
-
+        // 3. Dynamic Templates (Fallback/Addition)
         if (is_singular('location')) {
                 $city = get_post_meta($post_id, 'location_city', true);
                 $service_areas = get_post_meta($post_id, 'location_service_areas', true);
 
-                $keywords[] = get_the_title();
+                // Only add title if not already covered by CSV
+                if (empty($keywords)) {
+                        $keywords[] = get_the_title();
+                }
+
                 if ($city) {
                         $keywords[] = "child care $city";
                         $keywords[] = "daycare $city";
                         $keywords[] = "preschool $city";
                 }
                 if ($service_areas) {
-                        $keywords[] = $service_areas;
+                        // Split service areas by comma if it's a list
+                        $areas = explode(',', $service_areas);
+                        foreach ($areas as $area) {
+                                $keywords[] = trim($area);
+                        }
                 }
 
         } elseif (is_singular('program')) {
-                $keywords[] = get_the_title();
+                if (empty($keywords)) {
+                        $keywords[] = get_the_title();
+                }
                 $keywords[] = 'early childhood education';
                 $keywords[] = 'curriculum';
                 $keywords[] = 'child development';
 
         } else {
-                // Global defaults
-                $keywords[] = 'child care';
-                $keywords[] = 'daycare';
-                $keywords[] = 'preschool';
-                $keywords[] = 'early learning';
-                $keywords[] = 'Atlanta';
+                // Global defaults if still empty
+                if (empty($keywords)) {
+                        $keywords[] = 'child care';
+                        $keywords[] = 'daycare';
+                        $keywords[] = 'preschool';
+                        $keywords[] = 'early learning';
+                        $keywords[] = 'Atlanta';
+                }
         }
+
+        // Deduplicate and output
+        $keywords = array_unique($keywords);
 
         if (!empty($keywords)) {
                 echo '<meta name="keywords" content="' . esc_attr(implode(', ', $keywords)) . '" />' . "\n";
