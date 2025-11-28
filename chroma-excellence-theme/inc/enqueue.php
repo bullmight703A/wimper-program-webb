@@ -46,7 +46,7 @@ function chroma_enqueue_assets()
                 CHROMA_THEME_URI . '/assets/css/font-awesome.css',
                 array(),
                 $fa_version,
-                'print' // Load as print initially for async
+                'all' // Load synchronously to ensure icons appear
         );
 
         // Compiled Tailwind CSS.
