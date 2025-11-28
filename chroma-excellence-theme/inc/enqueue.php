@@ -10,6 +10,22 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * Determine whether map assets should be enqueued.
+ */
+function chroma_should_load_maps()
+{
+        $should_load_maps = is_post_type_archive('location') || is_singular('location') || is_page('locations');
+
+        if (is_front_page() && function_exists('chroma_home_locations_preview')) {
+                $locations_preview = chroma_home_locations_preview();
+                $should_load_maps = $should_load_maps || (!empty($locations_preview['map_points']));
+        }
+
+        return $should_load_maps;
+}
+
+
+/**
  * Enqueue theme styles and scripts
  */
 function chroma_enqueue_assets()
