@@ -168,7 +168,10 @@ while (have_posts()):
 											data-location-slide="<?php echo esc_attr($index); ?>">
 											<img src="<?php echo esc_url($image_url); ?>"
 												alt="<?php echo esc_attr($location_name); ?> - Image <?php echo esc_attr($index + 1); ?>"
-												class="w-full h-full object-cover" loading="lazy" />
+												class="w-full h-full object-cover" <?php if ($index === 0)
+													echo 'fetchpriority="high"';
+												else
+													echo 'loading="lazy"'; ?> />
 										</div>
 									<?php endforeach; ?>
 								</div>
@@ -204,11 +207,11 @@ while (have_posts()):
 								<?php endif; ?>
 							</div>
 						<?php elseif (has_post_thumbnail()): ?>
-							<?php the_post_thumbnail('large', array('class' => 'w-full h-full object-cover')); ?>
+							<?php the_post_thumbnail('large', array('class' => 'w-full h-full object-cover', 'fetchpriority' => 'high')); ?>
 						<?php else: ?>
 							<img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=1000&auto=format&fit=crop"
 								alt="<?php echo esc_attr($location_name); ?> Campus" class="w-full h-full object-cover"
-								loading="lazy" decoding="async" width="1000" height="750" />
+								fetchpriority="high" decoding="async" width="1000" height="750" />
 						<?php endif; ?>
 
 						<!-- Floating Review Badge -->
