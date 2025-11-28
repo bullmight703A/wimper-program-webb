@@ -51,13 +51,17 @@ function chroma_enqueue_assets()
         $css_path = CHROMA_THEME_DIR . '/assets/css/main.css';
         $css_version = file_exists($css_path) ? filemtime($css_path) : CHROMA_VERSION;
 
-        wp_enqueue_style(
-                'chroma-main',
-                CHROMA_THEME_URI . '/assets/css/main.css',
-                array(),
-                $css_version,
-                'all'
-        );
+        // If front page, we inline critical CSS (which is the full file), so we DO NOT enqueue it to avoid blocking.
+        // For other pages, we load it normally.
+        if (!is_front_page()) {
+                wp_enqueue_style(
+                        'chroma-main',
+                        CHROMA_THEME_URI . '/assets/css/main.css',
+                        array(),
+                        $css_version,
+                        'all'
+                );
+        }
 
         // Chart.js for curriculum radar (homepage and program pages).
         $script_dependencies = array();
