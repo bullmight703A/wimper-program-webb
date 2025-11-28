@@ -36,19 +36,17 @@ function chroma_enqueue_assets()
         $css_path = CHROMA_THEME_DIR . '/assets/css/main.css';
         $css_version = file_exists($css_path) ? filemtime($css_path) : CHROMA_VERSION;
 
-        // If front page, we inline critical CSS, so defer the full file (or skip if fully inlined)
-        // Since we are inlining the *entire* file for the homepage (it's < 50KB), we can skip enqueuing it normally
-        // OR load it with low priority to cache it for other pages.
-
-        $media_type = is_front_page() ? 'print' : 'all';
-
-        wp_enqueue_style(
-                'chroma-main',
-                CHROMA_THEME_URI . '/assets/css/main.css',
-                array(),
-                $css_version,
-                $media_type
-        );
+        // If front page, we inline critical CSS (which is the full file), so we DO NOT enqueue it to avoid blocking.
+        // For other pages, we load it normally.
+        if (!is_front_page()) {
+                wp_enqueue_style(
+                        'chroma-main',
+                        CHROMA_THEME_URI . '/assets/css/main.css',
+                        array(),
+                        $css_version,
+                        'all'
+                );
+        }
 
         // Chart.js for curriculum radar (homepage and program pages).
         $script_dependencies = array();
