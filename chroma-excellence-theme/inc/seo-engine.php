@@ -504,6 +504,28 @@ function chroma_meta_keywords()
         $post_id = get_the_ID();
         $manual_keywords = $post_id ? get_post_meta($post_id, 'meta_keywords', true) : '';
 
+        if (!empty($manual_keywords)) {
+                echo '<meta name="keywords" content="' . esc_attr(wp_strip_all_tags($manual_keywords)) . '" />' . "\n";
+                return;
+        }
+
+        // 2. CSV-based Keyword Mapping
+        $keywords = array();
+        $keyword_map_file = get_template_directory() . '/inc/seo-keywords-data.php';
+
+        if (file_exists($keyword_map_file)) {
+                $keyword_map = include $keyword_map_file;
+        } else {
+                $keyword_map = array();
+        }
+
+        $slug = $post_id ? get_post_field('post_name', $post_id) : '';
+
+        // Handle Homepage case
+        if (is_front_page() || is_home()) {
+                $slug = 'home';
+        }
+
         if (!empty($slug) && isset($keyword_map[$slug]) && is_array($keyword_map[$slug])) {
                 $keywords = array_merge($keywords, $keyword_map[$slug]);
         }
@@ -512,8 +534,6 @@ function chroma_meta_keywords()
         if (is_singular('location')) {
                 $city = get_post_meta($post_id, 'location_city', true);
                 $service_areas = get_post_meta($post_id, 'location_service_areas', true);
-
-                // Only add title if not already covered by CSV
                 if (empty($keywords)) {
                         $keywords[] = get_the_title();
                 }

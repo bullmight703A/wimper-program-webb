@@ -9,10 +9,6 @@ const __dirname = path.dirname(__filename);
 
 const urls = [
     'https://x3yyntt5tp.wpdns.site/',
-    'https://x3yyntt5tp.wpdns.site/programs/',
-    'https://x3yyntt5tp.wpdns.site/programs/infant-care/',
-    'https://x3yyntt5tp.wpdns.site/locations/',
-    'https://x3yyntt5tp.wpdns.site/locations/midway-campus/',
     'https://x3yyntt5tp.wpdns.site/about/',
     'https://x3yyntt5tp.wpdns.site/contact-us/',
     'https://x3yyntt5tp.wpdns.site/curriculum/',
@@ -20,7 +16,32 @@ const urls = [
     'https://x3yyntt5tp.wpdns.site/careers/',
     'https://x3yyntt5tp.wpdns.site/employers/',
     'https://x3yyntt5tp.wpdns.site/parents/',
-    'https://x3yyntt5tp.wpdns.site/privacy-policy/'
+    'https://x3yyntt5tp.wpdns.site/privacy-policy/',
+    'https://x3yyntt5tp.wpdns.site/programs/',
+    'https://x3yyntt5tp.wpdns.site/locations/',
+    // Programs
+    'https://x3yyntt5tp.wpdns.site/programs/infant-care/',
+    'https://x3yyntt5tp.wpdns.site/programs/toddler-care/',
+    'https://x3yyntt5tp.wpdns.site/programs/preschool/',
+    'https://x3yyntt5tp.wpdns.site/programs/pre-k/',
+    'https://x3yyntt5tp.wpdns.site/programs/pre-k-prep/',
+    'https://x3yyntt5tp.wpdns.site/programs/ga-pre-k/',
+    'https://x3yyntt5tp.wpdns.site/programs/after-school/',
+    'https://x3yyntt5tp.wpdns.site/programs/camp-summer-winter-fall/',
+    // Locations
+    'https://x3yyntt5tp.wpdns.site/locations/tramore-campus-austell/',
+    'https://x3yyntt5tp.wpdns.site/locations/tyrone-campus/',
+    'https://x3yyntt5tp.wpdns.site/locations/west-cobb-campus/',
+    'https://x3yyntt5tp.wpdns.site/locations/rivergreen-campus/',
+    'https://x3yyntt5tp.wpdns.site/locations/roswell-campus/',
+    'https://x3yyntt5tp.wpdns.site/locations/satellite-bvd-campus/',
+    'https://x3yyntt5tp.wpdns.site/locations/south-cobb-campus-austell/',
+    'https://x3yyntt5tp.wpdns.site/locations/midway-campus/',
+    'https://x3yyntt5tp.wpdns.site/locations/newnan/',
+    'https://x3yyntt5tp.wpdns.site/locations/north-hall-campus-murraysville/',
+    'https://x3yyntt5tp.wpdns.site/locations/pleasanthill-campus-duluth/',
+    'https://x3yyntt5tp.wpdns.site/locations/cherokee-campus/',
+    'https://x3yyntt5tp.wpdns.site/locations/east-cobb-campus/'
 ];
 
 const outputDir = path.join(__dirname, 'lighthouse-reports');
