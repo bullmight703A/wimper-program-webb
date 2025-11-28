@@ -42,35 +42,6 @@ function chroma_enqueue_assets()
 
         // Font Awesome (Local).
         $fa_path = CHROMA_THEME_DIR . '/assets/css/font-awesome.css';
-        $fa_version = file_exists($fa_path) ? filemtime($fa_path) : '6.4.0';
-        wp_enqueue_style(
-                'font-awesome',
-                CHROMA_THEME_URI . '/assets/css/font-awesome.css',
-                array(),
-                $fa_version,
-                'all' // Load synchronously to ensure icons appear
-        );
-
-        // Compiled Tailwind CSS.
-        $css_path = CHROMA_THEME_DIR . '/assets/css/main.css';
-        $css_version = file_exists($css_path) ? filemtime($css_path) : CHROMA_VERSION;
-
-        // Compiled Tailwind CSS - loads synchronously
-        wp_enqueue_style(
-                'chroma-main',
-                CHROMA_THEME_URI . '/assets/css/main.css',
-                array(),
-                $css_version,
-                'all' // Load normally to prevent FOUC
-        );
-
-        // Chart.js for curriculum radar (homepage and program pages).
-        $script_dependencies = array();
-
-        if (is_front_page() || is_singular('program')) {
-                $chart_js_path = CHROMA_THEME_DIR . '/assets/js/chart.min.js';
-                $chart_js_version = file_exists($chart_js_path) ? filemtime($chart_js_path) : '4.4.1';
-
                 wp_enqueue_script(
                         'chartjs',
                         CHROMA_THEME_URI . '/assets/js/chart.min.js',

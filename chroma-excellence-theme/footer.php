@@ -47,74 +47,8 @@
 								class="hover:text-white"><?php echo esc_html($footer_email); ?></a></p>
 					<?php endif; ?>
 					<?php if ($footer_address): ?>
-						<p class="mt-2"><?php echo esc_html($footer_address); ?></p>
-					<?php endif; ?>
+					</div>
 				</div>
-			</div>
-
-			<!-- Social Links -->
-			<div class="md:col-span-1">
-				<h3 class="font-bold text-sm mb-3">Follow Us</h3>
-				<div class="flex gap-3">
-					<?php
-					// Get social links from customizer (with fallback to global settings)
-					$footer_facebook = get_theme_mod('chroma_footer_facebook', '') ?: chroma_global_facebook_url();
-					$footer_instagram = get_theme_mod('chroma_footer_instagram', '') ?: chroma_global_instagram_url();
-					$footer_linkedin = get_theme_mod('chroma_footer_linkedin', '') ?: chroma_global_linkedin_url();
-					$footer_twitter = get_theme_mod('chroma_footer_twitter', '');
-					$footer_youtube = get_theme_mod('chroma_footer_youtube', '');
-					?>
-					<?php if ($footer_facebook): ?>
-						<a href="<?php echo esc_url($footer_facebook); ?>" target="_blank" rel="noopener"
-							aria-label="Facebook"
-							class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
-							<i class="fa-brands fa-facebook-f text-xs"></i>
-						</a>
-					<?php endif; ?>
-					<?php if ($footer_instagram): ?>
-						<a href="<?php echo esc_url($footer_instagram); ?>" target="_blank" rel="noopener"
-							aria-label="Instagram"
-							class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
-							<i class="fa-brands fa-instagram text-xs"></i>
-						</a>
-					<?php endif; ?>
-					<?php if ($footer_linkedin): ?>
-						<a href="<?php echo esc_url($footer_linkedin); ?>" target="_blank" rel="noopener"
-							aria-label="LinkedIn"
-							class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
-							<i class="fa-brands fa-linkedin-in text-xs"></i>
-						</a>
-					<?php endif; ?>
-					<?php if ($footer_twitter): ?>
-						<a href="<?php echo esc_url($footer_twitter); ?>" target="_blank" rel="noopener"
-							aria-label="X (Twitter)"
-							class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
-							<i class="fa-brands fa-x-twitter text-xs"></i>
-						</a>
-					<?php endif; ?>
-					<?php if ($footer_youtube): ?>
-						<a href="<?php echo esc_url($footer_youtube); ?>" target="_blank" rel="noopener"
-							aria-label="YouTube"
-							class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
-							<i class="fa-brands fa-youtube text-xs"></i>
-						</a>
-					<?php endif; ?>
-				</div>
-			</div>
-		</div>
-
-		<!-- Bottom Section -->
-		<div
-			class="border-t border-white/10 pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-[11px] text-white/60">
-			<p>&copy; <?php echo date('Y'); ?> Chroma Early Learning Academy. All rights reserved.</p>
-			<div class="flex gap-4">
-				<a href="<?php echo esc_url(home_url('/privacy-policy')); ?>" class="hover:text-white">Privacy
-					Policy</a>
-				<a href="<?php echo esc_url(home_url('/terms-of-service')); ?>" class="hover:text-white">Terms of
-					Service</a>
-			</div>
-		</div>
-	</div>
 </footer>
 
 <?php wp_footer(); ?>

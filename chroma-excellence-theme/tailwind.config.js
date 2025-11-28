@@ -19,7 +19,7 @@ module.exports = {
           navy: '#4A6C7C',
         },
         chroma: {
-          red: '#D67D6B',
+          red: '#A84B38', // Darkened from #D67D6B for 4.5:1 contrast
           redLight: '#F4E5E2',
           orange: '#C26524', // Darkened from #E89654 for 4.5:1 contrast
           orangeLight: '#FEF0E6',

@@ -75,7 +75,8 @@ function chroma_tour_form_shortcode()
                                         foreach ($locations as $location):
                                                 ?>
                                                 <option value="<?php echo esc_attr($location->ID); ?>">
-                                                        <?php echo esc_html($location->post_title); ?></option>
+                                                        <?php echo esc_html($location->post_title); ?>
+                                                </option>
                                                 <?php
                                         endforeach;
                                         ?>
