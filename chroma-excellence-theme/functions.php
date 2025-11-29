@@ -214,3 +214,45 @@ function chroma_litespeed_exclude_lcp()
     return array('logo_optimized', 'chroma-logo', 'hero', 'chroma-1920w');
 }
 add_filter('litespeed_img_lazy_exclude', 'chroma_litespeed_exclude_lcp');
+
+/**
+ * SEO: Dynamic Meta Descriptions
+ */
+function chroma_add_meta_description()
+{
+    global $post;
+    $description = '';
+
+    if (is_front_page() || is_home()) {
+        $description = get_bloginfo('description');
+        if (!$description) {
+            $description = "Chroma Early Learning Academy provides premium child care and early education for infants, toddlers, and preschoolers in Georgia.";
+        }
+    } elseif (is_singular()) {
+        if (has_excerpt()) {
+            $description = get_the_excerpt();
+        } else {
+            $text = $post->post_content;
+            $text = strip_shortcodes($text);
+            $text = wp_strip_all_tags($text);
+            $description = wp_trim_words($text, 30, '');
+        }
+    } elseif (is_category() || is_tag() || is_tax()) {
+        $description = term_description();
+        if (!$description) {
+            $description = single_term_title('', false) . " Archives";
+        }
+    } elseif (is_post_type_archive()) {
+        $description = post_type_archive_title('', false) . " Archives";
+    }
+
+    if ($description) {
+        $description = wp_strip_all_tags($description);
+        $description = trim(preg_replace('/\s+/', ' ', $description));
+        if (mb_strlen($description) > 160) {
+            $description = mb_substr($description, 0, 157) . '...';
+        }
+        echo '<meta name="description" content="' . esc_attr($description) . '">' . "\n";
+    }
+}
+add_action('wp_head', 'chroma_add_meta_description', 1);
