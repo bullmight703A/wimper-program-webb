@@ -56,25 +56,6 @@ function chroma_get_region_color_from_term($term_id)
 			<h1 class="font-serif text-[2.8rem] md:text-6xl text-brand-ink mb-6 fade-in-up"
 				style="animation-delay: 0.1s;">
 				<?php echo wp_kses_post(get_theme_mod('chroma_locations_archive_title', 'Find your Chroma <span class="text-chroma-green italic">Community</span> - Our Locations')); ?>
-			</h1>
-
-			<p class="text-lg text-brand-ink/60 max-w-2xl mx-auto mb-10 fade-in-up" style="animation-delay: 0.2s;">
-				<?php echo has_excerpt() ? get_the_excerpt() : esc_html(get_theme_mod('chroma_locations_archive_subtitle', 'Serving families across Metro Atlanta with the same high standards of safety, curriculum, and care at every single location.')); ?>
-			</p>
-
-			<!-- Filter Bar -->
-			<div class="max-w-4xl mx-auto bg-white p-2 rounded-full shadow-float border border-brand-ink/5 flex flex-col md:flex-row gap-2 fade-in-up"
-				style="animation-delay: 0.3s;">
-				<div class="relative flex-grow">
-					<i class="fa-solid fa-search absolute left-5 top-1/2 -translate-y-1/2 text-brand-ink/30"></i>
-
-					<!-- Locations Container -->
-					<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="locations-grid">
-						<?php
-						if ($locations_query->have_posts()):
-							while ($locations_query->have_posts()):
-								$locations_query->the_post();
-								$location_id = get_the_ID();
 								$location_fields = chroma_get_location_fields($location_id);
 								$location_name = get_the_title();
 
@@ -188,30 +169,6 @@ function chroma_get_region_color_from_term($term_id)
 		<div class="max-w-7xl mx-auto px-4 lg:px-6">
 			<div
 				class="bg-chroma-blueDark rounded-[3rem] p-10 lg:p-16 text-white relative overflow-hidden flex flex-col lg:flex-row gap-12 items-center">
-
-				<!-- Map Placeholder -->
-				<div class="w-full lg:w-1/2 relative z-10">
-					<div
-						class="bg-white/10 rounded-[2rem] p-2 aspect-video border border-white/20 flex items-center justify-center relative overflow-hidden">
-						<!-- Abstract map representation -->
-						<div class="relative z-10 flex flex-wrap justify-center gap-4 p-6">
-							<div class="bg-chroma-red w-4 h-4 rounded-full animate-bounce" style="animation-delay: 0s;">
-							</div>
-							<div class="bg-chroma-yellow w-4 h-4 rounded-full animate-bounce"
-								style="animation-delay: 0.2s;"></div>
-							<div class="bg-chroma-green w-4 h-4 rounded-full animate-bounce"
-								style="animation-delay: 0.4s;"></div>
-							<div class="bg-chroma-blue w-4 h-4 rounded-full animate-bounce"
-								style="animation-delay: 0.1s;"></div>
-							<div class="bg-chroma-red w-4 h-4 rounded-full animate-bounce"
-								style="animation-delay: 0.3s;"></div>
-							<div class="bg-chroma-green w-4 h-4 rounded-full animate-bounce"
-								style="animation-delay: 0.5s;"></div>
-						</div>
-						<p class="absolute bottom-4 text-xs font-bold tracking-widest uppercase text-white/60">
-							<?php echo $locations_query->found_posts; ?>+ Locations in Metro Atlanta
-						</p>
-					</div>
 				</div>
 
 				<!-- CTA Content -->
@@ -254,12 +211,12 @@ function chroma_get_region_color_from_term($term_id)
 
 		// Update button styles
 		buttons.forEach(btn => {
-			if ((region === 'all' && btn.textContent.includes('All')) || btn.textContent.includes(region)) {
-				btn.classList.remove('bg-white', 'text-brand-ink/60');
-				btn.classList.add('bg-brand-ink', 'text-white', 'shadow-md');
+			if (region === btn.dataset.region) {
+				btn.classList.remove('bg-white', 'text-brand-ink', 'border', 'border-brand-ink/10');
+				btn.classList.add('bg-chroma-green', 'text-white', 'shadow-glow');
 			} else {
-				btn.classList.add('bg-white', 'text-brand-ink/60');
-				btn.classList.remove('bg-brand-ink', 'text-white', 'shadow-md');
+				btn.classList.add('bg-white', 'text-brand-ink', 'border', 'border-brand-ink/10');
+				btn.classList.remove('bg-chroma-green', 'text-white', 'shadow-glow');
 			}
 		});
 
