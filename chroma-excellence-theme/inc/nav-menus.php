@@ -22,45 +22,7 @@ function chroma_register_menus()
 		'footer_contact' => __('Footer Contact Menu', 'chroma-excellence'),
 	));
 }
-add_action('init', 'chroma_register_menus');
-
-/**
- * Primary Navigation with Tailwind classes
- */
-function chroma_primary_nav()
-{
-	wp_nav_menu(array(
-		'theme_location' => 'primary',
-		'container' => false,
-		'menu_class' => '',
-		'fallback_cb' => 'chroma_primary_nav_fallback',
-		'items_wrap' => '%3$s',
-		'depth' => 1,
-		'walker' => new Chroma_Primary_Nav_Walker(),
-	));
-}
-
-/**
- * Footer Navigation
- */
-function chroma_footer_nav()
-{
-	wp_nav_menu(array(
-		'theme_location' => 'footer',
-		'container' => false,
-		'menu_class' => '',
-		'fallback_cb' => 'chroma_footer_nav_fallback',
-		'items_wrap' => '%3$s',
-		'depth' => 1,
-		'walker' => new Chroma_Footer_Nav_Walker(),
-	));
-}
-
-/**
- * Footer Contact Navigation
- */
-function chroma_footer_contact_nav()
-{
+add_action('init', 'chroma_register_menus'); {
 	if (has_nav_menu('footer_contact')) {
 		wp_nav_menu(array(
 			'theme_location' => 'footer_contact',
