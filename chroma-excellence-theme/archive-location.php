@@ -56,112 +56,153 @@ function chroma_get_region_color_from_term($term_id)
 			<h1 class="font-serif text-[2.8rem] md:text-6xl text-brand-ink mb-6 fade-in-up"
 				style="animation-delay: 0.1s;">
 				<?php echo wp_kses_post(get_theme_mod('chroma_locations_archive_title', 'Find your Chroma <span class="text-chroma-green italic">Community</span> - Our Locations')); ?>
-								$location_fields = chroma_get_location_fields($location_id);
-								$location_name = get_the_title();
+			</h1>
 
-								// Get location meta
-								$city = $location_fields['city'];
-								$state = $location_fields['state'];
-								$zip = $location_fields['zip'];
-								$address = chroma_location_address_line($location_id);
-								$phone = $location_fields['phone'];
-								$lat = $location_fields['latitude'];
-								$lng = $location_fields['longitude'];
+			<p class="text-lg text-brand-ink/60 max-w-2xl mx-auto mb-10 fade-in-up" style="animation-delay: 0.2s;">
+				<?php echo has_excerpt() ? get_the_excerpt() : esc_html(get_theme_mod('chroma_locations_archive_subtitle', 'Serving families across Metro Atlanta with the same high standards of safety, curriculum, and care at every single location.')); ?>
+			</p>
 
-								// Get region from taxonomy
-								$location_regions = wp_get_post_terms($location_id, 'location_region');
-								$region_term = !empty($location_regions) && !is_wp_error($location_regions) ? $location_regions[0] : null;
+			<!-- Filter Bar -->
+			<div class="max-w-4xl mx-auto bg-white p-2 rounded-full shadow-float border border-brand-ink/5 flex flex-col md:flex-row gap-2 fade-in-up"
+				style="animation-delay: 0.3s;">
+				<div class="relative flex-grow">
+					<i class="fa-solid fa-search absolute left-5 top-1/2 -translate-y-1/2 text-brand-ink/30"></i>
+					<input 
+						type="text" 
+						id="location-search"
+						placeholder="Search by ZIP code or city name..."
+						class="w-full pl-12 pr-4 py-3 rounded-full focus:outline-none text-brand-ink bg-white"
+					/>
+				</div>
+				<div class="flex gap-2 justify-center md:justify-end flex-wrap">
+					<button onclick="filterLocations('all')" data-region="all" class="filter-btn px-6 py-3 rounded-full font-semibold bg-chroma-green text-white hover:shadow-glow transition-all duration-300">
+						All Regions
+					</button>
+					<?php foreach ($all_regions as $region): ?>
+						<button onclick="filterLocations('<?php echo esc_attr($region->slug); ?>')" data-region="<?php echo esc_attr($region->slug); ?>" class="filter-btn px-6 py-3 rounded-full font-semibold bg-white text-brand-ink border border-brand-ink/10 hover:bg-brand-ink/5 transition-all duration-300">
+							<?php echo esc_html($region->name); ?>
+						</button>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+	</section>
 
-								// Get region name and slug for display and filtering
-								$region_name = $region_term ? $region_term->name : 'Metro Atlanta';
-								$region_slug = $region_term ? $region_term->slug : 'uncategorized';
+	<!-- Locations Container -->
+	<section class="py-16 lg:py-20 bg-white">
+		<div class="max-w-7xl mx-auto px-4 lg:px-6">
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="locations-grid">
+				<?php
+				if ($locations_query->have_posts()):
+					while ($locations_query->have_posts()):
+						$locations_query->the_post();
+						$location_id = get_the_ID();
+						$location_fields = chroma_get_location_fields($location_id);
+						$location_name = get_the_title();
 
-								// Get colors for this region from term meta
-								$colors = $region_term
-									? chroma_get_region_color_from_term($region_term->term_id)
-									: array('bg' => 'chroma-greenLight', 'text' => 'chroma-green', 'border' => 'chroma-green');
+						// Get location meta
+						$city = $location_fields['city'];
+						$state = $location_fields['state'];
+						$zip = $location_fields['zip'];
+						$address = chroma_location_address_line($location_id);
+						$phone = $location_fields['phone'];
+						$lat = $location_fields['latitude'];
+						$lng = $location_fields['longitude'];
 
-								// Check for special badges
-								$is_featured = get_post_meta($location_id, 'location_featured', true);
-								$is_new = get_post_meta($location_id, 'location_new', true);
-								$is_enrolling = get_post_meta($location_id, 'location_enrolling', true);
-								$is_open = true; // Can add logic for operating hours
-						
-								// Get age ranges/programs
-								$ages_served = get_post_meta($location_id, 'location_ages_served', true) ?: 'Infant - 12y';
-								$special_programs_raw = get_post_meta($location_id, 'location_special_programs', true);
+						// Get region from taxonomy
+						$location_regions = wp_get_post_terms($location_id, 'location_region');
+						$region_term = !empty($location_regions) && !is_wp_error($location_regions) ? $location_regions[0] : null;
 
-								if ($special_programs_raw) {
-									// Explode comma-separated string
-									$special_programs = array_map('trim', explode(',', $special_programs_raw));
-								} else {
-									$special_programs = array('GA Pre-K'); // Default fallback
-								}
-								?>
+						// Get region name and slug for display and filtering
+						$region_name = $region_term ? $region_term->name : 'Metro Atlanta';
+						$region_slug = $region_term ? $region_term->slug : 'uncategorized';
 
-								<div class="location-card group" data-region="<?php echo esc_attr($region_slug); ?>"
-									data-name="<?php echo esc_attr($location_name . ' ' . $city . ' ' . $zip); ?>">
+						// Get colors for this region from term meta
+						$colors = $region_term
+							? chroma_get_region_color_from_term($region_term->term_id)
+							: array('bg' => 'chroma-greenLight', 'text' => 'chroma-green', 'border' => 'chroma-green');
+
+						// Check for special badges
+						$is_featured = get_post_meta($location_id, 'location_featured', true);
+						$is_new = get_post_meta($location_id, 'location_new', true);
+						$is_enrolling = get_post_meta($location_id, 'location_enrolling', true);
+						$is_open = true; // Can add logic for operating hours
+				
+						// Get age ranges/programs
+						$ages_served = get_post_meta($location_id, 'location_ages_served', true) ?: 'Infant - 12y';
+						$special_programs_raw = get_post_meta($location_id, 'location_special_programs', true);
+
+						if ($special_programs_raw) {
+							// Explode comma-separated string
+							$special_programs = array_map('trim', explode(',', $special_programs_raw));
+						} else {
+							$special_programs = array('GA Pre-K'); // Default fallback
+						}
+						?>
+
+						<div class="location-card group" data-region="<?php echo esc_attr($region_slug); ?>"
+							data-name="<?php echo esc_attr($location_name . ' ' . $city . ' ' . $zip); ?>">
+							<div
+								class="bg-white rounded-[2rem] p-6 shadow-card border border-<?php echo esc_attr($is_featured ? $colors['border'] . ' border-opacity-50' : 'brand-ink/5'); ?> hover:border-<?php echo esc_attr($colors['border']); ?>/30 transition-all hover:-translate-y-1 h-full flex flex-col relative overflow-hidden">
+
+								<?php if ($is_new || $is_enrolling): ?>
 									<div
-										class="bg-white rounded-[2rem] p-6 shadow-card border border-<?php echo esc_attr($is_featured ? $colors['border'] . ' border-opacity-50' : 'brand-ink/5'); ?> hover:border-<?php echo esc_attr($colors['border']); ?>/30 transition-all hover:-translate-y-1 h-full flex flex-col relative overflow-hidden">
-
-										<?php if ($is_new || $is_enrolling): ?>
-											<div
-												class="absolute top-0 right-0 bg-<?php echo esc_attr($is_new ? $colors['text'] : $colors['border']); ?> text-<?php echo esc_attr($is_new ? 'brand-ink' : 'white'); ?> text-[10px] font-bold uppercase px-4 py-1 rounded-bl-xl tracking-wider">
-												<?php echo $is_new ? 'New Campus' : 'Now Enrolling'; ?>
-											</div>
-										<?php endif; ?>
-
-										<div
-											class="flex justify-between items-start mb-4 <?php echo ($is_new || $is_enrolling) ? 'mt-2' : ''; ?>">
-											<span
-												class="bg-<?php echo esc_attr($colors['bg']); ?> text-<?php echo esc_attr($colors['text']); ?> px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">
-												<?php echo esc_html($region_name); ?>
-											</span>
-											<?php if ($is_open): ?>
-												<div class="w-2 h-2 rounded-full bg-chroma-green animate-pulse" title="Open Now">
-												</div>
-											<?php endif; ?>
-										</div>
-
-										<h2
-											class="font-serif text-2xl font-bold text-brand-ink mb-2 group-hover:text-<?php echo esc_attr($colors['text']); ?> transition-colors">
-											<?php echo esc_html($location_name); ?>
-										</h2>
-
-										<p class="text-sm text-brand-ink/60 mb-4 flex-grow">
-											<?php echo esc_html($address); ?><br>
-											<?php echo esc_html("$city, $state $zip"); ?>
-										</p>
-
-										<div
-											class="flex flex-wrap gap-2 mb-6 text-[10px] font-bold uppercase tracking-wider text-brand-ink/40">
-											<span
-												class="border border-brand-ink/10 px-2 py-1 rounded-md"><?php echo esc_html($ages_served); ?></span>
-											<?php foreach (array_slice($special_programs, 0, 2) as $program): ?>
-												<span
-													class="border border-brand-ink/10 px-2 py-1 rounded-md"><?php echo esc_html($program); ?></span>
-											<?php endforeach; ?>
-										</div>
-
-										<div class="grid grid-cols-2 gap-3 mt-auto">
-											<a href="<?php the_permalink(); ?>"
-												class="flex items-center justify-center py-3 rounded-xl bg-brand-ink/5 text-brand-ink text-xs font-bold uppercase tracking-wider hover:bg-brand-ink hover:text-white transition-colors">
-												View Campus
-											</a>
-											<a href="<?php the_permalink(); ?>#tour"
-												class="flex items-center justify-center py-3 rounded-xl border border-<?php echo esc_attr($colors['border']); ?> text-<?php echo esc_attr($colors['text']); ?> text-xs font-bold uppercase tracking-wider hover:bg-<?php echo esc_attr($colors['text']); ?> hover:text-white transition-colors">
-												Book Tour
-											</a>
-										</div>
+										class="absolute top-0 right-0 bg-<?php echo esc_attr($is_new ? $colors['text'] : $colors['border']); ?> text-<?php echo esc_attr($is_new ? 'brand-ink' : 'white'); ?> text-[10px] font-bold uppercase px-4 py-1 rounded-bl-xl tracking-wider">
+										<?php echo $is_new ? 'New Campus' : 'Now Enrolling'; ?>
 									</div>
+								<?php endif; ?>
+
+								<div
+									class="flex justify-between items-start mb-4 <?php echo ($is_new || $is_enrolling) ? 'mt-2' : ''; ?>">
+									<span
+										class="bg-<?php echo esc_attr($colors['bg']); ?> text-<?php echo esc_attr($colors['text']); ?> px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">
+										<?php echo esc_html($region_name); ?>
+									</span>
+									<?php if ($is_open): ?>
+										<div class="w-2 h-2 rounded-full bg-chroma-green animate-pulse" title="Open Now">
+										</div>
+									<?php endif; ?>
 								</div>
 
-							<?php endwhile;
-							wp_reset_postdata();
-						endif;
-						?>
-					</div>
-				</div>
+								<h2
+									class="font-serif text-2xl font-bold text-brand-ink mb-2 group-hover:text-<?php echo esc_attr($colors['text']); ?> transition-colors">
+									<?php echo esc_html($location_name); ?>
+								</h2>
+
+								<p class="text-sm text-brand-ink/60 mb-4 flex-grow">
+									<?php echo esc_html($address); ?><br>
+									<?php echo esc_html("$city, $state $zip"); ?>
+								</p>
+
+								<div
+									class="flex flex-wrap gap-2 mb-6 text-[10px] font-bold uppercase tracking-wider text-brand-ink/40">
+									<span
+										class="border border-brand-ink/10 px-2 py-1 rounded-md"><?php echo esc_html($ages_served); ?></span>
+									<?php foreach (array_slice($special_programs, 0, 2) as $program): ?>
+										<span
+											class="border border-brand-ink/10 px-2 py-1 rounded-md"><?php echo esc_html($program); ?></span>
+									<?php endforeach; ?>
+								</div>
+
+								<div class="grid grid-cols-2 gap-3 mt-auto">
+									<a href="<?php the_permalink(); ?>"
+										class="flex items-center justify-center py-3 rounded-xl bg-brand-ink/5 text-brand-ink text-xs font-bold uppercase tracking-wider hover:bg-brand-ink hover:text-white transition-colors">
+										View Campus
+									</a>
+									<a href="<?php the_permalink(); ?>#tour"
+										class="flex items-center justify-center py-3 rounded-xl border border-<?php echo esc_attr($colors['border']); ?> text-<?php echo esc_attr($colors['text']); ?> text-xs font-bold uppercase tracking-wider hover:bg-<?php echo esc_attr($colors['text']); ?> hover:text-white transition-colors">
+										Book Tour
+									</a>
+								</div>
+							</div>
+						</div>
+
+					<?php endwhile;
+					wp_reset_postdata();
+				endif;
+				?>
+			</div>
+		</div>
 	</section>
 
 	<!-- Map & CTA Section -->
@@ -169,6 +210,30 @@ function chroma_get_region_color_from_term($term_id)
 		<div class="max-w-7xl mx-auto px-4 lg:px-6">
 			<div
 				class="bg-chroma-blueDark rounded-[3rem] p-10 lg:p-16 text-white relative overflow-hidden flex flex-col lg:flex-row gap-12 items-center">
+
+				<!-- Map Placeholder -->
+				<div class="w-full lg:w-1/2 relative z-10">
+					<div
+						class="bg-white/10 rounded-[2rem] p-2 aspect-video border border-white/20 flex items-center justify-center relative overflow-hidden">
+						<!-- Abstract map representation -->
+						<div class="relative z-10 flex flex-wrap justify-center gap-4 p-6">
+							<div class="bg-chroma-red w-4 h-4 rounded-full animate-bounce" style="animation-delay: 0s;">
+							</div>
+							<div class="bg-chroma-yellow w-4 h-4 rounded-full animate-bounce"
+								style="animation-delay: 0.2s;"></div>
+							<div class="bg-chroma-green w-4 h-4 rounded-full animate-bounce"
+								style="animation-delay: 0.4s;"></div>
+							<div class="bg-chroma-blue w-4 h-4 rounded-full animate-bounce"
+								style="animation-delay: 0.1s;"></div>
+							<div class="bg-chroma-red w-4 h-4 rounded-full animate-bounce"
+								style="animation-delay: 0.3s;"></div>
+							<div class="bg-chroma-green w-4 h-4 rounded-full animate-bounce"
+								style="animation-delay: 0.5s;"></div>
+						</div>
+						<p class="absolute bottom-4 text-xs font-bold tracking-widest uppercase text-white/60">
+							<?php echo $locations_query->found_posts; ?>+ Locations in Metro Atlanta
+						</p>
+					</div>
 				</div>
 
 				<!-- CTA Content -->
@@ -230,7 +295,7 @@ function chroma_get_region_color_from_term($term_id)
 			}
 		});
 
-		noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+		if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
 	}
 
 	// Search Filter Logic
@@ -257,7 +322,7 @@ function chroma_get_region_color_from_term($term_id)
 			}
 		});
 
-		noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+		if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
 	});
 </script>
 
