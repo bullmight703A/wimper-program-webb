@@ -4,6 +4,13 @@
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php // Preload critical fonts ?>
+	<link rel="preload" as="font" type="font/woff2"
+		href="<?php echo esc_url(get_template_directory_uri() . '/assets/webfonts/Outfit-SemiBold.woff2'); ?>"
+		crossorigin>
+	<link rel="preload" as="font" type="font/woff2"
+		href="<?php echo esc_url(get_template_directory_uri() . '/assets/webfonts/PlayfairDisplay-Bold.woff2'); ?>"
+		crossorigin>
 	<?php wp_head(); ?>
 </head>
 

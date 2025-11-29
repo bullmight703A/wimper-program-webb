@@ -170,21 +170,26 @@ add_filter('upload_mimes', 'chroma_mime_types');
 
 
 /**
+ * Move jQuery to footer for better performance
+ * This prevents jQuery from blocking initial render
+ */
+function chroma_move_jquery_to_footer()
+{
+    if (!is_admin()) {
+        wp_deregister_script('jquery');
+        wp_register_script('jquery', includes_url('/js/jquery/jquery.min.js'), [], null, true);
+        wp_enqueue_script('jquery');
+    }
+}
+add_action('wp_enqueue_scripts', 'chroma_move_jquery_to_footer');
+
+/**
  * Defer non-critical third-party scripts.
  */
 function chroma_defer_scripts($tag, $handle, $src)
 {
-    // Defer jQuery
-    // Defer jQuery - DISABLED (Causing issues with LeadConnector)
-    // if (!is_admin()) {
-    //     wp_deregister_script('jquery');
-    //     wp_register_script('jquery', includes_url('/js/jquery/jquery.min.js'), false, null, true);
-    //     wp_enqueue_script('jquery');
-    //     wp_script_add_data('jquery', 'defer', true);
-    // }
-
     // List of scripts to defer
-    $defer_scripts = array('gtag', 'did-0014', 'jquery-core', 'jquery-migrate');
+    $defer_scripts = array('gtag', 'did-0014', 'jquery-migrate');
 
     foreach ($defer_scripts as $script) {
         if (strpos($src, $script) !== false) {
@@ -256,3 +261,46 @@ function chroma_add_meta_description()
     }
 }
 add_action('wp_head', 'chroma_add_meta_description', 1);
+
+/**
+ * Lazy Load LeadConnector Widget
+ * Delays loading until 3 seconds after page load or on first user interaction
+ * This prevents the widget from blocking initial render and improves LCP/FCP
+ */
+function chroma_lazy_load_leadconnector()
+{
+    ?>
+    <script>
+        (function () {
+            var loaded = false;
+            var loadWidget = function () {
+                if (loaded) return;
+                loaded = true;
+
+                // Find existing LeadConnector script if present and remove it
+                var existingScripts = document.querySelectorAll('script[src*="leadconnectorhq.com"]');
+                existingScripts.forEach(function (script) {
+                    script.remove();
+                });
+
+                // Load the widget script
+                var script = document.createElement('script');
+                script.src = 'https://widgets.leadconnectorhq.com/loader.js';
+                script.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+                script.async = true;
+                document.body.appendChild(script);
+            };
+
+            // Load after 3 seconds
+            setTimeout(loadWidget, 3000);
+
+            // Or load on first user interaction (whichever comes first)
+            var events = ['mousedown', 'touchstart', 'keydown', 'scroll'];
+            events.forEach(function (event) {
+                window.addEventListener(event, loadWidget, { once: true, passive: true });
+            });
+        })();
+    </script>
+    <?php
+}
+add_action('wp_footer', 'chroma_lazy_load_leadconnector', 999);
