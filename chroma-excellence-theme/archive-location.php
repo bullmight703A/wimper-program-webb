@@ -58,13 +58,21 @@ $locations_query = new WP_Query(array(
 						class="w-full pl-12 pr-4 py-3 rounded-full focus:outline-none text-brand-ink bg-white" />
 				</div>
 				<div class="flex gap-2 justify-start lg:justify-end flex-wrap flex-grow items-center">
-					<button onclick="filterLocations('all')" data-region="all"
+					<button onclick="filterLocations('all')" data-region="all" data-color-bg="chroma-green" data-color-text="white"
 						class="filter-btn px-6 py-3 rounded-full font-semibold bg-chroma-green text-white hover:shadow-glow transition-all duration-300 whitespace-nowrap">
 						<?php echo esc_html(get_theme_mod('chroma_locations_label', 'All Locations')); ?>
 					</button>
-					<?php foreach ($all_regions as $region): ?>
+					<?php foreach ($all_regions as $region):
+						$colors = chroma_get_region_color_from_term($region->term_id);
+						// Map 'bg' (usually light) to a solid color for the button if needed, 
+						// but typically we want the 'text' color (darker) for the button background 
+						// and white text for contrast.
+						$btn_bg = $colors['text'];
+						?>
 						<button onclick="filterLocations('<?php echo esc_attr($region->slug); ?>')"
 							data-region="<?php echo esc_attr($region->slug); ?>"
+							data-color-bg="<?php echo esc_attr($btn_bg); ?>"
+							data-color-text="white"
 							class="filter-btn px-6 py-3 rounded-full font-semibold bg-white text-brand-ink border border-brand-ink/10 hover:bg-brand-ink/5 transition-all duration-300 whitespace-nowrap">
 							<?php echo esc_html($region->name); ?>
 						</button>
@@ -275,12 +283,33 @@ $locations_query = new WP_Query(array(
 
 		// Update button styles
 		buttons.forEach(btn => {
+			const activeBg = btn.dataset.colorBg || 'chroma-green';
+			const activeText = btn.dataset.colorText || 'white';
+
 			if (region === btn.dataset.region) {
+				// Active State: Use dynamic color
 				btn.classList.remove('bg-white', 'text-brand-ink', 'border', 'border-brand-ink/10');
-				btn.classList.add('bg-chroma-green', 'text-white', 'shadow-glow');
+				btn.classList.add('bg-' + activeBg, 'text-' + activeText, 'shadow-glow');
+				
+				// If using a Tailwind class that needs compilation, ensure it's safelisted.
+				// For direct style manipulation (if classes aren't working):
+				// btn.style.backgroundColor = ''; // Rely on class
 			} else {
+				// Inactive State
 				btn.classList.add('bg-white', 'text-brand-ink', 'border', 'border-brand-ink/10');
-				btn.classList.remove('bg-chroma-green', 'text-white', 'shadow-glow');
+				btn.classList.remove('bg-' + activeBg, 'text-' + activeText, 'shadow-glow');
+				
+				// Clean up any potential leftover dynamic classes from previous active states
+				// (This simple removal might miss if we switch from one color to another, 
+				// but since we re-add the white/ink classes, it should override or cascade correctly 
+				// IF the dynamic classes are removed. To be safe, we should remove ALL potential dynamic classes.
+				// However, since we don't know them all, we rely on the 'bg-white' overriding or 
+				// simply removing the specific one we added.)
+				
+				// Better approach: Remove ALL bg-* classes that aren't bg-white? 
+				// No, that's too aggressive.
+				// We just remove the specific one this button WOULD have if it were active.
+				btn.classList.remove('bg-' + activeBg, 'text-' + activeText);
 			}
 		});
 
@@ -305,10 +334,13 @@ $locations_query = new WP_Query(array(
 		const noResults = document.getElementById('no-results');
 		let visibleCount = 0;
 
-		// Reset buttons
+		// Reset buttons to inactive state
 		buttons.forEach(btn => {
-			btn.classList.add('bg-white', 'text-brand-ink/60');
-			btn.classList.remove('bg-brand-ink', 'text-white', 'shadow-md');
+			const activeBg = btn.dataset.colorBg || 'chroma-green';
+			const activeText = btn.dataset.colorText || 'white';
+			
+			btn.classList.add('bg-white', 'text-brand-ink', 'border', 'border-brand-ink/10');
+			btn.classList.remove('bg-' + activeBg, 'text-' + activeText, 'shadow-glow');
 		});
 
 		cards.forEach(card => {

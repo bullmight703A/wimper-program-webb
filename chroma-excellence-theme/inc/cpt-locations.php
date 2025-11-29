@@ -163,7 +163,7 @@ function chroma_location_region_add_form_fields()
 		<input type="text" name="region_color_bg" id="region_color_bg" value="chroma-greenLight"
 			placeholder="e.g., chroma-greenLight">
 		<p class="description">
-			<?php _e('Tailwind background color class (e.g., chroma-greenLight, chroma-redLight, chroma-blueLight, chroma-yellowLight)', 'chroma-excellence'); ?>
+			<?php _e('Tailwind background color class (e.g., chroma-greenLight, chroma-redLight, chroma-blueLight, chroma-yellowLight, chroma-purpleLight, chroma-orangeLight, chroma-tealLight)', 'chroma-excellence'); ?>
 		</p>
 	</div>
 	<div class="form-field">
@@ -171,7 +171,7 @@ function chroma_location_region_add_form_fields()
 		<input type="text" name="region_color_text" id="region_color_text" value="chroma-green"
 			placeholder="e.g., chroma-green">
 		<p class="description">
-			<?php _e('Tailwind text color class (e.g., chroma-green, chroma-red, chroma-blue, chroma-yellow)', 'chroma-excellence'); ?>
+			<?php _e('Tailwind text color class (e.g., chroma-green, chroma-red, chroma-blue, chroma-yellow, chroma-purple, chroma-orange, chroma-teal)', 'chroma-excellence'); ?>
 		</p>
 	</div>
 	<div class="form-field">
@@ -179,7 +179,7 @@ function chroma_location_region_add_form_fields()
 		<input type="text" name="region_color_border" id="region_color_border" value="chroma-green"
 			placeholder="e.g., chroma-green">
 		<p class="description">
-			<?php _e('Tailwind border color class (e.g., chroma-green, chroma-red, chroma-blue, chroma-yellow)', 'chroma-excellence'); ?>
+			<?php _e('Tailwind border color class (e.g., chroma-green, chroma-red, chroma-blue, chroma-yellow, chroma-purple, chroma-orange, chroma-teal)', 'chroma-excellence'); ?>
 		</p>
 	</div>
 	<?php
@@ -202,7 +202,7 @@ function chroma_location_region_edit_form_fields($term)
 			<input type="text" name="region_color_bg" id="region_color_bg"
 				value="<?php echo esc_attr($color_bg ?: 'chroma-greenLight'); ?>">
 			<p class="description">
-				<?php _e('Tailwind background color class (e.g., chroma-greenLight, chroma-redLight, chroma-blueLight, chroma-yellowLight)', 'chroma-excellence'); ?>
+				<?php _e('Tailwind background color class (e.g., chroma-greenLight, chroma-redLight, chroma-blueLight, chroma-yellowLight, chroma-purpleLight, chroma-orangeLight, chroma-tealLight)', 'chroma-excellence'); ?>
 			</p>
 		</td>
 	</tr>
@@ -212,7 +212,7 @@ function chroma_location_region_edit_form_fields($term)
 			<input type="text" name="region_color_text" id="region_color_text"
 				value="<?php echo esc_attr($color_text ?: 'chroma-green'); ?>">
 			<p class="description">
-				<?php _e('Tailwind text color class (e.g., chroma-green, chroma-red, chroma-blue, chroma-yellow)', 'chroma-excellence'); ?>
+				<?php _e('Tailwind text color class (e.g., chroma-green, chroma-red, chroma-blue, chroma-yellow, chroma-purple, chroma-orange, chroma-teal)', 'chroma-excellence'); ?>
 			</p>
 		</td>
 	</tr>
@@ -223,7 +223,7 @@ function chroma_location_region_edit_form_fields($term)
 			<input type="text" name="region_color_border" id="region_color_border"
 				value="<?php echo esc_attr($color_border ?: 'chroma-green'); ?>">
 			<p class="description">
-				<?php _e('Tailwind border color class (e.g., chroma-green, chroma-red, chroma-blue, chroma-yellow)', 'chroma-excellence'); ?>
+				<?php _e('Tailwind border color class (e.g., chroma-green, chroma-red, chroma-blue, chroma-yellow, chroma-purple, chroma-orange, chroma-teal)', 'chroma-excellence'); ?>
 			</p>
 		</td>
 	</tr>

@@ -26,18 +26,6 @@ module.exports = {
           blue: '#4A6C7C',
           blueDark: '#2F4858',
           blueLight: '#E3E9EC',
-          teal: '#4A6C7C',
-          tealLight: '#E3E9EC',
-          green: '#5E7066', // Darkened from #8DA399 for 4.5:1 contrast
-          greenLight: '#E3EBE8',
-          yellow: '#9C7835', // Darkened from #E6BE75 for 4.5:1 contrast
-          yellowLight: '#FDF6E3',
-        },
-      },
-      borderRadius: {
-        '4xl': '2.5rem',
-        '5xl': '3.5rem',
-      },
     },
   },
   safelist: [
