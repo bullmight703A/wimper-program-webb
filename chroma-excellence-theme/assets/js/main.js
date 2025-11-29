@@ -6,7 +6,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', function () {
-  alert('DEBUG: JS IS LOADING - Version 2');
   const safeParseJSON = (value, fallback) => {
     try {
       return JSON.parse(value);
