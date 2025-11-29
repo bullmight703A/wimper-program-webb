@@ -48,6 +48,68 @@ function chroma_footer_nav()
 	wp_nav_menu(array(
 		'theme_location' => 'footer',
 		'container' => false,
+		'menu_class' => '',
+		'fallback_cb' => 'chroma_footer_nav_fallback',
+		'items_wrap' => '%3$s',
+		'depth' => 1,
+		'walker' => new Chroma_Footer_Nav_Walker(),
+	));
+}
+
+/**
+ * Footer Contact Navigation
+ */
+function chroma_footer_contact_nav()
+{
+	if (has_nav_menu('footer_contact')) {
+		wp_nav_menu(array(
+			'theme_location' => 'footer_contact',
+			'container' => false,
+			'menu_class' => 'mt-4 space-y-2 pt-4 border-t border-white/10',
+			'fallback_cb' => false,
+			'items_wrap' => '<div class="%2$s">%3$s</div>',
+			'depth' => 1,
+			'walker' => new Chroma_Footer_Nav_Walker(),
+		));
+	} else {
+		$program_slug = chroma_get_program_base_slug();
+		$pages = array(
+			$program_slug => 'Programs',
+			'locations' => 'Locations',
+			'about' => 'About Us',
+			'contact' => 'Contact',
+		);
+
+		foreach ($pages as $slug => $title) {
+			$url = home_url('/' . $slug);
+			echo '<a href="' . esc_url($url) . '" class="block hover:text-white transition">' . esc_html($title) . '</a>';
+		}
+	}
+}
+
+/**
+ * Custom Walker for Primary Navigation
+ */
+class Chroma_Primary_Nav_Walker extends Walker_Nav_Menu
+{
+	function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
+	{
+		$classes = 'hover:text-chroma-blue transition';
+
+		if ($item->current) {
+			$classes .= ' text-chroma-red';
+		}
+
+		$output .= '<a href="' . esc_url($item->url) . '" class="' . esc_attr($classes) . '">';
+		$output .= esc_html($item->title);
+		$output .= '</a>';
+	}
+}
+
+/**
+ * Custom Walker for Footer Navigation
+ */
+class Chroma_Footer_Nav_Walker extends Walker_Nav_Menu
 {
 	function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
 	{
