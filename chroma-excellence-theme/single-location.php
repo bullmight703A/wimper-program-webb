@@ -437,8 +437,13 @@ while (have_posts()):
 											<?php echo esc_html($age_range); ?>
 										</span>
 									<?php endif; ?>
-									<span
-										class="text-2xl group-hover:scale-110 transition-transform"><?php echo esc_html(mb_substr($icon, 0, 2)); ?></span>
+									<?php if (strpos($icon, 'fa-') !== false): ?>
+										<i
+											class="<?php echo esc_attr($icon); ?> text-2xl group-hover:scale-110 transition-transform"></i>
+									<?php else: ?>
+										<span
+											class="text-2xl group-hover:scale-110 transition-transform"><?php echo esc_html($icon); ?></span>
+									<?php endif; ?>
 								</div>
 								<h3 class="font-serif text-xl font-bold text-brand-ink mb-2"><?php the_title(); ?></h3>
 								<p class="text-sm text-brand-ink/80 mb-6"><?php echo esc_html($excerpt); ?></p>
