@@ -205,7 +205,7 @@ add_action('wp_head', 'chroma_preload_lcp_image', 1);
  */
 function chroma_litespeed_exclude_lcp()
 {
-    return array('logo_optimized', 'chroma-logo', 'hero', 'chroma-1920w');
+    return array('logo_optimized', 'chroma-logo', 'hero', 'chroma-1920w', 'chroma-1920w.webp', 'logo');
 }
 add_filter('litespeed_img_lazy_exclude', 'chroma_litespeed_exclude_lcp');
 

@@ -24,76 +24,59 @@
 	</a>
 
 	<header class="relative bg-white shadow-soft z-40">
-		<div class="container mx-auto px-5 py-4 flex items-center justify-between">
-			<!-- Logo & Brand -->
-			<a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-3 group">
-				<?php
-				$custom_logo_id = get_theme_mod('custom_logo');
-				if ($custom_logo_id) {
-					echo wp_get_attachment_image($custom_logo_id, 'medium', false, array(
-						'class' => 'h-12 w-auto',
-						'fetchpriority' => 'high',
-						'loading' => 'eager',
-						'sizes' => '280px'
-					));
-				}
-				?>
-				<?php
-				// Parse header text lines
-				$header_text = get_theme_mod('chroma_header_text', "Early Learning\nAcademy");
-				$all_lines = array_map('trim', explode("\n", $header_text));
+		$all_lines = array_map('trim', explode("\n", $header_text));
 
-				// Check if first line is backslash or empty BEFORE filtering
-				$first_line_is_placeholder = empty($all_lines[0]) || $all_lines[0] === '\\';
+		// Check if first line is backslash or empty BEFORE filtering
+		$first_line_is_placeholder = empty($all_lines[0]) || $all_lines[0] === '\\';
 
-				// Remove lines that are just backslash (placeholder for spacing)
-				$all_lines = array_filter($all_lines, function ($line) {
-					return $line !== '\\';
-				});
-				$all_lines = array_values($all_lines); // Re-index array
-				
-				if ($first_line_is_placeholder) {
-					// First line was placeholder, so all remaining lines use "line 2" formatting
-					$line1 = '';
-					$line2_array = array_filter($all_lines); // Remove all empty lines
-				} else {
-					// First line has content, use it as line 1
-					$line1 = $all_lines[0];
-					// Remove first element and filter empty lines for line 2
-					array_shift($all_lines);
-					$line2_array = array_filter($all_lines);
-				}
-				?>
-				<?php if ($line1 || !empty($line2_array)): ?>
-					<div class="leading-tight">
-						<?php if ($line1): ?>
-							<p class="font-bold text-lg text-brand-ink"><?php echo esc_html($line1); ?></p>
-						<?php endif; ?>
-						<?php if (!empty($line2_array)): ?>
-							<?php foreach ($line2_array as $line2): ?>
-								<p class="text-[10px] uppercase tracking-[0.2em] text-chroma-blue"><?php echo esc_html($line2); ?>
-								</p>
-							<?php endforeach; ?>
-						<?php endif; ?>
-					</div>
+		// Remove lines that are just backslash (placeholder for spacing)
+		$all_lines = array_filter($all_lines, function ($line) {
+		return $line !== '\\';
+		});
+		$all_lines = array_values($all_lines); // Re-index array
+
+		if ($first_line_is_placeholder) {
+		// First line was placeholder, so all remaining lines use "line 2" formatting
+		$line1 = '';
+		$line2_array = array_filter($all_lines); // Remove all empty lines
+		} else {
+		// First line has content, use it as line 1
+		$line1 = $all_lines[0];
+		// Remove first element and filter empty lines for line 2
+		array_shift($all_lines);
+		$line2_array = array_filter($all_lines);
+		}
+		?>
+		<?php if ($line1 || !empty($line2_array)): ?>
+			<div class="leading-tight">
+				<?php if ($line1): ?>
+					<p class="font-bold text-lg text-brand-ink"><?php echo esc_html($line1); ?></p>
 				<?php endif; ?>
-			</a>
+				<?php if (!empty($line2_array)): ?>
+					<?php foreach ($line2_array as $line2): ?>
+						<p class="text-[10px] uppercase tracking-[0.2em] text-chroma-blue"><?php echo esc_html($line2); ?>
+						</p>
+					<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
+		</a>
 
-			<!-- Desktop Navigation -->
-			<nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-brand-ink/70">
-				<?php chroma_primary_nav(); ?>
-			</nav>
+		<!-- Desktop Navigation -->
+		<nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-brand-ink/70">
+			<?php chroma_primary_nav(); ?>
+		</nav>
 
-			<!-- CTA Button -->
-			<a href="<?php echo esc_url(home_url('/contact#tour')); ?>"
-				class="hidden lg:inline-flex items-center gap-2 bg-brand-ink text-white text-xs font-semibold tracking-[0.2em] px-5 py-3 rounded-full shadow-soft hover:bg-chroma-blueDark transition">
-				Book A Tour
-			</a>
+		<!-- CTA Button -->
+		<a href="<?php echo esc_url(home_url('/contact#tour')); ?>"
+			class="hidden lg:inline-flex items-center gap-2 bg-brand-ink text-white text-xs font-semibold tracking-[0.2em] px-5 py-3 rounded-full shadow-soft hover:bg-chroma-blueDark transition">
+			Book A Tour
+		</a>
 
-			<!-- Mobile Menu Toggle -->
-			<button data-mobile-nav-toggle class="lg:hidden text-2xl text-brand-ink" aria-label="Open menu">
-				<i class="fa-solid fa-bars"></i>
-			</button>
+		<!-- Mobile Menu Toggle -->
+		<button data-mobile-nav-toggle class="lg:hidden text-2xl text-brand-ink" aria-label="Open menu">
+			<i class="fa-solid fa-bars"></i>
+		</button>
 		</div>
 
 		<!-- Mobile Menu -->
