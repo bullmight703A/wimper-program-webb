@@ -12,6 +12,9 @@
 	<link rel="preload" as="font"
 		href="<?php echo get_template_directory_uri(); ?>/assets/webfonts/PlayfairDisplay-Bold.woff2" type="font/woff2"
 		crossorigin>
+	<link rel="preload" as="image"
+		href="<?php echo get_template_directory_uri(); ?>/assets/images/logo_chromacropped_70x70.webp"
+		type="image/webp">
 	<?php wp_head(); ?>
 </head>
 
