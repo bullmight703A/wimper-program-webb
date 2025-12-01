@@ -90,29 +90,30 @@
 			</button>
 		</div>
 
-		<!-- Mobile Menu Overlay -->
-		<div data-mobile-nav
-			class="fixed inset-0 bg-white z-[100] transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col h-full w-full overflow-hidden">
-			<div class="flex items-center justify-between p-4 border-b border-brand-ink/5">
-				<div class="flex items-center gap-3"> <img
-						src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_40x40.webp'); ?>"
-						srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_40x40.webp'); ?> 1x,
-					<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_70x70.webp'); ?>
-					2x" alt="Chroma Early Learning" width="40" height="40" class="h-10 w-auto" />
-					<span class="font-serif text-lg font-bold text-brand-ink">Menu</span>
-				</div>
-				<button data-mobile-nav-toggle class="text-3xl text-brand-ink" aria-label="Close menu">&times;</button>
-			</div>
-
-			<nav class="flex-1 px-6 py-6 overflow-y-auto">
-				<?php chroma_mobile_nav(); ?>
-
-				<a href="<?php echo esc_url($cta_url); ?>"
-					class="block w-full text-center mt-6 px-6 py-4 rounded-xl bg-chroma-red text-white font-semibold uppercase tracking-widest hover:bg-chroma-red/90 transition shadow-soft">
-					Book a Tour
-				</a>
-			</nav>
-		</div>
 	</header>
+
+	<!-- Mobile Menu Overlay -->
+	<div data-mobile-nav
+		class="fixed inset-0 bg-white z-[100] transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col h-full w-full overflow-hidden">
+		<div class="flex items-center justify-between p-4 border-b border-brand-ink/5">
+			<div class="flex items-center gap-3"> <img
+					src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_40x40.webp'); ?>"
+					srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_40x40.webp'); ?> 1x,
+				<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_70x70.webp'); ?>
+				2x" alt="Chroma Early Learning" width="40" height="40" class="h-10 w-auto" />
+				<span class="font-serif text-lg font-bold text-brand-ink">Menu</span>
+			</div>
+			<button data-mobile-nav-toggle class="text-3xl text-brand-ink" aria-label="Close menu">&times;</button>
+		</div>
+
+		<nav class="flex-1 px-6 py-6 overflow-y-auto">
+			<?php chroma_mobile_nav(); ?>
+
+			<a href="<?php echo esc_url($cta_url); ?>"
+				class="block w-full text-center mt-6 px-6 py-4 rounded-xl bg-chroma-red text-white font-semibold uppercase tracking-widest hover:bg-chroma-red/90 transition shadow-soft">
+				Book a Tour
+			</a>
+		</nav>
+	</div>
 
 	<main id="main-content" class="pt-20 lg:pt-24">
