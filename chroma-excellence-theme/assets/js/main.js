@@ -219,7 +219,9 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.classList.toggle('text-white', isActive);
         btn.classList.toggle('shadow-soft', isActive);
         btn.classList.toggle('text-brand-ink/60', !isActive);
-        btn.style.color = isActive ? '#ffffff' : 'rgba(38, 50, 56, 0.6)';
+        // Remove inline styles to let CSS classes handle colors
+        btn.style.backgroundColor = '';
+        btn.style.color = '';
         btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
 
