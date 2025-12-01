@@ -73,4 +73,43 @@ function chroma_header_customizer_settings($wp_customize)
 	));
 
 }
+	// Logo Width (Desktop)
+	$wp_customize->add_setting('chroma_logo_width_desktop', array(
+		'default' => 70,
+		'sanitize_callback' => 'absint',
+		'transport' => 'refresh',
+	));
+
+	$wp_customize->add_control('chroma_logo_width_desktop', array(
+		'label' => __('Logo Width (Desktop)', 'chroma-excellence'),
+		'description' => __('Width in pixels (default: 70).', 'chroma-excellence'),
+		'section' => 'chroma_header_settings',
+		'type' => 'range',
+		'input_attrs' => array(
+			'min' => 40,
+			'max' => 200,
+			'step' => 1,
+		),
+	));
+
+	// Logo Width (Mobile)
+	$wp_customize->add_setting('chroma_logo_width_mobile', array(
+		'default' => 56,
+		'sanitize_callback' => 'absint',
+		'transport' => 'refresh',
+	));
+
+	$wp_customize->add_control('chroma_logo_width_mobile', array(
+		'label' => __('Logo Width (Mobile)', 'chroma-excellence'),
+		'description' => __('Width in pixels (default: 56).', 'chroma-excellence'),
+		'section' => 'chroma_header_settings',
+		'type' => 'range',
+		'input_attrs' => array(
+			'min' => 30,
+			'max' => 120,
+			'step' => 1,
+		),
+	));
+
+}
 add_action('customize_register', 'chroma_header_customizer_settings');

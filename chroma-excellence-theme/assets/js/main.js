@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
   mobileNavToggles.forEach((toggle) => {
     toggle.addEventListener('click', () => {
       mobileNav.classList.toggle('translate-x-full');
+      // Toggle body scroll
+      if (!mobileNav.classList.contains('translate-x-full')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
     });
   });
 

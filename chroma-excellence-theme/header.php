@@ -4,7 +4,9 @@
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="preload" as="font" href="<?php echo get_template_directory_uri(); ?>/assets/webfonts/Outfit-Regular.woff2" type="font/woff2" crossorigin>
+	<link rel="preload" as="font"
+		href="<?php echo get_template_directory_uri(); ?>/assets/webfonts/Outfit-Regular.woff2" type="font/woff2"
+		crossorigin>
 	<?php wp_head(); ?>
 </head>
 
@@ -22,11 +24,32 @@
 
 			<!-- Logo -->
 			<a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-4 group">
+				<?php
+				$logo_width_desktop = get_theme_mod('chroma_logo_width_desktop', 70);
+				$logo_width_mobile = get_theme_mod('chroma_logo_width_mobile', 56);
+				?>
+				<style>
+					.chroma-logo {
+						width:
+							<?php echo intval($logo_width_mobile); ?>
+							px;
+						height: auto;
+					}
+
+					@media (min-width: 1024px) {
+						.chroma-logo {
+							width:
+								<?php echo intval($logo_width_desktop); ?>
+								px;
+						}
+					}
+				</style>
 				<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_70x70.webp'); ?>"
 					srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_70x70.webp'); ?> 1x,
 							<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_140x140.webp'); ?> 2x"
-					alt="Chroma Early Learning" width="70" height="70"
-					class="h-14 w-auto lg:h-20 transition-transform duration-300 group-hover:scale-105 no-lazy"
+					alt="Chroma Early Learning" width="<?php echo intval($logo_width_desktop); ?>"
+					height="<?php echo intval($logo_width_desktop); ?>"
+					class="chroma-logo transition-transform duration-300 group-hover:scale-105 no-lazy"
 					data-no-lazy="1" />
 
 				<!-- Header Text -->
@@ -35,16 +58,16 @@
 				$lines = explode("\n", $header_text);
 				$first_line = array_shift($lines);
 				?>
-			<div class="hidden sm:block leading-tight">
-				<span 	class="block font-serif text-xl lg:text-2xl font-bold text-brand-ink">
-					<?php echo esc_html($first_line); ?>
-				</span>
-				<?php foreach ($lines as $line): ?>
-					<span 		class="block text-[10px] lg:text-xs font-bold tracking-[0.15em] text-chroma-blue uppercase">
-						<?php echo esc_html($line); ?>
+				<div class="block leading-tight">
+					<span class="block font-serif text-xl lg:text-2xl font-bold text-brand-ink">
+						<?php echo esc_html($first_line); ?>
 					</span>
-				<?php endforeach; ?>
-			</div>
+					<?php foreach ($lines as $line): ?>
+						<span class="block text-[10px] lg:text-xs font-bold tracking-[0.15em] text-chroma-blue uppercase">
+							<?php echo esc_html($line); ?>
+						</span>
+					<?php endforeach; ?>
+				</div>
 			</a>
 
 			<!-- Desktop Nav -->
@@ -59,23 +82,23 @@
 					class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-chroma-red text-white text-xs font-semibold uppercase tracking-widest hover:bg-chroma-red/90 transition shadow-soft">
 					Book a Tour
 				</a>
-				</nav>
+			</nav>
 
-				<!-- Mobile Menu Toggle -->
-				<button data-mobile-nav-toggle class="lg:hidden text-brand-ink p-2" aria-label="Toggle menu">
-					<i class="fa-solid fa-bars text-2xl"></i>
-				</button>
+			<!-- Mobile Menu Toggle -->
+			<button data-mobile-nav-toggle class="lg:hidden text-brand-ink p-2" aria-label="Toggle menu">
+				<i class="fa-solid fa-bars text-2xl"></i>
+			</button>
 		</div>
 
 		<!-- Mobile Menu Overlay -->
 		<div data-mobile-nav
-			class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col">
+			class="fixed inset-0 bg-white z-[100] transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col h-full w-full overflow-hidden">
 			<div class="flex items-center justify-between p-4 border-b border-brand-ink/5">
-				<div class="flex items-center gap-3"> <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_40x40.webp'); ?>"
-					srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_40x40.webp'); ?> 1x,
+				<div class="flex items-center gap-3"> <img
+						src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_40x40.webp'); ?>"
+						srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_40x40.webp'); ?> 1x,
 					<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_70x70.webp'); ?>
-					2x"
-					alt="Chroma Early Learning" width="40" height="40" class="h-10 w-auto" />
+					2x" alt="Chroma Early Learning" width="40" height="40" class="h-10 w-auto" />
 					<span class="font-serif text-lg font-bold text-brand-ink">Menu</span>
 				</div>
 				<button data-mobile-nav-toggle class="text-3xl text-brand-ink" aria-label="Close menu">&times;</button>
@@ -88,7 +111,7 @@
 					class="block w-full text-center mt-6 px-6 py-4 rounded-xl bg-chroma-red text-white font-semibold uppercase tracking-widest hover:bg-chroma-red/90 transition shadow-soft">
 					Book a Tour
 				</a>
-				</nav>
+			</nav>
 		</div>
 	</header>
 

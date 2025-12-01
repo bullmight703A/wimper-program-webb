@@ -18,7 +18,7 @@
 						srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_70x70.webp'); ?> 1x,
 								 <?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_140x140.webp'); ?> 2x"
 						alt="Chroma Early Learning" width="70" height="70"
-						class="h-12 w-auto brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+						class="h-12 w-auto opacity-90 hover:opacity-100 transition-opacity" />
 				</a>
 				<p class="text-[11px] text-white/60 leading-relaxed">
 					Premium childcare & early education across Metro Atlanta.
