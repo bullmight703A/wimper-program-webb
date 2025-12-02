@@ -46,15 +46,6 @@ require_once __DIR__ . '/class-admin-help.php';
 require_once __DIR__ . '/class-breadcrumbs.php';
 
 /**
- * Load Core Classes (Missing Requires Added)
- */
-require_once __DIR__ . '/class-seo-dashboard.php';
-require_once __DIR__ . '/class-citation-datasets.php';
-require_once __DIR__ . '/class-image-alt-automation.php';
-require_once __DIR__ . '/class-admin-help.php';
-require_once __DIR__ . '/class-breadcrumbs.php';
-
-/**
  * Load Endpoints
  */
 require_once __DIR__ . '/endpoints/kml-endpoint.php';
@@ -78,7 +69,6 @@ function chroma_advanced_seo_init()
 	// Core Modules
 	(new Chroma_SEO_Dashboard())->init();
 	(new Chroma_Citation_Datasets())->init();
-	(new Chroma_Image_Alt_Automation())->init();
 	(new Chroma_Image_Alt_Automation())->init();
 	(new Chroma_Admin_Help())->init();
 	(new Chroma_Breadcrumbs())->init();
@@ -187,13 +177,13 @@ function chroma_advanced_seo_admin_assets($hook)
 			$(document).on('click', '.chroma-remove-item', function (e) {
 				e.preventDefault();
 				if ($(this).closest('.chroma-repeater-items').find('.chroma-repeater-item').length > 1) {
-					$(this).closest('.chroma-repeater-item').remove();
-				} else {
-					$(this).closest('.chroma-repeater-item').find('input, textarea').val('');
-				}
+						$(this).closest('.chroma-repeater-item').remove();
+					} else {
+						$(this).closest('.chroma-repeater-item').find('input, textarea').val('');
+					}
+				});
 			});
-		});
-	</script>
-	<?php
+		</script>
+		<?php
 }
 add_action('admin_enqueue_scripts', 'chroma_advanced_seo_admin_assets');
