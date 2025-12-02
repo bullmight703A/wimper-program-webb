@@ -144,41 +144,10 @@ function chroma_enqueue_assets()
         ";
         wp_add_inline_style('chroma-main', $custom_css);
 
-        // Main JavaScript.
-        $js_path = CHROMA_THEME_DIR . '/assets/js/main.js';
-        $js_version = file_exists($js_path) ? filemtime($js_path) : CHROMA_VERSION;
-
-        wp_enqueue_script(
-                'chroma-main-js',
-                CHROMA_THEME_URI . '/assets/js/main.js',
-                $script_dependencies,
-                $js_version,
-                true
-        );
-
-        // DEBUG: Confirm script was enqueued
-        echo '<!-- DEBUG: Enqueued chroma-main-js with URL: ' . CHROMA_THEME_URI . '/assets/js/main.js and version: ' . $js_version . ' -->';
-
-        // Defer re-enabled for FCP optimization
-        wp_script_add_data('chroma-main-js', 'defer', true);
-
-        // Map Facade (Lazy Load Leaflet).
-        $should_load_maps = chroma_should_load_maps();
-
-        if ($should_load_maps) {
-                wp_enqueue_script(
-                        'chroma-map-facade',
-                        CHROMA_THEME_URI . '/assets/js/map-facade.js',
-                        array('chroma-main-js'), // Depend on main to ensure chromaData is available
-                        $js_version,
-                        true
-                );
-                wp_script_add_data('chroma-map-facade', 'defer', true);
-        }
-
-        // Localize script for AJAX and dynamic data.
+        // Main JavaScript (Interactions)
+        // Replaces legacy main.js
         wp_localize_script(
-                'chroma-main-js',
+                'chroma-interactions',
                 'chromaData',
                 array(
                         'ajaxUrl' => admin_url('admin-ajax.php'),
@@ -187,6 +156,20 @@ function chroma_enqueue_assets()
                         'homeUrl' => home_url(),
                 )
         );
+
+        // Map Facade (Lazy Load Leaflet).
+        $should_load_maps = chroma_should_load_maps();
+
+        if ($should_load_maps) {
+                wp_enqueue_script(
+                        'chroma-map-facade',
+                        CHROMA_THEME_URI . '/assets/js/map-facade.js',
+                        array('chroma-interactions'), // Depend on interactions to ensure chromaData is available
+                        $js_version,
+                        true
+                );
+                wp_script_add_data('chroma-map-facade', 'defer', true);
+        }
 }
 add_action('wp_enqueue_scripts', 'chroma_enqueue_assets');
 
