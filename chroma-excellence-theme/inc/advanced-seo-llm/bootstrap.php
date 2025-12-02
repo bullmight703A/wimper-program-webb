@@ -27,6 +27,7 @@ require_once __DIR__ . '/meta-boxes/class-program-relationships.php';
 require_once __DIR__ . '/meta-boxes/class-universal-faq.php';
 require_once __DIR__ . '/meta-boxes/class-hreflang-options.php';
 require_once __DIR__ . '/meta-boxes/class-city-landing-meta.php';
+require_once __DIR__ . '/meta-boxes/class-location-citation-facts.php';
 
 /**
  * Load Core Classes (Missing Requires Added)
@@ -45,6 +46,11 @@ require_once __DIR__ . '/class-citation-datasets.php';
 require_once __DIR__ . '/class-image-alt-automation.php';
 require_once __DIR__ . '/class-admin-help.php';
 require_once __DIR__ . '/class-breadcrumbs.php';
+
+/**
+ * Load Endpoints
+ */
+require_once __DIR__ . '/endpoints/kml-endpoint.php';
 
 /**
  * Load Schema Builders

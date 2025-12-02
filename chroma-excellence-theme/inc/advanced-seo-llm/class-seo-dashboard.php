@@ -240,7 +240,8 @@ class Chroma_SEO_Dashboard
                             <?php endif; ?>
                             <?php if ($geo_data): ?>
                                 <div><?php echo number_format($geo_data['lat'], 4); ?>,
-                                    <?php echo number_format($geo_data['lng'], 4); ?></div>
+                                    <?php echo number_format($geo_data['lng'], 4); ?>
+                                </div>
                                 <div>Radius: <?php echo $geo_data['radius']; ?> mi</div>
                             <?php else: ?>
                                 <span class="chroma-cross">×</span> No coordinates
@@ -267,7 +268,7 @@ class Chroma_SEO_Dashboard
                             </div>
                             <div>
                                 <?php if ($rating): ?><span class="chroma-check">✓</span> Google:
-                                    <?php echo esc_html($rating); ?>            <?php else: ?><span style="color: #ccc;">-</span> No
+                                    <?php echo esc_html($rating); ?>             <?php else: ?><span style="color: #ccc;">-</span> No
                                     Rating<?php endif; ?>
                             </div>
                         </td>
@@ -318,13 +319,15 @@ class Chroma_SEO_Dashboard
                 <optgroup label="Locations">
                     <?php foreach ($locations as $loc): ?>
                         <option value="<?php echo $loc->ID; ?>" <?php selected($selected_id, $loc->ID); ?>>
-                            <?php echo esc_html($loc->post_title); ?></option>
+                            <?php echo esc_html($loc->post_title); ?>
+                        </option>
                     <?php endforeach; ?>
                 </optgroup>
                 <optgroup label="Programs">
                     <?php foreach ($programs as $prog): ?>
                         <option value="<?php echo $prog->ID; ?>" <?php selected($selected_id, $prog->ID); ?>>
-                            <?php echo esc_html($prog->post_title); ?></option>
+                            <?php echo esc_html($prog->post_title); ?>
+                        </option>
                     <?php endforeach; ?>
                 </optgroup>
             </select>
@@ -337,6 +340,7 @@ class Chroma_SEO_Dashboard
 
         <script>
             jQuery(document).ready(function ($) {
+                var chroma_nonce = '<?php echo wp_create_nonce('chroma_seo_dashboard_nonce'); ?>';
                 var selectedId = '<?php echo $selected_id; ?>';
                 if (selectedId && selectedId != '0') {
                     loadInspectorData(selectedId);
@@ -351,6 +355,7 @@ class Chroma_SEO_Dashboard
                     $('#chroma-inspector-spinner').addClass('is-active');
                     $.post(ajaxurl, {
                         action: 'chroma_fetch_schema_inspector',
+                        nonce: chroma_nonce,
                         post_id: id
                     }, function (response) {
                         $('#chroma-inspector-spinner').removeClass('is-active');
@@ -370,6 +375,7 @@ class Chroma_SEO_Dashboard
 
                     var data = {
                         action: 'chroma_save_schema_inspector',
+                        nonce: chroma_nonce,
                         post_id: $('#chroma-inspector-post-id').val(),
                         fields: {}
                     };
@@ -417,6 +423,8 @@ class Chroma_SEO_Dashboard
      */
     public function ajax_fetch_inspector_data()
     {
+        check_ajax_referer('chroma_seo_dashboard_nonce', 'nonce');
+
         $post_id = intval($_POST['post_id']);
         if (!$post_id)
             wp_send_json_error();
@@ -502,6 +510,8 @@ class Chroma_SEO_Dashboard
      */
     public function ajax_save_inspector_data()
     {
+        check_ajax_referer('chroma_seo_dashboard_nonce', 'nonce');
+
         if (!current_user_can('edit_posts'))
             wp_send_json_error();
 
