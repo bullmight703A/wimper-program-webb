@@ -316,10 +316,19 @@ class Chroma_Breadcrumbs
                     $('#chroma-breadcrumb-spinner').removeClass('is-active');
                     if(response.success) {
                         target.prop('disabled', false);
-                        $.each(response.data, function(id, title) {
-                            target.append($('<option></option>').val(id).text(title));
-                        });
+                        if (Object.keys(response.data).length === 0) {
+                             target.append($('<option></option>').text('No posts found'));
+                        } else {
+                            $.each(response.data, function(id, title) {
+                                target.append($('<option></option>').val(id).text(title));
+                            });
+                        }
+                    } else {
+                        alert('Error: ' + (response.data && response.data.message ? response.data.message : 'Unknown error'));
                     }
+                }).fail(function(xhr, status, error) {
+                    $('#chroma-breadcrumb-spinner').removeClass('is-active');
+                    alert('Server Error: ' + error);
                 });
             });
 
@@ -426,5 +435,34 @@ class Chroma_Breadcrumbs
         ];
 
         wp_send_json_success(['html' => $html, 'json' => $json]);
+    }
+    /**
+     * AJAX: Get Posts for Preview Dropdown
+     */
+    public function ajax_get_preview_posts()
+    {
+        // Permission check
+        if (!current_user_can('edit_posts')) {
+            wp_send_json_error(['message' => 'Permission denied']);
+        }
+
+        $post_type = sanitize_text_field($_POST['post_type']);
+        if (!$post_type) {
+            wp_send_json_error(['message' => 'Missing post type']);
+        }
+
+        $posts = get_posts([
+            'post_type' => $post_type,
+            'posts_per_page' => 50, // Limit to 50 for performance
+            'orderby' => 'title',
+            'order' => 'ASC'
+        ]);
+
+        $data = [];
+        foreach ($posts as $p) {
+            $data[$p->ID] = $p->post_title;
+        }
+
+        wp_send_json_success($data);
     }
 }
