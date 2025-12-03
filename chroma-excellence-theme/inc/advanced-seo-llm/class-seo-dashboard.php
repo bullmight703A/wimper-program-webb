@@ -32,7 +32,7 @@ class Chroma_SEO_Dashboard
     public function register_menu_page()
     {
         add_submenu_page(
-            'edit.php?post_type=location', // Parent slug (Locations menu)
+            'tools.php',                   // Parent slug (Tools)
             'SEO & LLM Data',              // Page title
             'SEO & LLM Data',              // Menu title
             'edit_posts',                  // Capability
