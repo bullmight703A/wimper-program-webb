@@ -167,26 +167,6 @@ function chroma_advanced_seo_init()
 add_action('init', 'chroma_advanced_seo_init');
 
 /**
- * Admin Assets
- */
-function chroma_advanced_seo_admin_assets($hook)
-{
-	global $post;
-
-	// Allowed post types for SEO meta boxes
-	$allowed_types = ['location', 'program', 'page', 'post', 'city'];
-
-	if (!$post || !in_array($post->post_type, $allowed_types)) {
-		// Also allow if we are on the SEO Dashboard page
-		if (!isset($_GET['page']) || $_GET['page'] !== 'chroma-seo-dashboard') {
-			return;
-		}
-	}
-
-	// Inline CSS for Meta Boxes
-	?>
-	<style>
-		.chroma-advanced-seo-meta-box {
 			padding: 10px 0;
 		}
 

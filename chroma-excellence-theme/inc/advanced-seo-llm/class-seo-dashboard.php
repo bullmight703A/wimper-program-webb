@@ -205,6 +205,8 @@ class Chroma_SEO_Dashboard
             </thead>
             <tbody>
                 <?php foreach ($posts as $p):
+                    if (!$p || !is_a($p, 'WP_Post'))
+                        continue;
                     $id = $p->ID;
                     // LLM Context
                     $intent_manual = get_post_meta($id, 'seo_llm_primary_intent', true);
