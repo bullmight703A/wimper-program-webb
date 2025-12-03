@@ -113,4 +113,173 @@ class Chroma_Schema_Injector
 
         echo '<script type="application/ld+json">' . wp_json_encode($schema) . '</script>';
     }
+    /**
+     * Output Modular Schemas from Schema Builder
+     */
+    public static function output_modular_schemas()
+    {
+        if (!is_singular()) {
+            return;
+        }
+
+        $post_id = get_the_ID();
+        $schemas = get_post_meta($post_id, '_chroma_post_schemas', true);
+
+        if (empty($schemas) || !is_array($schemas)) {
+            return;
+        }
+
+        $graph = [];
+
+        foreach ($schemas as $schema_data) {
+            if (empty($schema_data['type'])) {
+                continue;
+            }
+
+            $schema_type = sanitize_text_field($schema_data['type']);
+            $fields = isset($schema_data['data']) ? $schema_data['data'] : [];
+
+            $schema_output = [
+                '@type' => $schema_type,
+                '@id' => get_permalink($post_id) . '#' . strtolower($schema_type) . '-' . uniqid()
+            ];
+
+            // Add fields
+            foreach ($fields as $key => $value) {
+                if (empty($value))
+                    continue;
+
+                // Basic sanitization, but allow some HTML if needed? 
+                // For now, assume text/url/date.
+                // If value is array (repeater), handle it?
+                // The current builder saves simple key-value pairs. 
+                // If we have complex fields later, we need to handle them here.
+
+                // Check if key is a known schema property
+                // We trust the builder to provide valid keys
+
+                // Handle Repeater Fields
+                if (is_array($value)) {
+                    if ($schema_type === 'FAQPage' && $key === 'questions') {
+                        $schema_output['mainEntity'] = [];
+                        foreach ($value as $q) {
+                            $schema_output['mainEntity'][] = [
+                                '@type' => 'Question',
+                                'name' => isset($q['question']) ? $q['question'] : '',
+                                'acceptedAnswer' => [
+                                    '@type' => 'Answer',
+                                    'text' => isset($q['answer']) ? $q['answer'] : ''
+                                ]
+                            ];
+                        }
+                    } elseif ($schema_type === 'HowTo' && $key === 'steps') {
+                        $schema_output['step'] = [];
+                        foreach ($value as $s) {
+                            $step = [
+                                '@type' => 'HowToStep',
+                                'name' => isset($s['name']) ? $s['name'] : '',
+                                'text' => isset($s['text']) ? $s['text'] : '',
+                            ];
+                            if (!empty($s['image'])) {
+                                $step['image'] = $s['image'];
+                            }
+                            $schema_output['step'][] = $step;
+                        }
+                    } else {
+                        // Generic array output (if needed for other types)
+                        $schema_output[$key] = $value;
+                    }
+                } else {
+                    // Handle Special Nested Fields for JobPosting
+                    if ($schema_type === 'JobPosting') {
+                        if ($key === 'hiringOrganization_name') {
+                            $schema_output['hiringOrganization'] = [
+                                '@type' => 'Organization',
+                                'name' => $value
+                            ];
+                            continue;
+                        }
+                        if ($key === 'jobLocation_address') {
+                            $schema_output['jobLocation'] = [
+                                '@type' => 'Place',
+                                'address' => [
+                                    '@type' => 'PostalAddress',
+                                    'streetAddress' => $value
+                                ]
+                            ];
+                            continue;
+                        }
+                        if ($key === 'baseSalary_value') {
+                            // We need currency to form PriceSpecification
+                            $currency = isset($fields['baseSalary_currency']) ? $fields['baseSalary_currency'] : 'USD';
+                            $schema_output['baseSalary'] = [
+                                '@type' => 'MonetaryAmount',
+                                'currency' => $currency,
+                                'value' => [
+                                    '@type' => 'QuantitativeValue',
+                                    'value' => $value,
+                                    'unitText' => 'YEAR' // Defaulting to YEAR for simplicity
+                                ]
+                            ];
+                            continue;
+                        }
+                        if ($key === 'baseSalary_currency')
+                            continue; // Handled above
+                    }
+
+                    // Handle Special Nested Fields for Event
+                    if ($schema_type === 'Event') {
+                        if ($key === 'location_name') {
+                            // We need address too
+                            $address = isset($fields['location_address']) ? $fields['location_address'] : '';
+                            $schema_output['location'] = [
+                                '@type' => 'Place',
+                                'name' => $value,
+                                'address' => [
+                                    '@type' => 'PostalAddress',
+                                    'streetAddress' => $address
+                                ]
+                            ];
+                            continue;
+                        }
+                        if ($key === 'location_address')
+                            continue; // Handled above
+
+                        if ($key === 'offers_price') {
+                            $currency = isset($fields['offers_currency']) ? $fields['offers_currency'] : 'USD';
+                            $schema_output['offers'] = [
+                                '@type' => 'Offer',
+                                'price' => $value,
+                                'priceCurrency' => $currency,
+                                'availability' => 'https://schema.org/InStock'
+                            ];
+                            continue;
+                        }
+                        if ($key === 'offers_currency')
+                            continue; // Handled above
+
+                        if ($key === 'organizer') {
+                            $schema_output['organizer'] = [
+                                '@type' => 'Organization',
+                                'name' => $value
+                            ];
+                            continue;
+                        }
+                    }
+
+                    $schema_output[$key] = $value;
+                }
+            }
+
+            $graph[] = $schema_output;
+        }
+
+        if (!empty($graph)) {
+            $final_schema = [
+                '@context' => 'https://schema.org',
+                '@graph' => $graph
+            ];
+            echo '<script type="application/ld+json">' . wp_json_encode($final_schema) . '</script>' . "\n";
+        }
+    }
 }

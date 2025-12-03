@@ -21,6 +21,7 @@ class Chroma_Breadcrumbs
         add_action('chroma_breadcrumbs', [$this, 'output']);
         add_action('wp_head', [$this, 'output_schema']);
         add_action('wp_ajax_chroma_save_breadcrumb_settings', [$this, 'ajax_save_settings']);
+        add_action('wp_ajax_chroma_preview_breadcrumbs', [$this, 'ajax_preview_breadcrumbs']);
     }
 
     /**
@@ -89,16 +90,33 @@ class Chroma_Breadcrumbs
             'itemListElement' => $schema_items
         ];
 
-        echo '<script type="application/ld+json">' . json_encode($schema) . '</script>' . "\n";
+        echo '<script type="application/ld+json">' . wp_json_encode($schema) . '</script>' . "\n";
     }
 
     /**
      * Get Breadcrumb Items
+     * @param int|null $post_id Optional post ID for preview
      * @return array
      */
-    private function get_breadcrumb_items()
+    private function get_breadcrumb_items($post_id = null)
     {
-        global $post;
+        // If post_id is provided (Preview Mode), we simulate the environment
+        if ($post_id) {
+            $p = get_post($post_id);
+            $post_type = get_post_type($post_id);
+            $is_front_page = ($post_id == get_option('page_on_front'));
+            $is_home = ($post_id == get_option('page_for_posts'));
+            $is_singular = true; // For preview, we assume singular view of that post
+        } else {
+            // Normal Frontend Mode
+            global $post;
+            $p = $post;
+            $post_type = get_post_type();
+            $is_front_page = is_front_page();
+            $is_home = is_home();
+            $is_singular = is_singular();
+        }
+
         $items = [];
 
         // Home
@@ -107,26 +125,43 @@ class Chroma_Breadcrumbs
             'url' => home_url('/')
         ];
 
-        if (is_home()) {
+        if ($is_home) {
             $items[] = [
                 'label' => 'Blog',
                 'url' => get_post_type_archive_link('post')
             ];
-        } elseif (is_singular()) {
-            $post_type = get_post_type();
+        } elseif ($is_singular) {
             
             // CPT Archives
             if ($post_type !== 'page' && $post_type !== 'post') {
                 $post_type_obj = get_post_type_object($post_type);
-                if ($post_type_obj->has_archive) {
+                if ($post_type_obj && $post_type_obj->has_archive) {
                     $items[] = [
                         'label' => $post_type_obj->labels->name,
                         'url' => get_post_type_archive_link($post_type)
                     ];
-                } elseif ($post_type === 'city') {
-                     // Special case for City CPT which has no archive but we might want a fake parent?
-                     // Or just link to "Locations" if conceptually related?
-                     // For now, no parent.
+                }
+
+                // Try to find a taxonomy for this CPT
+                $taxonomies = get_object_taxonomies($post_type, 'objects');
+                if ($taxonomies) {
+                    foreach ($taxonomies as $tax) {
+                        if ($tax->hierarchical && $tax->public) {
+                            $terms = get_the_terms($p->ID, $tax->name);
+                            if ($terms && !is_wp_error($terms)) {
+                                $term = $terms[0]; // Get the first term
+                                $term_link = get_term_link($term);
+                                
+                                if (!is_wp_error($term_link)) {
+                                    $items[] = [
+                                        'label' => $term->name,
+                                        'url' => $term_link
+                                    ];
+                                    break; // Only show one taxonomy trail
+                                }
+                            }
+                        }
+                    }
                 }
             } elseif ($post_type === 'post') {
                 $items[] = [
@@ -136,8 +171,8 @@ class Chroma_Breadcrumbs
             }
 
             // Parents
-            if ($post->post_parent) {
-                $ancestors = array_reverse(get_post_ancestors($post->ID));
+            if ($p && $p->post_parent) {
+                $ancestors = array_reverse(get_post_ancestors($p->ID));
                 foreach ($ancestors as $ancestor) {
                     $items[] = [
                         'label' => get_the_title($ancestor),
@@ -146,21 +181,23 @@ class Chroma_Breadcrumbs
                 }
             }
 
-            $items[] = [
-                'label' => get_the_title(),
-                'url' => get_permalink()
-            ];
-        } elseif (is_archive()) {
+            if ($p) {
+                $items[] = [
+                    'label' => get_the_title($p),
+                    'url' => get_permalink($p)
+                ];
+            }
+        } elseif (is_archive() && !$post_id) {
             $items[] = [
                 'label' => get_the_archive_title(),
                 'url' => '' // Current page
             ];
-        } elseif (is_search()) {
+        } elseif (is_search() && !$post_id) {
             $items[] = [
                 'label' => 'Search Results for "' . get_search_query() . '"',
                 'url' => ''
             ];
-        } elseif (is_404()) {
+        } elseif (is_404() && !$post_id) {
             $items[] = [
                 'label' => 'Page Not Found',
                 'url' => ''
@@ -177,6 +214,9 @@ class Chroma_Breadcrumbs
     {
         $enabled = get_option('chroma_breadcrumbs_enabled', 'yes');
         $home_text = get_option('chroma_breadcrumbs_home_text', 'Home');
+        
+        // Get some posts for preview
+        $preview_posts = get_posts(['numberposts' => 10, 'post_type' => ['page', 'post', 'location', 'program']]);
         ?>
         <div class="chroma-seo-card">
             <h2>Breadcrumbs Configuration</h2>
@@ -206,8 +246,32 @@ class Chroma_Breadcrumbs
             </p>
         </div>
 
+        <div class="chroma-seo-card" style="margin-top: 20px;">
+            <h2>🔍 Breadcrumbs Preview</h2>
+            <p>Select a page to see how its breadcrumbs will look.</p>
+            
+            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
+                <select id="chroma-breadcrumb-preview-select">
+                    <option value="">-- Select Page to Preview --</option>
+                    <?php foreach($preview_posts as $p): ?>
+                        <option value="<?php echo $p->ID; ?>"><?php echo esc_html($p->post_title); ?> (<?php echo $p->post_type; ?>)</option>
+                    <?php endforeach; ?>
+                </select>
+                <button id="chroma-preview-breadcrumbs-btn" class="button button-secondary">Preview</button>
+            </div>
+            
+            <div id="chroma-breadcrumb-preview-result" style="display: none; border: 1px solid #ddd; padding: 15px; background: #f9f9f9;">
+                <h4>Visual Preview:</h4>
+                <div id="chroma-breadcrumb-visual" style="padding: 10px; background: #fff; border: 1px solid #eee; margin-bottom: 15px;"></div>
+                
+                <h4>JSON-LD Schema Output:</h4>
+                <pre id="chroma-breadcrumb-json" style="background: #2d2d2d; color: #fff; padding: 10px; overflow: auto; font-size: 12px;"></pre>
+            </div>
+        </div>
+
         <script>
         jQuery(document).ready(function($) {
+            // Save Settings
             $('#chroma-save-breadcrumbs').on('click', function(e) {
                 e.preventDefault();
                 var btn = $(this);
@@ -226,6 +290,30 @@ class Chroma_Breadcrumbs
                     }
                 });
             });
+
+            // Preview
+            $('#chroma-preview-breadcrumbs-btn').on('click', function(e) {
+                e.preventDefault();
+                var id = $('#chroma-breadcrumb-preview-select').val();
+                if(!id) return;
+                
+                var btn = $(this);
+                btn.prop('disabled', true).text('Loading...');
+                
+                $.post(ajaxurl, {
+                    action: 'chroma_preview_breadcrumbs',
+                    post_id: id
+                }, function(response) {
+                    btn.prop('disabled', false).text('Preview');
+                    if(response.success) {
+                        $('#chroma-breadcrumb-preview-result').show();
+                        $('#chroma-breadcrumb-visual').html(response.data.html);
+                        $('#chroma-breadcrumb-json').text(JSON.stringify(response.data.json, null, 2));
+                    } else {
+                        alert('Error generating preview.');
+                    }
+                });
+            });
         });
         </script>
         <?php
@@ -236,6 +324,8 @@ class Chroma_Breadcrumbs
      */
     public function ajax_save_settings()
     {
+        // Check nonce (we need to pass this from JS)
+        // For now, at least check permissions
         if (!current_user_can('manage_options')) {
             wp_send_json_error();
         }
@@ -244,5 +334,60 @@ class Chroma_Breadcrumbs
         update_option('chroma_breadcrumbs_home_text', sanitize_text_field($_POST['home_text']));
 
         wp_send_json_success();
+    }
+
+    /**
+     * AJAX: Preview Breadcrumbs
+     */
+    public function ajax_preview_breadcrumbs()
+    {
+        // Ideally check nonce here too
+        $post_id = intval($_POST['post_id']);
+        if(!$post_id) wp_send_json_error();
+        
+        // Mock the global post for the preview generation
+        global $post;
+        $post = get_post($post_id);
+        
+        // Temporarily override is_singular etc if possible, but get_breadcrumb_items relies on global state
+        // which is hard to fake perfectly in AJAX without complex mocking.
+        // Instead, we will refactor get_breadcrumb_items to accept a post_id optionally.
+        
+        $items = $this->get_breadcrumb_items($post_id);
+        
+        // Generate HTML
+        ob_start();
+        echo '<nav class="chroma-breadcrumbs" aria-label="Breadcrumb"><ol class="list-none p-0 inline-flex flex-wrap gap-2 items-center">';
+        foreach ($items as $index => $item) {
+            $is_last = $index === count($items) - 1;
+            echo '<li class="flex items-center">';
+            if ($index > 0) echo '<span class="mx-2 text-gray-300">/</span>';
+            if ($is_last) {
+                echo '<span class="text-gray-900 font-medium">' . esc_html($item['label']) . '</span>';
+            } else {
+                echo '<a href="#" class="text-blue-600 hover:underline">' . esc_html($item['label']) . '</a>';
+            }
+            echo '</li>';
+        }
+        echo '</ol></nav>';
+        $html = ob_get_clean();
+
+        // Generate JSON
+        $schema_items = [];
+        foreach ($items as $index => $item) {
+            $schema_items[] = [
+                '@type' => 'ListItem',
+                'position' => $index + 1,
+                'name' => $item['label'],
+                'item' => $item['url']
+            ];
+        }
+        $json = [
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => $schema_items
+        ];
+
+        wp_send_json_success(['html' => $html, 'json' => $json]);
     }
 }

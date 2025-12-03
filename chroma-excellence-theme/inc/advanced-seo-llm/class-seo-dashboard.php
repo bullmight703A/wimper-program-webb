@@ -24,6 +24,17 @@ class Chroma_SEO_Dashboard
         add_action('admin_enqueue_scripts', [$this, 'enqueue_assets']);
         add_action('wp_ajax_chroma_fetch_schema_inspector', [$this, 'ajax_fetch_inspector_data']);
         add_action('wp_ajax_chroma_save_schema_inspector', [$this, 'ajax_save_inspector_data']);
+        add_action('wp_ajax_chroma_get_schema_fields', [$this, 'ajax_get_schema_fields']);
+        add_action('admin_init', [$this, 'register_settings']);
+    }
+
+    /**
+     * Register settings
+     */
+    public function register_settings()
+    {
+        register_setting('chroma_llm_options', 'chroma_llm_brand_voice');
+        register_setting('chroma_llm_options', 'chroma_llm_brand_context');
     }
 
     /**
@@ -100,10 +111,13 @@ class Chroma_SEO_Dashboard
                     class="nav-tab <?php echo $active_tab === 'posts' ? 'nav-tab-active' : ''; ?>">Blog Posts</a>
                 <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=geo'); ?>"
                     class="nav-tab <?php echo $active_tab === 'geo' ? 'nav-tab-active' : ''; ?>">GEO Settings</a>
-                <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=inspector'); ?>"
-                    class="nav-tab <?php echo $active_tab === 'inspector' ? 'nav-tab-active' : ''; ?>">Inspector</a>
+                <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=llm'); ?>"
+                    class="nav-tab <?php echo $active_tab === 'llm' ? 'nav-tab-active' : ''; ?>">LLM Settings</a>
+                <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=schema-builder'); ?>"
+                    class="nav-tab <?php echo $active_tab === 'schema-builder' ? 'nav-tab-active' : ''; ?>">Schema Builder</a>
                 <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=breadcrumbs'); ?>"
                     class="nav-tab <?php echo $active_tab === 'breadcrumbs' ? 'nav-tab-active' : ''; ?>">Breadcrumbs</a>
+                <?php do_action('chroma_seo_dashboard_tabs'); ?>
             </nav>
 
             <br>
@@ -128,8 +142,11 @@ class Chroma_SEO_Dashboard
                 case 'geo':
                     $this->render_geo_tab();
                     break;
-                case 'inspector':
-                    $this->render_inspector_tab();
+                case 'llm':
+                    $this->render_llm_tab();
+                    break;
+                case 'schema-builder':
+                    $this->render_schema_builder_tab();
                     break;
                 case 'breadcrumbs':
                     if (class_exists('Chroma_Breadcrumbs')) {
@@ -139,7 +156,12 @@ class Chroma_SEO_Dashboard
                     }
                     break;
                 default:
-                    $this->render_overview_tab('location');
+                    // Allow other tabs to render via action
+                    if (has_action('chroma_seo_dashboard_content')) {
+                        do_action('chroma_seo_dashboard_content');
+                    } else {
+                        $this->render_overview_tab('location');
+                    }
                     break;
             }
             ?>
@@ -170,6 +192,45 @@ class Chroma_SEO_Dashboard
                     automatically.</p>
                 <p>Default Radius: <strong>10 miles</strong></p>
             </div>
+        </div>
+        <?php
+    }
+
+    /**
+     * Render LLM Tab
+     */
+    private function render_llm_tab()
+    {
+        ?>
+        <div class="chroma-seo-card">
+            <h2>🤖 LLM Optimization Settings</h2>
+            <p>Configure global settings for Large Language Model (LLM) context and optimization.</p>
+
+            <form method="post" action="options.php">
+                <?php settings_fields('chroma_llm_options'); ?>
+                <?php do_settings_sections('chroma_llm_options'); ?>
+
+                <table class="form-table">
+                    <tr>
+                        <th scope="row">Global Brand Voice</th>
+                        <td>
+                            <textarea name="chroma_llm_brand_voice" rows="3" class="large-text"
+                                placeholder="e.g., Professional, nurturing, and authoritative..."><?php echo esc_textarea(get_option('chroma_llm_brand_voice')); ?></textarea>
+                            <p class="description">This voice context is appended to all LLM prompts.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Global Brand Context</th>
+                        <td>
+                            <textarea name="chroma_llm_brand_context" rows="5" class="large-text"
+                                placeholder="e.g., We are a leading childcare provider in Georgia..."><?php echo esc_textarea(get_option('chroma_llm_brand_context')); ?></textarea>
+                            <p class="description">General context about the brand provided to LLMs.</p>
+                        </td>
+                    </tr>
+                </table>
+
+                <?php submit_button(); ?>
+            </form>
         </div>
         <?php
     }
@@ -244,8 +305,8 @@ class Chroma_SEO_Dashboard
                             <?php endif; ?>
                         </td>
                         <td>
-                            <a href="?page=chroma-seo-dashboard&tab=inspector&post_id=<?php echo $id; ?>"
-                                class="button button-small">Inspect</a>
+                            <a href="?page=chroma-seo-dashboard&tab=schema-builder&post_id=<?php echo $id; ?>"
+                                class="button button-small">Builder</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -255,19 +316,19 @@ class Chroma_SEO_Dashboard
     }
 
     /**
-     * Render Inspector Tab
+     * Render Schema Builder Tab
      */
-    private function render_inspector_tab()
+    private function render_schema_builder_tab()
     {
-        $locations = get_posts(['post_type' => 'location', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
-        $programs = get_posts(['post_type' => 'program', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
-        $pages = get_posts(['post_type' => 'page', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
-        $posts = get_posts(['post_type' => 'post', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
+        $locations = get_posts(['post_type' => 'location', 'posts_per_page' => 100, 'orderby' => 'title', 'order' => 'ASC']);
+        $programs = get_posts(['post_type' => 'program', 'posts_per_page' => 100, 'orderby' => 'title', 'order' => 'ASC']);
+        $pages = get_posts(['post_type' => 'page', 'posts_per_page' => 100, 'orderby' => 'title', 'order' => 'ASC']);
+        $posts = get_posts(['post_type' => 'post', 'posts_per_page' => 100, 'orderby' => 'title', 'order' => 'ASC']);
 
         $selected_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0;
         ?>
         <div class="chroma-inspector-controls">
-            <label><strong>Select Page to Inspect:</strong></label>
+            <label><strong>Select Page to Edit Schema:</strong></label>
             <select id="chroma-inspector-select" style="min-width: 300px;">
                 <option value="">-- Select a Page --</option>
                 <optgroup label="Locations">
@@ -329,6 +390,7 @@ class Chroma_SEO_Dashboard
             jQuery(document).ready(function ($) {
                 var chroma_nonce = '<?php echo wp_create_nonce('chroma_seo_dashboard_nonce'); ?>';
                 var selectedId = '<?php echo $selected_id; ?>';
+
                 if (selectedId && selectedId != '0') {
                     loadInspectorData(selectedId);
                 }
@@ -348,11 +410,105 @@ class Chroma_SEO_Dashboard
                         $('#chroma-inspector-spinner').removeClass('is-active');
                         if (response.success) {
                             $('#chroma-inspector-content').html(response.data.html);
+                            initTooltips();
                         } else {
                             alert('Error loading data');
                         }
                     });
                 }
+
+                function initTooltips() {
+                    $('.chroma-help-tip').tooltip({
+                        content: function () {
+                            return $(this).attr('title');
+                        },
+                        position: {
+                            my: "center bottom-20",
+                            at: "center top",
+                            using: function (position, feedback) {
+                                $(this).css(position);
+                                $("<div>")
+                                    .addClass("arrow")
+                                    .addClass(feedback.vertical)
+                                    .addClass(feedback.horizontal)
+                                    .appendTo(this);
+                            }
+                        }
+                    });
+                }
+
+                // Add New Schema Handler
+                $(document).on('click', '#chroma-add-schema-btn', function (e) {
+                    e.preventDefault();
+                    var type = $('#chroma-schema-type-select').val();
+                    if (!type) return;
+
+                    var container = $('#chroma-active-schemas');
+                    var index = container.children('.chroma-schema-block').length;
+
+                    // Fetch schema fields template via AJAX or use JS template
+                    // For simplicity, we'll reload the inspector data with a param to add a new schema, 
+                    // OR better: Append a new block via JS if we have the definitions.
+                    // Given the complexity, let's trigger a reload or fetch just the new block.
+
+                    // Strategy: We will just append a placeholder block and let the user save? 
+                    // No, we need the fields. Let's ask the server for the fields for this type.
+
+                    $.post(ajaxurl, {
+                        action: 'chroma_get_schema_fields',
+                        nonce: chroma_nonce,
+                        schema_type: type,
+                        index: index
+                    }, function (response) {
+                        if (response.success) {
+                            container.append(response.data.html);
+                            initTooltips();
+                        }
+                    });
+                });
+
+                // Remove Schema Handler
+                $(document).on('click', '.chroma-remove-schema', function (e) {
+                    e.preventDefault();
+                    if (confirm('Are you sure you want to remove this schema?')) {
+                        $(this).closest('.chroma-schema-block').remove();
+                    }
+                });
+
+                // Repeater: Add Row
+                $(document).on('click', '.chroma-add-repeater-row', function (e) {
+                    e.preventDefault();
+                    var btn = $(this);
+                    var fields = btn.data('fields');
+                    var wrapper = btn.closest('.chroma-repeater-wrapper');
+                    var container = wrapper.find('.chroma-repeater-items');
+
+                    // Generate HTML for new row (simplified JS generation)
+                    var html = '<div class="chroma-repeater-row" style="background: #f9f9f9; padding: 10px; margin-bottom: 10px; border: 1px solid #eee;">';
+                    html += '<div style="text-align: right; margin-bottom: 5px;"><span class="chroma-remove-repeater-row dashicons dashicons-trash" style="cursor: pointer; color: #d63638;"></span></div>';
+
+                    $.each(fields, function (key, field) {
+                        html += '<div style="margin-bottom: 5px;">';
+                        html += '<label style="font-size: 12px; font-weight: 600; display: block;">' + field.label + '</label>';
+                        if (field.type === 'textarea') {
+                            html += '<textarea class="chroma-repeater-input large-text" data-name="' + key + '" rows="2" style="width: 100%;"></textarea>';
+                        } else {
+                            html += '<input type="text" class="chroma-repeater-input regular-text" data-name="' + key + '" value="" style="width: 100%;">';
+                        }
+                        html += '</div>';
+                    });
+                    html += '</div>';
+
+                    container.append(html);
+                });
+
+                // Repeater: Remove Row
+                $(document).on('click', '.chroma-remove-repeater-row', function (e) {
+                    e.preventDefault();
+                    if (confirm('Remove this row?')) {
+                        $(this).closest('.chroma-repeater-row').remove();
+                    }
+                });
 
                 // Save Handler
                 $(document).on('click', '#chroma-inspector-save', function (e) {
@@ -360,45 +516,57 @@ class Chroma_SEO_Dashboard
                     var btn = $(this);
                     btn.prop('disabled', true).text('Saving...');
 
-                    var data = {
+                    var schemas = [];
+
+                    $('.chroma-schema-block').each(function () {
+                        var block = $(this);
+                        var schema = {
+                            type: block.data('type'),
+                            data: {}
+                        };
+
+                        // Regular fields
+                        block.find('.chroma-schema-input').each(function () {
+                            var name = $(this).data('name');
+                            var val = $(this).val();
+                            if (val) schema.data[name] = val;
+                        });
+
+                        // Repeater fields
+                        block.find('.chroma-repeater-wrapper').each(function () {
+                            var wrapper = $(this);
+                            var key = wrapper.data('key');
+                            var rows = [];
+
+                            wrapper.find('.chroma-repeater-row').each(function () {
+                                var row = {};
+                                $(this).find('.chroma-repeater-input').each(function () {
+                                    var subName = $(this).data('name');
+                                    var subVal = $(this).val();
+                                    if (subVal) row[subName] = subVal;
+                                });
+                                if (!$.isEmptyObject(row)) rows.push(row);
+                            });
+
+                            if (rows.length > 0) schema.data[key] = rows;
+                        });
+
+                        schemas.push(schema);
+                    });
+
+                    $.post(ajaxurl, {
                         action: 'chroma_save_schema_inspector',
                         nonce: chroma_nonce,
                         post_id: $('#chroma-inspector-post-id').val(),
-                        fields: {}
-                    };
-
-                    $('.chroma-inspector-field-row').each(function () {
-                        var key = $(this).data('key');
-                        var useFallback = $(this).find('.use-fallback-check').is(':checked');
-                        var value = $(this).find('.manual-value-input').val();
-
-                        // If "Use Fallback" is checked, we send empty string to delete meta
-                        // If unchecked, we send the manual value
-                        data.fields[key] = useFallback ? '' : value;
-                    });
-
-                    $.post(ajaxurl, data, function (response) {
+                        schemas: schemas
+                    }, function (response) {
                         btn.prop('disabled', false).text('Update Schema Settings');
                         if (response.success) {
                             alert('Settings saved successfully!');
-                            loadInspectorData(data.post_id); // Reload to refresh
                         } else {
                             alert('Error saving settings.');
                         }
                     });
-                });
-
-                // Toggle Handler
-                $(document).on('change', '.use-fallback-check', function () {
-                    var row = $(this).closest('tr');
-                    var input = row.find('.manual-value-input');
-                    if ($(this).is(':checked')) {
-                        input.prop('disabled', true).addClass('disabled');
-                        row.removeClass('modified');
-                    } else {
-                        input.prop('disabled', false).removeClass('disabled');
-                        row.addClass('modified');
-                    }
                 });
             });
         </script>
@@ -406,7 +574,7 @@ class Chroma_SEO_Dashboard
     }
 
     /**
-     * AJAX: Fetch Inspector Data
+     * AJAX: Fetch Inspector Data (Schema Builder)
      */
     public function ajax_fetch_inspector_data()
     {
@@ -416,79 +584,159 @@ class Chroma_SEO_Dashboard
         if (!$post_id)
             wp_send_json_error();
 
-        // Define fields based on post type
-        $post_type = get_post_type($post_id);
-        $fields = [];
-
-        // Common Fields
-        $fields['seo_llm_primary_intent'] = ['label' => 'Primary Intent', 'fallback' => 'Auto-Detected'];
-        $fields['seo_llm_custom_prompt'] = ['label' => 'Custom LLM Prompt', 'fallback' => ''];
-
-        if ($post_type === 'location') {
-            $fields += [
-                'schema_loc_name' => ['label' => 'Schema Name', 'fallback' => get_post_field('post_title', $post_id)],
-                'schema_loc_description' => ['label' => 'Description', 'fallback' => get_post_field('post_excerpt', $post_id)],
-                'schema_loc_telephone' => ['label' => 'Telephone', 'fallback' => get_post_meta($post_id, 'location_phone', true)],
-                'schema_loc_email' => ['label' => 'Email', 'fallback' => get_post_meta($post_id, 'location_email', true)],
-                'schema_loc_price_range' => ['label' => 'Price Range (String)', 'fallback' => '$$'],
-                'seo_llm_service_area_lat' => ['label' => 'Service Area Lat', 'fallback' => get_post_meta($post_id, 'location_latitude', true)],
-                'seo_llm_service_area_lng' => ['label' => 'Service Area Lng', 'fallback' => get_post_meta($post_id, 'location_longitude', true)],
-                'seo_llm_service_area_radius' => ['label' => 'Service Radius (mi)', 'fallback' => '10'],
-            ];
-        } elseif ($post_type === 'program') {
-            $fields += [
-                'schema_prog_name' => ['label' => 'Schema Name', 'fallback' => get_post_field('post_title', $post_id)],
-                'schema_prog_description' => ['label' => 'Description', 'fallback' => get_post_field('post_excerpt', $post_id)],
-                'schema_prog_service_type' => ['label' => 'Service Type', 'fallback' => 'Early Childhood Education'],
-                'program_age_range' => ['label' => 'Age Range', 'fallback' => ''],
-            ];
-        } else {
-            // General Pages/Posts
-            $fields += [
-                'schema_page_type' => ['label' => 'Schema Type', 'fallback' => 'WebPage'],
-                'schema_description' => ['label' => 'Schema Description', 'fallback' => get_post_field('post_excerpt', $post_id)],
-            ];
+        // Get existing schemas
+        $existing_schemas = get_post_meta($post_id, '_chroma_post_schemas', true);
+        if (!is_array($existing_schemas)) {
+            $existing_schemas = [];
+            // Backwards compatibility: if no modular schemas, maybe migrate old ones?
+            // For now, start fresh or show empty.
         }
+
+        $available_types = Chroma_Schema_Types::get_definitions();
 
         ob_start();
         ?>
         <input type="hidden" id="chroma-inspector-post-id" value="<?php echo $post_id; ?>">
-        <table class="chroma-seo-table chroma-inspector-table widefat fixed striped">
-            <thead>
-                <tr>
-                    <th style="width: 200px;">Field</th>
-                    <th>Fallback / Auto Value</th>
-                    <th style="width: 50px;">Use Auto</th>
-                    <th>Manual Override</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($fields as $key => $config):
-                    $manual_value = get_post_meta($post_id, $key, true);
-                    $has_manual = !empty($manual_value);
+
+        <div
+            style="display: flex; gap: 20px; margin-bottom: 20px; align-items: center; background: #fff; padding: 15px; border: 1px solid #ddd;">
+            <strong>Add New Schema:</strong>
+            <select id="chroma-schema-type-select">
+                <option value="">-- Select Type --</option>
+                <?php foreach ($available_types as $type => $def): ?>
+                    <option value="<?php echo esc_attr($type); ?>"><?php echo esc_html($def['label']); ?></option>
+                <?php endforeach; ?>
+            </select>
+            <button id="chroma-add-schema-btn" class="button button-secondary">Add Schema</button>
+        </div>
+
+        <div id="chroma-active-schemas">
+            <?php
+            if (empty($existing_schemas)) {
+                echo '<p class="description" style="padding: 20px; text-align: center;">No custom schemas added yet. Add one above.</p>';
+            } else {
+                foreach ($existing_schemas as $index => $schema) {
+                    $this->render_schema_block($schema['type'], $schema['data'], $index);
+                }
+            }
+            ?>
+        </div>
+
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #ccc;">
+            <button id="chroma-inspector-save" class="button button-primary button-large">Save All Schemas</button>
+        </div>
+        <?php
+        $html = ob_get_clean();
+        wp_send_json_success(['html' => $html]);
+    }
+
+    /**
+     * Render a single schema block
+     */
+    private function render_schema_block($type, $data = [], $index = 0)
+    {
+        $definitions = Chroma_Schema_Types::get_definitions();
+        if (!isset($definitions[$type]))
+            return;
+
+        $def = $definitions[$type];
+        ?>
+        <div class="chroma-schema-block" data-type="<?php echo esc_attr($type); ?>"
+            style="background: #fff; border: 1px solid #ccd0d4; padding: 15px; margin-bottom: 15px; position: relative;">
+            <h3 style="margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                <?php echo esc_html($def['label']); ?>
+                <button class="chroma-remove-schema button-link-delete" style="float: right;">Remove</button>
+            </h3>
+
+            <table class="form-table" style="margin-top: 0;">
+                <?php foreach ($def['fields'] as $key => $field):
+                    $val = isset($data[$key]) ? $data[$key] : '';
                     ?>
-                    <tr class="chroma-inspector-field-row <?php echo $has_manual ? 'modified' : ''; ?>"
-                        data-key="<?php echo esc_attr($key); ?>">
-                        <td><strong><?php echo esc_html($config['label']); ?></strong><br><small
-                                style="color:#999"><?php echo esc_html($key); ?></small></td>
-                        <td>
-                            <div class="chroma-value-fallback"><?php echo esc_html($config['fallback'] ?: '(Empty)'); ?></div>
-                        </td>
-                        <td style="text-align: center;">
-                            <input type="checkbox" class="use-fallback-check" <?php checked(!$has_manual); ?>>
-                        </td>
-                        <td>
-                            <input type="text" class="manual-value-input" value="<?php echo esc_attr($manual_value); ?>" <?php disabled(!$has_manual); ?> placeholder="Enter custom value...">
+                    <tr>
+                        <th scope="row" style="padding: 10px 0; width: 200px;">
+                            <?php echo esc_html($field['label']); ?>
+                            <?php if (!empty($field['description'])): ?>
+                                <span class="dashicons dashicons-editor-help chroma-help-tip"
+                                    title="<?php echo esc_attr($field['description']); ?>"
+                                    style="color: #999; font-size: 16px; cursor: help;"></span>
+                            <?php endif; ?>
+                        </th>
+                        <td style="padding: 10px 0;">
+                            <?php if ($field['type'] === 'repeater'): ?>
+                                <div class="chroma-repeater-wrapper" data-key="<?php echo esc_attr($key); ?>">
+                                    <div class="chroma-repeater-items">
+                                        <?php
+                                        $sub_items = is_array($val) ? $val : [];
+                                        if (empty($sub_items)) {
+                                            // Add one empty row by default? No, let user add.
+                                        }
+                                        foreach ($sub_items as $sub_index => $sub_item) {
+                                            $this->render_repeater_row($field['subfields'], $sub_item, $key);
+                                        }
+                                        ?>
+                                    </div>
+                                    <button class="button button-small chroma-add-repeater-row"
+                                        data-fields="<?php echo esc_attr(json_encode($field['subfields'])); ?>">Add Row</button>
+                                </div>
+                            <?php elseif ($field['type'] === 'textarea'): ?>
+                                <textarea class="chroma-schema-input large-text" data-name="<?php echo esc_attr($key); ?>"
+                                    rows="3"><?php echo esc_textarea($val); ?></textarea>
+                            <?php else: ?>
+                                <input type="text" class="chroma-schema-input regular-text" data-name="<?php echo esc_attr($key); ?>"
+                                    value="<?php echo esc_attr($val); ?>" style="width: 100%;">
+                            <?php endif; ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
-            </tbody>
-        </table>
-        <p class="submit">
-            <button id="chroma-inspector-save" class="button button-primary button-large">Update Schema Settings</button>
-        </p>
+            </table>
+        </div>
         <?php
+    }
+
+    /**
+     * Render a repeater row
+     */
+    private function render_repeater_row($subfields, $data = [], $parent_key = '')
+    {
+        ?>
+        <div class="chroma-repeater-row"
+            style="background: #f9f9f9; padding: 10px; margin-bottom: 10px; border: 1px solid #eee;">
+            <div style="text-align: right; margin-bottom: 5px;">
+                <span class="chroma-remove-repeater-row dashicons dashicons-trash"
+                    style="cursor: pointer; color: #d63638;"></span>
+            </div>
+            <?php foreach ($subfields as $sub_key => $sub_field):
+                $val = isset($data[$sub_key]) ? $data[$sub_key] : '';
+                ?>
+                <div style="margin-bottom: 5px;">
+                    <label
+                        style="font-size: 12px; font-weight: 600; display: block;"><?php echo esc_html($sub_field['label']); ?></label>
+                    <?php if ($sub_field['type'] === 'textarea'): ?>
+                        <textarea class="chroma-repeater-input large-text" data-name="<?php echo esc_attr($sub_key); ?>" rows="2"
+                            style="width: 100%;"><?php echo esc_textarea($val); ?></textarea>
+                    <?php else: ?>
+                        <input type="text" class="chroma-repeater-input regular-text" data-name="<?php echo esc_attr($sub_key); ?>"
+                            value="<?php echo esc_attr($val); ?>" style="width: 100%;">
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <?php
+    }
+
+    /**
+     * AJAX: Get Schema Fields (for adding new block)
+     */
+    public function ajax_get_schema_fields()
+    {
+        check_ajax_referer('chroma_seo_dashboard_nonce', 'nonce');
+        $type = sanitize_text_field($_POST['schema_type']);
+        $index = intval($_POST['index']);
+
+        ob_start();
+        $this->render_schema_block($type, [], $index);
         $html = ob_get_clean();
+
         wp_send_json_success(['html' => $html]);
     }
 
@@ -503,18 +751,47 @@ class Chroma_SEO_Dashboard
             wp_send_json_error();
 
         $post_id = intval($_POST['post_id']);
-        $fields = $_POST['fields'];
+        $schemas = isset($_POST['schemas']) ? $_POST['schemas'] : [];
 
-        if (!$post_id || !is_array($fields))
+        if (!$post_id)
             wp_send_json_error();
 
-        foreach ($fields as $key => $value) {
-            if ($value === '') {
-                delete_post_meta($post_id, $key);
-            } else {
-                update_post_meta($post_id, $key, sanitize_text_field($value));
+        // Sanitize
+        $clean_schemas = [];
+        if (is_array($schemas)) {
+            foreach ($schemas as $s) {
+                if (isset($s['type']) && isset($s['data'])) {
+                    $clean_data = [];
+                    if (is_array($s['data'])) {
+                        foreach ($s['data'] as $k => $v) {
+                            if (is_array($v)) {
+                                // Handle Repeater (Array of Arrays)
+                                $clean_repeater = [];
+                                foreach ($v as $row) {
+                                    if (is_array($row)) {
+                                        $clean_row = [];
+                                        foreach ($row as $rk => $rv) {
+                                            $clean_row[sanitize_key($rk)] = sanitize_textarea_field($rv);
+                                        }
+                                        $clean_repeater[] = $clean_row;
+                                    }
+                                }
+                                $clean_data[sanitize_key($k)] = $clean_repeater;
+                            } else {
+                                // Handle Simple Field
+                                $clean_data[sanitize_key($k)] = sanitize_textarea_field($v);
+                            }
+                        }
+                    }
+                    $clean_schemas[] = [
+                        'type' => sanitize_text_field($s['type']),
+                        'data' => $clean_data
+                    ];
+                }
             }
         }
+
+        update_post_meta($post_id, '_chroma_post_schemas', $clean_schemas);
 
         wp_send_json_success();
     }
