@@ -41,7 +41,7 @@ class Chroma_Universal_FAQ extends Chroma_Advanced_SEO_Meta_Box_Base
      */
     public function get_post_types()
     {
-        return ['page', 'location', 'program', 'post'];
+        return ['page', 'location', 'program', 'post', 'city'];
     }
 
     /**

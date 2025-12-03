@@ -52,8 +52,8 @@ chroma_safe_require(__DIR__ . '/class-breadcrumbs.php');
 $meta_boxes = [
 	'class-location-events.php',
 	'class-location-howto.php',
-	'class-location-llm-context.php',
-	'class-location-llm-prompt.php',
+	'class-general-llm-context.php', // Renamed from location-llm-context
+	'class-general-llm-prompt.php',  // Renamed from location-llm-prompt
 	'class-location-media.php',
 	'class-location-pricing.php',
 	'class-location-reviews.php',
@@ -66,7 +66,14 @@ $meta_boxes = [
 ];
 
 foreach ($meta_boxes as $file) {
-	chroma_safe_require(__DIR__ . '/meta-boxes/' . $file);
+	// Try loading new name first, then fallback to old name if not renamed yet (during transition)
+	if (!chroma_safe_require(__DIR__ . '/meta-boxes/' . $file)) {
+		// Fallback for transition period
+		$old_file = str_replace('general-', 'location-', $file);
+		if (file_exists(__DIR__ . '/meta-boxes/' . $old_file)) {
+			require_once __DIR__ . '/meta-boxes/' . $old_file;
+		}
+	}
 }
 
 /**
@@ -113,8 +120,8 @@ function chroma_advanced_seo_init()
 		'Chroma_Location_Citation_Facts',
 		'Chroma_Location_Events',
 		'Chroma_Location_HowTo',
-		'Chroma_Location_LLM_Context',
-		'Chroma_Location_LLM_Prompt',
+		'Chroma_General_LLM_Context', // Renamed
+		'Chroma_General_LLM_Prompt',  // Renamed
 		'Chroma_Location_Media',
 		'Chroma_Location_Pricing',
 		'Chroma_Location_Reviews',
@@ -124,6 +131,14 @@ function chroma_advanced_seo_init()
 		'Chroma_Hreflang_Options',
 		'Chroma_City_Landing_Meta'
 	];
+
+	// Fallback for class names if files haven't been updated yet
+	if (!class_exists('Chroma_General_LLM_Context') && class_exists('Chroma_Location_LLM_Context')) {
+		$meta_classes[] = 'Chroma_Location_LLM_Context';
+	}
+	if (!class_exists('Chroma_General_LLM_Prompt') && class_exists('Chroma_Location_LLM_Prompt')) {
+		$meta_classes[] = 'Chroma_Location_LLM_Prompt';
+	}
 
 	foreach ($meta_classes as $class) {
 		if (class_exists($class)) {
@@ -142,6 +157,12 @@ function chroma_advanced_seo_init()
 		add_action('wp_head', ['Chroma_Universal_FAQ_Builder', 'output']);
 	if (class_exists('Chroma_Page_Type_Builder'))
 		add_action('wp_head', ['Chroma_Page_Type_Builder', 'output']);
+
+	// Flush Rewrite Rules if KML rule is missing (One-time check)
+	if (get_option('chroma_seo_flush_rewrite') !== 'done') {
+		flush_rewrite_rules();
+		update_option('chroma_seo_flush_rewrite', 'done');
+	}
 }
 add_action('init', 'chroma_advanced_seo_init');
 
@@ -152,203 +173,14 @@ function chroma_advanced_seo_admin_assets($hook)
 {
 	global $post;
 
-	if (!$post || !in_array($post->post_type, ['location', 'program', 'page', 'post'])) {
-		return;
-	}
+	// Allowed post types for SEO meta boxes
+	$allowed_types = ['location', 'program', 'page', 'post', 'city'];
 
-	// Inline CSS for Meta Boxes
-	?>
-	<style>
-		.chroma-advanced-seo-meta-box {
-			padding: 10px 0;
+	if (!$post || !in_array($post->post_type, $allowed_types)) {
+		// Also allow if we are on the SEO Dashboard page
+		if (!isset($_GET['page']) || $_GET['page'] !== 'chroma-seo-dashboard') {
+			return;
 		}
-
-		.chroma-field-wrapper {
-			margin-bottom: 20px;
-		}
-
-		.chroma-field-wrapper label {
-			display: block;
-			font-weight: 600;
-			margin-bottom: 5px;
-		}
-
-		.chroma-field-wrapper .description {
-			margin-top: 5px;
-			font-style: normal;
-			color: #666;
-		}
-
-		.chroma-field-wrapper .fallback-notice {
-			color: #2271b1;
-			font-style: italic;
-		}
-
-		.chroma-repeater-field {
-			border: 1px solid #ddd;
-			padding: 15px;
-			background: #f9f9f9;
-		}
-
-		.chroma-repeater-items {
-			margin-bottom: 10px;
-		}
-
-		.chroma-repeater-item {
-			display: flex;
-			gap: 10px;
-			margin-bottom: 8px;
-			align-items: center;
-		}
-
-		.chroma-repeater-item input {
-			flex: 1;
-		}
-
-		.chroma-remove-item {
-			color: #b32d2e;
-		}
-	</style>
-	<script>
-		jQuery(document).ready(function ($) {
-			// Repeater Add
-			$(document).on('click', '.chroma-add-item', function (e) {
-				e.preventDefault();
-				var $wrapper = $(this).closest('.chroma-repeater-field');
-				var $items = $wrapper.find('.chroma-repeater-items');
-				var $clone = $items.find('.chroma-repeater-item').first().clone();
-				$clone.find('input, textarea').val('');
-				$items.append($clone);
-			});
-
-			// Repeater Remove
-			$(document).on('click', '.chroma-remove-item', function (e) {
-				e.preventDefault();
-				if ($(this).closest('.chroma-repeater-items').find('.chroma-repeater-item').length > 1) {
-					$(this).closest('.chroma-repeater-item').remove();
-				} else {
-					$(this).closest('.chroma-repeater-item').find('input, textarea').val('');
-				}
-			});
-		});
-	</script>
-	/**
-	* Load Core Classes
-	*/
-	chroma_safe_require(__DIR__ . '/class-seo-dashboard.php');
-	chroma_safe_require(__DIR__ . '/class-citation-datasets.php');
-	chroma_safe_require(__DIR__ . '/class-image-alt-automation.php');
-	chroma_safe_require(__DIR__ . '/class-admin-help.php');
-	chroma_safe_require(__DIR__ . '/class-breadcrumbs.php');
-
-	/**
-	* Load Meta Boxes
-	*/
-	$meta_boxes = [
-	'class-location-events.php',
-	'class-location-howto.php',
-	'class-location-llm-context.php',
-	'class-location-llm-prompt.php',
-	'class-location-media.php',
-	'class-location-pricing.php',
-	'class-location-reviews.php',
-	'class-location-service-area.php',
-	'class-program-relationships.php',
-	'class-universal-faq.php',
-	'class-hreflang-options.php',
-	'class-city-landing-meta.php',
-	'class-location-citation-facts.php'
-	];
-
-	foreach ($meta_boxes as $file) {
-	chroma_safe_require(__DIR__ . '/meta-boxes/' . $file);
-	}
-
-	/**
-	* Load Endpoints
-	*/
-	chroma_safe_require(__DIR__ . '/endpoints/kml-endpoint.php');
-
-	/**
-	* Load Schema Builders
-	*/
-	$schema_builders = [
-	'class-event-builder.php',
-	'class-howto-builder.php',
-	'class-llm-context-builder.php',
-	'class-schema-injector.php',
-	'class-service-area-builder.php',
-	'class-universal-faq-builder.php',
-	'class-page-type-builder.php'
-	];
-
-	foreach ($schema_builders as $file) {
-	chroma_safe_require(__DIR__ . '/schema-builders/' . $file);
-	}
-
-	/**
-	* Initialize Modules
-	*/
-	function chroma_advanced_seo_init()
-	{
-	// Core Modules
-	if (class_exists('Chroma_SEO_Dashboard'))
-	(new Chroma_SEO_Dashboard())->init();
-	if (class_exists('Chroma_Citation_Datasets'))
-	(new Chroma_Citation_Datasets())->init();
-	if (class_exists('Chroma_Image_Alt_Automation'))
-	(new Chroma_Image_Alt_Automation())->init();
-	if (class_exists('Chroma_Admin_Help'))
-	(new Chroma_Admin_Help())->init();
-	if (class_exists('Chroma_Breadcrumbs'))
-	(new Chroma_Breadcrumbs())->init();
-
-	// Meta Boxes
-	$meta_classes = [
-	'Chroma_Location_Citation_Facts',
-	'Chroma_Location_Events',
-	'Chroma_Location_HowTo',
-	'Chroma_Location_LLM_Context',
-	'Chroma_Location_LLM_Prompt',
-	'Chroma_Location_Media',
-	'Chroma_Location_Pricing',
-	'Chroma_Location_Reviews',
-	'Chroma_Location_Service_Area',
-	'Chroma_Program_Relationships',
-	'Chroma_Universal_FAQ',
-	'Chroma_Hreflang_Options',
-	'Chroma_City_Landing_Meta'
-	];
-
-	foreach ($meta_classes as $class) {
-	if (class_exists($class)) {
-	(new $class())->register();
-	}
-	}
-
-	// Schema Builders (Hooks)
-	if (class_exists('Chroma_Event_Schema_Builder'))
-	add_action('wp_head', ['Chroma_Event_Schema_Builder', 'output']);
-	if (class_exists('Chroma_HowTo_Schema_Builder'))
-	add_action('wp_head', ['Chroma_HowTo_Schema_Builder', 'output']);
-	if (class_exists('Chroma_Schema_Injector'))
-	add_action('wp_head', ['Chroma_Schema_Injector', 'output_person_schema']);
-	if (class_exists('Chroma_Universal_FAQ_Builder'))
-	add_action('wp_head', ['Chroma_Universal_FAQ_Builder', 'output']);
-	if (class_exists('Chroma_Page_Type_Builder'))
-	add_action('wp_head', ['Chroma_Page_Type_Builder', 'output']);
-	}
-	add_action('init', 'chroma_advanced_seo_init');
-
-	/**
-	* Admin Assets
-	*/
-	function chroma_advanced_seo_admin_assets($hook)
-	{
-	global $post;
-
-	if (!$post || !in_array($post->post_type, ['location', 'program', 'page', 'post'])) {
-	return;
 	}
 
 	// Inline CSS for Meta Boxes
@@ -448,13 +280,6 @@ function chroma_seo_missing_files_notice()
 		echo '</ul>';
 		echo '<p>Please ensure all files are uploaded to <code>inc/advanced-seo-llm/</code>.</p>';
 		echo '</div>';
-	} else {
-		// Temporary Success Message to Debug
-		if (current_user_can('manage_options')) {
-			echo '<div class="notice notice-success is-dismissible">';
-			echo '<p><strong>Advanced SEO Module Active:</strong> All files loaded successfully. Dashboard should be under "Tools".</p>';
-			echo '</div>';
-		}
 	}
 }
 add_action('admin_notices', 'chroma_seo_missing_files_notice');

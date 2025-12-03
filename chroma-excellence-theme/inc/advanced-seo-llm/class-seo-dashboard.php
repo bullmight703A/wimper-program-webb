@@ -1,7 +1,7 @@
 <?php
 /**
  * Advanced SEO/LLM Dashboard
- * Provides a centralized view of all location SEO data
+ * Provides a centralized view of all SEO data
  * Shows manual values vs. fallback values
  *
  * @package Chroma_Excellence
@@ -31,13 +31,14 @@ class Chroma_SEO_Dashboard
      */
     public function register_menu_page()
     {
-        add_submenu_page(
-            'tools.php',                   // Parent slug (Tools)
+        add_menu_page(
             'SEO & LLM Data',              // Page title
-            'SEO & LLM Data',              // Menu title
+            'SEO & LLM',                   // Menu title
             'edit_posts',                  // Capability
             'chroma-seo-dashboard',        // Menu slug
-            [$this, 'render_page']         // Callback
+            [$this, 'render_page'],        // Callback
+            'dashicons-chart-area',        // Icon
+            80                             // Position
         );
     }
 
@@ -46,7 +47,8 @@ class Chroma_SEO_Dashboard
      */
     public function enqueue_assets($hook)
     {
-        if ($hook !== 'location_page_chroma-seo-dashboard') {
+        // Check if we are on the correct page
+        if (!isset($_GET['page']) || $_GET['page'] !== 'chroma-seo-dashboard') {
             return;
         }
 
@@ -80,36 +82,54 @@ class Chroma_SEO_Dashboard
      */
     public function render_page()
     {
-        $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'seo';
+        $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'locations';
         ?>
         <div class="wrap">
             <h1 class="wp-heading-inline">SEO & LLM Data Dashboard</h1>
 
             <nav class="nav-tab-wrapper">
-                <a href="?post_type=location&page=chroma-seo-dashboard&tab=seo"
-                    class="nav-tab <?php echo $active_tab === 'seo' ? 'nav-tab-active' : ''; ?>">SEO</a>
-                <a href="?post_type=location&page=chroma-seo-dashboard&tab=geo"
-                    class="nav-tab <?php echo $active_tab === 'geo' ? 'nav-tab-active' : ''; ?>">GEO</a>
-                <a href="?post_type=location&page=chroma-seo-dashboard&tab=llm"
-                    class="nav-tab <?php echo $active_tab === 'llm' ? 'nav-tab-active' : ''; ?>">LLM</a>
-                <a href="?post_type=location&page=chroma-seo-dashboard&tab=breadcrumbs"
+                <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=locations'); ?>"
+                    class="nav-tab <?php echo $active_tab === 'locations' ? 'nav-tab-active' : ''; ?>">Locations</a>
+                <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=programs'); ?>"
+                    class="nav-tab <?php echo $active_tab === 'programs' ? 'nav-tab-active' : ''; ?>">Programs</a>
+                <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=pages'); ?>"
+                    class="nav-tab <?php echo $active_tab === 'pages' ? 'nav-tab-active' : ''; ?>">Pages</a>
+                <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=cities'); ?>"
+                    class="nav-tab <?php echo $active_tab === 'cities' ? 'nav-tab-active' : ''; ?>">Cities</a>
+                <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=posts'); ?>"
+                    class="nav-tab <?php echo $active_tab === 'posts' ? 'nav-tab-active' : ''; ?>">Blog Posts</a>
+                <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=geo'); ?>"
+                    class="nav-tab <?php echo $active_tab === 'geo' ? 'nav-tab-active' : ''; ?>">GEO Settings</a>
+                <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=inspector'); ?>"
+                    class="nav-tab <?php echo $active_tab === 'inspector' ? 'nav-tab-active' : ''; ?>">Inspector</a>
+                <a href="<?php echo admin_url('admin.php?page=chroma-seo-dashboard&tab=breadcrumbs'); ?>"
                     class="nav-tab <?php echo $active_tab === 'breadcrumbs' ? 'nav-tab-active' : ''; ?>">Breadcrumbs</a>
-                <a href="?post_type=location&page=chroma-seo-dashboard&tab=help"
-                    class="nav-tab <?php echo $active_tab === 'help' ? 'nav-tab-active' : ''; ?>">Help</a>
             </nav>
 
             <br>
 
             <?php
             switch ($active_tab) {
-                case 'seo':
-                    $this->render_overview_tab();
+                case 'locations':
+                    $this->render_overview_tab('location');
+                    break;
+                case 'programs':
+                    $this->render_overview_tab('program');
+                    break;
+                case 'pages':
+                    $this->render_overview_tab('page');
+                    break;
+                case 'cities':
+                    $this->render_overview_tab('city');
+                    break;
+                case 'posts':
+                    $this->render_overview_tab('post');
                     break;
                 case 'geo':
                     $this->render_geo_tab();
                     break;
-                case 'llm':
-                    $this->render_llm_tab();
+                case 'inspector':
+                    $this->render_inspector_tab();
                     break;
                 case 'breadcrumbs':
                     if (class_exists('Chroma_Breadcrumbs')) {
@@ -118,11 +138,8 @@ class Chroma_SEO_Dashboard
                         echo '<p>Breadcrumbs module not loaded.</p>';
                     }
                     break;
-                case 'help':
-                    do_action('chroma_seo_dashboard_content');
-                    break;
                 default:
-                    $this->render_overview_tab();
+                    $this->render_overview_tab('location');
                     break;
             }
             ?>
@@ -158,38 +175,21 @@ class Chroma_SEO_Dashboard
     }
 
     /**
-     * Render LLM Tab
+     * Render Overview Tab (Generic)
      */
-    private function render_llm_tab()
+    private function render_overview_tab($post_type)
     {
-        ?>
-        <div class="chroma-seo-card">
-            <h2>🤖 LLM Optimization & Inspector</h2>
-            <p>Tools to optimize how Large Language Models (ChatGPT, Gemini, etc.) understand your content.</p>
-
-            <div style="margin-top: 20px;">
-                <h3>Page Inspector</h3>
-                <p>Use this tool to view and edit the specific Schema/LLM data for any page.</p>
-                <?php $this->render_inspector_tab(); ?>
-            </div>
-        </div>
-        <?php
-    }
-
-    /**
-     * Render Overview Tab
-     */
-    private function render_overview_tab()
-    {
-        $locations = get_posts([
-            'post_type' => 'location',
-            'posts_per_page' => -1,
+        $args = [
+            'post_type' => $post_type,
+            'posts_per_page' => 50,
             'orderby' => 'title',
             'order' => 'ASC',
-        ]);
+        ];
+        $posts = get_posts($args);
+        $type_obj = get_post_type_object($post_type);
         ?>
         <p class="description">
-            Overview of SEO/LLM data for all locations.
+            Overview of SEO/LLM data for <strong><?php echo esc_html($type_obj->labels->name); ?></strong>.
             <span class="chroma-badge chroma-badge-manual">Manual</span> values are set by you.
             <span class="chroma-badge chroma-badge-auto">Auto</span> values are generated by the system fallbacks.
         </p>
@@ -197,54 +197,26 @@ class Chroma_SEO_Dashboard
         <table class="chroma-seo-table widefat fixed striped">
             <thead>
                 <tr>
-                    <th style="width: 200px;">Location</th>
-                    <th>Service Area (Geo)</th>
+                    <th style="width: 250px;">Title</th>
                     <th>LLM Context</th>
-                    <th>Quality & Ratings</th>
-                    <th>Media & Pricing</th>
-                    <th>Events & Enrollment</th>
-                    <th style="width: 80px;">Actions</th>
+                    <th>LLM Prompt</th>
+                    <th style="width: 100px;">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($locations as $location):
-                    $id = $location->ID;
-                    // Service Area Data
-                    $geo_manual = get_post_meta($id, 'seo_llm_service_area_lat', true);
-                    $geo_data = Chroma_Fallback_Resolver::get_service_area_circle($id);
+                <?php foreach ($posts as $p):
+                    $id = $p->ID;
                     // LLM Context
                     $intent_manual = get_post_meta($id, 'seo_llm_primary_intent', true);
                     $desc = Chroma_Fallback_Resolver::get_llm_description($id);
-                    // Quality
-                    $quality = get_post_meta($id, 'location_quality_rated', true);
-                    $rating = get_post_meta($id, 'location_google_rating', true);
-                    // Media/Pricing
-                    $video = get_post_meta($id, 'location_video_tour_url', true);
-                    $price = get_post_meta($id, 'location_price_min', true);
-                    // Events/HowTo
-                    $events = get_post_meta($id, 'location_events', true);
-                    $howto = get_post_meta($id, 'location_enrollment_steps', true);
+                    // LLM Prompt
+                    $prompt_manual = get_post_meta($id, 'seo_llm_custom_prompt', true);
                     ?>
                     <tr>
                         <td>
-                            <strong><a
-                                    href="<?php echo get_edit_post_link($id); ?>"><?php echo get_the_title($id); ?></a></strong><br>
-                            <small><?php echo get_post_meta($id, 'location_city', true); ?>,
-                                <?php echo get_post_meta($id, 'location_state', true); ?></small>
-                        </td>
-                        <td>
-                            <?php if ($geo_manual): ?>
-                                <span class="chroma-badge chroma-badge-manual">Manual</span>
-                            <?php else: ?>
-                                <span class="chroma-badge chroma-badge-auto">Auto</span>
-                            <?php endif; ?>
-                            <?php if ($geo_data): ?>
-                                <div><?php echo number_format($geo_data['lat'], 4); ?>,
-                                    <?php echo number_format($geo_data['lng'], 4); ?>
-                                </div>
-                                <div>Radius: <?php echo $geo_data['radius']; ?> mi</div>
-                            <?php else: ?>
-                                <span class="chroma-cross">×</span> No coordinates
+                            <strong><a href="<?php echo get_edit_post_link($id); ?>"><?php echo get_the_title($id); ?></a></strong>
+                            <?php if ($post_type === 'location'): ?>
+                                <br><small><?php echo get_post_meta($id, 'location_city', true); ?></small>
                             <?php endif; ?>
                         </td>
                         <td>
@@ -253,7 +225,7 @@ class Chroma_SEO_Dashboard
                                 <?php if ($intent_manual): ?>
                                     <span class="chroma-value-manual"><?php echo esc_html($intent_manual); ?></span>
                                 <?php else: ?>
-                                    <span class="chroma-value-fallback">Childcare & Early Education</span>
+                                    <span class="chroma-value-fallback">Auto-Generated</span>
                                 <?php endif; ?>
                             </div>
                             <div>
@@ -262,38 +234,14 @@ class Chroma_SEO_Dashboard
                             </div>
                         </td>
                         <td>
-                            <div style="margin-bottom: 4px;">
-                                <?php if ($quality): ?><span class="chroma-check">✓</span> Quality Rated<?php else: ?><span
-                                        class="chroma-cross">×</span> Not Rated<?php endif; ?>
-                            </div>
-                            <div>
-                                <?php if ($rating): ?><span class="chroma-check">✓</span> Google:
-                                    <?php echo esc_html($rating); ?>             <?php else: ?><span style="color: #ccc;">-</span> No
-                                    Rating<?php endif; ?>
-                            </div>
+                            <?php if ($prompt_manual): ?>
+                                <span class="chroma-check">✓</span> Custom Prompt Set
+                            <?php else: ?>
+                                <span style="color: #ccc;">-</span> Default
+                            <?php endif; ?>
                         </td>
                         <td>
-                            <div style="margin-bottom: 4px;">
-                                <?php if ($video): ?><span class="chroma-check">✓</span> Video Tour<?php else: ?><span
-                                        class="chroma-cross">×</span> No Video<?php endif; ?>
-                            </div>
-                            <div>
-                                <?php if ($price): ?><span class="chroma-check">✓</span> Pricing<?php else: ?><span
-                                        class="chroma-cross">×</span> No Price<?php endif; ?>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="margin-bottom: 4px;">
-                                <?php if (!empty($events)): ?><span class="chroma-check">✓</span> <?php echo count($events); ?>
-                                    Events<?php else: ?><span style="color: #ccc;">-</span> No Events<?php endif; ?>
-                            </div>
-                            <div>
-                                <?php if (!empty($howto)): ?><span class="chroma-check">✓</span> Enrollment Steps<?php else: ?><span
-                                        class="chroma-cross">×</span> No Steps<?php endif; ?>
-                            </div>
-                        </td>
-                        <td>
-                            <a href="?post_type=location&page=chroma-seo-dashboard&tab=inspector&post_id=<?php echo $id; ?>"
+                            <a href="?page=chroma-seo-dashboard&tab=inspector&post_id=<?php echo $id; ?>"
                                 class="button button-small">Inspect</a>
                         </td>
                     </tr>
@@ -310,6 +258,9 @@ class Chroma_SEO_Dashboard
     {
         $locations = get_posts(['post_type' => 'location', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
         $programs = get_posts(['post_type' => 'program', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
+        $pages = get_posts(['post_type' => 'page', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
+        $posts = get_posts(['post_type' => 'post', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
+
         $selected_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0;
         ?>
         <div class="chroma-inspector-controls">
@@ -327,6 +278,29 @@ class Chroma_SEO_Dashboard
                     <?php foreach ($programs as $prog): ?>
                         <option value="<?php echo $prog->ID; ?>" <?php selected($selected_id, $prog->ID); ?>>
                             <?php echo esc_html($prog->post_title); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </optgroup>
+                <optgroup label="Pages">
+                    <?php foreach ($pages as $pg): ?>
+                        <option value="<?php echo $pg->ID; ?>" <?php selected($selected_id, $pg->ID); ?>>
+                            <?php echo esc_html($pg->post_title); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </optgroup>
+                <optgroup label="Cities">
+                    <?php
+                    $cities = get_posts(['post_type' => 'city', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
+                    foreach ($cities as $city): ?>
+                        <option value="<?php echo $city->ID; ?>" <?php selected($selected_id, $city->ID); ?>>
+                            <?php echo esc_html($city->post_title); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </optgroup>
+                <optgroup label="Blog Posts">
+                    <?php foreach ($posts as $pt): ?>
+                        <option value="<?php echo $pt->ID; ?>" <?php selected($selected_id, $pt->ID); ?>>
+                            <?php echo esc_html($pt->post_title); ?>
                         </option>
                     <?php endforeach; ?>
                 </optgroup>
@@ -433,33 +407,33 @@ class Chroma_SEO_Dashboard
         $post_type = get_post_type($post_id);
         $fields = [];
 
+        // Common Fields
+        $fields['seo_llm_primary_intent'] = ['label' => 'Primary Intent', 'fallback' => 'Auto-Detected'];
+        $fields['seo_llm_custom_prompt'] = ['label' => 'Custom LLM Prompt', 'fallback' => ''];
+
         if ($post_type === 'location') {
-            $fields = [
+            $fields += [
                 'schema_loc_name' => ['label' => 'Schema Name', 'fallback' => get_the_title($post_id)],
                 'schema_loc_description' => ['label' => 'Description', 'fallback' => get_the_excerpt($post_id)],
                 'schema_loc_telephone' => ['label' => 'Telephone', 'fallback' => get_post_meta($post_id, 'location_phone', true)],
                 'schema_loc_email' => ['label' => 'Email', 'fallback' => get_post_meta($post_id, 'location_email', true)],
                 'schema_loc_price_range' => ['label' => 'Price Range (String)', 'fallback' => '$$'],
-                'schema_loc_opening_hours' => ['label' => 'Opening Hours', 'fallback' => get_post_meta($post_id, 'location_hours', true)],
-                'schema_loc_payment_accepted' => ['label' => 'Payment Accepted', 'fallback' => 'Cash, Credit Card'],
-                'seo_llm_price_min' => ['label' => 'Min Price (LLM)', 'fallback' => ''],
-                'seo_llm_price_max' => ['label' => 'Max Price (LLM)', 'fallback' => ''],
-                'seo_llm_rating_value' => ['label' => 'Rating Value', 'fallback' => get_post_meta($post_id, 'location_google_rating', true)],
                 'seo_llm_service_area_lat' => ['label' => 'Service Area Lat', 'fallback' => get_post_meta($post_id, 'location_latitude', true)],
                 'seo_llm_service_area_lng' => ['label' => 'Service Area Lng', 'fallback' => get_post_meta($post_id, 'location_longitude', true)],
                 'seo_llm_service_area_radius' => ['label' => 'Service Radius (mi)', 'fallback' => '10'],
             ];
         } elseif ($post_type === 'program') {
-            $fields = [
+            $fields += [
                 'schema_prog_name' => ['label' => 'Schema Name', 'fallback' => get_the_title($post_id)],
                 'schema_prog_description' => ['label' => 'Description', 'fallback' => get_the_excerpt($post_id)],
                 'schema_prog_service_type' => ['label' => 'Service Type', 'fallback' => 'Early Childhood Education'],
-                'schema_prog_provider_name' => ['label' => 'Provider Name', 'fallback' => get_bloginfo('name')],
-                'schema_prog_area_served' => ['label' => 'Area Served', 'fallback' => 'Metro Atlanta'],
-                'schema_prog_category' => ['label' => 'Category', 'fallback' => 'Child Care'],
-                'schema_prog_offers' => ['label' => 'Offers (JSON/Text)', 'fallback' => ''],
                 'program_age_range' => ['label' => 'Age Range', 'fallback' => ''],
-                'program_meta_title' => ['label' => 'Meta Title', 'fallback' => get_the_title($post_id)],
+            ];
+        } else {
+            // General Pages/Posts
+            $fields += [
+                'schema_page_type' => ['label' => 'Schema Type', 'fallback' => 'WebPage'],
+                'schema_description' => ['label' => 'Schema Description', 'fallback' => get_the_excerpt($post_id)],
             ];
         }
 
