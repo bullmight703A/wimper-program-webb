@@ -45,6 +45,7 @@ chroma_safe_require(__DIR__ . '/class-citation-datasets.php');
 chroma_safe_require(__DIR__ . '/class-image-alt-automation.php');
 chroma_safe_require(__DIR__ . '/class-admin-help.php');
 chroma_safe_require(__DIR__ . '/class-breadcrumbs.php');
+chroma_safe_require(__DIR__ . '/class-schema-types.php');
 
 /**
  * Load Meta Boxes

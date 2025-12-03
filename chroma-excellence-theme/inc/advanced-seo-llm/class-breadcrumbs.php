@@ -22,6 +22,7 @@ class Chroma_Breadcrumbs
         add_action('wp_head', [$this, 'output_schema']);
         add_action('wp_ajax_chroma_save_breadcrumb_settings', [$this, 'ajax_save_settings']);
         add_action('wp_ajax_chroma_preview_breadcrumbs', [$this, 'ajax_preview_breadcrumbs']);
+        add_action('wp_ajax_chroma_get_preview_posts', [$this, 'ajax_get_preview_posts']);
     }
 
     /**
@@ -214,9 +215,6 @@ class Chroma_Breadcrumbs
     {
         $enabled = get_option('chroma_breadcrumbs_enabled', 'yes');
         $home_text = get_option('chroma_breadcrumbs_home_text', 'Home');
-        
-        // Get some posts for preview
-        $preview_posts = get_posts(['numberposts' => 10, 'post_type' => ['page', 'post', 'location', 'program']]);
         ?>
         <div class="chroma-seo-card">
             <h2>Breadcrumbs Configuration</h2>
@@ -248,16 +246,23 @@ class Chroma_Breadcrumbs
 
         <div class="chroma-seo-card" style="margin-top: 20px;">
             <h2>🔍 Breadcrumbs Preview</h2>
-            <p>Select a page to see how its breadcrumbs will look.</p>
+            <p>Select a page type and then a specific page to preview.</p>
             
             <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
-                <select id="chroma-breadcrumb-preview-select">
-                    <option value="">-- Select Page to Preview --</option>
-                    <?php foreach($preview_posts as $p): ?>
-                        <option value="<?php echo $p->ID; ?>"><?php echo esc_html($p->post_title); ?> (<?php echo $p->post_type; ?>)</option>
-                    <?php endforeach; ?>
+                <select id="chroma-breadcrumb-type-select" style="min-width: 150px;">
+                    <option value="">-- Select Type --</option>
+                    <option value="location">Locations</option>
+                    <option value="program">Programs</option>
+                    <option value="page">Pages</option>
+                    <option value="post">Blog Posts</option>
                 </select>
-                <button id="chroma-preview-breadcrumbs-btn" class="button button-secondary">Preview</button>
+
+                <select id="chroma-breadcrumb-preview-select" style="min-width: 250px;" disabled>
+                    <option value="">-- Select Page --</option>
+                </select>
+
+                <button id="chroma-preview-breadcrumbs-btn" class="button button-secondary" disabled>Preview</button>
+                <span id="chroma-breadcrumb-spinner" class="spinner"></span>
             </div>
             
             <div id="chroma-breadcrumb-preview-result" style="display: none; border: 1px solid #ddd; padding: 15px; background: #f9f9f9;">
@@ -289,6 +294,38 @@ class Chroma_Breadcrumbs
                         alert('Error saving settings.');
                     }
                 });
+            });
+
+            // Load Posts on Type Change
+            $('#chroma-breadcrumb-type-select').on('change', function() {
+                var type = $(this).val();
+                var target = $('#chroma-breadcrumb-preview-select');
+                var btn = $('#chroma-preview-breadcrumbs-btn');
+                
+                target.html('<option value="">-- Select Page --</option>').prop('disabled', true);
+                btn.prop('disabled', true);
+
+                if(!type) return;
+
+                $('#chroma-breadcrumb-spinner').addClass('is-active');
+
+                $.post(ajaxurl, {
+                    action: 'chroma_get_preview_posts',
+                    post_type: type
+                }, function(response) {
+                    $('#chroma-breadcrumb-spinner').removeClass('is-active');
+                    if(response.success) {
+                        target.prop('disabled', false);
+                        $.each(response.data, function(id, title) {
+                            target.append($('<option></option>').val(id).text(title));
+                        });
+                    }
+                });
+            });
+
+            // Enable Preview Button
+            $('#chroma-breadcrumb-preview-select').on('change', function() {
+                $('#chroma-preview-breadcrumbs-btn').prop('disabled', !$(this).val());
             });
 
             // Preview
