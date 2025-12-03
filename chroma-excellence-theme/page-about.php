@@ -347,9 +347,15 @@ while (have_posts()):
 								<?php endif; ?>
 
 								<?php if (get_the_content()): ?>
-									<p class="text-sm text-brand-ink/80 max-w-xs mx-auto">
+									<button
+										class="chroma-read-bio-btn text-sm font-bold text-chroma-blue hover:text-chroma-blueDark underline mt-2"
+										data-bio-target="bio-<?php the_ID(); ?>" data-member-name="<?php the_title_attribute(); ?>"
+										aria-label="Read bio for <?php the_title_attribute(); ?>">
+										Read Bio
+									</button>
+									<div id="bio-<?php the_ID(); ?>" hidden>
 										<?php the_content(); ?>
-									</p>
+									</div>
 								<?php endif; ?>
 							</div>
 						<?php endwhile;
@@ -484,6 +490,91 @@ while (have_posts()):
 			}
 		}
 	</style>
+
+	<!-- Bio Modal -->
+	<div id="chroma-bio-modal"
+		class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-brand-ink/80 backdrop-blur-sm"
+		role="dialog" aria-modal="true" aria-labelledby="chroma-bio-modal-title">
+		<div class="bg-white rounded-[2rem] max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative p-8 md:p-12">
+			<button id="chroma-bio-close"
+				class="absolute top-6 right-6 text-brand-ink/50 hover:text-chroma-red transition-colors"
+				aria-label="Close modal">
+				<i class="fa-solid fa-xmark text-2xl"></i>
+			</button>
+			<h3 id="chroma-bio-modal-title" class="font-serif text-2xl md:text-3xl font-bold text-brand-ink mb-6"></h3>
+			<div id="chroma-bio-modal-content" class="prose prose-lg text-brand-ink/80"></div>
+		</div>
+	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const modal = document.getElementById('chroma-bio-modal');
+			const closeBtn = document.getElementById('chroma-bio-close');
+			const title = document.getElementById('chroma-bio-modal-title');
+			const content = document.getElementById('chroma-bio-modal-content');
+			let lastFocusedElement;
+
+			function openModal(btn) {
+				const targetId = btn.getAttribute('data-bio-target');
+				const name = btn.getAttribute('data-member-name');
+				const sourceContent = document.getElementById(targetId);
+
+				if (sourceContent) {
+					lastFocusedElement = btn;
+					title.textContent = name;
+					content.innerHTML = sourceContent.innerHTML;
+					modal.classList.remove('hidden');
+					closeBtn.focus();
+					document.body.style.overflow = 'hidden';
+
+					// Trap focus
+					modal.addEventListener('keydown', trapFocus);
+				}
+			}
+
+			function closeModal() {
+				modal.classList.add('hidden');
+				document.body.style.overflow = '';
+				if (lastFocusedElement) lastFocusedElement.focus();
+				modal.removeEventListener('keydown', trapFocus);
+			}
+
+			function trapFocus(e) {
+				if (e.key === 'Escape') {
+					closeModal();
+					return;
+				}
+				if (e.key === 'Tab') {
+					// Simple focus trap
+					const focusableContent = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+					const first = focusableContent[0];
+					const last = focusableContent[focusableContent.length - 1];
+
+					if (e.shiftKey) {
+						if (document.activeElement === first) {
+							last.focus();
+							e.preventDefault();
+						}
+					} else {
+						if (document.activeElement === last) {
+							first.focus();
+							e.preventDefault();
+						}
+					}
+				}
+			}
+
+			document.querySelectorAll('.chroma-read-bio-btn').forEach(btn => {
+				btn.addEventListener('click', () => openModal(btn));
+			});
+
+			if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+			if (modal) modal.addEventListener('click', (e) => {
+				if (e.target === modal) closeModal();
+			});
+		});
+	</script>
 
 	<?php
 endwhile;

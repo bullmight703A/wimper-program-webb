@@ -72,41 +72,44 @@ function chroma_get_wizard_color_classes($key)
                 data-program-wizard-result>
 
                 <div class="grid md:grid-cols-2 gap-8 items-center">
-                <!-- Text Content (Left) -->
-                <div class="text-center md:text-left space-y-4 order-2 md:order-1">
-                    <h3 class="text-2xl md:text-3xl font-serif font-bold text-brand-ink" data-program-wizard-title>
-                        Program Name</h3>
-                    <p class="text-brand-ink/70 text-sm md:text-base leading-relaxed" data-program-wizard-description>
-                        Description goes here.</p>
+                    <!-- Text Content (Left) -->
+                    <div class="text-center md:text-left space-y-4 order-2 md:order-1">
+                        <h3 class="text-2xl md:text-3xl font-serif font-bold text-brand-ink" data-program-wizard-title>
+                            Program Name</h3>
+                        <p class="text-brand-ink/70 text-sm md:text-base leading-relaxed"
+                            data-program-wizard-description>
+                            Description goes here.</p>
 
-                    <div class="flex flex-wrap gap-3 text-xs pt-2 justify-center md:justify-start">
-                        <a class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-chroma-blue/20 bg-white text-brand-ink font-semibold hover:border-chroma-blue hover:text-chroma-blue transition shadow-sm"
-                            data-program-wizard-link href="<?php echo esc_url($program_archive_url); ?>">
-                            Learn More
-                        </a>
-                        <a href="#tour"
-                            class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-chroma-red text-white font-semibold hover:bg-chroma-red/90 transition shadow-soft">
-                            Speak to an enrollment specialist
-                        </a>
-                        
+                        <div class="flex flex-wrap gap-3 text-xs pt-2 justify-center md:justify-start">
+                            <a class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-chroma-blue/20 bg-white text-brand-ink font-semibold hover:border-chroma-blue hover:text-chroma-blue transition shadow-sm"
+                                data-program-wizard-link href="<?php echo esc_url($program_archive_url); ?>"
+                                aria-label="Learn more about our programs">
+                                Learn More
+                            </a>
+                            <a href="#tour"
+                                class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-chroma-red text-white font-semibold hover:bg-chroma-red/90 transition shadow-soft">
+                                Speak to an enrollment specialist
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <!-- Image (Right) -->
+                    <div
+                        class="order-1 md:order-2 relative h-48 md:h-64 rounded-2xl overflow-hidden shadow-card border-4 border-white transform rotate-2 transition-transform duration-700 hover:rotate-0">
+                        <img src="" alt="Program Preview" class="w-full h-full object-cover"
+                            data-program-wizard-image />
                     </div>
                 </div>
 
-                <!-- Image (Right) -->
-                <div
-                    class="order-1 md:order-2 relative h-48 md:h-64 rounded-2xl overflow-hidden shadow-card border-4 border-white transform rotate-2 transition-transform duration-700 hover:rotate-0">
-                    <img src="" alt="Program Preview" class="w-full h-full object-cover" data-program-wizard-image />
+                <!-- Start Over (Centered Below) -->
+                <div class="text-center mt-8 w-full">
+                    <button type="button"
+                        class="text-brand-ink/50 hover:text-brand-ink underline decoration-dotted text-sm transition-colors"
+                        data-program-wizard-reset>
+                        Start Over
+                    </button>
                 </div>
-            </div>
-
-            <!-- Start Over (Centered Below) -->
-            <div class="text-center mt-8 w-full">
-                <button type="button"
-                    class="text-brand-ink/50 hover:text-brand-ink underline decoration-dotted text-sm transition-colors"
-                    data-program-wizard-reset>
-                    Start Over
-                </button>
-            </div>
 
             </div>
 

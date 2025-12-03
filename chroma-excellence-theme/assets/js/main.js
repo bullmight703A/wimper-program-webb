@@ -95,7 +95,10 @@ document.addEventListener('DOMContentLoaded', function () {
       // Populate data
       if (title) title.textContent = selected.label;
       if (desc) desc.textContent = selected.description;
-      if (learnLink && selected.link) learnLink.setAttribute('href', selected.link);
+      if (learnLink && selected.link) {
+        learnLink.setAttribute('href', selected.link);
+        learnLink.setAttribute('aria-label', 'Learn more about ' + selected.label);
+      }
       if (image && selected.image) image.src = selected.image;
 
       // Hide options

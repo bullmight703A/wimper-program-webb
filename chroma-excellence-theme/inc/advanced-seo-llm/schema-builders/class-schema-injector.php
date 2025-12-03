@@ -160,7 +160,13 @@ class Chroma_Schema_Injector
 
                 // Handle Repeater Fields
                 if (is_array($value)) {
-                    if ($schema_type === 'FAQPage' && $key === 'questions') {
+                    if ($key === 'custom_fields') {
+                        foreach ($value as $field) {
+                            if (!empty($field['key']) && !empty($field['value'])) {
+                                $schema_output[sanitize_key($field['key'])] = sanitize_textarea_field($field['value']);
+                            }
+                        }
+                    } elseif ($schema_type === 'FAQPage' && $key === 'questions') {
                         $schema_output['mainEntity'] = [];
                         foreach ($value as $q) {
                             $schema_output['mainEntity'][] = [
@@ -184,6 +190,41 @@ class Chroma_Schema_Injector
                                 $step['image'] = $s['image'];
                             }
                             $schema_output['step'][] = $step;
+                        }
+                    } elseif ($key === 'offers') {
+                        $schema_output['offers'] = [];
+                        foreach ($value as $offer) {
+                            $offer_schema = [
+                                '@type' => 'Offer',
+                                'price' => isset($offer['price']) ? $offer['price'] : '',
+                                'priceCurrency' => isset($offer['priceCurrency']) ? $offer['priceCurrency'] : 'USD'
+                            ];
+                            if (isset($offer['name']))
+                                $offer_schema['name'] = $offer['name'];
+                            if (isset($offer['url']))
+                                $offer_schema['url'] = $offer['url'];
+                            if (isset($offer['availability']))
+                                $offer_schema['availability'] = $offer['availability'];
+                            else
+                                $offer_schema['availability'] = 'https://schema.org/InStock';
+
+                            $schema_output['offers'][] = $offer_schema;
+                        }
+                    } elseif ($key === 'review') {
+                        $schema_output['review'] = [];
+                        foreach ($value as $r) {
+                            $schema_output['review'][] = [
+                                '@type' => 'Review',
+                                'author' => [
+                                    '@type' => 'Person',
+                                    'name' => isset($r['author']) ? $r['author'] : ''
+                                ],
+                                'reviewRating' => [
+                                    '@type' => 'Rating',
+                                    'ratingValue' => isset($r['reviewRating']) ? $r['reviewRating'] : ''
+                                ],
+                                'reviewBody' => isset($r['reviewBody']) ? $r['reviewBody'] : ''
+                            ];
                         }
                     } else {
                         // Generic array output (if needed for other types)
@@ -245,18 +286,7 @@ class Chroma_Schema_Injector
                         if ($key === 'location_address')
                             continue; // Handled above
 
-                        if ($key === 'offers_price') {
-                            $currency = isset($fields['offers_currency']) ? $fields['offers_currency'] : 'USD';
-                            $schema_output['offers'] = [
-                                '@type' => 'Offer',
-                                'price' => $value,
-                                'priceCurrency' => $currency,
-                                'availability' => 'https://schema.org/InStock'
-                            ];
-                            continue;
-                        }
-                        if ($key === 'offers_currency')
-                            continue; // Handled above
+
 
                         if ($key === 'organizer') {
                             $schema_output['organizer'] = [

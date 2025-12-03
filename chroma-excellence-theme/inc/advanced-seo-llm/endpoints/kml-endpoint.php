@@ -38,6 +38,7 @@ class Chroma_KML_Endpoint
     public static function render_kml()
     {
         if (get_query_var('chroma_kml')) {
+            ob_clean(); // Clean output buffer to prevent whitespace errors
             header('Content-Type: application/vnd.google-earth.kml+xml');
             header('Content-Disposition: attachment; filename="locations.kml"');
             echo '<?xml version="1.0" encoding="UTF-8"?>';

@@ -470,7 +470,8 @@ class Chroma_SEO_Dashboard
                         action: 'chroma_get_schema_fields',
                         nonce: chroma_nonce,
                         schema_type: type,
-                        index: index
+                        index: index,
+                        post_id: $('#chroma-inspector-post-id').val()
                     }, function (response) {
                         if (response.success) {
                             container.append(response.data.html);
@@ -640,10 +641,21 @@ class Chroma_SEO_Dashboard
 
         // Get existing schemas
         $existing_schemas = get_post_meta($post_id, '_chroma_post_schemas', true);
-        if (!is_array($existing_schemas)) {
+        if (!is_array($existing_schemas) || empty($existing_schemas)) {
             $existing_schemas = [];
-            // Backwards compatibility: if no modular schemas, maybe migrate old ones?
-            // For now, start fresh or show empty.
+            // Backwards compatibility: Check for legacy schema data
+            $legacy_type = get_post_meta($post_id, '_chroma_schema_type', true);
+            if ($legacy_type && $legacy_type !== 'none') {
+                $legacy_data = get_post_meta($post_id, '_chroma_schema_data', true);
+                if (!is_array($legacy_data))
+                    $legacy_data = [];
+
+                // Add as a new modular schema
+                $existing_schemas[] = [
+                    'type' => $legacy_type,
+                    'data' => $legacy_data
+                ];
+            }
         }
 
         $available_types = Chroma_Schema_Types::get_definitions();
@@ -794,9 +806,29 @@ class Chroma_SEO_Dashboard
         check_ajax_referer('chroma_seo_dashboard_nonce', 'nonce');
         $type = sanitize_text_field($_POST['schema_type']);
         $index = intval($_POST['index']);
+        $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+
+        $prefill_data = [];
+        if ($post_id) {
+            $post = get_post($post_id);
+            if ($post) {
+                // Common prefill fields
+                $prefill_data['name'] = $post->post_title;
+                $prefill_data['headline'] = $post->post_title;
+                $prefill_data['description'] = wp_trim_words($post->post_content, 25);
+                $prefill_data['url'] = get_permalink($post_id);
+                $prefill_data['datePublished'] = get_the_date('Y-m-d', $post);
+                $prefill_data['dateModified'] = get_the_modified_date('Y-m-d', $post);
+
+                $img_id = get_post_thumbnail_id($post_id);
+                if ($img_id) {
+                    $prefill_data['image'] = wp_get_attachment_image_url($img_id, 'full');
+                }
+            }
+        }
 
         ob_start();
-        $this->render_schema_block($type, [], $index);
+        $this->render_schema_block($type, $prefill_data, $index);
         $html = ob_get_clean();
 
         wp_send_json_success(['html' => $html]);
@@ -888,7 +920,8 @@ class Chroma_SEO_Dashboard
                         </div>
                         <div style="padding: 10px 12px; background: #f0f2f5; border-top: 1px solid #dadde1;">
                             <div style="font-size: 12px; color: #606770; text-transform: uppercase;" id="chroma-og-site">
-                                <?php echo $_SERVER['HTTP_HOST']; ?></div>
+                                <?php echo $_SERVER['HTTP_HOST']; ?>
+                            </div>
                             <div style="font-family: Georgia, serif; font-size: 16px; color: #1d2129; font-weight: 600; margin: 5px 0;"
                                 id="chroma-og-title">Page Title</div>
                             <div style="font-size: 14px; color: #606770; line-height: 20px; max-height: 40px; overflow: hidden;"

@@ -76,6 +76,15 @@ class Chroma_Schema_Types
                     'label' => 'Date Modified',
                     'description' => 'The date and time the article was last modified.'
                 ],
+                'custom_fields' => [
+                    'type' => 'repeater',
+                    'label' => 'Custom Fields',
+                    'description' => 'Add any other Schema.org property.',
+                    'subfields' => [
+                        'key' => ['type' => 'text', 'label' => 'Property Name (e.g. "award")'],
+                        'value' => ['type' => 'textarea', 'label' => 'Value']
+                    ]
+                ]
             ]
         ];
     }
@@ -148,6 +157,56 @@ class Chroma_Schema_Types
                     'label' => 'Website URL',
                     'description' => 'The URL of the business website.'
                 ],
+                'openingHours' => [
+                    'type' => 'repeater',
+                    'label' => 'Opening Hours',
+                    'description' => 'Add opening hours (e.g., "Mo-Fr 09:00-17:00").',
+                    'subfields' => [
+                        'dayOfWeek' => ['type' => 'text', 'label' => 'Days (e.g., Mo-Fr)'],
+                        'opens' => ['type' => 'text', 'label' => 'Opens (e.g., 09:00)'],
+                        'closes' => ['type' => 'text', 'label' => 'Closes (e.g., 17:00)']
+                    ]
+                ],
+                'sameAs' => [
+                    'type' => 'textarea',
+                    'label' => 'Social Profiles (SameAs)',
+                    'description' => 'Comma-separated list of social media profile URLs.'
+                ],
+                'areaServed' => [
+                    'type' => 'text',
+                    'label' => 'Area Served',
+                    'description' => 'The geographic area where the service is provided.'
+                ],
+                'paymentAccepted' => [
+                    'type' => 'text',
+                    'label' => 'Payment Accepted',
+                    'description' => 'Cash, Credit Card, etc.'
+                ],
+                'currenciesAccepted' => [
+                    'type' => 'text',
+                    'label' => 'Currencies Accepted',
+                    'description' => 'e.g. USD'
+                ],
+                'logo' => [
+                    'type' => 'image',
+                    'label' => 'Logo URL',
+                    'description' => 'URL of the business logo.'
+                ],
+                'hasMap' => [
+                    'type' => 'text',
+                    'label' => 'Map URL',
+                    'description' => 'URL to a map of the location.'
+                ],
+                'custom_fields' => [
+                    'type' => 'repeater',
+                    'label' => 'Custom Fields',
+                    'description' => 'Add any other Schema.org property.',
+                    'subfields' => [
+                        'key' => ['type' => 'text', 'label' => 'Property Name'],
+                        'value' => ['type' => 'textarea', 'label' => 'Value']
+                    ]
+                ]
+
             ]
         ];
     }
@@ -180,6 +239,15 @@ class Chroma_Schema_Types
                     'label' => 'Social Profiles (SameAs)',
                     'description' => 'Comma-separated list of social media profile URLs.'
                 ],
+                'custom_fields' => [
+                    'type' => 'repeater',
+                    'label' => 'Custom Fields',
+                    'description' => 'Add any other Schema.org property.',
+                    'subfields' => [
+                        'key' => ['type' => 'text', 'label' => 'Property Name'],
+                        'value' => ['type' => 'textarea', 'label' => 'Value']
+                    ]
+                ]
             ]
         ];
     }
@@ -212,6 +280,15 @@ class Chroma_Schema_Types
                     'label' => 'URL',
                     'description' => 'URL to the person\'s website or profile page.'
                 ],
+                'custom_fields' => [
+                    'type' => 'repeater',
+                    'label' => 'Custom Fields',
+                    'description' => 'Add any other Schema.org property.',
+                    'subfields' => [
+                        'key' => ['type' => 'text', 'label' => 'Property Name'],
+                        'value' => ['type' => 'textarea', 'label' => 'Value']
+                    ]
+                ]
             ]
         ];
     }
@@ -259,6 +336,46 @@ class Chroma_Schema_Types
                     'label' => 'Image URL',
                     'description' => 'URL of an image representing the event.'
                 ],
+                'offers' => [
+                    'type' => 'repeater',
+                    'label' => 'Offers (Tickets)',
+                    'description' => 'Ticket information.',
+                    'subfields' => [
+                        'name' => ['type' => 'text', 'label' => 'Ticket Name'],
+                        'price' => ['type' => 'text', 'label' => 'Price'],
+                        'priceCurrency' => ['type' => 'text', 'label' => 'Currency (USD)'],
+                        'url' => ['type' => 'text', 'label' => 'Ticket URL']
+                    ]
+                ],
+                'organizer' => [
+                    'type' => 'text',
+                    'label' => 'Organizer Name',
+                    'description' => 'The name of the organizer.'
+                ],
+                'eventStatus' => [
+                    'type' => 'text',
+                    'label' => 'Event Status',
+                    'description' => 'e.g. https://schema.org/EventScheduled'
+                ],
+                'eventAttendanceMode' => [
+                    'type' => 'text',
+                    'label' => 'Attendance Mode',
+                    'description' => 'e.g. https://schema.org/OfflineEventAttendanceMode'
+                ],
+                'performer' => [
+                    'type' => 'text',
+                    'label' => 'Performer',
+                    'description' => 'Name of the performer.'
+                ],
+                'custom_fields' => [
+                    'type' => 'repeater',
+                    'label' => 'Custom Fields',
+                    'description' => 'Add any other Schema.org property.',
+                    'subfields' => [
+                        'key' => ['type' => 'text', 'label' => 'Property Name'],
+                        'value' => ['type' => 'textarea', 'label' => 'Value']
+                    ]
+                ]
             ]
         ];
     }
@@ -296,6 +413,29 @@ class Chroma_Schema_Types
                     'label' => 'Description',
                     'description' => 'A description of the service.'
                 ],
+                'offers' => [
+                    'type' => 'repeater',
+                    'label' => 'Offers',
+                    'description' => 'Service pricing.',
+                    'subfields' => [
+                        'price' => ['type' => 'text', 'label' => 'Price'],
+                        'priceCurrency' => ['type' => 'text', 'label' => 'Currency']
+                    ]
+                ],
+                'termsOfService' => [
+                    'type' => 'text',
+                    'label' => 'Terms of Service URL',
+                    'description' => 'URL to terms of service.'
+                ],
+                'custom_fields' => [
+                    'type' => 'repeater',
+                    'label' => 'Custom Fields',
+                    'description' => 'Add any other Schema.org property.',
+                    'subfields' => [
+                        'key' => ['type' => 'text', 'label' => 'Property Name'],
+                        'value' => ['type' => 'textarea', 'label' => 'Value']
+                    ]
+                ]
             ]
         ];
     }
@@ -343,6 +483,50 @@ class Chroma_Schema_Types
                     'label' => 'Currency',
                     'description' => 'The currency code (e.g., USD).'
                 ],
+                'offers' => [
+                    'type' => 'repeater',
+                    'label' => 'Offers',
+                    'description' => 'Product offers.',
+                    'subfields' => [
+                        'price' => ['type' => 'text', 'label' => 'Price'],
+                        'priceCurrency' => ['type' => 'text', 'label' => 'Currency'],
+                        'availability' => ['type' => 'text', 'label' => 'Availability (e.g. InStock)']
+                    ]
+                ],
+                'aggregateRating' => [
+                    'type' => 'text',
+                    'label' => 'Aggregate Rating',
+                    'description' => 'Overall rating value.'
+                ],
+                'review' => [
+                    'type' => 'repeater',
+                    'label' => 'Reviews',
+                    'description' => 'Product reviews.',
+                    'subfields' => [
+                        'author' => ['type' => 'text', 'label' => 'Author'],
+                        'reviewRating' => ['type' => 'text', 'label' => 'Rating'],
+                        'reviewBody' => ['type' => 'textarea', 'label' => 'Review Body']
+                    ]
+                ],
+                'mpn' => [
+                    'type' => 'text',
+                    'label' => 'MPN',
+                    'description' => 'Manufacturer Part Number.'
+                ],
+                'gtin' => [
+                    'type' => 'text',
+                    'label' => 'GTIN',
+                    'description' => 'Global Trade Item Number.'
+                ],
+                'custom_fields' => [
+                    'type' => 'repeater',
+                    'label' => 'Custom Fields',
+                    'description' => 'Add any other Schema.org property.',
+                    'subfields' => [
+                        'key' => ['type' => 'text', 'label' => 'Property Name'],
+                        'value' => ['type' => 'textarea', 'label' => 'Value']
+                    ]
+                ]
             ]
         ];
     }
@@ -380,6 +564,15 @@ class Chroma_Schema_Types
                     'label' => 'Review Body',
                     'description' => 'The actual text of the review.'
                 ],
+                'custom_fields' => [
+                    'type' => 'repeater',
+                    'label' => 'Custom Fields',
+                    'description' => 'Add any other Schema.org property.',
+                    'subfields' => [
+                        'key' => ['type' => 'text', 'label' => 'Property Name'],
+                        'value' => ['type' => 'textarea', 'label' => 'Value']
+                    ]
+                ]
             ]
         ];
     }
@@ -399,6 +592,15 @@ class Chroma_Schema_Types
                     'subfields' => [
                         'question' => ['type' => 'text', 'label' => 'Question'],
                         'answer' => ['type' => 'textarea', 'label' => 'Answer']
+                    ]
+                ],
+                'custom_fields' => [
+                    'type' => 'repeater',
+                    'label' => 'Custom Fields',
+                    'description' => 'Add any other Schema.org property.',
+                    'subfields' => [
+                        'key' => ['type' => 'text', 'label' => 'Property Name'],
+                        'value' => ['type' => 'textarea', 'label' => 'Value']
                     ]
                 ]
             ]
@@ -443,6 +645,25 @@ class Chroma_Schema_Types
                     'label' => 'Hiring Organization',
                     'description' => 'The name of the organization hiring.'
                 ],
+                'baseSalary' => [
+                    'type' => 'text',
+                    'label' => 'Base Salary',
+                    'description' => 'Salary information.'
+                ],
+                'jobLocation' => [
+                    'type' => 'text',
+                    'label' => 'Job Location',
+                    'description' => 'Location of the job.'
+                ],
+                'custom_fields' => [
+                    'type' => 'repeater',
+                    'label' => 'Custom Fields',
+                    'description' => 'Add any other Schema.org property.',
+                    'subfields' => [
+                        'key' => ['type' => 'text', 'label' => 'Property Name'],
+                        'value' => ['type' => 'textarea', 'label' => 'Value']
+                    ]
+                ]
             ]
         ];
     }
@@ -473,6 +694,30 @@ class Chroma_Schema_Types
                         'name' => ['type' => 'text', 'label' => 'Step Name'],
                         'text' => ['type' => 'textarea', 'label' => 'Step Instructions'],
                         'image' => ['type' => 'image', 'label' => 'Step Image URL']
+                    ]
+                ],
+                'totalTime' => [
+                    'type' => 'text',
+                    'label' => 'Total Time',
+                    'description' => 'ISO 8601 duration (e.g. PT1H).'
+                ],
+                'supply' => [
+                    'type' => 'text',
+                    'label' => 'Supply',
+                    'description' => 'Supplies needed.'
+                ],
+                'tool' => [
+                    'type' => 'text',
+                    'label' => 'Tool',
+                    'description' => 'Tools needed.'
+                ],
+                'custom_fields' => [
+                    'type' => 'repeater',
+                    'label' => 'Custom Fields',
+                    'description' => 'Add any other Schema.org property.',
+                    'subfields' => [
+                        'key' => ['type' => 'text', 'label' => 'Property Name'],
+                        'value' => ['type' => 'textarea', 'label' => 'Value']
                     ]
                 ]
             ]
@@ -517,6 +762,20 @@ class Chroma_Schema_Types
                     'label' => 'Embed URL',
                     'description' => 'URL to embed the video (e.g., YouTube embed link).'
                 ],
+                'duration' => [
+                    'type' => 'text',
+                    'label' => 'Duration',
+                    'description' => 'ISO 8601 duration (e.g. PT2M30S).'
+                ],
+                'custom_fields' => [
+                    'type' => 'repeater',
+                    'label' => 'Custom Fields',
+                    'description' => 'Add any other Schema.org property.',
+                    'subfields' => [
+                        'key' => ['type' => 'text', 'label' => 'Property Name'],
+                        'value' => ['type' => 'textarea', 'label' => 'Value']
+                    ]
+                ]
             ]
         ];
     }

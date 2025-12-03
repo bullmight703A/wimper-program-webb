@@ -157,7 +157,7 @@ add_filter('get_image_tag', 'chroma_add_content_image_dims', 10, 3);
 function chroma_inject_dimensions($html, $attachment_id)
 {
     // If width is already defined, skip
-    if (strpos($html, 'width=') !== false) {
+    if (empty($html) || strpos($html, 'width=') !== false) {
         return $html;
     }
 
@@ -194,10 +194,10 @@ add_filter('upload_mimes', 'chroma_mime_types');
 function chroma_defer_scripts($tag, $handle, $src)
 {
     // List of scripts to defer
-    $defer_scripts = array('gtag', 'did-0014');
+    $defer_scripts = array('jquery.min.js', 'jquery-migrate.min.js', 'gtag', 'did-0014');
 
     foreach ($defer_scripts as $script) {
-        if (strpos($src, $script) !== false) {
+        if ($src && strpos($src, $script) !== false) {
             return str_replace(' src', ' defer src', $tag);
         }
     }
