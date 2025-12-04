@@ -159,18 +159,24 @@ function chroma_generate_why_love_content($city, $neighborhoods, $hero_image_url
             <p class='has-text-align-center' style='font-size:1.3rem; max-width:800px; margin:0 auto 3rem; font-weight:500;'>
                 We are more than just a daycare. We are a partner in your child's development. $hood_string
             </p>
-            <div class='wp-block-columns alignwide'>
-                <div class='wp-block-column' style='background:rgba(255,255,255,0.9); padding:2rem; border-radius:1rem;'>
-                    <h3 class='has-chroma-red-color'>Safe & Secure</h3>
-                    <p>Our campuses feature secure keypad entry, 24/7 video monitoring, and strict safety protocols to give $city parents peace of mind.</p>
+            <div class='city-page-columns'>
+                <div class='city-page-column' style='background:rgba(255,255,255,0.9);'>
+                    <div class='city-page-column-body'>
+                        <h3 class='has-chroma-red-color'>Safe & Secure</h3>
+                        <p>Our campuses feature secure keypad entry, 24/7 video monitoring, and strict safety protocols to give $city parents peace of mind.</p>
+                    </div>
                 </div>
-                <div class='wp-block-column' style='background:rgba(255,255,255,0.9); padding:2rem; border-radius:1rem;'>
-                    <h3 class='has-chroma-blue-color'>Play-Based Learning</h3>
-                    <p>We believe children learn best through play. Our curriculum balances structured activities with creative exploration.</p>
+                <div class='city-page-column' style='background:rgba(255,255,255,0.9);'>
+                    <div class='city-page-column-body'>
+                        <h3 class='has-chroma-blue-color'>Play-Based Learning</h3>
+                        <p>We believe children learn best through play. Our curriculum balances structured activities with creative exploration.</p>
+                    </div>
                 </div>
-                <div class='wp-block-column' style='background:rgba(255,255,255,0.9); padding:2rem; border-radius:1rem;'>
-                    <h3 class='has-chroma-green-color'>Nurturing Teachers</h3>
-                    <p>Our educators are passionate, experienced, and dedicated to helping every child in $city reach their full potential.</p>
+                <div class='city-page-column' style='background:rgba(255,255,255,0.9);'>
+                    <div class='city-page-column-body'>
+                        <h3 class='has-chroma-green-color'>Nurturing Teachers</h3>
+                        <p>Our educators are passionate, experienced, and dedicated to helping every child in $city reach their full potential.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -190,7 +196,7 @@ function chroma_generate_programs_section($city, $programs)
     <section class='wp-block-group alignfull' style='padding-top:4rem; padding-bottom:4rem;'>
         <div class='wp-block-group__inner-container' style='max-width:1200px; margin:0 auto; padding:0 20px;'>
             <h2 class='has-text-align-center' style='margin-bottom:3rem;'>Programs Available in $city</h2>
-            <div class='wp-block-columns alignwide' style='flex-wrap:wrap; gap:2rem;'>";
+            <div class='city-page-columns'>";
 
     foreach ($programs as $prog) {
         $img_html = "";
@@ -199,9 +205,9 @@ function chroma_generate_programs_section($city, $programs)
         }
 
         $html .= "
-        <div class='wp-block-column' style='flex-basis:30%; min-width:300px; background:#fff; padding:0; border-radius:1rem; box-shadow:0 4px 20px rgba(0,0,0,0.05); overflow:hidden;'>
+        <div class='city-page-column'>
             $img_html
-            <div style='padding:2rem;'>
+            <div class='city-page-column-body'>
                 <h3 class='has-brand-ink-color' style='margin-top:0;'>{$prog['title']}</h3>
                 <p>" . wp_trim_words($prog['excerpt'], 20) . "</p>
             </div>
@@ -348,7 +354,16 @@ foreach ($city_map as $city_name => $schools) {
     $page_title = "Daycare & Preschool in $full_city_name | Chroma Early Learning";
 
     // Construct HTML Content
-    $content = "";
+    // Inject Custom CSS for this page
+    $content = "
+    <style>
+        .city-page-columns { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+        .city-page-column { flex: 1; min-width: 300px; background: #fff; border-radius: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); overflow: hidden; display: flex; flex-direction: column; }
+        .city-page-column img { width: 100%; height: 200px; object-fit: cover; }
+        .city-page-column-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
+        .city-page-btn { display: inline-block; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; text-align: center; margin-top: auto; }
+        @media (max-width: 768px) { .city-page-columns { flex-direction: column; } }
+    </style>";
 
     // Hero / Intro (Pass Image URL)
     $content .= chroma_generate_why_love_content($city_name, $neighborhoods, $hero_image_url);
@@ -375,7 +390,7 @@ foreach ($city_map as $city_name => $schools) {
     <section class='wp-block-group alignfull' style='padding:4rem 2rem; background-color:#fff;'>
         <div class='wp-block-group__inner-container' style='max-width:1200px; margin:0 auto; padding:0 20px;'>
             <h2 class='has-text-align-center' style='margin-bottom:3rem;'>Our Campuses Serving $city_name</h2>
-            <div class='wp-block-columns alignwide' style='flex-wrap:wrap; gap:2rem; justify-content:center;'>";
+            <div class='city-page-columns'>";
 
     foreach ($schools as $s) {
         $school_img = "";
@@ -395,17 +410,17 @@ foreach ($city_map as $city_name => $schools) {
             }
 
             if ($s_img_url) {
-                $school_img = "<img src='$s_img_url' alt='{$s['school_name']}' style='width:100%; height:250px; object-fit:cover; border-radius:1rem 1rem 0 0;'>";
+                $school_img = "<img src='$s_img_url' alt='{$s['school_name']}' style='height:250px;'>";
             }
         }
 
         $content .= "
-        <div class='wp-block-column' style='flex-basis:45%; min-width:300px; background:#fdfbf7; border-radius:1rem; box-shadow:0 4px 20px rgba(0,0,0,0.05); overflow:hidden; margin-bottom:2rem;'>
+        <div class='city-page-column' style='background:#fdfbf7;'>
             $school_img
-            <div style='padding:2rem;'>
+            <div class='city-page-column-body'>
                 <h3 class='has-brand-ink-color' style='margin-top:0;'>{$s['school_name']}</h3>
                 <p style='margin-bottom:1.5rem;'>{$s['address']}</p>
-                <a href='$school_url' class='wp-block-button__link has-chroma-blue-background-color has-background' style='width:100%; text-align:center; display:block;'>Visit Campus</a>
+                <a href='$school_url' class='city-page-btn has-chroma-blue-background-color has-background' style='color:white;'>Visit Campus</a>
             </div>
         </div>";
     }
