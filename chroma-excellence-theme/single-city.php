@@ -2,54 +2,146 @@
 /**
  * Single City Template
  *
- * A hyperlocal landing page template that aggregates nearby locations.
- *
  * @package Chroma_Excellence
- * @since 1.0.0
  */
 
-get_header();
+$city = get_the_title();
+$city_slug = get_post_field('post_name');
+$county = get_post_meta(get_the_ID(), 'city_county', true) ?: 'Local';
+$neighborhoods = get_post_meta(get_the_ID(), 'city_neighborhoods', true);
+$location_ids = get_post_meta(get_the_ID(), 'related_location_ids', true);
+$hero_image = get_post_meta(get_the_ID(), 'city_hero_image', true);
 
-$intro_text = get_post_meta(get_the_ID(), 'city_intro_text', true);
-$location_ids = get_post_meta(get_the_ID(), 'city_nearby_locations', true);
+// Fallback image
+if (!$hero_image) {
+    $hero_image = 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=1200&auto=format&fit=crop';
+}
+
+$location_count = is_array($location_ids) ? count($location_ids) : 0;
 ?>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 
-<main id="primary" class="site-main">
+<head>
+    <meta charset="UTF-8" />
+    <!-- SEO Title: Pure Keyword Focus -->
+    <title>Best Daycare & Preschool in <?php echo esc_html($city); ?>, GA | Chroma Early Learning</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="Looking for 5-star rated daycare in <?php echo esc_html($city); ?>? Chroma offers accredited infant care, toddler programs, and Free GA Pre-K at <?php echo esc_html($location_count); ?> convenient locations near you." />
 
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Chroma Early Learning Academy - <?php echo esc_js($city); ?> Region",
+    "url": "<?php echo esc_url(get_permalink()); ?>",
+    "areaServed": {
+      "@type": "City",
+      "name": "<?php echo esc_js($city); ?>"
+    }
+  }
+  </script>
 
-        <!-- Hero Section -->
-        <header class="entry-header alignfull"
-            style="background-color: var(--wp--preset--color--primary); color: white; padding: 4rem 2rem; text-align: center;">
-            <div class="wp-block-group__inner-container" style="max-width: 1200px; margin: 0 auto;">
-                <?php the_title('<h1 class="entry-title" style="font-size: 3rem; margin-bottom: 1rem;">', '</h1>'); ?>
-                <?php if ($intro_text): ?>
-                    <div class="city-intro" style="font-size: 1.25rem; max-width: 800px; margin: 0 auto;">
-                        <?php echo wp_kses_post($intro_text); ?>
-                    </div>
-                <?php endif; ?>
+    <!-- Fonts & Styles -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+                    colors: { brand: { ink: '#263238', cream: '#FFFCF8' }, chroma: { blue: '#4A6C7C', red: '#D67D6B', green: '#8DA399', yellow: '#E6BE75', blueDark: '#2F4858' } },
+                    boxShadow: { soft: '0 20px 40px -10px rgba(74, 108, 124, 0.08)', card: '0 10px 30px -5px rgba(0, 0, 0, 0.04)' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+    </style>
+    <?php wp_head(); ?>
+</head>
+
+<body class="bg-brand-cream text-brand-ink antialiased">
+
+    <!-- Simplified Header -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-chroma-blue/10">
+        <div class="max-w-7xl mx-auto px-4 h-[82px] flex items-center justify-between">
+            <a href="/" class="font-bold text-lg text-brand-ink">Chroma <span
+                    class="text-chroma-blue text-xs uppercase tracking-widest ml-2"><?php echo esc_html($city); ?>
+                    Area</span></a>
+            <a href="#locations"
+                class="bg-chroma-red text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-chroma-blueDark transition-colors">Find
+                Nearest School</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- SEO Hero: High Intent Keywords -->
+        <section class="relative pt-20 pb-20 bg-white overflow-hidden">
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-chroma-blue/5 to-transparent -z-10">
             </div>
-        </header>
+            <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+                <span
+                    class="inline-block py-1 px-3 rounded-full bg-chroma-blue/10 text-chroma-blue text-[10px] font-bold uppercase tracking-widest mb-6">
+                    Serving <?php echo esc_html($city); ?> & <?php echo esc_html($county); ?> County
+                </span>
+                <h1 class="font-serif text-5xl md:text-7xl text-brand-ink mb-6 leading-tight">
+                    The Best Daycare in <span class="italic text-chroma-blue"><?php echo esc_html($city); ?>, GA.</span>
+                </h1>
+                <p class="text-xl text-brand-ink/70 max-w-2xl mx-auto mb-10">
+                    Are you looking for "daycare near me"? Discover the highest-rated early learning centers in the
+                    <?php echo esc_html($city); ?> area, featuring the Prismpath™ curriculum and GA Pre-K.
+                </p>
+                <a href="#locations"
+                    class="inline-flex items-center gap-2 text-chroma-red font-bold border-b-2 border-chroma-red pb-1 hover:text-brand-ink hover:border-brand-ink transition-all">
+                    See Locations in <?php echo esc_html($city); ?> <i class="fa-solid fa-arrow-down"></i>
+                </a>
+            </div>
+        </section>
 
-        <div class="entry-content" style="max-width: 1200px; margin: 4rem auto; padding: 0 2rem;">
+        <!-- The "Pooler, GA" Style SEO Content Block -->
+        <section class="py-24 bg-brand-cream border-y border-brand-ink/5">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <!-- H2 styled exactly like the "Early Education..." screenshot -->
+                <h2 class="font-serif text-4xl md:text-6xl text-brand-ink mb-8 leading-none font-normal">
+                    Early Education and <br>
+                    Care in <span class="text-chroma-blue"><?php echo esc_html($city); ?>, GA</span>
+                </h2>
 
-            <!-- Main Content (Block Editor) -->
-            <?php
-            while (have_posts()):
-                the_post();
-                the_content();
-            endwhile;
-            ?>
+                <!-- SEO Body Text -->
+                <p class="text-lg md:text-xl text-brand-ink/70 leading-relaxed max-w-3xl mx-auto">
+                    Our school is more than a daycare. Through purposeful play and nurturing guidance, we help lay the
+                    foundation for a lifelong love of learning.
+                    <br><br>
+                    Conveniently located near major highways and down the road from local landmarks and top-rated
+                    elementary schools, we are the convenient choice for <?php echo esc_html($city); ?> working parents.
+                    Come by and see Balanced Learning® in action at one of our nearby campuses.
+                </p>
+            </div>
+        </section>
 
-            <!-- Nearby Locations Grid -->
-            <?php if (!empty($location_ids) && is_array($location_ids)): ?>
-                <section class="nearby-locations" style="margin-top: 4rem;">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">
-                        <?php _e('Our Locations in This Area', 'chroma-excellence'); ?></h2>
+        <!-- "Campuses Near You" Grid -->
+        <section id="locations" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 lg:px-6">
+                <div class="text-center mb-16">
+                    <h2 class="font-serif text-3xl font-bold text-brand-ink">Chroma Locations Serving
+                        <?php echo esc_html($city); ?></h2>
+                    <p class="text-brand-ink/60 mt-4">Select the campus closest to your home or work.</p>
+                </div>
 
-                    <div class="locations-grid"
-                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                        <?php
+                <!-- Dynamic Grid of Locations in this Region -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <?php
+                    if (!empty($location_ids) && is_array($location_ids)):
                         $locations_query = new WP_Query([
                             'post_type' => 'location',
                             'post__in' => $location_ids,
@@ -59,48 +151,105 @@ $location_ids = get_post_meta(get_the_ID(), 'city_nearby_locations', true);
                         if ($locations_query->have_posts()):
                             while ($locations_query->have_posts()):
                                 $locations_query->the_post();
-                                $address = get_post_meta(get_the_ID(), 'location_address', true);
-                                $city = get_post_meta(get_the_ID(), 'location_city', true);
-                                $phone = get_post_meta(get_the_ID(), 'location_phone', true);
-                                $image = get_the_post_thumbnail_url(get_the_ID(), 'medium_large');
-                                ?>
-                                <div class="location-card"
-                                    style="border: 1px solid #eee; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                                    <?php if ($image): ?>
-                                        <div class="location-image"
-                                            style="height: 200px; background-image: url('<?php echo esc_url($image); ?>'); background-size: cover; background-position: center;">
-                                        </div>
-                                    <?php else: ?>
-                                        <div class="location-image" style="height: 200px; background-color: #f0f0f0;"></div>
-                                    <?php endif; ?>
+                                $address = chroma_location_address_line(); // Using helper if available, or get_post_meta
+                                if (!$address)
+                                    $address = get_post_meta(get_the_ID(), 'location_address', true);
 
-                                    <div class="location-details" style="padding: 1.5rem;">
-                                        <h3 style="margin-top: 0; font-size: 1.5rem;"><a href="<?php the_permalink(); ?>"
-                                                style="text-decoration: none; color: inherit;"><?php the_title(); ?></a></h3>
-                                        <p style="color: #666; margin-bottom: 1rem;">
-                                            <?php echo esc_html($address); ?><br>
-                                            <?php echo esc_html($city); ?>
-                                        </p>
-                                        <a href="tel:<?php echo esc_attr($phone); ?>" class="button"
-                                            style="display: inline-block; padding: 0.5rem 1rem; background-color: var(--wp--preset--color--secondary); color: white; text-decoration: none; border-radius: 4px;"><?php echo esc_html($phone); ?></a>
-                                        <a href="<?php the_permalink(); ?>" class="button"
-                                            style="display: inline-block; padding: 0.5rem 1rem; background-color: var(--wp--preset--color--primary); color: white; text-decoration: none; border-radius: 4px; margin-left: 0.5rem;"><?php _e('View Details', 'chroma-excellence'); ?></a>
+                                $rating = get_post_meta(get_the_ID(), 'location_google_rating', true) ?: '4.9';
+                                $image = get_the_post_thumbnail_url(get_the_ID(), 'medium_large');
+                                if (!$image) {
+                                    // Try gallery
+                                    $gallery = get_post_meta(get_the_ID(), 'location_hero_gallery', true);
+                                    if ($gallery) {
+                                        $lines = explode("\n", $gallery);
+                                        $image = trim($lines[0]);
+                                    }
+                                }
+                                // Fallback
+                                if (!$image)
+                                    $image = 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=600';
+                                ?>
+                                <!-- Location Card -->
+                                <div
+                                    class="group p-8 rounded-[2.5rem] bg-brand-cream border border-brand-ink/5 hover:border-chroma-blue/30 transition-all hover:-translate-y-1 flex flex-col">
+                                    <div class="h-48 rounded-[2rem] bg-gray-200 mb-6 overflow-hidden relative">
+                                        <img src="<?php echo esc_url($image); ?>" class="w-full h-full object-cover"
+                                            alt="<?php the_title(); ?>">
+                                        <div
+                                            class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">
+                                            <?php echo esc_html($rating); ?> ★</div>
+                                    </div>
+                                    <h3 class="font-serif text-2xl font-bold text-brand-ink mb-2"><?php the_title(); ?></h3>
+                                    <p class="text-sm text-brand-ink/60 mb-1"><?php echo esc_html($address); ?></p>
+                                    <p class="text-xs text-brand-ink/40 font-bold uppercase tracking-widest mb-6">Serving
+                                        <?php echo esc_html($city); ?> Families</p>
+                                    <div class="mt-auto flex gap-3">
+                                        <a href="<?php the_permalink(); ?>"
+                                            class="w-full py-3 bg-chroma-blue text-white text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-chroma-blueDark transition-colors">View
+                                            Campus</a>
                                     </div>
                                 </div>
                                 <?php
                             endwhile;
                             wp_reset_postdata();
                         endif;
-                        ?>
-                    </div>
-                </section>
-            <?php endif; ?>
+                    endif;
+                    ?>
 
-        </div>
+                </div>
+            </div>
+        </section>
 
-    </article>
+        <!-- Hyper-Local FAQ for SEO Snippets -->
+        <section class="py-20 bg-brand-cream border-t border-brand-ink/5">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="font-serif text-3xl font-bold text-brand-ink mb-10 text-center">Questions about Childcare in
+                    <?php echo esc_html($city); ?></h2>
 
-</main>
+                <div class="space-y-4">
+                    <details class="group bg-white rounded-2xl p-6 shadow-sm border border-brand-ink/5 cursor-pointer">
+                        <summary class="flex items-center justify-between font-bold text-brand-ink list-none">
+                            <span>Do you offer GA Lottery Pre-K in <?php echo esc_html($city); ?>?</span>
+                            <span class="text-chroma-blue group-open:rotate-180 transition-transform"><i
+                                    class="fa-solid fa-chevron-down"></i></span>
+                        </summary>
+                        <p class="mt-3 text-sm text-brand-ink/70">Yes! Our locations serving
+                            <?php echo esc_html($city); ?> participate in the Georgia Lottery Pre-K program. It is
+                            tuition-free for all 4-year-olds living in Georgia.</p>
+                    </details>
 
-<?php
-get_footer();
+                    <details class="group bg-white rounded-2xl p-6 shadow-sm border border-brand-ink/5 cursor-pointer">
+                        <summary class="flex items-center justify-between font-bold text-brand-ink list-none">
+                            <span>Do you provide transportation from <?php echo esc_html($city); ?> schools?</span>
+                            <span class="text-chroma-blue group-open:rotate-180 transition-transform"><i
+                                    class="fa-solid fa-chevron-down"></i></span>
+                        </summary>
+                        <p class="mt-3 text-sm text-brand-ink/70">We provide safe bus transportation from most major
+                            elementary schools in the <?php echo esc_html($county); ?> School District. Check the
+                            specific campus page for a full list.</p>
+                    </details>
+
+                    <details class="group bg-white rounded-2xl p-6 shadow-sm border border-brand-ink/5 cursor-pointer">
+                        <summary class="flex items-center justify-between font-bold text-brand-ink list-none">
+                            <span>What ages do you accept at your <?php echo esc_html($city); ?> centers?</span>
+                            <span class="text-chroma-blue group-open:rotate-180 transition-transform"><i
+                                    class="fa-solid fa-chevron-down"></i></span>
+                        </summary>
+                        <p class="mt-3 text-sm text-brand-ink/70">We serve children from 6 weeks old (Infant Care) up to
+                            12 years old (After School). We also offer a Private Kindergarten option at select
+                            locations.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-brand-ink text-white py-12 text-center text-sm opacity-60">
+        <p>© <?php echo date('Y'); ?> Chroma Early Learning. Proudly serving <?php echo esc_html($city); ?> and
+            <?php echo esc_html($county); ?> County.</p>
+    </footer>
+    <?php wp_footer(); ?>
+</body>
+
+</html>
