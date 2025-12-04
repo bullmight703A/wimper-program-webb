@@ -136,7 +136,7 @@ while (have_posts()):
 						<?php echo wp_kses_post($hero_title); ?>
 					</h1>
 
-					<p class="text-lg text-brand-ink/70 mb-8 leading-relaxed">
+					<p class="text-lg text-brand-ink/80 mb-8 leading-relaxed">
 						<?php echo esc_html($hero_description); ?>
 					</p>
 
@@ -190,10 +190,10 @@ while (have_posts()):
 						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
 							<?php echo esc_html($story_title); ?>
 						</h2>
-						<p class="text-brand-ink/70 mb-6 leading-relaxed">
+						<p class="text-brand-ink/80 mb-6 leading-relaxed">
 							<?php echo esc_html($story_paragraph1); ?>
 						</p>
-						<p class="text-brand-ink/70 mb-6 leading-relaxed">
+						<p class="text-brand-ink/80 mb-6 leading-relaxed">
 							<?php echo esc_html($story_paragraph2); ?>
 						</p>
 					</div>
@@ -216,7 +216,7 @@ while (have_posts()):
 									class="text-3xl md:text-4xl font-serif font-bold text-<?php echo esc_attr($stat['color']); ?> mb-2">
 									<?php echo esc_html($stat['value']); ?>
 								</div>
-								<div class="text-xs font-bold uppercase tracking-wider text-brand-ink/40">
+								<div class="text-xs font-bold uppercase tracking-wider text-brand-ink/60">
 									<?php echo esc_html($stat['label']); ?>
 								</div>
 							</div>
@@ -234,7 +234,7 @@ while (have_posts()):
 					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-4">
 						<?php echo esc_html($educators_title); ?>
 					</h2>
-					<p class="text-brand-ink/70"><?php echo esc_html($educators_description); ?></p>
+					<p class="text-brand-ink/80"><?php echo esc_html($educators_description); ?></p>
 				</div>
 
 				<div class="grid md:grid-cols-3 gap-8">
@@ -256,7 +256,7 @@ while (have_posts()):
 								<h3 class="font-serif text-xl font-bold text-brand-ink mb-3">
 									<?php echo esc_html($educator['title']); ?>
 								</h3>
-								<p class="text-sm text-brand-ink/80 leading-relaxed">
+								<p class="text-sm text-brand-ink/90 leading-relaxed">
 									<?php echo esc_html($educator['desc']); ?>
 								</p>
 							</div>
@@ -349,8 +349,7 @@ while (have_posts()):
 								<?php if (get_the_content()): ?>
 									<button
 										class="chroma-read-bio-btn text-sm font-bold text-chroma-blue hover:text-chroma-blueDark underline mt-2"
-										data-bio-target="bio-<?php the_ID(); ?>" 
-										data-member-name="<?php the_title_attribute(); ?>"
+										data-bio-target="bio-<?php the_ID(); ?>" data-member-name="<?php the_title_attribute(); ?>"
 										data-member-image="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium') ?: ''); ?>"
 										aria-label="Read bio for <?php the_title_attribute(); ?>">
 										Read Bio
@@ -375,10 +374,10 @@ while (have_posts()):
 					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
 						<?php echo esc_html($nutrition_title); ?>
 					</h2>
-					<p class="text-brand-ink/70 mb-6">
+					<p class="text-brand-ink/80 mb-6">
 						<?php echo esc_html($nutrition_description); ?>
 					</p>
-					<ul class="space-y-4 text-brand-ink/80">
+					<ul class="space-y-4 text-brand-ink/90">
 						<?php if ($nutrition_bullet1_text): ?>
 							<li class="flex items-center gap-3">
 								<i class="<?php echo esc_attr($nutrition_bullet1_icon); ?> text-chroma-red text-xl"></i>
@@ -393,7 +392,7 @@ while (have_posts()):
 						<?php endif; ?>
 						<?php if ($nutrition_bullet3_text): ?>
 							<li class="flex items-center gap-3">
-								<i class="<?php echo esc_attr($nutrition_bullet3_icon); ?> text-brand-ink/40 text-xl"></i>
+								<i class="<?php echo esc_attr($nutrition_bullet3_icon); ?> text-brand-ink/60 text-xl"></i>
 								<span><?php echo esc_html($nutrition_bullet3_text); ?></span>
 							</li>
 						<?php endif; ?>
@@ -423,10 +422,10 @@ while (have_posts()):
 						<h3 class="text-xl font-bold text-chroma-blue mb-3"><?php echo esc_html($philanthropy_subtitle); ?>
 						</h3>
 					<?php endif; ?>
-					<p class="text-brand-ink/70 mb-6 leading-relaxed">
+					<p class="text-brand-ink/80 mb-6 leading-relaxed">
 						<?php echo wp_kses_post($philanthropy_description); ?>
 					</p>
-					<ul class="space-y-4 text-brand-ink/80">
+					<ul class="space-y-4 text-brand-ink/90">
 						<?php if ($philanthropy_bullet1_text): ?>
 							<li class="flex items-center gap-3">
 								<i class="<?php echo esc_attr($philanthropy_bullet1_icon); ?> text-chroma-red text-xl"></i>
@@ -457,7 +456,7 @@ while (have_posts()):
 				<h2 class="font-serif text-3xl md:text-5xl font-bold text-brand-ink mb-8">
 					<?php echo esc_html($cta_title); ?>
 				</h2>
-				<p class="text-lg text-brand-ink/80 mb-10"><?php echo esc_html($cta_description); ?></p>
+				<p class="text-lg text-brand-ink/90 mb-10"><?php echo esc_html($cta_description); ?></p>
 				<div class="flex flex-wrap justify-center gap-4">
 					<a href="<?php echo esc_url(home_url('/locations')); ?>"
 						class="px-8 py-4 bg-brand-cream border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-chroma-blue hover:text-chroma-blue transition-colors">Find
@@ -499,16 +498,17 @@ while (have_posts()):
 		role="dialog" aria-modal="true" aria-labelledby="chroma-bio-modal-title">
 		<div class="bg-white rounded-[2rem] max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative p-8 md:p-12">
 			<button id="chroma-bio-close"
-				class="absolute top-6 right-6 text-brand-ink/50 hover:text-chroma-red transition-colors z-10"
+				class="absolute top-6 right-6 text-brand-ink/70 hover:text-chroma-red transition-colors z-10"
 				aria-label="Close modal">
 				<i class="fa-solid fa-xmark text-2xl"></i>
 			</button>
 			<h3 id="chroma-bio-modal-title" class="font-serif text-2xl md:text-3xl font-bold text-brand-ink mb-6"></h3>
 			<div class="grid md:grid-cols-[300px_1fr] gap-6">
-				<div id="chroma-bio-modal-image" class="rounded-2xl overflow-hidden bg-gradient-to-br from-chroma-blue to-chroma-blueDark flex items-center justify-center min-h-[300px]">
+				<div id="chroma-bio-modal-image"
+					class="rounded-2xl overflow-hidden bg-gradient-to-br from-chroma-blue to-chroma-blueDark flex items-center justify-center min-h-[300px]">
 					<i class="fa-solid fa-user text-6xl text-white/30"></i>
 				</div>
-				<div id="chroma-bio-modal-content" class="prose prose-lg text-brand-ink/80"></div>
+				<div id="chroma-bio-modal-content" class="prose prose-lg text-brand-ink/90"></div>
 			</div>
 		</div>
 	</div>
@@ -531,7 +531,7 @@ while (have_posts()):
 					lastFocusedElement = btn;
 					title.textContent = name;
 					content.innerHTML = sourceContent.innerHTML;
-					
+
 					// Populate image if available
 					const imageContainer = document.getElementById('chroma-bio-modal-image');
 					if (imageUrl && imageContainer) {
@@ -540,7 +540,7 @@ while (have_posts()):
 						// Reset to placeholder if no image
 						imageContainer.innerHTML = '<i class="fa-solid fa-user text-6xl text-white/30"></i>';
 					}
-					
+
 					modal.classList.remove('hidden');
 					closeBtn.focus();
 					document.body.style.overflow = 'hidden';

@@ -58,13 +58,13 @@ for ($i = 1; $i <= 5; $i++) {
     <div class="max-w-7xl mx-auto px-4 lg:px-6 h-[82px] flex items-center justify-between">
       <a href="<?php echo esc_url(home_url('/')); ?>" class="font-bold text-lg text-brand-ink">Chroma</a>
       <a href="<?php echo esc_url(home_url('/')); ?>"
-        class="text-sm font-bold text-brand-ink/80 hover:text-chroma-blue">Back to Home</a>
+        class="text-sm font-bold text-brand-ink/90 hover:text-chroma-blue">Back to Home</a>
     </div>
   </header>
 
   <main class="max-w-3xl mx-auto px-4 py-24">
     <h1 class="font-serif text-4xl md:text-5xl font-bold mb-8"><?php the_title(); ?></h1>
-    <p class="text-sm text-brand-ink/50 mb-12">Last Updated: <?php echo esc_html($last_updated); ?></p>
+    <p class="text-sm text-brand-ink/70 mb-12">Last Updated: <?php echo esc_html($last_updated); ?></p>
 
     <div class="prose prose-lg text-brand-ink/80">
       <?php foreach ($sections as $section): ?>

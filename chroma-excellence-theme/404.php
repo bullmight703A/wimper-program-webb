@@ -37,9 +37,9 @@
 
   <header class="p-6">
     <a href="<?php echo esc_url(home_url('/')); ?>">
-      <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/chroma-logo.png'); ?>"
-        srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/chroma-logo.png'); ?> 1x,
-                   <?php echo esc_url(get_template_directory_uri() . '/assets/images/chroma-logo-highres.png'); ?> 2x" alt="Chroma Early Learning" class="h-10 w-auto" />
+      <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/chroma-logo.png'); ?>" srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/chroma-logo.png'); ?> 1x,
+                   <?php echo esc_url(get_template_directory_uri() . '/assets/images/chroma-logo-highres.png'); ?> 2x"
+        alt="Chroma Early Learning" class="h-10 w-auto" />
     </a>
   </header>
 
@@ -47,7 +47,7 @@
     <div class="text-9xl font-serif font-bold text-chroma-yellow opacity-50 mb-4">404</div>
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-ink mb-6">Ruh-roh! This page is playing
       hide-and-seek.</h1>
-    <p class="text-lg text-brand-ink/80 max-w-md mb-10">We've checked the toy bin, looked under the rugs, and even asked
+    <p class="text-lg text-brand-ink/90 max-w-md mb-10">We've checked the toy bin, looked under the rugs, and even asked
       the goldfish, but we can't find this page anywhere. It must be really good at hiding!</p>
 
     <div class="flex flex-wrap justify-center gap-4">
@@ -65,7 +65,7 @@
     </div>
   </main>
 
-  <footer class="p-6 text-center text-xs text-brand-ink/40">
+  <footer class="p-6 text-center text-xs text-brand-ink/60">
     &copy; <?php echo esc_html(date('Y')); ?> <?php bloginfo('name'); ?>.
   </footer>
 

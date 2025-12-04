@@ -103,7 +103,7 @@ while (have_posts()):
 			<div class="max-w-7xl mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-16 items-center">
 				<div class="fade-in-up">
 					<div
-						class="inline-flex items-center gap-2 bg-white border border-<?php echo esc_attr($region_colors['border']); ?>/15 px-3 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-ink/70 shadow-sm mb-6">
+						class="inline-flex items-center gap-2 bg-white border border-<?php echo esc_attr($region_colors['border']); ?>/15 px-3 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-ink/80 shadow-sm mb-6">
 						<span
 							class="w-2 h-2 rounded-full bg-<?php echo esc_attr($region_colors['text']); ?> animate-pulse"></span>
 						<?php echo esc_html($hero_subtitle); ?>
@@ -116,7 +116,7 @@ while (have_posts()):
 						<?php echo esc_html($tagline); ?>
 					</p>
 
-					<p class="text-lg text-brand-ink/80 mb-8 max-w-xl leading-relaxed">
+					<p class="text-lg text-brand-ink/90 mb-8 max-w-xl leading-relaxed">
 						<?php echo esc_html($description); ?>
 					</p>
 
@@ -139,21 +139,21 @@ while (have_posts()):
 							<div class="text-2xl font-serif font-bold text-chroma-red mb-1">
 								<?php echo esc_html($ages_served); ?>
 							</div>
-							<div class="text-[10px] uppercase tracking-wider text-brand-ink/50 font-semibold">Ages Served
+							<div class="text-[10px] uppercase tracking-wider text-brand-ink/70 font-semibold">Ages Served
 							</div>
 						</div>
 						<div>
 							<div class="text-2xl font-serif font-bold text-chroma-yellow mb-1">
 								<?php echo esc_html($google_rating); ?>
 							</div>
-							<div class="text-[10px] uppercase tracking-wider text-brand-ink/50 font-semibold">Google Rating
+							<div class="text-[10px] uppercase tracking-wider text-brand-ink/70 font-semibold">Google Rating
 							</div>
 						</div>
 						<div>
 							<div class="text-2xl font-serif font-bold text-chroma-green mb-1">
 								<?php echo esc_html($hours); ?>
 							</div>
-							<div class="text-[10px] uppercase tracking-wider text-brand-ink/70 font-semibold">Mon - Fri
+							<div class="text-[10px] uppercase tracking-wider text-brand-ink/80 font-semibold">Mon - Fri
 							</div>
 						</div>
 					</div>
@@ -258,10 +258,10 @@ while (have_posts()):
 										<i class="fa-solid fa-star text-chroma-yellow text-sm"></i>
 									<?php endfor; ?>
 								</div>
-								<p class="text-xs font-serif italic text-brand-ink/80">
+								<p class="text-xs font-serif italic text-brand-ink/90">
 									"<?php echo esc_html($hero_review_text); ?>"
 								</p>
-								<p class="text-[10px] font-bold text-brand-ink/40 mt-2 uppercase tracking-wide">—
+								<p class="text-[10px] font-bold text-brand-ink/60 mt-2 uppercase tracking-wide">—
 									<?php echo esc_html($hero_review_author); ?>
 								</p>
 							</div>
@@ -279,7 +279,7 @@ while (have_posts()):
 						class="text-<?php echo esc_attr($region_colors['text']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Campus
 						Features</span>
 					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-4">Designed for discovery.</h2>
-					<p class="text-brand-ink/80">Every corner of our <?php echo esc_html($city); ?> campus is
+					<p class="text-brand-ink/90">Every corner of our <?php echo esc_html($city); ?> campus is
 						intentional—from the soft lighting in our infant suites to the collaborative stations in our Pre-K
 						classrooms.</p>
 				</div>
@@ -293,7 +293,7 @@ while (have_posts()):
 							<i class="fa-solid fa-shield-halved"></i>
 						</div>
 						<h3 class="font-serif text-xl font-bold text-brand-ink mb-3">Secure Access</h3>
-						<p class="text-sm text-brand-ink/80 leading-relaxed">Keypad entry, 24/7 video monitoring, and a
+						<p class="text-sm text-brand-ink/90 leading-relaxed">Keypad entry, 24/7 video monitoring, and a
 							staffed front desk ensure your child is always safe.</p>
 					</div>
 
@@ -305,7 +305,7 @@ while (have_posts()):
 							<i class="fa-solid fa-tree"></i>
 						</div>
 						<h3 class="font-serif text-xl font-bold text-brand-ink mb-3">Nature Playground</h3>
-						<p class="text-sm text-brand-ink/70 leading-relaxed">Our oversized, shaded outdoor space features
+						<p class="text-sm text-brand-ink/80 leading-relaxed">Our oversized, shaded outdoor space features
 							gardening beds, trike paths, and natural sensory zones.</p>
 					</div>
 
@@ -317,7 +317,7 @@ while (have_posts()):
 							<i class="fa-solid fa-flask"></i>
 						</div>
 						<h3 class="font-serif text-xl font-bold text-brand-ink mb-3">STEM Atelier</h3>
-						<p class="text-sm text-brand-ink/70 leading-relaxed">A dedicated studio for science experiments,
+						<p class="text-sm text-brand-ink/80 leading-relaxed">A dedicated studio for science experiments,
 							light table exploration, and early engineering projects.</p>
 					</div>
 
@@ -329,7 +329,7 @@ while (have_posts()):
 							<i class="fa-solid fa-graduation-cap"></i>
 						</div>
 						<h3 class="font-serif text-xl font-bold text-brand-ink mb-3">GA Lottery Pre-K</h3>
-						<p class="text-sm text-brand-ink/70 leading-relaxed">We are a proud partner of the Georgia Pre-K
+						<p class="text-sm text-brand-ink/80 leading-relaxed">We are a proud partner of the Georgia Pre-K
 							Program, offering tuition-free education for 4-year-olds.</p>
 					</div>
 				</div>
@@ -389,7 +389,7 @@ while (have_posts()):
 							Our
 							Campus</span>
 						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-4">Take a Virtual Tour</h2>
-						<p class="text-brand-ink/70 max-w-2xl mx-auto">Walk through our <?php echo esc_html($city); ?> campus
+						<p class="text-brand-ink/80 max-w-2xl mx-auto">Walk through our <?php echo esc_html($city); ?> campus
 							from the comfort of your home. Explore our classrooms, outdoor play areas, and learning spaces.</p>
 					</div>
 
@@ -432,7 +432,7 @@ while (have_posts()):
 						<div>
 							<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-3">Programs at this location
 							</h2>
-							<p class="text-brand-ink/70">Curriculum tailored to the specific developmental window of your child.
+							<p class="text-brand-ink/80">Curriculum tailored to the specific developmental window of your child.
 							</p>
 						</div>
 						<a href="<?php echo esc_url(chroma_get_program_archive_url()); ?>"
@@ -478,7 +478,7 @@ while (have_posts()):
 									<?php endif; ?>
 								</div>
 								<h3 class="font-serif text-xl font-bold text-brand-ink mb-2"><?php the_title(); ?></h3>
-								<p class="text-sm text-brand-ink/80 mb-6"><?php echo esc_html($excerpt); ?></p>
+								<p class="text-sm text-brand-ink/90 mb-6"><?php echo esc_html($excerpt); ?></p>
 								<a href="<?php the_permalink(); ?>"
 									class="text-xs font-bold text-<?php echo esc_attr($colors['text']); ?> uppercase tracking-wider hover:underline">
 									Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i>
@@ -502,7 +502,7 @@ while (have_posts()):
 						Us</span>
 					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">Come see the magic in person.
 					</h2>
-					<p class="text-brand-ink/80 mb-8">
+					<p class="text-brand-ink/90 mb-8">
 						Tours are the best way to feel the Chroma difference.
 						<?php
 						// Parse opening and closing times from hours field
@@ -529,7 +529,7 @@ while (have_posts()):
 								</div>
 								<div>
 									<h3 class="font-bold text-brand-ink">Address</h3>
-									<p class="text-sm text-brand-ink/70">
+									<p class="text-sm text-brand-ink/80">
 										<?php echo esc_html($address); ?><br>
 										<?php echo esc_html("$city, $state $zip"); ?>
 									</p>
@@ -552,7 +552,7 @@ while (have_posts()):
 								</div>
 								<div>
 									<h3 class="font-bold text-brand-ink">Contact</h3>
-									<p class="text-sm text-brand-ink/70">
+									<p class="text-sm text-brand-ink/80">
 										<?php if ($phone): ?>
 											Phone: <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9]/', '', $phone)); ?>"
 												class="hover:text-<?php echo esc_attr($region_colors['text']); ?>"><?php echo esc_html($phone); ?></a><br>
@@ -573,7 +573,7 @@ while (have_posts()):
 							</div>
 							<div>
 								<h3 class="font-bold text-brand-ink">Hours of Operation</h3>
-								<p class="text-sm text-brand-ink/70">
+								<p class="text-sm text-brand-ink/80">
 									Monday - Friday: <?php echo esc_html($hours); ?><br>
 									Weekends: Closed
 								</p>
@@ -591,8 +591,8 @@ while (have_posts()):
 									</div>
 									<div>
 										<h3 class="font-bold text-brand-ink">School Pickups</h3>
-										<p class="text-sm text-brand-ink/70">We provide pickup service to:</p>
-										<ul class="text-sm text-brand-ink/70 mt-2 space-y-1">
+										<p class="text-sm text-brand-ink/80">We provide pickup service to:</p>
+										<ul class="text-sm text-brand-ink/80 mt-2 space-y-1">
 											<?php foreach ($schools as $school): ?>
 												<li class="flex items-start gap-2">
 													<i class="fa-solid fa-check text-chroma-green text-xs mt-1"></i>
@@ -637,7 +637,7 @@ while (have_posts()):
 				<div id="tour"
 					class="bg-brand-cream p-8 md:p-10 rounded-[2.5rem] shadow-soft border border-<?php echo esc_attr($region_colors['border']); ?>/10 h-fit sticky top-28">
 					<h3 class="font-serif text-2xl font-bold text-brand-ink mb-2">Request a Tour</h3>
-					<p class="text-sm text-brand-ink/80 mb-6">Fill out the form below and we'll contact you to confirm a
+					<p class="text-sm text-brand-ink/90 mb-6">Fill out the form below and we'll contact you to confirm a
 						time.</p>
 
 					<?php echo do_shortcode('[chroma_tour_form location_id="' . $location_id . '"]'); ?>
@@ -646,7 +646,7 @@ while (have_posts()):
 						<div class="mt-6 text-center">
 							<div class="flex items-center gap-4 mb-4">
 								<div class="flex-1 h-px bg-brand-ink/10"></div>
-								<span class="text-sm text-brand-ink/40 font-medium uppercase tracking-wider">or</span>
+								<span class="text-sm text-brand-ink/60 font-medium uppercase tracking-wider">or</span>
 								<div class="flex-1 h-px bg-brand-ink/10"></div>
 							</div>
 							<a href="<?php echo esc_url($tour_booking_link); ?>" target="_blank"
@@ -671,7 +671,7 @@ while (have_posts()):
 					<?php endif; ?>
 
 					<?php if ($seo_content_text): ?>
-						<div class="text-lg text-brand-ink/80 leading-relaxed max-w-3xl mx-auto">
+						<div class="text-lg text-brand-ink/90 leading-relaxed max-w-3xl mx-auto">
 							<?php echo wp_kses_post(wpautop($seo_content_text)); ?>
 						</div>
 					<?php endif; ?>

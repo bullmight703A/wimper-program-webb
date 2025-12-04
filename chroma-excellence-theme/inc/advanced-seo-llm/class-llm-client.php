@@ -168,10 +168,28 @@ class Chroma_LLM_Client
             wp_send_json_error(['message' => 'Post not found']);
         }
 
+        // Get schema definition to guide the LLM
+        $definitions = Chroma_Schema_Types::get_definitions();
+        $expected_keys = [];
+        if (isset($definitions[$schema_type]['fields'])) {
+            foreach ($definitions[$schema_type]['fields'] as $key => $field) {
+                if ($key !== 'custom_fields') { // Skip custom fields repeater
+                    $expected_keys[] = $key . ' (' . $field['label'] . ')';
+                }
+            }
+        }
+
         // Prepare prompt based on schema type
         $prompt = "Analyze the following content and extract data for a Schema.org '{$schema_type}' object.\n";
-        $prompt .= "Return ONLY valid JSON. Do not include markdown formatting.\n\n";
-        $prompt .= "Content:\n" . strip_tags($post->post_content);
+        $prompt .= "Return ONLY valid JSON. Do not include markdown formatting.\n";
+
+        if (!empty($expected_keys)) {
+            $prompt .= "Map the extracted data to the following JSON keys ONLY:\n";
+            $prompt .= "- " . implode("\n- ", $expected_keys) . "\n";
+            $prompt .= "If a field cannot be found, leave it empty or omit it.\n";
+        }
+
+        $prompt .= "\nContent:\n" . strip_tags($post->post_content);
 
         $response = $this->make_request([
             'messages' => [

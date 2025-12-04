@@ -45,7 +45,7 @@ $locations_query = new WP_Query(array(
 				<?php echo wp_kses_post(get_theme_mod('chroma_locations_archive_title', 'Find your Chroma <span class="text-chroma-green italic">Community</span> - Our Locations')); ?>
 			</h1>
 
-			<p class="text-lg text-brand-ink/80 max-w-2xl mx-auto mb-10 fade-in-up" style="animation-delay: 0.2s;">
+			<p class="text-lg text-brand-ink/90 max-w-2xl mx-auto mb-10 fade-in-up" style="animation-delay: 0.2s;">
 				<?php echo has_excerpt() ? get_the_excerpt() : esc_html(get_theme_mod('chroma_locations_archive_subtitle', 'Serving families across Metro Atlanta with the same high standards of safety, curriculum, and care at every single location.')); ?>
 			</p>
 
@@ -53,12 +53,13 @@ $locations_query = new WP_Query(array(
 			<div class="max-w-7xl mx-auto bg-white p-2 rounded-full shadow-float border border-brand-ink/5 flex flex-col lg:flex-row gap-2 fade-in-up"
 				style="animation-delay: 0.3s;">
 				<div class="relative flex-grow max-w-md">
-					<i class="fa-solid fa-search absolute left-5 top-1/2 -translate-y-1/2 text-brand-ink/30"></i>
+					<i class="fa-solid fa-search absolute left-5 top-1/2 -translate-y-1/2 text-brand-ink/50"></i>
 					<input type="text" id="location-search" placeholder="Search by ZIP code or city name..."
 						class="w-full pl-12 pr-4 py-3 rounded-full focus:outline-none text-brand-ink bg-white" />
 				</div>
 				<div class="flex gap-2 justify-start lg:justify-end flex-wrap flex-grow items-center">
-					<button onclick="filterLocations('all')" data-region="all" data-color-bg="chroma-green" data-color-text="white"
+					<button onclick="filterLocations('all')" data-region="all" data-color-bg="chroma-green"
+						data-color-text="white"
 						class="filter-btn px-6 py-3 rounded-full font-semibold bg-chroma-green text-white hover:shadow-glow transition-all duration-300 whitespace-nowrap">
 						<?php echo esc_html(get_theme_mod('chroma_locations_label', 'All Locations')); ?>
 					</button>
@@ -71,8 +72,7 @@ $locations_query = new WP_Query(array(
 						?>
 						<button onclick="filterLocations('<?php echo esc_attr($region->slug); ?>')"
 							data-region="<?php echo esc_attr($region->slug); ?>"
-							data-color-bg="<?php echo esc_attr($btn_bg); ?>"
-							data-color-text="white"
+							data-color-bg="<?php echo esc_attr($btn_bg); ?>" data-color-text="white"
 							class="filter-btn px-6 py-3 rounded-full font-semibold bg-white text-brand-ink border border-brand-ink/10 hover:bg-brand-ink/5 transition-all duration-300 whitespace-nowrap">
 							<?php echo esc_html($region->name); ?>
 						</button>
@@ -176,13 +176,13 @@ $locations_query = new WP_Query(array(
 									<?php echo esc_html($location_name); ?>
 								</h2>
 
-								<p class="text-sm text-brand-ink/80 mb-4 flex-grow">
+								<p class="text-sm text-brand-ink/90 mb-4 flex-grow">
 									<?php echo esc_html($address); ?><br>
 									<?php echo esc_html("$city, $state $zip"); ?>
 								</p>
 
 								<div
-									class="flex flex-wrap gap-2 mb-6 text-[10px] font-bold uppercase tracking-wider text-brand-ink/40">
+									class="flex flex-wrap gap-2 mb-6 text-[10px] font-bold uppercase tracking-wider text-brand-ink/60">
 									<span
 										class="border border-brand-ink/10 px-2 py-1 rounded-md"><?php echo esc_html($ages_served); ?></span>
 									<?php foreach (array_slice($special_programs, 0, 2) as $program): ?>
@@ -290,7 +290,7 @@ $locations_query = new WP_Query(array(
 				// Active State: Use dynamic color
 				btn.classList.remove('bg-white', 'text-brand-ink', 'border', 'border-brand-ink/10');
 				btn.classList.add('bg-' + activeBg, 'text-' + activeText, 'shadow-glow');
-				
+
 				// If using a Tailwind class that needs compilation, ensure it's safelisted.
 				// For direct style manipulation (if classes aren't working):
 				// btn.style.backgroundColor = ''; // Rely on class
@@ -298,14 +298,14 @@ $locations_query = new WP_Query(array(
 				// Inactive State
 				btn.classList.add('bg-white', 'text-brand-ink', 'border', 'border-brand-ink/10');
 				btn.classList.remove('bg-' + activeBg, 'text-' + activeText, 'shadow-glow');
-				
+
 				// Clean up any potential leftover dynamic classes from previous active states
 				// (This simple removal might miss if we switch from one color to another, 
 				// but since we re-add the white/ink classes, it should override or cascade correctly 
 				// IF the dynamic classes are removed. To be safe, we should remove ALL potential dynamic classes.
 				// However, since we don't know them all, we rely on the 'bg-white' overriding or 
 				// simply removing the specific one we added.)
-				
+
 				// Better approach: Remove ALL bg-* classes that aren't bg-white? 
 				// No, that's too aggressive.
 				// We just remove the specific one this button WOULD have if it were active.
@@ -338,7 +338,7 @@ $locations_query = new WP_Query(array(
 		buttons.forEach(btn => {
 			const activeBg = btn.dataset.colorBg || 'chroma-green';
 			const activeText = btn.dataset.colorText || 'white';
-			
+
 			btn.classList.add('bg-white', 'text-brand-ink', 'border', 'border-brand-ink/10');
 			btn.classList.remove('bg-' + activeBg, 'text-' + activeText, 'shadow-glow');
 		});

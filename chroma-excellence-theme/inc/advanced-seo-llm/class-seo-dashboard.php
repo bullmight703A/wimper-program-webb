@@ -26,6 +26,8 @@ class Chroma_SEO_Dashboard
         add_action('wp_ajax_chroma_save_schema_inspector', [$this, 'ajax_save_inspector_data']);
         add_action('wp_ajax_chroma_get_schema_fields', [$this, 'ajax_get_schema_fields']);
         add_action('wp_ajax_chroma_fetch_social_preview', [$this, 'ajax_fetch_social_preview']);
+        add_action('wp_ajax_chroma_fetch_llm_data', [$this, 'ajax_fetch_llm_data']);
+        add_action('wp_ajax_chroma_save_llm_targeting', [$this, 'ajax_save_llm_targeting']);
         add_action('admin_init', [$this, 'register_settings']);
     }
 
@@ -216,12 +218,149 @@ class Chroma_SEO_Dashboard
      */
     private function render_llm_tab()
     {
-        global $chroma_llm_client;
-        if ($chroma_llm_client) {
-            $chroma_llm_client->render_settings();
-        } else {
-            echo '<p>LLM Client not loaded.</p>';
-        }
+        // Get all posts for selector
+        $locations = get_posts(['post_type' => 'location', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
+        $programs = get_posts(['post_type' => 'program', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
+        $pages = get_posts(['post_type' => 'page', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC']);
+        $posts = get_posts(['post_type' => 'post', 'posts_per_page' => 50, 'orderby' => 'date', 'order' => 'DESC']);
+
+        $selected_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0;
+        ?>
+        <div class="chroma-llm-controls">
+            <label><strong>Select Page to Edit LLM Targeting:</strong></label>
+            <select id="chroma-llm-select" style="min-width: 300px;">
+                <option value="">-- Select a Page --</option>
+                <optgroup label="Locations">
+                    <?php foreach ($locations as $loc):
+                        if (!$loc || !is_a($loc, 'WP_Post'))
+                            continue; ?>
+                        <option value="<?php echo $loc->ID; ?>" <?php selected($selected_id, $loc->ID); ?>>
+                            <?php echo esc_html($loc->post_title); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </optgroup>
+                <optgroup label="Programs">
+                    <?php foreach ($programs as $prog):
+                        if (!$prog || !is_a($prog, 'WP_Post'))
+                            continue; ?>
+                        <option value="<?php echo $prog->ID; ?>" <?php selected($selected_id, $prog->ID); ?>>
+                            <?php echo esc_html($prog->post_title); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </optgroup>
+                <optgroup label="Pages">
+                    <?php foreach ($pages as $pg):
+                        if (!$pg || !is_a($pg, 'WP_Post'))
+                            continue; ?>
+                        <option value="<?php echo $pg->ID; ?>" <?php selected($selected_id, $pg->ID); ?>>
+                            <?php echo esc_html($pg->post_title); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </optgroup>
+                <optgroup label="Blog Posts">
+                    <?php foreach ($posts as $pt):
+                        if (!$pt || !is_a($pt, 'WP_Post'))
+                            continue; ?>
+                        <option value="<?php echo $pt->ID; ?>" <?php selected($selected_id, $pt->ID); ?>>
+                            <?php echo esc_html($pt->post_title); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </optgroup>
+            </select>
+            <span class="spinner" id="chroma-llm-spinner"></span>
+        </div>
+
+        <div id="chroma-llm-content">
+            <p class="description">Select a page above to edit its LLM targeting data.</p>
+        </div>
+
+        <script>
+            jQuery(document).ready(function ($) {
+                var chroma_nonce = '<?php echo wp_create_nonce('chroma_seo_dashboard_nonce'); ?>';
+                var selectedId = '<?php echo $selected_id; ?>';
+
+                if (selectedId && selectedId != '0') {
+                    loadLLMData(selectedId);
+                }
+
+                $('#chroma-llm-select').on('change', function () {
+                    var id = $(this).val();
+                    if (id) loadLLMData(id);
+                });
+
+                function loadLLMData(id) {
+                    $('#chroma-llm-spinner').addClass('is-active');
+                    $.post(ajaxurl, {
+                        action: 'chroma_fetch_llm_data',
+                        nonce: chroma_nonce,
+                        post_id: id
+                    }, function (response) {
+                        $('#chroma-llm-spinner').removeClass('is-active');
+                        if (response.success) {
+                            $('#chroma-llm-content').html(response.data.html);
+                        } else {
+                            alert('Error loading data');
+                        }
+                    });
+                }
+
+                // Save Handler
+                $(document).on('click', '#chroma-llm-save', function (e) {
+                    e.preventDefault();
+                    var btn = $(this);
+                    btn.prop('disabled', true).text('Saving...');
+
+                    var primary_intent = $('#seo_llm_primary_intent').val();
+                    var target_queries = [];
+                    $('.chroma-llm-query-input').each(function () {
+                        var val = $(this).val();
+                        if (val) target_queries.push(val);
+                    });
+                    var key_differentiators = [];
+                    $('.chroma-llm-diff-input').each(function () {
+                        var val = $(this).val();
+                        if (val) key_differentiators.push(val);
+                    });
+
+                    $.post(ajaxurl, {
+                        action: 'chroma_save_llm_targeting',
+                        nonce: chroma_nonce,
+                        post_id: $('#chroma-llm-post-id').val(),
+                        primary_intent: primary_intent,
+                        target_queries: target_queries,
+                        key_differentiators: key_differentiators
+                    }, function (response) {
+                        btn.prop('disabled', false).text('Save LLM Targeting');
+                        if (response.success) {
+                            alert('✅ Settings saved successfully!');
+                        } else {
+                            alert('Error saving settings.');
+                        }
+                    });
+                });
+
+                // Add query row
+                $(document).on('click', '#add-llm-query', function (e) {
+                    e.preventDefault();
+                    var html = '<div class="chroma-repeater-row" style="margin-bottom: 8px;"><input type="text" class="chroma-llm-query-input regular-text" placeholder="e.g., best preschool curriculum" style="width: 80%;"> <button class="button remove-llm-row">×</button></div>';
+                    $('#llm-queries-container').append(html);
+                });
+
+                // Add differentiator row
+                $(document).on('click', '#add-llm-diff', function (e) {
+                    e.preventDefault();
+                    var html = '<div class="chroma-repeater-row" style="margin-bottom: 8px;"><input type="text" class="chroma-llm-diff-input regular-text" placeholder="e.g., STEAM-focused curriculum" style="width: 80%;"> <button class="button remove-llm-row">×</button></div>';
+                    $('#llm-diffs-container').append(html);
+                });
+
+                // Remove row
+                $(document).on('click', '.remove-llm-row', function (e) {
+                    e.preventDefault();
+                    $(this).closest('.chroma-repeater-row').remove();
+                });
+            });
+        </script>
+        <?php
     }
 
     /**
@@ -1011,5 +1150,134 @@ class Chroma_SEO_Dashboard
             'image' => $img_url,
             'site_name' => $_SERVER['HTTP_HOST']
         ]);
+    }
+
+    /**
+     * AJAX: Fetch LLM Targeting Data
+     */
+    public function ajax_fetch_llm_data()
+    {
+        check_ajax_referer('chroma_seo_dashboard_nonce', 'nonce');
+
+        $post_id = intval($_POST['post_id']);
+        if (!$post_id)
+            wp_send_json_error();
+
+        // Get current values
+        $primary_intent = get_post_meta($post_id, 'seo_llm_primary_intent', true);
+        $target_queries = get_post_meta($post_id, 'seo_llm_target_queries', true) ?: [];
+        $key_differentiators = get_post_meta($post_id, 'seo_llm_key_differentiators', true) ?: [];
+
+        // Get fallbacks
+        $fallback_queries = Chroma_Fallback_Resolver::get_llm_target_queries($post_id);
+        $fallback_differentiators = Chroma_Fallback_Resolver::get_llm_key_differentiators($post_id);
+
+        ob_start();
+        ?>
+        <input type="hidden" id="chroma-llm-post-id" value="<?php echo $post_id; ?>">
+
+        <div style="background: #fff; padding: 20px; border: 1px solid #ddd; margin-bottom: 20px;">
+            <h3 style="margin-top: 0;">LLM Targeting for: <?php echo get_the_title($post_id); ?></h3>
+
+            <p class="description" style="margin-bottom: 20px;">
+                <strong>Optimize how AI assistants (ChatGPT, Claude, Perplexity) recommend this page.</strong>
+            </p>
+
+            <!-- Primary Intent -->
+            <div style="margin-bottom: 25px;">
+                <label for="seo_llm_primary_intent" style="display: block; font-weight: 600; margin-bottom: 8px;">
+                    Primary Intent
+                </label>
+                <input type="text" id="seo_llm_primary_intent" class="regular-text"
+                    value="<?php echo esc_attr($primary_intent); ?>"
+                    placeholder="e.g., childcare_discovery, program_information" style="width: 100%; max-width: 500px;">
+                <?php if (empty($primary_intent)): ?>
+                    <p class="description" style="color: #646970;">
+                        <em>Default: informational</em>
+                    </p>
+                <?php endif; ?>
+            </div>
+
+            <!-- Target Queries -->
+            <div style="margin-bottom: 25px;">
+                <h4 style="margin-bottom: 10px;">Target Queries</h4>
+                <p class="description" style="margin-bottom: 10px;">
+                    Natural language queries where LLMs should recommend this content.
+                </p>
+                <?php if (!empty($fallback_queries) && empty($target_queries)): ?>
+                    <p class="description" style="color: #646970; font-style: italic; margin-bottom: 10px;">
+                        Auto-generated examples: <?php echo implode(', ', array_slice($fallback_queries, 0, 2)); ?>
+                    </p>
+                <?php endif; ?>
+                <div id="llm-queries-container">
+                    <?php foreach ($target_queries as $query): ?>
+                        <div class="chroma-repeater-row" style="margin-bottom: 8px;">
+                            <input type="text" class="chroma-llm-query-input regular-text" value="<?php echo esc_attr($query); ?>"
+                                placeholder="e.g., best preschool curriculum" style="width: 80%;">
+                            <button class="button remove-llm-row">×</button>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <button id="add-llm-query" class="button button-secondary">+ Add Query</button>
+            </div>
+
+            <!-- Key Differentiators -->
+            <div style="margin-bottom: 25px;">
+                <h4 style="margin-bottom: 10px;">Key Differentiators</h4>
+                <p class="description" style="margin-bottom: 10px;">
+                    What makes this content unique? LLMs use these as talking points.
+                </p>
+                <?php if (!empty($fallback_differentiators) && empty($key_differentiators)): ?>
+                    <p class="description" style="color: #646970; font-style: italic; margin-bottom: 10px;">
+                        Auto-discovered: <?php echo implode('; ', array_slice($fallback_differentiators, 0, 2)); ?>
+                    </p>
+                <?php endif; ?>
+                <div id="llm-diffs-container">
+                    <?php foreach ($key_differentiators as $diff): ?>
+                        <div class="chroma-repeater-row" style="margin-bottom: 8px;">
+                            <input type="text" class="chroma-llm-diff-input regular-text" value="<?php echo esc_attr($diff); ?>"
+                                placeholder="e.g., STEAM-focused curriculum" style="width: 80%;">
+                            <button class="button remove-llm-row">×</button>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <button id="add-llm-diff" class="button button-secondary">+ Add Differentiator</button>
+            </div>
+
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ccc;">
+                <button id="chroma-llm-save" class="button button-primary button-large">
+                    Save LLM Targeting
+                </button>
+            </div>
+        </div>
+        <?php
+        $html = ob_get_clean();
+        wp_send_json_success(['html' => $html]);
+    }
+
+    /**
+     * AJAX: Save LLM Targeting Data
+     */
+    public function ajax_save_llm_targeting()
+    {
+        check_ajax_referer('chroma_seo_dashboard_nonce', 'nonce');
+
+        if (!current_user_can('edit_posts'))
+            wp_send_json_error();
+
+        $post_id = intval($_POST['post_id']);
+        if (!$post_id)
+            wp_send_json_error();
+
+        // Save data
+        update_post_meta($post_id, 'seo_llm_primary_intent', sanitize_text_field($_POST['primary_intent']));
+
+        $target_queries = isset($_POST['target_queries']) ? array_map('sanitize_text_field', $_POST['target_queries']) : [];
+        update_post_meta($post_id, 'seo_llm_target_queries', $target_queries);
+
+        $key_differentiators = isset($_POST['key_differentiators']) ? array_map('sanitize_text_field', $_POST['key_differentiators']) : [];
+        update_post_meta($post_id, 'seo_llm_key_differentiators', $key_differentiators);
+
+        wp_send_json_success();
     }
 }

@@ -126,7 +126,7 @@ $related_query = new WP_Query($related_args);
           srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/chroma-logo.png'); ?> 1x,
                      <?php echo esc_url(get_template_directory_uri() . '/assets/images/chroma-logo-highres.png'); ?> 2x" alt="Chroma Early Learning" class="h-10 w-auto" />
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-ink/70">
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-ink/80">
         <?php
         $stories_page = get_page_by_path('stories');
         $stories_url = $stories_page ? get_permalink($stories_page->ID) : home_url('/stories/');
@@ -149,7 +149,7 @@ $related_query = new WP_Query($related_args);
       <header class="py-20 text-center max-w-4xl mx-auto px-4">
         <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-chroma-blue mb-6">
           <span class="w-2 h-2 bg-chroma-blue rounded-full"></span> <?php echo esc_html($primary_category); ?>
-          <span class="text-brand-ink/30">•</span> <?php echo esc_html($post_date); ?>
+          <span class="text-brand-ink/50">•</span> <?php echo esc_html($post_date); ?>
         </div>
         <h1 class="font-serif text-4xl md:text-6xl text-brand-ink mb-8 leading-tight"><?php the_title(); ?></h1>
         <div class="flex items-center justify-center gap-4">
@@ -158,7 +158,7 @@ $related_query = new WP_Query($related_args);
             alt="<?php echo esc_attr($author_name); ?>" />
           <div class="text-left">
             <p class="text-sm font-bold text-brand-ink"><?php echo esc_html($author_name); ?></p>
-            <p class="text-xs text-brand-ink/80"><?php echo esc_html($author_title); ?></p>
+            <p class="text-xs text-brand-ink/90"><?php echo esc_html($author_title); ?></p>
           </div>
         </div>
       </header>
@@ -172,7 +172,7 @@ $related_query = new WP_Query($related_args);
 
       <div class="max-w-3xl mx-auto px-4 lg:px-6 pb-20">
         <div
-          class="post-content prose prose-lg prose-headings:font-serif prose-headings:font-bold prose-p:text-brand-ink/80 prose-a:text-chroma-blue hover:prose-a:text-chroma-blue/80 transition-colors">
+          class="post-content prose prose-lg prose-headings:font-serif prose-headings:font-bold prose-p:text-brand-ink/90 prose-a:text-chroma-blue hover:prose-a:text-chroma-blue/80 transition-colors">
           <?php
           while (have_posts()):
             the_post();

@@ -75,7 +75,7 @@ while (have_posts()):
 					</h1>
 
 					<?php if ($hero_description): ?>
-						<p class="text-lg text-brand-ink/70 max-w-2xl">
+						<p class="text-lg text-brand-ink/80 max-w-2xl">
 							<?php echo wp_kses_post(wpautop($hero_description)); ?>
 						</p>
 					<?php endif; ?>
@@ -123,7 +123,7 @@ while (have_posts()):
 						</h2>
 
 						<?php if ($prism_description): ?>
-							<div class="text-brand-ink/70 text-lg mb-6">
+							<div class="text-brand-ink/80 text-lg mb-6">
 								<?php echo wp_kses_post(wpautop($prism_description)); ?>
 							</div>
 						<?php endif; ?>
@@ -132,7 +132,7 @@ while (have_posts()):
 							$focus_items_array = array_filter(array_map('trim', explode("\n", $prism_focus_items)));
 							if (!empty($focus_items_array)):
 								?>
-								<ul class="space-y-3 text-sm text-brand-ink/80">
+								<ul class="space-y-3 text-sm text-brand-ink/90">
 									<?php
 									$item_colors = array('chroma-red', 'chroma-yellow', 'chroma-green', 'chroma-blue', 'brand-ink/20');
 									foreach ($focus_items_array as $index => $item):
@@ -174,11 +174,12 @@ while (have_posts()):
 					?>
 					<section id="schedule" class="py-24 bg-white">
 						<div class="max-w-6xl mx-auto px-4 lg:px-6" data-schedule>
-							<h2 class="text-3xl font-serif font-bold text-center mb-12 text-brand-ink"><?php echo esc_html($schedule_title); ?></h2>
-							
+							<h2 class="text-3xl font-serif font-bold text-center mb-12 text-brand-ink">
+								<?php echo esc_html($schedule_title); ?></h2>
+
 							<div class="tab-content active" data-schedule-panel="program">
 								<div class="rounded-[3rem] p-8 md:p-12 bg-brand-cream text-center">
-									
+
 									<!-- Time Bubbles -->
 									<div class="relative max-w-5xl mx-auto mb-10">
 										<!-- Top Row -->
@@ -188,11 +189,11 @@ while (have_posts()):
 												$is_first = 0 === $i;
 												$btn_classes = $is_first
 													? 'bg-brand-ink text-white shadow-md transform scale-105'
-													: 'bg-white text-brand-ink/70 hover:text-brand-ink hover:bg-white/80';
+													: 'bg-white text-brand-ink/80 hover:text-brand-ink hover:bg-white/80';
 												?>
-												<button class="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xs md:text-sm font-bold transition-all duration-300 <?php echo esc_attr($btn_classes); ?>"
-													data-schedule-step-trigger
-													data-title="<?php echo esc_attr($step['title']); ?>"
+												<button
+													class="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xs md:text-sm font-bold transition-all duration-300 <?php echo esc_attr($btn_classes); ?>"
+													data-schedule-step-trigger data-title="<?php echo esc_attr($step['title']); ?>"
 													data-copy="<?php echo esc_attr($step['copy']); ?>"
 													aria-label="<?php echo esc_attr($step['time']); ?>">
 													<?php echo esc_html($step['time']); ?>
@@ -204,11 +205,11 @@ while (have_posts()):
 										<div class="flex flex-wrap justify-center gap-2 md:gap-4 relative z-10 max-w-full">
 											<?php foreach ($bottom_steps as $i => $step): ?>
 												<?php
-												$btn_classes = 'bg-white text-brand-ink/70 hover:text-brand-ink hover:bg-white/80';
+												$btn_classes = 'bg-white text-brand-ink/80 hover:text-brand-ink hover:bg-white/80';
 												?>
-												<button class="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xs md:text-sm font-bold transition-all duration-300 <?php echo esc_attr($btn_classes); ?>"
-													data-schedule-step-trigger
-													data-title="<?php echo esc_attr($step['title']); ?>"
+												<button
+													class="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xs md:text-sm font-bold transition-all duration-300 <?php echo esc_attr($btn_classes); ?>"
+													data-schedule-step-trigger data-title="<?php echo esc_attr($step['title']); ?>"
 													data-copy="<?php echo esc_attr($step['copy']); ?>"
 													aria-label="<?php echo esc_attr($step['time']); ?>">
 													<?php echo esc_html($step['time']); ?>
@@ -224,8 +225,7 @@ while (have_posts()):
 												data-content-title>
 												<?php echo esc_html($steps[0]['title']); ?>
 											</h4>
-											<p class="text-brand-ink/80 leading-relaxed transition-opacity duration-300"
-												data-content-copy>
+											<p class="text-brand-ink/90 leading-relaxed transition-opacity duration-300" data-content-copy>
 												<?php echo esc_html($steps[0]['copy']); ?>
 											</p>
 										<?php endif; ?>
@@ -321,15 +321,15 @@ while (have_posts()):
 			},
 			plugins: { legend: { display: false } }
 		}
-													});
-												};
+														});
+													};
 		document.body.appendChild(script);
-											}
-										});
-									}, { rootMargin: '200px' }); // Start loading 200px before view
+												}
+											});
+										}, { rootMargin: '200px' }); // Start loading 200px before view
 		observer.observe(ctx);
-								}
-							});
+									}
+								});
 	</script>
 
 	<?php

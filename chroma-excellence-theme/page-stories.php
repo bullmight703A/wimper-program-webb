@@ -98,7 +98,7 @@ function chroma_get_category_color($category_slug)
           srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/chroma-logo.png'); ?> 1x,
                      <?php echo esc_url(get_template_directory_uri() . '/assets/images/chroma-logo-highres.png'); ?> 2x" alt="Chroma Early Learning" class="h-10 w-auto" />
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-ink/70">
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-ink/80">
         <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-chroma-blue">Home</a>
         <a href="<?php the_permalink(); ?>" class="text-brand-ink font-bold hover:text-chroma-red">Stories</a>
         <?php
@@ -125,17 +125,17 @@ function chroma_get_category_color($category_slug)
       <div class="max-w-4xl mx-auto px-4">
         <span class="text-chroma-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block">The Blog</span>
         <h1 class="font-serif text-5xl md:text-6xl text-brand-ink mb-6">Chroma Stories</h1>
-        <p class="text-lg text-brand-ink/80">Parenting tips, classroom spotlights, and insights from our educators.</p>
+        <p class="text-lg text-brand-ink/90">Parenting tips, classroom spotlights, and insights from our educators.</p>
 
         <!-- Categories -->
         <div class="flex flex-wrap justify-center gap-2 mt-8">
           <a href="<?php echo esc_url(get_permalink()); ?>"
-            class="px-4 py-2 rounded-full border border-brand-ink/10 <?php echo empty($selected_category) ? 'bg-brand-ink text-white' : 'bg-white hover:bg-brand-cream text-brand-ink/70'; ?> text-xs font-bold uppercase">
+            class="px-4 py-2 rounded-full border border-brand-ink/10 <?php echo empty($selected_category) ? 'bg-brand-ink text-white' : 'bg-white hover:bg-brand-cream text-brand-ink/80'; ?> text-xs font-bold uppercase">
             All
           </a>
           <?php foreach ($categories as $category): ?>
             <a href="<?php echo esc_url(add_query_arg('category', $category->slug, get_permalink())); ?>"
-              class="px-4 py-2 rounded-full border border-brand-ink/10 <?php echo $selected_category === $category->slug ? 'bg-brand-ink text-white' : 'bg-white hover:bg-brand-cream text-brand-ink/70'; ?> text-xs font-bold uppercase">
+              class="px-4 py-2 rounded-full border border-brand-ink/10 <?php echo $selected_category === $category->slug ? 'bg-brand-ink text-white' : 'bg-white hover:bg-brand-cream text-brand-ink/80'; ?> text-xs font-bold uppercase">
               <?php echo esc_html($category->name); ?>
             </a>
           <?php endforeach; ?>
@@ -199,15 +199,14 @@ function chroma_get_category_color($category_slug)
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     alt="<?php the_title_attribute(); ?>" />
                 </div>
-                <span
-                  class="text-<?php echo esc_attr($category_color); ?> font-bold text-[10px] uppercase tracking-wider">
+                <span class="text-<?php echo esc_attr($category_color); ?> font-bold text-[10px] uppercase tracking-wider">
                   <?php echo esc_html($category_name); ?>
                 </span>
                 <h3
                   class="font-serif text-xl font-bold text-brand-ink mt-2 mb-2 group-hover:text-<?php echo esc_attr($category_color); ?> transition-colors">
                   <?php the_title(); ?>
                 </h3>
-                <p class="text-sm text-brand-ink/80">
+                <p class="text-sm text-brand-ink/90">
                   <?php echo esc_html(wp_trim_words(get_the_excerpt(), 20)); ?>
                 </p>
               </a>
@@ -217,7 +216,7 @@ function chroma_get_category_color($category_slug)
 
       <?php else: ?>
         <div class="text-center py-16">
-          <p class="text-brand-ink/80 text-lg">No stories found. Check back soon!</p>
+          <p class="text-brand-ink/90 text-lg">No stories found. Check back soon!</p>
         </div>
       <?php endif; ?>
 

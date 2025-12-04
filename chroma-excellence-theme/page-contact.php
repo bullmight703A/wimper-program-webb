@@ -54,7 +54,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 				<h1 class="font-serif text-5xl md:text-6xl text-brand-ink mb-6">
 					Contact Chroma Early Learning
 				</h1>
-				<p class="text-lg text-brand-ink/80">
+				<p class="text-lg text-brand-ink/90">
 					<?php echo esc_html($hero_description); ?>
 				</p>
 			</div>
@@ -76,7 +76,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 						<h2 class="font-serif text-2xl font-bold text-brand-ink mb-4">
 							<?php echo esc_html($corporate_title); ?>
 						</h2>
-						<p class="text-brand-ink/70 leading-relaxed">
+						<p class="text-brand-ink/80 leading-relaxed">
 							<?php
 							if (!empty($corporate_name)) {
 								echo esc_html($corporate_name) . '<br>';
@@ -98,7 +98,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 						<h2 class="font-serif text-2xl font-bold text-brand-ink mb-4">
 							<?php echo esc_html($careers_title); ?>
 						</h2>
-						<p class="text-brand-ink/70 mb-4">
+						<p class="text-brand-ink/80 mb-4">
 							<?php echo esc_html($careers_description); ?>
 						</p>
 						<a href="<?php echo esc_url($careers_link_url); ?>"
@@ -115,7 +115,7 @@ $press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/n
 						<h2 class="font-serif text-2xl font-bold text-brand-ink mb-4">
 							<?php echo esc_html($press_title); ?>
 						</h2>
-						<p class="text-brand-ink/70 mb-4">
+						<p class="text-brand-ink/80 mb-4">
 							<?php echo esc_html($press_description); ?>
 						</p>
 						<a href="<?php echo esc_url($press_link_url); ?>"

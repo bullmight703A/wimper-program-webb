@@ -32,7 +32,7 @@ $programs_query = new WP_Query(array(
             <h1 class="font-serif text-[2.8rem] md:text-6xl text-brand-ink mb-6 fade-in-up delay-100">
                 A curriculum that grows <span class="text-chroma-red italic">with them.</span>
             </h1>
-            <p class="text-lg text-brand-ink/80 max-w-2xl mx-auto mb-10 fade-in-up delay-200">
+            <p class="text-lg text-brand-ink/90 max-w-2xl mx-auto mb-10 fade-in-up delay-200">
                 From sensory discovery in our infant suites to the project-based learning of Pre-K, every program uses
                 our proprietary Prismpath™ model to meet children exactly where they are.
             </p>
@@ -96,8 +96,7 @@ $programs_query = new WP_Query(array(
                                         'alt' => get_the_title(),
                                     )); ?>
                                 <?php else: ?>
-                                    <img src="<?php echo esc_url($thumbnail_url); ?>"
-                                        alt="<?php echo esc_attr(get_the_title()); ?>"
+                                    <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
                                         class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                 <?php endif; ?>
 
@@ -111,12 +110,12 @@ $programs_query = new WP_Query(array(
 
                             <h3 class="font-serif text-2xl font-bold text-brand-ink mb-2"><?php the_title(); ?></h3>
 
-                            <p class="text-sm text-brand-ink/80 mb-6 flex-grow">
+                            <p class="text-sm text-brand-ink/90 mb-6 flex-grow">
                                 <?php echo has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), 20); ?>
                             </p>
 
                             <?php if (!empty($features_array)): ?>
-                                <ul class="text-xs text-brand-ink/70 space-y-2 mb-6">
+                                <ul class="text-xs text-brand-ink/80 space-y-2 mb-6">
                                     <?php foreach ($features_array as $feature): ?>
                                         <li class="flex gap-2">
                                             <i class="fa-solid fa-check text-chroma-green"></i>
@@ -137,7 +136,7 @@ $programs_query = new WP_Query(array(
                 </div>
             <?php else: ?>
                 <div class="text-center py-20">
-                    <p class="text-brand-ink/80 text-lg">No programs found. Please add programs from the WordPress admin.
+                    <p class="text-brand-ink/90 text-lg">No programs found. Please add programs from the WordPress admin.
                     </p>
                 </div>
             <?php endif; ?>
@@ -191,7 +190,7 @@ $programs_query = new WP_Query(array(
                 <span class="text-chroma-blue font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Our
                     Methodology</span>
                 <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6">More than just daycare.</h2>
-                <p class="text-brand-ink/70 text-lg leading-relaxed mb-8">
+                <p class="text-brand-ink/80 text-lg leading-relaxed mb-8">
                     We believe that education isn't just about filling a bucket, but lighting a fire. Our curriculum
                     ensures that by the time your child graduates from Chroma, they are not just "school ready"—they are
                     life ready.
@@ -200,12 +199,12 @@ $programs_query = new WP_Query(array(
                     <div class="bg-brand-cream p-6 rounded-2xl border border-brand-ink/5">
                         <div class="text-3xl mb-2">🧠</div>
                         <h4 class="font-bold text-brand-ink mb-1">Cognitive Growth</h4>
-                        <p class="text-xs text-brand-ink/80">Critical thinking & problem solving.</p>
+                        <p class="text-xs text-brand-ink/90">Critical thinking & problem solving.</p>
                     </div>
                     <div class="bg-brand-cream p-6 rounded-2xl border border-brand-ink/5">
                         <div class="text-3xl mb-2">❤️</div>
                         <h4 class="font-bold text-brand-ink mb-1">Emotional IQ</h4>
-                        <p class="text-xs text-brand-ink/80">Empathy, regulation & kindness.</p>
+                        <p class="text-xs text-brand-ink/90">Empathy, regulation & kindness.</p>
                     </div>
                 </div>
             </div>
@@ -216,7 +215,7 @@ $programs_query = new WP_Query(array(
     <section class="py-20 bg-brand-cream">
         <div class="max-w-4xl mx-auto px-4 lg:px-6 text-center">
             <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-ink mb-6">Ready to find your fit?</h2>
-            <p class="text-brand-ink/70 mb-10">Every campus offers tours so you can meet the teachers, see the
+            <p class="text-brand-ink/80 mb-10">Every campus offers tours so you can meet the teachers, see the
                 classrooms, and experience the Chroma culture firsthand.</p>
             <div class="flex flex-wrap justify-center gap-4">
                 <a href="<?php echo esc_url(home_url('/locations')); ?>"
