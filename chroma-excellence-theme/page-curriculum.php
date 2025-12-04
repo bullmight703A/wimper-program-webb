@@ -343,7 +343,7 @@ $cta_description = get_post_meta($page_id, 'curriculum_cta_description', true) ?
 							<h3 class="text-2xl font-bold text-brand-ink mb-4">
 								<?php echo esc_html($card['title']); ?>
 							</h3>
-							<p class="text-brand-ink/70 mb-6 leading-relaxed">
+							<p class="text-brand-ink/80 mb-6 leading-relaxed">
 								<?php echo wp_kses_post($card['desc']); ?>
 							</p>
 							<ul class="space-y-3">
@@ -370,7 +370,7 @@ $cta_description = get_post_meta($page_id, 'curriculum_cta_description', true) ?
 				<h2 class="font-serif text-3xl md:text-5xl text-brand-ink mb-6">
 					<?php echo esc_html($cta_title); ?>
 				</h2>
-				<p class="text-lg text-brand-ink/70 mb-10">
+				<p class="text-lg text-brand-ink/80 mb-10">
 					<?php echo esc_html($cta_description); ?>
 				</p>
 				<div class="flex flex-wrap gap-4 justify-center">

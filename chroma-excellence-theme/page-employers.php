@@ -87,7 +87,7 @@ $contact_title = get_post_meta($page_id, 'employers_contact_title', true) ?: 'Bu
 							<h3 class="font-serif text-2xl font-bold mb-4 text-brand-ink">
 								<?php echo esc_html($solution['title']); ?>
 							</h3>
-							<p class="text-brand-ink/70 text-sm leading-relaxed">
+							<p class="text-brand-ink/80 text-sm leading-relaxed">
 								<?php echo esc_html($solution['desc']); ?>
 							</p>
 						</div>
@@ -106,7 +106,7 @@ $contact_title = get_post_meta($page_id, 'employers_contact_title', true) ?: 'Bu
 					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
 						<?php echo esc_html($tax_title); ?>
 					</h2>
-					<p class="text-brand-ink/70 max-w-2xl mx-auto">
+					<p class="text-brand-ink/80 max-w-2xl mx-auto">
 						<?php echo esc_html($tax_description); ?>
 					</p>
 				</div>
@@ -127,7 +127,7 @@ $contact_title = get_post_meta($page_id, 'employers_contact_title', true) ?: 'Bu
 							<p class="text-sm font-bold text-chroma-blue mb-4 uppercase tracking-wider">
 								<?php echo esc_html($federal_subtitle); ?>
 							</p>
-							<p class="text-brand-ink/70 text-sm leading-relaxed mb-6">
+							<p class="text-brand-ink/80 text-sm leading-relaxed mb-6">
 								<?php echo wp_kses_post($federal_desc); ?>
 							</p>
 							<a href="<?php echo esc_url($federal_link_url); ?>" target="_blank"
@@ -154,7 +154,7 @@ $contact_title = get_post_meta($page_id, 'employers_contact_title', true) ?: 'Bu
 							<p class="text-sm font-bold text-chroma-green mb-4 uppercase tracking-wider">
 								<?php echo esc_html($georgia_subtitle); ?>
 							</p>
-							<p class="text-brand-ink/70 text-sm leading-relaxed mb-6">
+							<p class="text-brand-ink/80 text-sm leading-relaxed mb-6">
 								<?php echo wp_kses_post($georgia_desc); ?>
 							</p>
 							<a href="<?php echo esc_url($georgia_link_url); ?>" target="_blank"
@@ -165,7 +165,7 @@ $contact_title = get_post_meta($page_id, 'employers_contact_title', true) ?: 'Bu
 						</div>
 					</div>
 				</div>
-				<p class="text-xs text-center text-brand-ink/40 mt-8 italic">
+				<p class="text-xs text-center text-brand-ink/60 mt-8 italic">
 					<?php echo esc_html($tax_disclaimer); ?>
 				</p>
 			</div>

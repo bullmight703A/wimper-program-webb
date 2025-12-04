@@ -248,7 +248,7 @@ $gallery_img5 = get_post_meta($page_id, 'about_gallery_image_5', true) ?: 'https
 						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
 							<?php echo esc_html($events_title); ?>
 						</h2>
-						<p class="text-brand-ink/70 mb-8 text-lg">
+						<p class="text-brand-ink/80 mb-8 text-lg">
 							<?php echo esc_html($events_description); ?>
 						</p>
 
@@ -351,7 +351,7 @@ $gallery_img5 = get_post_meta($page_id, 'about_gallery_image_5', true) ?: 'https
 										<div>
 											<p class="font-bold text-brand-ink"><?php echo esc_html($menu['title']); ?>
 											</p>
-											<p class="text-xs text-brand-ink/50">
+											<p class="text-xs text-brand-ink/70">
 												<?php echo esc_html($menu['subtitle']); ?>
 											</p>
 										</div>
@@ -427,7 +427,7 @@ $gallery_img5 = get_post_meta($page_id, 'about_gallery_image_5', true) ?: 'https
 									<i class="fa-solid fa-chevron-down"></i>
 								</span>
 							</summary>
-							<p class="mt-3 text-sm text-brand-ink/70 leading-relaxed">
+							<p class="mt-3 text-sm text-brand-ink/80 leading-relaxed">
 								<?php echo esc_html($faq['answer']); ?>
 							</p>
 						</details>

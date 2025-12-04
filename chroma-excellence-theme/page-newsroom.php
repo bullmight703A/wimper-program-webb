@@ -63,9 +63,9 @@ $newsroom_query = new WP_Query($newsroom_args);
         <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/chroma-logo.png'); ?>"
           srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/chroma-logo.png'); ?> 1x,
                      <?php echo esc_url(get_template_directory_uri() . '/assets/images/chroma-logo-highres.png'); ?> 2x" alt="Chroma Early Learning" class="h-10 w-auto" />
-        <span class="text-xs uppercase tracking-widest text-brand-ink/50">Newsroom</span>
+        <span class="text-xs uppercase tracking-widest text-brand-ink/70">Newsroom</span>
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-ink/70">
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-brand-ink/80">
         <?php
         $stories_page = get_page_by_path('stories');
         if ($stories_page):
@@ -104,13 +104,13 @@ $newsroom_query = new WP_Query($newsroom_args);
             <?php endif; ?>
 
             <div class="group">
-              <p class="text-xs font-bold uppercase tracking-widest text-brand-ink/40 mb-2">
+              <p class="text-xs font-bold uppercase tracking-widest text-brand-ink/60 mb-2">
                 <?php echo esc_html(get_the_date('F j, Y')); ?>
               </p>
               <h2 class="font-serif text-2xl font-bold text-brand-ink mb-3 group-hover:text-chroma-blue transition-colors">
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
               </h2>
-              <p class="text-brand-ink/70 mb-4 max-w-3xl">
+              <p class="text-brand-ink/80 mb-4 max-w-3xl">
                 <?php echo esc_html(wp_trim_words(get_the_excerpt(), 30)); ?>
               </p>
               <a href="<?php the_permalink(); ?>"

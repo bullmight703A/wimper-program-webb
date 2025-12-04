@@ -65,7 +65,7 @@
     </div>
   </main>
 
-  <footer class="p-6 text-center text-xs text-brand-ink/60">
+  <footer class="p-6 text-center text-xs text-brand-ink/80">
     &copy; <?php echo esc_html(date('Y')); ?> <?php bloginfo('name'); ?>.
   </footer>
 

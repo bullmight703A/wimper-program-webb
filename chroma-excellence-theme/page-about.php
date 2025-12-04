@@ -216,7 +216,7 @@ while (have_posts()):
 									class="text-3xl md:text-4xl font-serif font-bold text-<?php echo esc_attr($stat['color']); ?> mb-2">
 									<?php echo esc_html($stat['value']); ?>
 								</div>
-								<div class="text-xs font-bold uppercase tracking-wider text-brand-ink/60">
+								<div class="text-xs font-bold uppercase tracking-wider text-brand-ink/80">
 									<?php echo esc_html($stat['label']); ?>
 								</div>
 							</div>
@@ -392,7 +392,7 @@ while (have_posts()):
 						<?php endif; ?>
 						<?php if ($nutrition_bullet3_text): ?>
 							<li class="flex items-center gap-3">
-								<i class="<?php echo esc_attr($nutrition_bullet3_icon); ?> text-brand-ink/60 text-xl"></i>
+								<i class="<?php echo esc_attr($nutrition_bullet3_icon); ?> text-brand-ink/80 text-xl"></i>
 								<span><?php echo esc_html($nutrition_bullet3_text); ?></span>
 							</li>
 						<?php endif; ?>
@@ -498,7 +498,7 @@ while (have_posts()):
 		role="dialog" aria-modal="true" aria-labelledby="chroma-bio-modal-title">
 		<div class="bg-white rounded-[2rem] max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative p-8 md:p-12">
 			<button id="chroma-bio-close"
-				class="absolute top-6 right-6 text-brand-ink/70 hover:text-chroma-red transition-colors z-10"
+				class="absolute top-6 right-6 text-brand-ink/80 hover:text-chroma-red transition-colors z-10"
 				aria-label="Close modal">
 				<i class="fa-solid fa-xmark text-2xl"></i>
 			</button>
