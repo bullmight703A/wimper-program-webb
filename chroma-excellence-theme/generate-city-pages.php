@@ -204,7 +204,6 @@ function chroma_generate_programs_section($city, $programs)
             <div style='padding:2rem;'>
                 <h3 class='has-brand-ink-color' style='margin-top:0;'>{$prog['title']}</h3>
                 <p>" . wp_trim_words($prog['excerpt'], 20) . "</p>
-                <a href='{$prog['url']}' class='wp-block-button__link has-chroma-blue-background-color has-background'>Learn More</a>
             </div>
         </div>";
     }
@@ -370,20 +369,50 @@ foreach ($city_map as $city_name => $schools) {
     // FAQ
     $content .= chroma_generate_faq_section($city_name);
 
-    // Service Area / Driving
-    $school_links = "";
+    // Service Area / Driving (SCHOOL CARDS)
+    $content .= "
+    <!-- Service Area / School Cards -->
+    <section class='wp-block-group alignfull' style='padding:4rem 2rem; background-color:#fff;'>
+        <div class='wp-block-group__inner-container' style='max-width:1200px; margin:0 auto; padding:0 20px;'>
+            <h2 class='has-text-align-center' style='margin-bottom:3rem;'>Our Campuses Serving $city_name</h2>
+            <div class='wp-block-columns alignwide' style='flex-wrap:wrap; gap:2rem; justify-content:center;'>";
+
     foreach ($schools as $s) {
-        $school_links .= "<li><strong>{$s['school_name']}</strong> ({$s['address']})</li>";
+        $school_img = "";
+        $school_url = "#";
+        if ($s['id']) {
+            $school_url = get_permalink($s['id']);
+            // Fetch Image for this specific school
+            $s_gallery_raw = get_post_meta($s['id'], 'location_hero_gallery', true);
+            $s_img_url = "";
+            if ($s_gallery_raw) {
+                $lines = explode("\n", $s_gallery_raw);
+                if (!empty($lines))
+                    $s_img_url = trim($lines[0]);
+            }
+            if (empty($s_img_url)) {
+                $s_img_url = get_the_post_thumbnail_url($s['id'], 'medium_large');
+            }
+
+            if ($s_img_url) {
+                $school_img = "<img src='$s_img_url' alt='{$s['school_name']}' style='width:100%; height:250px; object-fit:cover; border-radius:1rem 1rem 0 0;'>";
+            }
+        }
+
+        $content .= "
+        <div class='wp-block-column' style='flex-basis:45%; min-width:300px; background:#fdfbf7; border-radius:1rem; box-shadow:0 4px 20px rgba(0,0,0,0.05); overflow:hidden; margin-bottom:2rem;'>
+            $school_img
+            <div style='padding:2rem;'>
+                <h3 class='has-brand-ink-color' style='margin-top:0;'>{$s['school_name']}</h3>
+                <p style='margin-bottom:1.5rem;'>{$s['address']}</p>
+                <a href='$school_url' class='wp-block-button__link has-chroma-blue-background-color has-background' style='width:100%; text-align:center; display:block;'>Visit Campus</a>
+            </div>
+        </div>";
     }
 
     $content .= "
-    <!-- Service Area -->
-    <section class='wp-block-group alignfull' style='padding:4rem 2rem;'>
-        <div style='max-width:800px; margin:0 auto;'>
-            <h3>Conveniently Located for $city_name Families</h3>
-            <p>Chroma Early Learning has campuses conveniently located near you:</p>
-            <ul>$school_links</ul>
-            <p><strong>Serving neighborhoods including:</strong> " . implode(', ', $neighborhoods) . ".</p>
+            </div>
+            <p class='has-text-align-center' style='margin-top:2rem;'><strong>Also serving neighborhoods including:</strong> " . implode(', ', $neighborhoods) . ".</p>
         </div>
     </section>";
 

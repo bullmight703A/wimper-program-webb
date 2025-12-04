@@ -456,33 +456,34 @@ while (have_posts()):
 							$program_fields = chroma_get_program_fields();
 							$age_range = $program_fields['age_range'];
 							$excerpt = $program_fields['excerpt'] ?: get_the_excerpt();
-							$icon = $program_fields['icon'];
 							$slug = get_post_field('post_name');
 							$colors = $color_map[$slug] ?? $color_map['toddler'];
+							$prog_img = get_the_post_thumbnail_url(get_the_ID(), 'medium_large');
 							?>
 							<div
-								class="bg-white rounded-3xl p-6 shadow-card border border-brand-ink/5 hover:border-<?php echo esc_attr($colors['border']); ?> transition group">
-								<div class="flex justify-between items-start mb-4">
-									<?php if ($age_range): ?>
-										<span
-											class="bg-<?php echo esc_attr($colors['bg']); ?> text-<?php echo esc_attr($colors['text']); ?> px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">
-											<?php echo esc_html($age_range); ?>
-										</span>
-									<?php endif; ?>
-									<?php if (strpos($icon, 'fa-') !== false): ?>
-										<i
-											class="<?php echo esc_attr($icon); ?> text-2xl group-hover:scale-110 transition-transform"></i>
-									<?php else: ?>
-										<span
-											class="text-2xl group-hover:scale-110 transition-transform"><?php echo esc_html($icon); ?></span>
-									<?php endif; ?>
+								class="bg-white rounded-3xl shadow-card border border-brand-ink/5 hover:border-<?php echo esc_attr($colors['border']); ?> transition group overflow-hidden flex flex-col">
+								<?php if ($prog_img): ?>
+									<div class="h-48 overflow-hidden">
+										<img src="<?php echo esc_url($prog_img); ?>" alt="<?php the_title(); ?>"
+											class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+									</div>
+								<?php endif; ?>
+								<div class="p-6 flex-1 flex flex-col">
+									<div class="flex justify-between items-start mb-4">
+										<?php if ($age_range): ?>
+											<span
+												class="bg-<?php echo esc_attr($colors['bg']); ?> text-<?php echo esc_attr($colors['text']); ?> px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">
+												<?php echo esc_html($age_range); ?>
+											</span>
+										<?php endif; ?>
+									</div>
+									<h3 class="font-serif text-xl font-bold text-brand-ink mb-2"><?php the_title(); ?></h3>
+									<p class="text-sm text-brand-ink/90 mb-6 flex-1"><?php echo esc_html($excerpt); ?></p>
+									<a href="<?php the_permalink(); ?>"
+										class="text-xs font-bold text-<?php echo esc_attr($colors['text']); ?> uppercase tracking-wider hover:underline mt-auto">
+										Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i>
+									</a>
 								</div>
-								<h3 class="font-serif text-xl font-bold text-brand-ink mb-2"><?php the_title(); ?></h3>
-								<p class="text-sm text-brand-ink/90 mb-6"><?php echo esc_html($excerpt); ?></p>
-								<a href="<?php the_permalink(); ?>"
-									class="text-xs font-bold text-<?php echo esc_attr($colors['text']); ?> uppercase tracking-wider hover:underline">
-									Learn More <i class="fa-solid fa-arrow-right text-[10px]"></i>
-								</a>
 							</div>
 						<?php endwhile;
 						wp_reset_postdata(); ?>
@@ -490,6 +491,50 @@ while (have_posts()):
 				</div>
 			</section>
 		<?php endif; ?>
+
+		<!-- Testimonials Section -->
+		<section class="py-20 bg-white">
+			<div class="max-w-4xl mx-auto px-4 lg:px-6 text-center">
+				<span
+					class="text-<?php echo esc_attr($region_colors['text']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Family
+					Stories</span>
+				<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-8">Why Families Love Us</h2>
+				<blockquote class="text-2xl md:text-3xl font-serif italic text-brand-ink/80 leading-relaxed mb-8">
+					"<?php echo esc_html($hero_review_text ?: "We absolutely love Chroma! The teachers are so caring and my child has learned so much."); ?>"
+				</blockquote>
+				<cite class="not-italic font-bold text-brand-ink uppercase tracking-wider text-sm">
+					— <?php echo esc_html($hero_review_author ?: "Happy Parent"); ?>
+				</cite>
+			</div>
+		</section>
+
+		<!-- FAQ Section -->
+		<section class="py-20 bg-brand-cream border-t border-brand-ink/5">
+			<div class="max-w-3xl mx-auto px-4 lg:px-6">
+				<div class="text-center mb-12">
+					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-4">Frequently Asked Questions
+					</h2>
+				</div>
+
+				<div class="space-y-6">
+					<div class="bg-white rounded-2xl p-6 shadow-sm">
+						<h3 class="font-bold text-brand-ink mb-2">Do you offer tours?</h3>
+						<p class="text-brand-ink/80 text-sm">Yes! We encourage all families to book a tour to see our
+							classrooms, meet our directors, and experience the Chroma difference firsthand.</p>
+					</div>
+					<div class="bg-white rounded-2xl p-6 shadow-sm">
+						<h3 class="font-bold text-brand-ink mb-2">What ages do you serve?</h3>
+						<p class="text-brand-ink/80 text-sm">We typically serve children from 6 weeks (Infants) up to 12
+							years old (After School), though specific programs may vary by campus.</p>
+					</div>
+					<div class="bg-white rounded-2xl p-6 shadow-sm">
+						<h3 class="font-bold text-brand-ink mb-2">Is food included?</h3>
+						<p class="text-brand-ink/80 text-sm">Yes, we provide nutritious, child-friendly meals and snacks
+							prepared fresh daily.</p>
+					</div>
+				</div>
+			</div>
+		</section>
 
 		<!-- Tour / Contact Section -->
 		<section id="contact" class="py-24 bg-white relative">
