@@ -2,7 +2,7 @@
 /**
  * Template Name: Newsroom
  *
- * Displays posts tagged with "newsroom"
+ * Displays posts with "Show in Newsroom" checked
  *
  * @package Chroma_Excellence
  * @since 1.0.0
@@ -13,14 +13,20 @@ if (!defined('ABSPATH')) {
   exit;
 }
 
-// Query posts tagged with "newsroom"
+// Query posts with "Show in Newsroom" checked
 $newsroom_args = array(
   'post_type' => 'post',
   'posts_per_page' => -1, // Show all newsroom posts
   'post_status' => 'publish',
   'orderby' => 'date',
   'order' => 'DESC',
-  'tag' => 'newsroom', // Filter by newsroom tag
+  'meta_query' => array(
+    array(
+      'key' => '_chroma_show_in_newsroom',
+      'value' => '1',
+      'compare' => '='
+    )
+  )
 );
 
 $newsroom_query = new WP_Query($newsroom_args);

@@ -339,6 +339,53 @@ class Chroma_SEO_Dashboard
                     });
                 });
 
+                // Auto-Fill Handler
+                $(document).on('click', '#chroma-llm-autofill', function (e) {
+                    e.preventDefault();
+                    var btn = $(this);
+
+                    if (!confirm('This will overwrite existing fields with AI-generated content. Continue?')) {
+                        return;
+                    }
+
+                    btn.prop('disabled', true).text('Generating...');
+
+                    $.post(ajaxurl, {
+                        action: 'chroma_generate_llm_targeting',
+                        nonce: chroma_nonce,
+                        post_id: $('#chroma-llm-post-id').val()
+                    }, function (response) {
+                        btn.prop('disabled', false).html('<span class="dashicons dashicons-superhero" style="font-size: 14px; width: 14px; height: 14px; vertical-align: middle;"></span> Auto-Fill with AI');
+
+                        if (response.success) {
+                            var data = response.data;
+                            $('#seo_llm_primary_intent').val(data.primary_intent);
+
+                            // Clear and populate queries
+                            $('#llm-queries-container').empty();
+                            if (data.target_queries && Array.isArray(data.target_queries)) {
+                                data.target_queries.forEach(function (q) {
+                                    var html = '<div class="chroma-repeater-row" style="margin-bottom: 8px;"><input type="text" class="chroma-llm-query-input regular-text" value="' + q + '" style="width: 80%;"> <button class="button remove-llm-row">×</button></div>';
+                                    $('#llm-queries-container').append(html);
+                                });
+                            }
+
+                            // Clear and populate differentiators
+                            $('#llm-diffs-container').empty();
+                            if (data.key_differentiators && Array.isArray(data.key_differentiators)) {
+                                data.key_differentiators.forEach(function (d) {
+                                    var html = '<div class="chroma-repeater-row" style="margin-bottom: 8px;"><input type="text" class="chroma-llm-diff-input regular-text" value="' + d + '" style="width: 80%;"> <button class="button remove-llm-row">×</button></div>';
+                                    $('#llm-diffs-container').append(html);
+                                });
+                            }
+
+                            alert('✨ Content generated successfully!');
+                        } else {
+                            alert('AI Error: ' + (response.data && response.data.message ? response.data.message : 'Unknown error'));
+                        }
+                    });
+                });
+
                 // Add query row
                 $(document).on('click', '#add-llm-query', function (e) {
                     e.preventDefault();
@@ -407,6 +454,17 @@ class Chroma_SEO_Dashboard
 
                     // Health
                     $health = $this->calculate_health($id, $intent_manual, $schema_count);
+
+                    // Status Logic
+                    $status_color = 'green';
+                    $status_reason = 'Optimized';
+                    if (empty($schemas)) {
+                        $status_color = 'red';
+                        $status_reason = 'Missing Schema';
+                    } elseif (empty($intent_manual)) {
+                        $status_color = 'orange';
+                        $status_reason = 'Missing Intent';
+                    }
                     ?>
                     <tr>
                         <td style="text-align: center;">
@@ -440,6 +498,11 @@ class Chroma_SEO_Dashboard
                             <?php else: ?>
                                 <span style="color: #ccc;">-</span> Default
                             <?php endif; ?>
+                        </td>
+                        <td>
+                            <span class="chroma-status-dot" style="background: <?php echo esc_attr($status_color); ?>;"></span>
+                            <span
+                                style="font-size: 12px; color: #666; margin-left: 5px;"><?php echo esc_html($status_reason); ?></span>
                         </td>
                         <td>
                             <a href="?page=chroma-seo-dashboard&tab=schema-builder&post_id=<?php echo $id; ?>"
@@ -809,17 +872,7 @@ class Chroma_SEO_Dashboard
         ?>
         <input type="hidden" id="chroma-inspector-post-id" value="<?php echo $post_id; ?>">
 
-        <div
-            style="display: flex; gap: 20px; margin-bottom: 20px; align-items: center; background: #fff; padding: 15px; border: 1px solid #ddd;">
-            <strong>Add New Schema:</strong>
-            <select id="chroma-schema-type-select">
-                <option value="">-- Select Type --</option>
-                <?php foreach ($available_types as $type => $def): ?>
-                    <option value="<?php echo esc_attr($type); ?>"><?php echo esc_html($def['label']); ?></option>
-                <?php endforeach; ?>
-            </select>
-            <button id="chroma-add-schema-btn" class="button button-secondary">Add Schema</button>
-        </div>
+
 
         <div id="chroma-active-schemas">
             <?php
@@ -831,6 +884,18 @@ class Chroma_SEO_Dashboard
                 }
             }
             ?>
+        </div>
+
+        <div
+            style="display: flex; gap: 20px; margin-top: 20px; margin-bottom: 20px; align-items: center; background: #fff; padding: 15px; border: 1px solid #ddd;">
+            <strong>Add New Schema:</strong>
+            <select id="chroma-schema-type-select">
+                <option value="">-- Select Type --</option>
+                <?php foreach ($available_types as $type => $def): ?>
+                    <option value="<?php echo esc_attr($type); ?>"><?php echo esc_html($def['label']); ?></option>
+                <?php endforeach; ?>
+            </select>
+            <button id="chroma-add-schema-btn" class="button button-secondary">Add Schema</button>
         </div>
 
         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #ccc;">
@@ -1181,6 +1246,11 @@ class Chroma_SEO_Dashboard
 
             <p class="description" style="margin-bottom: 20px;">
                 <strong>Optimize how AI assistants (ChatGPT, Claude, Perplexity) recommend this page.</strong>
+                <button id="chroma-llm-autofill" class="button button-secondary"
+                    style="margin-left: 10px; border-color: #8c64ff; color: #6b42e4;">
+                    <span class="dashicons dashicons-superhero"
+                        style="font-size: 14px; width: 14px; height: 14px; vertical-align: middle;"></span> Auto-Fill with AI
+                </button>
             </p>
 
             <!-- Primary Intent -->

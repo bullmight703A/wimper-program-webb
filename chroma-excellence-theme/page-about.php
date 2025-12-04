@@ -350,6 +350,7 @@ while (have_posts()):
 									<button
 										class="chroma-read-bio-btn text-sm font-bold text-chroma-blue hover:text-chroma-blueDark underline mt-2"
 										data-bio-target="bio-<?php the_ID(); ?>" data-member-name="<?php the_title_attribute(); ?>"
+										data-member-title="<?php echo esc_attr($member_title); ?>"
 										data-member-image="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium') ?: ''); ?>"
 										aria-label="Read bio for <?php the_title_attribute(); ?>">
 										Read Bio
@@ -502,13 +503,18 @@ while (have_posts()):
 				aria-label="Close modal">
 				<i class="fa-solid fa-xmark text-2xl"></i>
 			</button>
-			<h3 id="chroma-bio-modal-title" class="font-serif text-2xl md:text-3xl font-bold text-brand-ink mb-6"></h3>
-			<div class="grid md:grid-cols-[300px_1fr] gap-6">
-				<div id="chroma-bio-modal-image"
-					class="rounded-2xl overflow-hidden bg-gradient-to-br from-chroma-blue to-chroma-blueDark flex items-center justify-center min-h-[300px]">
-					<i class="fa-solid fa-user text-6xl text-white/30"></i>
+			<div class="flex flex-col md:flex-row gap-8 items-start">
+				<div class="w-full md:w-48 flex-shrink-0 text-center mx-auto md:mx-0">
+					<div id="chroma-bio-modal-image"
+						class="w-48 h-48 rounded-full overflow-hidden bg-gradient-to-br from-chroma-blue to-chroma-blueDark flex items-center justify-center mx-auto shadow-lg border-4 border-white">
+						<i class="fa-solid fa-user text-6xl text-white/30"></i>
+					</div>
+					<h3 id="chroma-bio-modal-title"
+						class="font-serif text-2xl font-bold text-brand-ink mt-6 mb-1 leading-tight"></h3>
+					<p id="chroma-bio-modal-subtitle"
+						class="text-xs font-bold uppercase tracking-wider text-chroma-blue mb-0"></p>
 				</div>
-				<div id="chroma-bio-modal-content" class="prose prose-lg text-brand-ink/90"></div>
+				<div id="chroma-bio-modal-content" class="prose prose-lg text-brand-ink/90 flex-grow"></div>
 			</div>
 		</div>
 	</div>
@@ -518,18 +524,21 @@ while (have_posts()):
 			const modal = document.getElementById('chroma-bio-modal');
 			const closeBtn = document.getElementById('chroma-bio-close');
 			const title = document.getElementById('chroma-bio-modal-title');
+			const subtitle = document.getElementById('chroma-bio-modal-subtitle');
 			const content = document.getElementById('chroma-bio-modal-content');
 			let lastFocusedElement;
 
 			function openModal(btn) {
 				const targetId = btn.getAttribute('data-bio-target');
 				const name = btn.getAttribute('data-member-name');
+				const jobTitle = btn.getAttribute('data-member-title');
 				const imageUrl = btn.getAttribute('data-member-image');
 				const sourceContent = document.getElementById(targetId);
 
 				if (sourceContent) {
 					lastFocusedElement = btn;
 					title.textContent = name;
+					subtitle.textContent = jobTitle || '';
 					content.innerHTML = sourceContent.innerHTML;
 
 					// Populate image if available

@@ -68,7 +68,8 @@ $meta_boxes = [
 	'class-universal-faq.php',
 	'class-hreflang-options.php',
 	'class-city-landing-meta.php',
-	'class-location-citation-facts.php'
+	'class-location-citation-facts.php',
+	'class-post-newsroom.php'
 ];
 
 foreach ($meta_boxes as $file) {
@@ -135,7 +136,8 @@ function chroma_advanced_seo_init()
 		'Chroma_Program_Relationships',
 		'Chroma_Universal_FAQ',
 		'Chroma_Hreflang_Options',
-		'Chroma_City_Landing_Meta'
+		'Chroma_City_Landing_Meta',
+		'Chroma_Post_Newsroom'
 	];
 
 	// Fallback for class names if files haven't been updated yet

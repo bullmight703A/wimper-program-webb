@@ -24,6 +24,7 @@ class Chroma_LLM_Client
         add_action('wp_ajax_chroma_save_llm_settings', [$this, 'ajax_save_settings']);
         add_action('wp_ajax_chroma_test_llm_connection', [$this, 'ajax_test_connection']);
         add_action('wp_ajax_chroma_generate_schema', [$this, 'ajax_generate_schema']);
+        add_action('wp_ajax_chroma_generate_llm_targeting', [$this, 'ajax_generate_llm_targeting']);
     }
 
     /**
@@ -212,6 +213,53 @@ class Chroma_LLM_Client
 
         if (!$json) {
             wp_send_json_error(['message' => 'Failed to parse AI response']);
+        }
+
+        wp_send_json_success($json);
+    }
+
+    /**
+     * AJAX: Generate LLM Targeting Data
+     */
+    public function ajax_generate_llm_targeting()
+    {
+        check_ajax_referer('chroma_seo_dashboard_nonce', 'nonce');
+
+        if (!current_user_can('edit_posts')) {
+            wp_send_json_error(['message' => 'Permission denied']);
+        }
+
+        $post_id = intval($_POST['post_id']);
+        $post = get_post($post_id);
+
+        if (!$post) {
+            wp_send_json_error(['message' => 'Post not found']);
+        }
+
+        $prompt = "Analyze the following content and generate LLM optimization data.\n";
+        $prompt .= "Return ONLY valid JSON with the following keys:\n";
+        $prompt .= "- primary_intent: (string) The main user intent (e.g., 'informational', 'commercial', 'transactional').\n";
+        $prompt .= "- target_queries: (array of strings) 3-5 natural language questions users might ask to find this.\n";
+        $prompt .= "- key_differentiators: (array of strings) 3-5 unique selling points or key facts.\n";
+        $prompt .= "\nContent:\n" . strip_tags($post->post_content);
+
+        $response = $this->make_request([
+            'messages' => [
+                ['role' => 'system', 'content' => 'You are an SEO expert specializing in LLM optimization (GEO).'],
+                ['role' => 'user', 'content' => $prompt]
+            ],
+            'response_format' => ['type' => 'json_object']
+        ]);
+
+        if (is_wp_error($response)) {
+            wp_send_json_error(['message' => $response->get_error_message()]);
+        }
+
+        $content = $response['choices'][0]['message']['content'];
+        $json = json_decode($content, true);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            wp_send_json_error(['message' => 'Invalid JSON response from AI']);
         }
 
         wp_send_json_success($json);
