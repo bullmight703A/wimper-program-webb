@@ -61,12 +61,13 @@
 				$lines = explode("\n", $header_text);
 				$first_line = array_shift($lines);
 				?>
-				<div class="block leading-tight">
-					<span class="block font-sans text-xl lg:text-2xl font-bold text-brand-ink">
+				<div class="flex flex-col lg:flex-row lg:items-baseline gap-1 lg:gap-3 leading-tight">
+					<span class="font-sans text-xl lg:text-2xl font-bold text-brand-ink whitespace-nowrap">
 						<?php echo esc_html($first_line); ?>
 					</span>
 					<?php foreach ($lines as $line): ?>
-						<span class="block text-[10px] lg:text-xs font-bold tracking-[0.15em] text-chroma-blue uppercase">
+						<span
+							class="text-[10px] lg:text-xs font-bold tracking-[0.15em] text-chroma-blue uppercase whitespace-nowrap">
 							<?php echo esc_html($line); ?>
 						</span>
 					<?php endforeach; ?>
@@ -74,7 +75,7 @@
 			</a>
 
 			<!-- Desktop Nav -->
-			<nav class="hidden lg:flex items-center gap-8">
+			<nav class="hidden lg:flex items-center gap-4">
 				<?php chroma_primary_nav(); ?>
 
 				<!-- CTA Button -->
