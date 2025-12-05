@@ -76,7 +76,7 @@
 			</a>
 
 			<!-- Desktop Nav -->
-			<nav class="hidden lg:flex items-center gap-5 xl:gap-8 flex-grow">
+			<nav class="hidden lg:flex items-center gap-8">
 				<?php chroma_primary_nav(); ?>
 
 				<!-- CTA Button -->
@@ -84,7 +84,7 @@
 				$cta_url = get_theme_mod('chroma_book_tour_url', home_url('/contact#tour'));
 				?>
 				<a href="<?php echo esc_url($cta_url); ?>"
-				class="ml-auto inline-flex items-center justify-center px-6 py-3 rounded-full bg-chroma-red text-white text-xs font-semibold uppercase tracking-widest hover:bg-chroma-red/90 transition shadow-soft whitespace-nowrap">
+					class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-chroma-red text-white text-xs font-semibold uppercase tracking-widest hover:bg-chroma-red/90 transition shadow-soft whitespace-nowrap">
 					Schedule a Tour
 				</a>
 			</nav>
