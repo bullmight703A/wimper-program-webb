@@ -140,7 +140,7 @@ class Chroma_Primary_Nav_Walker extends Walker_Nav_Menu
 
 	function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
 	{
-		$classes = 'hover:text-chroma-blue transition whitespace-nowrap';
+		$classes = 'hover:text-chroma-blue transition';
 
 		if ($item->current) {
 			$classes .= ' text-chroma-red';

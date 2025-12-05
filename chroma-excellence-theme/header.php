@@ -57,18 +57,16 @@
 
 				<!-- Header Text -->
 				<?php
-				$header_text = get_theme_mod('chroma_header_text', "CHROMA\nEarly Learning\nAcademy");
-
+				$header_text = get_theme_mod('chroma_header_text', "Early Learning\nAcademy");
 				$lines = explode("\n", $header_text);
 				$first_line = array_shift($lines);
 				?>
-				<div class="flex flex-col lg:flex-row lg:items-baseline gap-1 lg:gap-3 leading-tight">
-					<span class="font-sans text-xl lg:text-2xl font-bold text-brand-ink whitespace-nowrap">
+				<div class="block leading-tight">
+					<span class="block font-sans text-xl lg:text-2xl font-bold text-brand-ink">
 						<?php echo esc_html($first_line); ?>
 					</span>
 					<?php foreach ($lines as $line): ?>
-						<span
-							class="text-[10px] lg:text-xs font-bold tracking-[0.15em] text-chroma-blue uppercase whitespace-nowrap">
+						<span class="block text-[10px] lg:text-xs font-bold tracking-[0.15em] text-chroma-blue uppercase">
 							<?php echo esc_html($line); ?>
 						</span>
 					<?php endforeach; ?>
@@ -84,8 +82,8 @@
 				$cta_url = get_theme_mod('chroma_book_tour_url', home_url('/contact#tour'));
 				?>
 				<a href="<?php echo esc_url($cta_url); ?>"
-					class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-chroma-red text-white text-xs font-semibold uppercase tracking-widest hover:bg-chroma-red/90 transition shadow-soft whitespace-nowrap">
-					Schedule a Tour
+					class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-chroma-red text-white text-xs font-semibold uppercase tracking-widest hover:bg-chroma-red/90 transition shadow-soft">
+					Book a Tour
 				</a>
 			</nav>
 
@@ -117,7 +115,7 @@
 
 			<a href="<?php echo esc_url($cta_url); ?>"
 				class="block w-full text-center mt-6 px-6 py-4 rounded-xl bg-chroma-red text-white font-semibold uppercase tracking-widest hover:bg-chroma-red/90 transition shadow-soft">
-				Schedule a Tour
+				Book a Tour
 			</a>
 		</nav>
 	</div>
