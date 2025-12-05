@@ -58,12 +58,12 @@
 				<!-- Header Text -->
 				<?php
 				$header_text = get_theme_mod('chroma_header_text', "Early Learning\nAcademy");
-				// Fallback to ensure multi-line display if user entered single line
-				if (stripos($header_text, 'Early Learning Academy') !== false && strpos($header_text, "\n") === false) {
-					$header_text = str_ireplace('Early Learning Academy', "Early Learning\nAcademy", $header_text);
+
+				// Force the correct brand layout if the text matches common variations
+				if (stripos($header_text, 'Early Learning') !== false) {
+					// Hard override to ensure exact desired styling: CHROMA (Big) / EARLY LEARNING (Small) / ACADEMY (Small)
+					$header_text = "CHROMA\nEARLY LEARNING\nACADEMY";
 				}
-				// Also handle case where Chroma is separate line but rest is one line
-				$header_text = str_ireplace('EARLY LEARNING ACADEMY', "EARLY LEARNING\nACADEMY", $header_text);
 
 				$lines = explode("\n", $header_text);
 				$first_line = array_shift($lines);
