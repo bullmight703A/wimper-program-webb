@@ -151,8 +151,8 @@ function chroma_enqueue_assets()
                 }
 
                 /* Accessibility: Increase contrast for muted text */
-                .text-brand-ink\/60 { color: rgba(38, 50, 56, 0.8) !important; }
-                .text-brand-ink\/70 { color: rgba(38, 50, 56, 0.85) !important; }
+                .text-brand-ink\/60 { color: rgba(38, 50, 56, 0.9) !important; }
+                .text-brand-ink\/70 { color: rgba(38, 50, 56, 0.95) !important; }
         ";
         wp_add_inline_style('chroma-main', $custom_css);
 

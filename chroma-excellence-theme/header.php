@@ -36,6 +36,7 @@
 							<?php echo intval($logo_width_mobile); ?>
 							px;
 						height: auto;
+						aspect-ratio: 1 / 1;
 					}
 
 					@media (min-width: 1024px) {
@@ -50,7 +51,7 @@
 					srcset="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_70x70.webp'); ?> 1x,
 							<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo_chromacropped_140x140.webp'); ?> 2x"
 					alt="Chroma Early Learning" width="<?php echo intval($logo_width_desktop); ?>"
-					height="<?php echo intval($logo_width_desktop); ?>"
+					height="<?php echo intval($logo_width_desktop); ?>" fetchpriority="high"
 					class="chroma-logo transition-transform duration-300 group-hover:scale-105 no-lazy"
 					data-no-lazy="1" />
 

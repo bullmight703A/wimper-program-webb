@@ -20,7 +20,7 @@
 						alt="Chroma Early Learning" width="70" height="70"
 						class="h-12 w-auto opacity-90 hover:opacity-100 transition-opacity" />
 				</a>
-				<p class="text-[11px] text-white/60 leading-relaxed">
+				<p class="text-[11px] text-white/80 leading-relaxed">
 					Premium childcare & early education across Metro Atlanta.
 				</p>
 			</div>
@@ -28,7 +28,7 @@
 			<!-- Quick Links -->
 			<div class="md:col-span-1">
 				<h3 class="font-bold text-sm mb-3">Quick Links</h3>
-				<div class="text-xs text-white/70 space-y-2">
+				<div class="text-xs text-white/90 space-y-2">
 					<?php chroma_footer_nav(); ?>
 				</div>
 			</div>
@@ -36,7 +36,7 @@
 			<!-- Contact Info -->
 			<div class="md:col-span-1">
 				<h3 class="font-bold text-sm mb-3">Contact</h3>
-				<div class="space-y-2 text-xs text-white/70">
+				<div class="space-y-2 text-xs text-white/90">
 					<?php
 					// Get contact info from customizer (with fallback to global settings)
 					$footer_phone = get_theme_mod('chroma_footer_phone', '') ?: chroma_global_phone();
