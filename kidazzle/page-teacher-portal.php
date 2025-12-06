@@ -10,35 +10,40 @@ get_header();
 
 <!-- 7. TEACHER PORTAL VIEW -->
 <div id="view-teacher-portal" class="view-section active block">
-    <div class="bg-orange-500 py-20 text-white text-center">
-        <h1 class="text-5xl font-extrabold mb-4">Teacher Portal</h1>
-        <p class="text-xl text-orange-200">Resources for our dedicated educators.</p>
+    <div class="bg-slate-900 py-16 text-white text-center">
+        <h1 class="text-4xl font-bold mb-2 flex items-center justify-center gap-3"><i data-lucide="users"
+                class="text-yellow-400"></i> Teacher Portal</h1>
+        <p class="text-slate-400">Classroom tools and resources.</p>
     </div>
-
-    <div class="container mx-auto px-4 py-16 text-center">
-        <div class="max-w-md mx-auto bg-white p-10 rounded-3xl shadow-2xl border-t-8 border-orange-500">
-            <h2 class="text-2xl font-bold text-slate-900 mb-6">Staff Login</h2>
-            <form class="space-y-4">
-                <div>
-                    <label class="block text-left text-sm font-bold text-slate-700 mb-1">Email</label>
-                    <input type="email"
-                        class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                        placeholder="name@kidazzle.com">
+    <div class="container mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
+        <div class="md:col-span-1 space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <h3 class="font-bold text-lg mb-4 text-slate-900">Quick Actions</h3>
+                <ul class="space-y-3 text-sm text-slate-600">
+                    <li class="flex items-center gap-2 cursor-pointer hover:text-cyan-600"><i data-lucide="check-square"
+                            class="w-4 h-4"></i> Daily Checklist</li>
+                    <li class="flex items-center gap-2 cursor-pointer hover:text-cyan-600"><i data-lucide="file-text"
+                            class="w-4 h-4"></i> Incident Report</li>
+                    <li class="flex items-center gap-2 cursor-pointer hover:text-cyan-600"><i data-lucide="briefcase"
+                            class="w-4 h-4"></i> Time Off Request</li>
+                </ul>
+            </div>
+        </div>
+        <div class="md:col-span-2 space-y-8">
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Teacher Daily Tasks</h2>
+                <div class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl p-12 text-center">
+                    <p class="text-slate-400 text-sm mb-2">Embed Code Placeholder</p>
+                    <p class="font-bold text-slate-600">Daily Checklist Form</p>
                 </div>
-                <div>
-                    <label class="block text-left text-sm font-bold text-slate-700 mb-1">Password</label>
-                    <input type="password"
-                        class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                        placeholder="••••••••">
+            </div>
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Weekly Task Automation</h2>
+                <div class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl p-12 text-center">
+                    <p class="text-slate-400 text-sm mb-2">Embed Code Placeholder</p>
+                    <p class="font-bold text-slate-600">Weekly Task Form</p>
                 </div>
-                <button type="button"
-                    class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl transition shadow-lg mt-2">
-                    Access Portal
-                </button>
-            </form>
-            <p class="mt-6 text-sm text-slate-400">
-                Authorized personnel only. <br>Contact IT for password resets.
-            </p>
+            </div>
         </div>
     </div>
 </div>

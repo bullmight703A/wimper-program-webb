@@ -72,10 +72,19 @@
 			<h3 class="text-2xl font-bold text-slate-900">How Can We Help?</h3>
 			<p class="text-slate-500">Select an option below.</p>
 		</div>
+		<!-- Embed Placeholder -->
 		<div
 			class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl p-12 text-center h-96 flex flex-col items-center justify-center">
-			<p class="font-bold text-slate-700">Contact Form Placeholder</p>
-			<p class="text-xs text-slate-400 mt-2">(Use WPForms or similar here)</p>
+			<div class="text-slate-400 font-mono text-xs mb-4 w-full break-all">
+				<!-- PASTE 123 FORM EMBED CODE HERE -->
+				&lt;iframe src="https://www.123formbuilder.com/..." &gt;&lt;/iframe&gt;
+			</div>
+			<p class="font-bold text-slate-700">123 Form Placeholder</p>
+			<div class="flex justify-center gap-4 mt-4 text-sm text-slate-500">
+				<span class="bg-white px-2 py-1 rounded border">Enrollment</span>
+				<span class="bg-white px-2 py-1 rounded border">Hiring</span>
+				<span class="bg-white px-2 py-1 rounded border">Service</span>
+			</div>
 		</div>
 	</div>
 </div>
