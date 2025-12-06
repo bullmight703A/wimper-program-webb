@@ -2,21 +2,22 @@
 /**
  * Template Name: Programs Page
  *
- * @package Kidazzle_Theme
+ * @package kidazzle_Excellence
  */
 
 get_header();
 ?>
 
 <!-- 2. PROGRAMS VIEW -->
-<div id="view-programs" class="view-section active">
+<div id="view-programs" class="view-section active block">
     <div class="bg-slate-900 py-20 text-white text-center">
         <h1 class="text-5xl font-extrabold mb-4">Our Programs</h1>
         <p class="text-xl text-slate-300">Comprehensive care for every stage.</p>
     </div>
     <div class="container mx-auto px-4 py-16 space-y-12">
-        <article
-            class="flex flex-col md:flex-row gap-8 items-center p-8 rounded-3xl bg-white border-l-8 shadow-sm border-red-500">
+        <!-- Infants -->
+        <article id="infants"
+            class="flex flex-col md:flex-row gap-8 items-center p-8 rounded-3xl bg-white border-l-8 shadow-sm border-red-500 scroll-mt-24">
             <div
                 class="md:w-1/3 h-48 bg-slate-100 rounded-2xl w-full flex items-center justify-center text-slate-400 text-4xl">
                 👶</div>
@@ -30,8 +31,9 @@ get_header();
             </div>
         </article>
 
-        <article
-            class="flex flex-col md:flex-row gap-8 items-center p-8 rounded-3xl bg-white border-l-8 shadow-sm border-orange-500">
+        <!-- Toddlers -->
+        <article id="toddlers"
+            class="flex flex-col md:flex-row gap-8 items-center p-8 rounded-3xl bg-white border-l-8 shadow-sm border-orange-500 scroll-mt-24">
             <div
                 class="md:w-1/3 h-48 bg-slate-100 rounded-2xl w-full flex items-center justify-center text-slate-400 text-4xl">
                 🧸</div>
@@ -45,8 +47,9 @@ get_header();
             </div>
         </article>
 
-        <article
-            class="flex flex-col md:flex-row gap-8 items-center p-8 rounded-3xl bg-white border-l-8 shadow-sm border-yellow-500">
+        <!-- Preschool -->
+        <article id="preschool"
+            class="flex flex-col md:flex-row gap-8 items-center p-8 rounded-3xl bg-white border-l-8 shadow-sm border-yellow-500 scroll-mt-24">
             <div
                 class="md:w-1/3 h-48 bg-slate-100 rounded-2xl w-full flex items-center justify-center text-slate-400 text-4xl">
                 🎨</div>
@@ -60,8 +63,9 @@ get_header();
             </div>
         </article>
 
-        <article
-            class="flex flex-col md:flex-row gap-8 items-center p-8 rounded-3xl bg-white border-l-8 shadow-sm border-green-500">
+        <!-- Pre-K -->
+        <article id="prek"
+            class="flex flex-col md:flex-row gap-8 items-center p-8 rounded-3xl bg-white border-l-8 shadow-sm border-green-500 scroll-mt-24">
             <div
                 class="md:w-1/3 h-48 bg-slate-100 rounded-2xl w-full flex items-center justify-center text-slate-400 text-4xl">
                 📚</div>
@@ -75,8 +79,9 @@ get_header();
             </div>
         </article>
 
-        <article
-            class="flex flex-col md:flex-row gap-8 items-center p-8 rounded-3xl bg-white border-l-8 shadow-sm border-cyan-500">
+        <!-- After School -->
+        <article id="schoolage"
+            class="flex flex-col md:flex-row gap-8 items-center p-8 rounded-3xl bg-white border-l-8 shadow-sm border-cyan-500 scroll-mt-24">
             <div
                 class="md:w-1/3 h-48 bg-slate-100 rounded-2xl w-full flex items-center justify-center text-slate-400 text-4xl">
                 🚌</div>
@@ -89,8 +94,9 @@ get_header();
             </div>
         </article>
 
-        <article
-            class="flex flex-col md:flex-row gap-8 items-center p-8 rounded-3xl bg-white border-l-8 shadow-sm border-purple-500">
+        <!-- Summer Camp -->
+        <article id="summer"
+            class="flex flex-col md:flex-row gap-8 items-center p-8 rounded-3xl bg-white border-l-8 shadow-sm border-purple-500 scroll-mt-24">
             <div
                 class="md:w-1/3 h-48 bg-slate-100 rounded-2xl w-full flex items-center justify-center text-slate-400 text-4xl">
                 ☀️</div>
@@ -106,4 +112,5 @@ get_header();
     </div>
 </div>
 
-<?php get_footer(); ?>
+<?php
+get_footer();

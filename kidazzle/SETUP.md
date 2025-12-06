@@ -1,56 +1,39 @@
-# Kidazzle WordPress Theme Setup
+# Kidazzle Theme Setup Guide
 
-## Prerequisites
-- WordPress installation (v6.0+)
-- Node.js & NPM (for development/building CSS)
-- ACF Pro (Recommended for structured content)
+## 1. Installation
+1. Go to **Appearance > Themes** in your WordPress Admin.
+2. Click **Add New**, then **Upload Theme**.
+3. Upload `kidazzle-theme.zip` and click **Install Now**.
+4. Click **Activate**.
 
-## Installation
+## 2. Homepage Configuration
+1. Go to **Settings > Reading**.
+2. Under "Your homepage displays", select **A static page**.
+3. For **Homepage**, select your "Home" page (if it doesn't exist, create a page named "Home" and assign the "Front Page" template if needed, or just let the theme handle it).
+4. Click **Save Changes**.
 
-1. **Copy Theme Folder**: Move the `kidazzle` folder to your WordPress themes directory: `/wp-content/themes/`.
-2. **Activate Theme**: Go to **Appearance > Themes** in the WordPress Dashboard and activate "Kidazzle".
-3. **Install Plugins**:
-   - The theme may require *Advanced Custom Fields (ACF)* for certain page templates.
-   - *TGM Plugin Activation* code is present but currently commented out in `functions.php`.
+## 3. Menu Setup
+1. Go to **Appearance > Menus**.
+2. Create a new menu naming it "Primary Menu".
+3. Add your main pages: Home, Programs, Curriculum, Locations, Resources, Contact.
+4. Under "Menu Settings", check **Primary Menu**.
+5. Click **Save Menu**.
+6. Repeat for "Footer Menu" if needed.
 
-## Development
+## 4. Permalinks
+1. Go to **Settings > Permalinks**.
+2. Select **Post name** (e.g., `https://kidazzle.com/sample-post/`).
+3. Click **Save Changes**.
 
-This theme uses **Tailwind CSS**. To make style changes:
+## 5. Page Templates
+Ensure your pages are using the correct templates:
+- **Home**: Default Template (or `front-page.php` takes precedence automatically)
+- **About Us**: Template "About Page"
+- **Programs**: Template "Programs Page"
+- **Locations**: Template "Locations Page"
+- **Contact**: Template "Contact Page"
+- **Teacher Portal**: Template "Teacher Portal"
 
-1. Navigate to the theme directory:
-   ```bash
-   cd wp-content/themes/kidazzle
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start development server (watches for changes):
-   ```bash
-   npm run dev
-   ```
-4. Build for production:
-   ```bash
-   npm run build
-   ```
-
-## Configuration
-
-### Customizer
-Go to **Appearance > Customize** to manage:
-- **Header**: Logo width, top bar text, CTA buttons.
-- **Footer**: Social links, contact info, copyright text.
-- **Homepage**: Hero section, stats, program wizard, and other modular sections.
-- **Locations**: Settings for the locations archive page.
-
-### Menus
-Set up your menus in **Appearance > Menus**:
-- **Primary Menu**: Main header navigation.
-- **Footer Menu**: Links in the footer area.
-- **Mobile Menu**: (Optional) specific menu for mobile devices if different from primary.
-
-## Key Templates
-- `front-page.php`: Homepage layout (requires Customizer setup).
-- `page-programs.php`: Programs archive.
-- `page-locations.php`: Locations grid.
-- `page-curriculum.php`: Curriculum information.
+## 6. Recommended Plugins (Optional)
+- **Classic Editor**: If you prefer the classic editing experience.
+- **Advanced Custom Fields (ACF)**: If you want to make the hardcoded fields dynamic in the future.

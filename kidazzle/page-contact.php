@@ -3,134 +3,115 @@
  * Template Name: Contact Page
  *
  * @package kidazzle_Excellence
- * @since 1.0.0
  */
 
-// Exit if accessed directly
-if (!defined('ABSPATH')) {
-	exit;
-}
-
 get_header();
-
-$page_id = get_the_ID();
-
-// Hero Section
-$hero_badge = get_post_meta($page_id, 'contact_hero_badge', true) ?: 'Start Your Journey';
-$hero_title = get_post_meta($page_id, 'contact_hero_title', true) ?: 'We\'d love to meet you.';
-$hero_description = get_post_meta($page_id, 'contact_hero_description', true) ?: 'Ready to experience the Kidazzle difference? Schedule a tour or ask us a question below to get started.';
-
-// Form Settings
-$form_submit_text = get_post_meta($page_id, 'contact_form_submit_text', true) ?: 'Submit Request';
-
-// Corporate Office
-$corporate_title = get_post_meta($page_id, 'contact_corporate_title', true) ?: 'Corporate Office';
-$corporate_name = get_post_meta($page_id, 'contact_corporate_name', true) ?: 'Kidazzle Early Learning HQ';
-$corporate_address = get_post_meta($page_id, 'contact_corporate_address', true) ?: "123 Education Way, Suite 400\nAtlanta, GA 30309";
-$corporate_phone = get_post_meta($page_id, 'contact_corporate_phone', true) ?: '(404) 555-0199';
-
-// Careers Section
-$careers_title = get_post_meta($page_id, 'contact_careers_title', true) ?: 'Careers';
-$careers_description = get_post_meta($page_id, 'contact_careers_description', true) ?: 'Passionate about early childhood education? We are always looking for dedicated teachers and directors.';
-$careers_link_text = get_post_meta($page_id, 'contact_careers_link_text', true) ?: 'View Open Positions';
-$careers_link_url = get_post_meta($page_id, 'contact_careers_link_url', true) ?: '/careers';
-
-// Press Section
-$press_title = get_post_meta($page_id, 'contact_press_title', true) ?: 'Press Inquiries';
-$press_description = get_post_meta($page_id, 'contact_press_description', true) ?: 'For media kits and interview requests with our leadership team.';
-$press_link_text = get_post_meta($page_id, 'contact_press_link_text', true) ?: 'Visit Newsroom';
-$press_link_url = get_post_meta($page_id, 'contact_press_link_url', true) ?: '/newsroom';
 ?>
 
-<main id="primary" class="site-main" role="main">
-	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<!-- 8. CONTACT VIEW -->
+<div id="view-contact" class="view-section active block">
+	<div class="bg-indigo-600 py-20 text-white text-center">
+		<h1 class="text-5xl font-extrabold mb-4">Contact Us</h1>
+		<p class="text-xl text-indigo-200">We're here to help you finding the perfect care.</p>
+	</div>
 
-		<!-- Hero -->
-		<section class="py-20 bg-white text-center">
-			<div class="max-w-4xl mx-auto px-4">
-				<span class="text-kidazzle-blue font-bold tracking-[0.2em] text-xs uppercase mb-3 block">
-					<?php echo esc_html($hero_badge); ?>
-				</span>
-				<h1 class="font-serif text-5xl md:text-6xl text-brand-ink mb-6">
-					Contact Kidazzle Early Learning
-				</h1>
-				<p class="text-lg text-brand-ink/90">
-					<?php echo esc_html($hero_description); ?>
-				</p>
-			</div>
-		</section>
+	<div class="container mx-auto px-4 py-16">
+		<div class="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
 
-		<!-- Contact Grid -->
-		<section class="pb-24 bg-white">
-			<div class="max-w-7xl mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-16">
+			<!-- Contact Info -->
+			<div>
+				<h2 class="text-3xl font-bold text-slate-900 mb-8">Get in Touch</h2>
 
-				<!-- Form -->
-				<div class="bg-brand-cream p-10 rounded-[3rem] border border-brand-ink/5 shadow-soft">
-					<?php echo do_shortcode('[kidazzle_contact_form]'); ?>
-				</div>
-
-				<!-- Info -->
-				<div class="flex flex-col justify-center gap-10">
-					<!-- Corporate Office -->
-					<div>
-						<h2 class="font-serif text-2xl font-bold text-brand-ink mb-4">
-							<?php echo esc_html($corporate_title); ?>
-						</h2>
-						<p class="text-brand-ink/80 leading-relaxed">
-							<?php
-							if (!empty($corporate_name)) {
-								echo esc_html($corporate_name) . '<br>';
-							}
-							echo nl2br(esc_html($corporate_address));
-							?>
-						</p>
-						<?php if (!empty($corporate_phone)): ?>
-							<p class="mt-4 text-kidazzle-blue font-bold">
-								<?php echo esc_html($corporate_phone); ?>
-							</p>
-						<?php endif; ?>
+				<div class="space-y-8">
+					<div class="flex gap-4">
+						<div
+							class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center shrink-0">
+							<i data-lucide="map-pin"></i></div>
+						<div>
+							<h3 class="font-bold text-lg text-slate-900">Corporate Office</h3>
+							<p class="text-slate-600">100 Alabama St SW,<br>Atlanta, GA 30303</p>
+						</div>
 					</div>
 
-					<div class="h-px bg-brand-ink/10 w-full"></div>
-
-					<!-- Careers -->
-					<div>
-						<h2 class="font-serif text-2xl font-bold text-brand-ink mb-4">
-							<?php echo esc_html($careers_title); ?>
-						</h2>
-						<p class="text-brand-ink/80 mb-4">
-							<?php echo esc_html($careers_description); ?>
-						</p>
-						<a href="<?php echo esc_url($careers_link_url); ?>"
-							class="text-kidazzle-red font-bold text-sm uppercase tracking-wider hover:text-kidazzle-blue flex items-center gap-2">
-							<?php echo esc_html($careers_link_text); ?>
-							<i class="fa-solid fa-arrow-right"></i>
-						</a>
+					<div class="flex gap-4">
+						<div
+							class="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center shrink-0">
+							<i data-lucide="phone"></i></div>
+						<div>
+							<h3 class="font-bold text-lg text-slate-900">Phone</h3>
+							<p class="text-slate-600"><a href="tel:877-410-1002"
+									class="hover:text-green-600 font-bold">877-410-1002</a></p>
+							<p class="text-xs text-slate-400">Mon-Fri 8am-5pm EST</p>
+						</div>
 					</div>
 
-					<div class="h-px bg-brand-ink/10 w-full"></div>
+					<div class="flex gap-4">
+						<div
+							class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center shrink-0">
+							<i data-lucide="mail"></i></div>
+						<div>
+							<h3 class="font-bold text-lg text-slate-900">Email</h3>
+							<p class="text-slate-600"><a href="mailto:info@kidazzlechildcare.com"
+									class="hover:text-red-600 font-bold">info@kidazzlechildcare.com</a></p>
+						</div>
+					</div>
 
-					<!-- Press Inquiries -->
-					<div>
-						<h2 class="font-serif text-2xl font-bold text-brand-ink mb-4">
-							<?php echo esc_html($press_title); ?>
-						</h2>
-						<p class="text-brand-ink/80 mb-4">
-							<?php echo esc_html($press_description); ?>
-						</p>
-						<a href="<?php echo esc_url($press_link_url); ?>"
-							class="text-kidazzle-green font-bold text-sm uppercase tracking-wider hover:text-kidazzle-blue flex items-center gap-2">
-							<?php echo esc_html($press_link_text); ?>
-							<i class="fa-solid fa-arrow-right"></i>
+					<div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 mt-8">
+						<h4 class="font-bold text-slate-900 mb-2">Looking for a specific center?</h4>
+						<p class="text-sm text-slate-600 mb-4">Find contact details for your nearest location.</p>
+						<a href="<?php echo home_url('/locations'); ?>"
+							class="inline-flex items-center gap-2 text-indigo-600 font-bold hover:underline">
+							View All Locations <i data-lucide="arrow-right" class="w-4 h-4"></i>
 						</a>
 					</div>
 				</div>
-
 			</div>
-		</section>
 
-	</article>
-</main>
+			<!-- Contact Form -->
+			<div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-slate-100">
+				<h3 class="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h3>
+				<?php
+				// Use standard WPForms or shortcode if available, else standard HTML form placeholder for now
+				if (shortcode_exists('wpforms')) {
+					echo do_shortcode('[wpforms id="contact" title="false"]');
+				} elseif (shortcode_exists('kidazzle_contact_form')) {
+					echo do_shortcode('[kidazzle_contact_form]');
+				} else {
+					?>
+					<form class="space-y-4" action="#" method="POST">
+						<div class="grid md:grid-cols-2 gap-4">
+							<div>
+								<label class="block text-sm font-bold text-slate-700 mb-1">First Name</label>
+								<input type="text"
+									class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+							</div>
+							<div>
+								<label class="block text-sm font-bold text-slate-700 mb-1">Last Name</label>
+								<input type="text"
+									class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+							</div>
+						</div>
+						<div>
+							<label class="block text-sm font-bold text-slate-700 mb-1">Email</label>
+							<input type="email"
+								class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+						</div>
+						<div>
+							<label class="block text-sm font-bold text-slate-700 mb-1">Message</label>
+							<textarea rows="4"
+								class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+						</div>
+						<button type="submit"
+							class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl transition shadow-lg">
+							Send Message
+						</button>
+					</form>
+				<?php } ?>
+			</div>
+
+		</div>
+	</div>
+</div>
 
 <?php
 get_footer();
