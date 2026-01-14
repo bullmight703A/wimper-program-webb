@@ -3,7 +3,7 @@
  * Lightweight AMP for Blog Posts
  * Auto-generates AMP versions at /post-slug/amp/
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_AMP_Blog
+class kidazzle_AMP_Blog
 {
     const ENDPOINT = 'amp';
     
@@ -20,14 +20,14 @@ class Kidazzle_AMP_Blog
      * Matches tailwind.config.js colors
      */
     public static function get_theme_colors() {
-        return apply_filters('Kidazzle_amp_colors', [
-            'brand_ink'     => get_theme_mod('Kidazzle_brand_ink', '#263238'),
-            'brand_cream'   => get_theme_mod('Kidazzle_brand_cream', '#FFFCF8'),
-            'brand_navy'    => get_theme_mod('Kidazzle_brand_navy', '#4A6C7C'),
-            'Kidazzle_red'    => get_theme_mod('Kidazzle_primary_color', '#A84B38'),
-            'Kidazzle_blue'   => get_theme_mod('Kidazzle_accent_color', '#4A6C7C'),
-            'Kidazzle_green'  => '#4A7C59',
-            'Kidazzle_yellow' => '#C2A024',
+        return apply_filters('kidazzle_amp_colors', [
+            'brand_ink'     => get_theme_mod('kidazzle_brand_ink', '#263238'),
+            'brand_cream'   => get_theme_mod('kidazzle_brand_cream', '#FFFCF8'),
+            'brand_navy'    => get_theme_mod('kidazzle_brand_navy', '#4A6C7C'),
+            'kidazzle_red'    => get_theme_mod('kidazzle_primary_color', '#A84B38'),
+            'kidazzle_blue'   => get_theme_mod('kidazzle_accent_color', '#4A6C7C'),
+            'kidazzle_green'  => '#4A7C59',
+            'kidazzle_yellow' => '#C2A024',
         ]);
     }
     
@@ -142,8 +142,8 @@ class Kidazzle_AMP_Blog
         :root {
             --brand-ink: <?php echo esc_attr($colors['brand_ink']); ?>;
             --brand-cream: <?php echo esc_attr($colors['brand_cream']); ?>;
-            --Kidazzle-red: <?php echo esc_attr($colors['Kidazzle_red']); ?>;
-            --Kidazzle-blue: <?php echo esc_attr($colors['Kidazzle_blue']); ?>;
+            --kidazzle-red: <?php echo esc_attr($colors['kidazzle_red']); ?>;
+            --kidazzle-blue: <?php echo esc_attr($colors['kidazzle_blue']); ?>;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -176,7 +176,7 @@ class Kidazzle_AMP_Blog
         .amp-category {
             display: inline-block;
             background: var(--brand-cream);
-            color: var(--Kidazzle-blue);
+            color: var(--kidazzle-blue);
             padding: 5px 12px;
             border-radius: 4px;
             font-size: 12px;
@@ -229,10 +229,10 @@ class Kidazzle_AMP_Blog
             margin-bottom: 0.5em;
         }
         .amp-content a {
-            color: var(--Kidazzle-blue);
+            color: var(--kidazzle-blue);
         }
         .amp-content blockquote {
-            border-left: 4px solid var(--Kidazzle-red);
+            border-left: 4px solid var(--kidazzle-red);
             padding-left: 20px;
             margin: 1.5em 0;
             font-style: italic;
@@ -240,7 +240,7 @@ class Kidazzle_AMP_Blog
         }
         
         .amp-cta {
-            background: linear-gradient(135deg, var(--Kidazzle-red) 0%, #c26a5a 100%);
+            background: linear-gradient(135deg, var(--kidazzle-red) 0%, #c26a5a 100%);
             color: #fff;
             padding: 30px;
             border-radius: 12px;
@@ -258,7 +258,7 @@ class Kidazzle_AMP_Blog
         .amp-cta a {
             display: inline-block;
             background: #fff;
-            color: var(--Kidazzle-red);
+            color: var(--kidazzle-red);
             padding: 12px 30px;
             border-radius: 50px;
             font-weight: 700;
@@ -451,4 +451,4 @@ class Kidazzle_AMP_Blog
     }
 }
 
-new Kidazzle_AMP_Blog();
+new kidazzle_AMP_Blog();

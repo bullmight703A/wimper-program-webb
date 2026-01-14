@@ -3,7 +3,7 @@
  * Combo Page Internal Links
  * Automatically injects links to combo pages from related content
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,14 +11,14 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Combo_Internal_Links
+class kidazzle_Combo_Internal_Links
 {
     public function __construct() {
         // Add combo links to program single pages
-        add_action('Kidazzle_after_program_content', [$this, 'render_program_city_links']);
+        add_action('kidazzle_after_program_content', [$this, 'render_program_city_links']);
         
         // Add combo links to city pages
-        add_action('Kidazzle_after_city_content', [$this, 'render_city_program_links']);
+        add_action('kidazzle_after_city_content', [$this, 'render_city_program_links']);
         
         // Fallback: append to content if hooks not available
         add_filter('the_content', [$this, 'append_links_to_content'], 20);
@@ -33,7 +33,7 @@ class Kidazzle_Combo_Internal_Links
         global $post;
         $program = $post;
         
-        $cities = Kidazzle_Combo_Page_Generator::get_all_cities();
+        $cities = kidazzle_Combo_Page_Generator::get_all_cities();
         if (empty($cities)) return;
         
         ?>
@@ -116,7 +116,7 @@ class Kidazzle_Combo_Internal_Links
         
         // For program pages
         if ($post->post_type === 'program') {
-            $cities = Kidazzle_Combo_Page_Generator::get_all_cities();
+            $cities = kidazzle_Combo_Page_Generator::get_all_cities();
             if (!empty($cities)) {
                 $links = [];
                 foreach (array_slice($cities, 0, 8) as $city) {
@@ -124,7 +124,7 @@ class Kidazzle_Combo_Internal_Links
                     $links[] = '<a href="' . esc_url($url) . '">' . esc_html($city['city']) . '</a>';
                 }
                 
-                $content .= '<div class="Kidazzle-combo-links" style="margin-top: 2rem; padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">';
+                $content .= '<div class="kidazzle-combo-links" style="margin-top: 2rem; padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">';
                 $content .= '<h3 style="margin: 0 0 1rem;">Find ' . esc_html($post->post_title) . ' Near You</h3>';
                 $content .= '<p>' . implode(' &bull; ', $links) . '</p>';
                 $content .= '</div>';
@@ -144,7 +144,7 @@ class Kidazzle_Combo_Internal_Links
                     $links[] = '<a href="' . esc_url($url) . '">' . esc_html($program->post_title) . '</a>';
                 }
                 
-                $content .= '<div class="Kidazzle-combo-links" style="margin-top: 2rem; padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">';
+                $content .= '<div class="kidazzle-combo-links" style="margin-top: 2rem; padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">';
                 $content .= '<h3 style="margin: 0 0 1rem;">Programs in ' . esc_html($city_name) . '</h3>';
                 $content .= '<p>' . implode(' &bull; ', $links) . '</p>';
                 $content .= '</div>';
@@ -155,4 +155,4 @@ class Kidazzle_Combo_Internal_Links
     }
 }
 
-new Kidazzle_Combo_Internal_Links();
+new kidazzle_Combo_Internal_Links();

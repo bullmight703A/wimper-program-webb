@@ -3,7 +3,7 @@
  * Link Equity Analyzer
  * Analyzes internal link structure and provides recommendations
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Link_Equity_Analyzer
+class kidazzle_Link_Equity_Analyzer
 {
     public function __construct() {
         add_action('admin_menu', [$this, 'add_dashboard_page'], 20);
@@ -185,8 +185,8 @@ class Kidazzle_Link_Equity_Analyzer
             }
             
             // Boost high-score pages
-            if (isset($GLOBALS['Kidazzle_link_scores'][$page->ID])) {
-                $relevance += min(0.2, $GLOBALS['Kidazzle_link_scores'][$page->ID] / 50);
+            if (isset($GLOBALS['kidazzle_link_scores'][$page->ID])) {
+                $relevance += min(0.2, $GLOBALS['kidazzle_link_scores'][$page->ID] / 50);
             }
             
             if ($relevance >= 0.3) {
@@ -211,11 +211,11 @@ class Kidazzle_Link_Equity_Analyzer
      */
     public function add_dashboard_page() {
         add_submenu_page(
-            'Kidazzle-seo-dashboard',
+            'kidazzle-seo-dashboard',
             'Link Equity',
             'Link Equity',
             'manage_options',
-            'Kidazzle-link-equity',
+            'kidazzle-link-equity',
             [$this, 'render_dashboard']
         );
     }
@@ -227,7 +227,7 @@ class Kidazzle_Link_Equity_Analyzer
         $analysis = self::analyze();
         $recommendations = self::get_recommendations();
         $orphans = self::get_orphans();
-        $nonce = wp_create_nonce('Kidazzle_link_equity');
+        $nonce = wp_create_nonce('kidazzle_link_equity');
         ?>
         <div class="wrap">
             <h1>🔗 Link Equity Analysis</h1>
@@ -431,7 +431,7 @@ class Kidazzle_Link_Equity_Analyzer
                 var sourceId = $('#ai-fix-source').val();
                 
                 $.post(ajaxurl, {
-                    action: 'Kidazzle_link_equity_ai_preview',
+                    action: 'kidazzle_link_equity_ai_preview',
                     nonce: nonce,
                     source_id: sourceId,
                     target_id: currentTarget.id,
@@ -456,7 +456,7 @@ class Kidazzle_Link_Equity_Analyzer
                 var sourceId = $('#ai-fix-source').val();
                 
                 $.post(ajaxurl, {
-                    action: 'Kidazzle_link_equity_ai_apply',
+                    action: 'kidazzle_link_equity_ai_apply',
                     nonce: nonce,
                     source_id: sourceId,
                     target_id: currentTarget.id,
@@ -480,15 +480,15 @@ class Kidazzle_Link_Equity_Analyzer
 }
 
 // AJAX handlers for AI fix
-add_action('wp_ajax_Kidazzle_link_equity_ai_preview', function() {
-    check_ajax_referer('Kidazzle_link_equity', 'nonce');
+add_action('wp_ajax_kidazzle_link_equity_ai_preview', function() {
+    check_ajax_referer('kidazzle_link_equity', 'nonce');
     
     if (!current_user_can('edit_posts')) {
         wp_send_json_error('Unauthorized');
     }
     
-    global $Kidazzle_llm_client;
-    if (!$Kidazzle_llm_client) {
+    global $kidazzle_llm_client;
+    if (!$kidazzle_llm_client) {
         wp_send_json_error('LLM client not available');
     }
     
@@ -512,8 +512,8 @@ LINK TO INSERT:
 
 Find a natural place in the content where this link fits contextually. Return the modified paragraph with the link inserted. Return ONLY the HTML paragraph, no explanation.";
 
-    $response = $Kidazzle_llm_client->make_request([
-        'model' => get_option('Kidazzle_llm_model', 'gpt-4o-mini'),
+    $response = $kidazzle_llm_client->make_request([
+        'model' => get_option('kidazzle_llm_model', 'gpt-4o-mini'),
         'messages' => [
             ['role' => 'system', 'content' => 'You are a content editor. Insert links naturally into existing content.'],
             ['role' => 'user', 'content' => $prompt]
@@ -530,8 +530,8 @@ Find a natural place in the content where this link fits contextually. Return th
     wp_send_json_success(['preview' => wp_kses_post($preview)]);
 });
 
-add_action('wp_ajax_Kidazzle_link_equity_ai_apply', function() {
-    check_ajax_referer('Kidazzle_link_equity', 'nonce');
+add_action('wp_ajax_kidazzle_link_equity_ai_apply', function() {
+    check_ajax_referer('kidazzle_link_equity', 'nonce');
     
     if (!current_user_can('edit_posts')) {
         wp_send_json_error('Unauthorized');
@@ -562,4 +562,4 @@ add_action('wp_ajax_Kidazzle_link_equity_ai_apply', function() {
     wp_send_json_success(['message' => 'Link inserted']);
 });
 
-new Kidazzle_Link_Equity_Analyzer();
+new kidazzle_Link_Equity_Analyzer();

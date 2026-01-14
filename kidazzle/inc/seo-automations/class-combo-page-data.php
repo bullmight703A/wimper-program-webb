@@ -3,7 +3,7 @@
  * Combo Page Data Storage
  * Stores editable data for program+city combo pages
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,12 +11,12 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Combo_Page_Data
+class kidazzle_Combo_Page_Data
 {
     /**
      * Option prefix for combo page data
      */
-    const OPTION_PREFIX = 'Kidazzle_combo_';
+    const OPTION_PREFIX = 'kidazzle_combo_';
     
     /**
      * Get the option key for a combo page

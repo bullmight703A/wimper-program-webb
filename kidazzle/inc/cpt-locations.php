@@ -2,7 +2,7 @@
 /**
  * Custom Post Type: Locations
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle-theme
  * @since 1.0.0
  */
 
@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 /**
  * Register Location CPT
  */
-function Kidazzle_register_location_cpt()
+function kidazzle_register_location_cpt()
 {
 	$labels = array(
 		'name' => _x('Locations', 'Post Type General Name', 'kidazzle-theme'),
@@ -40,12 +40,12 @@ function Kidazzle_register_location_cpt()
 
 	register_post_type('location', $args);
 }
-add_action('init', 'Kidazzle_register_location_cpt', 0);
+add_action('init', 'kidazzle_register_location_cpt', 0);
 
 /**
  * Register Location taxonomy (counties/regions)
  */
-function Kidazzle_register_location_taxonomy()
+function kidazzle_register_location_taxonomy()
 {
 	$labels = array(
 		'name' => _x('Location Regions', 'taxonomy general name', 'kidazzle-theme'),
@@ -80,12 +80,12 @@ function Kidazzle_register_location_taxonomy()
 		)
 	);
 }
-add_action('init', 'Kidazzle_register_location_taxonomy', 1);
+add_action('init', 'kidazzle_register_location_taxonomy', 1);
 
 /**
  * Add admin columns
  */
-function Kidazzle_location_admin_columns($columns)
+function kidazzle_location_admin_columns($columns)
 {
 	$new_columns = array();
 	$new_columns['cb'] = $columns['cb'];
@@ -98,12 +98,12 @@ function Kidazzle_location_admin_columns($columns)
 
 	return $new_columns;
 }
-add_filter('manage_location_posts_columns', 'Kidazzle_location_admin_columns');
+add_filter('manage_location_posts_columns', 'kidazzle_location_admin_columns');
 
 /**
  * Populate admin columns
  */
-function Kidazzle_location_admin_column_content($column, $post_id)
+function kidazzle_location_admin_column_content($column, $post_id)
 {
 	switch ($column) {
 		case 'city':
@@ -126,23 +126,23 @@ function Kidazzle_location_admin_column_content($column, $post_id)
 			break;
 	}
 }
-add_action('manage_location_posts_custom_column', 'Kidazzle_location_admin_column_content', 10, 2);
+add_action('manage_location_posts_custom_column', 'kidazzle_location_admin_column_content', 10, 2);
 
 /**
  * Make columns sortable
  */
-function Kidazzle_location_sortable_columns($columns)
+function kidazzle_location_sortable_columns($columns)
 {
 	$columns['city'] = 'city';
 	$columns['state'] = 'state';
 	return $columns;
 }
-add_filter('manage_edit-location_sortable_columns', 'Kidazzle_location_sortable_columns');
+add_filter('manage_edit-location_sortable_columns', 'kidazzle_location_sortable_columns');
 
 /**
  * Custom title placeholder
  */
-function Kidazzle_location_title_placeholder($title)
+function kidazzle_location_title_placeholder($title)
 {
 	$screen = get_current_screen();
 	if ('location' === $screen->post_type) {
@@ -150,46 +150,46 @@ function Kidazzle_location_title_placeholder($title)
 	}
 	return $title;
 }
-add_filter('enter_title_here', 'Kidazzle_location_title_placeholder');
+add_filter('enter_title_here', 'kidazzle_location_title_placeholder');
 
 /**
  * Add custom fields to location_region taxonomy
  */
-function Kidazzle_location_region_add_form_fields()
+function kidazzle_location_region_add_form_fields()
 {
 	?>
 	<div class="form-field">
 		<label for="region_color_bg"><?php _e('Background Color Class', 'kidazzle-theme'); ?></label>
-		<input type="text" name="region_color_bg" id="region_color_bg" value="Kidazzle-greenLight"
-			placeholder="e.g., Kidazzle-greenLight">
+		<input type="text" name="region_color_bg" id="region_color_bg" value="kidazzle-greenLight"
+			placeholder="e.g., kidazzle-greenLight">
 		<p class="description">
-			<?php _e('Tailwind background color class (e.g., Kidazzle-greenLight, Kidazzle-redLight, Kidazzle-blueLight, Kidazzle-yellowLight, Kidazzle-purpleLight, Kidazzle-orangeLight, Kidazzle-tealLight)', 'kidazzle-theme'); ?>
+			<?php _e('Tailwind background color class (e.g., kidazzle-greenLight, kidazzle-redLight, kidazzle-blueLight, kidazzle-yellowLight, kidazzle-purpleLight, kidazzle-orangeLight, kidazzle-tealLight)', 'kidazzle-theme'); ?>
 		</p>
 	</div>
 	<div class="form-field">
 		<label for="region_color_text"><?php _e('Text Color Class', 'kidazzle-theme'); ?></label>
-		<input type="text" name="region_color_text" id="region_color_text" value="Kidazzle-green"
-			placeholder="e.g., Kidazzle-green">
+		<input type="text" name="region_color_text" id="region_color_text" value="kidazzle-green"
+			placeholder="e.g., kidazzle-green">
 		<p class="description">
-			<?php _e('Tailwind text color class (e.g., Kidazzle-green, Kidazzle-red, Kidazzle-blue, Kidazzle-yellow, Kidazzle-purple, Kidazzle-orange, Kidazzle-teal)', 'kidazzle-theme'); ?>
+			<?php _e('Tailwind text color class (e.g., kidazzle-green, kidazzle-red, kidazzle-blue, kidazzle-yellow, kidazzle-purple, kidazzle-orange, kidazzle-teal)', 'kidazzle-theme'); ?>
 		</p>
 	</div>
 	<div class="form-field">
 		<label for="region_color_border"><?php _e('Border Color Class', 'kidazzle-theme'); ?></label>
-		<input type="text" name="region_color_border" id="region_color_border" value="Kidazzle-green"
-			placeholder="e.g., Kidazzle-green">
+		<input type="text" name="region_color_border" id="region_color_border" value="kidazzle-green"
+			placeholder="e.g., kidazzle-green">
 		<p class="description">
-			<?php _e('Tailwind border color class (e.g., Kidazzle-green, Kidazzle-red, Kidazzle-blue, Kidazzle-yellow, Kidazzle-purple, Kidazzle-orange, Kidazzle-teal)', 'kidazzle-theme'); ?>
+			<?php _e('Tailwind border color class (e.g., kidazzle-green, kidazzle-red, kidazzle-blue, kidazzle-yellow, kidazzle-purple, kidazzle-orange, kidazzle-teal)', 'kidazzle-theme'); ?>
 		</p>
 	</div>
 	<?php
 }
-add_action('location_region_add_form_fields', 'Kidazzle_location_region_add_form_fields');
+add_action('location_region_add_form_fields', 'kidazzle_location_region_add_form_fields');
 
 /**
  * Add custom fields to location_region taxonomy edit form
  */
-function Kidazzle_location_region_edit_form_fields($term)
+function kidazzle_location_region_edit_form_fields($term)
 {
 	$color_bg = get_term_meta($term->term_id, 'region_color_bg', true);
 	$color_text = get_term_meta($term->term_id, 'region_color_text', true);
@@ -200,9 +200,9 @@ function Kidazzle_location_region_edit_form_fields($term)
 		</th>
 		<td>
 			<input type="text" name="region_color_bg" id="region_color_bg"
-				value="<?php echo esc_attr($color_bg ?: 'Kidazzle-greenLight'); ?>">
+				value="<?php echo esc_attr($color_bg ?: 'kidazzle-greenLight'); ?>">
 			<p class="description">
-				<?php _e('Tailwind background color class (e.g., Kidazzle-greenLight, Kidazzle-redLight, Kidazzle-blueLight, Kidazzle-yellowLight, Kidazzle-purpleLight, Kidazzle-orangeLight, Kidazzle-tealLight)', 'kidazzle-theme'); ?>
+				<?php _e('Tailwind background color class (e.g., kidazzle-greenLight, kidazzle-redLight, kidazzle-blueLight, kidazzle-yellowLight, kidazzle-purpleLight, kidazzle-orangeLight, kidazzle-tealLight)', 'kidazzle-theme'); ?>
 			</p>
 		</td>
 	</tr>
@@ -210,9 +210,9 @@ function Kidazzle_location_region_edit_form_fields($term)
 		<th scope="row"><label for="region_color_text"><?php _e('Text Color Class', 'kidazzle-theme'); ?></label></th>
 		<td>
 			<input type="text" name="region_color_text" id="region_color_text"
-				value="<?php echo esc_attr($color_text ?: 'Kidazzle-green'); ?>">
+				value="<?php echo esc_attr($color_text ?: 'kidazzle-green'); ?>">
 			<p class="description">
-				<?php _e('Tailwind text color class (e.g., Kidazzle-green, Kidazzle-red, Kidazzle-blue, Kidazzle-yellow, Kidazzle-purple, Kidazzle-orange, Kidazzle-teal)', 'kidazzle-theme'); ?>
+				<?php _e('Tailwind text color class (e.g., kidazzle-green, kidazzle-red, kidazzle-blue, kidazzle-yellow, kidazzle-purple, kidazzle-orange, kidazzle-teal)', 'kidazzle-theme'); ?>
 			</p>
 		</td>
 	</tr>
@@ -221,20 +221,20 @@ function Kidazzle_location_region_edit_form_fields($term)
 		</th>
 		<td>
 			<input type="text" name="region_color_border" id="region_color_border"
-				value="<?php echo esc_attr($color_border ?: 'Kidazzle-green'); ?>">
+				value="<?php echo esc_attr($color_border ?: 'kidazzle-green'); ?>">
 			<p class="description">
-				<?php _e('Tailwind border color class (e.g., Kidazzle-green, Kidazzle-red, Kidazzle-blue, Kidazzle-yellow, Kidazzle-purple, Kidazzle-orange, Kidazzle-teal)', 'kidazzle-theme'); ?>
+				<?php _e('Tailwind border color class (e.g., kidazzle-green, kidazzle-red, kidazzle-blue, kidazzle-yellow, kidazzle-purple, kidazzle-orange, kidazzle-teal)', 'kidazzle-theme'); ?>
 			</p>
 		</td>
 	</tr>
 	<?php
 }
-add_action('location_region_edit_form_fields', 'Kidazzle_location_region_edit_form_fields');
+add_action('location_region_edit_form_fields', 'kidazzle_location_region_edit_form_fields');
 
 /**
  * Save location_region taxonomy custom fields
  */
-function Kidazzle_save_location_region_meta($term_id)
+function kidazzle_save_location_region_meta($term_id)
 {
 	if (isset($_POST['region_color_bg'])) {
 		update_term_meta($term_id, 'region_color_bg', sanitize_text_field($_POST['region_color_bg']));
@@ -246,31 +246,31 @@ function Kidazzle_save_location_region_meta($term_id)
 		update_term_meta($term_id, 'region_color_border', sanitize_text_field($_POST['region_color_border']));
 	}
 }
-add_action('created_location_region', 'Kidazzle_save_location_region_meta');
-add_action('edited_location_region', 'Kidazzle_save_location_region_meta');
+add_action('created_location_region', 'kidazzle_save_location_region_meta');
+add_action('edited_location_region', 'kidazzle_save_location_region_meta');
 
 /**
  * Add meta box for location custom fields
  */
-function Kidazzle_location_custom_fields_meta_box()
+function kidazzle_location_custom_fields_meta_box()
 {
 	add_meta_box(
-		'Kidazzle-location-custom-fields',
+		'kidazzle-location-custom-fields',
 		__('Location Details', 'kidazzle-theme'),
-		'Kidazzle_render_location_custom_fields_meta_box',
+		'kidazzle_render_location_custom_fields_meta_box',
 		'location',
 		'normal',
 		'high'
 	);
 }
-add_action('add_meta_boxes', 'Kidazzle_location_custom_fields_meta_box');
+add_action('add_meta_boxes', 'kidazzle_location_custom_fields_meta_box');
 
 /**
  * Render location custom fields meta box
  */
-function Kidazzle_render_location_custom_fields_meta_box($post)
+function kidazzle_render_location_custom_fields_meta_box($post)
 {
-	wp_nonce_field('Kidazzle_location_meta_nonce', 'Kidazzle_location_meta_nonce_field');
+	wp_nonce_field('kidazzle_location_meta_nonce', 'kidazzle_location_meta_nonce_field');
 
 	// Get existing values
 	$hero_subtitle = get_post_meta($post->ID, 'location_hero_subtitle', true);
@@ -304,35 +304,35 @@ function Kidazzle_render_location_custom_fields_meta_box($post)
 	$gmb_url = get_post_meta($post->ID, 'location_gmb_url', true);
 	?>
 	<style>
-		.Kidazzle-meta-field {
+		.kidazzle-meta-field {
 			margin-bottom: 20px;
 		}
 
-		.Kidazzle-meta-field label {
+		.kidazzle-meta-field label {
 			display: block;
 			font-weight: 600;
 			margin-bottom: 5px;
 		}
 
-		.Kidazzle-meta-field input[type="text"],
-		.Kidazzle-meta-field textarea {
+		.kidazzle-meta-field input[type="text"],
+		.kidazzle-meta-field textarea {
 			width: 100%;
 		}
 
-		.Kidazzle-meta-field small {
+		.kidazzle-meta-field small {
 			display: block;
 			margin-top: 5px;
 			color: #666;
 			font-style: italic;
 		}
 
-		.Kidazzle-meta-section {
+		.kidazzle-meta-section {
 			border-top: 1px solid #ddd;
 			padding-top: 20px;
 			margin-top: 20px;
 		}
 
-		.Kidazzle-meta-section h4 {
+		.kidazzle-meta-section h4 {
 			margin-top: 0;
 			margin-bottom: 15px;
 			font-size: 14px;
@@ -341,7 +341,7 @@ function Kidazzle_render_location_custom_fields_meta_box($post)
 			color: #555;
 		}
 
-		.Kidazzle-icon-preview {
+		.kidazzle-icon-preview {
 			display: inline-flex;
 			align-items: center;
 			gap: 10px;
@@ -352,12 +352,12 @@ function Kidazzle_render_location_custom_fields_meta_box($post)
 			font-size: 13px;
 		}
 
-		.Kidazzle-icon-preview i {
+		.kidazzle-icon-preview i {
 			font-size: 16px;
 			color: #2271b1;
 		}
 
-		.Kidazzle-image-preview img {
+		.kidazzle-image-preview img {
 			max-width: 200px;
 			height: auto;
 			margin-top: 10px;
@@ -367,7 +367,7 @@ function Kidazzle_render_location_custom_fields_meta_box($post)
 		}
 	</style>
 
-	<div class="Kidazzle-meta-section" style="border-top: none; padding-top: 0; margin-top: 0;">
+	<div class="kidazzle-meta-section" style="border-top: none; padding-top: 0; margin-top: 0;">
 		<div
 			style="background: #e7f5ff; padding: 15px; border-radius: 4px; margin-bottom: 20px; border-left: 4px solid #2271b1;">
 			<p style="margin: 0 0 10px 0; font-weight: 600;">
@@ -377,19 +377,19 @@ function Kidazzle_render_location_custom_fields_meta_box($post)
 				The following icons will appear on your location page:
 			</p>
 			<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px;">
-				<div class="Kidazzle-icon-preview">
+				<div class="kidazzle-icon-preview">
 					<i class="fa-solid fa-location-dot"></i>
 					<span>Address</span>
 				</div>
-				<div class="Kidazzle-icon-preview">
+				<div class="kidazzle-icon-preview">
 					<i class="fa-solid fa-phone"></i>
 					<span>Phone/Email</span>
 				</div>
-				<div class="Kidazzle-icon-preview">
+				<div class="kidazzle-icon-preview">
 					<i class="fa-solid fa-clock"></i>
 					<span>Hours</span>
 				</div>
-				<div class="Kidazzle-icon-preview">
+				<div class="kidazzle-icon-preview">
 					<i class="fa-solid fa-bus"></i>
 					<span>School Pickups</span>
 				</div>
@@ -672,7 +672,7 @@ function Kidazzle_render_location_custom_fields_meta_box($post)
 		</div>
 	</div>
 
-	<div class="Kidazzle-meta-section">
+	<div class="kidazzle-meta-section">
 		<p><strong><?php _e('Note:', 'kidazzle-theme'); ?></strong>
 			<?php _e('Use the "Featured Image" box in the sidebar to set the hero image for this location. Programs available at this location can be managed from the Programs admin section.', 'kidazzle-theme'); ?>
 		</p>
@@ -683,10 +683,10 @@ function Kidazzle_render_location_custom_fields_meta_box($post)
 /**
  * Save location custom fields
  */
-function Kidazzle_save_location_custom_fields($post_id)
+function kidazzle_save_location_custom_fields($post_id)
 {
 	// Verify nonce
-	if (!isset($_POST['Kidazzle_location_meta_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['Kidazzle_location_meta_nonce_field']), 'Kidazzle_location_meta_nonce')) {
+	if (!isset($_POST['kidazzle_location_meta_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['kidazzle_location_meta_nonce_field']), 'kidazzle_location_meta_nonce')) {
 		return;
 	}
 
@@ -775,4 +775,4 @@ function Kidazzle_save_location_custom_fields($post_id)
 	$quality_rated = isset($_POST['location_quality_rated']) ? '1' : '';
 	update_post_meta($post_id, 'location_quality_rated', $quality_rated);
 }
-add_action('save_post_location', 'Kidazzle_save_location_custom_fields');
+add_action('save_post_location', 'kidazzle_save_location_custom_fields');

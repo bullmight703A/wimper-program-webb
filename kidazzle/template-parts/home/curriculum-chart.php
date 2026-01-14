@@ -2,7 +2,7 @@
 /**
  * Curriculum Radar Chart
  * Template Part: Curriculum Chart
- * Interactive radar chart showing Prismpath™ curriculum focus by age
+ * Interactive radar chart showing KIDazzle Creative Curriculum™ curriculum focus by age
  *
  * @package kidazzle_Excellence
  */
@@ -21,11 +21,11 @@ $first = $profile_list[0];
 <section id="curriculum" class="py-20 bg-brand-cream border-y border-kidazzle-blue/10" data-section="curriculum">
         <div class="max-w-6xl mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-5">
-                        <span class="text-kidazzle-blue font-bold tracking-[0.2em] text-[11px] uppercase">The Prismpath™
+                        <span class="text-kidazzle-blue font-bold tracking-[0.2em] text-[11px] uppercase">The KIDazzle Creative Curriculum™
                                 Curriculum</span>
                         <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-ink">A curriculum that shifts as
                                 your child grows</h2>
-                        <p class="text-brand-ink text-sm md:text-base">Our Prismpath™ framework balances five pillars –
+                        <p class="text-brand-ink text-sm md:text-base">Our KIDazzle Creative Curriculum™ framework balances five pillars –
                                 physical, emotional, social, academic, and creative development. The mix changes at each
                                 age so your child gets exactly what they need, when they need it.</p>
                         <div class="flex flex-wrap gap-2 text-xs" data-curriculum-buttons>

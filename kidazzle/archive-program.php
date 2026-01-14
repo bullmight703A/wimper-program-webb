@@ -2,7 +2,7 @@
 /**
  * Programs Archive Template
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  */
 
 get_header();
@@ -20,20 +20,20 @@ $programs_query = new WP_Query(array(
 	<!-- Hero Section -->
 	<section class="relative pt-16 pb-12 lg:pt-24 lg:pb-20 bg-white overflow-hidden">
 		<div
-			class="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-Kidazzle-redLight/40 via-transparent to-transparent">
+			class="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-kidazzle-redLight/40 via-transparent to-transparent">
 		</div>
 
 		<div class="max-w-7xl mx-auto px-4 lg:px-6 relative z-10 text-center">
 			<div
-				class="inline-flex items-center gap-2 bg-white border border-Kidazzle-red/30 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold text-Kidazzle-red shadow-sm mb-6 fade-in-up">
+				class="inline-flex items-center gap-2 bg-white border border-kidazzle-red/30 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold text-kidazzle-red shadow-sm mb-6 fade-in-up">
 				<i class="fa-solid fa-shapes"></i> Ages 6 weeks to 12 years
 			</div>
 			<h1 class="font-serif text-[2.8rem] md:text-6xl text-brand-ink mb-6 fade-in-up delay-100">
-				Programs and Curriculum that grows <span class="text-Kidazzle-red italic">with them.</span>
+				Programs and Curriculum that grows <span class="text-kidazzle-red italic">with them.</span>
 			</h1>
 			<p class="text-lg text-brand-ink/90 max-w-2xl mx-auto mb-10 fade-in-up delay-200">
 				From sensory discovery in our infant suites to the project-based learning of Pre-K, every program uses
-				our proprietary Prismpath™ model to meet children exactly where they are.
+				our proprietary KIDazzle Creative Curriculum™ model to meet children exactly where they are.
 			</p>
 		</div>
 	</section>
@@ -72,11 +72,11 @@ $programs_query = new WP_Query(array(
 
 						// Color mapping
 						$color_map = array(
-							'red' => array('main' => 'Kidazzle-red', 'light' => 'Kidazzle-red/10', 'border' => 'Kidazzle-red/30'),
-							'blue' => array('main' => 'Kidazzle-blue', 'light' => 'Kidazzle-blue/10', 'border' => 'Kidazzle-blue/30'),
-							'yellow' => array('main' => 'Kidazzle-yellow', 'light' => 'Kidazzle-yellow/10', 'border' => 'Kidazzle-yellow/30'),
-							'blueDark' => array('main' => 'Kidazzle-blueDark', 'light' => 'Kidazzle-blueDark/10', 'border' => 'Kidazzle-blueDark/30'),
-							'green' => array('main' => 'Kidazzle-green', 'light' => 'Kidazzle-green/10', 'border' => 'Kidazzle-green/30'),
+							'red' => array('main' => 'kidazzle-red', 'light' => 'kidazzle-red/10', 'border' => 'kidazzle-red/30'),
+							'blue' => array('main' => 'kidazzle-blue', 'light' => 'kidazzle-blue/10', 'border' => 'kidazzle-blue/30'),
+							'yellow' => array('main' => 'kidazzle-yellow', 'light' => 'kidazzle-yellow/10', 'border' => 'kidazzle-yellow/30'),
+							'blueDark' => array('main' => 'kidazzle-blueDark', 'light' => 'kidazzle-blueDark/10', 'border' => 'kidazzle-blueDark/30'),
+							'green' => array('main' => 'kidazzle-green', 'light' => 'kidazzle-green/10', 'border' => 'kidazzle-green/30'),
 						);
 
 						$colors = $color_map[$color_scheme] ?? $color_map['red'];
@@ -122,7 +122,7 @@ $programs_query = new WP_Query(array(
 								<ul class="text-xs text-brand-ink space-y-2 mb-6">
 									<?php foreach ($features_array as $feature): ?>
 										<li class="flex gap-2">
-											<i class="fa-solid fa-check text-Kidazzle-green"></i>
+											<i class="fa-solid fa-check text-kidazzle-green"></i>
 											<?php echo esc_html($feature); ?>
 										</li>
 									<?php endforeach; ?>
@@ -152,12 +152,12 @@ $programs_query = new WP_Query(array(
 	<section id="curriculum" class="py-24 bg-white border-t border-brand-ink/5">
 		<div class="max-w-7xl mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-16 items-center">
 			<div class="order-2 lg:order-1 relative">
-				<div class="absolute -top-10 -left-10 w-72 h-72 bg-Kidazzle-blue/10 rounded-full blur-3xl"></div>
+				<div class="absolute -top-10 -left-10 w-72 h-72 bg-kidazzle-blue/10 rounded-full blur-3xl"></div>
 				<div
-					class="relative bg-Kidazzle-blueDark text-white rounded-[3rem] p-10 lg:p-12 shadow-2xl overflow-hidden">
+					class="relative bg-kidazzle-blueDark text-white rounded-[3rem] p-10 lg:p-12 shadow-2xl overflow-hidden">
 					<div class="absolute top-0 right-0 p-12 opacity-10 text-9xl"><i
 							class="fa-brands fa-connectdevelop"></i></div>
-					<h2 class="font-serif text-3xl font-bold mb-6 relative z-10">The Prismpath™ Model</h2>
+					<h2 class="font-serif text-3xl font-bold mb-6 relative z-10">The KIDazzle Creative Curriculum™ Model</h2>
 					<p class="text-white/80 text-lg leading-relaxed mb-8 relative z-10">
 						Just as a prism refracts light into a full spectrum of color, our proprietary curriculum
 						refracts play into five key pillars of development.
@@ -165,22 +165,22 @@ $programs_query = new WP_Query(array(
 					<ul class="space-y-4 relative z-10">
 						<li class="flex items-center gap-4">
 							<span
-								class="w-8 h-8 rounded-full bg-Kidazzle-red flex items-center justify-center text-xs font-bold">1</span>
+								class="w-8 h-8 rounded-full bg-kidazzle-red flex items-center justify-center text-xs font-bold">1</span>
 							<span>Physical & Sensory Health</span>
 						</li>
 						<li class="flex items-center gap-4">
 							<span
-								class="w-8 h-8 rounded-full bg-Kidazzle-yellow flex items-center justify-center text-xs font-bold text-brand-ink">2</span>
+								class="w-8 h-8 rounded-full bg-kidazzle-yellow flex items-center justify-center text-xs font-bold text-brand-ink">2</span>
 							<span>Emotional Intelligence</span>
 						</li>
 						<li class="flex items-center gap-4">
 							<span
-								class="w-8 h-8 rounded-full bg-Kidazzle-green flex items-center justify-center text-xs font-bold">3</span>
+								class="w-8 h-8 rounded-full bg-kidazzle-green flex items-center justify-center text-xs font-bold">3</span>
 							<span>Social Connection</span>
 						</li>
 						<li class="flex items-center gap-4">
 							<span
-								class="w-8 h-8 rounded-full bg-Kidazzle-blue flex items-center justify-center text-xs font-bold">4</span>
+								class="w-8 h-8 rounded-full bg-kidazzle-blue flex items-center justify-center text-xs font-bold">4</span>
 							<span>Academic Logic</span>
 						</li>
 						<li class="flex items-center gap-4">
@@ -192,7 +192,7 @@ $programs_query = new WP_Query(array(
 				</div>
 			</div>
 			<div class="order-1 lg:order-2">
-				<span class="text-Kidazzle-blue font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Our
+				<span class="text-kidazzle-blue font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Our
 					Methodology</span>
 				<h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6">More than just daycare.</h2>
 				<p class="text-brand-ink text-lg leading-relaxed mb-8">
@@ -224,10 +224,10 @@ $programs_query = new WP_Query(array(
 				classrooms, and experience the Kidazzle culture firsthand.</p>
 			<div class="flex flex-wrap justify-center gap-4">
 				<a href="<?php echo esc_url(home_url('/locations')); ?>"
-					class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-Kidazzle-blue hover:text-Kidazzle-blue transition-colors">Find
+					class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-kidazzle-blue hover:text-kidazzle-blue transition-colors">Find
 					a Location</a>
 				<a href="#tour"
-					class="px-8 py-4 bg-Kidazzle-red text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:bg-Kidazzle-red/90 transition-colors shadow-lg">Schedule
+					class="px-8 py-4 bg-kidazzle-red text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:bg-kidazzle-red/90 transition-colors shadow-lg">Schedule
 					a Tour</a>
 			</div>
 		</div>

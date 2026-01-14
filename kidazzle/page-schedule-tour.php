@@ -2,7 +2,7 @@
 /**
  * Template Name: Schedule a Tour
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  */
 
 // Exit if accessed directly
@@ -24,7 +24,7 @@ $regions = array(
     'gwinnett' => array(
         'title' => __('Gwinnett County', 'kidazzle-theme'),
         'icon' => '<i class="fa-solid fa-tree"></i>',
-        'color' => 'Kidazzle-green',
+        'color' => 'kidazzle-green',
         'bg' => 'bg-brand-cream',
         'text' => 'text-white', // Button text
         'posts' => array(),
@@ -32,7 +32,7 @@ $regions = array(
     'cobb' => array(
         'title' => __('Cobb County', 'kidazzle-theme'),
         'icon' => '<i class="fa-solid fa-city"></i>',
-        'color' => 'Kidazzle-red',
+        'color' => 'kidazzle-red',
         'bg' => 'bg-white',
         'text' => 'text-white',
         'posts' => array(),
@@ -40,7 +40,7 @@ $regions = array(
     'north-metro' => array(
         'title' => __('North Metro', 'kidazzle-theme'),
         'icon' => '<i class="fa-solid fa-mountain"></i>',
-        'color' => 'Kidazzle-blue',
+        'color' => 'kidazzle-blue',
         'bg' => 'bg-brand-cream',
         'text' => 'text-white',
         'posts' => array(),
@@ -48,7 +48,7 @@ $regions = array(
     'south-metro' => array(
         'title' => __('South Metro', 'kidazzle-theme'),
         'icon' => '<i class="fa-solid fa-sun"></i>',
-        'color' => 'Kidazzle-yellow',
+        'color' => 'kidazzle-yellow',
         'bg' => 'bg-white',
         'text' => 'text-brand-ink', // Special case as per design
         'posts' => array(),
@@ -110,20 +110,20 @@ get_header();
     <section class="py-20 bg-white border-b border-brand-ink/5 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-12 items-center">
             <div class="text-center lg:text-left fade-in-up">
-                <span class="text-Kidazzle-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block"><?php _e('Admissions', 'kidazzle-theme'); ?></span>
+                <span class="text-kidazzle-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block"><?php _e('Admissions', 'kidazzle-theme'); ?></span>
                 <h1 class="font-serif text-5xl md:text-6xl text-brand-ink mb-6"><?php _e('Come see the magic.', 'kidazzle-theme'); ?></h1>
                 <p class="text-lg text-brand-ink/60 mb-10 max-w-xl mx-auto lg:mx-0"><?php _e('Select your preferred campus below to schedule a private walkthrough with the Director. We can\'t wait to meet you!', 'kidazzle-theme'); ?></p>
 
                 <!-- Region Quick Links -->
                 <div class="flex flex-wrap justify-center lg:justify-start gap-3">
                     <a href="#gwinnett"
-                        class="px-5 py-2 rounded-full border border-brand-ink/10 hover:bg-Kidazzle-greenLight hover:border-Kidazzle-green hover:text-Kidazzle-green transition-colors text-xs font-bold uppercase tracking-wider"><?php _e('Gwinnett', 'kidazzle-theme'); ?></a>
+                        class="px-5 py-2 rounded-full border border-brand-ink/10 hover:bg-kidazzle-greenLight hover:border-kidazzle-green hover:text-kidazzle-green transition-colors text-xs font-bold uppercase tracking-wider"><?php _e('Gwinnett', 'kidazzle-theme'); ?></a>
                     <a href="#cobb"
-                        class="px-5 py-2 rounded-full border border-brand-ink/10 hover:bg-Kidazzle-redLight hover:border-Kidazzle-red hover:text-Kidazzle-red transition-colors text-xs font-bold uppercase tracking-wider"><?php _e('Cobb', 'kidazzle-theme'); ?></a>
+                        class="px-5 py-2 rounded-full border border-brand-ink/10 hover:bg-kidazzle-redLight hover:border-kidazzle-red hover:text-kidazzle-red transition-colors text-xs font-bold uppercase tracking-wider"><?php _e('Cobb', 'kidazzle-theme'); ?></a>
                     <a href="#north-metro"
-                        class="px-5 py-2 rounded-full border border-brand-ink/10 hover:bg-Kidazzle-blueLight hover:border-Kidazzle-blue hover:text-Kidazzle-blue transition-colors text-xs font-bold uppercase tracking-wider"><?php _e('North Metro', 'kidazzle-theme'); ?></a>
+                        class="px-5 py-2 rounded-full border border-brand-ink/10 hover:bg-kidazzle-blueLight hover:border-kidazzle-blue hover:text-kidazzle-blue transition-colors text-xs font-bold uppercase tracking-wider"><?php _e('North Metro', 'kidazzle-theme'); ?></a>
                     <a href="#south-metro"
-                        class="px-5 py-2 rounded-full border border-brand-ink/10 hover:bg-Kidazzle-yellowLight hover:border-Kidazzle-yellow hover:text-Kidazzle-yellow transition-colors text-xs font-bold uppercase tracking-wider"><?php _e('South Metro', 'kidazzle-theme'); ?></a>
+                        class="px-5 py-2 rounded-full border border-brand-ink/10 hover:bg-kidazzle-yellowLight hover:border-kidazzle-yellow hover:text-kidazzle-yellow transition-colors text-xs font-bold uppercase tracking-wider"><?php _e('South Metro', 'kidazzle-theme'); ?></a>
                 </div>
             </div>
             <div
@@ -176,10 +176,10 @@ get_header();
 
                             <?php if ($post['booking']): ?>
                                 <a href="<?php echo esc_url($post['booking']); ?>"
-                                    class="booking-btn relative z-10 block w-full py-3 bg-<?php echo esc_attr($data['color']); ?> <?php echo esc_attr($data['text']); ?> text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-Kidazzle-blueDark hover:text-white transition-colors"><?php _e('Schedule Visit', 'kidazzle-theme'); ?></a>
+                                    class="booking-btn relative z-10 block w-full py-3 bg-<?php echo esc_attr($data['color']); ?> <?php echo esc_attr($data['text']); ?> text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-kidazzle-blueDark hover:text-white transition-colors"><?php _e('Schedule Visit', 'kidazzle-theme'); ?></a>
                             <?php else: ?>
                                 <a href="<?php echo esc_url($post['permalink']); ?>#contact"
-                                    class="relative z-10 block w-full py-3 bg-brand-cream text-brand-ink border border-brand-ink/10 text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-Kidazzle-blueDark hover:text-white transition-colors"><?php _e('Contact Us', 'kidazzle-theme'); ?></a>
+                                    class="relative z-10 block w-full py-3 bg-brand-cream text-brand-ink border border-brand-ink/10 text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-kidazzle-blueDark hover:text-white transition-colors"><?php _e('Contact Us', 'kidazzle-theme'); ?></a>
                             <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
@@ -191,9 +191,9 @@ get_header();
 </main>
 
 <!-- Tour Booking Modal -->
-<div id="Kidazzle-tour-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
+<div id="kidazzle-tour-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
     <!-- Backdrop -->
-    <div class="absolute inset-0 bg-brand-ink/80 backdrop-blur-sm transition-opacity" id="Kidazzle-tour-backdrop">
+    <div class="absolute inset-0 bg-brand-ink/80 backdrop-blur-sm transition-opacity" id="kidazzle-tour-backdrop">
     </div>
 
     <!-- Modal Container -->
@@ -204,12 +204,12 @@ get_header();
             class="bg-brand-cream border-b border-brand-ink/5 px-6 py-4 flex items-center justify-between flex-shrink-0">
             <h3 class="font-serif text-xl font-bold text-brand-ink"><?php _e('Schedule Your Visit', 'kidazzle-theme'); ?></h3>
             <div class="flex items-center gap-4">
-                <a href="#" id="Kidazzle-tour-external" target="_blank"
-                    class="text-xs font-bold uppercase tracking-wider text-brand-ink/70 hover:text-Kidazzle-blue transition-colors hidden md:block">
+                <a href="#" id="kidazzle-tour-external" target="_blank"
+                    class="text-xs font-bold uppercase tracking-wider text-brand-ink/70 hover:text-kidazzle-blue transition-colors hidden md:block">
                     <?php _e('Open in new tab', 'kidazzle-theme'); ?> <i class="fa-solid fa-external-link-alt ml-1"></i>
                 </a>
-                <button id="Kidazzle-tour-close"
-                    class="w-10 h-10 rounded-full bg-white border border-brand-ink/10 flex items-center justify-center text-brand-ink hover:bg-Kidazzle-red hover:text-white hover:border-Kidazzle-red transition-all">
+                <button id="kidazzle-tour-close"
+                    class="w-10 h-10 rounded-full bg-white border border-brand-ink/10 flex items-center justify-center text-brand-ink hover:bg-kidazzle-red hover:text-white hover:border-kidazzle-red transition-all">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
@@ -217,11 +217,11 @@ get_header();
 
         <!-- Iframe Container -->
         <div class="flex-grow relative bg-white">
-            <div id="Kidazzle-tour-loader" class="absolute inset-0 flex items-center justify-center bg-white z-10">
-                <div class="w-12 h-12 border-4 border-Kidazzle-blue/20 border-t-Kidazzle-blue rounded-full animate-spin">
+            <div id="kidazzle-tour-loader" class="absolute inset-0 flex items-center justify-center bg-white z-10">
+                <div class="w-12 h-12 border-4 border-kidazzle-blue/20 border-t-kidazzle-blue rounded-full animate-spin">
                 </div>
             </div>
-            <iframe id="Kidazzle-tour-frame" src="" class="w-full h-full border-0"
+            <iframe id="kidazzle-tour-frame" src="" class="w-full h-full border-0"
                 allow="camera; microphone; autoplay; encrypted-media;"></iframe>
         </div>
     </div>
@@ -229,12 +229,12 @@ get_header();
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const modal = document.getElementById('Kidazzle-tour-modal');
-        const backdrop = document.getElementById('Kidazzle-tour-backdrop');
-        const closeBtn = document.getElementById('Kidazzle-tour-close');
-        const iframe = document.getElementById('Kidazzle-tour-frame');
-        const externalLink = document.getElementById('Kidazzle-tour-external');
-        const loader = document.getElementById('Kidazzle-tour-loader');
+        const modal = document.getElementById('kidazzle-tour-modal');
+        const backdrop = document.getElementById('kidazzle-tour-backdrop');
+        const closeBtn = document.getElementById('kidazzle-tour-close');
+        const iframe = document.getElementById('kidazzle-tour-frame');
+        const externalLink = document.getElementById('kidazzle-tour-external');
+        const loader = document.getElementById('kidazzle-tour-loader');
 
         function openModal(url) {
             modal.classList.remove('hidden');

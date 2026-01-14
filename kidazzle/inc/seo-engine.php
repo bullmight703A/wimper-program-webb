@@ -2,7 +2,7 @@
 /**
  * SEO Engine: Schema, Sitemap, Robots.txt, Meta Tags
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -15,8 +15,8 @@ if (!defined('ABSPATH')) {
  * Global Schema Override Handler (for standard pages/posts)
  * Hooks early to catch generic pages that have manual fixes
  */
-if (!function_exists('Kidazzle_general_content_schema')) {
-function Kidazzle_general_content_schema() {
+if (!function_exists('kidazzle_general_content_schema')) {
+function kidazzle_general_content_schema() {
     if (is_singular('location') || is_singular('program') || is_singular('city') || is_front_page()) {
         return; // Handled by specific functions below
     }
@@ -24,7 +24,7 @@ function Kidazzle_general_content_schema() {
     $post_id = get_the_ID();
     if (!$post_id) return;
 
-    $override = get_post_meta($post_id, '_Kidazzle_schema_override', true);
+    $override = get_post_meta($post_id, '_kidazzle_schema_override', true);
     if ($override) {
         if (strpos($override, '<script') !== false) {
             echo $override;
@@ -34,13 +34,13 @@ function Kidazzle_general_content_schema() {
     }
 }
 }
-add_action('wp_head', 'Kidazzle_general_content_schema', 1);
+add_action('wp_head', 'kidazzle_general_content_schema', 1);
 
 /**
  * Add Organization Schema to Homepage
  */
-if (!function_exists('Kidazzle_organization_schema')) {
-function Kidazzle_organization_schema()
+if (!function_exists('kidazzle_organization_schema')) {
+function kidazzle_organization_schema()
 {
         if (!is_front_page()) {
                 return;
@@ -49,7 +49,7 @@ function Kidazzle_organization_schema()
         $homepage_id = get_option('page_on_front');
 
         // Check for manual override first
-        $override = get_post_meta($homepage_id, '_Kidazzle_schema_override', true);
+        $override = get_post_meta($homepage_id, '_kidazzle_schema_override', true);
         if ($override) {
             if (strpos($override, '<script') !== false) {
                 echo $override;
@@ -62,8 +62,8 @@ function Kidazzle_organization_schema()
         // Get custom values or fallbacks
         $name = get_post_meta($homepage_id, 'schema_org_name', true) ?: get_bloginfo('name');
         $url = get_post_meta($homepage_id, 'schema_org_url', true) ?: home_url();
-        $logo = get_post_meta($homepage_id, 'schema_org_logo', true) ?: Kidazzle_get_global_setting('global_logo', '');
-        $description = get_post_meta($homepage_id, 'schema_org_description', true) ?: Kidazzle_global_seo_default_description();
+        $logo = get_post_meta($homepage_id, 'schema_org_logo', true) ?: kidazzle_get_global_setting('global_logo', '');
+        $description = get_post_meta($homepage_id, 'schema_org_description', true) ?: kidazzle_global_seo_default_description();
         $area_served = get_post_meta($homepage_id, 'schema_org_area_served', true) ?: 'Atlanta';
         $telephone = get_post_meta($homepage_id, 'schema_org_telephone', true);
         $email = get_post_meta($homepage_id, 'schema_org_email', true);
@@ -80,9 +80,9 @@ function Kidazzle_organization_schema()
                         'name' => $area_served,
                 ),
                 'sameAs' => array_filter(array(
-                        Kidazzle_global_facebook_url(),
-                        Kidazzle_global_instagram_url(),
-                        Kidazzle_global_linkedin_url(),
+                        kidazzle_global_facebook_url(),
+                        kidazzle_global_instagram_url(),
+                        kidazzle_global_linkedin_url(),
                 )),
         );
 
@@ -95,7 +95,7 @@ function Kidazzle_organization_schema()
         }
         
         // Phonetic Name for Voice Search (Tier 12 - TT)
-        $phonetic = get_theme_mod('Kidazzle_global_brand_phonetic', '');
+        $phonetic = get_theme_mod('kidazzle_global_brand_phonetic', '');
         if ($phonetic) {
             $schema['phoneticName'] = $phonetic;
         }
@@ -103,13 +103,13 @@ function Kidazzle_organization_schema()
         echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
 }
 }
-add_action('wp_head', 'Kidazzle_organization_schema');
+add_action('wp_head', 'kidazzle_organization_schema');
 
 /**
  * HTTP Header Signals (Tier 7 - Y)
  * Provides canonical and dns-prefetch hints at the HTTP header level for faster parsing
  */
-function Kidazzle_seo_headers() {
+function kidazzle_seo_headers() {
     if (headers_sent()) return;
     
     // Canonical Link Header
@@ -124,13 +124,13 @@ function Kidazzle_seo_headers() {
     header("Link: <https://www.google-analytics.com>; rel=\"dns-prefetch\"", false);
     header("Link: <https://www.googletagmanager.com>; rel=\"dns-prefetch\"", false);
 }
-add_action('send_headers', 'Kidazzle_seo_headers');
+add_action('send_headers', 'kidazzle_seo_headers');
 
 /**
  * Add WebSite Schema to Homepage (for Sitelinks Search Box)
  */
-if (!function_exists('Kidazzle_website_schema')) {
-function Kidazzle_website_schema()
+if (!function_exists('kidazzle_website_schema')) {
+function kidazzle_website_schema()
 {
         if (!is_front_page()) {
                 return;
@@ -138,7 +138,7 @@ function Kidazzle_website_schema()
         
         // Check for manual override (yield to main override if present)
         $homepage_id = get_option('page_on_front');
-        $override = get_post_meta($homepage_id, '_Kidazzle_schema_override', true);
+        $override = get_post_meta($homepage_id, '_kidazzle_schema_override', true);
         if ($override) {
             return;
         }
@@ -161,13 +161,13 @@ function Kidazzle_website_schema()
         echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
 }
 }
-add_action('wp_head', 'Kidazzle_website_schema');
+add_action('wp_head', 'kidazzle_website_schema');
 
 /**
  * Add LocalBusiness Schema to Location Pages
  */
-if (!function_exists('Kidazzle_location_schema')) {
-function Kidazzle_location_schema()
+if (!function_exists('kidazzle_location_schema')) {
+function kidazzle_location_schema()
 {
         if (!is_singular('location')) {
                 return;
@@ -176,7 +176,7 @@ function Kidazzle_location_schema()
         $location_id = get_the_ID();
         
         // Check for manual override first
-        $override = get_post_meta($location_id, '_Kidazzle_schema_override', true);
+        $override = get_post_meta($location_id, '_kidazzle_schema_override', true);
         if ($override) {
                 // Check if it's already formatted with script tags or raw JSON
                 if (strpos($override, '<script') !== false) {
@@ -188,18 +188,18 @@ function Kidazzle_location_schema()
         }
 
         // Ensure Advanced SEO classes are available
-        if (!class_exists('Kidazzle_Fallback_Resolver')) {
+        if (!class_exists('kidazzle_Fallback_Resolver')) {
                 return;
         }
 
         // 1. DATA GATHERING
         // -----------------
-        $location_fields = Kidazzle_get_location_fields($location_id);
-        $service_area = Kidazzle_Fallback_Resolver::get_service_area_circle($location_id);
+        $location_fields = kidazzle_get_location_fields($location_id);
+        $service_area = kidazzle_Fallback_Resolver::get_service_area_circle($location_id);
 
         // Meta Fields
         $name = get_post_meta($location_id, 'schema_loc_name', true) ?: get_the_title();
-        $description = get_post_meta($location_id, 'schema_loc_description', true) ?: (get_the_excerpt() ?: Kidazzle_trimmed_excerpt(30, $location_id));
+        $description = get_post_meta($location_id, 'schema_loc_description', true) ?: (get_the_excerpt() ?: kidazzle_trimmed_excerpt(30, $location_id));
         $telephone = get_post_meta($location_id, 'schema_loc_telephone', true) ?: $location_fields['phone'];
         $email = get_post_meta($location_id, 'schema_loc_email', true) ?: $location_fields['email'];
         $opening_hours_raw = get_post_meta($location_id, 'schema_loc_opening_hours', true) ?: $location_fields['hours'];
@@ -229,7 +229,7 @@ function Kidazzle_location_schema()
         $types = array('ChildCare', 'Preschool', 'EducationalOrganization', 'LocalBusiness');
         
         // Event Venue (Tier 19 - RRR) - Add if location is marked as event venue
-        if (get_post_meta($location_id, '_Kidazzle_is_event_venue', true)) {
+        if (get_post_meta($location_id, '_kidazzle_is_event_venue', true)) {
             $types[] = 'EventVenue';
         }
         
@@ -240,7 +240,7 @@ function Kidazzle_location_schema()
                 'description' => $description,
                 'url' => get_permalink(),
                 'image' => get_the_post_thumbnail_url($location_id, 'full'),
-                'logo' => Kidazzle_get_global_setting('global_logo', ''),
+                'logo' => kidazzle_get_global_setting('global_logo', ''),
                 'telephone' => $telephone,
                 'email' => $email,
                 'priceRange' => $price_range,
@@ -256,9 +256,9 @@ function Kidazzle_location_schema()
 
         // Social Profiles (sameAs)
         $socials = array_filter(array(
-                Kidazzle_global_facebook_url(),
-                Kidazzle_global_instagram_url(),
-                Kidazzle_global_linkedin_url(),
+                kidazzle_global_facebook_url(),
+                kidazzle_global_instagram_url(),
+                kidazzle_global_linkedin_url(),
         ));
         if (!empty($socials)) {
                 $schema['sameAs'] = array_values($socials);
@@ -314,7 +314,7 @@ function Kidazzle_location_schema()
         }
 
         // Google Maps CID Link (Tier 30 - DDDDD)
-        $cid = get_post_meta($location_id, '_Kidazzle_google_maps_cid', true);
+        $cid = get_post_meta($location_id, '_kidazzle_google_maps_cid', true);
         if ($cid) {
             $schema['hasMap'] = "https://www.google.com/maps?cid=$cid";
         } elseif ($location_fields['map_link']) {
@@ -364,7 +364,7 @@ function Kidazzle_location_schema()
         }
         
         // License/Permit (Tier 5 - AA)
-        $license_num = get_post_meta($location_id, '_Kidazzle_license_number', true);
+        $license_num = get_post_meta($location_id, '_kidazzle_license_number', true);
         if ($license_num) {
             $schema['hasCredential'] = array(
                 '@type' => 'EducationalOccupationalCredential',
@@ -384,7 +384,7 @@ function Kidazzle_location_schema()
         }
         
         // Safety Amenities (Tier 5 - BB)
-        $amenities = get_post_meta($location_id, '_Kidazzle_amenities', true);
+        $amenities = get_post_meta($location_id, '_kidazzle_amenities', true);
         if (is_array($amenities) && !empty($amenities)) {
             foreach ($amenities as $amenity) {
                 $schema['amenityFeature'][] = array(
@@ -496,7 +496,7 @@ function Kidazzle_location_schema()
         echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
         
         // Open House Event Schema (Tier 4 - I)
-        $open_house_date = get_post_meta($location_id, '_Kidazzle_open_house_date', true);
+        $open_house_date = get_post_meta($location_id, '_kidazzle_open_house_date', true);
         if ($open_house_date) {
             $event_schema = array(
                 '@context' => 'https://schema.org',
@@ -529,13 +529,13 @@ function Kidazzle_location_schema()
         }
 }
 }
-add_action('wp_head', 'Kidazzle_location_schema');
+add_action('wp_head', 'kidazzle_location_schema');
 
 /**
  * Add Service Schema to City Pages
  */
-if (!function_exists('Kidazzle_city_schema')) {
-function Kidazzle_city_schema()
+if (!function_exists('kidazzle_city_schema')) {
+function kidazzle_city_schema()
 {
         if (!is_singular('city')) {
                 return;
@@ -544,7 +544,7 @@ function Kidazzle_city_schema()
         $post_id = get_the_ID();
         
         // Check for manual override
-        $override = get_post_meta($post_id, '_Kidazzle_schema_override', true);
+        $override = get_post_meta($post_id, '_kidazzle_schema_override', true);
         if ($override) {
             if (strpos($override, '<script') !== false) {
                 echo $override;
@@ -601,13 +601,13 @@ function Kidazzle_city_schema()
         echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
 }
 }
-add_action('wp_head', 'Kidazzle_city_schema');
+add_action('wp_head', 'kidazzle_city_schema');
 
 /**
  * Add Service Schema to Program Pages
  */
-if (!function_exists('Kidazzle_program_schema')) {
-function Kidazzle_program_schema()
+if (!function_exists('kidazzle_program_schema')) {
+function kidazzle_program_schema()
 {
         if (!is_singular('program')) {
                 return;
@@ -616,7 +616,7 @@ function Kidazzle_program_schema()
         $program_id = get_the_ID();
         
         // Check for manual override first
-        $override = get_post_meta($program_id, '_Kidazzle_schema_override', true);
+        $override = get_post_meta($program_id, '_kidazzle_schema_override', true);
         if ($override) {
                 if (strpos($override, '<script') !== false) {
                         echo $override;
@@ -628,7 +628,7 @@ function Kidazzle_program_schema()
 
         // Get custom values or fallbacks
         $name = get_post_meta($program_id, 'schema_prog_name', true) ?: get_the_title();
-        $description = get_post_meta($program_id, 'schema_prog_description', true) ?: (get_the_excerpt() ?: Kidazzle_trimmed_excerpt(30, $program_id));
+        $description = get_post_meta($program_id, 'schema_prog_description', true) ?: (get_the_excerpt() ?: kidazzle_trimmed_excerpt(30, $program_id));
         $service_type = get_post_meta($program_id, 'schema_prog_service_type', true) ?: 'Early Childhood Education';
         $provider_name = get_post_meta($program_id, 'schema_prog_provider_name', true) ?: get_bloginfo('name');
         $area_served = get_post_meta($program_id, 'schema_prog_area_served', true) ?: 'Metro Atlanta';
@@ -656,13 +656,13 @@ function Kidazzle_program_schema()
         echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
 }
 }
-add_action('wp_head', 'Kidazzle_program_schema');
+add_action('wp_head', 'kidazzle_program_schema');
 
 /**
  * Add FAQPage Schema to Homepage (when FAQ section exists)
  */
-if (!function_exists('Kidazzle_faq_schema')) {
-function Kidazzle_faq_schema()
+if (!function_exists('kidazzle_faq_schema')) {
+function kidazzle_faq_schema()
 {
         if (!is_front_page()) {
                 return;
@@ -670,21 +670,21 @@ function Kidazzle_faq_schema()
 
         // Check for manual override on homepage
         $homepage_id = get_option('page_on_front');
-        $override = get_post_meta($homepage_id, '_Kidazzle_schema_override', true);
+        $override = get_post_meta($homepage_id, '_kidazzle_schema_override', true);
         if ($override) {
             return;
         }
 
         // Check if FAQ data exists
-        if (!function_exists('Kidazzle_home_has_faq') || !Kidazzle_home_has_faq()) {
+        if (!function_exists('kidazzle_home_has_faq') || !kidazzle_home_has_faq()) {
                 return;
         }
 
-        if (!function_exists('Kidazzle_home_faq')) {
+        if (!function_exists('kidazzle_home_faq')) {
                 return;
         }
 
-        $faq_data = Kidazzle_home_faq();
+        $faq_data = kidazzle_home_faq();
         if (empty($faq_data['items'])) {
                 return;
         }
@@ -719,7 +719,7 @@ function Kidazzle_faq_schema()
         echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
 }
 }
-add_action('wp_head', 'Kidazzle_faq_schema');
+add_action('wp_head', 'kidazzle_faq_schema');
 
 /**
  * Breadcrumb Schema is now handled by inc/advanced-seo-llm/class-breadcrumbs.php
@@ -732,7 +732,7 @@ add_action('wp_head', 'Kidazzle_faq_schema');
  * @param int $max_length Maximum character length (default: 60 for OG)
  * @return string Truncated title
  */
-function Kidazzle_truncate_social_title($title, $max_length = 60)
+function kidazzle_truncate_social_title($title, $max_length = 60)
 {
         if (strlen($title) <= $max_length) {
                 return $title;
@@ -745,7 +745,7 @@ function Kidazzle_truncate_social_title($title, $max_length = 60)
  * Get the best available image for social sharing
  * Priority: 1) Featured image, 2) Custom meta field, 3) Site default
  */
-function Kidazzle_get_social_image()
+function kidazzle_get_social_image()
 {
         $image_url = '';
 
@@ -758,7 +758,7 @@ function Kidazzle_get_social_image()
         if (empty($image_url)) {
                 $post_id = get_the_ID();
                 if ($post_id) {
-                        $custom_image = get_post_meta($post_id, '_Kidazzle_social_image', true);
+                        $custom_image = get_post_meta($post_id, '_kidazzle_social_image', true);
                         if (!empty($custom_image)) {
                                 $image_url = $custom_image;
                         }
@@ -775,7 +775,7 @@ function Kidazzle_get_social_image()
 
         // Priority 4: Theme customizer hero image
         if (empty($image_url)) {
-                $hero_image = get_theme_mod('Kidazzle_home_hero_image');
+                $hero_image = get_theme_mod('kidazzle_home_hero_image');
                 if (!empty($hero_image)) {
                         $image_url = $hero_image;
                 }
@@ -783,7 +783,7 @@ function Kidazzle_get_social_image()
 
         // Priority 5: Hardcoded fallback
         if (empty($image_url)) {
-                $image_url = get_template_directory_uri() . '/assets/images/Kidazzle-social-default.jpg';
+                $image_url = get_template_directory_uri() . '/assets/images/kidazzle-social-default.jpg';
         }
 
         return $image_url;
@@ -792,10 +792,10 @@ function Kidazzle_get_social_image()
 /**
  * Open Graph Tags
  */
-function Kidazzle_og_tags()
+function kidazzle_og_tags()
 {
         // Truncate OG title to 60 characters max
-        $og_title = Kidazzle_truncate_social_title(get_the_title(), 60);
+        $og_title = kidazzle_truncate_social_title(get_the_title(), 60);
 
         echo '<meta property="og:type" content="website" />' . "\n";
         echo '<meta property="og:title" content="' . esc_attr($og_title) . '" />' . "\n";
@@ -803,50 +803,50 @@ function Kidazzle_og_tags()
         echo '<meta property="og:site_name" content="' . esc_attr(get_bloginfo('name')) . '" />' . "\n";
 
         // Always output an og:image with fallback chain
-        $social_image = Kidazzle_get_social_image();
+        $social_image = kidazzle_get_social_image();
         if (!empty($social_image)) {
                 echo '<meta property="og:image" content="' . esc_url($social_image) . '" />' . "\n";
                 echo '<meta property="og:image:width" content="1200" />' . "\n";
                 echo '<meta property="og:image:height" content="630" />' . "\n";
         }
 
-        $description = get_the_excerpt() ?: Kidazzle_global_seo_default_description();
+        $description = get_the_excerpt() ?: kidazzle_global_seo_default_description();
         echo '<meta property="og:description" content="' . esc_attr(wp_strip_all_tags($description)) . '" />' . "\n";
 }
-add_action('wp_head', 'Kidazzle_og_tags', 5);
+add_action('wp_head', 'kidazzle_og_tags', 5);
 
 /**
  * Twitter Card Tags
  */
-function Kidazzle_twitter_cards()
+function kidazzle_twitter_cards()
 {
         // Truncate Twitter title to 55 characters max
-        $twitter_title = Kidazzle_truncate_social_title(get_the_title(), 55);
+        $twitter_title = kidazzle_truncate_social_title(get_the_title(), 55);
 
         echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
         echo '<meta name="twitter:title" content="' . esc_attr($twitter_title) . '" />' . "\n";
 
         // Use the same fallback chain as OG tags
-        $social_image = Kidazzle_get_social_image();
+        $social_image = kidazzle_get_social_image();
         if (!empty($social_image)) {
                 echo '<meta name="twitter:image" content="' . esc_url($social_image) . '" />' . "\n";
         }
 
-        $description = get_the_excerpt() ?: Kidazzle_global_seo_default_description();
+        $description = get_the_excerpt() ?: kidazzle_global_seo_default_description();
         echo '<meta name="twitter:description" content="' . esc_attr(wp_strip_all_tags($description)) . '" />' . "\n";
 
         // Optional: Add Twitter site handle if available
-        $twitter_handle = get_option('Kidazzle_twitter_handle', '');
+        $twitter_handle = get_option('kidazzle_twitter_handle', '');
         if ($twitter_handle) {
                 echo '<meta name="twitter:site" content="' . esc_attr($twitter_handle) . '" />' . "\n";
         }
 }
-add_action('wp_head', 'Kidazzle_twitter_cards', 6);
+add_action('wp_head', 'kidazzle_twitter_cards', 6);
 
 /**
  * Hreflang Tags for EN/ES
  */
-function Kidazzle_hreflang_tags()
+function kidazzle_hreflang_tags()
 {
         $post_id = get_the_ID();
 
@@ -865,8 +865,8 @@ function Kidazzle_hreflang_tags()
                 echo '<link rel="alternate" hreflang="es" href="' . esc_url($alternate_es) . '" />' . "\n";
         }
 }
-if (!class_exists('Kidazzle_Multilingual_Manager')) {
-    add_action('wp_head', 'Kidazzle_hreflang_tags', 1);
+if (!class_exists('kidazzle_Multilingual_Manager')) {
+    add_action('wp_head', 'kidazzle_hreflang_tags', 1);
 }
 
 /**
@@ -875,10 +875,10 @@ if (!class_exists('Kidazzle_Multilingual_Manager')) {
 /**
  * Shared meta description output with fallbacks
  */
-function Kidazzle_shared_meta_description()
+function kidazzle_shared_meta_description()
 {
         // Skip for combo pages - handled by class-combo-page-generator.php
-        if (get_query_var('Kidazzle_combo')) {
+        if (get_query_var('kidazzle_combo')) {
                 return;
         }
         
@@ -921,22 +921,22 @@ function Kidazzle_shared_meta_description()
 
         } elseif (is_singular('city')) {
                 // City Template: "Best Daycare & Preschool in [City], GA. [Excerpt]"
-                $excerpt = has_excerpt() ? get_the_excerpt() : Kidazzle_trimmed_excerpt(30, $post_id);
+                $excerpt = has_excerpt() ? get_the_excerpt() : kidazzle_trimmed_excerpt(30, $post_id);
                 $description = "Best Daycare & Preschool in " . get_the_title() . ", GA. " . $excerpt;
 
         } elseif (is_singular('program')) {
                 // Program Template: "[Program Name] at Kidazzle Early Learning Academy. [Excerpt]."
-                $excerpt = has_excerpt() ? get_the_excerpt() : Kidazzle_trimmed_excerpt(20, $post_id);
+                $excerpt = has_excerpt() ? get_the_excerpt() : kidazzle_trimmed_excerpt(20, $post_id);
                 $description = get_the_title() . ' at Kidazzle Early Learning Academy. ' . $excerpt;
 
         } elseif (is_singular('post')) {
                 // Blog Post Template: "[Title] - [Excerpt]"
-                $excerpt = has_excerpt() ? get_the_excerpt() : Kidazzle_trimmed_excerpt(30, $post_id);
+                $excerpt = has_excerpt() ? get_the_excerpt() : kidazzle_trimmed_excerpt(30, $post_id);
                 $description = get_the_title() . ' - ' . $excerpt;
 
         } elseif (is_front_page()) {
                 // Homepage Template: Global Default > Tagline > Constructed Fallback
-                $description = Kidazzle_global_seo_default_description();
+                $description = kidazzle_global_seo_default_description();
                 if (empty($description)) {
                         $description = get_bloginfo('description');
                 }
@@ -949,19 +949,19 @@ function Kidazzle_shared_meta_description()
         if (empty($description)) {
                 echo "<!-- Debug: Description empty, trying global fallback -->\n";
                 // Preserve About page specific metadata if defined (legacy support)
-                if (function_exists('Kidazzle_is_about_template') && function_exists('Kidazzle_get_about_seo_fields') && Kidazzle_is_about_template()) {
-                        $about_fields = Kidazzle_get_about_seo_fields();
+                if (function_exists('kidazzle_is_about_template') && function_exists('kidazzle_get_about_seo_fields') && kidazzle_is_about_template()) {
+                        $about_fields = kidazzle_get_about_seo_fields();
                         if (!empty($about_fields['description'])) {
                                 $description = $about_fields['description'];
                         }
                 }
 
                 if (empty($description) && $post_id) {
-                        $description = has_excerpt($post_id) ? get_the_excerpt($post_id) : Kidazzle_trimmed_excerpt(32, $post_id);
+                        $description = has_excerpt($post_id) ? get_the_excerpt($post_id) : kidazzle_trimmed_excerpt(32, $post_id);
                 }
 
                 if (empty($description)) {
-                        $description = Kidazzle_global_seo_default_description();
+                        $description = kidazzle_global_seo_default_description();
                 }
         }
 
@@ -971,12 +971,12 @@ function Kidazzle_shared_meta_description()
                 echo "<!-- Debug: Final Description is EMPTY -->\n";
         }
 }
-add_action('wp_head', 'Kidazzle_shared_meta_description', 2);
+add_action('wp_head', 'kidazzle_shared_meta_description', 2);
 
 /**
  * Meta Keywords Output
  */
-function Kidazzle_meta_keywords()
+function kidazzle_meta_keywords()
 {
         // 1. Manual Override
         $post_id = get_the_ID();
@@ -1073,19 +1073,19 @@ function Kidazzle_meta_keywords()
                 echo '<meta name="keywords" content="' . esc_attr(implode(', ', $keywords)) . '" />' . "\n";
         }
 }
-add_action('wp_head', 'Kidazzle_meta_keywords', 3);
+add_action('wp_head', 'kidazzle_meta_keywords', 3);
 
 /**
  * Custom Sitemap.xml
  */
-function Kidazzle_custom_sitemap()
+function kidazzle_custom_sitemap()
 {
         if (get_query_var('sitemap') !== 'xml') {
                 return;
         }
 
         // Get Options
-        $options = get_option('Kidazzle_sitemap_options', array(
+        $options = get_option('kidazzle_sitemap_options', array(
                 'enable_pages' => true,
                 'enable_posts' => true,
                 'enable_locations' => true,
@@ -1100,7 +1100,7 @@ function Kidazzle_custom_sitemap()
         // 1. Check for Static Upload Override
         if (!empty($options['use_uploaded'])) {
                 $upload_dir = wp_upload_dir();
-                $static_path = $upload_dir['basedir'] . '/Kidazzle-sitemap-manual.xml';
+                $static_path = $upload_dir['basedir'] . '/kidazzle-sitemap-manual.xml';
                 if (file_exists($static_path)) {
                         readfile($static_path);
                         exit;
@@ -1217,7 +1217,7 @@ function Kidazzle_custom_sitemap()
         exit;
 }
 // Disable Custom Sitemap Template Redirect
-// add_action('template_redirect', 'Kidazzle_custom_sitemap');
+// add_action('template_redirect', 'kidazzle_custom_sitemap');
 
 /**
  * Custom Robots.txt
@@ -1225,22 +1225,22 @@ function Kidazzle_custom_sitemap()
 /**
  * Register Sitemap Rewrite Rules
  */
-function Kidazzle_register_sitemap_rewrites()
+function kidazzle_register_sitemap_rewrites()
 {
         add_rewrite_rule('^sitemap\.xml$', 'index.php?sitemap=xml', 'top');
 }
 // Disable Custom Sitemap Rewrite Rules in favor of Native
-// add_action('init', 'Kidazzle_register_sitemap_rewrites');
+// add_action('init', 'kidazzle_register_sitemap_rewrites');
 
 /**
  * Register Sitemap Query Var
  */
-function Kidazzle_register_sitemap_query_var($vars)
+function kidazzle_register_sitemap_query_var($vars)
 {
         $vars[] = 'sitemap';
         return $vars;
 }
-add_filter('query_vars', 'Kidazzle_register_sitemap_query_var');
+add_filter('query_vars', 'kidazzle_register_sitemap_query_var');
 
 /**
  * Disable Default WP Sitemap - REMOVED to use Native Sitemap with filters
@@ -1250,7 +1250,7 @@ add_filter('query_vars', 'Kidazzle_register_sitemap_query_var');
 /**
  * Configure Native WordPress Sitemap
  */
-function Kidazzle_sitemap_config()
+function kidazzle_sitemap_config()
 {
         // 1. Post Types: Only allow specific types
         add_filter('wp_sitemaps_post_types', function ($post_types) {
@@ -1276,12 +1276,12 @@ function Kidazzle_sitemap_config()
                 return $provider;
         }, 10, 2);
 }
-add_action('init', 'Kidazzle_sitemap_config');
+add_action('init', 'kidazzle_sitemap_config');
 
 /**
  * Custom Robots.txt
  */
-function Kidazzle_custom_robots_txt($output)
+function kidazzle_custom_robots_txt($output)
 {
         $output .= 'Sitemap: ' . home_url('/sitemap.xml') . "\n";
         return $output;
@@ -1290,15 +1290,15 @@ function Kidazzle_custom_robots_txt($output)
 /**
  * Add FAQPage Schema to City Pages (Hidden, matches visible FAQ content)
  */
-if (!function_exists('Kidazzle_city_faq_schema_output')) {
-function Kidazzle_city_faq_schema_output()
+if (!function_exists('kidazzle_city_faq_schema_output')) {
+function kidazzle_city_faq_schema_output()
 {
         if (!is_singular('city')) {
                 return;
         }
 
         // Check for manual override
-        $override = get_post_meta(get_the_ID(), '_Kidazzle_schema_override', true);
+        $override = get_post_meta(get_the_ID(), '_kidazzle_schema_override', true);
         if ($override) {
             return;
         }
@@ -1317,7 +1317,7 @@ function Kidazzle_city_faq_schema_output()
 
         // Q3
         $q3 = "What ages do you accept at your $city centers?";
-        $a3 = "We serve children from 6 weeks old (<a href='" . Kidazzle_get_page_link('infant-care') . "'>Infant Care</a>) up to 12 years old (<a href='" . Kidazzle_get_page_link('after-school') . "'>After School</a>). We also offer a <a href='" . Kidazzle_get_page_link('pre-k-prep') . "'>Pre-K Prep</a> option at select locations.";
+        $a3 = "We serve children from 6 weeks old (<a href='" . kidazzle_get_page_link('infant-care') . "'>Infant Care</a>) up to 12 years old (<a href='" . kidazzle_get_page_link('after-school') . "'>After School</a>). We also offer a <a href='" . kidazzle_get_page_link('pre-k-prep') . "'>Pre-K Prep</a> option at select locations.";
 
         // Q4
         $q4 = "How do I enroll my child in $city?";
@@ -1352,4 +1352,4 @@ function Kidazzle_city_faq_schema_output()
 }
 }
 // DISABLED - Moved to Kidazzle SEO Pro Plugin
-// add_action('wp_head', 'Kidazzle_city_faq_schema_output');
+// add_action('wp_head', 'kidazzle_city_faq_schema_output');

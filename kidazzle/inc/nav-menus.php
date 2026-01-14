@@ -2,7 +2,7 @@
 /**
  * Navigation Menus with Tailwind Support
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle-theme
  * @since 1.0.0
  */
 
@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 /**
  * Register navigation menus
  */
-function Kidazzle_register_menus()
+function kidazzle_register_menus()
 {
 	register_nav_menus(array(
 		'primary' => __('Primary Menu', 'kidazzle-theme'),
@@ -22,28 +22,28 @@ function Kidazzle_register_menus()
 		'footer_contact' => __('Footer Contact Menu', 'kidazzle-theme'),
 	));
 }
-add_action('init', 'Kidazzle_register_menus');
+add_action('init', 'kidazzle_register_menus');
 
 /**
  * Primary Navigation with Tailwind classes
  */
-function Kidazzle_primary_nav()
+function kidazzle_primary_nav()
 {
 	wp_nav_menu(array(
 		'theme_location' => 'primary',
 		'container' => false,
 		'menu_class' => '',
-		'fallback_cb' => 'Kidazzle_primary_nav_fallback',
+		'fallback_cb' => 'kidazzle_primary_nav_fallback',
 		'items_wrap' => '%3$s',
 		'depth' => 1,
-		'walker' => new Kidazzle_Primary_Nav_Walker(),
+		'walker' => new kidazzle_primary_nav_walker(),
 	));
 }
 
 /**
  * Primary Nav Fallback
  */
-function Kidazzle_primary_nav_fallback()
+function kidazzle_primary_nav_fallback()
 {
 	$pages = array(
 		'programs' => 'Programs',
@@ -53,35 +53,35 @@ function Kidazzle_primary_nav_fallback()
 	);
 
 	foreach ($pages as $slug => $title) {
-		$url = Kidazzle_get_page_link($slug);
-		echo '<a href="' . esc_url($url) . '" class="hover:text-Kidazzle-blue transition">' . esc_html($title) . '</a>';
+		$url = kidazzle_get_page_link($slug);
+		echo '<a href="' . esc_url($url) . '" class="hover:text-kidazzle-blue transition">' . esc_html($title) . '</a>';
 	}
 }
 
 /**
  * Footer Navigation
  */
-function Kidazzle_footer_nav()
+function kidazzle_footer_nav()
 {
 	wp_nav_menu(array(
 		'theme_location' => 'footer',
 		'container' => false,
 		'menu_class' => '',
-		'fallback_cb' => 'Kidazzle_footer_nav_fallback',
+		'fallback_cb' => 'kidazzle_footer_nav_fallback',
 		'items_wrap' => '%3$s',
 		'depth' => 1,
-		'walker' => new Kidazzle_Footer_Nav_Walker(),
+		'walker' => new kidazzle_footer_nav_walker(),
 	));
 }
 
 /**
  * Footer Nav Fallback
  */
-function Kidazzle_footer_nav_fallback()
+function kidazzle_footer_nav_fallback()
 {
 	$pages = array(
 		'home' => 'Home',
-		'prismpath' => 'PrismPath',
+		'KIDazzle Creative Curriculum' => 'KIDazzle Creative Curriculum',
 		'programs' => 'All Programs',
 		'parents' => 'Parents'
 	);
@@ -95,7 +95,7 @@ function Kidazzle_footer_nav_fallback()
 /**
  * Footer Contact Navigation
  */
-function Kidazzle_footer_contact_nav()
+function kidazzle_footer_contact_nav()
 {
 	if (has_nav_menu('footer_contact')) {
 		wp_nav_menu(array(
@@ -105,10 +105,10 @@ function Kidazzle_footer_contact_nav()
 			'fallback_cb' => false,
 			'items_wrap' => '<div class="%2$s">%3$s</div>',
 			'depth' => 1,
-			'walker' => new Kidazzle_Footer_Nav_Walker(),
+			'walker' => new kidazzle_footer_nav_walker(),
 		));
 	} else {
-		$program_slug = Kidazzle_get_program_base_slug();
+		$program_slug = kidazzle_get_program_base_slug();
 		$pages = array(
 			$program_slug => 'Programs',
 			'locations' => 'Locations',
@@ -126,7 +126,7 @@ function Kidazzle_footer_contact_nav()
 /**
  * Custom Walker for Primary Navigation
  */
-class Kidazzle_Primary_Nav_Walker extends Walker_Nav_Menu
+class kidazzle_primary_nav_walker extends Walker_Nav_Menu
 {
 	function start_lvl(&$output, $depth = 0, $args = null)
 	{
@@ -140,10 +140,10 @@ class Kidazzle_Primary_Nav_Walker extends Walker_Nav_Menu
 
 	function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
 	{
-		$classes = 'hover:text-Kidazzle-blue transition';
+		$classes = 'hover:text-kidazzle-blue transition';
 
 		if ($item->current) {
-			$classes .= ' text-Kidazzle-red';
+			$classes .= ' text-kidazzle-red';
 		}
 
 		$url = $item->url;
@@ -168,7 +168,7 @@ class Kidazzle_Primary_Nav_Walker extends Walker_Nav_Menu
 /**
  * Custom Walker for Footer Navigation
  */
-class Kidazzle_Footer_Nav_Walker extends Walker_Nav_Menu
+class kidazzle_footer_nav_walker extends Walker_Nav_Menu
 {
 	function start_lvl(&$output, $depth = 0, $args = null)
 	{
@@ -204,35 +204,35 @@ class Kidazzle_Footer_Nav_Walker extends Walker_Nav_Menu
 /**
  * Mobile Navigation
  */
-function Kidazzle_mobile_nav()
+function kidazzle_mobile_nav()
 {
 	wp_nav_menu(array(
 		'theme_location' => 'primary',
 		'container' => false,
 		'menu_class' => 'flex flex-col space-y-2',
-		'fallback_cb' => 'Kidazzle_mobile_nav_fallback',
+		'fallback_cb' => 'kidazzle_mobile_nav_fallback',
 		'items_wrap' => '%3$s',
 		'depth' => 1,
-		'walker' => new Kidazzle_Mobile_Nav_Walker(),
+		'walker' => new kidazzle_mobile_nav_walker(),
 	));
 }
 
 /**
  * Mobile Nav Fallback
  */
-function Kidazzle_mobile_nav_fallback()
+function kidazzle_mobile_nav_fallback()
 {
-	$program_slug = Kidazzle_get_program_base_slug();
-	$pages = array($program_slug, "prismpath", "curriculum", "schedule", "locations", "faq");
+	$program_slug = kidazzle_get_program_base_slug();
+	$pages = array($program_slug, "KIDazzle Creative Curriculum", "curriculum", "schedule", "locations", "faq");
 	foreach ($pages as $slug) {
-		echo '<a href="#' . esc_attr($slug) . '" class="block py-3 border-b border-brand-ink/5 text-lg font-semibold text-brand-ink hover:text-Kidazzle-blue transition">' . esc_html(ucwords(str_replace('-', ' ', $slug))) . '</a>';
+		echo '<a href="#' . esc_attr($slug) . '" class="block py-3 border-b border-brand-ink/5 text-lg font-semibold text-brand-ink hover:text-kidazzle-blue transition">' . esc_html(ucwords(str_replace('-', ' ', $slug))) . '</a>';
 	}
 }
 
 /**
  * Custom Walker for Mobile Navigation
  */
-class Kidazzle_Mobile_Nav_Walker extends Walker_Nav_Menu
+class kidazzle_mobile_nav_walker extends Walker_Nav_Menu
 {
 	function start_lvl(&$output, $depth = 0, $args = null)
 	{
@@ -246,10 +246,10 @@ class Kidazzle_Mobile_Nav_Walker extends Walker_Nav_Menu
 
 	function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
 	{
-		$classes = 'block py-3 border-b border-brand-ink/5 text-lg font-semibold text-brand-ink hover:text-Kidazzle-blue transition';
+		$classes = 'block py-3 border-b border-brand-ink/5 text-lg font-semibold text-brand-ink hover:text-kidazzle-blue transition';
 
 		if ($item->current) {
-			$classes .= ' text-Kidazzle-blue';
+			$classes .= ' text-kidazzle-blue';
 		}
 
 		$url = $item->url;

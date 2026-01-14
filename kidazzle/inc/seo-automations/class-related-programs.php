@@ -3,7 +3,7 @@
  * Related Programs - Auto-link programs to locations
  * Shows program ↔ location relationships
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Related_Programs
+class kidazzle_Related_Programs
 {
     public function __construct() {
         add_filter('the_content', [$this, 'append_related_content'], 21);
@@ -21,7 +21,7 @@ class Kidazzle_Related_Programs
      * Append related programs or locations after content
      */
     public function append_related_content($content) {
-        if (!get_option('Kidazzle_seo_link_programs_locations', true)) {
+        if (!get_option('kidazzle_seo_link_programs_locations', true)) {
             return $content;
         }
         
@@ -69,7 +69,7 @@ class Kidazzle_Related_Programs
         
         ob_start();
         ?>
-        <section class="Kidazzle-related-programs">
+        <section class="kidazzle-related-programs">
             <h2>Programs at This Location</h2>
             <div class="programs-grid">
                 <?php foreach ($programs as $prog): 
@@ -94,8 +94,8 @@ class Kidazzle_Related_Programs
             </div>
         </section>
         <style>
-            .Kidazzle-related-programs { margin: 40px 0; }
-            .Kidazzle-related-programs h2 { margin-bottom: 20px; }
+            .kidazzle-related-programs { margin: 40px 0; }
+            .kidazzle-related-programs h2 { margin-bottom: 20px; }
             .programs-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -154,7 +154,7 @@ class Kidazzle_Related_Programs
         
         ob_start();
         ?>
-        <section class="Kidazzle-locations-with-program">
+        <section class="kidazzle-locations-with-program">
             <h2>Locations Offering This Program</h2>
             <div class="locations-list">
                 <?php foreach ($locations as $loc): 
@@ -174,8 +174,8 @@ class Kidazzle_Related_Programs
             </div>
         </section>
         <style>
-            .Kidazzle-locations-with-program { margin: 40px 0; }
-            .Kidazzle-locations-with-program h2 { margin-bottom: 20px; }
+            .kidazzle-locations-with-program { margin: 40px 0; }
+            .kidazzle-locations-with-program h2 { margin-bottom: 20px; }
             .locations-list {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -198,4 +198,4 @@ class Kidazzle_Related_Programs
     }
 }
 
-new Kidazzle_Related_Programs();
+new kidazzle_Related_Programs();

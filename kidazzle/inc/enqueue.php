@@ -2,7 +2,7 @@
 /**
  * Enqueue scripts and styles.
  *
- * @package Kidazzle_Theme
+ * @package kidazzle_Theme
  */
 
 if (!defined('ABSPATH')) {

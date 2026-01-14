@@ -3,7 +3,7 @@
  * Near Me Pages - Hybrid approach
  * Pre-generated for SEO + JS personalization for UX
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,9 +11,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Near_Me_Pages
+class kidazzle_Near_Me_Pages
 {
-    const REWRITE_TAG = 'Kidazzle_near_me';
+    const REWRITE_TAG = 'kidazzle_near_me';
     
     private $keywords = ['daycare', 'preschool', 'childcare', 'pre-k', 'infant-care'];
     
@@ -334,7 +334,7 @@ class Kidazzle_Near_Me_Pages
         }
         
         // City-specific
-        $cities = Kidazzle_Combo_Page_Generator::get_all_cities();
+        $cities = kidazzle_Combo_Page_Generator::get_all_cities();
         foreach ($keywords as $kw) {
             foreach ($cities as $city) {
                 $urls[] = home_url('/' . $kw . '-near-' . sanitize_title($city['city']) . '-' . strtolower($city['state']) . '/');
@@ -345,4 +345,4 @@ class Kidazzle_Near_Me_Pages
     }
 }
 
-new Kidazzle_Near_Me_Pages();
+new kidazzle_Near_Me_Pages();

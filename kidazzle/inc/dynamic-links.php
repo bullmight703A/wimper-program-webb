@@ -3,7 +3,7 @@
  * Dynamic Link Generator
  * Generates URLs from slugs to prevent hardcoded redirect chains
  * 
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
  * @param string|array $post_type Optional post type(s) (default: 'page')
  * @return string|false The permalink or false if not found
  */
-function Kidazzle_get_link_by_slug($slug, $post_type = 'page')
+function kidazzle_get_link_by_slug($slug, $post_type = 'page')
 {
     // Clean the slug
     $slug = trim($slug, '/');
@@ -45,7 +45,7 @@ function Kidazzle_get_link_by_slug($slug, $post_type = 'page')
  * @param string $slug Program slug (e.g., 'preschool', 'ga-pre-k', 'infant-care')
  * @return string The program permalink or fallback URL
  */
-function Kidazzle_get_program_link($slug)
+function kidazzle_get_program_link($slug)
 {
     // Clean the slug
     $slug = trim($slug, '/');
@@ -72,7 +72,7 @@ function Kidazzle_get_program_link($slug)
  * @param string $slug Location slug
  * @return string The location permalink or fallback URL
  */
-function Kidazzle_get_location_link($slug)
+function kidazzle_get_location_link($slug)
 {
     // Clean the slug
     $slug = trim($slug, '/');
@@ -100,7 +100,7 @@ function Kidazzle_get_location_link($slug)
  * @param string $slug Any page/post/CPT slug
  * @return string The permalink or home_url fallback
  */
-function Kidazzle_smart_link($slug)
+function kidazzle_smart_link($slug)
 {
     // Remove leading/trailing slashes
     $slug = trim($slug, '/');
@@ -146,7 +146,7 @@ function Kidazzle_smart_link($slug)
  * @param string $name Common name like 'contact', 'about', etc.
  * @return string The permalink
  */
-function Kidazzle_get_page_link($name)
+function kidazzle_get_page_link($name)
 {
     // Define common aliases for pages that may have changed slugs
     $aliases = array(
@@ -164,18 +164,18 @@ function Kidazzle_get_page_link($name)
     // Check if this is an aliased name
     $slug = isset($aliases[$name]) ? $aliases[$name] : $name;
 
-    return Kidazzle_smart_link($slug);
+    return kidazzle_smart_link($slug);
 }
 
 /**
  * Shortcode for dynamic links in content
- * Usage: [Kidazzle_link slug="contact-us"]Contact Us[/Kidazzle_link]
+ * Usage: [kidazzle_link slug="contact-us"]Contact Us[/kidazzle_link]
  * 
  * @param array $atts Shortcode attributes
  * @param string $content Shortcode content (link text)
  * @return string The HTML link
  */
-function Kidazzle_dynamic_link_shortcode($atts, $content = null)
+function kidazzle_dynamic_link_shortcode($atts, $content = null)
 {
     $atts = shortcode_atts(array(
         'slug' => '',
@@ -183,13 +183,13 @@ function Kidazzle_dynamic_link_shortcode($atts, $content = null)
         'id' => '',
         'target' => '',
         'rel' => '',
-    ), $atts, 'Kidazzle_link');
+    ), $atts, 'kidazzle_link');
 
     if (empty($atts['slug'])) {
         return $content;
     }
 
-    $url = Kidazzle_smart_link($atts['slug']);
+    $url = kidazzle_smart_link($atts['slug']);
 
     // Build attributes
     $link_atts = array();
@@ -210,7 +210,7 @@ function Kidazzle_dynamic_link_shortcode($atts, $content = null)
 
     return '<a ' . implode(' ', $link_atts) . '>' . do_shortcode($content) . '</a>';
 }
-add_shortcode('Kidazzle_link', 'Kidazzle_dynamic_link_shortcode');
+add_shortcode('kidazzle_link', 'kidazzle_dynamic_link_shortcode');
 
 /**
  * Helper to check if a URL needs updating (points to a redirect)
@@ -218,7 +218,7 @@ add_shortcode('Kidazzle_link', 'Kidazzle_dynamic_link_shortcode');
  * @param string $url URL to check
  * @return bool True if URL might need updating
  */
-function Kidazzle_url_needs_update($url)
+function kidazzle_url_needs_update($url)
 {
     // List of known old URL patterns that redirect
     $redirect_patterns = array(
@@ -249,8 +249,8 @@ function Kidazzle_url_needs_update($url)
  * @param string $path Path relative to home
  * @return string Full URL
  */
-if (!function_exists('Kidazzle_url')) {
-    function Kidazzle_url($path = '/') {
+if (!function_exists('kidazzle_url')) {
+    function kidazzle_url($path = '/') {
          return home_url($path);
     }
 }

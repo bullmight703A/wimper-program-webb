@@ -3,7 +3,7 @@
  * Credential Badges
  * Display trust badges for DECAL, NAEYC, etc.
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Credential_Badges
+class kidazzle_Credential_Badges
 {
     private static $badges = [
         'ga_decal' => [
@@ -64,7 +64,7 @@ class Kidazzle_Credential_Badges
         }
         
         // Try from hasCredential schema
-        $schema_data = get_post_meta($post_id, '_Kidazzle_schema_data', true);
+        $schema_data = get_post_meta($post_id, '_kidazzle_schema_data', true);
         if ($schema_data && isset($schema_data[0]['data']['hasCredential'])) {
             return $schema_data[0]['data']['hasCredential'];
         }
@@ -83,7 +83,7 @@ class Kidazzle_Credential_Badges
         
         ob_start();
         ?>
-        <div class="Kidazzle-credential-badges style-<?php echo esc_attr($style); ?>">
+        <div class="kidazzle-credential-badges style-<?php echo esc_attr($style); ?>">
             <?php foreach ($credentials as $cred): 
                 $badge = self::$badges[$cred] ?? null;
                 if (!$badge && is_array($cred)) {
@@ -104,13 +104,13 @@ class Kidazzle_Credential_Badges
             <?php endforeach; ?>
         </div>
         <style>
-            .Kidazzle-credential-badges {
+            .kidazzle-credential-badges {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 10px;
                 margin: 20px 0;
             }
-            .Kidazzle-credential-badges .badge {
+            .kidazzle-credential-badges .badge {
                 display: inline-flex;
                 align-items: center;
                 gap: 6px;
@@ -122,14 +122,14 @@ class Kidazzle_Credential_Badges
                 font-weight: 600;
                 color: var(--badge-color);
             }
-            .Kidazzle-credential-badges .badge-icon {
+            .kidazzle-credential-badges .badge-icon {
                 font-size: 16px;
             }
-            .Kidazzle-credential-badges.style-compact .badge {
+            .kidazzle-credential-badges.style-compact .badge {
                 padding: 5px 10px;
                 font-size: 11px;
             }
-            .Kidazzle-credential-badges.style-inline {
+            .kidazzle-credential-badges.style-inline {
                 display: inline-flex;
             }
         </style>
@@ -159,7 +159,7 @@ class Kidazzle_Credential_Badges
             return $content;
         }
         
-        if (!get_option('Kidazzle_seo_show_credential_badges', true)) {
+        if (!get_option('kidazzle_seo_show_credential_badges', true)) {
             return $content;
         }
         
@@ -221,4 +221,4 @@ class Kidazzle_Credential_Badges
     }
 }
 
-new Kidazzle_Credential_Badges();
+new kidazzle_Credential_Badges();

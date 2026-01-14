@@ -3,7 +3,7 @@
  * Dynamic Title Patterns
  * Auto-generate SEO-optimized titles based on patterns
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Dynamic_Titles
+class kidazzle_Dynamic_Titles
 {
     private $patterns = [];
     
@@ -30,7 +30,7 @@ class Kidazzle_Dynamic_Titles
             return $this->patterns;
         }
         
-        $this->patterns = get_option('Kidazzle_seo_title_patterns', $this->get_default_patterns());
+        $this->patterns = get_option('kidazzle_seo_title_patterns', $this->get_default_patterns());
         
         return $this->patterns;
     }
@@ -56,7 +56,7 @@ class Kidazzle_Dynamic_Titles
      * Filter document title
      */
     public function filter_title($title) {
-        if (!get_option('Kidazzle_seo_enable_dynamic_titles', true)) {
+        if (!get_option('kidazzle_seo_enable_dynamic_titles', true)) {
             return $title;
         }
         
@@ -159,11 +159,11 @@ class Kidazzle_Dynamic_Titles
      */
     public function add_settings_page() {
         add_submenu_page(
-            'Kidazzle-seo-dashboard',
+            'kidazzle-seo-dashboard',
             'Title Patterns',
             'Title Patterns',
             'manage_options',
-            'Kidazzle-title-patterns',
+            'kidazzle-title-patterns',
             [$this, 'render_settings_page']
         );
     }
@@ -172,29 +172,29 @@ class Kidazzle_Dynamic_Titles
      * Register settings
      */
     public function register_settings() {
-        register_setting('Kidazzle_title_patterns', 'Kidazzle_seo_enable_dynamic_titles');
-        register_setting('Kidazzle_title_patterns', 'Kidazzle_seo_title_patterns');
+        register_setting('kidazzle_title_patterns', 'kidazzle_seo_enable_dynamic_titles');
+        register_setting('kidazzle_title_patterns', 'kidazzle_seo_title_patterns');
     }
     
     /**
      * Render settings page
      */
     public function render_settings_page() {
-        $enabled = get_option('Kidazzle_seo_enable_dynamic_titles', true);
+        $enabled = get_option('kidazzle_seo_enable_dynamic_titles', true);
         $patterns = $this->get_patterns();
         ?>
         <div class="wrap">
             <h1>Dynamic Title Patterns</h1>
             
             <form method="post" action="options.php">
-                <?php settings_fields('Kidazzle_title_patterns'); ?>
+                <?php settings_fields('kidazzle_title_patterns'); ?>
                 
                 <table class="form-table">
                     <tr>
                         <th>Enable Dynamic Titles</th>
                         <td>
                             <label>
-                                <input type="checkbox" name="Kidazzle_seo_enable_dynamic_titles" 
+                                <input type="checkbox" name="kidazzle_seo_enable_dynamic_titles" 
                                     value="1" <?php checked($enabled); ?>>
                                 Use pattern-based title generation
                             </label>
@@ -210,7 +210,7 @@ class Kidazzle_Dynamic_Titles
                     <tr>
                         <th><?php echo esc_html(ucwords(str_replace('_', ' ', $key))); ?></th>
                         <td>
-                            <input type="text" name="Kidazzle_seo_title_patterns[<?php echo esc_attr($key); ?>]" 
+                            <input type="text" name="kidazzle_seo_title_patterns[<?php echo esc_attr($key); ?>]" 
                                 value="<?php echo esc_attr($pattern); ?>" class="large-text">
                         </td>
                     </tr>
@@ -248,4 +248,4 @@ class Kidazzle_Dynamic_Titles
     }
 }
 
-new Kidazzle_Dynamic_Titles();
+new kidazzle_Dynamic_Titles();

@@ -4,7 +4,7 @@
  *
  * Homepage Template: front-page.php (WordPress default)
  *
- * @package Kidazzle_Theme
+ * @package kidazzle_Theme
  * @since 1.0.0
  */
 
@@ -17,6 +17,15 @@ if (!defined('ABSPATH')) {
  * Increase Memory Limit for SEO Engine
  */
 @ini_set('memory_limit', '256M');
+
+/**
+ * Cleanup UI: Suppress PHP Deprecation Warnings
+ * These warnings from legacy plugins (like WP Pusher) clutter the frontend.
+ */
+if (!is_admin()) {
+    @ini_set('display_errors', 0);
+    error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE);
+}
 
 /**
  * Define theme constants

@@ -2,7 +2,7 @@
 /**
  * Single Program Template
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  */
 
 get_header();
@@ -20,8 +20,8 @@ while (have_posts()):
 	$hero_title = get_post_meta($program_id, 'program_hero_title', true) ?: get_the_title();
 	$hero_description = get_post_meta($program_id, 'program_hero_description', true) ?: get_the_excerpt();
 
-	// Prismpath section
-	$prism_title = get_post_meta($program_id, 'program_prism_title', true) ?: 'Our Prismpath™ Focus';
+	// KIDazzle Creative Curriculum section
+	$prism_title = get_post_meta($program_id, 'program_prism_title', true) ?: 'Our KIDazzle Creative Curriculum™ Focus';
 	$prism_description = get_post_meta($program_id, 'program_prism_description', true);
 	$prism_focus_items = get_post_meta($program_id, 'program_prism_focus_items', true);
 
@@ -38,13 +38,13 @@ while (have_posts()):
 
 	// Color mapping
 	$color_map = array(
-		'red' => array('main' => 'Kidazzle-red', 'light' => 'Kidazzle-redLight'),
-		'blue' => array('main' => 'Kidazzle-blue', 'light' => 'Kidazzle-blueLight'),
-		'yellow' => array('main' => 'Kidazzle-yellow', 'light' => 'Kidazzle-yellowLight'),
-		'blueDark' => array('main' => 'Kidazzle-blueDark', 'light' => 'Kidazzle-blueLight'),
-		'green' => array('main' => 'Kidazzle-green', 'light' => 'Kidazzle-greenLight'),
-		'orange' => array('main' => 'Kidazzle-orange', 'light' => 'Kidazzle-orangeLight'),
-		'teal' => array('main' => 'Kidazzle-teal', 'light' => 'Kidazzle-tealLight'),
+		'red' => array('main' => 'kidazzle-red', 'light' => 'kidazzle-redLight'),
+		'blue' => array('main' => 'kidazzle-blue', 'light' => 'kidazzle-blueLight'),
+		'yellow' => array('main' => 'kidazzle-yellow', 'light' => 'kidazzle-yellowLight'),
+		'blueDark' => array('main' => 'kidazzle-blueDark', 'light' => 'kidazzle-blueLight'),
+		'green' => array('main' => 'kidazzle-green', 'light' => 'kidazzle-greenLight'),
+		'orange' => array('main' => 'kidazzle-orange', 'light' => 'kidazzle-orangeLight'),
+		'teal' => array('main' => 'kidazzle-teal', 'light' => 'kidazzle-tealLight'),
 	);
 
 	$colors = $color_map[$color_scheme] ?? $color_map['red'];
@@ -119,7 +119,7 @@ while (have_posts()):
 			</div>
 		</section>
 
-		<!-- The Prismpath Focus (Chart) -->
+		<!-- The KIDazzle Creative Curriculum Focus (Chart) -->
 		<section id="prism" class="py-24 bg-brand-cream">
 			<div class="max-w-6xl mx-auto px-4 lg:px-6">
 				<div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -128,7 +128,7 @@ while (have_posts()):
 					</div>
 					<div class="order-1 lg:order-2">
 						<span
-							class="text-<?php echo esc_attr($colors['main']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Prismpath™
+							class="text-<?php echo esc_attr($colors['main']); ?> font-bold tracking-[0.2em] text-xs uppercase mb-3 block">KIDazzle Creative Curriculum™
 							Focus</span>
 						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
 							<?php echo esc_html($prism_title); ?>
@@ -146,7 +146,7 @@ while (have_posts()):
 								?>
 								<ul class="space-y-3 text-sm text-brand-ink/90">
 									<?php
-									$item_colors = array('Kidazzle-red', 'Kidazzle-yellow', 'Kidazzle-green', 'Kidazzle-blue', 'brand-ink/20');
+									$item_colors = array('kidazzle-red', 'kidazzle-yellow', 'kidazzle-green', 'kidazzle-blue', 'brand-ink/20');
 									foreach ($focus_items_array as $index => $item):
 										$item_color = $item_colors[$index % count($item_colors)];
 										?>
@@ -258,16 +258,16 @@ while (have_posts()):
 
 		<?php 
 		// Age Calculator Widget
-		Kidazzle_Program_Enhancements::render_age_calculator($program_id);
+		kidazzle_program_enhancements::render_age_calculator($program_id);
 		
 		// FAQ Section with Schema
-		Kidazzle_Program_Enhancements::render_faq_section($program_id);
+		kidazzle_program_enhancements::render_faq_section($program_id);
 		
 		// Photo Gallery
-		Kidazzle_Program_Enhancements::render_gallery_section($program_id);
+		kidazzle_program_enhancements::render_gallery_section($program_id);
 		
 		// Parent Testimonials
-		Kidazzle_Program_Enhancements::render_testimonials_section($program_id);
+		kidazzle_program_enhancements::render_testimonials_section($program_id);
 		?>
 
 	</main>
@@ -288,7 +288,7 @@ while (have_posts()):
 	</style>
 
 	<script>
-		// Prismpath Chart Config - Lazy Loaded
+		// KIDazzle Creative Curriculum Chart Config - Lazy Loaded
 		document.addEventListener('DOMContentLoaded', function () {
 			const ctx = document.getElementById('programChart');
 			if (ctx) {
@@ -378,7 +378,7 @@ while (have_posts()):
 					</h3>
 					<div class="flex items-center gap-4">
 						<a href="<?php echo esc_url($lesson_plan_url); ?>" target="_blank" id="lesson-plan-external"
-							class="text-xs font-bold uppercase tracking-wider text-brand-ink/70 hover:text-Kidazzle-blue transition-colors hidden md:flex items-center gap-1">
+							class="text-xs font-bold uppercase tracking-wider text-brand-ink/70 hover:text-kidazzle-blue transition-colors hidden md:flex items-center gap-1">
 							<i class="fa-solid fa-arrow-up-right-from-square"></i>
 							Open in new tab
 						</a>
@@ -388,7 +388,7 @@ while (have_posts()):
 							Download
 						</a>
 						<button id="lesson-plan-close"
-							class="w-10 h-10 rounded-full bg-white border border-brand-ink/10 flex items-center justify-center text-brand-ink hover:bg-Kidazzle-red hover:text-white hover:border-Kidazzle-red transition-all">
+							class="w-10 h-10 rounded-full bg-white border border-brand-ink/10 flex items-center justify-center text-brand-ink hover:bg-kidazzle-red hover:text-white hover:border-kidazzle-red transition-all">
 							<i class="fa-solid fa-xmark text-lg"></i>
 						</button>
 					</div>

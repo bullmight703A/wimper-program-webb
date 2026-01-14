@@ -3,7 +3,7 @@
  * Archive Template for City CPT
  * Displays all cities in a filterable grid (Locations Style)
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  */
 
 get_header();
@@ -44,8 +44,8 @@ if ($cities_query->have_posts()) {
  * Handles featured image, meta image (ID or URL), and fallback.
  * Uses wp_get_attachment_image for correct aspect ratio attributes.
  */
-if (!function_exists('Kidazzle_get_city_image_html')) {
-    function Kidazzle_get_city_image_html($city_post, $fallback_url)
+if (!function_exists('kidazzle_get_city_image_html')) {
+    function kidazzle_get_city_image_html($city_post, $fallback_url)
     {
         $img_class = 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500';
 
@@ -80,18 +80,18 @@ if (!function_exists('Kidazzle_get_city_image_html')) {
     <section class="relative pt-16 pb-12 lg:pt-24 lg:pb-20 bg-white overflow-hidden">
         <!-- Decor -->
         <div
-            class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-Kidazzle-blueLight/40 via-transparent to-transparent">
+            class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-kidazzle-blueLight/40 via-transparent to-transparent">
         </div>
 
         <div class="max-w-7xl mx-auto px-4 lg:px-6 relative z-10 text-center">
             <div
-                class="inline-flex items-center gap-2 bg-white border border-Kidazzle-blue/30 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold text-Kidazzle-blue shadow-sm mb-6 fade-in-up">
+                class="inline-flex items-center gap-2 bg-white border border-kidazzle-blue/30 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold text-kidazzle-blue shadow-sm mb-6 fade-in-up">
                 <i class="fa-solid fa-city"></i> <?php echo $cities_query->found_posts; ?> Communities
             </div>
 
             <h1 class="font-serif text-[2.8rem] md:text-6xl text-brand-ink mb-6 fade-in-up"
                 style="animation-delay: 0.1s;">
-                Our <span class="text-Kidazzle-blue italic">Communities</span>
+                Our <span class="text-kidazzle-blue italic">Communities</span>
             </h1>
 
             <p class="text-lg text-brand-ink/90 max-w-2xl mx-auto mb-10 fade-in-up" style="animation-delay: 0.2s;">
@@ -110,7 +110,7 @@ if (!function_exists('Kidazzle_get_city_image_html')) {
                 <div
                     class="flex gap-2 justify-start lg:justify-center flex-wrap flex-grow items-center overflow-x-auto pb-2 lg:pb-0">
                     <button onclick="filterCities('all')" data-county="all"
-                        class="filter-btn px-6 py-3 rounded-full font-semibold bg-Kidazzle-blue text-white hover:shadow-glow transition-all duration-300 whitespace-nowrap">
+                        class="filter-btn px-6 py-3 rounded-full font-semibold bg-kidazzle-blue text-white hover:shadow-glow transition-all duration-300 whitespace-nowrap">
                         All
                     </button>
                     <?php foreach ($unique_counties as $county):
@@ -139,7 +139,7 @@ if (!function_exists('Kidazzle_get_city_image_html')) {
                         $county = get_post_meta($city_id, 'city_county', true) ?: 'Other';
                         $county_slug = sanitize_title($county);
 
-                        $city_html = Kidazzle_get_city_image_html($post, $local_fallback);
+                        $city_html = kidazzle_get_city_image_html($post, $local_fallback);
                         $city_description = get_post_meta($city_id, 'city_intro_text', true);
                         ?>
                         <div class="city-card group" data-county="<?php echo esc_attr($county_slug); ?>"
@@ -148,7 +148,7 @@ if (!function_exists('Kidazzle_get_city_image_html')) {
                                 class="block h-full bg-white rounded-3xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300 border border-brand-ink/5"
                                 aria-label="View schools in <?php the_title_attribute(); ?>">
 
-                                <div class="h-48 overflow-hidden relative bg-Kidazzle-blue/5">
+                                <div class="h-48 overflow-hidden relative bg-kidazzle-blue/5">
                                     <div
                                         class="absolute inset-0 bg-brand-ink/10 group-hover:bg-transparent transition-colors z-10">
                                     </div>
@@ -157,8 +157,8 @@ if (!function_exists('Kidazzle_get_city_image_html')) {
                                         <?php echo $city_html; ?>
                                     <?php else: ?>
                                         <div
-                                            class="absolute inset-0 bg-gradient-to-br from-Kidazzle-blue/20 to-Kidazzle-green/20 flex items-center justify-center">
-                                            <img src="<?php echo esc_url($local_fallback); ?>" alt="Kidazzle"
+                                            class="absolute inset-0 bg-gradient-to-br from-kidazzle-blue/20 to-kidazzle-green/20 flex items-center justify-center">
+                                            <img src="<?php echo esc_url($local_fallback); ?>" alt="kidazzle"
                                                 class="w-20 h-20 opacity-30" loading="lazy">
                                         </div>
                                     <?php endif; ?>
@@ -172,7 +172,7 @@ if (!function_exists('Kidazzle_get_city_image_html')) {
                                         </span>
                                     </div>
                                     <h3
-                                        class="font-serif text-xl md:text-2xl font-bold text-brand-ink mb-2 group-hover:text-Kidazzle-blue transition-colors">
+                                        class="font-serif text-xl md:text-2xl font-bold text-brand-ink mb-2 group-hover:text-kidazzle-blue transition-colors">
                                         <?php the_title(); ?>
                                     </h3>
                                     <p class="text-sm text-brand-ink/60 mb-4 line-clamp-2">
@@ -180,7 +180,7 @@ if (!function_exists('Kidazzle_get_city_image_html')) {
                                     </p>
 
                                     <span
-                                        class="text-xs font-bold uppercase tracking-wider text-Kidazzle-red inline-flex items-center gap-2">
+                                        class="text-xs font-bold uppercase tracking-wider text-kidazzle-red inline-flex items-center gap-2">
                                         View Schools
                                         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none"
                                             stroke="currentColor" viewBox="0 0 24 24">
@@ -207,13 +207,13 @@ if (!function_exists('Kidazzle_get_city_image_html')) {
     </section>
 
     <!-- CTA -->
-    <section class="bg-Kidazzle-blueDark py-16 text-white text-center">
+    <section class="bg-kidazzle-blueDark py-16 text-white text-center">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="font-serif text-3xl font-bold mb-4">Don't see your city?</h2>
             <p class="text-white/80 mb-8 max-w-2xl mx-auto">We are constantly expanding. Contact our enrollment team to
                 find the nearest campus to you.</p>
             <a href="<?php echo esc_url(home_url('/contact')); ?>"
-                class="inline-block bg-Kidazzle-yellow text-brand-ink font-bold rounded-full px-8 py-4 uppercase tracking-widest text-xs hover:bg-white transition-colors">
+                class="inline-block bg-kidazzle-yellow text-brand-ink font-bold rounded-full px-8 py-4 uppercase tracking-widest text-xs hover:bg-white transition-colors">
                 Contact Us
             </a>
         </div>
@@ -233,10 +233,10 @@ if (!function_exists('Kidazzle_get_city_image_html')) {
         buttons.forEach(btn => {
             if (county === btn.dataset.county) {
                 btn.classList.remove('bg-white', 'text-brand-ink', 'border');
-                btn.classList.add('bg-Kidazzle-blue', 'text-white', 'shadow-glow');
+                btn.classList.add('bg-kidazzle-blue', 'text-white', 'shadow-glow');
             } else {
                 btn.classList.add('bg-white', 'text-brand-ink', 'border');
-                btn.classList.remove('bg-Kidazzle-blue', 'text-white', 'shadow-glow');
+                btn.classList.remove('bg-kidazzle-blue', 'text-white', 'shadow-glow');
             }
         });
 
@@ -266,7 +266,7 @@ if (!function_exists('Kidazzle_get_city_image_html')) {
         // Reset sidebar active state visually (optional, keeps 'All' effectively active)
         buttons.forEach(btn => {
             btn.classList.add('bg-white', 'text-brand-ink', 'border');
-            btn.classList.remove('bg-Kidazzle-blue', 'text-white', 'shadow-glow');
+            btn.classList.remove('bg-kidazzle-blue', 'text-white', 'shadow-glow');
         });
 
         cards.forEach(card => {

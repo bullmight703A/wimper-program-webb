@@ -51,7 +51,7 @@ while (have_posts()):
 
 	$educator3_icon = get_post_meta($page_id, 'about_educator3_icon', true) ?: 'fa-solid fa-chalkboard-user';
 	$educator3_title = get_post_meta($page_id, 'about_educator3_title', true) ?: 'Continuous Growth';
-	$educator3_desc = get_post_meta($page_id, 'about_educator3_desc', true) ?: 'Our educators participate in 20+ hours of annual professional development, specializing in the Prismpath™ curriculum and social-emotional learning.';
+	$educator3_desc = get_post_meta($page_id, 'about_educator3_desc', true) ?: 'Our educators participate in 20+ hours of annual professional development, specializing in the KIDazzle Creative Curriculum™ curriculum and social-emotional learning.';
 
 	// Core Values Section
 	$values_title = get_post_meta($page_id, 'about_values_title', true) ?: 'The Kidazzle Standard';
@@ -67,7 +67,7 @@ while (have_posts()):
 
 	$value3_icon = get_post_meta($page_id, 'about_value3_icon', true) ?: 'fa-solid fa-graduation-cap';
 	$value3_title = get_post_meta($page_id, 'about_value3_title', true) ?: 'Academic Excellence';
-	$value3_desc = get_post_meta($page_id, 'about_value3_desc', true) ?: 'Using our Prismpath™ model, we deliver rigorous, age-appropriate learning that feels like play.';
+	$value3_desc = get_post_meta($page_id, 'about_value3_desc', true) ?: 'Using our KIDazzle Creative Curriculum™ model, we deliver rigorous, age-appropriate learning that feels like play.';
 
 	$value4_icon = get_post_meta($page_id, 'about_value4_icon', true) ?: 'fa-solid fa-users';
 	$value4_title = get_post_meta($page_id, 'about_value4_title', true) ?: 'Open Partnership';
@@ -114,20 +114,17 @@ while (have_posts()):
 	));
 	?>
 
-	<main id="main-content" role="main">
+	<main id="main-content" role="main" class="view-section active block">
 		<!-- Hero Section -->
-		<section class="relative pt-16 pb-20 lg:pt-24 lg:pb-32 overflow-hidden">
+		<section class="relative pt-16 pb-20 lg:pt-24 lg:pb-32 overflow-hidden bg-white">
 			<!-- Decor -->
-			<div
-				class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-kidazzle-yellowLight/50 to-transparent -z-10">
-			</div>
+			<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-kidazzle-yellowLight/50 to-transparent -z-10"></div>
 			<div class="absolute bottom-0 left-0 w-96 h-96 bg-kidazzle-blue/5 rounded-full blur-3xl -z-10"></div>
 
 			<div class="max-w-7xl mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-16 items-center">
 				<div class="fade-in-up">
 					<?php if ($hero_badge_text): ?>
-						<div
-							class="inline-flex items-center gap-2 bg-white border border-kidazzle-yellow/40 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold text-kidazzle-yellow shadow-sm mb-6">
+						<div class="inline-flex items-center gap-2 bg-white border border-kidazzle-yellow/40 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold text-kidazzle-yellow shadow-sm mb-6">
 							<i class="fa-solid fa-heart"></i> <?php echo esc_html($hero_badge_text); ?>
 						</div>
 					<?php endif; ?>
@@ -141,22 +138,15 @@ while (have_posts()):
 					</p>
 
 					<div class="flex flex-wrap gap-4">
-						<a href="#mission"
-							class="px-8 py-4 bg-brand-ink text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:bg-kidazzle-blueDark transition-colors shadow-lg">Our
-							Mission</a>
-						<a href="<?php echo esc_url(home_url('/locations')); ?>"
-							class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-kidazzle-yellow hover:text-kidazzle-yellow transition-colors">Find
-							a Campus</a>
+						<a href="#mission" class="px-8 py-4 bg-brand-ink text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:bg-kidazzle-blueDark transition-colors shadow-lg">Our Mission</a>
+						<a href="<?php echo esc_url(home_url('/locations')); ?>" class="px-8 py-4 bg-white border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-kidazzle-yellow hover:text-kidazzle-yellow transition-colors">Find a Campus</a>
 					</div>
 				</div>
 
 				<div class="relative fade-in-up delay-200">
-					<div
-						class="absolute inset-0 bg-kidazzle-yellow/10 rounded-[3rem] -rotate-3 transform translate-x-4 translate-y-4">
-					</div>
-					<div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white">
-						<img src="<?php echo esc_url($hero_image); ?>"
-							alt="<?php echo esc_attr(strip_tags($hero_title)); ?>" class="w-full h-full object-cover" />
+					<div class="absolute inset-0 bg-kidazzle-yellow/10 rounded-[3rem] -rotate-3 transform translate-x-4 translate-y-4"></div>
+					<div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3]">
+						<img src="<?php echo esc_url($hero_image); ?>" alt="<?php echo esc_attr(strip_tags($hero_title)); ?>" class="w-full h-full object-cover" />
 					</div>
 				</div>
 			</div>
@@ -164,11 +154,10 @@ while (have_posts()):
 
 		<!-- Mission Statement -->
 		<section id="mission" class="py-20 bg-kidazzle-blue text-white relative overflow-hidden">
-			<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5">
-			</div>
+			<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
 			<div class="max-w-5xl mx-auto px-4 lg:px-6 text-center relative z-10">
 				<span class="text-kidazzle-yellow font-bold tracking-[0.2em] text-xs uppercase mb-6 block">Our Purpose</span>
-				<h2 class="text-3xl md:text-5xl font-serif leading-tight mb-8">
+				<h2 class="text-3xl md:text-5xl font-serif leading-tight mb-8 px-4">
 					<?php echo esc_html($mission_quote); ?>
 				</h2>
 				<div class="w-24 h-1 bg-kidazzle-yellow mx-auto rounded-full"></div>
@@ -181,25 +170,23 @@ while (have_posts()):
 				<div class="grid md:grid-cols-2 gap-16 items-center mb-20">
 					<div class="order-2 md:order-1 relative">
 						<div class="absolute -left-10 -top-10 w-40 h-40 bg-kidazzle-red/10 rounded-full blur-2xl"></div>
-						<img src="<?php echo esc_url($story_image); ?>"
-							class="rounded-[2.5rem] shadow-card border border-brand-ink/5 relative z-10" alt="Our Story" />
+						<div class="relative rounded-[2.5rem] overflow-hidden shadow-card border border-brand-ink/5 z-10">
+                            <img src="<?php echo esc_url($story_image); ?>" class="w-full h-full object-cover" alt="Our Story" />
+                        </div>
 					</div>
 					<div class="order-1 md:order-2">
-						<span class="text-kidazzle-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Our
-							Story</span>
+						<span class="text-kidazzle-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Our Story</span>
 						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
 							<?php echo esc_html($story_title); ?>
 						</h2>
-						<p class="text-brand-ink/80 mb-6 leading-relaxed">
-							<?php echo esc_html($story_paragraph1); ?>
-						</p>
-						<p class="text-brand-ink/80 mb-6 leading-relaxed">
-							<?php echo esc_html($story_paragraph2); ?>
-						</p>
+						<div class="prose prose-slate text-brand-ink/80 leading-relaxed max-w-none">
+							<p class="mb-4"><?php echo esc_html($story_paragraph1); ?></p>
+							<p class="mb-4"><?php echo esc_html($story_paragraph2); ?></p>
+						</div>
 					</div>
 				</div>
 
-				<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+				<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
 					<?php
 					$stats = array(
 						array('value' => $stat1_value, 'label' => $stat1_label, 'color' => 'kidazzle-blue'),
@@ -211,12 +198,11 @@ while (have_posts()):
 					foreach ($stats as $stat):
 						if ($stat['value']):
 							?>
-							<div class="p-8 bg-brand-cream rounded-[2rem] text-center border border-brand-ink/5">
-								<div
-									class="text-3xl md:text-4xl font-serif font-bold text-<?php echo esc_attr($stat['color']); ?> mb-2">
+							<div class="p-8 bg-brand-cream rounded-[2rem] text-center border border-brand-ink/5 shadow-sm hover:shadow-md transition-shadow">
+								<div class="text-3xl md:text-4xl font-serif font-bold text-<?php echo esc_attr($stat['color']); ?> mb-2">
 									<?php echo esc_html($stat['value']); ?>
 								</div>
-								<div class="text-xs font-bold uppercase tracking-wider text-brand-ink/80">
+								<div class="text-[10px] font-bold uppercase tracking-wider text-brand-ink/60">
 									<?php echo esc_html($stat['label']); ?>
 								</div>
 							</div>
@@ -229,8 +215,7 @@ while (have_posts()):
 		<section id="educators" class="py-24 bg-brand-cream border-t border-brand-ink/5">
 			<div class="max-w-7xl mx-auto px-4 lg:px-6">
 				<div class="text-center mb-16 max-w-3xl mx-auto">
-					<span class="text-kidazzle-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Our
-						Educators</span>
+					<span class="text-kidazzle-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Our Educators</span>
 					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-4">
 						<?php echo esc_html($educators_title); ?>
 					</h2>
@@ -248,9 +233,8 @@ while (have_posts()):
 					foreach ($educators as $educator):
 						if ($educator['title']):
 							?>
-							<div class="bg-white p-8 rounded-[2rem] shadow-soft">
-								<div
-									class="w-14 h-14 bg-<?php echo esc_attr($educator['color']); ?> text-<?php echo esc_attr($educator['icon_color']); ?> rounded-2xl flex items-center justify-center text-2xl mb-6">
+							<div class="bg-white p-8 rounded-[2rem] shadow-soft border border-brand-ink/5 hover:border-<?php echo esc_attr($educator['icon_color']); ?>/30 transition-all">
+								<div class="w-14 h-14 bg-<?php echo esc_attr($educator['color']); ?> text-<?php echo esc_attr($educator['icon_color']); ?> rounded-2xl flex items-center justify-center text-2xl mb-6">
 									<i class="<?php echo esc_attr($educator['icon']); ?>"></i>
 								</div>
 								<h3 class="font-serif text-xl font-bold text-brand-ink mb-3">
@@ -266,106 +250,39 @@ while (have_posts()):
 		</section>
 
 		<!-- Core Values -->
-		<section id="values" class="py-24 bg-kidazzle-blueDark text-white relative overflow-hidden">
-			<div
-				class="absolute right-0 top-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent">
-			</div>
+		<section id="values" class="py-24 bg-brand-ink text-white relative overflow-hidden">
+			<div class="absolute right-0 top-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent"></div>
 
 			<div class="max-w-7xl mx-auto px-4 lg:px-6 relative z-10">
 				<div class="text-center mb-16">
+                    <span class="text-kidazzle-yellow font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Our Values</span>
 					<h2 class="text-3xl md:text-4xl font-serif font-bold mb-4"><?php echo esc_html($values_title); ?></h2>
 					<p class="text-white/60 max-w-2xl mx-auto"><?php echo esc_html($values_description); ?></p>
 				</div>
 
 				<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 					<?php
-					$values = array(
+					$values_data = array(
 						array('icon' => $value1_icon, 'title' => $value1_title, 'desc' => $value1_desc, 'color' => 'kidazzle-red'),
 						array('icon' => $value2_icon, 'title' => $value2_title, 'desc' => $value2_desc, 'color' => 'kidazzle-blue'),
 						array('icon' => $value3_icon, 'title' => $value3_title, 'desc' => $value3_desc, 'color' => 'kidazzle-yellow'),
 						array('icon' => $value4_icon, 'title' => $value4_title, 'desc' => $value4_desc, 'color' => 'kidazzle-green'),
 					);
 
-					foreach ($values as $value):
-						if ($value['title']):
+					foreach ($values_data as $v_item):
+						if ($v_item['title']):
 							?>
-							<div
-								class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/10 hover:bg-white/15 transition-colors">
-								<div
-									class="w-12 h-12 bg-<?php echo esc_attr($value['color']); ?> rounded-xl flex items-center justify-center mb-6 text-xl">
-									<i class="<?php echo esc_attr($value['icon']); ?>"></i>
+							<div class="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
+								<div class="w-12 h-12 bg-<?php echo esc_attr($v_item['color']); ?> rounded-xl flex items-center justify-center mb-6 text-xl text-white">
+									<i class="<?php echo esc_attr($v_item['icon']); ?>"></i>
 								</div>
-								<h3 class="font-serif text-xl font-bold mb-3"><?php echo esc_html($value['title']); ?></h3>
-								<p class="text-sm text-white/70"><?php echo esc_html($value['desc']); ?></p>
+								<h3 class="font-serif text-xl font-bold mb-3"><?php echo esc_html($v_item['title']); ?></h3>
+								<p class="text-sm text-white/70"><?php echo esc_html($v_item['desc']); ?></p>
 							</div>
 						<?php endif; endforeach; ?>
 				</div>
 			</div>
 		</section>
-
-		<!-- Leadership Team -->
-		<?php if ($team_members->have_posts()): ?>
-			<section class="py-24 bg-brand-cream">
-				<div class="max-w-7xl mx-auto px-4 lg:px-6">
-					<div class="text-center mb-16">
-						<span class="text-kidazzle-blue font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Leadership</span>
-						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink">
-							<?php echo esc_html($leadership_title); ?>
-						</h2>
-					</div>
-
-					<div class="grid md:grid-cols-3 gap-8">
-						<?php while ($team_members->have_posts()):
-							$team_members->the_post(); ?>
-							<div class="group text-center">
-								<div
-									class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-card group-hover:scale-105 transition-transform">
-									<?php if (has_post_thumbnail()): ?>
-										<?php the_post_thumbnail('medium', array(
-											'class' => 'w-full h-full object-cover',
-											'alt' => get_the_title(),
-										)); ?>
-									<?php else: ?>
-										<div
-											class="w-full h-full bg-gradient-to-br from-kidazzle-blue to-kidazzle-blueDark flex items-center justify-center">
-											<i class="fa-solid fa-user text-6xl text-white/50"></i>
-										</div>
-									<?php endif; ?>
-								</div>
-
-								<h3 class="font-serif text-xl font-bold text-brand-ink">
-									<?php the_title(); ?>
-								</h3>
-
-								<?php
-								$member_title = get_post_meta(get_the_ID(), 'team_member_title', true);
-								if ($member_title):
-									?>
-									<p class="text-xs font-bold uppercase tracking-wider text-kidazzle-blue mb-3">
-										<?php echo esc_html($member_title); ?>
-									</p>
-								<?php endif; ?>
-
-								<?php if (get_the_content()): ?>
-									<button
-										class="kidazzle-read-bio-btn text-sm font-bold text-kidazzle-blue hover:text-kidazzle-blueDark underline mt-2"
-										data-bio-target="bio-<?php the_ID(); ?>" data-member-name="<?php the_title_attribute(); ?>"
-										data-member-title="<?php echo esc_attr($member_title); ?>"
-										data-member-image="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium') ?: ''); ?>"
-										aria-label="Read bio for <?php the_title_attribute(); ?>">
-										Read Bio
-									</button>
-									<div id="bio-<?php the_ID(); ?>" hidden>
-										<?php the_content(); ?>
-									</div>
-								<?php endif; ?>
-							</div>
-						<?php endwhile;
-						wp_reset_postdata(); ?>
-					</div>
-				</div>
-			</section>
-		<?php endif; ?>
 
 		<!-- Nutrition & Wellness -->
 		<section class="py-24 bg-white border-t border-brand-ink/5">
@@ -375,74 +292,82 @@ while (have_posts()):
 					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
 						<?php echo esc_html($nutrition_title); ?>
 					</h2>
-					<p class="text-brand-ink/80 mb-6">
+					<p class="text-brand-ink/80 mb-8">
 						<?php echo esc_html($nutrition_description); ?>
 					</p>
-					<ul class="space-y-4 text-brand-ink/90">
+					<ul class="space-y-4">
 						<?php if ($nutrition_bullet1_text): ?>
-							<li class="flex items-center gap-3">
-								<i class="<?php echo esc_attr($nutrition_bullet1_icon); ?> text-kidazzle-red text-xl"></i>
-								<span><?php echo esc_html($nutrition_bullet1_text); ?></span>
+							<li class="flex items-center gap-4 group">
+								<div class="w-10 h-10 bg-kidazzle-red/10 text-kidazzle-red rounded-full flex items-center justify-center shrink-0 group-hover:bg-kidazzle-red group-hover:text-white transition-colors">
+                                    <i class="<?php echo esc_attr($nutrition_bullet1_icon); ?> text-lg"></i>
+                                </div>
+								<span class="font-bold text-slate-700"><?php echo esc_html($nutrition_bullet1_text); ?></span>
 							</li>
 						<?php endif; ?>
 						<?php if ($nutrition_bullet2_text): ?>
-							<li class="flex items-center gap-3">
-								<i class="<?php echo esc_attr($nutrition_bullet2_icon); ?> text-kidazzle-orange text-xl"></i>
-								<span><?php echo esc_html($nutrition_bullet2_text); ?></span>
+							<li class="flex items-center gap-4 group">
+                                <div class="w-10 h-10 bg-kidazzle-orange/10 text-kidazzle-orange rounded-full flex items-center justify-center shrink-0 group-hover:bg-kidazzle-orange group-hover:text-white transition-colors">
+								    <i class="<?php echo esc_attr($nutrition_bullet2_icon); ?> text-lg"></i>
+                                </div>
+								<span class="font-bold text-slate-700"><?php echo esc_html($nutrition_bullet2_text); ?></span>
 							</li>
 						<?php endif; ?>
 						<?php if ($nutrition_bullet3_text): ?>
-							<li class="flex items-center gap-3">
-								<i class="<?php echo esc_attr($nutrition_bullet3_icon); ?> text-brand-ink/80 text-xl"></i>
-								<span><?php echo esc_html($nutrition_bullet3_text); ?></span>
+							<li class="flex items-center gap-4 group">
+                                <div class="w-10 h-10 bg-brand-ink/5 text-brand-ink/60 rounded-full flex items-center justify-center shrink-0 group-hover:bg-brand-ink group-hover:text-white transition-colors">
+								    <i class="<?php echo esc_attr($nutrition_bullet3_icon); ?> text-lg"></i>
+                                </div>
+								<span class="font-bold text-slate-700"><?php echo esc_html($nutrition_bullet3_text); ?></span>
 							</li>
 						<?php endif; ?>
 					</ul>
 				</div>
-				<div class="relative h-[400px] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white">
-					<img src="<?php echo esc_url($nutrition_image); ?>" class="w-full h-full object-cover"
-						alt="<?php echo esc_attr($nutrition_title); ?>" />
+				<div class="relative h-[450px] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white">
+					<img src="<?php echo esc_url($nutrition_image); ?>" class="w-full h-full object-cover" alt="<?php echo esc_attr($nutrition_title); ?>" />
 				</div>
 			</div>
 		</section>
 
-		<!-- Philanthropy Section -->
+		<!-- Philanthropy -->
 		<section class="py-24 bg-brand-cream border-t border-brand-ink/5">
 			<div class="max-w-6xl mx-auto px-4 lg:px-6 grid md:grid-cols-2 gap-16 items-center">
-				<div
-					class="order-2 md:order-1 relative h-[400px] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white">
-					<img src="<?php echo esc_url($philanthropy_image); ?>" class="w-full h-full object-cover"
-						alt="<?php echo esc_attr($philanthropy_title); ?>" />
+				<div class="order-2 md:order-1 relative h-[450px] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white">
+					<img src="<?php echo esc_url($philanthropy_image); ?>" class="w-full h-full object-cover" alt="<?php echo esc_attr($philanthropy_title); ?>" />
 				</div>
 				<div class="order-1 md:order-2">
 					<span class="text-kidazzle-blue font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Community</span>
-					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
+					<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-4">
 						<?php echo esc_html($philanthropy_title); ?>
 					</h2>
 					<?php if ($philanthropy_subtitle): ?>
-						<h3 class="text-xl font-bold text-kidazzle-blue mb-3"><?php echo esc_html($philanthropy_subtitle); ?>
-						</h3>
+						<h3 class="text-xl font-bold text-kidazzle-blue mb-4"><?php echo esc_html($philanthropy_subtitle); ?></h3>
 					<?php endif; ?>
-					<p class="text-brand-ink/80 mb-6 leading-relaxed">
+					<div class="prose prose-slate text-brand-ink/80 mb-8 leading-relaxed max-w-none">
 						<?php echo wp_kses_post($philanthropy_description); ?>
-					</p>
-					<ul class="space-y-4 text-brand-ink/90">
+					</div>
+					<ul class="space-y-4">
 						<?php if ($philanthropy_bullet1_text): ?>
-							<li class="flex items-center gap-3">
-								<i class="<?php echo esc_attr($philanthropy_bullet1_icon); ?> text-kidazzle-red text-xl"></i>
-								<span><?php echo esc_html($philanthropy_bullet1_text); ?></span>
+							<li class="flex items-center gap-4 group">
+                                <div class="w-10 h-10 bg-kidazzle-red/10 text-kidazzle-red rounded-full flex items-center justify-center shrink-0 group-hover:bg-kidazzle-red group-hover:text-white transition-colors">
+								    <i class="<?php echo esc_attr($philanthropy_bullet1_icon); ?> text-lg"></i>
+                                </div>
+								<span class="font-bold text-slate-700"><?php echo esc_html($philanthropy_bullet1_text); ?></span>
 							</li>
 						<?php endif; ?>
 						<?php if ($philanthropy_bullet2_text): ?>
-							<li class="flex items-center gap-3">
-								<i class="<?php echo esc_attr($philanthropy_bullet2_icon); ?> text-kidazzle-yellow text-xl"></i>
-								<span><?php echo esc_html($philanthropy_bullet2_text); ?></span>
+							<li class="flex items-center gap-4 group">
+                                <div class="w-10 h-10 bg-kidazzle-yellow/10 text-kidazzle-yellow rounded-full flex items-center justify-center shrink-0 group-hover:bg-kidazzle-yellow group-hover:text-white transition-colors">
+								    <i class="<?php echo esc_attr($philanthropy_bullet2_icon); ?> text-lg"></i>
+                                </div>
+								<span class="font-bold text-slate-700"><?php echo esc_html($philanthropy_bullet2_text); ?></span>
 							</li>
 						<?php endif; ?>
 						<?php if ($philanthropy_bullet3_text): ?>
-							<li class="flex items-center gap-3">
-								<i class="<?php echo esc_attr($philanthropy_bullet3_icon); ?> text-kidazzle-green text-xl"></i>
-								<span><?php echo esc_html($philanthropy_bullet3_text); ?></span>
+							<li class="flex items-center gap-4 group">
+                                <div class="w-10 h-10 bg-kidazzle-green/10 text-kidazzle-green rounded-full flex items-center justify-center shrink-0 group-hover:bg-kidazzle-green group-hover:text-white transition-colors">
+								    <i class="<?php echo esc_attr($philanthropy_bullet3_icon); ?> text-lg"></i>
+                                </div>
+								<span class="font-bold text-slate-700"><?php echo esc_html($philanthropy_bullet3_text); ?></span>
 							</li>
 						<?php endif; ?>
 					</ul>
@@ -450,21 +375,19 @@ while (have_posts()):
 			</div>
 		</section>
 
-
-		<!-- CTA -->
-		<section class="py-24 bg-white text-center">
+		<!-- Final CTA -->
+		<section class="py-32 bg-white text-center">
 			<div class="max-w-4xl mx-auto px-4 lg:px-6">
+                <div class="inline-flex items-center gap-2 bg-kidazzle-blue/5 border border-kidazzle-blue/20 px-4 py-1.5 rounded-full text-[10px] uppercase tracking-widest font-bold text-kidazzle-blue mb-8">
+                    Get Started
+                </div>
 				<h2 class="font-serif text-3xl md:text-5xl font-bold text-brand-ink mb-8">
 					<?php echo esc_html($cta_title); ?>
 				</h2>
-				<p class="text-lg text-brand-ink/90 mb-10"><?php echo esc_html($cta_description); ?></p>
-				<div class="flex flex-wrap justify-center gap-4">
-					<a href="<?php echo esc_url(home_url('/locations')); ?>"
-						class="px-8 py-4 bg-brand-cream border border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:border-kidazzle-blue hover:text-kidazzle-blue transition-colors">Find
-						a Location</a>
-					<a href="<?php echo esc_url(home_url('/locations#tour')); ?>"
-						class="px-8 py-4 bg-kidazzle-blue text-white font-bold rounded-full uppercase tracking-[0.2em] text-xs hover:bg-kidazzle-blueDark transition-colors shadow-lg">Schedule
-						a Tour</a>
+				<p class="text-lg text-brand-ink/90 mb-12 max-w-2xl mx-auto"><?php echo esc_html($cta_description); ?></p>
+				<div class="flex flex-wrap justify-center gap-6">
+					<a href="<?php echo esc_url(home_url('/locations')); ?>" class="px-10 py-5 bg-white border-2 border-brand-ink/10 text-brand-ink font-bold rounded-full uppercase tracking-widest text-xs hover:border-kidazzle-blue hover:text-kidazzle-blue transition-all">Find a Location</a>
+					<a href="<?php echo esc_url(home_url('/locations#tour')); ?>" class="px-10 py-5 bg-kidazzle-blue text-white font-bold rounded-full uppercase tracking-widest text-xs hover:bg-brand-ink transition-all shadow-xl hover:-translate-y-1">Schedule a Tour</a>
 				</div>
 			</div>
 		</section>

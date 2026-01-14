@@ -3,7 +3,7 @@
  * Program Page Enhancements
  * FAQ, Testimonials, Gallery, Age Calculator, Sticky CTA
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Program_Enhancements
+class kidazzle_Program_Enhancements
 {
     public function __construct() {
         add_action('add_meta_boxes', [$this, 'add_meta_boxes']);
@@ -407,7 +407,7 @@ class Kidazzle_Program_Enhancements
                         <?php foreach ($testimonials as $i => $t): ?>
                         <div class="testimonial-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
                             <div class="bg-white rounded-2xl p-6 shadow-soft h-full">
-                                <div class="text-4xl text-Kidazzle-yellow mb-4">"</div>
+                                <div class="text-4xl text-kidazzle-yellow mb-4">"</div>
                                 <p class="text-brand-ink/80 mb-4 italic"><?php echo esc_html($t['quote']); ?></p>
                                 <div class="mt-auto">
                                     <p class="font-bold text-brand-ink"><?php echo esc_html($t['name']); ?></p>
@@ -507,7 +507,7 @@ class Kidazzle_Program_Enhancements
             $max_months = $max_age;
         }
         ?>
-        <div class="age-calculator bg-gradient-to-br from-Kidazzle-blue/10 to-Kidazzle-green/10 rounded-2xl p-6 my-8">
+        <div class="age-calculator bg-gradient-to-br from-kidazzle-blue/10 to-kidazzle-green/10 rounded-2xl p-6 my-8">
             <h3 class="text-xl font-bold text-brand-ink mb-4">🎂 Is Your Child Ready for <?php echo esc_html($program_title); ?>?</h3>
             <p class="text-brand-ink/70 mb-4 text-sm">Enter your child's birthday to check eligibility.</p>
             
@@ -515,10 +515,10 @@ class Kidazzle_Program_Enhancements
                 <div>
                     <label class="block text-xs font-bold text-brand-ink/60 mb-1">Birthday</label>
                     <input type="date" id="child-birthday" 
-                        class="px-4 py-2 border border-brand-ink/20 rounded-lg focus:border-Kidazzle-blue focus:outline-none">
+                        class="px-4 py-2 border border-brand-ink/20 rounded-lg focus:border-kidazzle-blue focus:outline-none">
                 </div>
                 <button type="button" id="check-age" 
-                    class="px-6 py-2 bg-Kidazzle-blue text-white rounded-lg font-bold hover:bg-Kidazzle-blue/90 transition-colors">
+                    class="px-6 py-2 bg-kidazzle-blue text-white rounded-lg font-bold hover:bg-kidazzle-blue/90 transition-colors">
                     Check
                 </button>
             </div>
@@ -526,10 +526,10 @@ class Kidazzle_Program_Enhancements
             <div id="age-result" class="hidden p-4 rounded-lg">
                 <p id="age-message" class="font-medium"></p>
                 <a id="age-cta" href="<?php echo esc_url(home_url('/schedule-a-tour/')); ?>" 
-                   class="inline-block mt-3 px-6 py-2 bg-Kidazzle-red text-white rounded-full text-sm font-bold hidden">
+                   class="inline-block mt-3 px-6 py-2 bg-kidazzle-red text-white rounded-full text-sm font-bold hidden">
                     Schedule a Tour →
                 </a>
-                <a id="age-alt" href="" class="inline-block mt-3 text-Kidazzle-blue font-medium text-sm hidden">
+                <a id="age-alt" href="" class="inline-block mt-3 text-kidazzle-blue font-medium text-sm hidden">
                     Check another program →
                 </a>
             </div>
@@ -584,4 +584,4 @@ class Kidazzle_Program_Enhancements
     }
 }
 
-new Kidazzle_Program_Enhancements();
+new kidazzle_Program_Enhancements();

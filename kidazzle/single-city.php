@@ -3,7 +3,7 @@
  * Single City Template
  * Hyperlocal landing page for a specific city
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  */
 
 get_header();
@@ -32,26 +32,26 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
 <!-- SEO Hero: High Intent Keywords -->
 <section class="relative pt-12 pb-16 bg-white overflow-hidden">
     <div
-        class="absolute top-0 right-0 w-96 h-96 bg-Kidazzle-blue/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2">
+        class="absolute top-0 right-0 w-96 h-96 bg-kidazzle-blue/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2">
     </div>
 
     <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
         <span
-            class="inline-block py-1 px-4 rounded-full bg-Kidazzle-blue/10 text-Kidazzle-blue text-xs font-bold uppercase tracking-widest mb-6">
+            class="inline-block py-1 px-4 rounded-full bg-kidazzle-blue/10 text-kidazzle-blue text-xs font-bold uppercase tracking-widest mb-6">
             Serving <?php echo esc_html($city); ?> & <?php echo esc_html($county); ?> County
         </span>
 
         <h1 class="font-serif text-4xl md:text-6xl text-brand-ink mb-6 leading-tight">
-            The Best Daycare in <span class="italic text-Kidazzle-blue"><?php echo esc_html($city); ?>, <?php echo esc_html($state_upper); ?>.</span>
+            The Best Daycare in <span class="italic text-kidazzle-blue"><?php echo esc_html($city); ?>, <?php echo esc_html($state_upper); ?>.</span>
         </h1>
 
         <p class="text-lg md:text-xl text-brand-ink/80 max-w-2xl mx-auto mb-10">
             Are you looking for "daycare near me"? Discover the highest-rated early learning centers in the
-            <?php echo esc_html($city); ?> area, featuring the Prismpath™ curriculum and GA Pre-K.
+            <?php echo esc_html($city); ?> area, featuring the KIDazzle Creative Curriculum™ curriculum and GA Pre-K.
         </p>
 
         <a href="#locations"
-            class="inline-flex items-center gap-2 text-Kidazzle-red font-bold border-b-2 border-Kidazzle-red pb-1 hover:text-brand-ink hover:border-brand-ink transition-all">
+            class="inline-flex items-center gap-2 text-kidazzle-red font-bold border-b-2 border-kidazzle-red pb-1 hover:text-brand-ink hover:border-brand-ink transition-all">
             See Locations in <?php echo esc_html($city); ?>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
@@ -66,7 +66,7 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
     <div class="max-w-4xl mx-auto px-4 text-center">
         <h2 class="font-serif text-3xl md:text-5xl text-brand-ink mb-8 leading-tight">
             Early Education and <br>
-            Care in <span class="text-Kidazzle-blue"><?php echo esc_html($city); ?>, GA</span>
+            Care in <span class="text-kidazzle-blue"><?php echo esc_html($city); ?>, GA</span>
         </h2>
 
         <?php if ($intro_text): ?>
@@ -80,7 +80,7 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                 <br><br>
                 Conveniently located near major highways and down the road from local landmarks and top-rated
                 elementary schools, we are the convenient choice for <?php echo esc_html($city); ?> working parents.
-                Come by and see Prismpath™ in action at one of our nearby campuses.
+                Come by and see KIDazzle Creative Curriculum™ in action at one of our nearby campuses.
             </p>
         <?php endif; ?>
     </div>
@@ -134,15 +134,15 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                         ?>
                         <!-- Location Card -->
                         <div
-                            class="group p-6 rounded-3xl bg-brand-cream border border-brand-ink/5 hover:border-Kidazzle-blue/30 transition-all hover:-translate-y-1 flex flex-col shadow-card">
-                            <div class="h-48 rounded-2xl bg-Kidazzle-blue/5 mb-6 overflow-hidden relative">
+                            class="group p-6 rounded-3xl bg-brand-cream border border-brand-ink/5 hover:border-kidazzle-blue/30 transition-all hover:-translate-y-1 flex flex-col shadow-card">
+                            <div class="h-48 rounded-2xl bg-kidazzle-blue/5 mb-6 overflow-hidden relative">
                                 <?php if ($image !== $local_fallback): ?>
                                     <img src="<?php echo esc_url($image); ?>" class="w-full h-full object-cover"
                                         alt="<?php the_title_attribute(); ?>" loading="lazy">
                                 <?php else: ?>
                                     <div
-                                        class="absolute inset-0 bg-gradient-to-br from-Kidazzle-blue/20 to-Kidazzle-green/20 flex items-center justify-center">
-                                        <img src="<?php echo esc_url($local_fallback); ?>" alt="Kidazzle" class="w-16 h-16 opacity-30"
+                                        class="absolute inset-0 bg-gradient-to-br from-kidazzle-blue/20 to-kidazzle-green/20 flex items-center justify-center">
+                                        <img src="<?php echo esc_url($local_fallback); ?>" alt="kidazzle" class="w-16 h-16 opacity-30"
                                             loading="lazy">
                                     </div>
                                 <?php endif; ?>
@@ -165,7 +165,7 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
 
                             <div class="mt-auto">
                                 <a href="<?php the_permalink(); ?>" aria-label="View Campus: <?php the_title_attribute(); ?>"
-                                    class="block w-full py-3 bg-Kidazzle-blue text-white text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-Kidazzle-blue/90 transition-colors">
+                                    class="block w-full py-3 bg-kidazzle-blue text-white text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-kidazzle-blue/90 transition-colors">
                                     View Campus
                                 </a>
                             </div>
@@ -179,7 +179,7 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                 <div class="col-span-full text-center py-12">
                     <p class="text-brand-ink/60">No locations are currently linked to this city. Please check back soon!</p>
                     <a href="<?php echo esc_url(home_url('/locations/')); ?>"
-                        class="inline-block mt-4 text-Kidazzle-blue font-semibold hover:underline">
+                        class="inline-block mt-4 text-kidazzle-blue font-semibold hover:underline">
                         View All Locations →
                     </a>
                 </div>
@@ -229,12 +229,12 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                     
                     $age_range = get_post_meta(get_the_ID(), 'program_age_range', true);
                     ?>
-                    <div class="group p-6 rounded-3xl bg-brand-cream border border-brand-ink/5 hover:border-Kidazzle-blue/30 transition-all hover:-translate-y-1 flex flex-col shadow-card">
-                        <div class="h-48 rounded-2xl bg-Kidazzle-blue/5 mb-6 overflow-hidden relative">
+                    <div class="group p-6 rounded-3xl bg-brand-cream border border-brand-ink/5 hover:border-kidazzle-blue/30 transition-all hover:-translate-y-1 flex flex-col shadow-card">
+                        <div class="h-48 rounded-2xl bg-kidazzle-blue/5 mb-6 overflow-hidden relative">
                              <?php if (has_post_thumbnail()): ?>
                                 <?php the_post_thumbnail('medium_large', ['class' => 'w-full h-full object-cover']); ?>
                             <?php else: ?>
-                                <div class="absolute inset-0 bg-gradient-to-br from-Kidazzle-blue/20 to-Kidazzle-green/20 flex items-center justify-center">
+                                <div class="absolute inset-0 bg-gradient-to-br from-kidazzle-blue/20 to-kidazzle-green/20 flex items-center justify-center">
                                     <span class="text-4xl">📚</span>
                                 </div>
                             <?php endif; ?>
@@ -250,7 +250,7 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
 
                         <div class="mt-auto">
                             <a href="<?php echo esc_url($combo_url); ?>" 
-                               class="block w-full py-3 bg-Kidazzle-blue text-white text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-Kidazzle-blue/90 transition-colors">
+                               class="block w-full py-3 bg-kidazzle-blue text-white text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-kidazzle-blue/90 transition-colors">
                                 View Program
                             </a>
                         </div>
@@ -275,7 +275,7 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
             <details class="group bg-white rounded-2xl p-6 shadow-sm border border-brand-ink/5">
                 <summary class="flex items-center justify-between font-bold text-brand-ink list-none cursor-pointer">
                     <span>Do you offer GA Lottery Pre-K in <?php echo esc_html($city); ?>?</span>
-                    <svg class="w-5 h-5 text-Kidazzle-blue group-open:rotate-180 transition-transform" fill="none"
+                    <svg class="w-5 h-5 text-kidazzle-blue group-open:rotate-180 transition-transform" fill="none"
                         stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
@@ -290,7 +290,7 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
             <details class="group bg-white rounded-2xl p-6 shadow-sm border border-brand-ink/5">
                 <summary class="flex items-center justify-between font-bold text-brand-ink list-none cursor-pointer">
                     <span>Do you provide transportation from <?php echo esc_html($city); ?> schools?</span>
-                    <svg class="w-5 h-5 text-Kidazzle-blue group-open:rotate-180 transition-transform" fill="none"
+                    <svg class="w-5 h-5 text-kidazzle-blue group-open:rotate-180 transition-transform" fill="none"
                         stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
@@ -302,10 +302,10 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                 </p>
             </details>
 
-            <details class="group bg-white rounded-2xl p-6 shadow-sm border border-brand-ink/5">
+             <details class="group bg-white rounded-2xl p-6 shadow-sm border border-brand-ink/5">
                 <summary class="flex items-center justify-between font-bold text-brand-ink list-none cursor-pointer">
                     <span>What ages do you accept at your <?php echo esc_html($city); ?> centers?</span>
-                    <svg class="w-5 h-5 text-Kidazzle-blue group-open:rotate-180 transition-transform" fill="none"
+                    <svg class="w-5 h-5 text-kidazzle-blue group-open:rotate-180 transition-transform" fill="none"
                         stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
@@ -313,18 +313,18 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                 <p class="mt-4 text-sm text-brand-ink/80">
                     We serve children from 6 weeks old (<a
                         href="<?php echo esc_url(home_url('/programs/infant-care/')); ?>"
-                        class="text-Kidazzle-blue hover:underline">Infant Care</a>) up to 12 years old (<a
+                        class="text-kidazzle-blue hover:underline">Infant Care</a>) up to 12 years old (<a
                         href="<?php echo esc_url(home_url('/programs/after-school/')); ?>"
-                        class="text-Kidazzle-blue hover:underline">After School</a>).
-                    We also offer a <a href="<?php echo esc_url(Kidazzle_get_page_link('pre-k-prep')); ?>"
-                        class="text-Kidazzle-blue hover:underline">Pre-K Prep</a> program.
+                        class="text-kidazzle-blue hover:underline">After School</a>).
+                    We also offer a <a href="<?php echo esc_url(kidazzle_get_page_link('pre-k-prep')); ?>"
+                        class="text-kidazzle-blue hover:underline">Pre-K Prep</a> program.
                 </p>
             </details>
 
             <details class="group bg-white rounded-2xl p-6 shadow-sm border border-brand-ink/5">
                 <summary class="flex items-center justify-between font-bold text-brand-ink list-none cursor-pointer">
                     <span>How do I enroll my child in <?php echo esc_html($city); ?>?</span>
-                    <svg class="w-5 h-5 text-Kidazzle-blue group-open:rotate-180 transition-transform" fill="none"
+                    <svg class="w-5 h-5 text-kidazzle-blue group-open:rotate-180 transition-transform" fill="none"
                         stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
@@ -342,7 +342,7 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
 <!-- Back to Communities -->
 <div class="py-8 bg-white text-center">
     <a href="<?php echo esc_url(get_post_type_archive_link('city')); ?>"
-        class="inline-flex items-center gap-2 text-sm font-semibold text-brand-ink/60 hover:text-Kidazzle-blue transition-colors">
+        class="inline-flex items-center gap-2 text-sm font-semibold text-brand-ink/60 hover:text-kidazzle-blue transition-colors">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
         </svg>

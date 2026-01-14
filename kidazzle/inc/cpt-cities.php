@@ -2,7 +2,7 @@
 /**
  * Register City Custom Post Type
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-function Kidazzle_register_city_cpt()
+function kidazzle_register_city_cpt()
 {
     $labels = array(
         'name' => _x('Cities', 'Post Type General Name', 'kidazzle-theme'),
@@ -65,4 +65,4 @@ function Kidazzle_register_city_cpt()
     );
     register_post_type('city', $args);
 }
-add_action('init', 'Kidazzle_register_city_cpt', 0);
+add_action('init', 'kidazzle_register_city_cpt', 0);

@@ -1,12 +1,12 @@
 <?php
 /**
- * Template Part: Prismpath Expertise Section
+ * Template Part: KIDazzle Creative Curriculum Expertise Section
  * "Grounded in Expertise. Wrapped in Love." - Bento grid with colored cards
  *
  * @package kidazzle_Excellence
  */
 
-$panels = kidazzle_home_prismpath_panels();
+$panels = kidazzle_home_KIDazzle Creative Curriculum_panels();
 
 $feature = $panels['feature'];
 $cards = $panels['cards'];
@@ -23,7 +23,7 @@ $readiness_heading = $readiness['heading'];
 $readiness_text = $readiness['description'];
 ?>
 
-<section id="prismpath" class="py-24 px-4 lg:px-6 bg-white relative overflow-hidden" data-section="prismpath">
+<section id="KIDazzle Creative Curriculum" class="py-24 px-4 lg:px-6 bg-white relative overflow-hidden" data-section="KIDazzle Creative Curriculum">
 	<div class="absolute -left-10 top-10 w-80 h-80 bg-kidazzle-blue/5 rounded-full blur-3xl"></div>
 
 	<div class="max-w-[1200px] mx-auto">

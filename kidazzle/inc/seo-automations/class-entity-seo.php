@@ -3,7 +3,7 @@
  * Entity SEO
  * Knowledge Graph optimization, topic clustering
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Entity_SEO
+class kidazzle_Entity_SEO
 {
     public function __construct() {
         // DISABLED - Moved to Kidazzle SEO Pro Plugin
@@ -27,10 +27,10 @@ class Kidazzle_Entity_SEO
             return;
         }
         
-        $same_as = get_option('Kidazzle_seo_same_as_urls', [
+        $same_as = get_option('kidazzle_seo_same_as_urls', [
             'https://www.facebook.com/Kidazzleearlylearning',
             'https://www.instagram.com/Kidazzleearlylearning',
-            'https://www.linkedin.com/company/Kidazzle-early-learning'
+            'https://www.linkedin.com/company/kidazzle-early-learning'
         ]);
         
         $schema = [
@@ -45,7 +45,7 @@ class Kidazzle_Entity_SEO
         ];
         
         // Add founder if available
-        $founder = get_option('Kidazzle_seo_founder_name');
+        $founder = get_option('kidazzle_seo_founder_name');
         if ($founder) {
             $schema['founder'] = [
                 '@type' => 'Person',
@@ -54,7 +54,7 @@ class Kidazzle_Entity_SEO
         }
         
         // Add founding date
-        $founded = get_option('Kidazzle_seo_founded_date');
+        $founded = get_option('kidazzle_seo_founded_date');
         if ($founded) {
             $schema['foundingDate'] = $founded;
         }
@@ -111,4 +111,4 @@ class Kidazzle_Entity_SEO
     }
 }
 
-new Kidazzle_Entity_SEO();
+new kidazzle_Entity_SEO();

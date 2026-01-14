@@ -3,7 +3,7 @@
  * Related Locations - Auto-link nearby locations
  * Shows "Other Locations Near You" on each location page
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Related_Locations
+class kidazzle_Related_Locations
 {
     public function __construct() {
         add_filter('the_content', [$this, 'append_related_locations'], 20);
@@ -26,7 +26,7 @@ class Kidazzle_Related_Locations
             return $content;
         }
         
-        if (!get_option('Kidazzle_seo_show_related_locations', true)) {
+        if (!get_option('kidazzle_seo_show_related_locations', true)) {
             return $content;
         }
         
@@ -124,7 +124,7 @@ class Kidazzle_Related_Locations
      */
     private function render_related_locations($locations) {
         ?>
-        <section class="Kidazzle-related-locations">
+        <section class="kidazzle-related-locations">
             <h2>Other Locations Near You</h2>
             <div class="related-locations-grid">
                 <?php foreach ($locations as $loc): 
@@ -159,14 +159,14 @@ class Kidazzle_Related_Locations
     public function enqueue_styles() {
         if (!is_singular('location')) return;
         
-        wp_add_inline_style('Kidazzle-main', '
-            .Kidazzle-related-locations {
+        wp_add_inline_style('kidazzle-main', '
+            .kidazzle-related-locations {
                 margin: 40px 0;
                 padding: 30px;
                 background: #f9f9f9;
                 border-radius: 12px;
             }
-            .Kidazzle-related-locations h2 {
+            .kidazzle-related-locations h2 {
                 margin: 0 0 20px;
                 font-size: 24px;
             }
@@ -237,5 +237,5 @@ class Kidazzle_Related_Locations
     }
 }
 
-add_shortcode('related_locations', ['Kidazzle_Related_Locations', 'shortcode']);
-new Kidazzle_Related_Locations();
+add_shortcode('related_locations', ['kidazzle_Related_Locations', 'shortcode']);
+new kidazzle_Related_Locations();

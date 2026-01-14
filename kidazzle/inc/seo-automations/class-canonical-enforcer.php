@@ -3,7 +3,7 @@
  * Canonical URL Enforcer
  * Ensures proper canonical URLs to prevent duplicate content
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Canonical_Enforcer
+class kidazzle_Canonical_Enforcer
 {
     public function __construct() {
         // Remove WordPress default canonical
@@ -34,7 +34,7 @@ class Kidazzle_Canonical_Enforcer
         $url = home_url($wp->request);
         
         // Force trailing slash preference
-        $trailing_slash = get_option('Kidazzle_seo_trailing_slash', true);
+        $trailing_slash = get_option('kidazzle_seo_trailing_slash', true);
         if ($trailing_slash && !preg_match('/\.(html?|xml|json|php)$/', $url)) {
             $url = trailingslashit($url);
         } elseif (!$trailing_slash) {
@@ -42,7 +42,7 @@ class Kidazzle_Canonical_Enforcer
         }
         
         // Handle special cases
-        if (get_query_var('Kidazzle_combo')) {
+        if (get_query_var('kidazzle_combo')) {
             $program_slug = get_query_var('combo_program');
             $city_slug = get_query_var('combo_city');
             $state = get_query_var('combo_state');
@@ -115,7 +115,7 @@ class Kidazzle_Canonical_Enforcer
      * Output canonical tag
      */
     public function output_canonical() {
-        if (!get_option('Kidazzle_seo_enable_canonical', true)) {
+        if (!get_option('kidazzle_seo_enable_canonical', true)) {
             return;
         }
         
@@ -135,7 +135,7 @@ class Kidazzle_Canonical_Enforcer
      * Enforce canonical URL via redirect
      */
     public function enforce_canonical() {
-        if (!get_option('Kidazzle_seo_redirect_canonical', false)) {
+        if (!get_option('kidazzle_seo_redirect_canonical', false)) {
             return;
         }
         
@@ -163,4 +163,4 @@ class Kidazzle_Canonical_Enforcer
     }
 }
 
-new Kidazzle_Canonical_Enforcer();
+new kidazzle_Canonical_Enforcer();

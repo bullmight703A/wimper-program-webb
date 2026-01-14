@@ -3,7 +3,7 @@
  * Program + City Combo Page Generator
  * Auto-generates landing pages like /pre-k-in-cumming-ga/
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,9 +11,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Combo_Page_Generator
+class kidazzle_Combo_Page_Generator
 {
-    const REWRITE_TAG = 'Kidazzle_combo';
+    const REWRITE_TAG = 'kidazzle_combo';
     
     public function __construct() {
         add_action('init', [$this, 'add_rewrite_rules']);
@@ -27,10 +27,10 @@ class Kidazzle_Combo_Page_Generator
         add_action('admin_menu', [$this, 'add_admin_page'], 20);
         
         // Auto-flush rules if needed (Temporary for update)
-        if (!get_option('Kidazzle_combo_sitemap_flush_Check')) {
+        if (!get_option('kidazzle_combo_sitemap_flush_Check')) {
             add_action('init', function() {
                 flush_rewrite_rules();
-                update_option('Kidazzle_combo_sitemap_flush_Check', true);
+                update_option('kidazzle_combo_sitemap_flush_Check', true);
             }, 99);
         }
     }
@@ -39,7 +39,7 @@ class Kidazzle_Combo_Page_Generator
      * Register WP Native Sitemap Provider
      */
     public function register_sitemap_provider() {
-        $provider = new Kidazzle_Combo_Sitemap_Provider();
+        $provider = new kidazzle_Combo_Sitemap_Provider();
         wp_register_sitemap_provider('combos', $provider);
     }
     
@@ -57,7 +57,7 @@ class Kidazzle_Combo_Page_Generator
         // Custom Sitemap Rule: /sitemap-combos.xml
         add_rewrite_rule(
             '^sitemap-combos\.xml$',
-            'index.php?Kidazzle_combo_sitemap=1',
+            'index.php?kidazzle_combo_sitemap=1',
             'top'
         );
     }
@@ -71,7 +71,7 @@ class Kidazzle_Combo_Page_Generator
         $vars[] = 'combo_program';
         $vars[] = 'combo_city';
         $vars[] = 'combo_state';
-        $vars[] = 'Kidazzle_combo_sitemap'; // Query var for sitemap
+        $vars[] = 'kidazzle_combo_sitemap'; // Query var for sitemap
         return $vars;
     }
     
@@ -335,8 +335,8 @@ class Kidazzle_Combo_Page_Generator
         }
         
         // OVERRIDE: Check for specific combo page data (AI Generated or Manual Edit)
-        // This is stored in options table via Kidazzle_Combo_Page_Data class
-        $combo_custom_data = Kidazzle_Combo_Page_Data::get($program->post_name, $city_slug, $state);
+        // This is stored in options table via kidazzle_Combo_Page_Data class
+        $combo_custom_data = kidazzle_Combo_Page_Data::get($program->post_name, $city_slug, $state);
         
         if (!empty($combo_custom_data)) {
             if (!empty($combo_custom_data['neighborhoods'])) {
@@ -382,18 +382,18 @@ class Kidazzle_Combo_Page_Generator
             
             <!-- Hero Section -->
             <section class="relative pt-20 pb-24 bg-white overflow-hidden">
-                <div class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-Kidazzle-blue/5 to-transparent -z-10"></div>
+                <div class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-kidazzle-blue/5 to-transparent -z-10"></div>
                 <div class="max-w-7xl mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <?php if ($age_range): ?>
-                        <div class="inline-flex items-center gap-2 bg-Kidazzle-blue/10 text-Kidazzle-blue px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-widest mb-6">
+                        <div class="inline-flex items-center gap-2 bg-kidazzle-blue/10 text-kidazzle-blue px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-widest mb-6">
                             Now Enrolling: <?php echo esc_html($age_range); ?>
                         </div>
                         <?php endif; ?>
                         
                         <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-ink mb-6 leading-tight">
                             Premier <?php echo esc_html($program->post_title); ?> in 
-                            <span class="italic text-Kidazzle-blue"><?php echo esc_html($city_name); ?>, <?php echo esc_html($state); ?>.</span>
+                            <span class="italic text-kidazzle-blue"><?php echo esc_html($city_name); ?>, <?php echo esc_html($state); ?>.</span>
                         </h1>
                         
                         <p class="text-lg text-brand-ink/70 mb-8 leading-relaxed">
@@ -401,7 +401,7 @@ class Kidazzle_Combo_Page_Generator
                         </p>
                         
                         <div class="flex flex-wrap gap-4">
-                            <a href="#tour" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-Kidazzle-blue text-white text-xs font-bold uppercase tracking-[0.2em] shadow-soft hover:bg-brand-ink transition-all">
+                            <a href="#tour" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-kidazzle-blue text-white text-xs font-bold uppercase tracking-[0.2em] shadow-soft hover:bg-brand-ink transition-all">
                                 Schedule Visit
                             </a>
                             <?php 
@@ -417,12 +417,12 @@ class Kidazzle_Combo_Page_Generator
 
                             <?php if ($show_loc_details && $loc_address): ?>
                             <span class="flex items-center gap-2 text-sm font-bold text-brand-ink/60 px-4 py-4">
-                                <svg class="w-4 h-4 text-Kidazzle-red" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                                <svg class="w-4 h-4 text-kidazzle-red" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
                                 <?php echo esc_html($loc_address); ?>
                             </span>
                             <?php else: ?>
                             <span class="flex items-center gap-2 text-sm font-bold text-brand-ink/60 px-4 py-4">
-                                <svg class="w-4 h-4 text-Kidazzle-blue" fill="currentColor" viewBox="0 0 20 20"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
+                                <svg class="w-4 h-4 text-kidazzle-blue" fill="currentColor" viewBox="0 0 20 20"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
                                 Serving <?php echo esc_html($city_name); ?> Families
                             </span>
                             <?php endif; ?>
@@ -436,7 +436,7 @@ class Kidazzle_Combo_Page_Generator
                                  alt="<?php echo esc_attr($program->post_title); ?> students in <?php echo esc_attr($city_name); ?>" 
                                  loading="eager">
                         <?php else: ?>
-                            <div class="w-full h-full bg-gradient-to-br from-Kidazzle-blue/20 to-Kidazzle-red/20 flex items-center justify-center">
+                            <div class="w-full h-full bg-gradient-to-br from-kidazzle-blue/20 to-kidazzle-red/20 flex items-center justify-center">
                                 <span class="text-6xl">🎨</span>
                             </div>
                         <?php endif; ?>
@@ -459,25 +459,25 @@ class Kidazzle_Combo_Page_Generator
                     <div class="grid md:grid-cols-3 gap-8">
                         <!-- Benefit 1: Low Ratios -->
                         <div class="bg-white p-8 rounded-3xl shadow-sm border border-brand-ink/5">
-                            <div class="w-12 h-12 bg-Kidazzle-red/10 text-Kidazzle-red rounded-xl flex items-center justify-center text-xl mb-4">
+                            <div class="w-12 h-12 bg-kidazzle-red/10 text-kidazzle-red rounded-xl flex items-center justify-center text-xl mb-4">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
                             </div>
                             <h3 class="font-bold text-xl mb-2">Low Ratios</h3>
                             <p class="text-sm text-brand-ink/70">Our <?php echo esc_html($city_name); ?> campus maintains strict teacher-to-student ratios, ensuring your child gets the individual attention they need.</p>
                         </div>
                         
-                        <!-- Benefit 2: Prismpath -->
+                        <!-- Benefit 2: KIDazzle Creative Curriculum -->
                         <div class="bg-white p-8 rounded-3xl shadow-sm border border-brand-ink/5">
-                            <div class="w-12 h-12 bg-Kidazzle-yellow/10 text-Kidazzle-yellow rounded-xl flex items-center justify-center text-xl mb-4">
+                            <div class="w-12 h-12 bg-kidazzle-yellow/10 text-kidazzle-yellow rounded-xl flex items-center justify-center text-xl mb-4">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                             </div>
-                            <h3 class="font-bold text-xl mb-2">Prismpath™ Curriculum</h3>
+                            <h3 class="font-bold text-xl mb-2">KIDazzle Creative Curriculum™ Curriculum</h3>
                             <p class="text-sm text-brand-ink/70">Specifically designed for <?php echo esc_html($age_range ?: 'early learners'); ?>, our curriculum balances play-based learning with school readiness.</p>
                         </div>
                         
                         <!-- Benefit 3: Real-Time Updates -->
                         <div class="bg-white p-8 rounded-3xl shadow-sm border border-brand-ink/5">
-                            <div class="w-12 h-12 bg-Kidazzle-green/10 text-Kidazzle-green rounded-xl flex items-center justify-center text-xl mb-4">
+                            <div class="w-12 h-12 bg-kidazzle-green/10 text-kidazzle-green rounded-xl flex items-center justify-center text-xl mb-4">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/></svg>
                             </div>
                             <h3 class="font-bold text-xl mb-2">Real-Time Updates</h3>
@@ -513,7 +513,7 @@ class Kidazzle_Combo_Page_Generator
             </section>
             
             <!-- Tour/Location Selection Section -->
-            <section id="tour" class="py-24 bg-Kidazzle-blueDark text-white">
+            <section id="tour" class="py-24 bg-kidazzle-blueDark text-white">
                 <div class="max-w-7xl mx-auto px-4 text-center">
                     <?php 
                     // Check for nearby locations from City Page
@@ -558,7 +558,7 @@ class Kidazzle_Combo_Page_Generator
                                 <?php endif; ?>
                                 <p class="text-xs font-bold uppercase tracking-widest mb-6 opacity-80">Serving <?php echo esc_html($city_name); ?> Families</p>
                                 <div class="mt-auto">
-                                    <a href="<?php the_permalink(); ?>" class="block w-full py-3 bg-Kidazzle-blue text-white text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-ink transition-colors">
+                                    <a href="<?php the_permalink(); ?>" class="block w-full py-3 bg-kidazzle-blue text-white text-center rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-ink transition-colors">
                                         View Campus
                                     </a>
                                 </div>
@@ -573,7 +573,7 @@ class Kidazzle_Combo_Page_Generator
                             <p class="text-white/60 mb-10">See the <?php echo esc_html($program->post_title); ?> environment in person. Meet our Director and teachers.</p>
                             
                             <div class="bg-white p-8 rounded-[2rem] text-left shadow-2xl">
-                                <?php echo do_shortcode('[Kidazzle_tour_form]'); ?>
+                                <?php echo do_shortcode('[kidazzle_tour_form]'); ?>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -589,7 +589,7 @@ class Kidazzle_Combo_Page_Generator
                         <details class="group bg-brand-cream rounded-2xl p-6 shadow-sm border border-brand-ink/5 cursor-pointer">
                             <summary class="flex items-center justify-between font-bold text-brand-ink list-none">
                                 <span>What are the tuition rates for <?php echo esc_html($program->post_title); ?> in <?php echo esc_html($city_name); ?>?</span>
-                                <span class="text-Kidazzle-blue group-open:rotate-180 transition-transform">
+                                <span class="text-kidazzle-blue group-open:rotate-180 transition-transform">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                                 </span>
                             </summary>
@@ -601,7 +601,7 @@ class Kidazzle_Combo_Page_Generator
                         <details class="group bg-brand-cream rounded-2xl p-6 shadow-sm border border-brand-ink/5 cursor-pointer">
                             <summary class="flex items-center justify-between font-bold text-brand-ink list-none">
                                 <span>Is food included in the program?</span>
-                                <span class="text-Kidazzle-blue group-open:rotate-180 transition-transform">
+                                <span class="text-kidazzle-blue group-open:rotate-180 transition-transform">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                                 </span>
                             </summary>
@@ -613,7 +613,7 @@ class Kidazzle_Combo_Page_Generator
                         <details class="group bg-brand-cream rounded-2xl p-6 shadow-sm border border-brand-ink/5 cursor-pointer">
                             <summary class="flex items-center justify-between font-bold text-brand-ink list-none">
                                 <span>Are the teachers at <?php echo esc_html($city_name); ?> certified?</span>
-                                <span class="text-Kidazzle-blue group-open:rotate-180 transition-transform">
+                                <span class="text-kidazzle-blue group-open:rotate-180 transition-transform">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                                 </span>
                             </summary>
@@ -626,7 +626,7 @@ class Kidazzle_Combo_Page_Generator
                         <details class="group bg-brand-cream rounded-2xl p-6 shadow-sm border border-brand-ink/5 cursor-pointer">
                             <summary class="flex items-center justify-between font-bold text-brand-ink list-none">
                                 <span>What ages does the <?php echo esc_html($program->post_title); ?> program serve?</span>
-                                <span class="text-Kidazzle-blue group-open:rotate-180 transition-transform">
+                                <span class="text-kidazzle-blue group-open:rotate-180 transition-transform">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                                 </span>
                             </summary>
@@ -763,7 +763,7 @@ class Kidazzle_Combo_Page_Generator
         }
         
         // Source 2: Manual additions
-        $manual = get_option('Kidazzle_seo_manual_cities', []);
+        $manual = get_option('kidazzle_seo_manual_cities', []);
         foreach ($manual as $m) {
             if (!empty($m['city']) && !empty($m['state'])) {
                 $key = sanitize_title($m['city'] . '-' . $m['state']);
@@ -809,7 +809,7 @@ class Kidazzle_Combo_Page_Generator
      * Handle Manual Sitemap Request
      */
     public function handle_sitemap() {
-        if (get_query_var('Kidazzle_combo_sitemap') == 1) {
+        if (get_query_var('kidazzle_combo_sitemap') == 1) {
             header('Content-Type: application/xml; charset=utf-8');
             echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
             echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
@@ -821,7 +821,7 @@ class Kidazzle_Combo_Page_Generator
                 $city_slug = sanitize_title($combo['city']);
                 $state = $combo['state'];
                 
-                $saved_data = Kidazzle_Combo_Page_Data::get($program_slug, $city_slug, $state);
+                $saved_data = kidazzle_Combo_Page_Data::get($program_slug, $city_slug, $state);
                 $status = $saved_data['status'] ?? 'auto';
                 
                 if ($status === 'published' || $status === 'publish') {
@@ -858,11 +858,11 @@ class Kidazzle_Combo_Page_Generator
      */
     public function add_admin_page() {
         add_submenu_page(
-            'Kidazzle-seo-dashboard',
+            'kidazzle-seo-dashboard',
             'Auto Pages',
             'Auto Pages',
             'manage_options',
-            'Kidazzle-auto-pages',
+            'kidazzle-auto-pages',
             [$this, 'render_admin_page']
         );
     }
@@ -876,8 +876,8 @@ class Kidazzle_Combo_Page_Generator
         
         // Add combo data to each (if AI features enabled)
         foreach ($combos as &$combo) {
-            if (class_exists('Kidazzle_Combo_Page_Data')) {
-                $combo['data'] = Kidazzle_Combo_Page_Data::get(
+            if (class_exists('kidazzle_Combo_Page_Data')) {
+                $combo['data'] = kidazzle_Combo_Page_Data::get(
                     $combo['program']->post_name,
                     sanitize_title($combo['city']),
                     $combo['state']
@@ -900,9 +900,9 @@ class Kidazzle_Combo_Page_Generator
         $display_combos = $per_page > 0 ? array_slice($combos, $offset, $per_page) : $combos;
         $showing_count = count($display_combos);
         
-        $base_url = admin_url('admin.php?page=Kidazzle-auto-pages');
-        $auto_publish = get_option('Kidazzle_combo_auto_publish', false);
-        $nonce = wp_create_nonce('Kidazzle_combo_ai');
+        $base_url = admin_url('admin.php?page=kidazzle-auto-pages');
+        $auto_publish = get_option('kidazzle_combo_auto_publish', false);
+        $nonce = wp_create_nonce('kidazzle_combo_ai');
         ?>
         <div class="wrap">
             <h1>🚀 Auto-Generated Pages</h1>
@@ -944,7 +944,7 @@ class Kidazzle_Combo_Page_Generator
                 
                 <div class="alignright" style="display: flex; gap: 10px; align-items: center;">
                     <form method="get" style="display: inline;">
-                        <input type="hidden" name="page" value="Kidazzle-auto-pages">
+                        <input type="hidden" name="page" value="kidazzle-auto-pages">
                         <label>Show: 
                             <select name="per_page" onchange="this.form.submit()">
                                 <option value="25" <?php selected($per_page, 25); ?>>25</option>
@@ -989,8 +989,8 @@ class Kidazzle_Combo_Page_Generator
                         <td>
                             <span style="color: <?php echo $status_color; ?>; font-weight: 500;">
                                 <?php 
-                                if (class_exists('Kidazzle_Combo_Page_Data')) {
-                                    echo esc_html(Kidazzle_Combo_Page_Data::get_status_label($status));
+                                if (class_exists('kidazzle_Combo_Page_Data')) {
+                                    echo esc_html(kidazzle_Combo_Page_Data::get_status_label($status));
                                 } else {
                                     echo esc_html(ucfirst($status));
                                 }
@@ -1048,13 +1048,13 @@ class Kidazzle_Combo_Page_Generator
             
             <h2>Settings</h2>
             <form method="post" action="options.php">
-                <?php settings_fields('Kidazzle_auto_pages'); ?>
+                <?php settings_fields('kidazzle_auto_pages'); ?>
                 <table class="form-table">
                     <tr>
                         <th>Auto-Publish AI Content</th>
                         <td>
                             <label>
-                                <input type="checkbox" name="Kidazzle_combo_auto_publish" value="1" <?php checked($auto_publish); ?>>
+                                <input type="checkbox" name="kidazzle_combo_auto_publish" value="1" <?php checked($auto_publish); ?>>
                                 Automatically publish AI-generated content (otherwise saves as draft)
                             </label>
                         </td>
@@ -1062,8 +1062,8 @@ class Kidazzle_Combo_Page_Generator
                     <tr>
                         <th>Manual Cities</th>
                         <td>
-                            <textarea name="Kidazzle_seo_manual_cities_raw" rows="5" class="large-text"><?php 
-                                $manual = get_option('Kidazzle_seo_manual_cities', []);
+                            <textarea name="kidazzle_seo_manual_cities_raw" rows="5" class="large-text"><?php 
+                                $manual = get_option('kidazzle_seo_manual_cities', []);
                                 foreach ($manual as $m) {
                                     echo esc_html($m['city'] . ', ' . $m['state']) . "\n";
                                 }
@@ -1153,7 +1153,7 @@ class Kidazzle_Combo_Page_Generator
                 $('#edit-custom-intro').val('Loading...');
                 
                 $.post(ajaxurl, {
-                    action: 'Kidazzle_combo_get_data',
+                    action: 'kidazzle_combo_get_data',
                     nonce: nonce,
                     program_slug: program,
                     city_slug: city,
@@ -1191,7 +1191,7 @@ class Kidazzle_Combo_Page_Generator
                 var $btn = $(this).prop('disabled', true).text('Saving...');
                 
                 $.post(ajaxurl, {
-                    action: 'Kidazzle_combo_save_data',
+                    action: 'kidazzle_combo_save_data',
                     nonce: nonce,
                     program_slug: $('#edit-program-slug').val(),
                     city_slug: $('#edit-city-slug').val(),
@@ -1227,7 +1227,7 @@ class Kidazzle_Combo_Page_Generator
                 $btn.text('⏳');
                 
                 $.post(ajaxurl, {
-                    action: 'Kidazzle_combo_ai_generate',
+                    action: 'kidazzle_combo_ai_generate',
                     nonce: nonce,
                     program_slug: program,
                     city_slug: city,
@@ -1266,7 +1266,7 @@ class Kidazzle_Combo_Page_Generator
                 
                 if (action === 'ai_generate') {
                     $.post(ajaxurl, {
-                        action: 'Kidazzle_combo_ai_bulk_generate',
+                        action: 'kidazzle_combo_ai_bulk_generate',
                         nonce: nonce,
                         combos: combos
                     }, function(response) {
@@ -1282,7 +1282,7 @@ class Kidazzle_Combo_Page_Generator
                     // Status change
                     var status = action.replace('set_', '');
                     $.post(ajaxurl, {
-                        action: 'Kidazzle_combo_bulk_status',
+                        action: 'kidazzle_combo_bulk_status',
                         nonce: nonce,
                         combos: combos,
                         status: status
@@ -1306,10 +1306,10 @@ class Kidazzle_Combo_Page_Generator
 // Register settings
 add_action('admin_init', function() {
     // Auto-publish toggle
-    register_setting('Kidazzle_auto_pages', 'Kidazzle_combo_auto_publish');
+    register_setting('kidazzle_auto_pages', 'kidazzle_combo_auto_publish');
     
     // Manual cities
-    register_setting('Kidazzle_auto_pages', 'Kidazzle_seo_manual_cities_raw', function($raw) {
+    register_setting('kidazzle_auto_pages', 'kidazzle_seo_manual_cities_raw', function($raw) {
         $cities = [];
         $lines = explode("\n", $raw);
         foreach ($lines as $line) {
@@ -1318,18 +1318,18 @@ add_action('admin_init', function() {
                 $cities[] = ['city' => $parts[0], 'state' => strtoupper($parts[1])];
             }
         }
-        update_option('Kidazzle_seo_manual_cities', $cities);
+        update_option('kidazzle_seo_manual_cities', $cities);
         return $raw;
     });
 });
 
-new Kidazzle_Combo_Page_Generator();
+new kidazzle_Combo_Page_Generator();
 
 /**
  * Custom Sitemap Provider for Combo Pages
  * Integration with Native WordPress Sitemaps
  */
-class Kidazzle_Combo_Sitemap_Provider extends WP_Sitemaps_Provider {
+class kidazzle_Combo_Sitemap_Provider extends WP_Sitemaps_Provider {
 
     public function __construct() {
         $this->name = 'combos'; // sitemap-combos.xml
@@ -1345,7 +1345,7 @@ class Kidazzle_Combo_Sitemap_Provider extends WP_Sitemaps_Provider {
      */
     public function get_url_list($page_num, $object_subtype = '') {
         $urls = [];
-        $combos = Kidazzle_Combo_Page_Generator::get_all_combos();
+        $combos = kidazzle_Combo_Page_Generator::get_all_combos();
         
         // Filter for published status
         // Since we don't have a direct index, we iterate.
@@ -1358,7 +1358,7 @@ class Kidazzle_Combo_Sitemap_Provider extends WP_Sitemaps_Provider {
             $state = $combo['state'];
             
             // Check saved status
-            $saved_data = Kidazzle_Combo_Page_Data::get($program_slug, $city_slug, $state);
+            $saved_data = kidazzle_Combo_Page_Data::get($program_slug, $city_slug, $state);
             $status = $saved_data['status'] ?? 'auto'; // Default is auto (draft-like)
             
             if ($status === 'published' || $status === 'publish') {
@@ -1393,13 +1393,13 @@ class Kidazzle_Combo_Sitemap_Provider extends WP_Sitemaps_Provider {
     public function get_max_num_pages($object_subtype = '') {
         // We have to calculate total published combos to know pages.
         // This is inefficient but necessary without a centralized index.
-        $combos = Kidazzle_Combo_Page_Generator::get_all_combos();
+        $combos = kidazzle_Combo_Page_Generator::get_all_combos();
         $count = 0;
         foreach ($combos as $combo) {
             $program_slug = $combo['program']->post_name;
             $city_slug = sanitize_title($combo['city']);
             $state = $combo['state'];
-            $saved_data = Kidazzle_Combo_Page_Data::get($program_slug, $city_slug, $state);
+            $saved_data = kidazzle_Combo_Page_Data::get($program_slug, $city_slug, $state);
             $status = $saved_data['status'] ?? 'auto';
             if ($status === 'published' || $status === 'publish') {
                 $count++;

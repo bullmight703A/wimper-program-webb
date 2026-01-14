@@ -3,7 +3,7 @@
  * Accessibility SEO
  * ARIA labels, skip nav, focus indicators
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Accessibility_SEO
+class kidazzle_Accessibility_SEO
 {
     public function __construct() {
         add_action('wp_body_open', [$this, 'add_skip_nav']);
@@ -25,7 +25,7 @@ class Kidazzle_Accessibility_SEO
      * Add skip navigation link
      */
     public function add_skip_nav() {
-        if (!get_option('Kidazzle_seo_enable_skip_nav', true)) {
+        if (!get_option('kidazzle_seo_enable_skip_nav', true)) {
             return;
         }
         
@@ -65,7 +65,7 @@ class Kidazzle_Accessibility_SEO
             }
             
             /* Focus indicators */
-            <?php if (get_option('Kidazzle_seo_enable_focus_indicators', true)): ?>
+            <?php if (get_option('kidazzle_seo_enable_focus_indicators', true)): ?>
             a:focus,
             button:focus,
             input:focus,
@@ -250,4 +250,4 @@ class Kidazzle_Accessibility_SEO
     }
 }
 
-new Kidazzle_Accessibility_SEO();
+new kidazzle_Accessibility_SEO();

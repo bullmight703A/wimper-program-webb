@@ -3,7 +3,7 @@
  * Author Tags - E-E-A-T Enhancement
  * Adds proper author attribution to content
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Kidazzle_Author_Tags
+class kidazzle_Author_Tags
 {
     public function __construct() {
         add_action('wp_head', [$this, 'output_author_meta']);
@@ -22,7 +22,7 @@ class Kidazzle_Author_Tags
      * Output author meta tag
      */
     public function output_author_meta() {
-        if (!get_option('Kidazzle_seo_show_author_meta', true)) {
+        if (!get_option('kidazzle_seo_show_author_meta', true)) {
             return;
         }
         
@@ -62,7 +62,7 @@ class Kidazzle_Author_Tags
      * Append author box after content
      */
     public function append_author_box($content) {
-        if (!get_option('Kidazzle_seo_show_author_box', true)) {
+        if (!get_option('kidazzle_seo_show_author_box', true)) {
             return $content;
         }
         
@@ -78,7 +78,7 @@ class Kidazzle_Author_Tags
         
         ob_start();
         ?>
-        <div class="Kidazzle-author-box">
+        <div class="kidazzle-author-box">
             <?php if ($author['avatar']): ?>
                 <img src="<?php echo esc_url($author['avatar']); ?>" alt="<?php echo esc_attr($author['name']); ?>" class="author-avatar">
             <?php endif; ?>
@@ -100,7 +100,7 @@ class Kidazzle_Author_Tags
             </div>
         </div>
         <style>
-            .Kidazzle-author-box {
+            .kidazzle-author-box {
                 display: flex;
                 gap: 20px;
                 padding: 25px;
@@ -187,4 +187,4 @@ class Kidazzle_Author_Tags
     }
 }
 
-new Kidazzle_Author_Tags();
+new kidazzle_Author_Tags();

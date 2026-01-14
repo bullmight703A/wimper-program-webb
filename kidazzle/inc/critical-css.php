@@ -3,13 +3,13 @@
  * Critical CSS Injection
  * Inlines essential above-the-fold styles to prevent render-blocking
  *
- * @package Kidazzle_Excellence
+ * @package kidazzle_Excellence
  */
 
-function Kidazzle_print_critical_css()
+function kidazzle_print_critical_css()
 {
     ?>
-    <style id="Kidazzle-critical-css">
+    <style id="kidazzle-critical-css">
         /* Critical Fonts */
         @font-face {
             font-family: 'Outfit';
@@ -180,19 +180,19 @@ function Kidazzle_print_critical_css()
             color: rgb(255 255 255)
         }
 
-        .text-Kidazzle-blue {
+        .text-kidazzle-blue {
             color: rgb(74 108 124)
         }
 
-        .bg-Kidazzle-blue {
+        .bg-kidazzle-blue {
             background-color: rgb(74 108 124)
         }
 
-        .bg-Kidazzle-green {
+        .bg-kidazzle-green {
             background-color: rgb(141 163 153)
         }
 
-        .border-Kidazzle-blue\/10 {
+        .border-kidazzle-blue\/10 {
             border-color: rgba(74, 108, 124, .1)
         }
 
@@ -637,5 +637,5 @@ function Kidazzle_print_critical_css()
     <?php
 }
 // Critical CSS enabled to support main.css deferral
-add_action('wp_head', 'Kidazzle_print_critical_css', 1);
+add_action('wp_head', 'kidazzle_print_critical_css', 1);
 
