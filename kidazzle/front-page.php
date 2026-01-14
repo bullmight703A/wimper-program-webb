@@ -19,12 +19,8 @@ get_header(); ?>
     get_template_part('template-parts/home/kidazzle-difference');
     get_template_part('template-parts/home/curriculum');
     get_template_part('template-parts/home/growth-journey');
-    get_template_part('template-parts/home/programs-wizard');
-    get_template_part('template-parts/home/locations-preview');
-    get_template_part('template-parts/home/schedule-tabs');
+    // Removed Chroma-specific sections: programs-wizard, locations-preview, schedule-tabs
     get_template_part('template-parts/home/legacy-origin');
-    get_template_part('template-parts/home/faq');
-    get_template_part('template-parts/home/parent-reviews');
     get_template_part('template-parts/home/tour-cta');
     get_template_part('template-parts/home/southeast-powerhouse');
     get_template_part('template-parts/home/contact-cta');

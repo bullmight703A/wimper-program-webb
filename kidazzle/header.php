@@ -69,7 +69,7 @@
 		<div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
 			<!-- Logo -->
 			<a href="<?php echo home_url(); ?>" class="flex items-center gap-2 cursor-pointer">
-				<div class="h-12 md:h-16 flex items-center relative custom-logo-wrapper">
+				<div class="h-12 md:h-16 flex items-center relative custom-logo-wrapper" style="max-width: 200px; max-height: 80px; overflow: hidden;">
 					<?php
 					if (has_custom_logo()) {
 						the_custom_logo();
@@ -78,13 +78,19 @@
 					}
 					?>
 				</div>
-<style>
-.custom-logo-wrapper img {
-	max-height: 100% !important;
-	width: auto !important;
-	object-fit: contain !important;
-}
-</style>
+                <style>
+                    .custom-logo-wrapper .custom-logo {
+                        max-height: 100% !important;
+                        width: auto !important;
+                        height: auto !important;
+                        object-fit: contain;
+                    }
+                    /* Extra safety for the img tag itself if WP outputs it without class */
+                    .custom-logo-wrapper img {
+                        max-height: 80px !important;
+                        width: auto !important;
+                    }
+                </style>
 			</a>
 
 			<!-- Desktop Links -->
