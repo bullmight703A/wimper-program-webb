@@ -8,50 +8,46 @@
 </main>
 
 <!-- FOOTER -->
-<footer class="bg-slate-900 text-slate-300 py-16 relative mt-12">
+<footer class="bg-brand-ink text-white/60 py-16 relative mt-12">
 	<div
-		class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white p-2 rounded-full shadow-lg border border-slate-100">
-		<img src="https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png" alt="KIDazzle Logo" class="h-10 w-auto">
+		class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white p-2 rounded-full shadow-lg border border-brand-ink/5">
+		<img src="<?php echo get_template_directory_uri(); ?>/assets/images/kidazzle-logo-140x140.webp" alt="KIDazzle Logo" class="h-10 w-auto" onerror="this.src='https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png'">
 	</div>
 
 	<div class="container mx-auto px-4 md:px-6 pt-8">
 		<div class="grid md:grid-cols-4 gap-12 mb-12">
 			<div>
 				<div class="flex items-center gap-2 mb-6">
-					<span class="text-2xl font-bold text-white">KID<span class="text-yellow-500">azzle</span></span>
+					<span class="text-2xl font-bold text-white">KID<span class="text-kidazzle-yellow">azzle</span></span>
 				</div>
-				<p class="text-sm leading-relaxed mb-6 text-slate-400">Providing elite, independent child care and early
+				<p class="text-sm leading-relaxed mb-6 text-white/60">Providing elite, independent child care and early
 					education.</p>
 			</div>
 			<div>
-				<h4 class="text-white font-bold mb-6">Quick Links</h4>
-				<ul class="space-y-3 text-sm cursor-pointer">
-					<li><a href="<?php echo home_url('/programs'); ?>"
-							class="hover:text-red-400 transition">Programs</a></li>
-					<li><a href="<?php echo home_url('/locations'); ?>"
-							class="hover:text-green-400 transition">Locations</a></li>
-					<li><a href="<?php echo home_url('/careers'); ?>" class="hover:text-cyan-400 transition">Careers</a>
-					</li>
-				</ul>
+				<h4 class="text-white font-bold mb-6 italic tracking-widest uppercase text-xs">Quick Links</h4>
+				<div class="space-y-3 text-sm flex flex-col">
+					<?php kidazzle_footer_nav(); ?>
+				</div>
 			</div>
 			<div>
-				<h4 class="text-white font-bold mb-6">Resources</h4>
-				<ul class="space-y-3 text-sm cursor-pointer">
+				<h4 class="text-white font-bold mb-6 italic tracking-widest uppercase text-xs">Resources</h4>
+				<ul class="space-y-3 text-sm">
 					<li><a href="<?php echo home_url('/teacher-portal'); ?>"
-							class="hover:text-cyan-400 transition">Teacher Portal</a></li>
-					<li><a href="#" class="hover:text-yellow-400 transition">Parent Portal</a></li>
+							class="hover:text-kidazzle-blue transition">Teacher Portal</a></li>
+					<li><a href="<?php echo home_url('/resources'); ?>" class="hover:text-kidazzle-yellow transition">Parent Resources</a></li>
 				</ul>
 			</div>
 			<div>
-				<h4 class="text-white font-bold mb-6">Contact</h4>
+				<h4 class="text-white font-bold mb-6 italic tracking-widest uppercase text-xs">Contact</h4>
 				<ul class="space-y-3 text-sm">
 					<li>100 Alabama St SW, Atlanta, GA</li>
-					<li class="font-bold text-white">877-410-1002</li>
-					<li><a href="<?php echo home_url('/contact'); ?>" class="text-cyan-400 underline mt-2">Open Contact
+					<li class="font-bold text-white text-lg">877-410-1002</li>
+					<li><a href="<?php echo home_url('/contact'); ?>" class="text-kidazzle-yellow underline mt-2 block">Open Contact
 							Form</a></li>
 				</ul>
 			</div>
 		</div>
+
 		<div class="border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
 			<span>&copy; <?php echo date('Y'); ?> KIDAZZLE Child Care Inc. All rights reserved.</span>
 		</div>

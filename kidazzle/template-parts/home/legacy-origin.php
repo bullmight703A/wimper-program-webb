@@ -13,13 +13,13 @@ if (!defined('ABSPATH')) {
 $origin_image = get_theme_mod('kidazzle_origin_image', 'https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/694473359bd664b7796f283c.png');
 ?>
 
-<section class="py-24 bg-white border-t border-slate-100">
+<section class="py-24 bg-white border-t border-brand-ink/5">
     <div class="container mx-auto px-4">
         <div class="grid md:grid-cols-2 gap-16 items-center">
             <div>
-                <span class="text-orange-500 font-bold tracking-widest uppercase text-sm mb-2 block"><?php esc_html_e('Our Origins', 'kidazzle'); ?></span>
-                <h2 class="text-4xl font-extrabold text-slate-900 mb-8"><?php esc_html_e('From a Women\'s Shelter to a Regional Standard', 'kidazzle'); ?></h2>
-                <div class="space-y-6 text-lg text-slate-600 leading-relaxed">
+                <span class="text-kidazzle-orange font-bold tracking-widest uppercase text-sm mb-2 block italic"><?php esc_html_e('Our Origins', 'kidazzle'); ?></span>
+                <h2 class="text-4xl font-extrabold text-brand-ink mb-8"><?php esc_html_e('From a Women\'s Shelter to a Regional Standard', 'kidazzle'); ?></h2>
+                <div class="space-y-6 text-lg text-brand-ink/70 leading-relaxed">
                     <p>
                         <?php esc_html_e('KIDazzle\'s journey began 31 years ago with a mission rooted in compassion and necessity. We started within the walls of a', 'kidazzle'); ?>
                         <strong><?php esc_html_e('women\'s shelter', 'kidazzle'); ?></strong><?php esc_html_e(', dedicated to providing a safe haven and educational foundation for families in transition. That spark of service ignited a movement.', 'kidazzle'); ?>
@@ -35,12 +35,12 @@ $origin_image = get_theme_mod('kidazzle_origin_image', 'https://storage.googleap
                     </p>
                 </div>
                 <div class="mt-8">
-                    <a href="<?php echo esc_url(home_url('/about/')); ?>" class="text-orange-600 font-bold hover:text-orange-700 flex items-center gap-2">
+                    <a href="<?php echo esc_url(home_url('/about/')); ?>" class="text-kidazzle-orange font-bold hover:text-kidazzle-red flex items-center gap-2">
                         <?php esc_html_e('Read Our Full Story', 'kidazzle'); ?> <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
-            <div class="h-[500px] bg-slate-100 rounded-[3rem] shadow-2xl overflow-hidden relative group">
+            <div class="h-[500px] bg-brand-cream rounded-[3rem] shadow-2xl overflow-hidden relative group">
                 <img src="<?php echo esc_url($origin_image); ?>" 
                      alt="<?php esc_attr_e('Children engaged in creative learning and art', 'kidazzle'); ?>" 
                      class="w-full h-full object-cover transition duration-700 group-hover:scale-105">

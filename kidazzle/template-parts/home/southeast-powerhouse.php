@@ -51,19 +51,19 @@ $locations = array(
 );
 ?>
 
-<section class="py-20 bg-slate-50 relative overflow-hidden">
+<section class="py-20 bg-brand-cream relative overflow-hidden">
     <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 20px 20px;"></div>
+    <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#0F172A20 1px, transparent 1px); background-size: 20px 20px;"></div>
     
     <div class="container mx-auto px-4 relative z-10">
         <div class="text-center mb-16">
-            <span class="text-cyan-600 font-extrabold tracking-widest uppercase text-sm block mb-2"><?php esc_html_e('A Southern Regional Powerhouse', 'kidazzle'); ?></span>
-            <h2 class="text-4xl font-extrabold text-slate-900"><?php esc_html_e('Defining Excellence Across the Southeast', 'kidazzle'); ?></h2>
+            <span class="text-kidazzle-blue font-bold tracking-[0.3em] text-[10px] uppercase mb-4 block italic"><?php esc_html_e('A Southern Regional Powerhouse', 'kidazzle'); ?></span>
+            <h2 class="text-4xl md:text-6xl font-serif font-bold text-brand-ink"><?php esc_html_e('Defining Excellence Across the Southeast', 'kidazzle'); ?></h2>
         </div>
         
         <div class="grid md:grid-cols-3 gap-6 lg:gap-10">
             <?php foreach ($locations as $location) : ?>
-                <a href="<?php echo esc_url($location['url']); ?>" class="group relative rounded-[2.5rem] overflow-hidden h-96 shadow-lg cursor-pointer transform hover:-translate-y-2 transition duration-300 bg-white border <?php echo $location['is_hq'] ? 'border-4 border-white shadow-2xl' : 'border-slate-200'; ?> flex flex-col">
+                <a href="<?php echo esc_url($location['url']); ?>" class="group relative rounded-[3rem] overflow-hidden h-96 shadow-soft cursor-pointer transform hover:-translate-y-2 transition duration-300 bg-white border <?php echo $location['is_hq'] ? 'border-4 border-white shadow-2xl' : 'border-brand-ink/5'; ?> flex flex-col">
                     <div class="h-2/3 relative overflow-hidden <?php echo esc_attr($location['bg_color']); ?>">
                         <img src="<?php echo esc_url($location['image']); ?>" 
                              alt="<?php echo esc_attr($location['name']); ?>" 
@@ -84,8 +84,8 @@ $locations = array(
                                 <?php echo esc_html($location['state']); ?>
                             </span>
                         </div>
-                        <h3 class="text-<?php echo $location['is_hq'] ? '4xl' : '3xl'; ?> font-bold text-slate-900 mb-1"><?php echo esc_html($location['name']); ?></h3>
-                        <p class="text-slate-500 text-sm font-medium"><?php echo esc_html($location['tagline']); ?></p>
+                        <h3 class="text-<?php echo $location['is_hq'] ? '4xl' : '3xl'; ?> font-serif font-bold text-brand-ink mb-1"><?php echo esc_html($location['name']); ?></h3>
+                        <p class="text-brand-ink/50 text-sm font-medium"><?php echo esc_html($location['tagline']); ?></p>
                         <div class="mt-4 flex items-center <?php echo esc_attr($location['text_color']); ?> font-bold text-sm group-hover:gap-2 transition-all">
                             <?php echo esc_html($location['link_text']); ?> <i class="fa-solid fa-arrow-right ml-1"></i>
                         </div>

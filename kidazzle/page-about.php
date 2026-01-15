@@ -16,7 +16,7 @@ while (have_posts()):
 	// Hero Section
 	$hero_badge_text = get_post_meta($page_id, 'about_hero_badge_text', true) ?: 'Since 1994';
 	$hero_title = get_post_meta($page_id, 'about_hero_title', true) ?: 'More Than Childcare. <span class="text-kidazzle-yellow italic">We Are Family.</span>';
-	$hero_description = get_post_meta($page_id, 'about_hero_description', true) ?: 'For over 31 years, professional families have trusted Kidazzle to provide a safe, intellectually stimulating, and loving extension of their own homes.';
+	$hero_description = get_post_meta($page_id, 'about_hero_description', true) ?: 'For over 31 years, professional families have trusted KIDazzle to provide a safe, intellectually stimulating, and loving extension of their own homes.';
 	$hero_image = get_post_meta($page_id, 'about_hero_image', true) ?: 'https://images.unsplash.com/photo-1571210862729-78a52d3779a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80';
 
 	// Mission Section
@@ -24,7 +24,7 @@ while (have_posts()):
 
 	// Story Section
 	$story_title = get_post_meta($page_id, 'about_story_title', true) ?: 'From a Women\'s Shelter to a Regional Leader';
-	$story_paragraph1 = get_post_meta($page_id, 'about_story_paragraph1', true) ?: 'Kidazzle was born from a mission of profound necessity. Thirty-one years ago, we opened our doors inside a women\'s shelter, dedicated to providing stability, safety, and education to families in transition. That spark of service defined our DNA.';
+	$story_paragraph1 = get_post_meta($page_id, 'about_story_paragraph1', true) ?: 'KIDazzle was born from a mission of profound necessity. Thirty-one years ago, we opened our doors inside a women\'s shelter, dedicated to providing stability, safety, and education to families in transition. That spark of service defined our DNA.';
 	$story_paragraph2 = get_post_meta($page_id, 'about_story_paragraph2', true) ?: 'As we grew, we made a strategic choice to expand into urban centers where the need for high-quality, professional early childhood education was greatest. Today, we remain an independent, family-owned organization across Georgia, Tennessee, and Florida.';
 	$story_image = get_post_meta($page_id, 'about_story_image', true) ?: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
 
@@ -38,7 +38,7 @@ while (have_posts()):
 	$stat4_label = get_post_meta($page_id, 'about_stat4_label', true) ?: 'Quality Rated';
 
 	// Educators Section
-	$educators_title = get_post_meta($page_id, 'about_educators_title', true) ?: 'The Heart of Kidazzle.';
+	$educators_title = get_post_meta($page_id, 'about_educators_title', true) ?: 'The Heart of KIDazzle.';
 	$educators_description = get_post_meta($page_id, 'about_educators_description', true) ?: 'We don\'t just hire supervisors; we hire career educators. Our teachers are the most valuable asset in our classrooms, selected for their passion, patience, and professional credentials.';
 
 	$educator1_icon = get_post_meta($page_id, 'about_educator1_icon', true) ?: 'fa-solid fa-certificate';
@@ -51,10 +51,10 @@ while (have_posts()):
 
 	$educator3_icon = get_post_meta($page_id, 'about_educator3_icon', true) ?: 'fa-solid fa-chalkboard-user';
 	$educator3_title = get_post_meta($page_id, 'about_educator3_title', true) ?: 'Continuous Growth';
-	$educator3_desc = get_post_meta($page_id, 'about_educator3_desc', true) ?: 'Our educators participate in 20+ hours of annual professional development, specializing in the Kidazzle Creative Curriculum™ curriculum and social-emotional learning.';
+	$educator3_desc = get_post_meta($page_id, 'about_educator3_desc', true) ?: 'Our educators participate in 20+ hours of annual professional development, specializing in the KIDazzle Creative Curriculum™ curriculum and social-emotional learning.';
 
 	// Core Values Section
-	$values_title = get_post_meta($page_id, 'about_values_title', true) ?: 'The Kidazzle Standard';
+	$values_title = get_post_meta($page_id, 'about_values_title', true) ?: 'The KIDazzle Standard';
 	$values_description = get_post_meta($page_id, 'about_values_description', true) ?: 'Our culture is built on four non-negotiable pillars that guide every decision we make, from hiring teachers to designing playgrounds.';
 
 	$value1_icon = get_post_meta($page_id, 'about_value1_icon', true) ?: 'fa-solid fa-heart';
@@ -67,7 +67,7 @@ while (have_posts()):
 
 	$value3_icon = get_post_meta($page_id, 'about_value3_icon', true) ?: 'fa-solid fa-graduation-cap';
 	$value3_title = get_post_meta($page_id, 'about_value3_title', true) ?: 'Academic Rigor';
-	$value3_desc = get_post_meta($page_id, 'about_value3_desc', true) ?: 'Using our Kidazzle Creative Curriculum™ model, we deliver rigorous, age-appropriate learning that feels like play.';
+	$value3_desc = get_post_meta($page_id, 'about_value3_desc', true) ?: 'Using our KIDazzle Creative Curriculum™ model, we deliver rigorous, age-appropriate learning that feels like play.';
 
 	$value4_icon = get_post_meta($page_id, 'about_value4_icon', true) ?: 'fa-solid fa-users';
 	$value4_title = get_post_meta($page_id, 'about_value4_title', true) ?: 'Open Partnership';
@@ -75,7 +75,7 @@ while (have_posts()):
 
 	// Vision Section
 	$vision_title = get_post_meta($page_id, 'about_vision_title', true) ?: 'Vision for the Future';
-	$vision_description = get_post_meta($page_id, 'about_vision_description', true) ?: 'As we look to the next 30 years, Kidazzle is committed to expanding our footprint while deepening our impact. We are constantly innovating—integrating technology like AI into our lesson planning while keeping the human connection at the center of everything we do.';
+	$vision_description = get_post_meta($page_id, 'about_vision_description', true) ?: 'As we look to the next 30 years, KIDazzle is committed to expanding our footprint while deepening our impact. We are constantly innovating—integrating technology like AI into our lesson planning while keeping the human connection at the center of everything we do.';
 
 	// Nutrition Section
 	$nutrition_title = get_post_meta($page_id, 'about_nutrition_title', true) ?: 'Fueling growing minds.';
@@ -92,7 +92,7 @@ while (have_posts()):
 	// Philanthropy Section
 	$philanthropy_title = get_post_meta($page_id, 'about_philanthropy_title', true) ?: 'Giving back to our future.';
 	$philanthropy_subtitle = get_post_meta($page_id, 'about_philanthropy_subtitle', true) ?: 'Foundations For Learning Inc.';
-	$philanthropy_description = get_post_meta($page_id, 'about_philanthropy_description', true) ?: 'At Kidazzle, our commitment extends beyond our classroom walls. Through our partnership with <strong>Foundations For Learning Inc.</strong>, we work to ensure that quality early education is accessible to every child in our community.';
+	$philanthropy_description = get_post_meta($page_id, 'about_philanthropy_description', true) ?: 'At KIDazzle, our commitment extends beyond our classroom walls. Through our partnership with <strong>Foundations For Learning Inc.</strong>, we work to ensure that quality early education is accessible to every child in our community.';
 	$philanthropy_image = get_post_meta($page_id, 'about_philanthropy_image', true) ?: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800&auto=format&fit=crop';
 
 	$philanthropy_bullet1_icon = get_post_meta($page_id, 'about_philanthropy_bullet1_icon', true) ?: 'fa-solid fa-hand-holding-heart';
@@ -107,7 +107,7 @@ while (have_posts()):
 
 	// CTA Section
 	$cta_title = get_post_meta($page_id, 'about_cta_title', true) ?: 'Ready to join the family?';
-	$cta_description = get_post_meta($page_id, 'about_cta_description', true) ?: 'Come see why over 10,000 graduates have started their journey at Kidazzle.';
+	$cta_description = get_post_meta($page_id, 'about_cta_description', true) ?: 'Come see why over 10,000 graduates have started their journey at KIDazzle.';
 
 	// Get Team Members
 	$team_members = new WP_Query(array(
@@ -181,12 +181,12 @@ while (have_posts()):
                         </div>
 					</div>
 					<div class="order-1 md:order-2">
-						<span class="text-kidazzle-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block">Our Story</span>
+						<span class="text-kidazzle-red font-bold tracking-[0.2em] text-xs uppercase mb-3 block italic">Our Heritage</span>
 						<h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-ink mb-6">
 							<?php echo esc_html($story_title); ?>
 						</h2>
 						<div class="prose prose-slate text-brand-ink/80 leading-relaxed max-w-none">
-							<p class="mb-4"><?php echo esc_html($story_paragraph1); ?></p>
+							<p class="mb-4 font-medium"><?php echo esc_html($story_paragraph1); ?></p>
 							<p class="mb-4"><?php echo esc_html($story_paragraph2); ?></p>
 						</div>
 					</div>
