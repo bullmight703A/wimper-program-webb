@@ -44,9 +44,7 @@ get_header();
                 <!-- Info Card 1 -->
                 <div class="bg-brand-cream p-10 rounded-[3rem] border border-brand-ink/5 relative overflow-hidden group">
                     <div class="absolute top-0 right-0 w-24 h-24 bg-kidazzle-blue/5 rounded-bl-[100px] transition-transform group-hover:scale-110"></div>
-                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm text-kidazzle-blue text-2xl">
-                        <i class="fa-solid fa-book-open"></i>
-                    </div>
+
                     <h3 class="text-2xl font-serif font-bold text-brand-ink mb-4">Lesson Planning</h3>
                     <p class="text-brand-ink/60 leading-relaxed">Every classroom follows a structured, weekly lesson plan derived from the Creative Curriculum® and enhanced by our proprietary AI tools.</p>
                 </div>
@@ -54,9 +52,7 @@ get_header();
                 <!-- Info Card 2 -->
                 <div class="bg-brand-cream p-10 rounded-[3rem] border border-brand-ink/5 relative overflow-hidden group">
                     <div class="absolute top-0 right-0 w-24 h-24 bg-kidazzle-green/5 rounded-bl-[100px] transition-transform group-hover:scale-110"></div>
-                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm text-kidazzle-green text-2xl">
-                        <i class="fa-solid fa-chalkboard-user"></i>
-                    </div>
+
                     <h3 class="text-2xl font-serif font-bold text-brand-ink mb-4">Management</h3>
                     <p class="text-brand-ink/60 leading-relaxed">Our environments are intentionally designed zones that promote independence, curiosity, and positive social interaction.</p>
                 </div>
