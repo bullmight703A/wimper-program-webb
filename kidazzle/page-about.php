@@ -339,7 +339,7 @@ while (have_posts()):
 							<li class="flex items-center gap-4 group">
 								<div
 									class="w-10 h-10 bg-kidazzle-red/10 text-kidazzle-red rounded-full flex items-center justify-center shrink-0 group-hover:bg-kidazzle-red group-hover:text-white transition-colors">
-									<i class="<?php echo esc_attr($nutrition_bullet1_icon); ?> text-lg"></i>
+									<?php echo esc_html($nutrition_bullet1_icon); ?>
 								</div>
 								<span class="font-bold text-slate-700"><?php echo esc_html($nutrition_bullet1_text); ?></span>
 							</li>
@@ -348,7 +348,7 @@ while (have_posts()):
 							<li class="flex items-center gap-4 group">
 								<div
 									class="w-10 h-10 bg-kidazzle-orange/10 text-kidazzle-orange rounded-full flex items-center justify-center shrink-0 group-hover:bg-kidazzle-orange group-hover:text-white transition-colors">
-									<i class="<?php echo esc_attr($nutrition_bullet2_icon); ?> text-lg"></i>
+									<?php echo esc_html($nutrition_bullet2_icon); ?>
 								</div>
 								<span class="font-bold text-slate-700"><?php echo esc_html($nutrition_bullet2_text); ?></span>
 							</li>
@@ -357,7 +357,7 @@ while (have_posts()):
 							<li class="flex items-center gap-4 group">
 								<div
 									class="w-10 h-10 bg-brand-ink/5 text-brand-ink/60 rounded-full flex items-center justify-center shrink-0 group-hover:bg-brand-ink group-hover:text-white transition-colors">
-									<i class="<?php echo esc_attr($nutrition_bullet3_icon); ?> text-lg"></i>
+									<?php echo esc_html($nutrition_bullet3_icon); ?>
 								</div>
 								<span class="font-bold text-slate-700"><?php echo esc_html($nutrition_bullet3_text); ?></span>
 							</li>
@@ -397,7 +397,7 @@ while (have_posts()):
 							<li class="flex items-center gap-4 group">
 								<div
 									class="w-10 h-10 bg-kidazzle-red/10 text-kidazzle-red rounded-full flex items-center justify-center shrink-0 group-hover:bg-kidazzle-red group-hover:text-white transition-colors">
-									<i class="<?php echo esc_attr($philanthropy_bullet1_icon); ?> text-lg"></i>
+									<?php echo esc_html($philanthropy_bullet1_icon); ?>
 								</div>
 								<span
 									class="font-bold text-slate-700"><?php echo esc_html($philanthropy_bullet1_text); ?></span>
@@ -407,7 +407,7 @@ while (have_posts()):
 							<li class="flex items-center gap-4 group">
 								<div
 									class="w-10 h-10 bg-kidazzle-yellow/10 text-kidazzle-yellow rounded-full flex items-center justify-center shrink-0 group-hover:bg-kidazzle-yellow group-hover:text-white transition-colors">
-									<i class="<?php echo esc_attr($philanthropy_bullet2_icon); ?> text-lg"></i>
+									<?php echo esc_html($philanthropy_bullet2_icon); ?>
 								</div>
 								<span
 									class="font-bold text-slate-700"><?php echo esc_html($philanthropy_bullet2_text); ?></span>
@@ -417,7 +417,7 @@ while (have_posts()):
 							<li class="flex items-center gap-4 group">
 								<div
 									class="w-10 h-10 bg-kidazzle-green/10 text-kidazzle-green rounded-full flex items-center justify-center shrink-0 group-hover:bg-kidazzle-green group-hover:text-white transition-colors">
-									<i class="<?php echo esc_attr($philanthropy_bullet3_icon); ?> text-lg"></i>
+									<?php echo esc_html($philanthropy_bullet3_icon); ?>
 								</div>
 								<span
 									class="font-bold text-slate-700"><?php echo esc_html($philanthropy_bullet3_text); ?></span>
