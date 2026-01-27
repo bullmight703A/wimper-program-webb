@@ -34,8 +34,8 @@ if (!$curriculum) {
             <?php if (!empty($curriculum['card_1_heading'])): ?>
                 <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300"
                     data-curriculum-card="philosophy">
-                    <div class="text-kidazzle-red text-5xl mb-4">
-                        <i class="fas fa-brain"></i>
+                    <div class="text-5xl mb-4">
+                        💭
                     </div>
                     <h3 class="text-2xl font-bold text-brand-ink mb-4">
                         <?php echo esc_html($curriculum['card_1_heading']); ?>
@@ -50,8 +50,8 @@ if (!$curriculum) {
             <?php if (!empty($curriculum['card_2_heading'])): ?>
                 <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300"
                     data-curriculum-card="approach">
-                    <div class="text-kidazzle-teal text-5xl mb-4">
-                        <i class="fas fa-palette"></i>
+                    <div class="text-5xl mb-4">
+                        🧩
                     </div>
                     <h3 class="text-2xl font-bold text-brand-ink mb-4">
                         <?php echo esc_html($curriculum['card_2_heading']); ?>
@@ -66,8 +66,8 @@ if (!$curriculum) {
             <?php if (!empty($curriculum['card_3_heading'])): ?>
                 <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300"
                     data-curriculum-card="outcomes">
-                    <div class="text-kidazzle-yellow text-5xl mb-4">
-                        <i class="fas fa-trophy"></i>
+                    <div class="text-5xl mb-4">
+                        🎓
                     </div>
                     <h3 class="text-2xl font-bold text-brand-ink mb-4">
                         <?php echo esc_html($curriculum['card_3_heading']); ?>

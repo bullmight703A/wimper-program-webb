@@ -10,7 +10,7 @@ get_header(); ?>
 <!-- Main Home Content View -->
 <div id="view-home" class="view-section active block">
 
-    <?php 
+    <?php
     // Load home sections in sequence
     get_template_part('template-parts/home/hero');
     get_template_part('template-parts/home/marquee');
@@ -22,7 +22,7 @@ get_header(); ?>
     get_template_part('template-parts/home/legacy-origin');
     get_template_part('template-parts/home/tour-cta');
     get_template_part('template-parts/home/southeast-powerhouse');
-    get_template_part('template-parts/home/contact-cta');
+
     ?>
 
 </div>

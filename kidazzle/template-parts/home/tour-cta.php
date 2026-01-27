@@ -25,15 +25,19 @@ $form_embed_url = get_theme_mod('kidazzle_form_embed_url', 'https://api.leadconn
             <p class="text-purple-100 text-lg mb-8"><?php echo esc_html($cta_subheadline); ?></p>
 
             <!-- EMBEDDED FORM -->
-            <?php if ($form_embed_url): ?>
-                <div class="bg-white/10 rounded-2xl p-4 mb-8 max-w-4xl mx-auto h-[900px] overflow-hidden">
-                    <iframe src="<?php echo esc_url($form_embed_url); ?>"
-                        style="width:100%;height:100%;border:none;border-radius:20px" id="kidazzle-contact-form"
-                        title="<?php esc_attr_e('KIDazzle Contact Form', 'kidazzle'); ?>" loading="lazy">
-                    </iframe>
-                    <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
-                </div>
-            <?php endif; ?>
+            <!-- EMBEDDED FORM -->
+            <div class="bg-white/10 rounded-2xl p-4 mb-8 max-w-4xl mx-auto h-[900px] overflow-hidden">
+                <iframe src="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la"
+                    style="width:100%;height:100%;border:none;border-radius:20px" id="inline-N8RYaUY1SuORexcyA6la"
+                    data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
+                    data-activation-type="alwaysActivated" data-activation-value=""
+                    data-deactivation-type="neverDeactivate" data-deactivation-value=""
+                    data-form-name="2023 New KIDazzel website contact " data-height="698"
+                    data-layout-iframe-id="inline-N8RYaUY1SuORexcyA6la" data-form-id="N8RYaUY1SuORexcyA6la"
+                    title="2023 New KIDazzel website contact ">
+                </iframe>
+                <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+            </div>
 
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="<?php echo esc_url(get_post_type_archive_link('location')); ?>"
