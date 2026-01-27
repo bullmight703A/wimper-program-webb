@@ -7,8 +7,8 @@
 
 // Get Footer Customizer Settings
 $footer_phone = get_theme_mod('kidazzle_footer_phone', '877-410-1002');
-$footer_email = get_theme_mod('kidazzle_footer_email', '');
-$footer_address = get_theme_mod('kidazzle_footer_address', '100 Alabama St SW, Atlanta, GA');
+$footer_email = get_theme_mod('kidazzle_footer_email', 'info@kidazzle.com');
+$footer_address = get_theme_mod('kidazzle_footer_address', '674 Joseph E Lowery Blvd, Atlanta, GA 30310');
 
 // Social Links
 $footer_facebook = get_theme_mod('kidazzle_footer_facebook', '');
