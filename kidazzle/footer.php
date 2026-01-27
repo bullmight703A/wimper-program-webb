@@ -25,35 +25,48 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 <footer class="bg-brand-ink text-white/60 py-16 relative mt-12">
 	<div
 		class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white p-2 rounded-full shadow-lg border border-brand-ink/5">
-		<img src="<?php echo get_template_directory_uri(); ?>/assets/images/kidazzle-logo-140x140.webp" alt="KIDazzle Logo" class="h-10 w-auto" onerror="this.src='https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png'">
+		<img src="<?php echo get_template_directory_uri(); ?>/assets/images/kidazzle-logo-140x140.webp"
+			alt="KIDazzle Logo" class="h-10 w-auto"
+			onerror="this.src='https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png'">
 	</div>
 
 	<div class="container mx-auto px-4 md:px-6 pt-8">
 		<div class="grid md:grid-cols-4 gap-12 mb-12">
 			<div>
 				<div class="flex items-center gap-2 mb-6">
-					<span class="text-2xl font-bold text-white">KID<span class="text-kidazzle-yellow">azzle</span></span>
+					<span class="text-2xl font-bold text-white">KID<span
+							class="text-kidazzle-yellow">azzle</span></span>
 				</div>
 				<p class="text-sm leading-relaxed mb-6 text-white/60">Providing elite, independent child care and early
 					education.</p>
 				<?php if ($has_social): ?>
-				<div class="flex gap-4 mt-4">
-					<?php if ($footer_facebook): ?>
-						<a href="<?php echo esc_url($footer_facebook); ?>" class="text-white/40 hover:text-kidazzle-blue transition" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook text-xl"></i></a>
-					<?php endif; ?>
-					<?php if ($footer_instagram): ?>
-						<a href="<?php echo esc_url($footer_instagram); ?>" class="text-white/40 hover:text-kidazzle-red transition" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram text-xl"></i></a>
-					<?php endif; ?>
-					<?php if ($footer_linkedin): ?>
-						<a href="<?php echo esc_url($footer_linkedin); ?>" class="text-white/40 hover:text-kidazzle-blue transition" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin text-xl"></i></a>
-					<?php endif; ?>
-					<?php if ($footer_twitter): ?>
-						<a href="<?php echo esc_url($footer_twitter); ?>" class="text-white/40 hover:text-white transition" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter text-xl"></i></a>
-					<?php endif; ?>
-					<?php if ($footer_youtube): ?>
-						<a href="<?php echo esc_url($footer_youtube); ?>" class="text-white/40 hover:text-kidazzle-red transition" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube text-xl"></i></a>
-					<?php endif; ?>
-				</div>
+					<div class="flex gap-4 mt-4">
+						<?php if ($footer_facebook): ?>
+							<a href="<?php echo esc_url($footer_facebook); ?>"
+								class="text-white/40 hover:text-kidazzle-blue transition" target="_blank" rel="noopener"
+								aria-label="Facebook"><i class="fa-brands fa-facebook text-xl"></i></a>
+						<?php endif; ?>
+						<?php if ($footer_instagram): ?>
+							<a href="<?php echo esc_url($footer_instagram); ?>"
+								class="text-white/40 hover:text-kidazzle-red transition" target="_blank" rel="noopener"
+								aria-label="Instagram"><i class="fa-brands fa-instagram text-xl"></i></a>
+						<?php endif; ?>
+						<?php if ($footer_linkedin): ?>
+							<a href="<?php echo esc_url($footer_linkedin); ?>"
+								class="text-white/40 hover:text-kidazzle-blue transition" target="_blank" rel="noopener"
+								aria-label="LinkedIn"><i class="fa-brands fa-linkedin text-xl"></i></a>
+						<?php endif; ?>
+						<?php if ($footer_twitter): ?>
+							<a href="<?php echo esc_url($footer_twitter); ?>" class="text-white/40 hover:text-white transition"
+								target="_blank" rel="noopener" aria-label="Twitter/X"><i
+									class="fa-brands fa-x-twitter text-xl"></i></a>
+						<?php endif; ?>
+						<?php if ($footer_youtube): ?>
+							<a href="<?php echo esc_url($footer_youtube); ?>"
+								class="text-white/40 hover:text-kidazzle-red transition" target="_blank" rel="noopener"
+								aria-label="YouTube"><i class="fa-brands fa-youtube text-xl"></i></a>
+						<?php endif; ?>
+					</div>
 				<?php endif; ?>
 			</div>
 			<div>
@@ -67,7 +80,8 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 				<ul class="space-y-3 text-sm">
 					<li><a href="<?php echo home_url('/teacher-portal'); ?>"
 							class="hover:text-kidazzle-blue transition">Teacher Portal</a></li>
-					<li><a href="<?php echo home_url('/resources'); ?>" class="hover:text-kidazzle-yellow transition">Parent Resources</a></li>
+					<li><a href="<?php echo home_url('/resources'); ?>"
+							class="hover:text-kidazzle-yellow transition">Parent Resources</a></li>
 				</ul>
 			</div>
 			<div>
@@ -80,9 +94,12 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 						<li class="font-bold text-white text-lg"><?php echo esc_html($footer_phone); ?></li>
 					<?php endif; ?>
 					<?php if ($footer_email): ?>
-						<li><a href="mailto:<?php echo esc_attr($footer_email); ?>" class="hover:text-kidazzle-yellow transition"><?php echo esc_html($footer_email); ?></a></li>
+						<li><a href="mailto:<?php echo esc_attr($footer_email); ?>"
+								class="hover:text-kidazzle-yellow transition"><?php echo esc_html($footer_email); ?></a>
+						</li>
 					<?php endif; ?>
-					<li><a href="<?php echo home_url('/contact'); ?>" class="text-kidazzle-yellow underline mt-2 block">Open Contact
+					<li><a href="<?php echo home_url('/contact'); ?>"
+							class="text-kidazzle-yellow underline mt-2 block">Open Contact
 							Form</a></li>
 				</ul>
 			</div>
@@ -96,7 +113,8 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 		<?php
 		$seo_text = get_theme_mod('kidazzle_footer_seo_text');
 		if ($seo_text): ?>
-			<div class="border-t border-white/10 pt-6 mt-6 text-[11px] text-white/60 leading-relaxed text-center max-w-5xl mx-auto">
+			<div
+				class="border-t border-white/10 pt-6 mt-6 text-[11px] text-white/60 leading-relaxed text-center max-w-5xl mx-auto">
 				<?php echo wp_kses_post($seo_text); ?>
 			</div>
 		<?php endif; ?>
@@ -114,9 +132,9 @@ $sticky_url = home_url('/contact');
 if (is_page('contact') || is_page('careers')) {
 	$show_sticky_cta = false;
 } elseif (is_singular('program')) {
-	$sticky_text = sprintf( __('Ready to enroll in <strong>%s</strong>?', 'kidazzle-theme'), get_the_title() );
+	$sticky_text = sprintf(__('Ready to enroll in <strong>%s</strong>?', 'kidazzle-theme'), get_the_title());
 } elseif (is_singular('location')) {
-	$sticky_text = sprintf( __('Ready to visit our <strong>%s</strong> campus?', 'kidazzle-theme'), get_the_title() );
+	$sticky_text = sprintf(__('Ready to visit our <strong>%s</strong> campus?', 'kidazzle-theme'), get_the_title());
 }
 
 if ($show_sticky_cta):
@@ -147,22 +165,14 @@ if ($show_sticky_cta):
 			<h3 class="text-2xl font-bold text-slate-900">How Can We Help?</h3>
 			<p class="text-slate-500">Select an option below.</p>
 		</div>
-		<div class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-[2rem] p-4 text-center h-[600px] overflow-hidden">
-			<iframe
-				src="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la"
-				style="width:100%;height:100%;border:none;border-radius:20px"
-				id="inline-N8RYaUY1SuORexcyA6la"
-				data-layout="{'id':'INLINE'}"
-				data-trigger-type="alwaysShow"
-				data-trigger-value=""
-				data-activation-type="alwaysActivated"
-				data-activation-value=""
-				data-deactivation-type="neverDeactivate"
-				data-deactivation-value=""
-				data-form-name="2023 New KIDazzel website contact "
-				data-height="870"
-				data-layout-iframe-id="inline-N8RYaUY1SuORexcyA6la"
-				data-form-id="N8RYaUY1SuORexcyA6la"
+		<div
+			class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-[2rem] p-4 text-center h-[600px] overflow-hidden">
+			<iframe src="https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la"
+				style="width:100%;height:100%;border:none;border-radius:20px" id="inline-N8RYaUY1SuORexcyA6la"
+				data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
+				data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate"
+				data-deactivation-value="" data-form-name="2023 New KIDazzel website contact " data-height="870"
+				data-layout-iframe-id="inline-N8RYaUY1SuORexcyA6la" data-form-id="N8RYaUY1SuORexcyA6la"
 				title="2023 New KIDazzel website contact ">
 			</iframe>
 			<script src="https://link.msgsndr.com/js/form_embed.js" async></script>
@@ -177,16 +187,21 @@ if ($show_sticky_cta):
 	function openContactModal() { if (contactModal) contactModal.classList.remove('hidden'); }
 	function closeContactModal() { if (contactModal) contactModal.classList.add('hidden'); }
 
-    // Sticky CTA Scroll Logic
-    window.addEventListener('scroll', function() {
-        const cta = document.getElementById('sticky-cta');
-        if (!cta) return;
-        if (window.scrollY > 300) {
-            cta.classList.remove('translate-y-full');
-        } else {
-            cta.classList.add('translate-y-full');
-        }
-    }, { passive: true });
+	// Sticky CTA Scroll Logic
+	window.addEventListener('scroll', function () {
+		const cta = document.getElementById('sticky-cta');
+		if (!cta) return;
+		if (window.scrollY > 300) {
+			cta.classList.remove('translate-y-full');
+		} else {
+			cta.classList.add('translate-y-full');
+		}
+	}, { passive: true });
+
+	// Initialize Lucide Icons
+	if (typeof lucide !== 'undefined') {
+		lucide.createIcons();
+	}
 </script>
 
 <?php wp_footer(); ?>
@@ -194,20 +209,20 @@ if ($show_sticky_cta):
 // Footer scripts from Customizer
 $footer_scripts = get_theme_mod('kidazzle_footer_scripts');
 if ($footer_scripts) {
-    if (current_user_can('unfiltered_html')) {
-        echo $footer_scripts;
-    } else {
-        echo wp_kses($footer_scripts, array(
-            'script' => array(
-                'src' => true,
-                'async' => true,
-                'defer' => true,
-                'type' => true,
-                'id' => true,
-            ),
-            'noscript' => array(),
-        ));
-    }
+	if (current_user_can('unfiltered_html')) {
+		echo $footer_scripts;
+	} else {
+		echo wp_kses($footer_scripts, array(
+			'script' => array(
+				'src' => true,
+				'async' => true,
+				'defer' => true,
+				'type' => true,
+				'id' => true,
+			),
+			'noscript' => array(),
+		));
+	}
 }
 ?>
 </body>

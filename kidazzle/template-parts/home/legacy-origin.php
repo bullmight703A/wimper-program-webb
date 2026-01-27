@@ -17,8 +17,10 @@ $origin_image = get_theme_mod('kidazzle_origin_image', 'https://storage.googleap
     <div class="container mx-auto px-4">
         <div class="grid md:grid-cols-2 gap-16 items-center">
             <div>
-                <span class="text-kidazzle-orange font-bold tracking-widest uppercase text-sm mb-2 block italic"><?php esc_html_e('Our Origins', 'kidazzle'); ?></span>
-                <h2 class="text-4xl font-extrabold text-brand-ink mb-8"><?php esc_html_e('From a Women\'s Shelter to a Regional Standard', 'kidazzle'); ?></h2>
+                <span
+                    class="text-kidazzle-orange font-bold tracking-widest uppercase text-sm mb-2 block italic"><?php esc_html_e('Our Origins', 'kidazzle'); ?></span>
+                <h2 class="text-4xl font-extrabold text-brand-ink mb-8">
+                    <?php esc_html_e('From a Women\'s Shelter to a Regional Standard', 'kidazzle'); ?></h2>
                 <div class="space-y-6 text-lg text-brand-ink/70 leading-relaxed">
                     <p>
                         <?php esc_html_e('KIDazzle\'s journey began 31 years ago with a mission rooted in compassion and necessity. We started within the walls of a', 'kidazzle'); ?>
@@ -35,15 +37,17 @@ $origin_image = get_theme_mod('kidazzle_origin_image', 'https://storage.googleap
                     </p>
                 </div>
                 <div class="mt-8">
-                    <a href="<?php echo esc_url(home_url('/about/')); ?>" class="text-kidazzle-orange font-bold hover:text-kidazzle-red flex items-center gap-2">
-                        <?php esc_html_e('Read Our Full Story', 'kidazzle'); ?> <i class="fa-solid fa-arrow-right"></i>
+                    <a href="<?php echo esc_url(home_url('/about/')); ?>"
+                        class="text-kidazzle-orange font-bold hover:text-kidazzle-red flex items-center gap-2">
+                        <?php esc_html_e('Read Our Full Story', 'kidazzle'); ?> <i data-lucide="arrow-right"
+                            class="w-4 h-4"></i>
                     </a>
                 </div>
             </div>
             <div class="h-[500px] bg-brand-cream rounded-[3rem] shadow-2xl overflow-hidden relative group">
-                <img src="<?php echo esc_url($origin_image); ?>" 
-                     alt="<?php esc_attr_e('Children engaged in creative learning and art', 'kidazzle'); ?>" 
-                     class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                <img src="<?php echo esc_url($origin_image); ?>"
+                    alt="<?php esc_attr_e('Children engaged in creative learning and art', 'kidazzle'); ?>"
+                    class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
             </div>
         </div>
     </div>
