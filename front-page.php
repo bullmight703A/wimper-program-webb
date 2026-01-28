@@ -27,10 +27,10 @@ get_header();
                     </div>
                     <h1 class="text-5xl md:text-7xl font-medium mb-8 leading-tight">
                         Reduce Your<br>
-                        <span class="italic text-slate-400">Taxable Surface Area.</span>
+                        <span class="italic text-slate-200">Taxable Surface Area.</span>
                     </h1>
                     <p
-                        class="text-lg text-slate-300 mb-12 leading-relaxed max-w-2xl font-light border-l border-white/20 pl-6">
+                        class="text-lg text-slate-100/50 mb-12 leading-relaxed max-w-2xl font-light border-l border-white/20 pl-6">
                         We don't sell "wellness." We engineer a proprietary <strong>Section 125/105 Chassis</strong>
                         that physically removes payroll from the FICA taxation zone. The result is a self-funded EBITDA
                         expansion that no competitor can match.
@@ -41,7 +41,7 @@ get_header();
                             Model The Savings
                         </button>
                         <button onclick="navigateTo('method')"
-                            class="group flex items-center text-slate-300 text-xs font-bold uppercase tracking-[0.15em] hover:text-white transition px-6">
+                            class="group flex items-center text-slate-100/50 text-xs font-bold uppercase tracking-[0.15em] hover:text-white transition px-6">
                             <span
                                 class="border-b border-slate-600 group-hover:border-gold pb-1 transition duration-300">Inspect
                                 The Engine</span>
@@ -59,17 +59,17 @@ get_header();
                         <h3 class="text-white font-serif text-3xl mb-10">The New Baseline</h3>
                         <div class="space-y-10">
                             <div>
-                                <p class="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">EBITDA Recapture
+                                <p class="text-slate-200 text-[10px] uppercase tracking-[0.2em] mb-2">EBITDA Recapture
                                     (Per Employee)</p>
                                 <p class="text-5xl text-white font-light tracking-tight">~$1,100<span
                                         class="text-gold text-lg align-top">/yr</span></p>
                             </div>
                             <div class="w-full h-px bg-gradient-to-r from-white/20 to-transparent"></div>
                             <div>
-                                <p class="text-slate-400 text-[10px] uppercase tracking-[0.2em] mb-2">Implementation
+                                <p class="text-slate-200 text-[10px] uppercase tracking-[0.2em] mb-2">Implementation
                                     Velocity</p>
                                 <p class="text-5xl text-white font-light tracking-tight">45 <span
-                                        class="text-2xl text-slate-400">Days</span></p>
+                                        class="text-2xl text-slate-200">Days</span></p>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@ get_header();
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-16 border-t border-slate-100 pt-16">
                 <div class="group">
-                    <div class="mb-6 text-slate-300 group-hover:text-gold transition duration-500"><i
+                    <div class="mb-6 text-slate-100/50 group-hover:text-gold transition duration-500"><i
                             class="fas fa-layer-group text-5xl"></i></div>
                     <h3 class="text-xl font-bold text-navy mb-4">Taxable Surface Area</h3>
                     <p class="text-slate-600 font-light leading-relaxed text-sm">Every dollar of gross wage is currently

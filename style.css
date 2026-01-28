@@ -125,6 +125,12 @@ h5 {
     font-weight: 700;
     transition: color 0.3s;
     cursor: pointer;
+    margin-left: 2rem;
+    /* Fallback spacing */
+}
+
+.nav-link:first-child {
+    margin-left: 0;
 }
 
 .nav-link:hover {
