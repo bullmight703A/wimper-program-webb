@@ -297,21 +297,29 @@ get_header();
                 <div class="bg-navy p-12 text-white relative z-10">
                     <h3 class="text-2xl font-serif mb-8 text-white">Your Team's Lift: <span
                             class="text-gold">Light.</span></h3>
+                    <p class="text-slate-400 text-sm mb-6">We handle the actuarial complexity. Your team handles
+                        standard payroll processing.</p>
                     <ul class="space-y-6">
-                        <li class="flex items-start"><span class="text-gold font-bold mr-4 text-lg">01.</span>
-                            <div><strong class="text-white text-sm block mb-1">Data Ingestion</strong>
+                        <li class="flex items-start">
+                            <span class="text-gold font-bold mr-4 text-lg">01.</span>
+                            <div>
+                                <strong class="text-white text-sm block mb-1">Data Ingestion</strong>
                                 <p class="text-xs text-slate-400 leading-relaxed">Send us a census file (CSV). That is
                                     your primary data entry task.</p>
                             </div>
                         </li>
-                        <li class="flex items-start"><span class="text-gold font-bold mr-4 text-lg">02.</span>
-                            <div><strong class="text-white text-sm block mb-1">The Handshake</strong>
+                        <li class="flex items-start">
+                            <span class="text-gold font-bold mr-4 text-lg">02.</span>
+                            <div>
+                                <strong class="text-white text-sm block mb-1">The Handshake</strong>
                                 <p class="text-xs text-slate-400 leading-relaxed">One 30-minute integration call with
-                                    your payroll provider (ADP, Paychex, etc.).</p>
+                                    your payroll provider (ADP, Paychex, etc.) where we lead the technical setup.</p>
                             </div>
                         </li>
-                        <li class="flex items-start"><span class="text-gold font-bold mr-4 text-lg">03.</span>
-                            <div><strong class="text-white text-sm block mb-1">The Routine</strong>
+                        <li class="flex items-start">
+                            <span class="text-gold font-bold mr-4 text-lg">03.</span>
+                            <div>
+                                <strong class="text-white text-sm block mb-1">The Routine</strong>
                                 <p class="text-xs text-slate-400 leading-relaxed">Processing the monthly deduction
                                     during your standard payroll cycle.</p>
                             </div>
@@ -321,14 +329,25 @@ get_header();
             </div>
             <div class="order-1 md:order-2">
                 <h2 class="text-4xl font-serif text-navy mb-6">We Make The Complex Simple.</h2>
-                <p class="text-slate-600 leading-relaxed mb-6 text-lg">Think of this like "Teaching Coding to Babies."
-                    The tax code is incredibly complex (Python/C++), but the interface we give you is blocks and shapes.
+                <p class="text-slate-600 leading-relaxed mb-6 text-lg">
+                    Think of this like "Teaching Coding to Babies." The tax code is incredibly complex (Python/C++), but
+                    the interface we give you is blocks and shapes.
                 </p>
-                <p class="text-slate-600 leading-relaxed mb-8 text-lg">We have already built the Plan Documents, the
-                    Adjudication Logic, and the Compliance Shield. You simply plug your payroll into our chassis.</p>
-                <button onclick="navigateTo('contact')"
-                    class="inline-flex items-center text-navy font-bold hover:text-gold transition border-b border-navy hover:border-gold pb-1">Request
-                    Audit <i class="fas fa-arrow-right ml-2"></i></button>
+                <p class="text-slate-600 leading-relaxed mb-8 text-lg">
+                    We have already built the Plan Documents, the Adjudication Logic, and the Compliance Shield. You
+                    simply plug your payroll into our chassis. We handle the heavy actuarial lifting so your HR team
+                    doesn't have to become tax experts.
+                </p>
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-check-circle text-green-600 text-2xl"></i>
+                    <span class="font-bold text-navy">Fully Managed Compliance Service</span>
+                </div>
+                <div class="mt-8">
+                    <button onclick="navigateTo('contact')"
+                        class="inline-flex items-center text-navy font-bold hover:text-gold transition border-b border-navy hover:border-gold pb-1">
+                        Request Audit <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
             </div>
         </div>
         <!-- Comparison Table -->
@@ -342,21 +361,26 @@ get_header();
                 <div class="p-8 border-b md:border-b-0 md:border-r border-slate-200 bg-white opacity-50">
                     <h4 class="text-lg font-bold text-slate-600 mb-6">General Wellness Vendor</h4>
                     <ul class="space-y-4 text-sm text-slate-500">
-                        <li class="flex items-center"><i class="fas fa-times text-red-300 mr-3 w-4"></i>Focuses on
+                        <li class="flex items-center"><i class="fas fa-times text-red-300 mr-3 w-4"></i> Focuses on
                             "Steps & Water"</li>
-                        <li class="flex items-center"><i class="fas fa-times text-red-300 mr-3 w-4"></i>Costs Money</li>
-                        <li class="flex items-center"><i class="fas fa-times text-red-300 mr-3 w-4"></i>No Tax
+                        <li class="flex items-center"><i class="fas fa-times text-red-300 mr-3 w-4"></i> Costs Money
+                        </li>
+                        <li class="flex items-center"><i class="fas fa-times text-red-300 mr-3 w-4"></i> No Tax
                             Integration</li>
+                        <li class="flex items-center"><i class="fas fa-times text-red-300 mr-3 w-4"></i> Internal
+                            Compliance Risk</li>
                     </ul>
                 </div>
                 <div class="p-8 bg-navy text-white relative overflow-hidden">
                     <h4 class="text-lg font-bold text-white mb-6">W.I.M.P.E.R. Protocol</h4>
                     <ul class="space-y-4 text-sm text-slate-300">
-                        <li class="flex items-center"><i class="fas fa-check text-gold mr-3 w-4"></i>Focuses on FICA
+                        <li class="flex items-center"><i class="fas fa-check text-gold mr-3 w-4"></i> Focuses on FICA
                         </li>
-                        <li class="flex items-center"><i class="fas fa-check text-gold mr-3 w-4"></i>Makes Money
+                        <li class="flex items-center"><i class="fas fa-check text-gold mr-3 w-4"></i> Makes Money
                             (EBITDA)</li>
-                        <li class="flex items-center"><i class="fas fa-check text-gold mr-3 w-4"></i>Light Admin</li>
+                        <li class="flex items-center"><i class="fas fa-check text-gold mr-3 w-4"></i> Light Admin</li>
+                        <li class="flex items-center"><i class="fas fa-check text-gold mr-3 w-4"></i> Indemnified
+                            Compliance</li>
                     </ul>
                 </div>
             </div>
@@ -406,7 +430,8 @@ get_header();
         <div class="relative pl-24 group">
             <div
                 class="absolute left-0 top-0 w-14 h-14 bg-gold text-navy rounded-full flex items-center justify-center font-serif text-xl border-4 border-slate-50 z-10 shadow-xl">
-                <i class="fas fa-check"></i></div>
+                <i class="fas fa-check"></i>
+            </div>
             <div class="bg-navy p-10 border border-navy shadow-2xl rounded-sm"><span
                     class="text-white/50 text-[10px] font-bold uppercase tracking-[0.2em] mb-3 block">Day 45:
                     Activation</span>
@@ -467,7 +492,8 @@ get_header();
             <div class="order-1 md:order-2">
                 <h2 class="text-4xl font-serif text-navy mb-6">Why Wait? The Timing is Mathematical.</h2>
                 <p class="text-slate-600 leading-relaxed mb-6 text-lg">The optimal time to implement an IUL strategy is
-                    <strong>immediately following W.I.M.P.E.R. adoption.</strong></p>
+                    <strong>immediately following W.I.M.P.E.R. adoption.</strong>
+                </p>
                 <p class="text-slate-600 leading-relaxed mb-8 text-lg">By lowering your tax liability, the W.I.M.P.E.R.
                     protocol effectively "finds" money in your paycheck that was previously going to the IRS. Instead of
                     letting that surplus vanish into daily spending, we capture it instantly to fund a tax-free
