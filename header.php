@@ -15,8 +15,24 @@
 	<!-- FontAwesome -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-	<!-- Tailwind CSS CDN -->
+	<!-- Tailwind CSS CDN with Config -->
 	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: {
+						navy: '#0A192F',
+						gold: '#F7E7CE',
+					},
+					fontFamily: {
+						serif: ['Playfair Display', 'serif'],
+						sans: ['Inter', 'sans-serif'],
+					}
+				}
+			}
+		}
+	</script>
 
 	<!-- Tier 3: Instant Navigation (Speculation Rules API) -->
 	<script type="speculationrules">
@@ -107,23 +123,23 @@
 			</div>
 		</div>
 
-		<!-- Mobile Menu -->
 		<div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100">
 			<div class="flex flex-col p-4 space-y-4">
-				onclick="<?php echo is_front_page() ? "navigateTo('home')" : "window.location.href='" . home_url('/') . "'"; ?>"
-				class="nav-link text-slate-600">The Vision</span>
+				<span
+					onclick="<?php echo is_front_page() ? "navigateTo('home')" : "window.location.href='" . home_url('/') . "'"; ?>"
+					class="nav-link text-slate-800">The Vision</span>
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('method')" : "window.location.href='" . home_url('/') . "#method'"; ?>"
-					class="nav-link text-slate-600">The Chassis</span>
+					class="nav-link text-slate-800">The Chassis</span>
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('iul')" : "window.location.href='" . home_url('/') . "#iul'"; ?>"
-					class="nav-link text-slate-600">Wealth Strategy</span>
+					class="nav-link text-slate-800">Wealth Strategy</span>
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('timeline')" : "window.location.href='" . home_url('/') . "#timeline'"; ?>"
-					class="nav-link text-slate-600">The Execution</span>
+					class="nav-link text-slate-800">The Execution</span>
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('blog')" : "window.location.href='" . home_url('/') . "#blog'"; ?>"
-					class="nav-link text-slate-600">Insights</span>
+					class="nav-link text-slate-800">Insights</span>
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('contact')" : "window.location.href='" . home_url('/') . "#contact'"; ?>"
 					class="nav-link text-gold font-bold">Audit Eligibility</span>

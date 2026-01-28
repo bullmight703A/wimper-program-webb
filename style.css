@@ -24,8 +24,9 @@ All rights reserved. This theme is proprietary software.
     --slate-50: #f8fafc;
     --slate-100: #f1f5f9;
     --slate-200: #e2e8f0;
-    --slate-400: #94a3b8;
-    --slate-600: #475569;
+    --slate-400: #cbd5e1;
+    /* Brighter slate for better contrast */
+    --slate-600: #94a3b8;
 }
 
 /**
@@ -64,8 +65,8 @@ All rights reserved. This theme is proprietary software.
 /* W.I.M.P.E.R. SPA Styles */
 body {
     font-family: 'Inter', sans-serif;
-    color: #334155;
-    background-color: #f8fafc;
+    color: #e2e8f0;
+    background-color: #020617;
     overflow-x: hidden;
 }
 
