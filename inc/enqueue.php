@@ -72,7 +72,16 @@ function kidazzle_enqueue_assets()
                 KIDAZZLE_THEME_URI . '/assets/css/main.css',
                 array(),
                 $css_version,
-                'all' // Load normally to prevent FOUC
+                'all'
+        );
+
+        // Main Theme Stylesheet (style.css)
+        wp_enqueue_style(
+                'kidazzle-style',
+                get_stylesheet_uri(),
+                array('kidazzle-main'),
+                KIDAZZLE_VERSION,
+                'all'
         );
 
         // CRITICAL ACCESSIBILITY FIXES (Injected Inline to bypass cache/build)
