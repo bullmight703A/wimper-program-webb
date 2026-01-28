@@ -14,7 +14,8 @@ if (!defined('ABSPATH')) {
 <section class="py-24 bg-white border-t border-slate-100">
     <div class="container mx-auto px-4 text-center mb-12">
         <h2 class="text-4xl font-extrabold text-slate-900">
-            <?php esc_html_e('The KIDazzle Growth Journey', 'kidazzle'); ?></h2>
+            <?php esc_html_e('The KIDazzle Growth Journey', 'kidazzle'); ?>
+        </h2>
         <p class="text-slate-600 mt-4 max-w-2xl mx-auto">
             <?php esc_html_e('See how our curriculum adapts to your child\'s developing mind at every stage.', 'kidazzle'); ?>
         </p>
@@ -53,12 +54,12 @@ if (!defined('ABSPATH')) {
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Growth Data
+        // Growth Data with hex colors instead of Tailwind classes
         const growthData = {
-            infants: { label: "Infants", sub: "6w-12m", desc: "Focus on trust, sensory, and bonding.", stats: [{ val: 90, col: "bg-red-500", lbl: "Motor" }, { val: 70, col: "bg-orange-400", lbl: "Sensory" }, { val: 80, col: "bg-yellow-400", lbl: "Social" }, { val: 40, col: "bg-green-500", lbl: "Lang" }, { val: 20, col: "bg-cyan-500", lbl: "Logic" }] },
-            toddlers: { label: "Toddlers", sub: "12m-24m", desc: "Active exploration and vocabulary.", stats: [{ val: 85, col: "bg-red-500", lbl: "Motor" }, { val: 60, col: "bg-orange-400", lbl: "Sensory" }, { val: 70, col: "bg-yellow-400", lbl: "Social" }, { val: 85, col: "bg-green-500", lbl: "Lang" }, { val: 40, col: "bg-cyan-500", lbl: "Logic" }] },
-            preschool: { label: "Preschool", sub: "2y-3y", desc: "Independence and early academics.", stats: [{ val: 60, col: "bg-red-500", lbl: "Motor" }, { val: 85, col: "bg-orange-400", lbl: "Sensory" }, { val: 90, col: "bg-yellow-400", lbl: "Social" }, { val: 80, col: "bg-green-500", lbl: "Lang" }, { val: 60, col: "bg-cyan-500", lbl: "Logic" }] },
-            prek: { label: "Pre-K", sub: "4y-5y", desc: "Kindergarten readiness and literacy.", stats: [{ val: 50, col: "bg-red-500", lbl: "Motor" }, { val: 70, col: "bg-orange-400", lbl: "Sensory" }, { val: 85, col: "bg-yellow-400", lbl: "Social" }, { val: 95, col: "bg-green-500", lbl: "Lang" }, { val: 90, col: "bg-cyan-500", lbl: "Logic" }] }
+            infants: { label: "Infants", sub: "6w-12m", desc: "Focus on trust, sensory, and bonding.", stats: [{ val: 90, color: "#ef4444", lbl: "Motor" }, { val: 70, color: "#fb923c", lbl: "Sensory" }, { val: 80, color: "#facc15", lbl: "Social" }, { val: 40, color: "#22c55e", lbl: "Lang" }, { val: 20, color: "#06b6d4", lbl: "Logic" }] },
+            toddlers: { label: "Toddlers", sub: "12m-24m", desc: "Active exploration and vocabulary.", stats: [{ val: 85, color: "#ef4444", lbl: "Motor" }, { val: 60, color: "#fb923c", lbl: "Sensory" }, { val: 70, color: "#facc15", lbl: "Social" }, { val: 85, color: "#22c55e", lbl: "Lang" }, { val: 40, color: "#06b6d4", lbl: "Logic" }] },
+            preschool: { label: "Preschool", sub: "2y-3y", desc: "Independence and early academics.", stats: [{ val: 60, color: "#ef4444", lbl: "Motor" }, { val: 85, color: "#fb923c", lbl: "Sensory" }, { val: 90, color: "#facc15", lbl: "Social" }, { val: 80, color: "#22c55e", lbl: "Lang" }, { val: 60, color: "#06b6d4", lbl: "Logic" }] },
+            prek: { label: "Pre-K", sub: "4y-5y", desc: "Kindergarten readiness and literacy.", stats: [{ val: 50, color: "#ef4444", lbl: "Motor" }, { val: 70, color: "#fb923c", lbl: "Sensory" }, { val: 85, color: "#facc15", lbl: "Social" }, { val: 95, color: "#22c55e", lbl: "Lang" }, { val: 90, color: "#06b6d4", lbl: "Logic" }] }
         };
 
         // Render Function
@@ -73,9 +74,9 @@ if (!defined('ABSPATH')) {
             // Content
             document.getElementById('stage-content').innerHTML = `<h3 class="text-2xl font-bold mb-2 text-slate-900">${data.label}</h3><span class="bg-slate-200 text-slate-700 px-2 py-1 rounded text-sm font-bold mb-4 inline-block">${data.sub}</span><p class="text-slate-600">${data.desc}</p>`;
 
-            // Bars
+            // Bars with inline styles
             document.getElementById('graph-bars').innerHTML = data.stats.map(s =>
-                `<div class="w-full mx-1 relative group h-full flex items-end"><div class="w-full rounded-t-lg ${s.col} graph-bar relative" style="height:${s.val}%"><div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">${s.val}%</div></div></div>`
+                `<div class="w-full mx-1 relative group h-full flex items-end"><div class="w-full rounded-t-lg graph-bar relative" style="height:${s.val}%; background-color: ${s.color}"><div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">${s.val}%</div></div></div>`
             ).join('');
 
             // Labels
