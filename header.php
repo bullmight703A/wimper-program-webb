@@ -57,93 +57,122 @@
 	<a href="#main-content"
 		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-kidazzle-blueDark p-4 z-[100] rounded-lg shadow-lg"><?php _e('Skip to content', 'kidazzle-theme'); ?></a>
 
-	<!-- TOP UTILITY BAR -->
-	<div
-		class="bg-brand-cream text-brand-ink/60 text-[10px] font-bold uppercase tracking-widest py-2 px-4 hidden md:flex justify-between items-center border-b border-brand-ink/5 fixed w-full top-0 z-50 h-10">
-		<div class="flex gap-4 items-center">
-			<a href="<?php echo home_url('/feasibility-audit'); ?>"
-				class="flex items-center gap-1 cursor-pointer hover:text-kidazzle-blue transition">
-				<i class="fa-solid fa-location-dot text-kidazzle-red"></i> W.I.M.P.E.R. Feasibility Audit
-			</a>
-			<span class="flex items-center gap-1">
-				<i class="fa-solid fa-phone text-kidazzle-green"></i> <?php echo esc_html($header_phone); ?>
-			</span>
-		</div>
-		<div class="flex gap-6">
-			<a href="<?php echo home_url('/careers'); ?>"
-				class="hover:text-kidazzle-blue transition flex items-center gap-1">Careers</a>
-			<a href="<?php echo home_url('/teacher-portal'); ?>"
-				class="hover:text-kidazzle-blue transition flex items-center gap-1 text-kidazzle-orange">
-				<i class="fa-solid fa-users-viewfinder"></i> Teacher Portal
-			</a>
-		</div>
-	</div>
-
-
-	<!-- MAIN NAVIGATION -->
-	<nav id="navbar"
-		class="fixed top-10 w-full z-40 transition-all duration-300 bg-white/90 backdrop-blur-md py-4 shadow-sm">
-		<div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
-			<!-- Logo -->
-			<a href="<?php echo home_url(); ?>" class="flex items-center gap-2 cursor-pointer">
-				<div class="h-12 md:h-16 flex items-center relative custom-logo-wrapper"
-					style="max-width: 250px; max-height: 80px; overflow: hidden;">
-					<?php
-					if (has_custom_logo()) {
-						the_custom_logo();
-					} else {
-						echo '<h1 class="text-3xl font-extrabold text-black pl-2 tracking-tighter hidden md:block">KID<span class="text-kidazzle-yellow">azzle</span></h1>';
-					}
-					?>
+	<!-- NAVIGATION -->
+	<nav class="bg-white/95 backdrop-blur-xl border-b border-slate-200 fixed w-full z-50 transition-all duration-300">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between h-24">
+				<div class="flex items-center cursor-pointer"
+					onclick="<?php echo is_front_page() ? "navigateTo('home')" : "window.location.href='" . home_url('/') . "'"; ?>">
+					<div class="flex flex-col border-l-4 border-gold pl-4 transition hover:border-navy">
+						<span
+							class="text-xl font-bold text-slate-900 tracking-tight font-serif leading-none">W.I.M.P.E.R.</span>
+						<span class="text-[9px] uppercase tracking-[0.1em] text-slate-500 font-semibold mt-1">Wellness &
+							Integrated Medical Plan Expense Reimbursement</span>
+					</div>
 				</div>
-				<style>
-					.custom-logo-wrapper .custom-logo {
-						max-height: 100% !important;
-						width: auto !important;
-						height: auto !important;
-						object-fit: contain;
-						display: block;
-					}
 
-					/* Extra safety for the img tag itself if WP outputs it without class */
-					.custom-logo-wrapper img {
-						max-height: 80px !important;
-						width: auto !important;
-						display: block;
-					}
-				</style>
-			</a>
+				<div class="hidden lg:flex items-center space-x-12">
+					<span
+						onclick="<?php echo is_front_page() ? "navigateTo('home')" : "window.location.href='" . home_url('/') . "'"; ?>"
+						id="nav-home" class="nav-link active text-slate-600">The Vision</span>
+					<span
+						onclick="<?php echo is_front_page() ? "navigateTo('method')" : "window.location.href='" . home_url('/') . "#method'"; ?>"
+						id="nav-method" class="nav-link text-slate-600">The Chassis</span>
+					<span
+						onclick="<?php echo is_front_page() ? "navigateTo('iul')" : "window.location.href='" . home_url('/') . "#iul'"; ?>"
+						id="nav-iul" class="nav-link text-slate-600">Wealth Strategy</span>
+					<span
+						onclick="<?php echo is_front_page() ? "navigateTo('timeline')" : "window.location.href='" . home_url('/') . "#timeline'"; ?>"
+						id="nav-timeline" class="nav-link text-slate-600">The Execution</span>
+					<span
+						onclick="<?php echo is_front_page() ? "navigateTo('blog')" : "window.location.href='" . home_url('/') . "#blog'"; ?>"
+						id="nav-blog" class="nav-link text-slate-600">Insights</span>
+					<button
+						onclick="<?php echo is_front_page() ? "navigateTo('contact')" : "window.location.href='" . home_url('/') . "#contact'"; ?>"
+						class="bg-navy text-white px-8 py-3 rounded-sm text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-gold hover:text-navy transition duration-300 shadow-lg">
+						Verify Eligibility
+					</button>
+				</div>
 
-			<!-- Desktop Links (Now dynamic) -->
-			<div class="hidden lg:flex items-center gap-6 font-bold text-brand-ink text-xs tracking-[0.15em] uppercase">
-				<?php kidazzle_primary_nav(); ?>
-				<a href="<?php echo esc_url($header_cta_url); ?>"
-					class="bg-brand-ink text-white px-6 py-3 rounded-full hover:bg-kidazzle-blue transition-all shadow-md ml-2 hover:-translate-y-0.5"><?php echo esc_html($header_cta_text); ?></a>
+				<!-- Mobile Menu Button -->
+				<div class="lg:hidden flex items-center">
+					<button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+						class="text-slate-600 focus:outline-none">
+						<i class="fas fa-bars text-2xl"></i>
+					</button>
+				</div>
 			</div>
-
-
-			<!-- Mobile Toggle -->
-			<button class="lg:hidden text-brand-ink" id="mobile-menu-btn" aria-label="Open Menu">
-				<i class="fa-solid fa-bars text-2xl"></i>
-			</button>
 		</div>
 
-		<!-- Mobile Menu (Now dynamic) -->
-		<div id="mobile-menu" class="hidden fixed inset-0 bg-white z-50 pt-24 px-6 overflow-y-auto">
-			<button id="close-menu-btn" class="absolute top-4 right-4 text-brand-ink" aria-label="Close Menu">
-				<i class="fa-solid fa-xmark text-3xl"></i>
-			</button>
-			<div class="flex flex-col gap-6 font-bold text-2xl text-brand-ink pt-4 uppercase tracking-widest">
-				<?php kidazzle_mobile_nav(); ?>
-				<a href="<?php echo home_url('/contact'); ?>"
-					class="text-left py-4 border-t border-brand-ink/5 mt-4">Contact Us</a>
+		<!-- Mobile Menu -->
+		<div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100">
+			<div class="flex flex-col p-4 space-y-4">
+				<span
+					onclick="<?php echo is_front_page() ? "navigateTo('home')" : "window.location.href='" . home_url('/') . "'"; ?>"
+					class="nav-link text-slate-600">The Vision</span>
+				<span
+					onclick="<?php echo is_front_page() ? "navigateTo('method')" : "window.location.href='" . home_url('/') . "#method'"; ?>"
+					class="nav-link text-slate-600">The Chassis</span>
+				<span
+					onclick="<?php echo is_front_page() ? "navigateTo('iul')" : "window.location.href='" . home_url('/') . "#iul'"; ?>"
+					class="nav-link text-slate-600">Wealth Strategy</span>
+				<span
+					onclick="<?php echo is_front_page() ? "navigateTo('timeline')" : "window.location.href='" . home_url('/') . "#timeline'"; ?>"
+					class="nav-link text-slate-600">The Execution</span>
+				<span
+					onclick="<?php echo is_front_page() ? "navigateTo('contact')" : "window.location.href='" . home_url('/') . "#contact'"; ?>"
+					class="nav-link text-gold font-bold">Audit Eligibility</span>
 			</div>
 		</div>
 	</nav>
 
 
 	<!-- MAIN CONTENT WRAPPER -->
-	<main class="mt-20 min-h-screen">
+	<main class="min-h-screen">
+		<script>
+			// SPA ROUTING LOGIC
+			function navigateTo(pageId) {
+				// If we are on front page, toggle visibility
+				const pages = document.querySelectorAll('.page-view');
+				if (pages.length > 0) {
+					// Update View
+					pages.forEach(el => el.classList.remove('active'));
+					const targetPage = document.getElementById(pageId);
+					if (targetPage) targetPage.classList.add('active');
+
+					// Update Nav State
+					document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+					const activeLink = document.getElementById('nav-' + pageId);
+					if (activeLink) activeLink.classList.add('active');
+
+					// Update URL Hash without jumping
+					history.pushState(null, null, '#' + (pageId === 'home' ? '' : pageId));
+
+					// Scroll Top
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+
+					// Close Mobile Menu if open
+					const mobileMenu = document.getElementById('mobile-menu');
+					if (mobileMenu) mobileMenu.classList.add('hidden');
+				} else {
+					// Fallback for non-SPA pages: redirect to home with hash
+					window.location.href = '<?php echo home_url('/'); ?>#' + pageId;
+				}
+			}
+
+			// Handle initial hash on page load
+			window.addEventListener('DOMContentLoaded', () => {
+				const hash = window.location.hash.replace('#', '');
+				if (hash && document.getElementById(hash)) {
+					navigateTo(hash);
+				}
+			});
+
+			function scrollToId(elementId) {
+				const element = document.getElementById(elementId);
+				if (element) element.scrollIntoView({ behavior: 'smooth' });
+			}
+		</script>
 		<script>
 			document.addEventListener('DOMContentLoaded', function () {
 				const menuBtn = document.getElementById('mobile-menu-btn');

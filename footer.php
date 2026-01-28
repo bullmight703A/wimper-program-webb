@@ -22,97 +22,54 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 </main>
 
 <!-- FOOTER -->
-<footer class="bg-brand-ink text-white/60 py-16 relative mt-12">
-	<div
-		class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white p-2 rounded-full shadow-lg border border-brand-ink/5">
-		<img src="<?php echo get_template_directory_uri(); ?>/assets/images/kidazzle-logo-140x140.webp"
-			alt="KIDazzle Logo" class="h-10 w-auto"
-			onerror="this.src='https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/64ef561bad8c716760dfd435.png'">
-	</div>
-
-	<div class="container mx-auto px-4 md:px-6 pt-8">
-		<div class="grid md:grid-cols-4 gap-12 mb-12">
-			<div>
-
-				<?php if ($has_social): ?>
-					<div class="flex gap-4 mt-4">
-						<?php if ($footer_facebook): ?>
-							<a href="<?php echo esc_url($footer_facebook); ?>"
-								class="text-white/40 hover:text-kidazzle-blue transition" target="_blank" rel="noopener"
-								aria-label="Facebook"><i class="fa-brands fa-facebook text-xl"></i></a>
-						<?php endif; ?>
-						<?php if ($footer_instagram): ?>
-							<a href="<?php echo esc_url($footer_instagram); ?>"
-								class="text-white/40 hover:text-kidazzle-red transition" target="_blank" rel="noopener"
-								aria-label="Instagram"><i class="fa-brands fa-instagram text-xl"></i></a>
-						<?php endif; ?>
-						<?php if ($footer_linkedin): ?>
-							<a href="<?php echo esc_url($footer_linkedin); ?>"
-								class="text-white/40 hover:text-kidazzle-blue transition" target="_blank" rel="noopener"
-								aria-label="LinkedIn"><i class="fa-brands fa-linkedin text-xl"></i></a>
-						<?php endif; ?>
-						<?php if ($footer_twitter): ?>
-							<a href="<?php echo esc_url($footer_twitter); ?>" class="text-white/40 hover:text-white transition"
-								target="_blank" rel="noopener" aria-label="Twitter/X"><i
-									class="fa-brands fa-x-twitter text-xl"></i></a>
-						<?php endif; ?>
-						<?php if ($footer_youtube): ?>
-							<a href="<?php echo esc_url($footer_youtube); ?>"
-								class="text-white/40 hover:text-kidazzle-red transition" target="_blank" rel="noopener"
-								aria-label="YouTube"><i class="fa-brands fa-youtube text-xl"></i></a>
-						<?php endif; ?>
-					</div>
-				<?php endif; ?>
+<footer class="bg-navy text-white py-24 border-t border-white/5">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+			<div class="col-span-1 md:col-span-1">
+				<div class="flex flex-col border-l-4 border-gold pl-4 mb-8">
+					<span
+						class="text-xl font-bold text-white tracking-tight font-serif leading-none">W.I.M.P.E.R.</span>
+					<span class="text-[9px] uppercase tracking-[0.1em] text-slate-500 font-semibold mt-1">Wellness &
+						Integrated Medical Plan Expense Reimbursement</span>
+				</div>
+				<p class="text-slate-500 text-xs leading-relaxed font-light">
+					The proprietary financial chassis for self-funded EBITDA expansion and payroll tax optimization.
+				</p>
 			</div>
 			<div>
-				<h4 class="text-white font-bold mb-6 italic tracking-widest uppercase text-xs">Quick Links</h4>
-				<div class="space-y-3 text-sm flex flex-col">
-					<?php kidazzle_footer_nav(); ?>
+				<h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Navigation</h4>
+				<ul class="space-y-4 text-slate-500 text-xs font-bold uppercase tracking-widest">
+					<li><span onclick="navigateTo('home')" class="hover:text-gold transition cursor-pointer">The
+							Vision</span></li>
+					<li><span onclick="navigateTo('method')" class="hover:text-gold transition cursor-pointer">The
+							Chassis</span></li>
+					<li><span onclick="navigateTo('iul')" class="hover:text-gold transition cursor-pointer">Wealth
+							Strategy</span></li>
+					<li><span onclick="navigateTo('blog')"
+							class="hover:text-gold transition cursor-pointer">Insights</span></li>
+				</ul>
+			</div>
+			<div>
+				<h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Legal</h4>
+				<ul class="space-y-4 text-slate-500 text-xs font-bold uppercase tracking-widest">
+					<li><a href="#" class="hover:text-gold transition">Privacy Protocol</a></li>
+					<li><a href="#" class="hover:text-gold transition">Compliance Shield</a></li>
+					<li><a href="#" class="hover:text-gold transition">Terms of Service</a></li>
+				</ul>
+			</div>
+			<div>
+				<h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Connection</h4>
+				<div class="flex space-x-6 text-slate-500">
+					<a href="#" class="hover:text-gold transition"><i class="fab fa-linkedin-in text-xl"></i></a>
+					<a href="#" class="hover:text-gold transition"><i class="fab fa-twitter text-xl"></i></a>
 				</div>
 			</div>
-			<div>
-				<h4 class="text-white font-bold mb-6 italic tracking-widest uppercase text-xs">Resources</h4>
-				<ul class="space-y-3 text-sm">
-					<li><a href="<?php echo home_url('/teacher-portal'); ?>"
-							class="hover:text-kidazzle-blue transition">Teacher Portal</a></li>
-					<li><a href="<?php echo home_url('/resources'); ?>"
-							class="hover:text-kidazzle-yellow transition">Parent Resources</a></li>
-				</ul>
-			</div>
-			<div>
-				<h4 class="text-white font-bold mb-6 italic tracking-widest uppercase text-xs">Contact</h4>
-				<ul class="space-y-3 text-sm">
-					<?php if ($footer_address): ?>
-						<li><?php echo esc_html($footer_address); ?></li>
-					<?php endif; ?>
-					<?php if ($footer_phone): ?>
-						<li class="font-bold text-white text-lg"><?php echo esc_html($footer_phone); ?></li>
-					<?php endif; ?>
-					<?php if ($footer_email): ?>
-						<li><a href="mailto:<?php echo esc_attr($footer_email); ?>"
-								class="hover:text-kidazzle-yellow transition"><?php echo esc_html($footer_email); ?></a>
-						</li>
-					<?php endif; ?>
-					<li><a href="<?php echo home_url('/contact'); ?>"
-							class="text-kidazzle-yellow underline mt-2 block">Open Contact
-							Form</a></li>
-				</ul>
-			</div>
 		</div>
-
-		<div class="border-t border-white/10 pt-8 text-center text-xs text-white/40">
-			<span>&copy; 2026 W.I.M.P.E.R. Program Inc. All rights reserved.</span>
+		<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+			<p class="text-[10px] text-slate-600 uppercase tracking-widest">© 2026 W.I.M.P.E.R. Program Inc. All rights
+				reserved.</p>
+			<p class="text-[10px] text-slate-600 uppercase tracking-widest">Proprietary Financial Architecture</p>
 		</div>
-
-		<!-- Footer SEO Text -->
-		<?php
-		$seo_text = get_theme_mod('kidazzle_footer_seo_text');
-		if ($seo_text): ?>
-			<div
-				class="border-t border-white/10 pt-6 mt-6 text-[11px] text-white/60 leading-relaxed text-center max-w-5xl mx-auto">
-				<?php echo wp_kses_post($seo_text); ?>
-			</div>
-		<?php endif; ?>
 	</div>
 </footer>
 
