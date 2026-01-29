@@ -796,10 +796,10 @@ get_header();
     <div class="max-w-3xl mx-auto px-4 py-20">
         <div class="form-container">
             <iframe src="https://api.leadconnectorhq.com/widget/form/bnJjCYqGaVFUFp4v8wp6"
-                style="width:100%;height:1200px;border:none;border-radius:4px" id="inline-bnJjCYqGaVFUFp4v8wp6"
+                style="width:100%;height:700px;border:none;border-radius:4px" id="inline-bnJjCYqGaVFUFp4v8wp6"
                 data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
                 data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate"
-                data-deactivation-value="" data-form-name="Calendar Form" data-height="1200"
+                data-deactivation-value="" data-form-name="Calendar Form" data-height="700"
                 data-layout-iframe-id="inline-bnJjCYqGaVFUFp4v8wp6" data-form-id="bnJjCYqGaVFUFp4v8wp6"
                 title="Calendar Form">
             </iframe>
