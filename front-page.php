@@ -30,7 +30,7 @@ get_header();
                         <span class="italic text-slate-200">Taxable Surface Area.</span>
                     </h1>
                     <p
-                        class="text-lg text-slate-100/50 mb-12 leading-relaxed max-w-2xl font-light border-l border-white/20 pl-6">
+                        class="text-lg text-slate-100 mb-12 leading-relaxed max-w-2xl font-light border-l border-white/20 pl-6">
                         We don't sell "wellness." We engineer a proprietary <strong>Section 125/105 Chassis</strong>
                         that physically removes payroll from the FICA taxation zone. The result is a self-funded EBITDA
                         expansion that no competitor can match.
@@ -41,7 +41,7 @@ get_header();
                             Model The Savings
                         </button>
                         <button onclick="navigateTo('method')"
-                            class="group flex items-center text-slate-100/50 text-xs font-bold uppercase tracking-[0.15em] hover:text-white transition px-6">
+                            class="group flex items-center text-slate-100 text-xs font-bold uppercase tracking-[0.15em] hover:text-white transition px-6">
                             <span
                                 class="border-b border-slate-600 group-hover:border-gold pb-1 transition duration-300">Inspect
                                 The Engine</span>
@@ -82,19 +82,18 @@ get_header();
     <section class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
-                <span
-                    class="text-navy text-xs font-black uppercase tracking-[0.2em] mb-4 block drop-shadow-sm opacity-80">The
+                <span class="text-navy text-xs font-black uppercase tracking-[0.2em] mb-4 block drop-shadow-sm">The
                     Paradigm
                     Shift</span>
                 <h2 class="text-4xl md:text-5xl font-serif text-navy mb-6">Why "Standard" Payroll is Obsolete</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto text-lg font-light">
+                <p class="text-slate-900 max-w-2xl mx-auto text-lg font-bold">
                     The old model accepts tax liability as a fixed cost. The new model treats tax liability as an
                     engineering problem to be solved.
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-16 border-t border-slate-100 pt-16">
                 <div class="group">
-                    <div class="mb-6 text-gold text-6xl mb-8 drop-shadow-[0_0_15px_rgba(197,160,33,0.3)] transition"><i
+                    <div class="mb-6 text-gold text-6xl mb-8 drop-shadow-[0_0_20px_rgba(197,160,33,0.5)] transition"><i
                             class="fas fa-layer-group text-5xl"></i></div>
                     <h3 class="text-xl font-bold text-navy mb-4">Taxable Surface Area</h3>
                     <p class="text-slate-600 font-light leading-relaxed text-sm">Every dollar of gross wage is currently
@@ -102,7 +101,7 @@ get_header();
                         reducing the surface area the IRS can touch.</p>
                 </div>
                 <div class="group">
-                    <div class="mb-6 text-gold text-6xl mb-8 drop-shadow-[0_0_15px_rgba(197,160,33,0.3)] transition"><i
+                    <div class="mb-6 text-gold text-6xl mb-8 drop-shadow-[0_0_20px_rgba(197,160,33,0.5)] transition"><i
                             class="fas fa-cogs text-5xl"></i></div>
                     <h3 class="text-xl font-bold text-navy mb-4">The Claims Engine</h3>
                     <p class="text-slate-600 font-light leading-relaxed text-sm">Competitors fail because they lack the
@@ -111,7 +110,7 @@ get_header();
                     </p>
                 </div>
                 <div class="group">
-                    <div class="mb-6 text-gold text-6xl mb-8 drop-shadow-[0_0_15px_rgba(197,160,33,0.3)] transition"><i
+                    <div class="mb-6 text-gold text-6xl mb-8 drop-shadow-[0_0_20px_rgba(197,160,33,0.5)] transition"><i
                             class="fas fa-shield-alt text-5xl"></i></div>
                     <h3 class="text-xl font-bold text-navy mb-4">Indemnified Compliance</h3>
                     <p class="text-slate-600 font-light leading-relaxed text-sm">We don't just provide software; we
@@ -284,11 +283,10 @@ get_header();
 <div id="method" class="page-view flex-grow">
     <header class="page-header-spacer">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <span
-                class="text-navy text-xs font-black uppercase tracking-[0.2em] mb-6 block drop-shadow-sm opacity-80">The
+            <span class="text-navy text-xs font-black uppercase tracking-[0.2em] mb-6 block drop-shadow-sm">The
                 Proprietary Twist</span>
             <h1 class="text-5xl md:text-6xl font-serif text-navy mb-6">The W.I.M.P.E.R. Chassis</h1>
-            <p class="text-slate-800 text-lg font-medium max-w-2xl mx-auto leading-relaxed">
+            <p class="text-slate-900 text-lg font-bold max-w-2xl mx-auto leading-relaxed">
                 Most organizations fail because they lack the automated "Claims Trigger." Here is how we engineered the
                 compliant solution.
             </p>
@@ -359,11 +357,11 @@ get_header();
         <div class="bg-white shadow-2xl border border-slate-100 rounded-sm overflow-hidden">
             <div class="grid grid-cols-1 md:grid-cols-3">
                 <div
-                    class="bg-slate-50 p-8 border-b md:border-b-0 md:border-r border-slate-200 flex flex-col justify-center">
+                    class="bg-white/10 p-8 border-b md:border-b-0 md:border-r border-slate-200 flex flex-col justify-center">
                     <h3 class="text-xl font-bold text-slate-200 uppercase tracking-widest mb-2">Market Analysis</h3>
                     <p class="text-xs text-slate-500">Why general vendors fail.</p>
                 </div>
-                <div class="p-8 border-b md:border-b-0 md:border-r border-slate-200 bg-white opacity-50">
+                <div class="p-8 border-b md:border-b-0 md:border-r border-slate-200 bg-white">
                     <h4 class="text-lg font-bold text-slate-600 mb-6">General Wellness Vendor</h4>
                     <ul class="space-y-4 text-sm text-slate-500">
                         <li class="flex items-center"><i class="fas fa-times text-red-300 mr-3 w-4"></i> Focuses on
@@ -399,8 +397,7 @@ get_header();
 <div id="timeline" class="page-view flex-grow">
     <header class="page-header-spacer">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <span
-                class="text-navy text-xs font-black uppercase tracking-[0.2em] mb-6 block drop-shadow-sm opacity-80">Speed
+            <span class="text-navy text-xs font-black uppercase tracking-[0.2em] mb-6 block drop-shadow-sm">Speed
                 to
                 Savings</span>
             <h1 class="text-6xl font-serif text-navy mb-6">The 45-Day Protocol</h1>
@@ -485,12 +482,11 @@ get_header();
     <!-- PAGE HEADER -->
     <header class="page-header-spacer">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <span
-                class="text-navy text-xs font-black uppercase tracking-[0.2em] mb-6 block drop-shadow-sm opacity-80">Phase
+            <span class="text-navy text-xs font-black uppercase tracking-[0.2em] mb-6 block drop-shadow-sm">Phase
                 2:
                 Wealth Accumulation</span>
             <h1 class="text-5xl md:text-6xl font-serif text-navy mb-6">The Zero-Cost Wealth Engine</h1>
-            <p class="text-slate-800 text-lg font-medium max-w-2xl mx-auto leading-relaxed">
+            <p class="text-slate-900 text-lg font-bold max-w-2xl mx-auto leading-relaxed">
                 You’ve stabilized the paycheck. Now, secure the future. Using W.I.M.P.E.R. savings to fund tax-free
                 Indexed Universal Life (IUL) strategies.
             </p>
@@ -529,11 +525,11 @@ get_header();
             <div class="order-1 md:order-2">
                 <h2 class="text-4xl font-serif text-navy mb-6 font-black tracking-tight">Why Wait? The Timing is
                     Mathematical.</h2>
-                <p class="text-slate-700 leading-relaxed mb-6 text-lg font-medium">
+                <p class="text-slate-900 leading-relaxed mb-6 text-xl font-bold">
                     The optimal time to implement an IUL strategy is <strong>immediately following W.I.M.P.E.R.
                         adoption.</strong>
                 </p>
-                <p class="text-slate-700 leading-relaxed mb-8 text-lg font-medium">
+                <p class="text-slate-900 leading-relaxed mb-8 text-xl font-bold">
                     By lowering your tax liability, the W.I.M.P.E.R. protocol effectively "finds" money in your paycheck
                     that was previously going to the IRS. Instead of letting that surplus vanish into daily spending, we
                     capture it instantly to fund a tax-free retirement vehicle.
