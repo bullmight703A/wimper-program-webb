@@ -182,8 +182,6 @@ h5 {
     border-top: 4px solid #020617;
     border-radius: 2px;
     overflow: hidden;
-    min-height: 1500px;
-    /* Increased to avoid scrollbars per user request */
 }
 
 .custom-form input,

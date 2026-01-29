@@ -793,7 +793,7 @@ get_header();
     </header>
 
     <!-- EMBEDDED FORM CONTAINER -->
-    <div class="max-w-3xl mx-auto px-4 py-20">
+    <div class="max-w-3xl mx-auto px-4 py-10">
         <div class="form-container">
             <iframe src="https://api.leadconnectorhq.com/widget/form/bnJjCYqGaVFUFp4v8wp6"
                 style="width:100%;height:700px;border:none;border-radius:4px" id="inline-bnJjCYqGaVFUFp4v8wp6"
