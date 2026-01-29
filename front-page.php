@@ -331,23 +331,24 @@ get_header();
                 </div>
             </div>
             <div class="order-1 md:order-2">
-                <h2 class="text-4xl font-serif text-navy mb-6">We Make The Complex Simple.</h2>
-                <p class="text-slate-900 leading-relaxed mb-6 text-xl font-bold">
+                <h2 class="text-4xl font-serif text-white mb-6 font-black drop-shadow-sm">We Make The Complex Simple.
+                </h2>
+                <p class="text-white leading-relaxed mb-6 text-xl font-bold">
                     Think of this like "Teaching Coding to Babies." The tax code is incredibly complex (Python/C++), but
                     the interface we give you is blocks and shapes.
                 </p>
-                <p class="text-slate-900 leading-relaxed mb-8 text-xl font-bold">
+                <p class="text-white leading-relaxed mb-8 text-xl font-bold">
                     We have already built the Plan Documents, the Adjudication Logic, and the Compliance Shield. You
                     simply plug your payroll into our chassis. We handle the heavy actuarial lifting so your HR team
                     doesn't have to become tax experts.
                 </p>
                 <div class="flex items-center space-x-4">
-                    <i class="fas fa-check-circle text-green-600 text-2xl"></i>
-                    <span class="font-bold text-navy">Fully Managed Compliance Service</span>
+                    <i class="fas fa-check-circle text-gold text-2xl"></i>
+                    <span class="font-bold text-white">Fully Managed Compliance Service</span>
                 </div>
                 <div class="mt-8">
                     <button onclick="navigateTo('contact')"
-                        class="inline-flex items-center text-navy font-bold hover:text-gold transition border-b border-navy hover:border-gold pb-1">
+                        class="inline-flex items-center text-gold font-bold hover:text-white transition border-b border-gold hover:border-white pb-1">
                         Request Audit <i class="fas fa-arrow-right ml-2"></i>
                     </button>
                 </div>
@@ -357,26 +358,26 @@ get_header();
         <div class="bg-white shadow-2xl border border-slate-100 rounded-sm overflow-hidden">
             <div class="grid grid-cols-1 md:grid-cols-3">
                 <div
-                    class="bg-white/10 p-8 border-b md:border-b-0 md:border-r border-slate-200 flex flex-col justify-center">
-                    <h3 class="text-xl font-bold text-slate-200 uppercase tracking-widest mb-2">Market Analysis</h3>
-                    <p class="text-xs text-slate-500">Why general vendors fail.</p>
+                    class="bg-slate-50 p-8 border-b md:border-b-0 md:border-r border-slate-200 flex flex-col justify-center">
+                    <h3 class="text-xl font-black text-navy uppercase tracking-widest mb-2">Market Analysis</h3>
+                    <p class="text-xs text-slate-900 font-bold">Why general vendors fail.</p>
                 </div>
                 <div class="p-8 border-b md:border-b-0 md:border-r border-slate-200 bg-white">
-                    <h4 class="text-lg font-bold text-slate-600 mb-6">General Wellness Vendor</h4>
-                    <ul class="space-y-4 text-sm text-slate-500">
-                        <li class="flex items-center"><i class="fas fa-times text-red-300 mr-3 w-4"></i> Focuses on
+                    <h4 class="text-lg font-black text-navy mb-6">General Wellness Vendor</h4>
+                    <ul class="space-y-4 text-sm text-slate-900 font-bold">
+                        <li class="flex items-center"><i class="fas fa-times text-red-500 mr-3 w-4"></i> Focuses on
                             "Steps & Water"</li>
-                        <li class="flex items-center"><i class="fas fa-times text-red-300 mr-3 w-4"></i> Costs Money
+                        <li class="flex items-center"><i class="fas fa-times text-red-500 mr-3 w-4"></i> Costs Money
                         </li>
-                        <li class="flex items-center"><i class="fas fa-times text-red-300 mr-3 w-4"></i> No Tax
+                        <li class="flex items-center"><i class="fas fa-times text-red-500 mr-3 w-4"></i> No Tax
                             Integration</li>
-                        <li class="flex items-center"><i class="fas fa-times text-red-300 mr-3 w-4"></i> Internal
+                        <li class="flex items-center"><i class="fas fa-times text-red-500 mr-3 w-4"></i> Internal
                             Compliance Risk</li>
                     </ul>
                 </div>
                 <div class="p-8 bg-navy text-white relative overflow-hidden">
-                    <h4 class="text-lg font-bold text-white mb-6">W.I.M.P.E.R. Protocol</h4>
-                    <ul class="space-y-4 text-sm text-slate-100">
+                    <h4 class="text-lg font-black text-white mb-6">W.I.M.P.E.R. Protocol</h4>
+                    <ul class="space-y-4 text-sm text-slate-50 font-bold">
                         <li class="flex items-center"><i class="fas fa-check text-gold mr-3 w-4"></i> Focuses on FICA
                         </li>
                         <li class="flex items-center"><i class="fas fa-check text-gold mr-3 w-4"></i> Makes Money
@@ -522,24 +523,25 @@ get_header();
                     </div>
                 </div>
             </div>
-                <h2 class="text-4xl font-serif text-white mb-6 font-black tracking-tight drop-shadow-sm">Why Wait? The Timing is Mathematical.</h2>
-                <p class="text-white leading-relaxed mb-6 text-xl font-bold">
-                    The optimal time to implement an IUL strategy is <strong>immediately following W.I.M.P.E.R.
-                        adoption.</strong>
-                </p>
-                <p class="text-white leading-relaxed mb-8 text-xl font-bold">
-                    By lowering your tax liability, the W.I.M.P.E.R. protocol effectively "finds" money in your paycheck
-                    that was previously going to the IRS. Instead of letting that surplus vanish into daily spending, we
-                    capture it instantly to fund a tax-free retirement vehicle.
-                </p>
-                <div class="flex items-center space-x-4 mb-8">
-                    <i class="fas fa-check-circle text-gold text-2xl"></i>
-                    <span class="font-bold text-white">No reduction in take-home pay.</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <i class="fas fa-check-circle text-gold text-2xl"></i>
-                    <span class="font-bold text-white">Permanent Cash Value Accumulation.</span>
-                </div>
+            <h2 class="text-4xl font-serif text-white mb-6 font-black tracking-tight drop-shadow-sm">Why Wait? The
+                Timing is Mathematical.</h2>
+            <p class="text-white leading-relaxed mb-6 text-xl font-bold">
+                The optimal time to implement an IUL strategy is <strong>immediately following W.I.M.P.E.R.
+                    adoption.</strong>
+            </p>
+            <p class="text-white leading-relaxed mb-8 text-xl font-bold">
+                By lowering your tax liability, the W.I.M.P.E.R. protocol effectively "finds" money in your paycheck
+                that was previously going to the IRS. Instead of letting that surplus vanish into daily spending, we
+                capture it instantly to fund a tax-free retirement vehicle.
+            </p>
+            <div class="flex items-center space-x-4 mb-8">
+                <i class="fas fa-check-circle text-gold text-2xl"></i>
+                <span class="font-bold text-white">No reduction in take-home pay.</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <i class="fas fa-check-circle text-gold text-2xl"></i>
+                <span class="font-bold text-white">Permanent Cash Value Accumulation.</span>
+            </div>
         </div>
 
         <!-- The "Financial Festival" / Benefits Grid -->
