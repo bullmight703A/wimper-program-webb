@@ -32,7 +32,7 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 					<span class="text-[9px] uppercase tracking-[0.1em] text-slate-500 font-semibold mt-1">Wellness &
 						Integrated Medical Plan Expense Reimbursement</span>
 				</div>
-				<p class="text-slate-500 text-xs leading-relaxed font-light">
+				<p class="text-slate-400 text-xs leading-relaxed font-bold">
 					The proprietary financial chassis for self-funded EBITDA expansion and payroll tax optimization.
 				</p>
 			</div>
@@ -66,9 +66,11 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 			</div>
 		</div>
 		<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-			<p class="text-[10px] text-slate-600 uppercase tracking-widest">© 2026 W.I.M.P.E.R. Program Inc. All rights
+			<p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">© 2026 W.I.M.P.E.R. Program Inc.
+				All rights
 				reserved.</p>
-			<p class="text-[10px] text-slate-600 uppercase tracking-widest">Proprietary Financial Architecture</p>
+			<p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Proprietary Financial Architecture
+			</p>
 		</div>
 	</div>
 </footer>

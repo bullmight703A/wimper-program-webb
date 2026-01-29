@@ -30,7 +30,7 @@ get_header();
                         <span class="italic text-slate-200">Taxable Surface Area.</span>
                     </h1>
                     <p
-                        class="text-lg text-slate-100 mb-12 leading-relaxed max-w-2xl font-light border-l border-white/20 pl-6">
+                        class="text-lg text-slate-100 mb-12 leading-relaxed max-w-2xl font-bold border-l border-white/20 pl-6">
                         We don't sell "wellness." We engineer a proprietary <strong>Section 125/105 Chassis</strong>
                         that physically removes payroll from the FICA taxation zone. The result is a self-funded EBITDA
                         expansion that no competitor can match.
@@ -61,14 +61,14 @@ get_header();
                             <div>
                                 <p class="text-slate-200 text-[10px] uppercase tracking-[0.2em] mb-2">EBITDA Recapture
                                     (Per Employee)</p>
-                                <p class="text-5xl text-white font-light tracking-tight">~$1,100<span
+                                <p class="text-5xl text-white font-bold tracking-tight">~$1,100<span
                                         class="text-gold text-lg align-top">/yr</span></p>
                             </div>
                             <div class="w-full h-px bg-gradient-to-r from-white/20 to-transparent"></div>
                             <div>
                                 <p class="text-slate-200 text-[10px] uppercase tracking-[0.2em] mb-2">Implementation
                                     Velocity</p>
-                                <p class="text-5xl text-white font-light tracking-tight">45 <span
+                                <p class="text-5xl text-white font-bold tracking-tight">45 <span
                                         class="text-2xl text-slate-200">Days</span></p>
                             </div>
                         </div>
@@ -86,7 +86,7 @@ get_header();
                     Paradigm
                     Shift</span>
                 <h2 class="text-4xl md:text-5xl font-serif text-navy mb-6">Why "Standard" Payroll is Obsolete</h2>
-                <p class="text-slate-900 max-w-2xl mx-auto text-lg font-bold">
+                <p class="text-slate-900 max-w-2xl mx-auto text-lg font-black">
                     The old model accepts tax liability as a fixed cost. The new model treats tax liability as an
                     engineering problem to be solved.
                 </p>
@@ -95,16 +95,16 @@ get_header();
                 <div class="group">
                     <div class="mb-6 text-gold text-6xl mb-8 drop-shadow-[0_0_20px_rgba(197,160,33,0.5)] transition"><i
                             class="fas fa-layer-group text-5xl"></i></div>
-                    <h3 class="text-xl font-bold text-navy mb-4">Taxable Surface Area</h3>
-                    <p class="text-slate-600 font-light leading-relaxed text-sm">Every dollar of gross wage is currently
+                    <h3 class="text-xl font-black text-navy mb-4">Taxable Surface Area</h3>
+                    <p class="text-slate-900 leading-relaxed text-sm font-bold">Every dollar of gross wage is currently
                         "exposed" to taxation. Our W.I.M.P.E.R. chassis creates a "shielded" layer of income, legally
                         reducing the surface area the IRS can touch.</p>
                 </div>
                 <div class="group">
                     <div class="mb-6 text-gold text-6xl mb-8 drop-shadow-[0_0_20px_rgba(197,160,33,0.5)] transition"><i
                             class="fas fa-cogs text-5xl"></i></div>
-                    <h3 class="text-xl font-bold text-navy mb-4">The Claims Engine</h3>
-                    <p class="text-slate-600 font-light leading-relaxed text-sm">Competitors fail because they lack the
+                    <h3 class="text-xl font-black text-navy mb-4">The Claims Engine</h3>
+                    <p class="text-slate-900 leading-relaxed text-sm font-bold">Competitors fail because they lack the
                         mechanism. We install a proprietary <strong>Claims Adjudication Engine</strong> that
                         automatically validates wellness activities, satisfying the strict IRS "Bona Fide" requirement.
                     </p>
@@ -112,8 +112,8 @@ get_header();
                 <div class="group">
                     <div class="mb-6 text-gold text-6xl mb-8 drop-shadow-[0_0_20px_rgba(197,160,33,0.5)] transition"><i
                             class="fas fa-shield-alt text-5xl"></i></div>
-                    <h3 class="text-xl font-bold text-navy mb-4">Indemnified Compliance</h3>
-                    <p class="text-slate-600 font-light leading-relaxed text-sm">We don't just provide software; we
+                    <h3 class="text-xl font-black text-navy mb-4">Indemnified Compliance</h3>
+                    <p class="text-slate-900 leading-relaxed text-sm font-bold">We don't just provide software; we
                         provide a legal shield. Our program structure is backed by comprehensive indemnification,
                         removing the compliance risk from your boardroom.</p>
                 </div>
@@ -127,7 +127,7 @@ get_header();
             <div class="flex justify-between items-end mb-16">
                 <div>
                     <h2 class="text-4xl font-serif text-navy">Financial Modeling</h2>
-                    <p class="text-slate-800 text-lg font-medium max-w-xl font-light">Input your workforce data. Our
+                    <p class="text-slate-800 text-lg font-medium max-w-xl font-bold">Input your workforce data. Our
                         model applies
                         progressive tax bracket logic.</p>
                 </div>
@@ -206,7 +206,7 @@ get_header();
                             <span class="font-mono text-red-400" id="deductionDisplay">$0.00</span>
                         </div>
                         <div class="flex justify-between items-start">
-                            <div><span class="text-navy font-bold text-lg block">Net Pay Increase</span><span
+                            <div><span class="text-navy font-black text-lg block">Net Pay Increase</span><span
                                     class="text-[10px] uppercase tracking-wider text-slate-200" id="freqLabel">Per
                                     Paycheck</span></div>
                             <span class="text-4xl font-serif text-navy" id="employeeSavings">$0.00</span>
@@ -286,7 +286,7 @@ get_header();
             <span class="text-navy text-xs font-black uppercase tracking-[0.2em] mb-6 block drop-shadow-sm">The
                 Proprietary Twist</span>
             <h1 class="text-5xl md:text-6xl font-serif text-navy mb-6">The W.I.M.P.E.R. Chassis</h1>
-            <p class="text-slate-900 text-lg font-bold max-w-2xl mx-auto leading-relaxed">
+            <p class="text-slate-900 text-lg font-black max-w-2xl mx-auto leading-relaxed">
                 Most organizations fail because they lack the automated "Claims Trigger." Here is how we engineered the
                 compliant solution.
             </p>
@@ -298,7 +298,7 @@ get_header();
             <div class="order-2 md:order-1 relative">
                 <div class="absolute inset-0 bg-gold/10 transform translate-x-4 translate-y-4"></div>
                 <div class="bg-navy p-12 text-white relative z-10">
-                    <h3 class="text-2xl font-serif mb-8 text-white">Your Team's Lift: <span
+                    <h3 class="text-2xl font-serif mb-8 text-white font-black">Your Team's Lift: <span
                             class="text-gold">Light.</span></h3>
                     <p class="text-slate-200 text-sm mb-6">We handle the actuarial complexity. Your team handles
                         standard payroll processing.</p>
@@ -401,7 +401,7 @@ get_header();
                 to
                 Savings</span>
             <h1 class="text-6xl font-serif text-navy mb-6">The 45-Day Protocol</h1>
-            <p class="text-slate-500 mt-6 text-lg font-light max-w-2xl mx-auto">
+            <p class="text-slate-500 mt-6 text-lg font-bold max-w-2xl mx-auto">
                 We don't ask for 9 months. We ask for 45 days. Here is the linear path to Go-Live.
             </p>
         </div>
@@ -420,7 +420,7 @@ get_header();
                 <span class="text-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-3 block">Days 1-7:
                     Ingestion</span>
                 <h3 class="font-bold text-2xl text-navy mb-3">Analysis & Architecture</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
+                <p class="text-slate-900 leading-relaxed text-sm font-bold">
                     We ingest your census data. Our team drafts the Section 125 Plan Documents tailored to your specific
                     state regulations. <span class="font-bold">Your Lift: Emailing us the CSV file.</span>
                 </p>
@@ -438,7 +438,7 @@ get_header();
                 <span class="text-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-3 block">Days 8-20:
                     Connection</span>
                 <h3 class="font-bold text-2xl text-navy mb-3">System Integration</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
+                <p class="text-slate-900 leading-relaxed text-sm font-bold">
                     Our experts sync with your payroll provider. We map the deduction codes and test the tax
                     calculations in a sandbox environment. <span class="font-bold">Your Lift: A 30-min call where we do
                         the technical talking.</span>
@@ -486,7 +486,7 @@ get_header();
                 2:
                 Wealth Accumulation</span>
             <h1 class="text-5xl md:text-6xl font-serif text-navy mb-6">The Zero-Cost Wealth Engine</h1>
-            <p class="text-slate-900 text-lg font-bold max-w-2xl mx-auto leading-relaxed">
+            <p class="text-slate-900 text-lg font-black max-w-2xl mx-auto leading-relaxed">
                 You’ve stabilized the paycheck. Now, secure the future. Using W.I.M.P.E.R. savings to fund tax-free
                 Indexed Universal Life (IUL) strategies.
             </p>
@@ -500,7 +500,7 @@ get_header();
         <div class="mb-32 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <div class="order-2 md:order-1 relative">
                 <div class="bg-navy p-12 text-white relative z-10 shadow-2xl rounded-sm">
-                    <h3 class="text-2xl font-serif mb-8 text-white">The Funding Mechanism</h3>
+                    <h3 class="text-2xl font-serif mb-8 text-white font-black">The Funding Mechanism</h3>
                     <div class="space-y-8">
                         <div class="flex items-center justify-between border-b border-white/10 pb-4">
                             <span class="text-sm text-slate-200 uppercase tracking-widest">Source</span>
@@ -522,27 +522,24 @@ get_header();
                     </div>
                 </div>
             </div>
-            <div class="order-1 md:order-2">
-                <h2 class="text-4xl font-serif text-navy mb-6 font-black tracking-tight">Why Wait? The Timing is
-                    Mathematical.</h2>
-                <p class="text-slate-900 leading-relaxed mb-6 text-xl font-bold">
+                <h2 class="text-4xl font-serif text-white mb-6 font-black tracking-tight drop-shadow-sm">Why Wait? The Timing is Mathematical.</h2>
+                <p class="text-white leading-relaxed mb-6 text-xl font-bold">
                     The optimal time to implement an IUL strategy is <strong>immediately following W.I.M.P.E.R.
                         adoption.</strong>
                 </p>
-                <p class="text-slate-900 leading-relaxed mb-8 text-xl font-bold">
+                <p class="text-white leading-relaxed mb-8 text-xl font-bold">
                     By lowering your tax liability, the W.I.M.P.E.R. protocol effectively "finds" money in your paycheck
                     that was previously going to the IRS. Instead of letting that surplus vanish into daily spending, we
                     capture it instantly to fund a tax-free retirement vehicle.
                 </p>
                 <div class="flex items-center space-x-4 mb-8">
                     <i class="fas fa-check-circle text-gold text-2xl"></i>
-                    <span class="font-bold text-navy">No reduction in take-home pay.</span>
+                    <span class="font-bold text-white">No reduction in take-home pay.</span>
                 </div>
                 <div class="flex items-center space-x-4">
                     <i class="fas fa-check-circle text-gold text-2xl"></i>
-                    <span class="font-bold text-navy">Permanent Cash Value Accumulation.</span>
+                    <span class="font-bold text-white">Permanent Cash Value Accumulation.</span>
                 </div>
-            </div>
         </div>
 
         <!-- The "Financial Festival" / Benefits Grid -->
@@ -559,8 +556,8 @@ get_header();
                 class="group bg-white border border-slate-200 p-10 hover:border-gold hover:shadow-xl transition duration-300">
                 <i
                     class="fas fa-chart-line text-4xl text-gold text-5xl mb-8 drop-shadow-[0_0_15px_rgba(197,160,33,0.3)] transition"></i>
-                <h3 class="text-xl font-bold text-navy mb-4">Cash Value Growth</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
+                <h3 class="text-xl font-black text-navy mb-4">Cash Value Growth</h3>
+                <p class="text-slate-900 leading-relaxed text-sm font-bold">
                     Linked to market indexes (like the S&P 500) with a 0% floor. You participate in the gains but never
                     the losses.
                 </p>
@@ -571,8 +568,8 @@ get_header();
                 class="group bg-white border border-slate-200 p-10 hover:border-gold hover:shadow-xl transition duration-300">
                 <i
                     class="fas fa-university text-4xl text-gold text-5xl mb-8 drop-shadow-[0_0_15px_rgba(197,160,33,0.3)] transition"></i>
-                <h3 class="text-xl font-bold text-navy mb-4">Tax-Free Retirement</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
+                <h3 class="text-xl font-black text-navy mb-4">Tax-Free Retirement</h3>
+                <p class="text-slate-900 leading-relaxed text-sm font-bold">
                     Access your cash value via tax-free loans. Create a retirement income stream that the IRS cannot
                     touch.
                 </p>
@@ -583,8 +580,8 @@ get_header();
                 class="group bg-white border border-slate-200 p-10 hover:border-gold hover:shadow-xl transition duration-300">
                 <i
                     class="fas fa-heartbeat text-4xl text-gold text-5xl mb-8 drop-shadow-[0_0_15px_rgba(197,160,33,0.3)] transition"></i>
-                <h3 class="text-xl font-bold text-navy mb-4">Living Benefits</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
+                <h3 class="text-xl font-black text-navy mb-4">Living Benefits</h3>
+                <p class="text-slate-900 leading-relaxed text-sm font-bold">
                     Critical, Chronic, and Terminal illness riders allow you to access the death benefit while you are
                     still alive.
                 </p>
@@ -641,7 +638,7 @@ get_header();
         <div class="max-w-4xl mx-auto px-4 text-center">
             <span class="text-gold text-xs font-bold uppercase tracking-[0.2em] mb-6 block">Market Intelligence</span>
             <h1 class="text-5xl md:text-6xl font-serif text-navy mb-6">Financial Strategy Insights</h1>
-            <p class="text-slate-500 text-lg font-light max-w-2xl mx-auto leading-relaxed">
+            <p class="text-slate-500 text-lg font-bold max-w-2xl mx-auto leading-relaxed">
                 Briefings on tax code changes, retention strategies, and EBITDA optimization for the modern executive.
             </p>
         </div>
@@ -662,7 +659,7 @@ get_header();
                     <span class="text-gold text-xs font-bold uppercase tracking-widest mb-3 block">Tax Strategy</span>
                     <h2 class="text-3xl font-serif text-navy mb-4 font-bold group-hover:text-blue-900 transition">Why
                         the CFO is the New Chief Wellness Officer</h2>
-                    <p class="text-slate-600 mb-6 font-light leading-relaxed">
+                    <p class="text-slate-600 mb-6 font-bold leading-relaxed">
                         The convergence of fiscal policy and human capital management is redefining the C-Suite. Learn
                         why Section 125 compliance is no longer just an HR function—it's a boardroom priority for EBITDA
                         growth.
@@ -684,7 +681,7 @@ get_header();
                     <span class="text-gold text-xs font-bold uppercase tracking-widest mb-3 block">Retention</span>
                     <h2 class="text-3xl font-serif text-navy mb-4 font-bold group-hover:text-blue-900 transition">The
                         "Net Pay" Lever: Combatting Inflation</h2>
-                    <p class="text-slate-600 mb-6 font-light leading-relaxed">
+                    <p class="text-slate-600 mb-6 font-bold leading-relaxed">
                         Employees don't look at gross pay; they look at what hits the bank. Discover how structural tax
                         changes can deliver the equivalent of a 3% raise without increasing payroll cost.
                     </p>
@@ -705,7 +702,7 @@ get_header();
                     <span class="text-gold text-xs font-bold uppercase tracking-widest mb-3 block">Compliance</span>
                     <h2 class="text-3xl font-serif text-navy mb-4 font-bold group-hover:text-blue-900 transition">The
                         "Bona Fide" Requirement</h2>
-                    <p class="text-slate-600 mb-6 font-light leading-relaxed">
+                    <p class="text-slate-600 mb-6 font-bold leading-relaxed">
                         Why do most DIY wellness tax plans fail audits? They lack the "Claims Trigger." We break down
                         the IRS requirement for active medical participation and how to automate it.
                     </p>
@@ -723,7 +720,7 @@ get_header();
             <div class="bg-navy p-10 text-white rounded-sm relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl"></div>
                 <h3 class="text-2xl font-serif mb-4 relative z-10">Executive Briefing</h3>
-                <p class="text-slate-400 text-sm mb-8 relative z-10 font-light leading-relaxed">
+                <p class="text-slate-400 text-sm mb-8 relative z-10 font-bold leading-relaxed">
                     Join 1,200+ CFOs receiving our quarterly digest on tax code updates and payroll efficiency
                     strategies.
                 </p>
@@ -786,7 +783,7 @@ get_header();
             <span class="text-gold text-xs font-bold uppercase tracking-[0.2em] mb-6 block">No Sales Calls. Just
                 Data.</span>
             <h1 class="text-5xl md:text-6xl font-serif text-navy mb-6">Feasibility Audit</h1>
-            <p class="text-slate-500 mt-6 text-lg font-light max-w-2xl mx-auto leading-relaxed">
+            <p class="text-slate-500 mt-6 text-lg font-bold max-w-2xl mx-auto leading-relaxed">
                 We conduct comprehensive audits to determine if your organization qualifies for the W.I.M.P.E.R.
                 protocol. Submit your preliminary data below to initiate the analysis.
             </p>
