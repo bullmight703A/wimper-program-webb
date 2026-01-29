@@ -100,7 +100,7 @@ get_header();
                         reducing the surface area the IRS can touch.</p>
                 </div>
                 <div class="group">
-                    <div class="mb-6 text-slate-300 group-hover:text-gold transition duration-500"><i
+                    <div class="mb-6 text-slate-100 group-hover:text-gold transition duration-500"><i
                             class="fas fa-cogs text-5xl"></i></div>
                     <h3 class="text-xl font-bold text-navy mb-4">The Claims Engine</h3>
                     <p class="text-slate-600 font-light leading-relaxed text-sm">Competitors fail because they lack the
@@ -109,7 +109,7 @@ get_header();
                     </p>
                 </div>
                 <div class="group">
-                    <div class="mb-6 text-slate-300 group-hover:text-gold transition duration-500"><i
+                    <div class="mb-6 text-slate-100 group-hover:text-gold transition duration-500"><i
                             class="fas fa-shield-alt text-5xl"></i></div>
                     <h3 class="text-xl font-bold text-navy mb-4">Indemnified Compliance</h3>
                     <p class="text-slate-600 font-light leading-relaxed text-sm">We don't just provide software; we
@@ -140,14 +140,14 @@ get_header();
                         </div>
                         <div class="mb-12">
                             <label
-                                class="block text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] mb-4">W-2
+                                class="block text-[10px] font-bold text-slate-200 uppercase tracking-[0.15em] mb-4">W-2
                                 Headcount (Min 10)</label>
                             <input type="number" id="employeeCount" value="50" min="10"
                                 class="w-full bg-slate-50 border-b-2 border-slate-200 p-4 text-3xl text-navy font-serif focus:border-gold focus:outline-none transition"
                                 oninput="calculateBoth()">
                         </div>
                         <div class="bg-navy p-10 text-white relative overflow-hidden rounded-sm">
-                            <span class="text-slate-400 text-[10px] uppercase tracking-[0.2em] block mb-2">Projected
+                            <span class="text-slate-200 text-[10px] uppercase tracking-[0.2em] block mb-2">Projected
                                 EBITDA Recapture</span>
                             <span class="text-5xl font-serif text-gold" id="employerSavings">$55,000</span>
                             <p class="text-xs text-slate-500 mt-4 border-t border-white/10 pt-4">Funds realized
@@ -164,7 +164,7 @@ get_header();
                     <div class="grid grid-cols-2 gap-6 mb-8">
                         <div>
                             <label
-                                class="block text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] mb-2">Annual
+                                class="block text-[10px] font-bold text-slate-200 uppercase tracking-[0.15em] mb-2">Annual
                                 Salary</label>
                             <input type="number" id="annualSalary" value="65000" step="500"
                                 class="w-full bg-slate-50 border-b-2 border-slate-200 p-2 text-xl text-navy font-serif focus:border-navy focus:outline-none transition"
@@ -172,7 +172,7 @@ get_header();
                         </div>
                         <div>
                             <label
-                                class="block text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] mb-2">Pay
+                                class="block text-[10px] font-bold text-slate-200 uppercase tracking-[0.15em] mb-2">Pay
                                 Frequency</label>
                             <select id="payFrequency"
                                 class="w-full bg-slate-50 border-b-2 border-slate-200 p-2 text-xl text-navy font-serif focus:border-navy focus:outline-none transition appearance-none"
@@ -187,7 +187,7 @@ get_header();
                     <!-- Receipt Breakdown -->
                     <div class="bg-slate-50 p-8 border border-slate-200 relative rounded-sm">
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-xs text-slate-400 uppercase tracking-widest">Est. Effective Tax
+                            <span class="text-xs text-slate-200 uppercase tracking-widest">Est. Effective Tax
                                 Rate</span>
                             <span class="text-xs font-bold text-slate-500" id="taxRateDisplay">30%</span>
                         </div>
@@ -205,7 +205,7 @@ get_header();
                         </div>
                         <div class="flex justify-between items-start">
                             <div><span class="text-navy font-bold text-lg block">Net Pay Increase</span><span
-                                    class="text-[10px] uppercase tracking-wider text-slate-400" id="freqLabel">Per
+                                    class="text-[10px] uppercase tracking-wider text-slate-200" id="freqLabel">Per
                                     Paycheck</span></div>
                             <span class="text-4xl font-serif text-navy" id="employeeSavings">$0.00</span>
                         </div>
@@ -297,14 +297,14 @@ get_header();
                 <div class="bg-navy p-12 text-white relative z-10">
                     <h3 class="text-2xl font-serif mb-8 text-white">Your Team's Lift: <span
                             class="text-gold">Light.</span></h3>
-                    <p class="text-slate-400 text-sm mb-6">We handle the actuarial complexity. Your team handles
+                    <p class="text-slate-200 text-sm mb-6">We handle the actuarial complexity. Your team handles
                         standard payroll processing.</p>
                     <ul class="space-y-6">
                         <li class="flex items-start">
                             <span class="text-gold font-bold mr-4 text-lg">01.</span>
                             <div>
                                 <strong class="text-white text-sm block mb-1">Data Ingestion</strong>
-                                <p class="text-xs text-slate-400 leading-relaxed">Send us a census file (CSV). That is
+                                <p class="text-xs text-slate-200 leading-relaxed">Send us a census file (CSV). That is
                                     your primary data entry task.</p>
                             </div>
                         </li>
@@ -312,7 +312,7 @@ get_header();
                             <span class="text-gold font-bold mr-4 text-lg">02.</span>
                             <div>
                                 <strong class="text-white text-sm block mb-1">The Handshake</strong>
-                                <p class="text-xs text-slate-400 leading-relaxed">One 30-minute integration call with
+                                <p class="text-xs text-slate-200 leading-relaxed">One 30-minute integration call with
                                     your payroll provider (ADP, Paychex, etc.) where we lead the technical setup.</p>
                             </div>
                         </li>
@@ -320,7 +320,7 @@ get_header();
                             <span class="text-gold font-bold mr-4 text-lg">03.</span>
                             <div>
                                 <strong class="text-white text-sm block mb-1">The Routine</strong>
-                                <p class="text-xs text-slate-400 leading-relaxed">Processing the monthly deduction
+                                <p class="text-xs text-slate-200 leading-relaxed">Processing the monthly deduction
                                     during your standard payroll cycle.</p>
                             </div>
                         </li>
@@ -355,7 +355,7 @@ get_header();
             <div class="grid grid-cols-1 md:grid-cols-3">
                 <div
                     class="bg-slate-50 p-8 border-b md:border-b-0 md:border-r border-slate-200 flex flex-col justify-center">
-                    <h3 class="text-xl font-bold text-slate-400 uppercase tracking-widest mb-2">Market Analysis</h3>
+                    <h3 class="text-xl font-bold text-slate-200 uppercase tracking-widest mb-2">Market Analysis</h3>
                     <p class="text-xs text-slate-500">Why general vendors fail.</p>
                 </div>
                 <div class="p-8 border-b md:border-b-0 md:border-r border-slate-200 bg-white opacity-50">
@@ -373,7 +373,7 @@ get_header();
                 </div>
                 <div class="p-8 bg-navy text-white relative overflow-hidden">
                     <h4 class="text-lg font-bold text-white mb-6">W.I.M.P.E.R. Protocol</h4>
-                    <ul class="space-y-4 text-sm text-slate-300">
+                    <ul class="space-y-4 text-sm text-slate-100">
                         <li class="flex items-center"><i class="fas fa-check text-gold mr-3 w-4"></i> Focuses on FICA
                         </li>
                         <li class="flex items-center"><i class="fas fa-check text-gold mr-3 w-4"></i> Makes Money
@@ -497,19 +497,19 @@ get_header();
                     <h3 class="text-2xl font-serif mb-8 text-white">The Funding Mechanism</h3>
                     <div class="space-y-8">
                         <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                            <span class="text-sm text-slate-400 uppercase tracking-widest">Source</span>
+                            <span class="text-sm text-slate-200 uppercase tracking-widest">Source</span>
                             <span class="text-lg font-bold text-green-400">W.I.M.P.E.R. Tax Savings</span>
                         </div>
                         <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                            <span class="text-sm text-slate-400 uppercase tracking-widest">Amount</span>
+                            <span class="text-sm text-slate-200 uppercase tracking-widest">Amount</span>
                             <span class="text-lg font-bold text-white">~$150 / Month</span>
                         </div>
                         <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                            <span class="text-sm text-slate-400 uppercase tracking-widest">Allocation</span>
+                            <span class="text-sm text-slate-200 uppercase tracking-widest">Allocation</span>
                             <span class="text-lg font-bold text-gold">IUL Premium</span>
                         </div>
                         <div class="mt-4 bg-white/5 p-4 rounded text-center">
-                            <p class="text-xs uppercase tracking-[0.2em] text-slate-400 mb-1">Employee Out-of-Pocket
+                            <p class="text-xs uppercase tracking-[0.2em] text-slate-200 mb-1">Employee Out-of-Pocket
                                 Cost</p>
                             <p class="text-4xl font-serif text-white">$0.00</p>
                         </div>
@@ -605,7 +605,7 @@ get_header();
                     <span class="text-gold text-xs font-bold uppercase tracking-widest mb-4 block">Individual
                         Access</span>
                     <h2 class="text-3xl font-serif text-white mb-6">Not in the Program?</h2>
-                    <p class="text-slate-300 mb-8 max-w-sm mx-auto text-sm leading-relaxed">
+                    <p class="text-slate-100 mb-8 max-w-sm mx-auto text-sm leading-relaxed">
                         You don't need a corporate sponsor to build wealth. You can structure an individual IUL policy
                         directly with our wealth architects.
                     </p>
