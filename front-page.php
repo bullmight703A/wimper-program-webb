@@ -25,7 +25,7 @@ get_header();
                         <span class="text-gold text-xs font-bold uppercase tracking-[0.2em] glow-text">Financial
                             Architecture</span>
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-medium mb-8 leading-tight">
+                    <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight drop-shadow-sm">
                         Reduce Your<br>
                         <span class="italic text-slate-200">Taxable Surface Area.</span>
                     </h1>
@@ -332,11 +332,11 @@ get_header();
             </div>
             <div class="order-1 md:order-2">
                 <h2 class="text-4xl font-serif text-navy mb-6">We Make The Complex Simple.</h2>
-                <p class="text-slate-600 leading-relaxed mb-6 text-lg">
+                <p class="text-slate-900 leading-relaxed mb-6 text-xl font-bold">
                     Think of this like "Teaching Coding to Babies." The tax code is incredibly complex (Python/C++), but
                     the interface we give you is blocks and shapes.
                 </p>
-                <p class="text-slate-600 leading-relaxed mb-8 text-lg">
+                <p class="text-slate-900 leading-relaxed mb-8 text-xl font-bold">
                     We have already built the Plan Documents, the Adjudication Logic, and the Compliance Shield. You
                     simply plug your payroll into our chassis. We handle the heavy actuarial lifting so your HR team
                     doesn't have to become tax experts.
@@ -401,7 +401,7 @@ get_header();
                 to
                 Savings</span>
             <h1 class="text-6xl font-serif text-navy mb-6">The 45-Day Protocol</h1>
-            <p class="text-slate-500 mt-6 text-lg font-bold max-w-2xl mx-auto">
+            <p class="text-slate-900 mt-6 text-xl font-bold max-w-2xl mx-auto">
                 We don't ask for 9 months. We ask for 45 days. Here is the linear path to Go-Live.
             </p>
         </div>
@@ -457,7 +457,7 @@ get_header();
                 <span class="text-white/50 text-[10px] font-bold uppercase tracking-[0.2em] mb-3 block">Day 45:
                     Activation</span>
                 <h3 class="font-bold text-2xl text-white mb-3">Go Live</h3>
-                <p class="text-white/80 text-sm leading-relaxed">
+                <p class="text-white text-sm leading-relaxed font-bold">
                     First payroll execution. FICA savings are realized immediately. Benefits become active. The system
                     begins its automated cycle. <span class="font-bold text-white">Your Lift: Standard Monthly Payroll
                         Deduction Processing.</span>
@@ -595,7 +595,7 @@ get_header();
             <div class="bg-slate-50 p-12 text-center border-b lg:border-b-0 lg:border-r border-slate-200">
                 <span class="text-gold text-xs font-bold uppercase tracking-widest mb-4 block">Corporate Path</span>
                 <h2 class="text-3xl font-serif text-navy mb-6">For W.I.M.P.E.R. Clients</h2>
-                <p class="text-slate-600 mb-8 max-w-sm mx-auto text-sm leading-relaxed">
+                <p class="text-slate-900 mb-8 max-w-sm mx-auto text-lg font-bold leading-relaxed">
                     If your company is installing the W.I.M.P.E.R. chassis, use your tax savings to fund this policy
                     with zero out-of-pocket cost.
                 </p>
@@ -614,7 +614,7 @@ get_header();
                     <span class="text-gold text-xs font-bold uppercase tracking-widest mb-4 block">Individual
                         Access</span>
                     <h2 class="text-3xl font-serif text-white mb-6">Not in the Program?</h2>
-                    <p class="text-slate-100 mb-8 max-w-sm mx-auto text-sm leading-relaxed">
+                    <p class="text-white mb-8 max-w-sm mx-auto text-lg font-bold leading-relaxed">
                         You don't need a corporate sponsor to build wealth. You can structure an individual IUL policy
                         directly with our wealth architects.
                     </p>
@@ -720,7 +720,7 @@ get_header();
             <div class="bg-navy p-10 text-white rounded-sm relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl"></div>
                 <h3 class="text-2xl font-serif mb-4 relative z-10">Executive Briefing</h3>
-                <p class="text-slate-400 text-sm mb-8 relative z-10 font-bold leading-relaxed">
+                <p class="text-slate-200 text-sm mb-8 relative z-10 font-bold leading-relaxed">
                     Join 1,200+ CFOs receiving our quarterly digest on tax code updates and payroll efficiency
                     strategies.
                 </p>
@@ -765,7 +765,7 @@ get_header();
             <!-- Quick Contact -->
             <div class="bg-slate-50 p-8 border border-slate-200 text-center">
                 <p class="text-navy font-serif text-xl mb-2">Have a specific question?</p>
-                <p class="text-slate-500 text-sm mb-6">Our analysts are available for brief consultations.</p>
+                <p class="text-slate-900 text-lg mb-6 font-bold">Our analysts are available for brief consultations.</p>
                 <button onclick="navigateTo('contact')"
                     class="text-gold font-bold text-xs uppercase tracking-widest hover:text-navy transition border-b border-gold pb-1">Contact
                     Analysis Team</button>
@@ -783,7 +783,7 @@ get_header();
             <span class="text-gold text-xs font-bold uppercase tracking-[0.2em] mb-6 block">No Sales Calls. Just
                 Data.</span>
             <h1 class="text-5xl md:text-6xl font-serif text-navy mb-6">Feasibility Audit</h1>
-            <p class="text-slate-500 mt-6 text-lg font-bold max-w-2xl mx-auto leading-relaxed">
+            <p class="text-slate-900 mt-6 text-xl font-bold max-w-2xl mx-auto leading-relaxed">
                 We conduct comprehensive audits to determine if your organization qualifies for the W.I.M.P.E.R.
                 protocol. Submit your preliminary data below to initiate the analysis.
             </p>

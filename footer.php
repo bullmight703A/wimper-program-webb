@@ -29,7 +29,7 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 				<div class="flex flex-col border-l-4 border-gold pl-4 mb-8">
 					<span
 						class="text-xl font-bold text-white tracking-tight font-serif leading-none">W.I.M.P.E.R.</span>
-					<span class="text-[9px] uppercase tracking-[0.1em] text-slate-500 font-semibold mt-1">Wellness &
+					<span class="text-[10px] uppercase tracking-[0.1em] text-slate-200 font-bold mt-1">Wellness &
 						Integrated Medical Plan Expense Reimbursement</span>
 				</div>
 				<p class="text-slate-400 text-xs leading-relaxed font-bold">
@@ -38,23 +38,23 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 			</div>
 			<div>
 				<h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Navigation</h4>
-				<ul class="space-y-4 text-slate-500 text-xs font-bold uppercase tracking-widest">
-					<li><span onclick="navigateTo('home')" class="hover:text-gold transition cursor-pointer">The
+				<ul class="space-y-4 text-slate-200 text-xs font-bold uppercase tracking-widest">
+					<li><span onclick="navigateTo('home')" class="text-slate-100 font-bold hover:text-gold transition cursor-pointer">The
 							Vision</span></li>
-					<li><span onclick="navigateTo('method')" class="hover:text-gold transition cursor-pointer">The
+					<li><span onclick="navigateTo('method')" class="text-slate-100 font-bold hover:text-gold transition cursor-pointer">The
 							Chassis</span></li>
-					<li><span onclick="navigateTo('iul')" class="hover:text-gold transition cursor-pointer">Wealth
+					<li><span onclick="navigateTo('iul')" class="text-slate-100 font-bold hover:text-gold transition cursor-pointer">Wealth
 							Strategy</span></li>
 					<li><span onclick="navigateTo('blog')"
-							class="hover:text-gold transition cursor-pointer">Insights</span></li>
+							class="text-slate-100 font-bold hover:text-gold transition cursor-pointer">Insights</span></li>
 				</ul>
 			</div>
 			<div>
 				<h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Legal</h4>
-				<ul class="space-y-4 text-slate-500 text-xs font-bold uppercase tracking-widest">
-					<li><a href="#" class="hover:text-gold transition">Privacy Protocol</a></li>
-					<li><a href="#" class="hover:text-gold transition">Compliance Shield</a></li>
-					<li><a href="#" class="hover:text-gold transition">Terms of Service</a></li>
+				<ul class="space-y-4 text-slate-200 text-xs font-bold uppercase tracking-widest">
+					<li><a href="#" class="text-slate-100 font-bold hover:text-gold transition">Privacy Protocol</a></li>
+					<li><a href="#" class="text-slate-100 font-bold hover:text-gold transition">Compliance Shield</a></li>
+					<li><a href="#" class="text-slate-100 font-bold hover:text-gold transition">Terms of Service</a></li>
 				</ul>
 			</div>
 			<div>
@@ -66,10 +66,10 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
 			</div>
 		</div>
 		<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-			<p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">© 2026 W.I.M.P.E.R. Program Inc.
+			<p class="text-[10px] text-slate-100 uppercase tracking-widest font-bold">© 2026 W.I.M.P.E.R. Program Inc.
 				All rights
 				reserved.</p>
-			<p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Proprietary Financial Architecture
+			<p class="text-[10px] text-slate-100 uppercase tracking-widest font-bold">Proprietary Financial Architecture
 			</p>
 		</div>
 	</div>
