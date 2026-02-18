@@ -1,128 +1,137 @@
-<?php
-/**
- * The template for displaying the footer
- *
- * @package wimper_Excellence
- */
-
-// Get Footer Customizer Settings
-$footer_phone = get_theme_mod('wimper_footer_phone', '1 678-940-6099');
-$footer_email = get_theme_mod('wimper_footer_email', 'info@thewimperprogram.com');
-$footer_address = get_theme_mod('wimper_footer_address', '');
-
-// Social Links
-$footer_facebook = get_theme_mod('wimper_footer_facebook', '');
-$footer_instagram = get_theme_mod('wimper_footer_instagram', '');
-$footer_linkedin = get_theme_mod('wimper_footer_linkedin', '');
-$footer_twitter = get_theme_mod('wimper_footer_twitter', '');
-$footer_youtube = get_theme_mod('wimper_footer_youtube', '');
-
-$has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $footer_twitter || $footer_youtube;
-?>
-</main>
-
 <!-- FOOTER -->
-<footer class="bg-navy text-white py-24 border-t border-white/5">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
-			<div class="col-span-1 md:col-span-1">
-				<div class="flex flex-col border-l-4 border-gold pl-4 mb-8">
-					<span
-						class="text-xl font-bold text-white tracking-tight font-serif leading-none">W.I.M.P.E.R.</span>
-					<span class="text-[10px] uppercase tracking-[0.1em] text-slate-200 font-bold mt-1">Wellness &
-						Integrated Medical Plan Expense Reimbursement</span>
-				</div>
-				<p class="text-slate-400 text-xs leading-relaxed font-bold">
-					The proprietary financial chassis for self-funded EBITDA expansion and payroll tax optimization.
-				</p>
-			</div>
-			<div>
-				<h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Navigation</h4>
-				<ul class="space-y-4 text-slate-200 text-xs font-bold uppercase tracking-widest">
-					<li><span onclick="navigateTo('home')" class="text-slate-100 font-bold hover:text-gold transition cursor-pointer">The
-							Vision</span></li>
-					<li><span onclick="navigateTo('method')" class="text-slate-100 font-bold hover:text-gold transition cursor-pointer">The
-							Chassis</span></li>
-					<li><span onclick="navigateTo('iul')" class="text-slate-100 font-bold hover:text-gold transition cursor-pointer">Wealth
-							Strategy</span></li>
-					<li><span onclick="navigateTo('blog')"
-							class="text-slate-100 font-bold hover:text-gold transition cursor-pointer">Insights</span></li>
-				</ul>
-			</div>
-			<div>
-				<h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Legal</h4>
-				<ul class="space-y-4 text-slate-200 text-xs font-bold uppercase tracking-widest">
-					<li><a href="#" class="text-slate-100 font-bold hover:text-gold transition">Privacy Protocol</a></li>
-					<li><a href="#" class="text-slate-100 font-bold hover:text-gold transition">Compliance Shield</a></li>
-					<li><a href="#" class="text-slate-100 font-bold hover:text-gold transition">Terms of Service</a></li>
-				</ul>
-			</div>
-			<div>
-				<h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Connection</h4>
-				<div class="flex space-x-6 text-slate-500">
-					<a href="#" class="hover:text-gold transition"><i class="fab fa-linkedin-in text-xl"></i></a>
-					<a href="#" class="hover:text-gold transition"><i class="fab fa-twitter text-xl"></i></a>
-				</div>
-			</div>
+<footer class="bg-navy text-slate-400 py-20 border-t border-slate-800 mt-auto">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-xs">
+		<div class="mb-8 md:mb-0 text-center md:text-left">
+			<span class="text-white font-serif text-xl tracking-wide block mb-2">W.I.M.P.E.R.</span>
+			<span class="text-slate-500 uppercase tracking-widest text-[10px]">Copyright &copy;
+				<?php echo date('Y'); ?></span>
 		</div>
-		<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-			<p class="text-[10px] text-slate-100 uppercase tracking-widest font-bold">© 2026 W.I.M.P.E.R. Program Inc.
-				All rights
-				reserved.</p>
-			<p class="text-[10px] text-slate-100 uppercase tracking-widest font-bold">Proprietary Financial Architecture
-			</p>
+		<div class="flex space-x-10">
+			<span onclick="navigateTo('method')"
+				class="hover:text-white transition uppercase tracking-widest text-[10px] cursor-pointer">Methodology</span>
+			<span onclick="navigateTo('contact')"
+				class="hover:text-white transition uppercase tracking-widest text-[10px] cursor-pointer">Feasibility
+				Audit</span>
+			<span class="hover:text-white transition uppercase tracking-widest text-[10px] cursor-pointer">Legal</span>
 		</div>
 	</div>
 </footer>
 
+<!-- Sticky CTA (Mobile Only) -->
+<div
+	class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-4 md:hidden z-50 flex justify-between items-center shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+	<div class="flex flex-col">
+		<span class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Est. Savings</span>
+		<span class="text-lg font-serif text-navy font-bold">$1,100/mo</span>
+	</div>
+	<button onclick="navigateTo('contact')"
+		class="bg-navy text-white px-6 py-3 rounded-sm text-[10px] font-bold uppercase tracking-[0.2em]">Verify</button>
+</div>
 
+<!-- Scripts -->
 <script>
-	// Sticky CTA Scroll Logic
-	window.addEventListener('scroll', function () {
-		const cta = document.getElementById('sticky-cta');
-		if (!cta) return;
-		if (window.scrollY > 300) {
-			cta.classList.remove('translate-y-full');
-		} else {
-			cta.classList.add('translate-y-full');
+	// ROUTING
+	function navigateTo(pageId) {
+		// Update View
+		document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
+		// Hide all first to ensure clean switch
+		document.querySelectorAll('.page-view').forEach(el => el.style.display = 'none');
+
+		const target = document.getElementById(pageId);
+		if (target) {
+			target.style.display = 'block';
+			setTimeout(() => target.classList.add('active'), 10);
 		}
-	}, {
-		passive: true
+
+		// Update Nav State
+		document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+		const activeLink = document.getElementById('nav-' + pageId);
+		if (activeLink) activeLink.classList.add('active');
+
+		// Scroll Top
+		window.scrollTo(0, 0);
+
+		// Close Mobile Menu if open
+		const mobileMenu = document.getElementById('mobile-menu');
+		if (mobileMenu) mobileMenu.classList.add('hidden');
+	}
+
+	function scrollToId(elementId) {
+		const element = document.getElementById(elementId);
+		if (element) element.scrollIntoView({ behavior: 'smooth' });
+	}
+
+	// CALCULATOR LOGIC
+	const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+	const roundFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+
+	function getEstimatedTaxRate(salary) {
+		if (salary < 15000) return 0.0765;
+		if (salary < 25000) return 0.20;
+		if (salary < 40000) return 0.23;
+		if (salary < 60000) return 0.28;
+		if (salary < 85000) return 0.32;
+		if (salary < 120000) return 0.34;
+		if (salary < 160000) return 0.36;
+		if (salary >= 168000 && salary < 190000) return 0.32;
+		if (salary >= 190000 && salary < 250000) return 0.35;
+		if (salary >= 250000) return 0.37;
+		return 0.30;
+	}
+
+	function calculateBoth() {
+		// Employer
+		const countInput = document.getElementById('employeeCount');
+		if (countInput) {
+			let count = parseInt(countInput.value) || 0;
+			if (count < 0) count = 0;
+			const savingsPerEmployee = 1100;
+			const totalEmployerSavings = count * savingsPerEmployee;
+			const employerEl = document.getElementById('employerSavings');
+			if (employerEl) employerEl.innerText = roundFormatter.format(totalEmployerSavings);
+		}
+
+		// Employee
+		const salaryInput = document.getElementById('annualSalary');
+		if (salaryInput) {
+			let salary = parseFloat(salaryInput.value) || 0;
+			const freqInput = document.getElementById('payFrequency');
+			let payPeriods = parseInt(freqInput.value) || 26;
+
+			const monthlyPremium = 1200;
+			const estTaxRate = getEstimatedTaxRate(salary);
+			const monthlyTaxSavings = monthlyPremium * estTaxRate;
+			const monthlyDeduction = 129;
+			const monthlyNetIncrease = monthlyTaxSavings - monthlyDeduction;
+
+			const taxSavingsPerCheck = (monthlyTaxSavings * 12) / payPeriods;
+			const deductionPerCheck = (monthlyDeduction * 12) / payPeriods;
+			const netIncreasePerCheck = (monthlyNetIncrease * 12) / payPeriods;
+
+			document.getElementById('employeeSavings').innerText = formatter.format(netIncreasePerCheck);
+			document.getElementById('taxSavingsDisplay').innerText = "+" + formatter.format(taxSavingsPerCheck);
+			document.getElementById('deductionDisplay').innerText = "-" + formatter.format(deductionPerCheck);
+			document.getElementById('taxRateDisplay').innerText = (estTaxRate * 100).toFixed(1) + "%";
+
+			const freqText = freqInput.options[freqInput.selectedIndex].text;
+			document.getElementById('freqLabel').innerText = "Per " + freqText + " Paycheck";
+		}
+	}
+
+	// Init
+	document.addEventListener('DOMContentLoaded', function () {
+		calculateBoth();
+
+		// Initial Route
+		const hash = window.location.hash.replace('#', '');
+		if (hash && document.getElementById(hash)) {
+			navigateTo(hash);
+		} else {
+			navigateTo('home');
+		}
 	});
-
-	// Initialize Lucide Icons
-	if (typeof lucide !== 'undefined') {
-		lucide.createIcons();
-	}
 </script>
-
 <?php wp_footer(); ?>
-<?php
-/**
- * Note: We have commented out legacy footer scripts to prioritize the W.I.M.P.E.R. identity.
- * If you need to re-enable tracking or external scripts, please use a dedicated plugin or 
- * add them directly to this file within a <script> tag.
- */
-/*
-$footer_scripts = get_theme_mod('wimper_footer_scripts');
-if ($footer_scripts) {
-	if (current_user_can('unfiltered_html')) {
-		echo $footer_scripts;
-	} else {
-		echo wp_kses($footer_scripts, array(
-			'script' => array(
-				'src' => true,
-				'async' => true,
-				'defer' => true,
-				'type' => true,
-				'id' => true,
-			),
-			'noscript' => array(),
-		));
-	}
-}
-*/
-?>
 </body>
 
 </html>
