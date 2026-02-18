@@ -13,8 +13,8 @@
 			theme: {
 				extend: {
 					colors: {
-						navy: '#020617', // Updated to match user HTML
-						gold: '#d4af37', // Updated to match user HTML
+						navy: '#1e3a8a', // Corporate Royal Blue
+						gold: '#0ea5e9', // Sky Blue Accent
 					},
 					fontFamily: {
 						serif: ['Playfair Display', 'serif'],
@@ -84,7 +84,6 @@
 		/* Darker Blue for contrast */
 
 		/* Gradients & Effects */
-		/* Updated to a Corporate Blue Gradient */
 		.hero-gradient {
 			background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
 		}
@@ -213,7 +212,6 @@
 	<?php wp_head(); ?>
 </head>
 
-
 <body <?php body_class('flex flex-col min-h-screen'); ?>>
 	<?php wp_body_open(); ?>
 
@@ -285,73 +283,10 @@
 					class="nav-link text-slate-600">Insights/Blog</span>
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('contact')" : "window.location.href='" . home_url('/') . "#contact'"; ?>"
-					class="nav-link text-gold font-bold">Audit Eligibility</span>
+					class="nav-link text-blue-600 font-bold">Audit Eligibility</span>
 			</div>
 		</div>
 	</nav>
 
-
 	<!-- MAIN CONTENT WRAPPER -->
 	<main class="min-h-screen">
-		<script>
-			// SPA ROUTING LOGIC
-			function navigateTo(pageId) {
-				// If we are on front page, toggle visibility
-				const pages = document.querySelectorAll('.page-view');
-				if (pages.length > 0) {
-					// Update View
-					pages.forEach(el => el.classList.remove('active'));
-					const targetPage = document.getElementById(pageId);
-					if (targetPage) targetPage.classList.add('active');
-
-					// Update Nav State
-					document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
-					const activeLink = document.getElementById('nav-' + pageId);
-					if (activeLink) activeLink.classList.add('active');
-
-					// Update URL Hash without jumping
-					history.pushState(null, null, '#' + (pageId === 'home' ? '' : pageId));
-
-					// Scroll Top
-					window.scrollTo({ top: 0, behavior: 'smooth' });
-
-					// Close Mobile Menu if open
-					const mobileMenu = document.getElementById('mobile-menu');
-					if (mobileMenu) mobileMenu.classList.add('hidden');
-				} else {
-					// Fallback for non-SPA pages: redirect to home with hash
-					window.location.href = '<?php echo home_url('/'); ?>#' + pageId;
-				}
-			}
-
-			// Handle initial hash on page load
-			window.addEventListener('DOMContentLoaded', () => {
-				const hash = window.location.hash.replace('#', '');
-				if (hash && document.getElementById(hash)) {
-					navigateTo(hash);
-				}
-			});
-
-			function scrollToId(elementId) {
-				const element = document.getElementById(elementId);
-				if (element) element.scrollIntoView({ behavior: 'smooth' });
-			}
-		</script>
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				const menuBtn = document.getElementById('mobile-menu-btn');
-				const closeBtn = document.getElementById('close-menu-btn');
-				const mobileMenu = document.getElementById('mobile-menu');
-
-				if (menuBtn && mobileMenu) {
-					menuBtn.addEventListener('click', () => {
-						mobileMenu.classList.remove('hidden');
-					});
-				}
-				if (closeBtn && mobileMenu) {
-					closeBtn.addEventListener('click', () => {
-						mobileMenu.classList.add('hidden');
-					});
-				}
-			});
-		</script>
