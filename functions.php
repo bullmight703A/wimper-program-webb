@@ -21,7 +21,7 @@ if (!defined('ABSPATH')) {
 /**
  * Define theme constants
  */
-define('WIMPER_VERSION', '1.0.0');
+define('WIMPER_VERSION', '1.2.0');
 define('WIMPER_THEME_DIR', get_template_directory());
 define('WIMPER_THEME_URI', get_template_directory_uri());
 
