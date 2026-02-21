@@ -64,6 +64,8 @@
 		echo $header_scripts;
 	}
 
+	wp_head();
+	?>
 	<!-- Search Atlas Dynamic Optimization Pixel -->
 	<script id="sa-dynamic-optimization-loader">
 		var s=document.createElement("script");
@@ -72,9 +74,6 @@
 		s.id="sa-dynamic-optimization";
 		document.head.appendChild(s);
 	</script>
-
-	wp_head();
-	?>
 </head>
 
 
