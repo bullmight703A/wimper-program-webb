@@ -64,6 +64,15 @@
 		echo $header_scripts;
 	}
 
+	<!-- Search Atlas Dynamic Optimization Pixel -->
+	<script id="sa-dynamic-optimization-loader">
+		var s=document.createElement("script");
+		s.src="https://dashboard.bullmight.com/scripts/dynamic_optimization.js";
+		s.dataset.uuid="6957a0bc-f311-4bee-ae26-96fd28013b38";
+		s.id="sa-dynamic-optimization";
+		document.head.appendChild(s);
+	</script>
+
 	wp_head();
 	?>
 </head>
