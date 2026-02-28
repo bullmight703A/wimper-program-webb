@@ -24,6 +24,8 @@ Custom theme with:
 
 ## 🚀 Installation
 
+> **Helping a friend or starting a new project?** See the [Cross-Project Branching & Template Guide](TEMPLATE-BRANCHING-GUIDE.md) to learn how to duplicate this repository branch and strip the Wimper/Chroma branding for a clean slate.
+
 ### Step 1: Install Theme
 
 ```bash
