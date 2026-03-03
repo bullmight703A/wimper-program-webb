@@ -3,27 +3,18 @@
 
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<?php // Canonical URL is handled by Yoast SEO or framework canonical enforcer ?>
-	<!-- Google Fonts: Inter and Playfair Display for WIMPER -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-		rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- FontAwesome -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-	<!-- Tailwind CSS CDN with Config -->
+	<!-- Tailwind CSS CDN -->
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script>
 		tailwind.config = {
 			theme: {
 				extend: {
 					colors: {
-						navy: '#0A192F',
-						gold: '#C5A021',
+						navy: '#1e3a8a', // Corporate Royal Blue
+						gold: '#0ea5e9', // Sky Blue Accent
 					},
 					fontFamily: {
 						serif: ['Playfair Display', 'serif'],
@@ -34,55 +25,195 @@
 		}
 	</script>
 
-	<!-- Tier 3: Instant Navigation (Speculation Rules API) -->
-	<script type="speculationrules">
-	{
-		"prerender": [
-			{
-				"source": "document",
-				"where": {
-					"and": [
-						{ "href_matches": "/*" },
-						{ "not": { "href_matches": "/wp-admin/*" } }
-					]
-				},
-				"eagerness": "moderate"
+	<!-- Chart.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+	<!-- FontAwesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+	<!-- Custom Styles from User HTML -->
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+		body {
+			font-family: 'Inter', sans-serif;
+			color: #334155;
+			background-color: #f8fafc;
+			overflow-x: hidden;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5 {
+			font-family: 'Playfair Display', serif;
+		}
+
+		/* Corporate Trust Palette (WIMPER Benefits Style) */
+		.bg-navy {
+			background-color: #1e3a8a;
+		}
+
+		/* Royal Blue */
+		.text-gold {
+			color: #0ea5e9;
+		}
+
+		/* Sky Blue Accent */
+		.border-gold {
+			border-color: #0ea5e9;
+		}
+
+		.bg-gold {
+			background-color: #0ea5e9;
+		}
+
+		.hover-text-gold:hover {
+			color: #0ea5e9;
+		}
+
+		.text-navy {
+			color: #1e3a8a;
+		}
+
+		.bg-slate-navy {
+			background-color: #172554;
+		}
+
+		/* Darker Blue for contrast */
+
+		/* Gradients & Effects */
+		.hero-gradient {
+			background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+		}
+
+		.glass-panel {
+			background: rgba(255, 255, 255, 0.95);
+			border: 1px solid #bfdbfe;
+			box-shadow: 0 20px 50px -12px rgba(37, 99, 235, 0.15);
+		}
+
+		.glow-text {
+			text-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
+		}
+
+		/* Layout */
+		.page-header-spacer {
+			padding-top: 140px;
+			padding-bottom: 80px;
+			background: white;
+			border-bottom: 1px solid #e2e8f0;
+		}
+
+		/* Navigation */
+		.nav-link {
+			font-size: 0.7rem;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			font-weight: 700;
+			transition: color 0.3s;
+			cursor: pointer;
+		}
+
+		.nav-link:hover {
+			color: #2563eb;
+		}
+
+		.nav-link.active {
+			color: #2563eb;
+			border-bottom: 2px solid #2563eb;
+			padding-bottom: 2px;
+		}
+
+		/* SPA Page Visibility */
+		.page-view {
+			display: none;
+			animation: fadeIn 0.5s ease-in-out;
+		}
+
+		.page-view.active {
+			display: block;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(10px);
 			}
-		]
-	}
-	</script>
 
-	<?php
-	// Get Customizer settings
-	$header_phone = get_theme_mod('kidazzle_footer_phone', '1 678-940-6099'); // Updated branding phone
-	$header_cta_text = get_theme_mod('kidazzle_header_cta_text', 'Verify Eligibility');
-	$header_cta_url = get_theme_mod('kidazzle_book_tour_url', home_url('/contact'));
-	$header_scripts = get_theme_mod('kidazzle_header_scripts', '');
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
 
-	// Output header scripts if set
-	if (!empty($header_scripts)) {
-		echo $header_scripts;
-	}
+		/* Timeline Line */
+		.timeline-line {
+			position: absolute;
+			left: 28px;
+			top: 20px;
+			bottom: 0;
+			width: 1px;
+			background: linear-gradient(to bottom, #2563eb 0%, #cbd5e1 100%);
+			z-index: 0;
+		}
 
-	wp_head();
-	?>
-	<!-- Search Atlas Dynamic Optimization Pixel -->
-	<script id="sa-dynamic-optimization-loader">
-		var s=document.createElement("script");
-		s.src="https://dashboard.bullmight.com/scripts/dynamic_optimization.js";
-		s.dataset.uuid="6957a0bc-f311-4bee-ae26-96fd28013b38";
-		s.id="sa-dynamic-optimization";
-		document.head.appendChild(s);
-	</script>
+		/* Connectors for Wealth Flow */
+		.step-connector {
+			height: 2px;
+			background: #e2e8f0;
+			flex-grow: 1;
+			margin: 0 20px;
+			position: relative;
+			top: -10px;
+		}
+
+		/* Custom Form Styles */
+		.custom-form input,
+		.custom-form select {
+			background-color: #f8fafc;
+			border: none;
+			border-bottom: 1px solid #cbd5e1;
+			border-radius: 0;
+			padding: 1rem 0.75rem;
+			font-family: 'Playfair Display', serif;
+			font-size: 1.1rem;
+			color: #1e3a8a;
+			transition: all 0.3s ease;
+		}
+
+		.custom-form input:focus,
+		.custom-form select:focus {
+			background-color: #ffffff;
+			border-bottom: 1px solid #2563eb;
+			outline: none;
+		}
+
+		/* Button Overrides */
+		.btn-primary {
+			background-color: #2563eb;
+			color: white;
+			transition: all 0.3s;
+		}
+
+		.btn-primary:hover {
+			background-color: #1e40af;
+			shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+		}
+
+		/* Section text overrides for contrast */
+		.text-green-highlight {
+			color: #10b981;
+		}
+
+		/* For positive money numbers */
+	</style>
+	<?php wp_head(); ?>
 </head>
 
-
-<body <?php body_class('font-sans antialiased bg-navy'); ?>>
+<body <?php body_class('flex flex-col min-h-screen'); ?>>
 	<?php wp_body_open(); ?>
-
-	<!-- Skip Links for Accessibility -->
-	<a href="#main-content"
-		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-kidazzle-blueDark p-4 z-[100] rounded-lg shadow-lg"><?php _e('Skip to content', 'kidazzle-theme'); ?></a>
 
 	<!-- NAVIGATION -->
 	<nav class="bg-white/95 backdrop-blur-xl border-b border-slate-200 fixed w-full z-50 transition-all duration-300">
@@ -98,7 +229,7 @@
 					</div>
 				</div>
 
-				<div class="hidden lg:flex items-center space-x-12">
+				<div class="hidden lg:flex items-center space-x-8">
 					<span
 						onclick="<?php echo is_front_page() ? "navigateTo('home')" : "window.location.href='" . home_url('/') . "'"; ?>"
 						id="nav-home" class="nav-link active text-slate-600">The Vision</span>
@@ -113,10 +244,11 @@
 						id="nav-timeline" class="nav-link text-slate-600">The Execution</span>
 					<span
 						onclick="<?php echo is_front_page() ? "navigateTo('blog')" : "window.location.href='" . home_url('/') . "#blog'"; ?>"
-						id="nav-blog" class="nav-link text-slate-600">Insights</span>
+						id="nav-blog" class="nav-link text-slate-600 text-center leading-tight">Insights<br>&
+						Blog</span>
 					<button
 						onclick="<?php echo is_front_page() ? "navigateTo('contact')" : "window.location.href='" . home_url('/') . "#contact'"; ?>"
-						class="bg-navy text-white px-8 py-3 rounded-sm text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-gold hover:text-navy transition duration-300 shadow-lg">
+						class="bg-navy text-white px-6 py-3 rounded-sm text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-gold hover:text-navy transition duration-300 shadow-lg">
 						Verify Eligibility
 					</button>
 				</div>
@@ -131,92 +263,30 @@
 			</div>
 		</div>
 
+		<!-- Mobile Menu -->
 		<div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100">
 			<div class="flex flex-col p-4 space-y-4">
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('home')" : "window.location.href='" . home_url('/') . "'"; ?>"
-					class="nav-link text-slate-800">The Vision</span>
+					class="nav-link text-slate-600">The Vision</span>
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('method')" : "window.location.href='" . home_url('/') . "#method'"; ?>"
-					class="nav-link text-slate-800">The Chassis</span>
+					class="nav-link text-slate-600">The Chassis</span>
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('iul')" : "window.location.href='" . home_url('/') . "#iul'"; ?>"
-					class="nav-link text-slate-800">Wealth Strategy</span>
+					class="nav-link text-slate-600">Wealth Strategy</span>
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('timeline')" : "window.location.href='" . home_url('/') . "#timeline'"; ?>"
-					class="nav-link text-slate-800">The Execution</span>
+					class="nav-link text-slate-600">The Execution</span>
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('blog')" : "window.location.href='" . home_url('/') . "#blog'"; ?>"
-					class="nav-link text-slate-800">Insights</span>
+					class="nav-link text-slate-600">Insights/Blog</span>
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('contact')" : "window.location.href='" . home_url('/') . "#contact'"; ?>"
-					class="nav-link text-gold font-bold">Audit Eligibility</span>
+					class="nav-link text-blue-600 font-bold">Audit Eligibility</span>
 			</div>
 		</div>
 	</nav>
 
-
 	<!-- MAIN CONTENT WRAPPER -->
 	<main class="min-h-screen">
-		<script>
-			// SPA ROUTING LOGIC
-			function navigateTo(pageId) {
-				// If we are on front page, toggle visibility
-				const pages = document.querySelectorAll('.page-view');
-				if (pages.length > 0) {
-					// Update View
-					pages.forEach(el => el.classList.remove('active'));
-					const targetPage = document.getElementById(pageId);
-					if (targetPage) targetPage.classList.add('active');
-
-					// Update Nav State
-					document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
-					const activeLink = document.getElementById('nav-' + pageId);
-					if (activeLink) activeLink.classList.add('active');
-
-					// Update URL Hash without jumping
-					history.pushState(null, null, '#' + (pageId === 'home' ? '' : pageId));
-
-					// Scroll Top
-					window.scrollTo({ top: 0, behavior: 'smooth' });
-
-					// Close Mobile Menu if open
-					const mobileMenu = document.getElementById('mobile-menu');
-					if (mobileMenu) mobileMenu.classList.add('hidden');
-				} else {
-					// Fallback for non-SPA pages: redirect to home with hash
-					window.location.href = '<?php echo home_url('/'); ?>#' + pageId;
-				}
-			}
-
-			// Handle initial hash on page load
-			window.addEventListener('DOMContentLoaded', () => {
-				const hash = window.location.hash.replace('#', '');
-				if (hash && document.getElementById(hash)) {
-					navigateTo(hash);
-				}
-			});
-
-			function scrollToId(elementId) {
-				const element = document.getElementById(elementId);
-				if (element) element.scrollIntoView({ behavior: 'smooth' });
-			}
-		</script>
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				const menuBtn = document.getElementById('mobile-menu-btn');
-				const closeBtn = document.getElementById('close-menu-btn');
-				const mobileMenu = document.getElementById('mobile-menu');
-
-				if (menuBtn && mobileMenu) {
-					menuBtn.addEventListener('click', () => {
-						mobileMenu.classList.remove('hidden');
-					});
-				}
-				if (closeBtn && mobileMenu) {
-					closeBtn.addEventListener('click', () => {
-						mobileMenu.classList.add('hidden');
-					});
-				}
-			});
-		</script>
