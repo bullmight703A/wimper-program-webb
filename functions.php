@@ -471,4 +471,25 @@ remove_action('wp_footer', 'wp_speculation_rules');
 add_filter('wp_speculation_rules_configuration', '__return_empty_array', PHP_INT_MAX);
 add_filter('pl_speculation_rules_configuration', '__return_empty_array', PHP_INT_MAX);
 
+add_action('rest_api_init', function () {
+    register_rest_route('wimper/v1', '/check', array(
+        'methods' => 'GET',
+        'callback' => function () {
+            $root = $_SERVER['DOCUMENT_ROOT'];
+            $res = "DOC_ROOT: " . $root . "\n";
+            $webinar = $root . '/webinar';
+            $res .= "Exists /webinar: " . (file_exists($webinar) ? 'YES' : 'NO') . "\n";
+            if (file_exists($webinar) && is_dir($webinar)) {
+                $res .= "Files: " . implode(", ", scandir($webinar)) . "\n";
+            }
+            $post = get_post(21);
+            $res .= "\n---RAW---\n" . substr($post->post_content, 0, 800);
+            $res .= "\n---FILTERED---\n" . substr(apply_filters('the_content', $post->post_content), 0, 800);
+            $res .= "\n---\nPage 255 Link: " . get_permalink(255);
+            return new WP_REST_Response($res, 200);
+        },
+        'permission_callback' => '__return_true'
+    ));
+});
+
 
