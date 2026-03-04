@@ -10,21 +10,16 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-
-    <?php while (have_posts()):
-        the_post(); ?>
-
+    
+    <?php while ( have_posts() ) : the_post(); ?>
+        
         <!-- Page Header -->
-        <section class="relative bg-cover bg-center py-20"
-            style="background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/assets/images/kidazzle-scenic-header.png');">
-            <!-- Dark Overlay for text legibility -->
-            <div class="absolute inset-0 bg-slate-900/65 z-0"></div>
-
-            <div class="max-w-7xl relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="bg-gradient-to-r from-kidazzle-teal to-kidazzle-green py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
                     <?php the_title(); ?>
                 </h1>
-                <?php if (has_excerpt()): ?>
+                <?php if ( has_excerpt() ) : ?>
                     <div class="text-xl text-white/90 max-w-3xl">
                         <?php the_excerpt(); ?>
                     </div>
@@ -39,12 +34,12 @@ get_header();
                     <div class="prose prose-lg max-w-none">
                         <?php the_content(); ?>
                     </div>
-
+                    
                     <?php
-                    wp_link_pages(array(
-                        'before' => '<div class="page-links mt-8 pt-8 border-t">' . esc_html__('Pages:', 'kidazzle-theme'),
-                        'after' => '</div>',
-                    ));
+                    wp_link_pages( array(
+                        'before' => '<div class="page-links mt-8 pt-8 border-t">' . esc_html__( 'Pages:', 'kidazzle-theme' ),
+                        'after'  => '</div>',
+                    ) );
                     ?>
                 </article>
             </div>
@@ -52,7 +47,7 @@ get_header();
 
         <?php
         // If comments are open or we have at least one comment, load up the comment template
-        if (comments_open() || get_comments_number()):
+        if ( comments_open() || get_comments_number() ) :
             comments_template();
         endif;
         ?>
