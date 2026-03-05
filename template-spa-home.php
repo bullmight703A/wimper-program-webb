@@ -327,7 +327,7 @@ get_header();
                         Not in a corporate W.I.M.P.E.R. program? You can still structure an individual IUL policy
                         directly. We offer **Private Client** access to the same high-performance vehicles.
                     </p>
-                    <a href="tel:5551234567"
+                    <a href="javascript:void(0)" onclick="navigateTo('contact')"
                         class="block w-full bg-accent text-white text-center py-4 rounded-xl font-bold hover:bg-white hover:text-navy transition shadow-lg">Schedule
                         Private Quote</a>
                 </div>
