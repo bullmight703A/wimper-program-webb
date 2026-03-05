@@ -34,19 +34,19 @@ get_header();
     }
 
     .text-navy {
-        color: #020617;
+        color: #2F4858;
     }
 
     .text-gold {
-        color: #d4af37;
+        color: #E89654;
     }
 
     .bg-gold {
-        background-color: #d4af37;
+        background-color: #E89654;
     }
 
     .bg-navy {
-        background-color: #020617;
+        background-color: #2F4858;
     }
 </style>
 
