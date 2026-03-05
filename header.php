@@ -255,3 +255,7 @@
 
 	<!-- MAIN CONTENT WRAPPER -->
 	<main class="min-h-screen">
+		<?php if (!is_front_page()): ?>
+			<!-- Global Spacer to prevent fixed header overlap on internal SEO pages -->
+			<div class="h-24 w-full bg-transparent"></div>
+		<?php endif; ?>
