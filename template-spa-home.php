@@ -1,10 +1,7 @@
 <?php
-/**
- * Template Name: WIMPER SPA Home
- * Front Page Template - WIMPER SPA
- *
- * @package wimper
- */
+/*
+Template Name: WIMPER SPA Home
+*/
 
 get_header();
 ?>
