@@ -189,9 +189,10 @@
 						</div>
 						<div class="flex flex-col">
 							<span
-								class="text-xl font-extrabold text-slate-900 tracking-tight leading-none">W.I.M.P.E.R.</span>
-							<span class="text-[9px] font-medium text-slate-500 mt-1 uppercase tracking-wider">Powered by
-								Revive Health</span>
+								class="text-xl font-extrabold text-navy tracking-tight leading-none">W.I.M.P.E.R.</span>
+							<span
+								class="text-[8px] font-bold text-slate-500 mt-1 uppercase tracking-widest leading-tight">Wellness
+								& Integrated Medical Plan<br>Expense Reimbursement</span>
 						</div>
 					</div>
 				</div>
@@ -199,7 +200,7 @@
 				<div class="hidden lg:flex items-center space-x-8">
 					<span
 						onclick="<?php echo is_front_page() ? "navigateTo('home')" : "window.location.href='" . home_url('/') . "'"; ?>"
-						id="nav-home" class="nav-link active">Experience</span>
+						id="nav-home" class="nav-link active">The Vision</span>
 					<span
 						onclick="<?php echo is_front_page() ? "navigateTo('method')" : "window.location.href='" . home_url('/#method') . "'"; ?>"
 						id="nav-method" class="nav-link">The Chassis</span>
@@ -208,14 +209,14 @@
 						id="nav-iul" class="nav-link">Wealth Strategy</span>
 					<span
 						onclick="<?php echo is_front_page() ? "navigateTo('timeline')" : "window.location.href='" . home_url('/#timeline') . "'"; ?>"
-						id="nav-timeline" class="nav-link text-center leading-tight">Timeline<br>& Success</span>
+						id="nav-timeline" class="nav-link text-center leading-tight">The Execution</span>
 					<span
 						onclick="<?php echo is_front_page() ? "navigateTo('blog')" : "window.location.href='" . home_url('/#blog') . "'"; ?>"
 						id="nav-blog" class="nav-link text-center leading-tight">Insights<br>& Blog</span>
 					<button
 						onclick="<?php echo is_front_page() ? "navigateTo('contact')" : "window.location.href='" . home_url('/#contact') . "'"; ?>"
-						class="bg-navy text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-accent transition duration-300 shadow-md">
-						Get Started
+						class="bg-navy text-white px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-widest hover:bg-accent transition duration-300 shadow-md">
+						Verify<br>Eligibility
 					</button>
 				</div>
 
