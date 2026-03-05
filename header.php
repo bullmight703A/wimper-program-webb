@@ -52,6 +52,8 @@
 	}
 	</script>
 
+	<title><?php echo wp_get_document_title(); ?></title>
+	
 	<?php
 	// Get Customizer settings
 	$header_phone = get_theme_mod('kidazzle_footer_phone', '1 678-940-6099'); // Updated branding phone

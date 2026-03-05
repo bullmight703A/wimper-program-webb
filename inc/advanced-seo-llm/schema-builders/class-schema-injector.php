@@ -33,7 +33,7 @@ class kidazzle_Schema_Injector
             'name' => $director_name,
             'jobTitle' => 'Center Director',
             'worksFor' => [
-                '@type' => 'ChildCare',
+                '@type' => 'FinancialService',
                 'name' => get_the_title($post_id),
                 '@id' => get_permalink($post_id) . '#organization'
             ],
