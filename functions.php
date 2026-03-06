@@ -72,6 +72,7 @@ require_once WIMPER_THEME_DIR . '/inc/general-seo-meta.php';
 
 // Utility Functions
 require_once WIMPER_THEME_DIR . '/inc/template-tags.php';
+require_once WIMPER_THEME_DIR . '/inc/fix-alt-text.php';
 require_once WIMPER_THEME_DIR . '/inc/dynamic-links.php';
 require_once WIMPER_THEME_DIR . '/inc/about-seo.php';
 require_once WIMPER_THEME_DIR . '/inc/customizer-home.php';
