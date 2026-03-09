@@ -7,7 +7,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main w-full overflow-hidden min-h-screen">
+<main id="primary" class="site-main w-full min-h-screen">
 	<?php
 	while (have_posts()):
 		the_post();
