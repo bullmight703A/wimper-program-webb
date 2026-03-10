@@ -12,8 +12,8 @@ get_header();
 	while (have_posts()):
 		the_post();
 		?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class('w-full'); ?>>
-			<div class="entry-content w-full">
+		<article id="post-<?php the_ID(); ?>" <?php post_class('w-full max-w-4xl mx-auto py-32 px-4 md:px-8'); ?>>
+			<div class="entry-content prose prose-lg prose-blue max-w-none">
 				<?php
 				the_content();
 				?>
