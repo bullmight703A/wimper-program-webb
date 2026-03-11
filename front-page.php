@@ -195,8 +195,8 @@ get_header();
                     <div>
                         <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Total
                             Participating Employees</label>
-                        <input type="range" id="calcRange" min="10" max="500" value="50"
-                            class="w-full h-2 bg-blue-100 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                        <input type="range" id="calcRange" aria-label="EBITDA Calculation Range" min="10" max="500" value="50"
+                            class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
                             oninput="updateHeroCalc()">
                         <div class="flex justify-between mt-6">
                             <div class="text-center">

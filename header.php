@@ -74,7 +74,7 @@
 
 	<!-- Skip Links for Accessibility -->
 	<a href="#main-content"
-		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-kidazzle-blueDark p-4 z-[100] rounded-lg shadow-lg"><?php _e('Skip to content', 'kidazzle-theme'); ?></a>
+		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-white focus:text-navy focus:p-4 focus:z-[100] focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-gold transition-all"><?php _e('Skip to main content', 'kidazzle-theme'); ?></a>
 
 	<!-- NAVIGATION -->
 	<nav class="bg-white/95 backdrop-blur-xl border-b border-slate-200 fixed w-full z-50 transition-all duration-300">
