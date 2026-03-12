@@ -492,4 +492,13 @@ add_action('rest_api_init', function () {
     ));
 });
 
-
+/**
+ * Temporary Drop-in to Force Flush 404s
+ */
+add_action('init', function() {
+    if (!get_transient('wimper_night_flush_2026')) {
+        flush_rewrite_rules(false);
+        set_transient('wimper_night_flush_2026', true, DAY_IN_SECONDS);
+        error_log('WIMPER RULE FLUSH: Theme forced SEO flush.');
+    }
+}, 9999);
