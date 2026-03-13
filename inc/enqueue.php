@@ -75,10 +75,7 @@ function wimper_enqueue_assets()
                 'all'
         );
 
-        // Dequeue legacy main CSS on front page to prevent WIMPER style overrides
-        if (is_front_page()) {
-                wp_dequeue_style('wimper-main');
-        }
+
 
         // Main Theme Stylesheet (style.css)
         wp_enqueue_style(
