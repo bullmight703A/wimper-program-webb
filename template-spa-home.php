@@ -25,10 +25,10 @@ get_header();
                         </span>
                         Optimized for $1M - $10M Revenue Teams
                     </div>
-                    <h1 class="text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.1] mb-6">
-                        Turn Your Payroll Tax Into <span class="text-blue-600">Retained Profit.</span>
+                    <h1 class="text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] mb-6">
+                        Turn Your Payroll Tax Into <span class="text-blue-500">Retained Profit.</span>
                     </h1>
-                    <p class="text-xl text-slate-600 mb-10 leading-relaxed max-w-xl">
+                    <p class="text-xl text-slate-300 mb-10 leading-relaxed max-w-xl">
                         Wimper uses Section 125 & 105 protocols to save mid-market businesses an average of <strong>$900 per employee annually</strong> while increasing employee take-home pay.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
@@ -41,22 +41,22 @@ get_header();
                                 <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?u=2" alt="">
                                 <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?u=3" alt="">
                             </div>
-                            <span class="text-sm text-slate-500 font-medium">Trusted by 200+ Growth CEOs</span>
+                            <span class="text-sm text-slate-300 font-medium">Trusted by 200+ Growth CEOs</span>
                         </div>
                     </div>
                 </div>
                 <!-- Visual Savings Hook -->
                 <div class="relative">
-                    <div class="bg-white rounded-3xl p-8 card-shadow border border-slate-200">
-                        <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
-                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <div class="bg-slate-900/50 backdrop-blur-md rounded-3xl p-8 card-shadow border border-white/10">
+                        <h3 class="text-lg font-bold mb-6 flex items-center gap-2 text-white">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                             Annual Impact for a 50-Person Team
                         </h3>
                         <div class="space-y-6">
                             <div>
                                 <div class="flex justify-between mb-2">
-                                    <span class="text-sm text-slate-500 font-medium">Estimated Payroll Tax Savings</span>
-                                    <span class="text-sm font-bold text-green-600">+$45,000</span>
+                                    <span class="text-sm text-slate-300 font-medium">Estimated Payroll Tax Savings</span>
+                                    <span class="text-sm font-bold text-green-400">+$45,000</span>
                                 </div>
                                 <div class="w-full bg-slate-100 rounded-full h-2">
                                     <div class="bg-green-500 h-2 rounded-full w-full"></div>
@@ -64,16 +64,16 @@ get_header();
                             </div>
                             <div>
                                 <div class="flex justify-between mb-2">
-                                    <span class="text-sm text-slate-500 font-medium">Employee Benefit Value Added</span>
-                                    <span class="text-sm font-bold text-blue-600">+$120,000</span>
+                                    <span class="text-sm text-slate-300 font-medium">Employee Benefit Value Added</span>
+                                    <span class="text-sm font-bold text-blue-400">+$120,000</span>
                                 </div>
                                 <div class="w-full bg-slate-100 rounded-full h-2">
                                     <div class="bg-blue-500 h-2 rounded-full w-[85%]"></div>
                                 </div>
                             </div>
-                            <div class="pt-6 border-t border-slate-100 flex items-center justify-between">
-                                <span class="text-slate-900 font-bold">Total Net Profit Increase</span>
-                                <span class="text-2xl font-black text-brand">$45,000 /yr</span>
+                            <div class="pt-6 border-t border-slate-700 flex items-center justify-between">
+                                <span class="text-white font-bold">Total Net Profit Increase</span>
+                                <span class="text-2xl font-black text-blue-400">$45,000 /yr</span>
                             </div>
                         </div>
                     </div>
@@ -95,24 +95,24 @@ get_header();
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-brand mb-4">How Wimper Unlocks Trapped Capital</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto">We leverage underutilized sections of the IRS tax code to create a self-funding benefit ecosystem.</p>
+                <h2 class="text-3xl font-bold text-white mb-4">How Wimper Unlocks Trapped Capital</h2>
+                <p class="text-slate-300 max-w-2xl mx-auto">We leverage underutilized sections of the IRS tax code to create a self-funding benefit ecosystem.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100">
-                    <div class="text-blue-600 font-bold text-xl mb-4">01. Reallocation</div>
-                    <h4 class="text-lg font-bold mb-3 text-slate-900">Pre-Tax Shift</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed">Employees reallocate a portion of their gross salary into the Wimper Wellness program via a Section 125 Cafeteria Plan.</p>
+                <div class="p-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
+                    <div class="text-blue-400 font-bold text-xl mb-4">01. Reallocation</div>
+                    <h4 class="text-lg font-bold mb-3 text-white">Pre-Tax Shift</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">Employees reallocate a portion of their gross salary into the Wimper Wellness program via a Section 125 Cafeteria Plan.</p>
                 </div>
-                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100">
-                    <div class="text-blue-600 font-bold text-xl mb-4">02. Tax Reduction</div>
-                    <h4 class="text-lg font-bold mb-3 text-slate-900">FICA Mitigation</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed">By reducing the taxable wage base, the employer saves 7.65% in FICA taxes on every dollar reallocated by the team.</p>
+                <div class="p-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
+                    <div class="text-blue-400 font-bold text-xl mb-4">02. Tax Reduction</div>
+                    <h4 class="text-lg font-bold mb-3 text-white">FICA Mitigation</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">By reducing the taxable wage base, the employer saves 7.65% in FICA taxes on every dollar reallocated by the team.</p>
                 </div>
-                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100">
-                    <div class="text-blue-600 font-bold text-xl mb-4">03. Reimbursement</div>
-                    <h4 class="text-lg font-bold mb-3 text-slate-900">Tax-Free Payouts</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed">Under Section 105, employees receive tax-free reimbursements for wellness activities, resulting in a higher net take-home pay.</p>
+                <div class="p-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
+                    <div class="text-blue-400 font-bold text-xl mb-4">03. Reimbursement</div>
+                    <h4 class="text-lg font-bold mb-3 text-white">Tax-Free Payouts</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">Under Section 105, employees receive tax-free reimbursements for wellness activities, resulting in a higher net take-home pay.</p>
                 </div>
             </div>
         </div>
@@ -184,42 +184,42 @@ get_header();
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex flex-col lg:flex-row gap-16 items-center">
                 <div class="lg:w-1/2">
-                    <h2 class="text-3xl font-bold mb-6 text-slate-900">Total Compliance. Zero Headache.</h2>
-                    <p class="text-slate-600 mb-8 leading-relaxed">
+                    <h2 class="text-3xl font-bold mb-6 text-white">Total Compliance. Zero Headache.</h2>
+                    <p class="text-slate-300 mb-8 leading-relaxed">
                         Wimper is not a "loophole." It is a strictly governed administration of existing Federal Tax Codes. We handle the paperwork, the enrollment, and the monthly auditing so your HR team stays focused on growth.
                     </p>
                     <div class="grid grid-cols-2 gap-6">
                         <div class="flex items-center gap-3">
-                            <div class="w-6 h-6 text-green-500"><svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg></div>
-                            <span class="text-sm font-semibold">IRS Section 125</span>
+                            <div class="w-6 h-6 text-green-400"><svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg></div>
+                            <span class="text-sm font-semibold text-white">IRS Section 125</span>
                         </div>
                         <div class="flex items-center gap-3">
-                            <div class="w-6 h-6 text-green-500"><svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg></div>
-                            <span class="text-sm font-semibold">ACA Compliant</span>
+                            <div class="w-6 h-6 text-green-400"><svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg></div>
+                            <span class="text-sm font-semibold text-white">ACA Compliant</span>
                         </div>
                         <div class="flex items-center gap-3">
-                            <div class="w-6 h-6 text-green-500"><svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg></div>
-                            <span class="text-sm font-semibold">ERISA Wrap Docs</span>
+                            <div class="w-6 h-6 text-green-400"><svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg></div>
+                            <span class="text-sm font-semibold text-white">ERISA Wrap Docs</span>
                         </div>
                         <div class="flex items-center gap-3">
-                            <div class="w-6 h-6 text-green-500"><svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg></div>
-                            <span class="text-sm font-semibold">HIPAA Secured</span>
+                            <div class="w-6 h-6 text-green-400"><svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg></div>
+                            <span class="text-sm font-semibold text-white">HIPAA Secured</span>
                         </div>
                     </div>
                 </div>
                 <div class="lg:w-1/2 flex justify-center">
                     <div class="relative w-full max-w-md">
                         <div class="absolute inset-0 bg-blue-600/10 blur-3xl rounded-full"></div>
-                        <div class="relative bg-white p-6 rounded-2xl shadow-xl border border-slate-200">
+                        <div class="relative bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/10">
                             <div class="flex items-center gap-4 mb-4">
-                                <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                                 </div>
-                                <h4 class="font-bold">Guaranteed Safe Harbor</h4>
+                                <h4 class="font-bold text-white">Guaranteed Safe Harbor</h4>
                             </div>
-                            <p class="text-sm text-slate-500 italic">"The Wimper implementation was the easiest benefits transition we've ever done. The payroll tax savings alone covered our entire Q4 marketing budget."</p>
+                            <p class="text-sm text-slate-300 italic">"The Wimper implementation was the easiest benefits transition we've ever done. The payroll tax savings alone covered our entire Q4 marketing budget."</p>
                             <div class="mt-4 flex items-center gap-2">
-                                <span class="text-xs font-bold text-slate-900">— CFO, Service Logistics Firm ($8.2M Rev)</span>
+                                <span class="text-xs font-bold text-slate-400">— CFO, Service Logistics Firm ($8.2M Rev)</span>
                             </div>
                         </div>
                     </div>
