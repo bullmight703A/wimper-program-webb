@@ -179,8 +179,6 @@ add_filter('upload_mimes', 'chroma_mime_types');
 /**
  * Move jQuery to footer for better performance
  * This prevents jQuery from blocking initial render
- */
-
 /**
  * Defer non-critical third-party scripts.
  */
