@@ -232,7 +232,198 @@ get_header();
 <!-- ================================================================================= -->
 <!-- VIEW 5: CONTACT (SCHEDULE)                                                        -->
 <!-- ================================================================================= -->
-<div id="contact" class="page-view flex-grow bg-white">
+<div id="method" class="page-view flex-grow bg-white">
+    <section class="pt-40 pb-24">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h1 class="text-5xl font-black text-slate-900 mb-6">The W.I.M.P.E.R. Chassis</h1>
+            <p class="text-xl text-slate-500 font-medium max-w-2xl mx-auto">
+                The secret is in the automated "Claims Trigger." Our platform ensures compliance by verifying health
+                activity daily.
+            </p>
+        </div>
+    </section>
+
+    <section class="pb-24">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="bg-soft-blue p-12 rounded-3xl border border-blue-100 shadow-sm">
+                <h3 class="text-3xl font-black text-navy mb-8">Integrated Medical Access</h3>
+                <p class="text-slate-600 mb-8">Powered by <strong>Revive Health</strong>, the chassis satisfies all IRS
+                    bona-fide requirement triggers automatically.</p>
+                <ul class="space-y-6">
+                    <li class="flex items-center space-x-4">
+                        <div
+                            class="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-accent">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <span class="font-semibold text-slate-700">24/7 Virtual Urgent Care</span>
+                    </li>
+                    <li class="flex items-center space-x-4">
+                        <div
+                            class="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-accent">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <span class="font-semibold text-slate-700">Virtual Primary Care</span>
+                    </li>
+                    <li class="flex items-center space-x-4">
+                        <div
+                            class="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-accent">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <span class="font-semibold text-slate-700">Pharmacy Savings Benefit</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="text-4xl font-black text-slate-900 mb-6">Guaranteed Issue <br><span class="text-accent">No
+                        Underwriting.</span></h2>
+                <p class="text-lg text-slate-600 leading-relaxed mb-8">
+                    Unlike traditional supplemental plans, W.I.M.P.E.R. is a guaranteed issue protocol. Your entire
+                    workforce can join without medical exams or history checks.
+                </p>
+                <div class="bg-slate-50 border-l-4 border-accent p-8 rounded-r-xl mb-8">
+                    <h4 class="font-bold text-slate-900 mb-2">Institutional Compliance</h4>
+                    <p class="text-sm text-slate-500">Our plan documents and PHP triggers have been audited for over 20
+                        years without a single adverse finding.</p>
+                </div>
+                <button onclick="navigateTo('contact')"
+                    class="text-accent font-bold text-lg hover:text-navy transition">Get an Audit <i
+                        class="fas fa-arrow-right ml-2"></i></button>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ================================================================================= -->
+<!-- VIEW 3: WEALTH STRATEGY (IUL)                                                     -->
+<!-- ================================================================================= -->
+<div id="iul" class="page-view flex-grow bg-white">
+    <header class="pt-40 pb-20">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-accent text-xs font-bold uppercase tracking-widest mb-4 block">Phase 2: Wealth
+                Accumulation</span>
+            <h1 class="text-5xl font-black text-slate-900 mb-6">The Zero-Cost Wealth Engine</h1>
+            <p class="text-xl text-slate-600 font-medium leading-relaxed">
+                You've reduced the tax surface area. Now, capture the surplus to secure the future.
+            </p>
+        </div>
+    </header>
+
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            <div>
+                <h2 class="text-4xl font-black text-slate-900 mb-8">Recaptured Savings <br>Meet Market Growth</h2>
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                    By utilizing the FICA recapture from the W.I.M.P.E.R. chassis, employees can fund a tax-free
+                    **Indexed Universal Life (IUL)** policy. This creates a powerful retirement vehicle without
+                    decreasing their net take-home pay.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-soft-blue p-6 rounded-2xl border border-blue-100">
+                        <h4 class="font-bold text-accent mb-2">0% Market Floor</h4>
+                        <p class="text-xs text-slate-500">Protect your principal. Participate in the gains, never the
+                            losses.</p>
+                    </div>
+                    <div class="bg-soft-blue p-6 rounded-2xl border border-blue-100">
+                        <h4 class="font-bold text-accent mb-2">Tax-Free Access</h4>
+                        <p class="text-xs text-slate-500">Access your wealth through policy loans without IRS
+                            intervention.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="bg-navy p-12 rounded-3xl text-white shadow-2xl relative overflow-hidden">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-accent rounded-full blur-3xl opacity-20"></div>
+                    <h3 class="text-3xl font-black mb-6">Private Client Access</h3>
+                    <p class="text-blue-100 mb-8 leading-relaxed text-sm">
+                        Not in a corporate W.I.M.P.E.R. program? You can still structure an individual IUL policy
+                        directly. We offer **Private Client** access to the same high-performance vehicles.
+                    </p>
+                    <a href="javascript:void(0)" onclick="navigateTo('contact')"
+                        class="block w-full bg-accent text-white text-center py-4 rounded-xl font-bold hover:bg-white hover:text-navy transition shadow-lg">Schedule
+                        Private Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ================================================================================= -->
+<!-- VIEW 4: TIMELINE (IMPLEMENTATION)                                                 -->
+<!-- ================================================================================= -->
+<div id="timeline" class="page-view flex-grow bg-slate-50">
+    <header class="pt-40 pb-20">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1 class="text-5xl font-black text-slate-900 mb-6">Execution Protocol</h1>
+            <p class="text-xl text-slate-500 font-medium">Simple deployment. Zero disruption. Savings realized in 45
+                days.</p>
+        </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 py-20">
+        <div class="flex items-start mb-16 relative">
+            <div
+                class="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center font-bold z-10 shrink-0">
+                1</div>
+            <div class="ml-8">
+                <h3 class="text-2xl font-bold text-slate-900 mb-2">Weekly Briefing & Fit Check</h3>
+                <p class="text-slate-600">Join our weekly info session to determine if the program is a good fit for
+                    your corporate structure. We verify feasibility and estimate savings.</p>
+            </div>
+        </div>
+        <div class="flex items-start mb-16 relative">
+            <div
+                class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center font-bold z-10 shrink-0">
+                2</div>
+            <div class="ml-8">
+                <h3 class="text-2xl font-bold text-slate-900 mb-2">Guaranteed Issue Enrollment</h3>
+                <p class="text-slate-600">We launch your custom Revive Health portal. Employees enroll paperlessly.
+                    Since it is guaranteed issue, there are no medical underwriting barriers.</p>
+            </div>
+        </div>
+        <div class="flex items-start relative">
+            <div
+                class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center font-bold z-10 shrink-0">
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="ml-8">
+                <h3 class="text-2xl font-bold text-slate-900 mb-2">Activation & Recapture</h3>
+                <p class="text-slate-600">Go live. Employees access virtual care instantly. The business receives FICA
+                    savings back, often offsetting the entire benefits cost.</p>
+            </div>
+        </div>
+
+        <div class="mt-20 p-12 bg-white rounded-3xl text-center border border-slate-200">
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">Ready for the Mock Run?</h3>
+            <button onclick="navigateTo('contact')"
+                class="bg-navy text-white px-10 py-4 rounded-xl font-bold hover:bg-accent transition shadow-xl">Get
+                Started</button>
+        </div>
+    </div>
+</div>
+
+<!-- VIEW 5: INSIGHTS & VIEW 6: CONTACT -->
+<div id="blog" class="page-view flex-grow bg-white">
+    <header class="pt-40 pb-20 bg-slate-900 text-white text-center">
+        <h1 class="text-5xl font-black mb-6">The Executive Digest</h1>
+        <p class="text-xl text-slate-400">Tax code updates and EBITDA strategy briefings.</p>
+    </header>
+    <div class="max-w-5xl mx-auto px-4 py-24 space-y-12">
+        <article
+            class="flex flex-col md:flex-row bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
+            <div class="md:w-1/3 bg-slate-100 h-48 md:h-auto"></div>
+            <div class="p-8 md:w-2/3">
+                <span class="text-accent text-xs font-bold uppercase tracking-widest mb-2 block">Tax Strategy</span>
+                <h3 class="text-2xl font-black text-slate-900 mb-4">Why the CFO is the New Chief Wellness Officer</h3>
+                <p class="text-slate-500 mb-6">How Section 125 compliance is redefining boardroom priorities for EBITDA
+                    growth in 2025.</p>
+                <button class="text-navy font-bold text-sm uppercase tracking-widest hover:text-accent">Read Briefing <i
+                        class="fas fa-arrow-right ml-2"></i></button>
+            </div>
+        </article>
+    </div>
+</div>
+
+<div id="contact" class="page-view flex-grow bg-soft-blue">
     <header class="pt-40 pb-20 text-center">
         <h1 class="text-5xl font-black text-slate-900">Verify Eligibility.</h1>
         <p class="text-xl text-slate-500 mt-4 leading-relaxed max-w-2xl mx-auto">Submit your headcount for a preliminary FICA recapture audit and implement a zero net-cost wellness expansion.</p>
