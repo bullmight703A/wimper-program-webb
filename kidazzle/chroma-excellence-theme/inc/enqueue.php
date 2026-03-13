@@ -32,6 +32,9 @@ function chroma_enqueue_assets()
 
         $script_dependencies = array('jquery');
 
+        // Enqueue Google Fonts (Inter)
+        wp_enqueue_style('chroma-google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap', array(), null);
+
         // Font Awesome (Subset)
         $fa_path = CHROMA_THEME_DIR . '/assets/css/font-awesome-subset.css';
         $fa_version = file_exists($fa_path) ? filemtime($fa_path) : '6.4.0';
