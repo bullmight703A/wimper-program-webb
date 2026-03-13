@@ -421,9 +421,9 @@ get_header();
     <div class="max-w-4xl mx-auto px-4 pb-32">
         <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100 p-4">
             <!-- HighLevel Calendar Widget -->
-            <iframe src="https://api.leadconnectorhq.com/widget/booking/S6Jm8M04J2VIf3aD3S9K" 
-                    style="width: 100%;border:none;overflow: hidden;" scrolling="no" 
-                    id="S6Jm8M04J2VIf3aD3S9K_1709400000000"></iframe>
+            <iframe src="https://api.leadconnectorhq.com/widget/booking/VNIKFQp8UXtGVcCV3s7v" 
+                    style="width: 100%;border:none;overflow: hidden;min-height: 600px;" scrolling="no" 
+                    id="VNIKFQp8UXtGVcCV3s7v_1709400000000"></iframe>
             <script src="https://api.leadconnectorhq.com/js/form_embed.js" type="text/javascript"></script>
         </div>
     </div>
