@@ -197,19 +197,19 @@ function wimper_print_critical_css()
         }
 
         .text-wimper-blue {
-            color: rgb(74 108 124)
+            color: rgb(30 58 138) /* Navy #1E3A8A */
         }
 
         .bg-wimper-blue {
-            background-color: rgb(74 108 124)
+            background-color: rgb(30 58 138) /* Navy #1E3A8A */
         }
 
         .bg-wimper-green {
-            background-color: rgb(141 163 153)
+            background-color: rgb(37 99 235) /* Royal Blue #2563EB (Replacing old green) */
         }
 
         .border-wimper-blue\/10 {
-            border-color: rgba(74, 108, 124, .1)
+            border-color: rgba(30, 58, 138, .1)
         }
 
         /* Critical Header */

@@ -12,8 +12,8 @@ if (!defined('ABSPATH')) {
 
 // Get Customizer settings with defaults
 $hero_defaults = function_exists('kidazzle_home_default_hero') ? kidazzle_home_default_hero() : array();
-$hero_heading = get_theme_mod('kidazzle_home_hero_heading', $hero_defaults['heading'] ?? 'Where Learning <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-cyan-700">is Fun!</span>');
-$hero_subheading = get_theme_mod('kidazzle_home_hero_subheading', $hero_defaults['subheading'] ?? 'From Memphis to Miami to Atlanta, we are an independent, premier learning academy nurturing diverse bright minds for over three decades.');
+$hero_heading = get_theme_mod('kidazzle_home_hero_heading', $hero_defaults['heading'] ?? 'Guaranteed Issue. <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-800 to-navy">Zero Net Cost.</span>');
+$hero_subheading = get_theme_mod('kidazzle_home_hero_subheading', $hero_defaults['subheading'] ?? 'Stop managing spreadsheets. W.I.M.P.E.R. returns FICA dollars to your bottom line.');
 $hero_cta_label = get_theme_mod('kidazzle_home_hero_cta_label', $hero_defaults['cta_label'] ?? 'Find Your Center');
 $hero_cta_url = get_theme_mod('kidazzle_home_hero_cta_url', $hero_defaults['cta_url'] ?? '');
 $hero_secondary_label = get_theme_mod('kidazzle_home_hero_secondary_label', $hero_defaults['secondary_label'] ?? 'Our Legacy');
@@ -34,11 +34,11 @@ $about_url = !empty($hero_secondary_url) ? $hero_secondary_url : home_url('/abou
         <!-- Main Content Box: 20% Opacity with Blur -->
         <div class="max-w-3xl bg-white/20 backdrop-blur-md p-10 rounded-[2rem] shadow-2xl border-l-[12px] border-yellow-400">
             <div class="flex items-center gap-3 mb-6 flex-wrap">
-                <span class="bg-kidazzle-yellow text-brand-ink px-4 py-1.5 rounded-full text-sm font-extrabold uppercase tracking-wider shadow-sm">
-                    <?php esc_html_e('Now Enrolling', 'kidazzle'); ?>
+                <span class="bg-wimper-blue text-white px-4 py-1.5 rounded-full text-sm font-extrabold uppercase tracking-wider shadow-sm">
+                    <?php esc_html_e('Launch Audit', 'kidazzle'); ?>
                 </span>
-                <span class="text-brand-ink text-sm font-bold flex items-center gap-1 bg-white/60 px-3 py-1.5 rounded-full">
-                    <i class="fa-solid fa-star text-kidazzle-yellow"></i> <?php esc_html_e('Since 1994', 'kidazzle'); ?>
+                <span class="bg-white/90 text-navy px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-star text-wimper-blue"></i> <?php esc_html_e('Guaranteed Issue', 'kidazzle'); ?>
                 </span>
             </div>
             <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 text-brand-ink">
