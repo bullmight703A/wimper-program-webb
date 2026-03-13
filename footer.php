@@ -38,6 +38,16 @@
 		if (element) element.scrollIntoView({ behavior: 'smooth' });
 	}
 
+    // Initialize SPA routing on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const hash = window.location.hash.replace('#', '');
+        if (hash && document.getElementById(hash)) {
+            navigateTo(hash);
+        } else {
+            navigateTo('home');
+        }
+    });
+
 	function updateHeroCalc() {
 		const calcRange = document.getElementById('calcRange');
 		if (calcRange) {
