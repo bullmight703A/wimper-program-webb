@@ -213,6 +213,8 @@
 					<span
 						onclick="<?php echo is_front_page() ? "navigateTo('blog')" : "window.location.href='" . home_url('/#blog') . "'"; ?>"
 						id="nav-blog" class="nav-link text-center leading-tight">Insights<br>& Blog</span>
+					<span onclick="window.location.href='<?php echo esc_url(home_url('/webinar-registration')); ?>'"
+						class="nav-link text-center leading-tight text-accent font-bold">Join<br>Webinar</span>
 					<button
 						onclick="<?php echo is_front_page() ? "navigateTo('contact')" : "window.location.href='" . home_url('/#contact') . "'"; ?>"
 						class="bg-navy text-white px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-widest hover:bg-accent transition duration-300 shadow-md">
@@ -247,6 +249,8 @@
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('blog')" : "window.location.href='" . home_url('/#blog') . "'"; ?>"
 					class="nav-link text-slate-600">Insights</span>
+				<span onclick="window.location.href='<?php echo esc_url(home_url('/webinar-registration')); ?>'"
+					class="nav-link text-accent font-bold">Join Webinar</span>
 				<span
 					onclick="<?php echo is_front_page() ? "navigateTo('contact')" : "window.location.href='" . home_url('/#contact') . "'"; ?>"
 					class="nav-link text-blue-600 font-bold">Get Started</span>
