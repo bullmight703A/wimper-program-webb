@@ -27,10 +27,10 @@ get_header();
                         Turn Your Payroll Tax Into <span class="text-blue-600">Retained Profit.</span>
                     </h1>
                     <p class="text-xl text-slate-600 mb-10 leading-relaxed max-w-xl">
-                        Wimper uses Section 125 & 105 protocols to save mid-market businesses an average of <strong>$900 per employee annually</strong> while increasing employee take-home pay.
+                        Wimper uses Section 125 & 105 protocols to save mid-market businesses an average of <strong>$1,120 per employee annually</strong> while increasing employee take-home pay.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#contact" onclick="navigateTo('contact')" class="bg-brand text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue-900 transition-all shadow-xl hover:shadow-2xl text-center">
+                        <a href="#contact" onclick="navigateTo('contact')" class="bg-brand text-white px-8 py-4 rounded-xl text-lg font-bold shadow-md text-center">
                             Get Your Custom Savings Quote
                         </a>
                         <div class="flex items-center gap-3 px-4">
