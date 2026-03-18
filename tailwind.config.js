@@ -29,9 +29,9 @@ module.exports = {
           greenLight: '#F0FDF4',
           cyan: '#06B6D4',
           cyanLight: '#ECFEFF',
-          blue: '#3B82F6',
+          blue: '#2563EB', // Royal Blue
           blueLight: '#EFF6FF',
-          blueDark: '#2F4858',
+          blueDark: '#1E3A8A', // Navy Blue
           purple: '#A855F7',
           purpleLight: '#F3E8FF',
           teal: '#06B6D4',

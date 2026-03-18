@@ -108,7 +108,8 @@ get_header();
                                 <div class="flex items-center space-x-4">
                                     <div
                                         class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold">
-                                        <i class="fas fa-check"></i></div>
+                                        <i class="fas fa-check"></i>
+                                    </div>
                                     <div class="flex-grow">
                                         <h4 class="text-sm font-bold text-slate-900">Corporate FICA Recapture</h4>
                                         <p class="text-xs text-slate-500">Savings flow back to the business. Net-zero
@@ -195,8 +196,8 @@ get_header();
                     <div>
                         <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Total
                             Participating Employees</label>
-                        <input type="range" id="calcRange" min="10" max="500" value="50"
-                            class="w-full h-2 bg-blue-100 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                        <input type="range" id="calcRange" aria-label="EBITDA Calculation Range" min="10" max="500" value="50"
+                            class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
                             oninput="updateHeroCalc()">
                         <div class="flex justify-between mt-6">
                             <div class="text-center">
@@ -243,19 +244,22 @@ get_header();
                     <li class="flex items-center space-x-4">
                         <div
                             class="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-accent">
-                            <i class="fas fa-video"></i></div>
+                            <i class="fas fa-video"></i>
+                        </div>
                         <span class="font-semibold text-slate-700">24/7 Virtual Urgent Care</span>
                     </li>
                     <li class="flex items-center space-x-4">
                         <div
                             class="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-accent">
-                            <i class="fas fa-user-md"></i></div>
+                            <i class="fas fa-user-md"></i>
+                        </div>
                         <span class="font-semibold text-slate-700">Virtual Primary Care</span>
                     </li>
                     <li class="flex items-center space-x-4">
                         <div
                             class="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-accent">
-                            <i class="fas fa-pills"></i></div>
+                            <i class="fas fa-pills"></i>
+                        </div>
                         <span class="font-semibold text-slate-700">Pharmacy Savings Benefit</span>
                     </li>
                 </ul>
@@ -325,7 +329,7 @@ get_header();
                         Not in a corporate W.I.M.P.E.R. program? You can still structure an individual IUL policy
                         directly. We offer **Private Client** access to the same high-performance vehicles.
                     </p>
-                    <a href="tel:5551234567"
+                    <a href="javascript:void(0)" onclick="navigateTo('contact')"
                         class="block w-full bg-accent text-white text-center py-4 rounded-xl font-bold hover:bg-white hover:text-navy transition shadow-lg">Schedule
                         Private Quote</a>
                 </div>
@@ -370,7 +374,8 @@ get_header();
         <div class="flex items-start relative">
             <div
                 class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center font-bold z-10 shrink-0">
-                <i class="fas fa-check"></i></div>
+                <i class="fas fa-check"></i>
+            </div>
             <div class="ml-8">
                 <h3 class="text-2xl font-bold text-slate-900 mb-2">Activation & Recapture</h3>
                 <p class="text-slate-600">Go live. Employees access virtual care instantly. The business receives FICA
@@ -396,7 +401,9 @@ get_header();
     <div class="max-w-5xl mx-auto px-4 py-24 space-y-12">
         <article
             class="flex flex-col md:flex-row bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
-            <div class="md:w-1/3 bg-slate-100 h-48 md:h-auto"></div>
+            <div class="md:w-1/3 bg-slate-100 h-48 md:h-auto bg-cover bg-center"
+                style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/assets/images/executive_digest_graphic.png'); ?>');">
+            </div>
             <div class="p-8 md:w-2/3">
                 <span class="text-accent text-xs font-bold uppercase tracking-widest mb-2 block">Tax Strategy</span>
                 <h3 class="text-2xl font-black text-slate-900 mb-4">Why the CFO is the New Chief Wellness Officer</h3>

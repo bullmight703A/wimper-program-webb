@@ -72,6 +72,7 @@ require_once WIMPER_THEME_DIR . '/inc/general-seo-meta.php';
 
 // Utility Functions
 require_once WIMPER_THEME_DIR . '/inc/template-tags.php';
+require_once WIMPER_THEME_DIR . '/inc/fix-alt-text.php';
 require_once WIMPER_THEME_DIR . '/inc/dynamic-links.php';
 require_once WIMPER_THEME_DIR . '/inc/about-seo.php';
 require_once WIMPER_THEME_DIR . '/inc/customizer-home.php';
@@ -492,4 +493,13 @@ add_action('rest_api_init', function () {
     ));
 });
 
-
+/**
+ * Temporary Drop-in to Force Flush 404s
+ */
+add_action('init', function() {
+    if (!get_transient('wimper_night_flush_2026')) {
+        flush_rewrite_rules(false);
+        set_transient('wimper_night_flush_2026', true, DAY_IN_SECONDS);
+        error_log('WIMPER RULE FLUSH: Theme forced SEO flush.');
+    }
+}, 9999);

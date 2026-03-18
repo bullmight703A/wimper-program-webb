@@ -23,8 +23,7 @@
 				extend: {
 					colors: {
 						navy: '#0A192F',
-						gold: '#F7E7CE',
-						brand: '#2563EB',
+						gold: '#C5A021',
 					},
 					fontFamily: {
 						serif: ['Playfair Display', 'serif'],
@@ -53,6 +52,8 @@
 	}
 	</script>
 
+	<title><?php echo wp_get_document_title(); ?></title>
+	
 	<?php
 	// Get Customizer settings
 	$header_phone = get_theme_mod('kidazzle_footer_phone', '1 678-940-6099'); // Updated branding phone
@@ -67,6 +68,14 @@
 
 	wp_head();
 	?>
+	<!-- Search Atlas Dynamic Optimization Pixel -->
+	<script id="sa-dynamic-optimization-loader">
+		var s=document.createElement("script");
+		s.src="https://dashboard.bullmight.com/scripts/dynamic_optimization.js";
+		s.dataset.uuid="6957a0bc-f311-4bee-ae26-96fd28013b38";
+		s.id="sa-dynamic-optimization";
+		document.head.appendChild(s);
+	</script>
 </head>
 
 
@@ -75,42 +84,78 @@
 
 	<!-- Skip Links for Accessibility -->
 	<a href="#main-content"
-		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-white focus:text-navy focus:p-4 focus:z-[100] focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-gold transition-all"><?php _e('Skip to main content', 'kidazzle-theme'); ?></a>
+		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-kidazzle-blueDark p-4 z-[100] rounded-lg shadow-lg"><?php _e('Skip to content', 'kidazzle-theme'); ?></a>
 
 	<!-- NAVIGATION -->
-    <nav class="sticky top-0 z-50 bg-blue-50/90 backdrop-blur-md border-b border-blue-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='<?php echo home_url('/'); ?>'">
-                    <div class="w-10 h-10 bg-brand rounded-lg flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                    </div>
-                    <span class="text-2xl font-extrabold text-brand tracking-tight">Wimper</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="<?php echo is_front_page() ? '#logic' : home_url('/#logic'); ?>" class="text-sm font-semibold text-slate-600 hover:text-brand transition-colors">Tax Logic</a>
-                    <a href="<?php echo is_front_page() ? '#savings' : home_url('/#savings'); ?>" class="text-sm font-semibold text-slate-600 hover:text-brand transition-colors">ROI Calculator</a>
-                    <a href="<?php echo is_front_page() ? '#compliance' : home_url('/#compliance'); ?>" class="text-sm font-semibold text-slate-600 hover:text-brand transition-colors">Compliance</a>
-                    <button onclick="openGlobalCalendar()" class="bg-brand text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-900 transition-all shadow-md">Schedule ROI Analysis</button>
-                </div>
+	<nav class="bg-white/95 backdrop-blur-xl border-b border-slate-200 fixed w-full z-50 transition-all duration-300">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between h-24">
+				<div class="flex items-center cursor-pointer"
+					onclick="<?php echo is_front_page() ? "navigateTo('home')" : "window.location.href='" . home_url('/') . "'"; ?>">
+					<div class="flex flex-col border-l-4 border-gold pl-4 transition hover:border-navy">
+						<span
+							class="text-xl font-bold text-slate-900 tracking-tight font-serif leading-none">W.I.M.P.E.R.</span>
+						<span class="text-[9px] uppercase tracking-[0.1em] text-slate-500 font-semibold mt-1">Wellness &
+							Integrated Medical Plan Expense Reimbursement</span>
+					</div>
+				</div>
+
+				<div class="hidden lg:flex items-center space-x-12">
+					<span
+						onclick="<?php echo is_front_page() ? "navigateTo('home')" : "window.location.href='" . home_url('/') . "'"; ?>"
+						id="nav-home" class="nav-link active text-slate-600">The Vision</span>
+					<span
+						onclick="<?php echo is_front_page() ? "navigateTo('method')" : "window.location.href='" . home_url('/') . "#method'"; ?>"
+						id="nav-method" class="nav-link text-slate-600">The Chassis</span>
+					<span
+						onclick="<?php echo is_front_page() ? "navigateTo('iul')" : "window.location.href='" . home_url('/') . "#iul'"; ?>"
+						id="nav-iul" class="nav-link text-slate-600">Wealth Strategy</span>
+					<span
+						onclick="<?php echo is_front_page() ? "navigateTo('timeline')" : "window.location.href='" . home_url('/') . "#timeline'"; ?>"
+						id="nav-timeline" class="nav-link text-slate-600">The Execution</span>
+					<span
+						onclick="<?php echo is_front_page() ? "navigateTo('blog')" : "window.location.href='" . home_url('/') . "#blog'"; ?>"
+						id="nav-blog" class="nav-link text-slate-600">Insights</span>
+					<button
+						onclick="<?php echo is_front_page() ? "navigateTo('contact')" : "window.location.href='" . home_url('/') . "#contact'"; ?>"
+						class="bg-navy text-white px-8 py-3 rounded-sm text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-gold hover:text-navy transition duration-300 shadow-lg">
+						Verify Eligibility
+					</button>
+				</div>
+
 				<!-- Mobile Menu Button -->
-				<div class="md:hidden flex items-center">
-					<button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-slate-600 focus:outline-none">
+				<div class="lg:hidden flex items-center">
+					<button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+						class="text-slate-600 focus:outline-none">
 						<i class="fas fa-bars text-2xl"></i>
 					</button>
 				</div>
-            </div>
-        </div>
-		
-		<div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full left-0 top-20 shadow-lg">
-			<div class="flex flex-col p-4 space-y-4">
-				<a href="<?php echo is_front_page() ? '#logic' : home_url('/#logic'); ?>" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-slate-800 font-semibold">Tax Logic</a>
-				<a href="<?php echo is_front_page() ? '#savings' : home_url('/#savings'); ?>" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-slate-800 font-semibold">ROI Calculator</a>
-				<a href="<?php echo is_front_page() ? '#compliance' : home_url('/#compliance'); ?>" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-slate-800 font-semibold">Compliance</a>
-				<button onclick="document.getElementById('mobile-menu').classList.add('hidden'); openGlobalCalendar();" class="text-brand font-bold text-left">Schedule ROI Analysis</button>
 			</div>
 		</div>
-    </nav>
+
+		<div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100">
+			<div class="flex flex-col p-4 space-y-4">
+				<span
+					onclick="<?php echo is_front_page() ? "navigateTo('home')" : "window.location.href='" . home_url('/') . "'"; ?>"
+					class="nav-link text-slate-800">The Vision</span>
+				<span
+					onclick="<?php echo is_front_page() ? "navigateTo('method')" : "window.location.href='" . home_url('/') . "#method'"; ?>"
+					class="nav-link text-slate-800">The Chassis</span>
+				<span
+					onclick="<?php echo is_front_page() ? "navigateTo('iul')" : "window.location.href='" . home_url('/') . "#iul'"; ?>"
+					class="nav-link text-slate-800">Wealth Strategy</span>
+				<span
+					onclick="<?php echo is_front_page() ? "navigateTo('timeline')" : "window.location.href='" . home_url('/') . "#timeline'"; ?>"
+					class="nav-link text-slate-800">The Execution</span>
+				<span
+					onclick="<?php echo is_front_page() ? "navigateTo('blog')" : "window.location.href='" . home_url('/') . "#blog'"; ?>"
+					class="nav-link text-slate-800">Insights</span>
+				<span
+					onclick="<?php echo is_front_page() ? "navigateTo('contact')" : "window.location.href='" . home_url('/') . "#contact'"; ?>"
+					class="nav-link text-gold font-bold">Audit Eligibility</span>
+			</div>
+		</div>
+	</nav>
 
 
 	<!-- MAIN CONTENT WRAPPER -->
