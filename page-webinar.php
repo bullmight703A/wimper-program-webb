@@ -64,7 +64,7 @@ get_header();
 
                         <!-- Calendar Widget -->
                         <div class="bg-navy p-6 rounded-[2rem] shadow-xl border border-slate-800 relative overflow-hidden">
-                            <h3 class="text-xl font-extrabold text-sky-400 mb-6 px-2">Book a Feasibility Audit</h3>
+                            <h3 class="text-xl font-extrabold text-white mb-6 px-2">Book a Feasibility Audit</h3>
                             <div class="bg-white rounded-xl overflow-hidden p-2">
                                 <iframe src="https://api.leadconnectorhq.com/widget/booking/VNIKFQp8UXtGVcCV3s7v"
                                     style="width: 100%;border:none;overflow: hidden; min-height:600px;" scrolling="no"
