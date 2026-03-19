@@ -77,7 +77,12 @@ while (have_posts()):
 
 					<?php if ($hero_description): ?>
 						<p class="text-lg text-brand-ink/80 max-w-2xl">
-							<?php echo wp_kses_post(wpautop($hero_description)); ?>
+							<?php 
+								// Aggressively strip SEO auto-generated location/phone number run-on blobs
+								$clean_desc = preg_replace('/Find .*?Near You.*?$/is', '', $hero_description);
+								$clean_desc = preg_replace('/Locations Offering This Program.*?$/is', '', $clean_desc);
+								echo wp_kses_post(wpautop(trim($clean_desc))); 
+							?>
 						</p>
 					<?php endif; ?>
 

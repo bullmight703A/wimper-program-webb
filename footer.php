@@ -53,9 +53,9 @@
 </script>
 
 <!-- Universal Kidazzle/Wimper Tour Booking Modal -->
-<div id="universal-tour-modal" class="fixed inset-0 z-[99999] hidden" role="dialog" aria-modal="true" style="pointer-events: auto;">
-    <div class="absolute inset-0 bg-brand-ink/80 backdrop-blur-md transition-opacity" id="universal-tour-backdrop"></div>
-    <div class="absolute inset-4 md:inset-10 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-fade-in-up">
+<div id="universal-tour-modal" class="fixed inset-0 z-[99999] hidden flex items-center justify-center p-4 md:p-10" role="dialog" aria-modal="true" style="pointer-events: auto;">
+    <div class="absolute inset-0 bg-brand-ink/40 backdrop-blur-sm transition-opacity" id="universal-tour-backdrop"></div>
+    <div class="relative w-full max-w-3xl max-h-[85vh] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-fade-in-up">
         <!-- Header -->
         <div class="bg-slate-50 border-b border-brand-ink/5 px-6 py-4 flex items-center justify-between flex-shrink-0">
             <h3 class="font-serif text-xl font-bold text-slate-900">Schedule Your Visit</h3>
