@@ -112,11 +112,11 @@ $locations_query = new WP_Query(array(
 
 						// Cycle Colors for variety
 						$brand_colors = [
-							['bg' => 'kidazzle-red', 'text' => 'kidazzle-red', 'border' => 'kidazzle-red'],
-							['bg' => 'kidazzle-orange', 'text' => 'kidazzle-orange', 'border' => 'kidazzle-orange'],
-							['bg' => 'kidazzle-yellow', 'text' => 'kidazzle-yellow', 'border' => 'kidazzle-yellow'],
-							['bg' => 'kidazzle-green', 'text' => 'kidazzle-green', 'border' => 'kidazzle-green'],
-							['bg' => 'kidazzle-blue', 'text' => 'kidazzle-blue', 'border' => 'kidazzle-blue'],
+							['bg' => 'brand-ink', 'text' => 'kidazzle-red', 'border' => 'kidazzle-red'],
+							['bg' => 'brand-ink', 'text' => 'kidazzle-orange', 'border' => 'kidazzle-orange'],
+							['bg' => 'brand-ink', 'text' => 'kidazzle-yellow', 'border' => 'kidazzle-yellow'],
+							['bg' => 'brand-ink', 'text' => 'kidazzle-green', 'border' => 'kidazzle-green'],
+							['bg' => 'brand-ink', 'text' => 'kidazzle-blue', 'border' => 'kidazzle-blue'],
 						];
 						// Use global counter or static to rotate if not loop index available easily?
 						// WP_Query has current_post index.
@@ -164,7 +164,7 @@ $locations_query = new WP_Query(array(
 									aria-label="<?php printf(esc_attr__('View %s', 'kidazzle-theme'), esc_attr($location_name)); ?>"></a>
 
 								<div
-									class="absolute top-0 right-0 bg-<?php echo esc_attr($is_new ? $colors['text'] : $colors['border']); ?> text-<?php echo esc_attr($is_new ? 'brand-ink' : 'white'); ?> text-[10px] font-bold uppercase px-4 py-1 rounded-bl-xl tracking-wider">
+									class="absolute top-0 right-0 bg-brand-ink text-<?php echo esc_attr($colors['text']); ?> text-[10px] font-bold uppercase px-4 py-1 rounded-bl-xl tracking-wider">
 									<?php echo esc_html($badge_text); ?>
 								</div>
 

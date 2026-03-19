@@ -164,18 +164,7 @@ while (have_posts()):
 						</div>
 					</div>
 
-					<!-- Map (Bottom) -->
-					<section class="bg-slate-100 rounded-[2rem] h-96 flex items-center justify-center text-slate-400 border-2 border-slate-200 overflow-hidden relative">
-						<?php if ($maps_embed): ?>
-							<?php echo $maps_embed; ?>
-						<?php elseif ($lat && $lng): ?>
-							<div data-kidazzle-map
-								data-kidazzle-locations='[{"lat":<?php echo esc_attr($lat); ?>,"lng":<?php echo esc_attr($lng); ?>,"name":"<?php echo esc_js(get_the_title()); ?>","city":"<?php echo esc_js($city); ?>","url":"<?php echo esc_url(get_permalink()); ?>"}]'
-								class="w-full h-full"></div>
-						<?php else: ?>
-							<p class="font-mono text-sm">Map Unavailable</p>
-						<?php endif; ?>
-					</section>
+
 
 					<?php if ($virtual_tour_embed): ?>
 						<!-- Virtual Tour Section -->
@@ -238,7 +227,7 @@ while (have_posts()):
 							</div>
 							<?php endif; ?>
 
-							<?php if ($location_fields['hours']): ?>
+							<?php if (isset($location_fields['hours']) && $location_fields['hours']): ?>
 							<div class="flex items-start gap-4">
 								<i class="fa-solid fa-clock text-yellow-400 mt-1 shrink-0"></i> 
 								<span><?php echo esc_html($location_fields['hours']); ?></span>
@@ -248,51 +237,30 @@ while (have_posts()):
 					</div>
 					
 					<!-- 123 Form / Questions for this location -->
-					<div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200">
-						<h3 class="text-xl font-bold text-slate-900 mb-4">Have Questions?</h3>
-						<div class="bg-slate-50 border-dashed border-2 border-slate-300 rounded-xl p-4 text-center text-xs text-slate-400">
-							<p class="mb-2">Contact our team directly.</p>
-							<a href="mailto:<?php echo esc_attr($email); ?>" class="inline-block bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-lg font-bold transition">Email Directors</a>
+					<div class="bg-white p-8 rounded-[2rem] shadow-xl border-t-8 border-kidazzle-blue">
+						<h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+							<i class="fa-solid fa-comments text-kidazzle-blue"></i> Have Questions? We can talk.
+						</h3>
+						<div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2rem] min-h-[400px] w-full flex items-center justify-center relative p-2 overflow-hidden">
+							<script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69533ee4261ca1e499cb62ff"></script> 
+							<div data-chat-widget data-widget-id="69533ee4261ca1e499cb62ff" data-location-id="ZR2UvxPL2wlZNSvHjmJD" class="w-full h-full"></div> 
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<?php if ($director_name || $director_bio): ?>
-				<!-- Director's Welcome -->
-				<section class="mt-24 bg-white rounded-[3rem] p-12 shadow-soft border border-brand-ink/5">
-					<div class="grid md:grid-cols-2 gap-16 items-center">
-						<div class="relative">
-							<div class="absolute inset-0 bg-kidazzle-yellow/10 rounded-[3rem] -rotate-3 transform translate-x-4 translate-y-4"></div>
-							<div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5]">
-								<?php if ($director_photo): ?>
-									<img src="<?php echo esc_url($director_photo); ?>" alt="<?php echo esc_attr($director_name); ?>" class="w-full h-full object-cover">
-								<?php else: ?>
-									<div class="w-full h-full bg-slate-100 flex items-center justify-center">
-										<i class="fa-solid fa-user-tie text-6xl text-slate-300"></i>
-									</div>
-								<?php endif; ?>
-							</div>
-						</div>
-						<div>
-							<span class="text-kidazzle-yellow font-bold tracking-[0.2em] text-[10px] uppercase mb-3 block">Campus Leadership</span>
-							<h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-ink mb-6">A Welcome from Our Director</h2>
-							<div class="prose prose-slate text-brand-ink/80 text-lg leading-relaxed mb-8">
-								<?php echo wp_kses_post(wpautop($director_bio)); ?>
-							</div>
-							<div class="flex items-center gap-6">
-								<?php if ($director_signature): ?>
-									<img src="<?php echo esc_url($director_signature); ?>" alt="Director Signature" class="h-16 w-auto opacity-70">
-								<?php endif; ?>
-								<div>
-									<p class="font-bold text-brand-ink"><?php echo esc_html($director_name); ?></p>
-									<p class="text-xs text-brand-ink/60 uppercase tracking-widest leading-none">Center Director</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-			<?php endif; ?>
+			
+			<!-- Full Width Map -->
+			<section class="mt-12 bg-slate-100 rounded-[2rem] h-[500px] w-full flex items-center justify-center text-slate-400 border-2 border-slate-200 overflow-hidden relative shadow-lg">
+				<?php if ($maps_embed): ?>
+					<?php echo $maps_embed; ?>
+				<?php elseif ($lat && $lng): ?>
+					<div data-kidazzle-map
+						data-kidazzle-locations='[{"lat":<?php echo esc_attr($lat); ?>,"lng":<?php echo esc_attr($lng); ?>,"name":"<?php echo esc_js(get_the_title()); ?>","city":"<?php echo esc_js($city); ?>","url":"<?php echo esc_url(get_permalink()); ?>"}]'
+						class="w-full h-full"></div>
+				<?php else: ?>
+					<p class="font-mono text-sm">Map Unavailable</p>
+				<?php endif; ?>
+			</section>
 
 			<?php if ($programs_query->have_posts()): ?>
 				<!-- Programs at this location -->
