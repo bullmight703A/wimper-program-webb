@@ -189,11 +189,23 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                                 Campus Serving <?php echo esc_html($city); ?>
                             </div>
 
-                            <div class="mt-auto">
+                            <?php $booking_link = get_post_meta(get_the_ID(), 'location_tour_booking_link', true); ?>
+                            <div class="grid grid-cols-2 gap-3 mt-auto relative z-20">
                                 <a href="<?php the_permalink(); ?>" aria-label="View Campus: <?php the_title_attribute(); ?>"
-                                    class="block w-full py-5 bg-brand-ink text-white text-center rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-kidazzle-blue transition-all shadow-lg hover:shadow-xl group-hover:-translate-y-1">
-                                    View Campus Profile
+                                    class="flex items-center justify-center text-center py-4 bg-brand-ink/5 text-brand-ink rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-brand-ink hover:text-white transition-all shadow-sm">
+                                    View Campus
                                 </a>
+                                <?php if ($booking_link): ?>
+                                    <a href="<?php echo esc_url($booking_link); ?>"
+                                        class="booking-btn flex items-center justify-center text-center py-4 bg-kidazzle-blue text-white rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-kidazzle-blueDark transition-all shadow-sm">
+                                        Book Tour
+                                    </a>
+                                <?php else: ?>
+                                    <a href="<?php the_permalink(); ?>#tour"
+                                        class="flex items-center justify-center text-center py-4 bg-kidazzle-blue text-white rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-kidazzle-blueDark transition-all shadow-sm">
+                                        Schedule
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <?php
@@ -391,5 +403,78 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
         Back to All Communities
     </a>
 </div>
+
+<!-- Tour Booking Modal -->
+<div id="kidazzle-tour-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
+    <div class="absolute inset-0 bg-brand-ink/80 backdrop-blur-sm transition-opacity" id="kidazzle-tour-backdrop"></div>
+    <div class="absolute inset-4 md:inset-10 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-fade-in-up">
+        <div class="bg-brand-cream border-b border-brand-ink/5 px-6 py-4 flex items-center justify-between flex-shrink-0">
+            <h3 class="font-serif text-xl font-bold text-brand-ink">Schedule Your Visit</h3>
+            <div class="flex items-center gap-4">
+                <a href="#" id="kidazzle-tour-external" target="_blank" class="text-xs font-bold uppercase tracking-wider text-brand-ink/70 hover:text-kidazzle-blue transition-colors hidden md:block">
+                    Open in new tab <i class="fa-solid fa-external-link-alt ml-1"></i>
+                </a>
+                <button id="kidazzle-tour-close" class="w-10 h-10 rounded-full bg-white border border-brand-ink/10 flex items-center justify-center text-brand-ink hover:bg-kidazzle-red hover:text-white hover:border-kidazzle-red transition-all">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+        </div>
+        <div class="flex-grow relative bg-white">
+            <div id="kidazzle-tour-loader" class="absolute inset-0 flex items-center justify-center bg-white z-10">
+                <div class="w-12 h-12 border-4 border-kidazzle-blue/20 border-t-kidazzle-blue rounded-full animate-spin"></div>
+            </div>
+            <iframe id="kidazzle-tour-frame" src="" class="w-full h-full border-0" allow="camera; microphone; autoplay; encrypted-media;"></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const modal = document.getElementById('kidazzle-tour-modal');
+        const backdrop = document.getElementById('kidazzle-tour-backdrop');
+        const closeBtn = document.getElementById('kidazzle-tour-close');
+        const iframe = document.getElementById('kidazzle-tour-frame');
+        const externalLink = document.getElementById('kidazzle-tour-external');
+        const loader = document.getElementById('kidazzle-tour-loader');
+
+        function openModal(url) {
+            if(!modal) return;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            loader.classList.remove('hidden');
+            iframe.src = url;
+            externalLink.href = url;
+            iframe.onload = function () {
+                loader.classList.add('hidden');
+            };
+        }
+
+        function closeModal() {
+            if(!modal) return;
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+            iframe.src = '';
+        }
+
+        const bookingBtns = document.querySelectorAll('.booking-btn');
+        bookingBtns.forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                const url = this.getAttribute('href');
+                if (url && url.startsWith('http')) {
+                    e.preventDefault();
+                    openModal(url);
+                }
+            });
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (backdrop) backdrop.addEventListener('click', closeModal);
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    });
+</script>
 
 <?php get_footer(); ?>
