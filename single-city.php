@@ -53,7 +53,7 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
             </p>
 
             <a href="<?php echo esc_url(home_url('/contact-us/')); ?>"
-                class="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em] text-kidazzle-red hover:text-brand-ink transition-all group">
+                class="booking-btn inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em] text-kidazzle-red hover:text-brand-ink transition-all group">
                 Schedule a Visit
                 <div
                     class="w-12 h-12 rounded-full border border-kidazzle-red/20 flex items-center justify-center group-hover:bg-kidazzle-red group-hover:text-white transition-all">
@@ -201,9 +201,9 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                                         Book Tour
                                     </a>
                                 <?php else: ?>
-                                    <a href="<?php the_permalink(); ?>#tour"
-                                        class="flex items-center justify-center text-center py-4 bg-kidazzle-blue text-white rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-kidazzle-blueDark transition-all shadow-sm">
-                                        Schedule
+                                    <a href="<?php echo esc_url(home_url('/contact-us/')); ?>"
+                                        class="booking-btn flex items-center justify-center text-center py-4 bg-kidazzle-blue text-white rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-kidazzle-blueDark transition-all shadow-sm">
+                                        Book Tour
                                     </a>
                                 <?php endif; ?>
                             </div>
