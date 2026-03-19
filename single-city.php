@@ -52,12 +52,12 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                 KIDazzle Creative Curriculum™ framework and premium safety standards.
             </p>
 
-            <a href="#locations"
+            <a href="<?php echo esc_url(home_url('/contact-us/')); ?>"
                 class="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em] text-kidazzle-red hover:text-brand-ink transition-all group">
-                Find Your Campus
+                Schedule a Visit
                 <div
                     class="w-12 h-12 rounded-full border border-kidazzle-red/20 flex items-center justify-center group-hover:bg-kidazzle-red group-hover:text-white transition-all">
-                    <i class="fa-solid fa-arrow-down text-[10px]"></i>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
                 </div>
             </a>
         </div>
