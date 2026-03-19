@@ -204,9 +204,9 @@ if (!function_exists('wimper_location_schema')) {
                 // Meta Fields
                 $name = get_post_meta($location_id, 'schema_loc_name', true) ?: get_the_title();
                 $description = get_post_meta($location_id, 'schema_loc_description', true) ?: (get_the_excerpt() ?: wimper_trimmed_excerpt(30, $location_id));
-                $telephone = get_post_meta($location_id, 'schema_loc_telephone', true) ?: $location_fields['phone'];
-                $email = get_post_meta($location_id, 'schema_loc_email', true) ?: $location_fields['email'];
-                $opening_hours_raw = get_post_meta($location_id, 'schema_loc_opening_hours', true) ?: $location_fields['hours'];
+                $telephone = get_post_meta($location_id, 'schema_loc_telephone', true) ?: (isset($location_fields['phone']) ? $location_fields['phone'] : '');
+                $email = get_post_meta($location_id, 'schema_loc_email', true) ?: (isset($location_fields['email']) ? $location_fields['email'] : '');
+                $opening_hours_raw = get_post_meta($location_id, 'schema_loc_opening_hours', true) ?: (isset($location_fields['hours']) ? $location_fields['hours'] : '');
                 $payment = get_post_meta($location_id, 'schema_loc_payment_accepted', true);
                 $price_range = get_post_meta($location_id, 'seo_llm_price_min', true);
                 $quality_rated = get_post_meta($location_id, 'location_quality_rated', true);
@@ -250,10 +250,10 @@ if (!function_exists('wimper_location_schema')) {
                         'priceRange' => $price_range,
                         'address' => array(
                                 '@type' => 'PostalAddress',
-                                'streetAddress' => $location_fields['address'],
-                                'addressLocality' => $location_fields['city'],
-                                'addressRegion' => $location_fields['state'],
-                                'postalCode' => $location_fields['zip'],
+                                'streetAddress' => isset($location_fields['address']) ? $location_fields['address'] : '',
+                                'addressLocality' => isset($location_fields['city']) ? $location_fields['city'] : '',
+                                'addressRegion' => isset($location_fields['state']) ? $location_fields['state'] : '',
+                                'postalCode' => isset($location_fields['zip']) ? $location_fields['zip'] : '',
                                 'addressCountry' => 'US'
                         ),
                 );
@@ -282,7 +282,7 @@ if (!function_exists('wimper_location_schema')) {
                                 'geoMidpoint' => $schema['geo'],
                                 'geoRadius' => ($service_area['radius'] * 1609.34) // Miles to meters
                         );
-                } elseif ($location_fields['latitude'] && $location_fields['longitude']) {
+                } elseif (isset($location_fields['latitude']) && $location_fields['latitude'] && isset($location_fields['longitude']) && $location_fields['longitude']) {
                         $schema['geo'] = array(
                                 '@type' => 'GeoCoordinates',
                                 'latitude' => $location_fields['latitude'],
@@ -321,7 +321,7 @@ if (!function_exists('wimper_location_schema')) {
                 $cid = get_post_meta($location_id, '_wimper_google_maps_cid', true);
                 if ($cid) {
                         $schema['hasMap'] = "https://www.google.com/maps?cid=$cid";
-                } elseif ($location_fields['map_link']) {
+                } elseif (isset($location_fields['map_link']) && $location_fields['map_link']) {
                         $schema['hasMap'] = $location_fields['map_link'];
                 } else {
                         // Construct Google Maps URL from address

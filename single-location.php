@@ -238,7 +238,7 @@ while (have_posts()):
 							</div>
 							<?php endif; ?>
 
-							<?php if ($location_fields['hours']): ?>
+							<?php if (isset($location_fields['hours']) && $location_fields['hours']): ?>
 							<div class="flex items-start gap-4">
 								<i class="fa-solid fa-clock text-yellow-400 mt-1 shrink-0"></i> 
 								<span><?php echo esc_html($location_fields['hours']); ?></span>
