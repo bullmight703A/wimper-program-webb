@@ -332,7 +332,7 @@
             </button>
             
             <div class="p-4 md:p-8">
-                <h2 class="text-2xl font-bold text-white mb-6">Strategy Session Calendar</h2>
+                <h2 class="text-2xl text-white mb-6" style="color: white !important; font-weight: bold !important;">Strategy Session Calendar</h2>
                 <div class="bg-white rounded-2xl overflow-hidden p-2 shadow-inner min-h-[600px]">
                     <iframe src="https://api.leadconnectorhq.com/widget/booking/VNIKFQp8UXtGVcCV3s7v" style="width: 100%;border:none;overflow: hidden; min-height:600px;" scrolling="no" id="VNIKFQp8UXtGVcCV3s7v"></iframe>
                     <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
