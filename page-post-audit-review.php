@@ -226,9 +226,7 @@
                         <p class="text-sm text-slate-400 mt-2">The architecture we will use to scale your revenue while decreasing expenses.</p>
                     </div>
                     <div class="pt-2">
-                        <a href="/proposal" target="_blank" rel="noopener noreferrer">
-                            <button class="text-xs font-bold text-blue-400 bg-blue-500/10 px-4 py-2 rounded-lg hover:bg-blue-500/20">Access Framework</button>
-                        </a>
+                        <button onclick="document.getElementById('proposalModal').showModal()" class="text-xs font-bold text-blue-400 bg-blue-500/10 px-4 py-2 rounded-lg hover:bg-blue-500/20 cursor-pointer">Access Framework</button>
                     </div>
                 </div>
                 <!-- Task 3 -->
@@ -341,6 +339,32 @@
         </div>
     </dialog>
 
+    <!-- PROPOSAL OVERVIEW MODAL -->
+    <dialog id="proposalModal" class="bg-transparent m-auto p-0 w-full max-w-5xl">
+        <div class="bg-slate-900 rounded-[2rem] shadow-2xl border border-slate-700 relative overflow-hidden flex flex-col h-[90vh]">
+            <!-- Close Button -->
+            <button onclick="document.getElementById('proposalModal').close()" class="absolute top-4 right-4 z-50 text-slate-400 bg-slate-800 hover:text-white rounded-full p-2 hover:bg-slate-700 transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="p-4 md:p-8 flex-shrink-0 flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl text-white mb-1" style="color: white !important; font-weight: bold !important;">WIMPER Program Proposal</h2>
+                    <p class="text-slate-400 text-xs uppercase tracking-widest font-bold">Executive Summary</p>
+                </div>
+                <!-- Native Button for downloading the underlying PDF explicitly in the Modal -->
+                <a href="<?php echo get_template_directory_uri(); ?>/assets/WIMPER_Program_Proposal.pdf" download="WIMPER_Executive_Proposal.pdf" class="bg-blue-600 hover:bg-blue-500 text-white rounded-xl px-4 py-2.5 text-xs font-bold uppercase tracking-widest flex items-center gap-2 shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all mr-12 md:mr-0">
+                    <i data-lucide="download" class="w-4 h-4"></i> <span class="hidden md:inline">Download</span>
+                </a>
+            </div>
+            
+            <div class="flex-grow bg-[#323639] relative">
+                <!-- Native Edge/Chrome/Safari PDF embedding into modal to prevent navigation exit -->
+                <iframe src="<?php echo get_template_directory_uri(); ?>/assets/WIMPER_Program_Proposal.pdf#toolbar=1&navpanes=0&scrollbar=1&view=FitH" class="absolute w-full h-full border-none inset-0"></iframe>
+            </div>
+        </div>
+    </dialog>
+
     <?php wp_footer(); ?>
     <script>
         // Initialize Lucide Icons
@@ -408,19 +432,35 @@
             });
         }
 
-        // Close modal on outside click
-        const modal = document.getElementById('calendarModal');
-        modal.addEventListener('click', (e) => {
-            const dialogDimensions = modal.getBoundingClientRect();
+        // Close Calendar modal on outside click
+        const calendarModal = document.getElementById('calendarModal');
+        calendarModal.addEventListener('click', (e) => {
+            const dialogDimensions = calendarModal.getBoundingClientRect();
             if (
                 e.clientX < dialogDimensions.left ||
                 e.clientX > dialogDimensions.right ||
                 e.clientY < dialogDimensions.top ||
                 e.clientY > dialogDimensions.bottom
             ) {
-                modal.close();
+                calendarModal.close();
             }
         });
+
+        // Close Proposal modal on outside click
+        const proposalModal = document.getElementById('proposalModal');
+        if(proposalModal) {
+            proposalModal.addEventListener('click', (e) => {
+                const dialogDimensions = proposalModal.getBoundingClientRect();
+                if (
+                    e.clientX < dialogDimensions.left ||
+                    e.clientX > dialogDimensions.right ||
+                    e.clientY < dialogDimensions.top ||
+                    e.clientY > dialogDimensions.bottom
+                ) {
+                    proposalModal.close();
+                }
+            });
+        }
     </script>
 </body>
 </html>
