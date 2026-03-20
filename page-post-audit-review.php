@@ -215,7 +215,7 @@
                         <p class="text-sm text-slate-400 mt-2">A high-level view of your current position and audit objectives.</p>
                     </div>
                     <div class="pt-2">
-                        <button class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-4 py-2 rounded-lg hover:bg-emerald-500/20">View Overview</button>
+                        <button onclick="document.getElementById('financialModal').showModal()" class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-4 py-2 rounded-lg hover:bg-emerald-500/20 cursor-pointer">View Overview</button>
                     </div>
                 </div>
                 <!-- Task 2 -->
@@ -353,7 +353,7 @@
                     <p class="text-slate-400 text-xs uppercase tracking-widest font-bold">Executive Summary</p>
                 </div>
                 <!-- Native Button for downloading the underlying PDF explicitly in the Modal -->
-                <a href="<?php echo get_template_directory_uri(); ?>/assets/WIMPER_Program_Proposal.pdf" download="WIMPER_Executive_Proposal.pdf" class="bg-blue-600 hover:bg-blue-500 text-white rounded-xl px-4 py-2.5 text-xs font-bold uppercase tracking-widest flex items-center gap-2 shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all mr-12 md:mr-0">
+                <a href="<?php echo get_template_directory_uri(); ?>/assets/WIMPER_Program_Proposal.pdf" download="WIMPER_Executive_Proposal.pdf" class="bg-blue-600 hover:bg-blue-500 text-white rounded-xl px-4 py-2.5 text-xs font-bold uppercase tracking-widest flex items-center gap-2 shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all mr-12 md:mr-0 cursor-pointer">
                     <i data-lucide="download" class="w-4 h-4"></i> <span class="hidden md:inline">Download</span>
                 </a>
             </div>
@@ -361,6 +361,37 @@
             <div class="flex-grow bg-[#323639] relative">
                 <!-- Native Edge/Chrome/Safari PDF embedding into modal to prevent navigation exit -->
                 <iframe src="<?php echo get_template_directory_uri(); ?>/assets/WIMPER_Program_Proposal.pdf#toolbar=1&navpanes=0&scrollbar=1&view=FitH" class="absolute w-full h-full border-none inset-0"></iframe>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- FINANCIAL OVERVIEW / CALCULATOR MODAL -->
+    <dialog id="financialModal" class="bg-transparent m-auto p-0 w-full max-w-xl">
+        <div class="bg-slate-900 rounded-[2rem] shadow-2xl border border-emerald-500/20 relative overflow-hidden flex flex-col">
+            <!-- Close Button -->
+            <button onclick="document.getElementById('financialModal').close()" class="absolute top-4 right-4 z-50 text-slate-400 bg-slate-800 hover:text-white rounded-full p-2 hover:bg-slate-700 transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="p-8 md:p-10">
+                <h2 class="text-3xl text-emerald-400 mb-2" style="color: #34d399 !important; font-weight: bold !important;">Financial Tax Savings Calculator</h2>
+                <p class="text-slate-400 text-sm mb-8">Calculate the estimated FICA tax reductions utilizing the W.I.M.P.E.R. Architecture (Avg $1,120 savings per W2 employee).</p>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-white text-xs font-bold uppercase tracking-widest mb-2">Company Name</label>
+                        <input type="text" id="calcCompanyName" placeholder="e.g. Apex Global Industries" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-white text-xs font-bold uppercase tracking-widest mb-2">Full-Time W2 Employees</label>
+                        <input type="number" id="calcEmployeeCount" min="1" placeholder="e.g. 50" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors">
+                    </div>
+                </div>
+
+                <div class="mt-8 p-6 bg-emerald-900/20 border border-emerald-500/30 rounded-2xl flex flex-col items-center justify-center text-center">
+                    <p class="text-xs uppercase tracking-widest text-emerald-500 font-bold mb-2" id="calcResultName">Estimated Annual Savings</p>
+                    <div class="text-4xl md:text-6xl font-800 tracking-tighter text-white" id="calcResultAmount">$0</div>
+                </div>
             </div>
         </div>
     </dialog>
@@ -460,6 +491,46 @@
                     proposalModal.close();
                 }
             });
+        }
+
+        // Close Financial modal on outside click
+        const financialModal = document.getElementById('financialModal');
+        if(financialModal) {
+            financialModal.addEventListener('click', (e) => {
+                const dialogDimensions = financialModal.getBoundingClientRect();
+                if (
+                    e.clientX < dialogDimensions.left ||
+                    e.clientX > dialogDimensions.right ||
+                    e.clientY < dialogDimensions.top ||
+                    e.clientY > dialogDimensions.bottom
+                ) {
+                    financialModal.close();
+                }
+            });
+        }
+
+        // Live Calculator Logic
+        const empInput = document.getElementById('calcEmployeeCount');
+        const companyInput = document.getElementById('calcCompanyName');
+        const resultAmount = document.getElementById('calcResultAmount');
+        const resultName = document.getElementById('calcResultName');
+
+        function updateCalculator() {
+            const employees = parseInt(empInput.value) || 0;
+            const savings = employees * 1120; // $1,120 avg tax savings per employee
+            
+            resultAmount.innerText = '$' + savings.toLocaleString();
+            
+            if(companyInput.value.trim() !== '') {
+                resultName.innerText = "Estimated Annual Savings for " + companyInput.value.trim();
+            } else {
+                resultName.innerText = "Estimated Annual Savings";
+            }
+        }
+
+        if(empInput && companyInput) {
+            empInput.addEventListener('input', updateCalculator);
+            companyInput.addEventListener('input', updateCalculator);
         }
     </script>
 </body>
