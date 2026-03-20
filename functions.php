@@ -503,3 +503,58 @@ add_action('init', function() {
         error_log('WIMPER RULE FLUSH: Theme forced SEO flush.');
     }
 }, 9999);
+
+/**
+ * Fix /contact & /success 404 for SPA Navigation
+ */
+add_action('template_redirect', function() {
+    $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    
+    if (is_404()) {
+        // Fix for /contact SPA link
+        if (strpos($url, '/contact') !== false) {
+            wp_redirect(home_url('/#contact'), 301);
+            exit;
+        }
+        
+        // Force rendering of /success Page without a DB Required Page
+        if (strpos($url, '/success') !== false) {
+            global $wp_query;
+            $wp_query->is_404 = false;
+            status_header(200);
+            
+            $template = locate_template('page-success.php');
+            if ($template) {
+                include($template);
+                exit;
+            }
+        }
+        
+        // Force rendering of the Organic HeyGen /intro Page without a DB Required Page
+        if (strpos($url, '/intro') !== false) {
+            global $wp_query;
+            $wp_query->is_404 = false;
+            status_header(200);
+            
+            $template = locate_template('page-intro.php');
+            if ($template) {
+                include($template);
+                exit;
+            }
+        }
+    }
+});
+
+// 🔥 UNCONDITIONAL AGGRESSIVE OVERRIDE TO BYPASS "OTTO" CACHE & PAGE BUILDERS
+add_filter('template_include', function($template) {
+    if (isset($_SERVER['REQUEST_URI'])) {
+        $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        if (strpos($url, '/post-audit-review') !== false) {
+            $new_template = locate_template('page-post-audit-review.php');
+            if (!empty($new_template)) {
+                return $new_template;
+            }
+        }
+    }
+    return $template;
+}, 99999);

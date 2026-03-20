@@ -17,8 +17,14 @@ W.I.M.P.E.R. Theme
 Copyright (C) 2026 W.I.M.P.E.R. Program Inc.
 All rights reserved. This theme is proprietary software.
 */
-
+/* KIDazzle Root Branding Variables 2.0 */
 :root {
+    --kd-gold: #D4AF37;
+    --kd-black: #1A1A1A;
+    --kd-white: #FFFFFF;
+    --kd-radius: 24px;
+    --kd-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
     --navy: #020617;
     --gold: #C5A021;
     --slate-50: #f8fafc;
@@ -27,6 +33,20 @@ All rights reserved. This theme is proprietary software.
     --slate-400: #cbd5e1;
     /* Brighter slate for better contrast */
     --slate-600: #94a3b8;
+}
+
+.kd-bento-card {
+    background: var(--kd-white);
+    border-radius: var(--kd-radius);
+    padding: 2.5rem;
+    box-shadow: var(--kd-shadow);
+    border: 1px solid rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+}
+
+.kd-bento-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 /**

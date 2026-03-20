@@ -28,9 +28,29 @@ get_header();
 
         <h1 class="text-5xl md:text-6xl font-serif text-[#2F4858] mb-6 tracking-tight">Application Received</h1>
         <p class="text-xl text-slate-600 font-light mb-12">
-            Your inquiry for the WIMPER Guaranteed Issue Enrollment protocol has been securely logged. See your
-            immediate next steps below.
+            Your inquiry for the WIMPER Guaranteed Issue Enrollment protocol has been securely logged.
         </p>
+
+        <!-- Premium Video Container for HeyGen/Walkthrough -->
+        <div class="relative w-full max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-white mb-16 bg-slate-900 group">
+            
+            <!-- DESKTOP VIDEO (16:9) - Hidden on Mobile -->
+            <div class="hidden md:block aspect-w-16 aspect-h-9 relative pb-[56.25%]">
+                <video id="desktop-video" class="absolute inset-0 w-full h-full object-cover" controls preload="metadata" poster="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000&auto=format&fit=crop">
+                    <source src="https://assets.cdn.filesafe.space/0EYrXwSAbw55Hpgu54CD/media/69bd94e2fd4388309747f4f3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- MOBILE VIDEO (9:16) - Hidden on Desktop -->
+            <div class="block md:hidden aspect-w-9 aspect-h-16 relative pb-[177.77%]">
+                <video id="mobile-video" class="absolute inset-0 w-full h-full object-cover" controls preload="metadata" poster="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=600&auto=format&fit=crop">
+                    <source src="https://assets.cdn.filesafe.space/0EYrXwSAbw55Hpgu54CD/media/69bd94e20e1bdbe107867fbe.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+        </div>
 
         <!-- Dynamic Success Timeline / Pop-Up Trigger -->
         <div

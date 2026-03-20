@@ -80,7 +80,7 @@
 </script>
 
 <!-- Floating CTA Button -->
-<button onclick="openGlobalCalendar()" class="fixed bottom-6 right-6 z-[90] bg-gold text-navy font-bold px-6 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform flex items-center space-x-2 border-2 border-navy">
+<button onclick="openGlobalCalendar()" class="fixed bottom-6 right-6 z-[90] bg-brand text-white font-bold px-6 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform flex items-center space-x-2 border-2 border-white">
     <i class="fa-solid fa-calendar-check text-xl"></i>
     <span class="tracking-widest uppercase text-xs">Schedule Audit</span>
 </button>
@@ -92,7 +92,7 @@
         <!-- Modal Header -->
         <div class="flex justify-between items-center p-4 border-b border-slate-100 bg-slate-50">
             <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 bg-navy rounded-lg flex items-center justify-center text-white">
+                <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center text-white">
                     <i class="fas fa-shield-heart text-sm"></i>
                 </div>
                 <span class="font-black text-slate-900 tracking-tight">W.I.M.P.E.R. Scheduling</span>
@@ -111,7 +111,6 @@
         </div>
     </div>
 </div>
-
 <?php wp_footer(); ?>
 </body>
 

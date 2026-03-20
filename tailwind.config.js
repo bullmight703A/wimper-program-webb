@@ -14,11 +14,14 @@ module.exports = {
       },
       colors: {
         brand: {
-          ink: '#0F172A', // Slate 900
-          cream: '#F8FAFC', // Slate 50
+          ink: '#1A1A1A', // Professional Black
+          cream: '#FFFFFF', // Pristine White
         },
-        // Wimper Colors (Extracted from HTML)
-        wimper: {
+        // Kidazzle Brand Identity 2.0 & Legacy Map
+        kidazzle: {
+          gold: '#D4AF37', // KIDazzle Gold
+          teal: '#20B2AA', // Sky Teal
+          coral: '#FF7F50', // Sunset Coral
           red: '#EF4444',
           redLight: '#FEF2F2',
           orange: '#F97316',
@@ -34,8 +37,6 @@ module.exports = {
           blueDark: '#1E3A8A', // Navy Blue
           purple: '#A855F7',
           purpleLight: '#F3E8FF',
-          teal: '#06B6D4',
-          tealLight: '#ECFEFF',
           slate: '#475569',
         },
       },
@@ -61,14 +62,14 @@ module.exports = {
     // Static utilities
     'w-2', 'h-2', 'rounded-full',
 
-    // Wimper base colors (no opacity) - ALL prefixes
+    // Kidazzle base colors (no opacity) - ALL prefixes
     {
-      pattern: /(bg|text|border|from|to)-wimper-(red|orange|yellow|green|cyan|blue|blueDark|purple|slate|teal)(Light)?$/,
+      pattern: /(bg|text|border|from|to)-kidazzle-(gold|coral|red|orange|yellow|green|cyan|blue|blueDark|purple|slate|teal)(Light)?$/,
       variants: ['hover', 'group-hover', 'focus'],
     },
-    // Wimper opacity variants - limit to actually used values
+    // Kidazzle opacity variants
     {
-      pattern: /(bg|text|border|from|to)-wimper-(red|orange|yellow|green|cyan|blue|blueDark|purple|slate|teal)(Light)?\/(5|10|15|20|30|40|50|80|90)$/,
+      pattern: /(bg|text|border|from|to)-kidazzle-(gold|coral|red|orange|yellow|green|cyan|blue|blueDark|purple|slate|teal)(Light)?\/(5|10|15|20|30|40|50|80|90)$/,
       variants: ['hover'],
     },
 
