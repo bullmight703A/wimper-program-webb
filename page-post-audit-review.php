@@ -222,8 +222,8 @@
                 <div class="glass p-6 rounded-3xl step-card border border-white/5 flex flex-col items-center text-center space-y-4 cursor-pointer">
                     <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center font-bold text-blue-400 shadow-lg">02</div>
                     <div>
-                        <h4 class="font-bold text-lg">Scalability Framework</h4>
-                        <p class="text-sm text-slate-400 mt-2">The architecture we will use to scale your revenue while decreasing labor.</p>
+                        <h4 class="font-bold text-lg">Process Framework</h4>
+                        <p class="text-sm text-slate-400 mt-2">The architecture we will use to scale your revenue while decreasing expenses.</p>
                     </div>
                     <div class="pt-2">
                         <button class="text-xs font-bold text-blue-400 bg-blue-500/10 px-4 py-2 rounded-lg hover:bg-blue-500/20">Access Framework</button>
