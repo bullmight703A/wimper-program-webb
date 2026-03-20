@@ -234,7 +234,7 @@
                         <p class="text-sm text-slate-400 mt-2">Identify the number one financial hurdle allowing you to keep more money in your business in the next 30 days.</p>
                     </div>
                     <div class="pt-2">
-                        <button class="text-xs font-bold text-purple-400 bg-purple-500/10 px-4 py-2 rounded-lg hover:bg-purple-500/20">Submit Questions</button>
+                        <button onclick="document.getElementById('keyQuestionsModal').showModal()" class="text-xs font-bold text-purple-400 bg-purple-500/10 px-4 py-2 rounded-lg hover:bg-purple-500/20 cursor-pointer">Review Q&A</button>
                     </div>
                 </div>
             </div>
@@ -389,6 +389,180 @@
         </div>
     </dialog>
 
+    <!-- KEY QUESTIONS / STRATEGIC Q&A MODAL -->
+    <dialog id="keyQuestionsModal" class="bg-transparent m-auto p-0 w-full max-w-4xl">
+        <div class="bg-slate-900 rounded-[2rem] shadow-2xl border border-purple-500/20 relative overflow-hidden flex flex-col h-[85vh]">
+            <!-- Close Button -->
+            <button onclick="document.getElementById('keyQuestionsModal').close()" class="absolute top-4 right-4 z-50 text-slate-400 bg-slate-800 hover:text-white rounded-full p-2 hover:bg-slate-700 transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <!-- Modal Header -->
+            <div class="p-6 md:p-8 flex-shrink-0 border-b border-white/5 bg-slate-800/50">
+                <h2 class="text-2xl md:text-3xl text-purple-400 mb-2" style="color: #c084fc !important; font-weight: bold !important;">WIMPER Strategic Q&A</h2>
+                <p class="text-slate-400 text-sm">For Established Business Owners & Operators</p>
+            </div>
+            
+            <!-- Scrollable Content Area -->
+            <div class="overflow-y-auto p-6 md:p-8 space-y-8 custom-scrollbar">
+                
+                <!-- Q1 -->
+                <div class="space-y-3">
+                    <h3 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">1. "Who is this actually for—and who is it not for?"</h3>
+                    <div class="text-slate-400 text-sm space-y-2 leading-relaxed pl-4 border-l-2 border-purple-500/30">
+                        <p>WIMPER is designed for established business owners with consistent profitability and a team in place.</p>
+                        <p class="text-slate-300 font-semibold mt-2">It is not for:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Early-stage businesses without stable revenue.</li>
+                            <li>Owners looking for short-term tax tricks.</li>
+                            <li>Companies without employees or structured payroll.</li>
+                        </ul>
+                        <p class="text-slate-300 font-semibold mt-2">It is for operators who:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Want to legally reduce tax burden.</li>
+                            <li>Are already paying significant taxes and want efficiency.</li>
+                            <li>Value compliant, structured financial strategies.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="space-y-3">
+                    <h3 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">2. "How is this legally possible?"</h3>
+                    <div class="text-slate-400 text-sm space-y-2 leading-relaxed pl-4 border-l-2 border-purple-500/30">
+                        <p>WIMPER is not a loophole—it's based on long-standing IRS-approved provisions that have existed since the 1960s.</p>
+                        <p>Specifically, it leverages:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Employer-sponsored reimbursement structures.</li>
+                            <li>Established Section 125 tax code allowances for medical expense reimbursement.</li>
+                            <li>Compliance frameworks aligned with IRS and ERISA standards.</li>
+                        </ul>
+                        <p class="italic text-slate-500 mt-2">Most business owners simply aren't aware these provisions exist or how to implement them correctly.</p>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="space-y-3">
+                    <h3 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">3. "What exactly is a SIMRP and how does it fit into this?"</h3>
+                    <div class="text-slate-400 text-sm space-y-2 leading-relaxed pl-4 border-l-2 border-purple-500/30">
+                        <p>A SIMRP (Self-Insured Medical Reimbursement Plan) allows business owners to:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Reimburse employees (including themselves, if structured properly) for qualified medical expenses.</li>
+                            <li>Do so in a completely tax-advantaged way.</li>
+                            <li>Customize benefits without relying solely on traditional, rigid insurance structures.</li>
+                        </ul>
+                        <p>Within WIMPER, the SIMRP is the core engine that enables compliant, automated tax efficiency.</p>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="space-y-3">
+                    <h3 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">4. "Is this compliant with current IRS regulations?"</h3>
+                    <div class="text-slate-400 text-sm space-y-2 leading-relaxed pl-4 border-l-2 border-purple-500/30">
+                        <p><strong class="text-slate-200">Yes—when implemented correctly.</strong></p>
+                        <p>WIMPER is structured to perfectly align with:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>IRS guidelines on medical reimbursement plans.</li>
+                            <li>Employer-sponsored benefit regulations.</li>
+                            <li>Documentation and substantiation requirements.</li>
+                        </ul>
+                        <p>The key difference is not the law itself—it's the <strong>execution and compliance structure</strong>, which is where most businesses fail when attempting to do this on their own.</p>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="space-y-3">
+                    <h3 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">5. "Why haven't I heard about this before?"</h3>
+                    <div class="text-slate-400 text-sm space-y-2 leading-relaxed pl-4 border-l-2 border-purple-500/30">
+                        <p>Because it's not widely promoted. The primary reasons are:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>It requires aggressive structuring and compliance to execute correctly.</li>
+                            <li>Traditional financial advisors and bookkeepers often default to simpler, more familiar tax deductions.</li>
+                            <li>There's no direct incentive for standard health insurance providers to educate at this tactical level.</li>
+                        </ul>
+                        <p class="italic text-slate-500 mt-2">This is not a new law—it is simply a massively underutilized strategy.</p>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="space-y-3">
+                    <h3 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">6. "What kind of financial impact should I realistically expect?"</h3>
+                    <div class="text-slate-400 text-sm space-y-2 leading-relaxed pl-4 border-l-2 border-purple-500/30">
+                        <p>That depends precisely on: your current tax liability, your number of W-2 employees, and eligible medical expenses.</p>
+                        <p>However, most qualified businesses see:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>An average of <strong>$1,120 per employee, per year</strong> in payroll tax reduction.</li>
+                            <li>Reallocation of dollars they are already spending.</li>
+                            <li>A net-zero employer cost while simultaneously increasing employee take-home pay.</li>
+                        </ul>
+                        <p>This is not about creating new expenses—it is solely about optimizing existing ones.</p>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="space-y-3">
+                    <h3 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">7. "How complex is implementation?"</h3>
+                    <div class="text-slate-400 text-sm space-y-2 leading-relaxed pl-4 border-l-2 border-purple-500/30">
+                        <p>It is structured—but categorically not burdensome for you when done correctly.</p>
+                        <p>WIMPER provides:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>A strictly defined framework for setup.</li>
+                            <li>Professional guidance on compliance and documentation.</li>
+                            <li>Ongoing programmatic structure to ensure you remain fully aligned and protected.</li>
+                        </ul>
+                        <p>Without a system like WIMPER, it is overwhelmingly complex. <em>With us, it is entirely streamlined.</em></p>
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="space-y-3">
+                    <h3 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">8. "What are the risks if this is set up incorrectly?"</h3>
+                    <div class="text-slate-400 text-sm space-y-2 leading-relaxed pl-4 border-l-2 border-purple-500/30">
+                        <p>Improper, DIY setup can lead to severe consequences:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Loss of all tax advantages.</li>
+                            <li>Compliance triggers and potential audits with the IRS.</li>
+                            <li>Improper documentation or reimbursement handling.</li>
+                        </ul>
+                        <p class="font-bold text-red-400 mt-2">That is exactly why corporate structure matters.</p>
+                        <p>WIMPER exists to ensure the strategy is safely executed to the letter of the law—not just theoretically understood.</p>
+                    </div>
+                </div>
+
+                <!-- Q9 -->
+                <div class="space-y-3">
+                    <h3 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">9. "How does this compare to traditional health insurance or benefits?"</h3>
+                    <div class="text-slate-400 text-sm space-y-2 leading-relaxed pl-4 border-l-2 border-purple-500/30">
+                        <p>Traditional plans are highly fixed, increasingly expensive, and strictly limited in flexibility.</p>
+                        <p>A SIMRP within the WIMPER architecture allows:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Massive control over reimbursements.</li>
+                            <li>Exceptional cost efficiency through FICA relief.</li>
+                            <li>Perfect alignment with actual participant expenses rather than rigid corporate plans.</li>
+                        </ul>
+                        <p>We do not require you to replace your current major medical plan—WIMPER sits cleanly alongside it as an optimized tax structure.</p>
+                    </div>
+                </div>
+
+                <!-- Q10 -->
+                <div class="space-y-3">
+                    <h3 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">10. "What does the process look like to get started?"</h3>
+                    <div class="text-slate-400 text-sm space-y-2 leading-relaxed pl-4 border-l-2 border-purple-500/30">
+                        <p>The onboarding process is engineered for speed:</p>
+                        <ul class="list-decimal pl-5 space-y-1">
+                            <li>Evaluate business eligibility.</li>
+                            <li>Map current expenses and corporate structure.</li>
+                            <li>Implement compliant repayment framework.</li>
+                            <li>Maintain proper documentation and automated execution.</li>
+                        </ul>
+                        <p class="mt-4 font-bold text-slate-200">The goal is not disruption—it is smooth financial integration into exactly what you are already doing.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </dialog>
+
     <?php wp_footer(); ?>
     <script>
         // Initialize Lucide Icons
@@ -498,6 +672,22 @@
                     e.clientY > dialogDimensions.bottom
                 ) {
                     financialModal.close();
+                }
+            });
+        }
+
+        // Close Key Questions modal on outside click
+        const keyQuestionsModal = document.getElementById('keyQuestionsModal');
+        if(keyQuestionsModal) {
+            keyQuestionsModal.addEventListener('click', (e) => {
+                const dialogDimensions = keyQuestionsModal.getBoundingClientRect();
+                if (
+                    e.clientX < dialogDimensions.left ||
+                    e.clientX > dialogDimensions.right ||
+                    e.clientY < dialogDimensions.top ||
+                    e.clientY > dialogDimensions.bottom
+                ) {
+                    keyQuestionsModal.close();
                 }
             });
         }
