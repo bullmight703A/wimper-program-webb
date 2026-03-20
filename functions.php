@@ -531,6 +531,19 @@ add_action('template_redirect', function() {
                 exit;
             }
         }
+        
+        // Force rendering of the Post Audit Review Page with flawless Tailwind styling
+        if (strpos($url, '/post-audit-review') !== false) {
+            global $wp_query;
+            $wp_query->is_404 = false;
+            status_header(200);
+            
+            $template = locate_template('page-post-audit-review.php');
+            if ($template) {
+                include($template);
+                exit;
+            }
+        }
     }
 });
 
