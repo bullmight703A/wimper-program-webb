@@ -28,9 +28,23 @@ get_header();
 
         <h1 class="text-5xl md:text-6xl font-serif text-[#2F4858] mb-6 tracking-tight">Application Received</h1>
         <p class="text-xl text-slate-600 font-light mb-12">
-            Your inquiry for the WIMPER Guaranteed Issue Enrollment protocol has been securely logged. See your
-            immediate next steps below.
+            Your inquiry for the WIMPER Guaranteed Issue Enrollment protocol has been securely logged.
         </p>
+
+        <!-- Premium Video Container for HeyGen/Walkthrough -->
+        <div class="relative w-full max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-white mb-16 bg-slate-900 group">
+            <div class="aspect-w-16 aspect-h-9 relative pb-[56.25%]">
+                <!-- VIDEO EMBED HUB -->
+                <!-- Robert: This is where you will add the URL to the downloaded HeyGen video or Walkthrough Video -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center bg-navy/90 text-white z-10 transition-opacity">
+                    <i class="fas fa-play-circle text-6xl text-accent mb-4 cursor-pointer hover:scale-110 transition-transform"></i>
+                    <p class="font-bold tracking-widest uppercase text-sm">Play Executive Briefing</p>
+                    <p class="text-xs text-blue-200 mt-2 font-light">Duration: 2:45</p>
+                </div>
+                <!-- Placeholder Image or Video Element -->
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+            </div>
+        </div>
 
         <!-- Dynamic Success Timeline / Pop-Up Trigger -->
         <div
