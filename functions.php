@@ -494,14 +494,29 @@ add_action('rest_api_init', function () {
 });
 
 /**
- * Fix /contact 404 for SPA
+ * Fix /contact & /success 404 for SPA Navigation
  */
 add_action('template_redirect', function() {
     if (is_404()) {
-        $url = $_SERVER['REQUEST_URI'];
+        $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        
+        // Fix for /contact SPA link
         if (strpos($url, '/contact') !== false) {
             wp_redirect(home_url('/#contact'), 301);
             exit;
+        }
+        
+        // Force rendering of /success Page without a DB Required Page
+        if (strpos($url, '/success') !== false) {
+            global $wp_query;
+            $wp_query->is_404 = false;
+            status_header(200);
+            
+            $template = locate_template('page-success.php');
+            if ($template) {
+                include($template);
+                exit;
+            }
         }
     }
 });
