@@ -130,7 +130,7 @@
                 <!-- Video 1 (Main Hero) -->
                 <div class="video-container shadow-2xl shadow-red-500/10 border border-white/10 group">
                     <video controls class="w-full h-full object-cover">
-                        <source src="https://assets.cdn.filesafe.space/0EYrXwSAbw55Hpgu54CD/media/69bd99209d53bffde6b89e61.mp4" type="video/mp4">
+                        <source src="https://assets.cdn.filesafe.space/0EYrXwSAbw55Hpgu54CD/media/69bd94e2fd4388309747f4f3.mp4" type="video/mp4">
                     </video>
                 </div>
                 
