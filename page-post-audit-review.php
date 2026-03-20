@@ -116,8 +116,8 @@
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full status-badge-pending text-xs font-bold tracking-widest uppercase">
                 <i data-lucide="alert-circle" class="w-4 h-4"></i> Enrollment Not Confirmed
             </div>
-            <h1 class="text-4xl md:text-6xl font-800 tracking-tight">
-                Welcome to <span class="gradient-text">WIMPER</span>
+            <h1 class="text-4xl md:text-6xl tracking-tight text-white" style="color: white !important; font-weight: 800 !important;">
+                Welcome to <span class="bg-gradient-to-r from-red-500 to-orange-400 bg-clip-text text-transparent" style="color: transparent !important; -webkit-text-fill-color: transparent;">WIMPER</span>
             </h1>
             <p class="text-slate-400 text-lg max-w-2xl mx-auto">
                 Your place is reserved, but your enrollment is <span class="text-white font-bold">pending</span>. Watch the message below and complete the required steps immediately.
@@ -129,7 +129,7 @@
             <div class="lg:col-span-3 space-y-6">
                 <!-- Video 1 (Main Hero) -->
                 <div class="video-container shadow-2xl shadow-red-500/10 border border-white/10 group relative">
-                    <video id="mainHeroVideo" controls class="w-full h-full object-cover">
+                    <video id="mainHeroVideo" autoplay muted playsinline controls class="w-full h-full object-cover">
                         <source src="https://assets.cdn.filesafe.space/0EYrXwSAbw55Hpgu54CD/media/69bd94e2fd4388309747f4f3.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -144,7 +144,7 @@
             
             <div class="lg:col-span-2 space-y-6">
                 <div class="glass p-6 rounded-3xl space-y-4">
-                    <h3 class="text-xl font-bold flex items-center gap-2">
+                    <h3 class="text-xl flex items-center gap-2 text-white" style="color: white !important; font-weight: bold !important;">
                         <i data-lucide="user-check" class="text-blue-400"></i> Lead Consulting
                     </h3>
                     <div class="flex items-center gap-4">
@@ -164,7 +164,7 @@
                 <!-- Schedule Sub-Card -->
                 <div class="glass p-6 rounded-3xl border border-white/5">
                     <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-sm font-bold uppercase tracking-widest text-slate-400">Webinar</h3>
+                        <h3 class="text-sm uppercase tracking-widest text-white" style="color: white !important; font-weight: bold !important;">Webinar</h3>
                         <span class="text-emerald-500 text-xs font-bold px-2 py-0.5 bg-emerald-500/10 rounded">LIVE SESSION</span>
                     </div>
                     <div class="space-y-4">
@@ -185,7 +185,7 @@
         <section class="glass p-8 rounded-3xl bg-blue-500/5 border border-blue-500/20">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="text-center md:text-left">
-                    <h3 class="text-xl font-bold text-white mb-2">Book Your Individual Strategy Call</h3>
+                    <h3 class="text-xl md:text-2xl text-white mb-2" style="color: white !important; font-weight: bold !important;">Book Your Individual Strategy Call</h3>
                     <p class="text-slate-400 max-w-xl">
                         Schedule your 1:1 onboarding session immediately to ensure your business structure is correctly mapped before the live audit.
                     </p>
@@ -198,8 +198,8 @@
 
         <!-- Critical Preparedness Section -->
         <section class="space-y-6">
-            <div class="flex items-center justify-between">
-                <h2 class="text-2xl font-800 flex items-center gap-3">
+            <div class="flex items-center justify-between border-b border-white/5 pb-4">
+                <h2 class="text-2xl flex items-center gap-3 text-white" style="color: white !important; font-weight: 800 !important;">
                     <i data-lucide="clipboard-list" class="text-emerald-400"></i> Corporate Critical Preparedness
                 </h2>
                 <span class="text-sm text-red-500 font-bold uppercase tracking-tighter">Actions Required</span>
@@ -211,7 +211,7 @@
                 <div class="glass p-6 rounded-3xl step-card border border-white/5 flex flex-col items-center text-center space-y-4 cursor-pointer">
                     <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center font-bold text-emerald-400 shadow-lg">01</div>
                     <div>
-                        <h4 class="font-bold text-lg text-white" style="color: white !important;">Financial Overview</h4>
+                        <h4 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">Financial Overview</h4>
                         <p class="text-sm text-slate-400 mt-2">A high-level view of your current position and audit objectives.</p>
                     </div>
                     <div class="pt-2">
@@ -222,7 +222,7 @@
                 <div class="glass p-6 rounded-3xl step-card border border-white/5 flex flex-col items-center text-center space-y-4 cursor-pointer">
                     <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center font-bold text-blue-400 shadow-lg">02</div>
                     <div>
-                        <h4 class="font-bold text-lg text-white" style="color: white !important;">Process Framework</h4>
+                        <h4 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">Process Framework</h4>
                         <p class="text-sm text-slate-400 mt-2">The architecture we will use to scale your revenue while decreasing expenses.</p>
                     </div>
                     <div class="pt-2">
@@ -235,7 +235,7 @@
                 <div class="glass p-6 rounded-3xl step-card border border-white/5 flex flex-col items-center text-center space-y-4 cursor-pointer">
                     <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center font-bold text-purple-400 shadow-lg">03</div>
                     <div>
-                        <h4 class="font-bold text-lg text-white" style="color: white !important;">Key Questions</h4>
+                        <h4 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">Key Questions</h4>
                         <p class="text-sm text-slate-400 mt-2">Identify the #1 financial hurdle keeping you from scaling 2x next quarter.</p>
                     </div>
                     <div class="pt-2">
@@ -254,7 +254,7 @@
                         </video>
                     </div>
                     <div class="text-center px-2">
-                        <h4 class="font-bold text-sm text-slate-200">The Section 125 Code</h4>
+                        <h4 class="text-sm text-white" style="color: white !important; font-weight: bold !important;">The Section 125 Code</h4>
                     </div>
                 </div>
                 <!-- Video 3 -->
@@ -265,7 +265,7 @@
                         </video>
                     </div>
                     <div class="text-center px-2">
-                        <h4 class="font-bold text-sm text-slate-200">Corporate Audit Prep</h4>
+                        <h4 class="text-sm text-white" style="color: white !important; font-weight: bold !important;">Corporate Audit Prep</h4>
                     </div>
                 </div>
                 <!-- Video 4 -->
@@ -276,7 +276,7 @@
                         </video>
                     </div>
                     <div class="text-center px-2">
-                        <h4 class="font-bold text-sm text-slate-200">FICA Leakage Details</h4>
+                        <h4 class="text-sm text-white" style="color: white !important; font-weight: bold !important;">FICA Leakage Details</h4>
                     </div>
                 </div>
                 <!-- Video 5 -->
@@ -287,7 +287,7 @@
                         </video>
                     </div>
                     <div class="text-center px-2">
-                        <h4 class="font-bold text-sm text-slate-200">Retention & Growth</h4>
+                        <h4 class="text-sm text-white" style="color: white !important; font-weight: bold !important;">Retention & Growth</h4>
                     </div>
                 </div>
             </div>
@@ -295,7 +295,7 @@
 
         <!-- Final Urgency Bar -->
         <section class="glass p-8 rounded-3xl bg-red-500/5 border border-red-500/20 text-center">
-            <h3 class="text-xl font-bold mb-2">Final Step to Secure Enrollment</h3>
+            <h3 class="text-xl text-white mb-2" style="color: white !important; font-weight: bold !important;">Final Step to Secure Enrollment</h3>
             <p class="text-slate-400 max-w-2xl mx-auto mb-6 italic">
                 Enrollment is currently <span class="text-red-400 font-bold">UNCONFIRMED</span>. You must complete the Overview and submit your Key Questions to move into confirmed status for this Wednesday's session.
             </p>
