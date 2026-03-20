@@ -497,9 +497,9 @@ add_action('rest_api_init', function () {
  * Fix /contact & /success 404 for SPA Navigation
  */
 add_action('template_redirect', function() {
+    $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    
     if (is_404()) {
-        $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        
         // Fix for /contact SPA link
         if (strpos($url, '/contact') !== false) {
             wp_redirect(home_url('/#contact'), 301);
@@ -531,18 +531,16 @@ add_action('template_redirect', function() {
                 exit;
             }
         }
-        
-        // Force rendering of the Post Audit Review Page with flawless Tailwind styling
-        if (strpos($url, '/post-audit-review') !== false) {
-            global $wp_query;
-            $wp_query->is_404 = false;
-            status_header(200);
-            
-            $template = locate_template('page-post-audit-review.php');
-            if ($template) {
-                include($template);
-                exit;
-            }
+    }
+    
+    // 🔥 UNCONDITIONAL OVERRIDE: 
+    // This MUST be outside the is_404() check, because the page exists in the DB but we want to forcefully bypass it.
+    if (strpos($url, '/post-audit-review') !== false) {
+        status_header(200);
+        $template = locate_template('page-post-audit-review.php');
+        if ($template) {
+            include($template);
+            exit;
         }
     }
 });
