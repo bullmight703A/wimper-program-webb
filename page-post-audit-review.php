@@ -174,7 +174,7 @@
                         </div>
                         <div class="flex items-center gap-3">
                             <i data-lucide="clock" class="text-emerald-500 w-5 h-5"></i>
-                            <span class="text-white font-semibold">2:00 PM EST / 11:00 AM PST</span>
+                            <span class="text-white font-semibold">7:00 PM EST / 4:00 PM PST</span>
                         </div>
                     </div>
                 </div>
