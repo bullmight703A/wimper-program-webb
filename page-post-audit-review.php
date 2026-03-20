@@ -300,14 +300,14 @@
                 Enrollment is currently <span class="text-red-400 font-bold">UNCONFIRMED</span>. You must complete the Overview and submit your Key Questions to move into confirmed status for this Wednesday's session.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <div class="flex items-center gap-2 text-sm font-semibold px-4 py-2 bg-slate-800 rounded-full text-slate-500 hover:text-white transition-colors">
+                <div class="flex items-center gap-2 text-sm font-semibold px-4 py-2 bg-slate-800 rounded-full text-white transition-colors" style="color: white !important;">
                     <i data-lucide="circle" class="w-4 h-4"></i> Overview Reviewed
                 </div>
-                <div class="flex items-center gap-2 text-sm font-semibold px-4 py-2 bg-slate-800 rounded-full text-slate-500 hover:text-white transition-colors">
+                <div class="flex items-center gap-2 text-sm font-semibold px-4 py-2 bg-slate-800 rounded-full text-white transition-colors" style="color: white !important;">
                     <i data-lucide="circle" class="w-4 h-4"></i> Key Questions Submitted
                 </div>
-                <div class="flex items-center gap-2 text-sm font-semibold px-4 py-2 bg-slate-800 rounded-full text-slate-500 hover:text-white transition-colors">
-                    <i data-lucide="lock" class="w-4 h-4"></i> Webinar Link (Locked)
+                <div class="flex items-center gap-2 text-sm font-semibold px-4 py-2 bg-slate-800 rounded-full text-white transition-colors" style="color: white !important;">
+                    <i data-lucide="lock" class="w-4 h-4 text-slate-400"></i> Webinar Link (Locked)
                 </div>
             </div>
         </section>
