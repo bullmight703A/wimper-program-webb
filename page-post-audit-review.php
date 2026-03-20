@@ -211,7 +211,7 @@
                 <div class="glass p-6 rounded-3xl step-card border border-white/5 flex flex-col items-center text-center space-y-4 cursor-pointer">
                     <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center font-bold text-emerald-400 shadow-lg">01</div>
                     <div>
-                        <h4 class="font-bold text-lg">Financial Overview</h4>
+                        <h4 class="font-bold text-lg text-white" style="color: white !important;">Financial Overview</h4>
                         <p class="text-sm text-slate-400 mt-2">A high-level view of your current position and audit objectives.</p>
                     </div>
                     <div class="pt-2">
@@ -222,7 +222,7 @@
                 <div class="glass p-6 rounded-3xl step-card border border-white/5 flex flex-col items-center text-center space-y-4 cursor-pointer">
                     <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center font-bold text-blue-400 shadow-lg">02</div>
                     <div>
-                        <h4 class="font-bold text-lg">Process Framework</h4>
+                        <h4 class="font-bold text-lg text-white" style="color: white !important;">Process Framework</h4>
                         <p class="text-sm text-slate-400 mt-2">The architecture we will use to scale your revenue while decreasing expenses.</p>
                     </div>
                     <div class="pt-2">
@@ -233,7 +233,7 @@
                 <div class="glass p-6 rounded-3xl step-card border border-white/5 flex flex-col items-center text-center space-y-4 cursor-pointer">
                     <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center font-bold text-purple-400 shadow-lg">03</div>
                     <div>
-                        <h4 class="font-bold text-lg">Key Questions</h4>
+                        <h4 class="font-bold text-lg text-white" style="color: white !important;">Key Questions</h4>
                         <p class="text-sm text-slate-400 mt-2">Identify the #1 financial hurdle keeping you from scaling 2x next quarter.</p>
                     </div>
                     <div class="pt-2">
