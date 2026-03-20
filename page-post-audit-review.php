@@ -143,20 +143,6 @@
             </div>
             
             <div class="lg:col-span-2 space-y-6">
-                <div class="glass p-6 rounded-3xl space-y-4">
-                    <div class="flex items-center gap-4">
-                        <img src="https://ui-avatars.com/api/?name=Robert+Hill&background=0D8B93&color=fff&size=128" alt="Robert Hill" class="w-16 h-16 rounded-2xl shadow-inner border border-slate-700">
-                        <div>
-                            <p class="font-bold text-white">Robert Hill</p>
-                            <p class="text-sm text-slate-400">Senior Financial Architect</p>
-                            <a href="mailto:enrollment@thewimperprogram.com" class="text-xs text-blue-400 hover:underline">enrollment@thewimperprogram.com</a>
-                        </div>
-                    </div>
-                    <hr class="border-white/5">
-                    <p class="text-sm text-slate-400 leading-relaxed italic">
-                        Securing your financial future requires immediate action. Follow the checklist below to transition from "Pending" to "Confirmed."
-                    </p>
-                </div>
 
                 <!-- Schedule Sub-Card -->
                 <div class="glass p-6 rounded-3xl border border-white/5">
