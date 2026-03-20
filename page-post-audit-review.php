@@ -226,7 +226,9 @@
                         <p class="text-sm text-slate-400 mt-2">The architecture we will use to scale your revenue while decreasing expenses.</p>
                     </div>
                     <div class="pt-2">
-                        <button class="text-xs font-bold text-blue-400 bg-blue-500/10 px-4 py-2 rounded-lg hover:bg-blue-500/20">Access Framework</button>
+                        <a href="/proposal" target="_blank" rel="noopener noreferrer">
+                            <button class="text-xs font-bold text-blue-400 bg-blue-500/10 px-4 py-2 rounded-lg hover:bg-blue-500/20">Access Framework</button>
+                        </a>
                     </div>
                 </div>
                 <!-- Task 3 -->

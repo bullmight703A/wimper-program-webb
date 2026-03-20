@@ -554,6 +554,11 @@ add_filter('template_include', function($template) {
             if (!empty($new_template)) {
                 return $new_template;
             }
+        } elseif (strpos($url, '/proposal') !== false) {
+            $new_template = locate_template('page-proposal.php');
+            if (!empty($new_template)) {
+                return $new_template;
+            }
         }
     }
     return $template;
