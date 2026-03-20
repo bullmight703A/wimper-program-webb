@@ -493,4 +493,16 @@ add_action('rest_api_init', function () {
     ));
 });
 
+/**
+ * Fix /contact 404 for SPA
+ */
+add_action('template_redirect', function() {
+    if (is_404()) {
+        $url = $_SERVER['REQUEST_URI'];
+        if (strpos($url, '/contact') !== false) {
+            wp_redirect(home_url('/#contact'), 301);
+            exit;
+        }
+    }
+});
 
