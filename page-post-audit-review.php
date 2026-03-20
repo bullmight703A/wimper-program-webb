@@ -376,10 +376,6 @@
                 
                 <div class="space-y-6">
                     <div>
-                        <label class="block text-white text-xs uppercase tracking-widest mb-2" style="color: white !important; font-weight: bold !important;">Company Name</label>
-                        <input type="text" id="calcCompanyName" placeholder="e.g. Apex Global Industries" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors">
-                    </div>
-                    <div>
                         <label class="block text-white text-xs uppercase tracking-widest mb-2" style="color: white !important; font-weight: bold !important;">Full-Time W2 Employees</label>
                         <input type="number" id="calcEmployeeCount" min="1" placeholder="e.g. 50" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors">
                     </div>
@@ -508,26 +504,17 @@
 
         // Live Calculator Logic
         const empInput = document.getElementById('calcEmployeeCount');
-        const companyInput = document.getElementById('calcCompanyName');
         const resultAmount = document.getElementById('calcResultAmount');
-        const resultName = document.getElementById('calcResultName');
 
         function updateCalculator() {
             const employees = parseInt(empInput.value) || 0;
             const savings = employees * 1120; // $1,120 avg tax savings per employee
             
             resultAmount.innerText = '$' + savings.toLocaleString();
-            
-            if(companyInput.value.trim() !== '') {
-                resultName.innerText = "Estimated Annual Savings for " + companyInput.value.trim();
-            } else {
-                resultName.innerText = "Estimated Annual Savings";
-            }
         }
 
-        if(empInput && companyInput) {
+        if(empInput) {
             empInput.addEventListener('input', updateCalculator);
-            companyInput.addEventListener('input', updateCalculator);
         }
     </script>
 </body>
