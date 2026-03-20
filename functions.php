@@ -518,6 +518,19 @@ add_action('template_redirect', function() {
                 exit;
             }
         }
+        
+        // Force rendering of the Organic HeyGen /intro Page without a DB Required Page
+        if (strpos($url, '/intro') !== false) {
+            global $wp_query;
+            $wp_query->is_404 = false;
+            status_header(200);
+            
+            $template = locate_template('page-intro.php');
+            if ($template) {
+                include($template);
+                exit;
+            }
+        }
     }
 });
 
