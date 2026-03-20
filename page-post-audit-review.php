@@ -144,9 +144,6 @@
             
             <div class="lg:col-span-2 space-y-6">
                 <div class="glass p-6 rounded-3xl space-y-4">
-                    <h3 class="text-xl flex items-center gap-2 text-white" style="color: white !important; font-weight: bold !important;">
-                        <i data-lucide="user-check" class="text-blue-400"></i> Lead Consulting
-                    </h3>
                     <div class="flex items-center gap-4">
                         <img src="https://ui-avatars.com/api/?name=Robert+Hill&background=0D8B93&color=fff&size=128" alt="Robert Hill" class="w-16 h-16 rounded-2xl shadow-inner border border-slate-700">
                         <div>
@@ -234,7 +231,7 @@
                     <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center font-bold text-purple-400 shadow-lg">03</div>
                     <div>
                         <h4 class="text-lg text-white" style="color: white !important; font-weight: bold !important;">Key Questions</h4>
-                        <p class="text-sm text-slate-400 mt-2">Identify the #1 financial hurdle keeping you from scaling 2x next quarter.</p>
+                        <p class="text-sm text-slate-400 mt-2">Identify the number one financial hurdle allowing you to keep more money in your business in the next 30 days.</p>
                     </div>
                     <div class="pt-2">
                         <button class="text-xs font-bold text-purple-400 bg-purple-500/10 px-4 py-2 rounded-lg hover:bg-purple-500/20">Submit Questions</button>
@@ -379,11 +376,11 @@
                 
                 <div class="space-y-6">
                     <div>
-                        <label class="block text-white text-xs font-bold uppercase tracking-widest mb-2">Company Name</label>
+                        <label class="block text-white text-xs uppercase tracking-widest mb-2" style="color: white !important; font-weight: bold !important;">Company Name</label>
                         <input type="text" id="calcCompanyName" placeholder="e.g. Apex Global Industries" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors">
                     </div>
                     <div>
-                        <label class="block text-white text-xs font-bold uppercase tracking-widest mb-2">Full-Time W2 Employees</label>
+                        <label class="block text-white text-xs uppercase tracking-widest mb-2" style="color: white !important; font-weight: bold !important;">Full-Time W2 Employees</label>
                         <input type="number" id="calcEmployeeCount" min="1" placeholder="e.g. 50" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors">
                     </div>
                 </div>
