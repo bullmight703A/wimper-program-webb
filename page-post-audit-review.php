@@ -128,15 +128,17 @@
         <section class="grid lg:grid-cols-5 gap-8 items-start">
             <div class="lg:col-span-3 space-y-6">
                 <!-- Video 1 (Main Hero) -->
-                <div class="video-container shadow-2xl shadow-red-500/10 border border-white/10 group">
-                    <video controls class="w-full h-full object-cover">
+                <div class="video-container shadow-2xl shadow-red-500/10 border border-white/10 group relative">
+                    <video id="mainHeroVideo" controls class="w-full h-full object-cover">
                         <source src="https://assets.cdn.filesafe.space/0EYrXwSAbw55Hpgu54CD/media/69bd94e2fd4388309747f4f3.mp4" type="video/mp4">
                     </video>
                 </div>
                 
-                <!-- Watch Confirmation Button -->
-                <button onclick="this.classList.add('bg-emerald-600', 'text-white'); this.innerHTML='<i data-lucide=\'check\'></i> Video Watched & Understood';" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-800 py-5 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-3 border border-white/10">
-                    <i data-lucide="eye" class="w-6 h-6"></i> Click here. I have watched the video.
+                <!-- Watch Confirmation Button (Locked Initially) -->
+                <button id="confirmWatchBtn" disabled class="w-full bg-slate-900 text-slate-500 opacity-50 cursor-not-allowed font-800 py-5 rounded-2xl shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] transition-all flex items-center justify-center gap-3 border border-white/5 relative overflow-hidden group">
+                    <div id="unlockProgressBar" class="absolute left-0 top-0 bottom-0 bg-white/5 w-0 transition-all duration-300"></div>
+                    <i id="btnIcon" data-lucide="lock" class="w-6 h-6 relative z-10"></i> 
+                    <span id="btnText" class="relative z-10">🔒 Must watch 50% to unlock</span>
                 </button>
             </div>
             
@@ -355,6 +357,54 @@
         }
 
         document.getElementById('upcoming-wednesday').innerText = getNextWednesday();
+
+        // Video Tracking / Unlock Logic
+        const heroVideo = document.getElementById('mainHeroVideo');
+        const confirmBtn = document.getElementById('confirmWatchBtn');
+        const btnText = document.getElementById('btnText');
+        const progressBar = document.getElementById('unlockProgressBar');
+        let unlocked = false;
+
+        if (heroVideo && confirmBtn) {
+            heroVideo.addEventListener('timeupdate', () => {
+                const duration = heroVideo.duration;
+                if (!duration) return;
+                
+                const percent = (heroVideo.currentTime / duration) * 100;
+                
+                // Update progress bar visual behind the button
+                if (!unlocked) {
+                    progressBar.style.width = Math.min(percent * 2, 100) + '%'; 
+                }
+
+                // Unlock at 50%
+                if (percent >= 50 && !unlocked) {
+                    unlocked = true;
+                    progressBar.style.display = 'none'; // hide progress bar
+                    
+                    // Style the button as Active / Pressable
+                    confirmBtn.disabled = false;
+                    confirmBtn.className = "w-full bg-emerald-600 hover:bg-emerald-500 text-white font-800 py-5 rounded-2xl shadow-xl shadow-emerald-500/20 transition-all flex items-center justify-center gap-3 border border-emerald-400 cursor-pointer animate-[pulse_2s_infinite]";
+                    
+                    // Change Text & Icon
+                    btnText.innerHTML = "Click here. I have watched the video.";
+                    document.getElementById('btnIcon').setAttribute('data-lucide', 'eye');
+                    lucide.createIcons(); // Re-render the new eye icon
+                }
+            });
+
+            // Handle the actual click after unlock
+            confirmBtn.addEventListener('click', () => {
+                if(!unlocked) return;
+                confirmBtn.className = "w-full bg-emerald-800 text-emerald-300 font-800 py-5 rounded-2xl transition-all flex items-center justify-center gap-3 shadow-inner";
+                btnText.innerHTML = "Confirmed complete.";
+                document.getElementById('btnIcon').setAttribute('data-lucide', 'check-circle');
+                lucide.createIcons();
+                
+                // You can add GHL webhook triggers or cookie logic here if needed:
+                // fetch('https://services.leadconnectorhq.com/hooks/...', { method: 'POST' });
+            });
+        }
 
         // Close modal on outside click
         const modal = document.getElementById('calendarModal');
