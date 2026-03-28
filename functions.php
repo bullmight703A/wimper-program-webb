@@ -97,8 +97,8 @@ require_once WIMPER_THEME_DIR . '/inc/monthly-seo-cron.php';
 // require_once WIMPER_THEME_DIR . '/inc/llm-seo/bootstrap.php';
 
 // SEO Automations (Refactored WIMPER Module)
-// DISABLED: Removed Search Atlas & auto-generated schemas to prevent output conflicts
-// require_once WIMPER_THEME_DIR . '/inc/seo-automations/bootstrap.php';
+// RESTORED: To prevent fatal class dependency errors. Instead, we disable WP head outputs internally.
+require_once WIMPER_THEME_DIR . '/inc/seo-automations/bootstrap.php';
 
 // Advanced SEO/LLM Module (Editable Fields)
 require_once WIMPER_THEME_DIR . '/inc/advanced-seo-llm/bootstrap.php';
