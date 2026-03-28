@@ -3,7 +3,7 @@
  * Events Meta Box
  * Handles Open Houses and other events
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Location_Events_Meta_Box extends kidazzle_Advanced_SEO_Meta_Box_Base
+class wimper_Location_Events_Meta_Box extends wimper_Advanced_SEO_Meta_Box_Base
 {
     /**
      * Get meta box ID
@@ -21,7 +21,7 @@ class kidazzle_Location_Events_Meta_Box extends kidazzle_Advanced_SEO_Meta_Box_B
      */
     public function get_id()
     {
-        return 'kidazzle_location_events';
+        return 'wimper_location_events';
     }
 
     /**

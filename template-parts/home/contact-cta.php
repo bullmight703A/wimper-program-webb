@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$form_id = get_theme_mod('kidazzle_contact_form_id', 'N8RYaUY1SuORexcyA6la');
+$form_id = get_theme_mod('wimper_contact_form_id', 'N8RYaUY1SuORexcyA6la');
 ?>
 
 <section class="py-16 bg-white">

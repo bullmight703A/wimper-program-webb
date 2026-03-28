@@ -51,8 +51,8 @@ $locations = array(
 );
 
 // Get Customizer settings for locations section
-$locations_heading = get_theme_mod('kidazzle_home_locations_heading', 'Defining Excellence Across the Southeast');
-$locations_subheading = get_theme_mod('kidazzle_home_locations_subheading', '');
+$locations_heading = get_theme_mod('wimper_home_locations_heading', 'Defining Excellence Across the Southeast');
+$locations_subheading = get_theme_mod('wimper_home_locations_subheading', '');
 ?>
 
 

@@ -3,7 +3,7 @@
  * HowTo Schema Builder
  * Generates JSON-LD for HowTo Schema
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_HowTo_Schema_Builder
+class wimper_HowTo_Schema_Builder
 {
     /**
      * Build HowTo schema for a location

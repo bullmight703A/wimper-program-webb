@@ -3,7 +3,7 @@
  * LLM SEO Helper Functions
  * Template helpers for marking up citable content
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -23,12 +23,12 @@ if (!defined('ABSPATH')) {
  * @return string Wrapped HTML
  *
  * @example
- * echo kidazzle_llm_citable(
+ * echo wimper_llm_citable(
  *     '<h3>Infant Tuition</h3><p>$279/week</p>',
  *     ['data-llm-intent' => 'pricing', 'data-llm-location-id' => 'cherokee-academy']
  * );
  */
-function kidazzle_llm_citable($content, $attrs = [])
+function wimper_llm_citable($content, $attrs = [])
 {
     $attrs_str = '';
 

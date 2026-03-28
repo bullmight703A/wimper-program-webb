@@ -3,7 +3,7 @@
  * Template Name: Acquisitions
  * Acquisition opportunities form and information
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  */
 
 get_header();
@@ -85,8 +85,8 @@ get_header();
             <div class="bg-gradient-to-br from-brand-cream to-white rounded-xl shadow-lg p-8">
                 <?php
                 // Output acquisition form shortcode
-                if (shortcode_exists('kidazzle_acquisition_form')) {
-                    echo do_shortcode('[kidazzle_acquisition_form]');
+                if (shortcode_exists('wimper_acquisition_form')) {
+                    echo do_shortcode('[wimper_acquisition_form]');
                 } else {
                     ?>
                     <div class="text-center text-brand-ink/90 py-8">

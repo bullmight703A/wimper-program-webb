@@ -3,7 +3,7 @@
  * KML Endpoint
  * Generates a KML file for all locations
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_KML_Endpoint
+class wimper_KML_Endpoint
 {
     /**
      * Initialize
@@ -28,8 +28,8 @@ class kidazzle_KML_Endpoint
      */
     public static function add_rewrite_rule()
     {
-        add_rewrite_rule('^locations\.kml$', 'index.php?kidazzle_kml=1', 'top');
-        add_rewrite_tag('%kidazzle_kml%', '([^&]+)');
+        add_rewrite_rule('^locations\.kml$', 'index.php?wimper_kml=1', 'top');
+        add_rewrite_tag('%wimper_kml%', '([^&]+)');
     }
 
     /**
@@ -37,7 +37,7 @@ class kidazzle_KML_Endpoint
      */
     public static function render_kml()
     {
-        if (get_query_var('kidazzle_kml')) {
+        if (get_query_var('wimper_kml')) {
             ob_clean(); // Clean output buffer to prevent whitespace errors
             header('Content-Type: application/vnd.google-earth.kml+xml');
             header('Content-Disposition: attachment; filename="locations.kml"');
@@ -105,4 +105,4 @@ class kidazzle_KML_Endpoint
         }
     }
 }
-kidazzle_KML_Endpoint::init();
+wimper_KML_Endpoint::init();

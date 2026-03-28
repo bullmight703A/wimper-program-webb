@@ -3,7 +3,7 @@
  * Location Citation Facts Meta Box
  * Allows editing citable facts for LLM systems
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,11 +12,11 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Location_Citation_Facts_Meta_Box extends kidazzle_Advanced_SEO_Meta_Box_Base
+class wimper_Location_Citation_Facts_Meta_Box extends wimper_Advanced_SEO_Meta_Box_Base
 {
     public function get_id()
     {
-        return 'kidazzle_location_citation_facts';
+        return 'wimper_location_citation_facts';
     }
 
     public function get_title()
@@ -34,7 +34,7 @@ class kidazzle_Location_Citation_Facts_Meta_Box extends kidazzle_Advanced_SEO_Me
         // Get current values - stored as serialized array of fact objects
         $facts = get_post_meta($post->ID, 'seo_llm_citation_facts', true) ?: [];
 
-        $fallback_facts = kidazzle_Fallback_Resolver::get_citation_facts($post->ID);
+        $fallback_facts = wimper_Fallback_Resolver::get_citation_facts($post->ID);
 
         echo '<div style="margin-bottom: 20px;">';
         echo '<p class="description"><strong>Structured facts that AI systems can confidently citeabout this location.</strong></p>';
@@ -154,10 +154,10 @@ class kidazzle_Location_Citation_Facts_Meta_Box extends kidazzle_Advanced_SEO_Me
             }
 
             $sanitized_facts[] = [
-                'label' => kidazzle_Field_Sanitizer::sanitize_text($fact['label']),
-                'value' => kidazzle_Field_Sanitizer::sanitize_text($fact['value']),
-                'source' => isset($fact['source']) ? kidazzle_Field_Sanitizer::sanitize_text($fact['source']) : '',
-                'context' => isset($fact['context']) ? kidazzle_Field_Sanitizer::sanitize_textarea($fact['context']) : '',
+                'label' => wimper_Field_Sanitizer::sanitize_text($fact['label']),
+                'value' => wimper_Field_Sanitizer::sanitize_text($fact['value']),
+                'source' => isset($fact['source']) ? wimper_Field_Sanitizer::sanitize_text($fact['source']) : '',
+                'context' => isset($fact['context']) ? wimper_Field_Sanitizer::sanitize_textarea($fact['context']) : '',
                 'verifiedDate' => date('Y-m-d'),
             ];
         }

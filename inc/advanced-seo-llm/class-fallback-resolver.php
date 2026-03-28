@@ -3,7 +3,7 @@
  * Fallback Resolver
  * Computes smart default values when advanced SEO/LLM fields are not manually filled
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Fallback_Resolver
+class wimper_Fallback_Resolver
 {
     /**
      * Get service area circle data

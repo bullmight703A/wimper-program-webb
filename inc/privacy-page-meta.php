@@ -2,7 +2,7 @@
 /**
  * Privacy Policy Page Meta Boxes
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Register meta boxes for Privacy Policy page
  */
-function kidazzle_privacy_page_meta_boxes() {
+function wimper_privacy_page_meta_boxes() {
 	add_meta_box(
 		'privacy_page_general',
 		'Privacy Policy Settings',
-		'kidazzle_privacy_page_general_callback',
+		'wimper_privacy_page_general_callback',
 		'page',
 		'normal',
 		'high'
@@ -27,19 +27,19 @@ function kidazzle_privacy_page_meta_boxes() {
 	add_meta_box(
 		'privacy_page_sections',
 		'Privacy Policy Sections',
-		'kidazzle_privacy_page_sections_callback',
+		'wimper_privacy_page_sections_callback',
 		'page',
 		'normal',
 		'high'
 	);
 }
-add_action( 'add_meta_boxes', 'kidazzle_privacy_page_meta_boxes' );
+add_action( 'add_meta_boxes', 'wimper_privacy_page_meta_boxes' );
 
 /**
  * General Settings Meta Box Callback
  */
-function kidazzle_privacy_page_general_callback( $post ) {
-	wp_nonce_field( 'kidazzle_privacy_page_general_nonce', 'kidazzle_privacy_page_general_nonce' );
+function wimper_privacy_page_general_callback( $post ) {
+	wp_nonce_field( 'wimper_privacy_page_general_nonce', 'wimper_privacy_page_general_nonce' );
 
 	$last_updated = get_post_meta( $post->ID, 'privacy_last_updated', true );
 	?>
@@ -63,8 +63,8 @@ function kidazzle_privacy_page_general_callback( $post ) {
 /**
  * Sections Meta Box Callback
  */
-function kidazzle_privacy_page_sections_callback( $post ) {
-	wp_nonce_field( 'kidazzle_privacy_page_sections_nonce', 'kidazzle_privacy_page_sections_nonce' );
+function wimper_privacy_page_sections_callback( $post ) {
+	wp_nonce_field( 'wimper_privacy_page_sections_nonce', 'wimper_privacy_page_sections_nonce' );
 
 	// Section titles and field names
 	$sections = array(
@@ -146,18 +146,18 @@ function kidazzle_privacy_page_sections_callback( $post ) {
 /**
  * Save Privacy Policy Page Meta
  */
-function kidazzle_save_privacy_page_meta( $post_id ) {
+function wimper_save_privacy_page_meta( $post_id ) {
 	// Check if our nonces are set
-	if ( ! isset( $_POST['kidazzle_privacy_page_general_nonce'] ) &&
-	     ! isset( $_POST['kidazzle_privacy_page_sections_nonce'] ) ) {
+	if ( ! isset( $_POST['wimper_privacy_page_general_nonce'] ) &&
+	     ! isset( $_POST['wimper_privacy_page_sections_nonce'] ) ) {
 		return;
 	}
 
 	// Verify nonces
-	$general_nonce_valid = isset( $_POST['kidazzle_privacy_page_general_nonce'] ) &&
-	                       wp_verify_nonce( $_POST['kidazzle_privacy_page_general_nonce'], 'kidazzle_privacy_page_general_nonce' );
-	$sections_nonce_valid = isset( $_POST['kidazzle_privacy_page_sections_nonce'] ) &&
-	                        wp_verify_nonce( $_POST['kidazzle_privacy_page_sections_nonce'], 'kidazzle_privacy_page_sections_nonce' );
+	$general_nonce_valid = isset( $_POST['wimper_privacy_page_general_nonce'] ) &&
+	                       wp_verify_nonce( $_POST['wimper_privacy_page_general_nonce'], 'wimper_privacy_page_general_nonce' );
+	$sections_nonce_valid = isset( $_POST['wimper_privacy_page_sections_nonce'] ) &&
+	                        wp_verify_nonce( $_POST['wimper_privacy_page_sections_nonce'], 'wimper_privacy_page_sections_nonce' );
 
 	if ( ! $general_nonce_valid && ! $sections_nonce_valid ) {
 		return;
@@ -188,12 +188,12 @@ function kidazzle_save_privacy_page_meta( $post_id ) {
 		}
 	}
 }
-add_action( 'save_post', 'kidazzle_save_privacy_page_meta' );
+add_action( 'save_post', 'wimper_save_privacy_page_meta' );
 
 /**
  * Auto-seed Privacy Policy page with default content
  */
-function kidazzle_seed_privacy_page_defaults( $post_id ) {
+function wimper_seed_privacy_page_defaults( $post_id ) {
 	// Only run for pages
 	if ( get_post_type( $post_id ) !== 'page' ) {
 		return;
@@ -249,4 +249,4 @@ function kidazzle_seed_privacy_page_defaults( $post_id ) {
 	// Mark as seeded
 	update_post_meta( $post_id, '_privacy_defaults_seeded', '1' );
 }
-add_action( 'save_post', 'kidazzle_seed_privacy_page_defaults', 5 );
+add_action( 'save_post', 'wimper_seed_privacy_page_defaults', 5 );

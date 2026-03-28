@@ -3,7 +3,7 @@
  * Template: Default Page
  * Generic page template with flexible content support
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  */
 
 get_header();

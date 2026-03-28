@@ -54,10 +54,10 @@
 
 	<?php
 	// Get Customizer settings
-	$header_phone = get_theme_mod('kidazzle_footer_phone', '1 678-940-6099'); // Updated branding phone
-	$header_cta_text = get_theme_mod('kidazzle_header_cta_text', 'Verify Eligibility');
-	$header_cta_url = get_theme_mod('kidazzle_book_tour_url', home_url('/contact'));
-	$header_scripts = get_theme_mod('kidazzle_header_scripts', '');
+	$header_phone = get_theme_mod('wimper_footer_phone', '1 678-940-6099'); // Updated branding phone
+	$header_cta_text = get_theme_mod('wimper_header_cta_text', 'Verify Eligibility');
+	$header_cta_url = get_theme_mod('wimper_book_tour_url', home_url('/contact'));
+	$header_scripts = get_theme_mod('wimper_header_scripts', '');
 
 	// Output header scripts if set
 	if (!empty($header_scripts)) {

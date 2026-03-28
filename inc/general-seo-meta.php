@@ -3,7 +3,7 @@
  * General SEO Meta Boxes
  * Adds "SEO Meta" box to all public post types
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 /**
  * Register SEO Meta Box
  */
-function kidazzle_register_general_seo_meta_box()
+function wimper_register_general_seo_meta_box()
 {
     $screens = array('post', 'page', 'program', 'location');
 
@@ -23,21 +23,21 @@ function kidazzle_register_general_seo_meta_box()
         add_meta_box(
             'kidazzle-general-seo',
             __('SEO Meta', 'kidazzle-theme'),
-            'kidazzle_render_general_seo_meta_box',
+            'wimper_render_general_seo_meta_box',
             $screen,
             'side',
             'high'
         );
     }
 }
-add_action('add_meta_boxes', 'kidazzle_register_general_seo_meta_box');
+add_action('add_meta_boxes', 'wimper_register_general_seo_meta_box');
 
 /**
  * Render SEO Meta Box
  */
-function kidazzle_render_general_seo_meta_box($post)
+function wimper_render_general_seo_meta_box($post)
 {
-    wp_nonce_field('kidazzle_general_seo_nonce', 'kidazzle_general_seo_nonce_field');
+    wp_nonce_field('wimper_general_seo_nonce', 'wimper_general_seo_nonce_field');
 
     $meta_description = get_post_meta($post->ID, 'meta_description', true);
     $meta_keywords = get_post_meta($post->ID, 'meta_keywords', true);
@@ -93,8 +93,8 @@ function kidazzle_render_general_seo_meta_box($post)
                 $('#kidazzle-seo-spinner').addClass('is-active');
 
                 $.post(ajaxurl, {
-                    action: 'kidazzle_generate_general_seo_meta',
-                    nonce: '<?php echo wp_create_nonce('kidazzle_seo_dashboard_nonce'); ?>', // Reusing dashboard nonce for simplicity
+                    action: 'wimper_generate_general_seo_meta',
+                    nonce: '<?php echo wp_create_nonce('wimper_seo_dashboard_nonce'); ?>', // Reusing dashboard nonce for simplicity
                     post_id: post_id
                 }, function (response) {
                     btn.prop('disabled', false);
@@ -120,10 +120,10 @@ function kidazzle_render_general_seo_meta_box($post)
 /**
  * Save SEO Meta Box
  */
-function kidazzle_save_general_seo_meta($post_id)
+function wimper_save_general_seo_meta($post_id)
 {
     // Verify nonce
-    if (!isset($_POST['kidazzle_general_seo_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['kidazzle_general_seo_nonce_field']), 'kidazzle_general_seo_nonce')) {
+    if (!isset($_POST['wimper_general_seo_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['wimper_general_seo_nonce_field']), 'wimper_general_seo_nonce')) {
         return;
     }
 
@@ -148,4 +148,4 @@ function kidazzle_save_general_seo_meta($post_id)
         update_post_meta($post_id, 'meta_keywords', sanitize_textarea_field($_POST['meta_keywords']));
     }
 }
-add_action('save_post', 'kidazzle_save_general_seo_meta');
+add_action('save_post', 'wimper_save_general_seo_meta');

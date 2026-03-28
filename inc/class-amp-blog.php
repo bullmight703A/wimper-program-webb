@@ -3,7 +3,7 @@
  * Lightweight AMP for Blog Posts
  * Auto-generates AMP versions at /post-slug/amp/
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_AMP_Blog
+class wimper_AMP_Blog
 {
     const ENDPOINT = 'amp';
     
@@ -20,14 +20,14 @@ class kidazzle_AMP_Blog
      * Matches tailwind.config.js colors
      */
     public static function get_theme_colors() {
-        return apply_filters('kidazzle_amp_colors', [
-            'brand_ink'     => get_theme_mod('kidazzle_brand_ink', '#263238'),
-            'brand_cream'   => get_theme_mod('kidazzle_brand_cream', '#FFFCF8'),
-            'brand_navy'    => get_theme_mod('kidazzle_brand_navy', '#4A6C7C'),
-            'kidazzle_red'    => get_theme_mod('kidazzle_primary_color', '#A84B38'),
-            'kidazzle_blue'   => get_theme_mod('kidazzle_accent_color', '#4A6C7C'),
-            'kidazzle_green'  => '#4A7C59',
-            'kidazzle_yellow' => '#C2A024',
+        return apply_filters('wimper_amp_colors', [
+            'brand_ink'     => get_theme_mod('wimper_brand_ink', '#263238'),
+            'brand_cream'   => get_theme_mod('wimper_brand_cream', '#FFFCF8'),
+            'brand_navy'    => get_theme_mod('wimper_brand_navy', '#4A6C7C'),
+            'wimper_red'    => get_theme_mod('wimper_primary_color', '#A84B38'),
+            'wimper_blue'   => get_theme_mod('wimper_accent_color', '#4A6C7C'),
+            'wimper_green'  => '#4A7C59',
+            'wimper_yellow' => '#C2A024',
         ]);
     }
     
@@ -142,8 +142,8 @@ class kidazzle_AMP_Blog
         :root {
             --brand-ink: <?php echo esc_attr($colors['brand_ink']); ?>;
             --brand-cream: <?php echo esc_attr($colors['brand_cream']); ?>;
-            --kidazzle-red: <?php echo esc_attr($colors['kidazzle_red']); ?>;
-            --kidazzle-blue: <?php echo esc_attr($colors['kidazzle_blue']); ?>;
+            --kidazzle-red: <?php echo esc_attr($colors['wimper_red']); ?>;
+            --kidazzle-blue: <?php echo esc_attr($colors['wimper_blue']); ?>;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -451,4 +451,4 @@ class kidazzle_AMP_Blog
     }
 }
 
-new kidazzle_AMP_Blog();
+new wimper_AMP_Blog();

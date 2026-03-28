@@ -2,7 +2,7 @@
 /**
  * About page SEO helpers and meta fields
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 /**
  * Determine if the current context is the About page template
  */
-function kidazzle_is_about_template($post_id = null)
+function wimper_is_about_template($post_id = null)
 {
         if (null === $post_id) {
                 return is_page_template('page-about.php');
@@ -26,7 +26,7 @@ function kidazzle_is_about_template($post_id = null)
 /**
  * Default SEO copy for the About page
  */
-function kidazzle_get_about_seo_defaults($post_id = null)
+function wimper_get_about_seo_defaults($post_id = null)
 {
         $site_name = get_bloginfo('name');
         $about_url = $post_id ? get_permalink($post_id) : home_url('/about/');
@@ -54,22 +54,22 @@ function kidazzle_get_about_seo_defaults($post_id = null)
 /**
  * Retrieve About page SEO fields with defaults
  */
-function kidazzle_get_about_seo_fields($post_id = null)
+function wimper_get_about_seo_fields($post_id = null)
 {
         $post_id = $post_id ?: get_the_ID();
-        $defaults = kidazzle_get_about_seo_defaults($post_id);
+        $defaults = wimper_get_about_seo_defaults($post_id);
 
         return array(
-                'title' => kidazzle_get_meta_value($post_id, 'about_meta_title', $defaults['title']),
-                'description' => kidazzle_get_meta_value($post_id, 'about_meta_description', $defaults['description']),
-                'structured_data' => kidazzle_get_meta_value($post_id, 'about_structured_data', $defaults['structured_data']),
+                'title' => wimper_get_meta_value($post_id, 'about_meta_title', $defaults['title']),
+                'description' => wimper_get_meta_value($post_id, 'about_meta_description', $defaults['description']),
+                'structured_data' => wimper_get_meta_value($post_id, 'about_structured_data', $defaults['structured_data']),
         );
 }
 
 /**
  * Register About page SEO meta fields
  */
-function kidazzle_register_about_meta_fields()
+function wimper_register_about_meta_fields()
 {
         $meta_args = array(
                 'type' => 'string',
@@ -113,36 +113,36 @@ function kidazzle_register_about_meta_fields()
                 )
         );
 }
-add_action('init', 'kidazzle_register_about_meta_fields');
+add_action('init', 'wimper_register_about_meta_fields');
 
 /**
  * Add meta box for About page SEO fields
  */
-function kidazzle_about_meta_box($post_type, $post)
+function wimper_about_meta_box($post_type, $post)
 {
-        if ('page' !== $post_type || !kidazzle_is_about_template($post->ID)) {
+        if ('page' !== $post_type || !wimper_is_about_template($post->ID)) {
                 return;
         }
 
         add_meta_box(
                 'kidazzle-about-seo',
                 __('About Page SEO', 'kidazzle-theme'),
-                'kidazzle_render_about_meta_box',
+                'wimper_render_about_meta_box',
                 'page',
                 'side',
                 'default'
         );
 }
-add_action('add_meta_boxes', 'kidazzle_about_meta_box', 10, 2);
+add_action('add_meta_boxes', 'wimper_about_meta_box', 10, 2);
 
 /**
  * Render About page SEO meta box
  */
-function kidazzle_render_about_meta_box($post)
+function wimper_render_about_meta_box($post)
 {
-        wp_nonce_field('kidazzle_about_meta_nonce', 'kidazzle_about_meta_nonce_field');
+        wp_nonce_field('wimper_about_meta_nonce', 'wimper_about_meta_nonce_field');
 
-        $defaults = kidazzle_get_about_seo_defaults($post->ID);
+        $defaults = wimper_get_about_seo_defaults($post->ID);
         $meta_title = get_post_meta($post->ID, 'about_meta_title', true);
         $meta_description = get_post_meta($post->ID, 'about_meta_description', true);
         $structured_data = get_post_meta($post->ID, 'about_structured_data', true);
@@ -186,9 +186,9 @@ function kidazzle_render_about_meta_box($post)
 /**
  * Save About page SEO meta fields
  */
-function kidazzle_save_about_meta_box($post_id)
+function wimper_save_about_meta_box($post_id)
 {
-        if (!isset($_POST['kidazzle_about_meta_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['kidazzle_about_meta_nonce_field']), 'kidazzle_about_meta_nonce')) {
+        if (!isset($_POST['wimper_about_meta_nonce_field']) || !wp_verify_nonce(wp_unslash($_POST['wimper_about_meta_nonce_field']), 'wimper_about_meta_nonce')) {
                 return;
         }
 
@@ -202,7 +202,7 @@ function kidazzle_save_about_meta_box($post_id)
                 }
         }
 
-        if (!kidazzle_is_about_template($post_id)) {
+        if (!wimper_is_about_template($post_id)) {
                 return;
         }
 
@@ -214,18 +214,18 @@ function kidazzle_save_about_meta_box($post_id)
         update_post_meta($post_id, 'about_meta_description', $meta_description);
         update_post_meta($post_id, 'about_structured_data', $structured_data);
 }
-add_action('save_post_page', 'kidazzle_save_about_meta_box');
+add_action('save_post_page', 'wimper_save_about_meta_box');
 
 /**
  * Surface About page SEO data in the document head
  */
-function kidazzle_about_meta_output()
+function wimper_about_meta_output()
 {
-        if (!kidazzle_is_about_template()) {
+        if (!wimper_is_about_template()) {
                 return;
         }
 
-        $seo_fields = kidazzle_get_about_seo_fields();
+        $seo_fields = wimper_get_about_seo_fields();
 
 
 
@@ -233,15 +233,15 @@ function kidazzle_about_meta_output()
                 echo '<script type="application/ld+json">' . wp_kses($seo_fields['structured_data'], array()) . '</script>' . "\n";
         }
 }
-add_action('wp_head', 'kidazzle_about_meta_output', 0);
+add_action('wp_head', 'wimper_about_meta_output', 0);
 
 /**
  * Filter the document title for the About page
  */
-function kidazzle_about_document_title($title)
+function wimper_about_document_title($title)
 {
-        if (kidazzle_is_about_template()) {
-                $seo_fields = kidazzle_get_about_seo_fields();
+        if (wimper_is_about_template()) {
+                $seo_fields = wimper_get_about_seo_fields();
 
                 if ($seo_fields['title']) {
                         return $seo_fields['title'];
@@ -250,16 +250,16 @@ function kidazzle_about_document_title($title)
 
         return $title;
 }
-add_filter('pre_get_document_title', 'kidazzle_about_document_title');
-add_filter('wpseo_title', 'kidazzle_about_document_title');
+add_filter('pre_get_document_title', 'wimper_about_document_title');
+add_filter('wpseo_title', 'wimper_about_document_title');
 
 /**
  * Filter meta description for SEO plugins
  */
-function kidazzle_about_meta_description_filter($description)
+function wimper_about_meta_description_filter($description)
 {
-        if (kidazzle_is_about_template()) {
-                $seo_fields = kidazzle_get_about_seo_fields();
+        if (wimper_is_about_template()) {
+                $seo_fields = wimper_get_about_seo_fields();
 
                 if ($seo_fields['description']) {
                         return $seo_fields['description'];
@@ -268,4 +268,4 @@ function kidazzle_about_meta_description_filter($description)
 
         return $description;
 }
-add_filter('wpseo_metadesc', 'kidazzle_about_meta_description_filter');
+add_filter('wpseo_metadesc', 'wimper_about_meta_description_filter');

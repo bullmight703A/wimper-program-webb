@@ -3,7 +3,7 @@
  * Field Sanitizer
  * Sanitization and validation utilities for meta box fields
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Field_Sanitizer
+class wimper_Field_Sanitizer
 {
     /**
      * Sanitize text field

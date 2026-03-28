@@ -2,7 +2,7 @@
 /**
  * 404 Error Page Template
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 ?>

@@ -3,7 +3,7 @@
  * Location Service Area Meta Box
  * Allows editing service area geo targeting for locations
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,11 +12,11 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Location_Service_Area_Meta_Box extends kidazzle_Advanced_SEO_Meta_Box_Base
+class wimper_Location_Service_Area_Meta_Box extends wimper_Advanced_SEO_Meta_Box_Base
 {
     public function get_id()
     {
-        return 'kidazzle_location_service_area';
+        return 'wimper_location_service_area';
     }
 
     public function get_title()
@@ -39,8 +39,8 @@ class kidazzle_Location_Service_Area_Meta_Box extends kidazzle_Advanced_SEO_Meta
         $state = get_post_meta($post->ID, 'seo_llm_service_area_state', true);
 
         // Get fallback data
-        $fallback_circle = kidazzle_Fallback_Resolver::get_service_area_circle($post->ID);
-        $fallback_cities = kidazzle_Fallback_Resolver::get_service_area_cities($post->ID);
+        $fallback_circle = wimper_Fallback_Resolver::get_service_area_circle($post->ID);
+        $fallback_cities = wimper_Fallback_Resolver::get_service_area_cities($post->ID);
 
         echo '<div style="margin-bottom: 20px;">';
         echo '<p class="description"><strong>Define the geographic area served by this location for better "near me" SEO.</strong></p>';
@@ -125,25 +125,25 @@ class kidazzle_Location_Service_Area_Meta_Box extends kidazzle_Advanced_SEO_Meta
     {
         // Save latitude
         if (isset($_POST['seo_llm_service_area_lat'])) {
-            $lat = kidazzle_Field_Sanitizer::sanitize_latitude($_POST['seo_llm_service_area_lat']);
+            $lat = wimper_Field_Sanitizer::sanitize_latitude($_POST['seo_llm_service_area_lat']);
             update_post_meta($post_id, 'seo_llm_service_area_lat', $lat);
         }
 
         // Save longitude
         if (isset($_POST['seo_llm_service_area_lng'])) {
-            $lng = kidazzle_Field_Sanitizer::sanitize_longitude($_POST['seo_llm_service_area_lng']);
+            $lng = wimper_Field_Sanitizer::sanitize_longitude($_POST['seo_llm_service_area_lng']);
             update_post_meta($post_id, 'seo_llm_service_area_lng', $lng);
         }
 
         // Save radius
         if (isset($_POST['seo_llm_service_area_radius'])) {
-            $radius = kidazzle_Field_Sanitizer::sanitize_number($_POST['seo_llm_service_area_radius']);
+            $radius = wimper_Field_Sanitizer::sanitize_number($_POST['seo_llm_service_area_radius']);
             update_post_meta($post_id, 'seo_llm_service_area_radius', $radius);
         }
 
         // Save cities
         if (isset($_POST['seo_llm_service_area_cities'])) {
-            $cities = kidazzle_Field_Sanitizer::sanitize_text_array($_POST['seo_llm_service_area_cities']);
+            $cities = wimper_Field_Sanitizer::sanitize_text_array($_POST['seo_llm_service_area_cities']);
             update_post_meta($post_id, 'seo_llm_service_area_cities', array_filter($cities));
         } else {
             update_post_meta($post_id, 'seo_llm_service_area_cities', []);
@@ -151,7 +151,7 @@ class kidazzle_Location_Service_Area_Meta_Box extends kidazzle_Advanced_SEO_Meta
 
         // Save state
         if (isset($_POST['seo_llm_service_area_state'])) {
-            $state = kidazzle_Field_Sanitizer::sanitize_text($_POST['seo_llm_service_area_state']);
+            $state = wimper_Field_Sanitizer::sanitize_text($_POST['seo_llm_service_area_state']);
             update_post_meta($post_id, 'seo_llm_service_area_state', $state);
         }
     }

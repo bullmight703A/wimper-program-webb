@@ -99,7 +99,7 @@ function chroma_home_customize_register(WP_Customize_Manager $wp_customize)
 
     // Curriculum copy + cards JSON.
     $wp_customize->add_section(
-        'chroma_home_kidazzle_section',
+        'chroma_home_wimper_section',
         array(
             'title' => __('Curriculum', 'kidazzle-theme'),
             'panel' => 'chroma_home_panel',
@@ -108,20 +108,20 @@ function chroma_home_customize_register(WP_Customize_Manager $wp_customize)
 
     $prismpath = chroma_home_default_kidazzle();
 
-    $wp_customize->add_setting('chroma_home_kidazzle_eyebrow', array('default' => $prismpath['feature']['eyebrow'], 'sanitize_callback' => 'sanitize_text_field'));
-    $wp_customize->add_control('chroma_home_kidazzle_eyebrow', array('label' => __('Eyebrow', 'kidazzle-theme'), 'section' => 'chroma_home_kidazzle_section', 'type' => 'text'));
+    $wp_customize->add_setting('chroma_home_wimper_eyebrow', array('default' => $prismpath['feature']['eyebrow'], 'sanitize_callback' => 'sanitize_text_field'));
+    $wp_customize->add_control('chroma_home_wimper_eyebrow', array('label' => __('Eyebrow', 'kidazzle-theme'), 'section' => 'chroma_home_wimper_section', 'type' => 'text'));
 
-    $wp_customize->add_setting('chroma_home_kidazzle_heading', array('default' => $prismpath['feature']['heading'], 'sanitize_callback' => 'sanitize_text_field'));
-    $wp_customize->add_control('chroma_home_kidazzle_heading', array('label' => __('Heading', 'kidazzle-theme'), 'section' => 'chroma_home_kidazzle_section', 'type' => 'text'));
+    $wp_customize->add_setting('chroma_home_wimper_heading', array('default' => $prismpath['feature']['heading'], 'sanitize_callback' => 'sanitize_text_field'));
+    $wp_customize->add_control('chroma_home_wimper_heading', array('label' => __('Heading', 'kidazzle-theme'), 'section' => 'chroma_home_wimper_section', 'type' => 'text'));
 
-    $wp_customize->add_setting('chroma_home_kidazzle_cta_label', array('default' => $prismpath['feature']['cta_label'], 'sanitize_callback' => 'sanitize_text_field'));
-    $wp_customize->add_control('chroma_home_kidazzle_cta_label', array('label' => __('CTA label', 'kidazzle-theme'), 'section' => 'chroma_home_kidazzle_section', 'type' => 'text'));
+    $wp_customize->add_setting('chroma_home_wimper_cta_label', array('default' => $prismpath['feature']['cta_label'], 'sanitize_callback' => 'sanitize_text_field'));
+    $wp_customize->add_control('chroma_home_wimper_cta_label', array('label' => __('CTA label', 'kidazzle-theme'), 'section' => 'chroma_home_wimper_section', 'type' => 'text'));
 
-    $wp_customize->add_setting('chroma_home_kidazzle_cta_url', array('default' => $prismpath['feature']['cta_url'], 'sanitize_callback' => 'esc_url_raw'));
-    $wp_customize->add_control('chroma_home_kidazzle_cta_url', array('label' => __('CTA URL', 'kidazzle-theme'), 'section' => 'chroma_home_kidazzle_section', 'type' => 'url'));
+    $wp_customize->add_setting('chroma_home_wimper_cta_url', array('default' => $prismpath['feature']['cta_url'], 'sanitize_callback' => 'esc_url_raw'));
+    $wp_customize->add_control('chroma_home_wimper_cta_url', array('label' => __('CTA URL', 'kidazzle-theme'), 'section' => 'chroma_home_wimper_section', 'type' => 'url'));
 
     $wp_customize->add_setting(
-        'chroma_home_kidazzle_cards_json',
+        'chroma_home_wimper_cards_json',
         array(
             'default' => wp_json_encode($prismpath['cards'], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES),
             'sanitize_callback' => 'chroma_home_sanitize_json_setting',
@@ -129,20 +129,20 @@ function chroma_home_customize_register(WP_Customize_Manager $wp_customize)
     );
 
     $wp_customize->add_control(
-        'chroma_home_kidazzle_cards_json',
+        'chroma_home_wimper_cards_json',
         array(
             'label' => __('Cards JSON (badge, heading, text, button, url, icons)', 'kidazzle-theme'),
             'description' => __('Icon fields: "icon" for simple cards, or "icon_bg"/"icon_badge"/"icon_check" for complex cards. Use Font Awesome 6 classes: fa-solid fa-heart, fa-brands fa-connectdevelop', 'kidazzle-theme'),
-            'section' => 'chroma_home_kidazzle_section',
+            'section' => 'chroma_home_wimper_section',
             'type' => 'textarea',
         )
     );
 
-    $wp_customize->add_setting('chroma_home_kidazzle_readiness_heading', array('default' => $prismpath['readiness']['heading'], 'sanitize_callback' => 'sanitize_text_field'));
-    $wp_customize->add_control('chroma_home_kidazzle_readiness_heading', array('label' => __('Readiness heading', 'kidazzle-theme'), 'section' => 'chroma_home_kidazzle_section', 'type' => 'text'));
+    $wp_customize->add_setting('chroma_home_wimper_readiness_heading', array('default' => $prismpath['readiness']['heading'], 'sanitize_callback' => 'sanitize_text_field'));
+    $wp_customize->add_control('chroma_home_wimper_readiness_heading', array('label' => __('Readiness heading', 'kidazzle-theme'), 'section' => 'chroma_home_wimper_section', 'type' => 'text'));
 
-    $wp_customize->add_setting('chroma_home_kidazzle_readiness_desc', array('default' => $prismpath['readiness']['description'], 'sanitize_callback' => 'sanitize_textarea_field'));
-    $wp_customize->add_control('chroma_home_kidazzle_readiness_desc', array('label' => __('Readiness description', 'kidazzle-theme'), 'section' => 'chroma_home_kidazzle_section', 'type' => 'textarea'));
+    $wp_customize->add_setting('chroma_home_wimper_readiness_desc', array('default' => $prismpath['readiness']['description'], 'sanitize_callback' => 'sanitize_textarea_field'));
+    $wp_customize->add_control('chroma_home_wimper_readiness_desc', array('label' => __('Readiness description', 'kidazzle-theme'), 'section' => 'chroma_home_wimper_section', 'type' => 'textarea'));
 
     // Program wizard JSON.
     $wp_customize->add_section(

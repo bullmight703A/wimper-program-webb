@@ -3,7 +3,7 @@
  * Universal FAQ Meta Box
  * Allows adding FAQ items to any page for FAQPage schema
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Universal_FAQ extends kidazzle_Advanced_SEO_Meta_Box_Base
+class wimper_Universal_FAQ extends wimper_Advanced_SEO_Meta_Box_Base
 {
     /**
      * Get the meta box ID
@@ -21,7 +21,7 @@ class kidazzle_Universal_FAQ extends kidazzle_Advanced_SEO_Meta_Box_Base
      */
     public function get_id()
     {
-        return 'kidazzle_universal_faq';
+        return 'wimper_universal_faq';
     }
 
     /**
@@ -51,7 +51,7 @@ class kidazzle_Universal_FAQ extends kidazzle_Advanced_SEO_Meta_Box_Base
      */
     public function render_fields($post)
     {
-        $faqs = get_post_meta($post->ID, 'kidazzle_faq_items', true);
+        $faqs = get_post_meta($post->ID, 'wimper_faq_items', true);
         if (!is_array($faqs)) {
             $faqs = [];
         }
@@ -69,13 +69,13 @@ class kidazzle_Universal_FAQ extends kidazzle_Advanced_SEO_Meta_Box_Base
                                 style="display:block; border-bottom:1px solid #eee; padding-bottom:10px; margin-bottom:10px;">
                                 <div style="margin-bottom:5px;">
                                     <label><?php _e('Question:', 'kidazzle-theme'); ?></label>
-                                    <input type="text" name="kidazzle_faq_question[]" value="<?php echo esc_attr($faq['question']); ?>"
+                                    <input type="text" name="wimper_faq_question[]" value="<?php echo esc_attr($faq['question']); ?>"
                                         class="widefat" />
                                 </div>
                                 <div style="display:flex; gap:10px; align-items:flex-start;">
                                     <div style="flex:1;">
                                         <label><?php _e('Answer:', 'kidazzle-theme'); ?></label>
-                                        <textarea name="kidazzle_faq_answer[]" rows="2"
+                                        <textarea name="wimper_faq_answer[]" rows="2"
                                             class="widefat"><?php echo esc_textarea($faq['answer']); ?></textarea>
                                     </div>
                                     <button class="button kidazzle-remove-item" style="margin-top:20px;">&times;</button>
@@ -87,12 +87,12 @@ class kidazzle_Universal_FAQ extends kidazzle_Advanced_SEO_Meta_Box_Base
                             style="display:block; border-bottom:1px solid #eee; padding-bottom:10px; margin-bottom:10px;">
                             <div style="margin-bottom:5px;">
                                 <label><?php _e('Question:', 'kidazzle-theme'); ?></label>
-                                <input type="text" name="kidazzle_faq_question[]" class="widefat" />
+                                <input type="text" name="wimper_faq_question[]" class="widefat" />
                             </div>
                             <div style="display:flex; gap:10px; align-items:flex-start;">
                                 <div style="flex:1;">
                                     <label><?php _e('Answer:', 'kidazzle-theme'); ?></label>
-                                    <textarea name="kidazzle_faq_answer[]" rows="2" class="widefat"></textarea>
+                                    <textarea name="wimper_faq_answer[]" rows="2" class="widefat"></textarea>
                                 </div>
                                 <button class="button kidazzle-remove-item" style="margin-top:20px;">&times;</button>
                             </div>
@@ -126,9 +126,9 @@ class kidazzle_Universal_FAQ extends kidazzle_Advanced_SEO_Meta_Box_Base
      */
     public function save_fields($post_id)
     {
-        if (isset($_POST['kidazzle_faq_question']) && isset($_POST['kidazzle_faq_answer'])) {
-            $questions = $_POST['kidazzle_faq_question'];
-            $answers = $_POST['kidazzle_faq_answer'];
+        if (isset($_POST['wimper_faq_question']) && isset($_POST['wimper_faq_answer'])) {
+            $questions = $_POST['wimper_faq_question'];
+            $answers = $_POST['wimper_faq_answer'];
             $faqs = [];
 
             for ($i = 0; $i < count($questions); $i++) {
@@ -140,9 +140,9 @@ class kidazzle_Universal_FAQ extends kidazzle_Advanced_SEO_Meta_Box_Base
                 }
             }
 
-            update_post_meta($post_id, 'kidazzle_faq_items', $faqs);
+            update_post_meta($post_id, 'wimper_faq_items', $faqs);
         } else {
-            delete_post_meta($post_id, 'kidazzle_faq_items');
+            delete_post_meta($post_id, 'wimper_faq_items');
         }
     }
 }

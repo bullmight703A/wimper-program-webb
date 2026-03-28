@@ -3,7 +3,7 @@
  * Location LLM Prompt Meta Box
  * Allows editing LLM description and recommendation criteria
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,11 +12,11 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Location_LLM_Prompt_Meta_Box extends kidazzle_Advanced_SEO_Meta_Box_Base
+class wimper_Location_LLM_Prompt_Meta_Box extends wimper_Advanced_SEO_Meta_Box_Base
 {
     public function get_id()
     {
-        return 'kidazzle_location_llm_prompt';
+        return 'wimper_location_llm_prompt';
     }
 
     public function get_title()
@@ -36,7 +36,7 @@ class kidazzle_Location_LLM_Prompt_Meta_Box extends kidazzle_Advanced_SEO_Meta_B
         $when_to_recommend = get_post_meta($post->ID, 'seo_llm_when_to_recommend', true) ?: [];
 
         // Get fallback
-        $fallback_description = kidazzle_Fallback_Resolver::get_llm_description($post->ID);
+        $fallback_description = wimper_Fallback_Resolver::get_llm_description($post->ID);
 
         echo '<div style="margin-bottom: 20px;">';
         echo '<p class="description"><strong>Help LLMs understand when and how to recommend this location.</strong></p>';
@@ -71,13 +71,13 @@ class kidazzle_Location_LLM_Prompt_Meta_Box extends kidazzle_Advanced_SEO_Meta_B
     {
         // Save LLM description
         if (isset($_POST['seo_llm_description'])) {
-            $description = kidazzle_Field_Sanitizer::sanitize_textarea($_POST['seo_llm_description']);
+            $description = wimper_Field_Sanitizer::sanitize_textarea($_POST['seo_llm_description']);
             update_post_meta($post_id, 'seo_llm_description', $description);
         }
 
         // Save when to recommend
         if (isset($_POST['seo_llm_when_to_recommend'])) {
-            $scenarios = kidazzle_Field_Sanitizer::sanitize_text_array($_POST['seo_llm_when_to_recommend']);
+            $scenarios = wimper_Field_Sanitizer::sanitize_text_array($_POST['seo_llm_when_to_recommend']);
             update_post_meta($post_id, 'seo_llm_when_to_recommend', array_filter($scenarios));
         } else {
             update_post_meta($post_id, 'seo_llm_when_to_recommend', []);

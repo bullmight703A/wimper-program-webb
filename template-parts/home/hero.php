@@ -11,13 +11,13 @@ if (!defined('ABSPATH')) {
 }
 
 // Get Customizer settings with defaults
-$hero_defaults = function_exists('kidazzle_home_default_hero') ? kidazzle_home_default_hero() : array();
-$hero_heading = get_theme_mod('kidazzle_home_hero_heading', $hero_defaults['heading'] ?? 'Where Learning <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-cyan-700">is Fun!</span>');
-$hero_subheading = get_theme_mod('kidazzle_home_hero_subheading', $hero_defaults['subheading'] ?? 'From Memphis to Miami to Atlanta, we are an independent, premier learning academy nurturing diverse bright minds for over three decades.');
-$hero_cta_label = get_theme_mod('kidazzle_home_hero_cta_label', $hero_defaults['cta_label'] ?? 'Find Your Center');
-$hero_cta_url = get_theme_mod('kidazzle_home_hero_cta_url', $hero_defaults['cta_url'] ?? '');
-$hero_secondary_label = get_theme_mod('kidazzle_home_hero_secondary_label', $hero_defaults['secondary_label'] ?? 'Our Legacy');
-$hero_secondary_url = get_theme_mod('kidazzle_home_hero_secondary_url', $hero_defaults['secondary_url'] ?? '');
+$hero_defaults = function_exists('wimper_home_default_hero') ? wimper_home_default_hero() : array();
+$hero_heading = get_theme_mod('wimper_home_hero_heading', $hero_defaults['heading'] ?? 'Where Learning <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-cyan-700">is Fun!</span>');
+$hero_subheading = get_theme_mod('wimper_home_hero_subheading', $hero_defaults['subheading'] ?? 'From Memphis to Miami to Atlanta, we are an independent, premier learning academy nurturing diverse bright minds for over three decades.');
+$hero_cta_label = get_theme_mod('wimper_home_hero_cta_label', $hero_defaults['cta_label'] ?? 'Find Your Center');
+$hero_cta_url = get_theme_mod('wimper_home_hero_cta_url', $hero_defaults['cta_url'] ?? '');
+$hero_secondary_label = get_theme_mod('wimper_home_hero_secondary_label', $hero_defaults['secondary_label'] ?? 'Our Legacy');
+$hero_secondary_url = get_theme_mod('wimper_home_hero_secondary_url', $hero_defaults['secondary_url'] ?? '');
 
 // URLs with fallbacks
 $hero_image = 'https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/693c80ab97c0233276b3ff26.png';

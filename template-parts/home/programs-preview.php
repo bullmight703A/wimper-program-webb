@@ -6,13 +6,13 @@
  * @package kidazzle
  */
 
-$programs = kidazzle_home_programs_preview();
+$programs = wimper_home_programs_preview();
 if (!$programs) {
     return;
 }
 
 $featured = $programs['featured'] ?? array();
-$program_slug = kidazzle_get_program_base_slug();
+$program_slug = wimper_get_program_base_slug();
 ?>
 
 <section id="<?php echo esc_attr($program_slug); ?>" class="py-20 bg-brand-cream"

@@ -4,7 +4,7 @@
  *
  * Homepage Template: front-page.php (WordPress default)
  *
- * @package Kidazzle_Theme
+ * @package Wimper_Theme
  * @since 1.0.0
  */
 

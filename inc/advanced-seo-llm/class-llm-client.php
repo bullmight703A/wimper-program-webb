@@ -3,7 +3,7 @@
  * LLM Client
  * Handles communication with OpenAI API
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_LLM_Client
+class wimper_LLM_Client
 {
     private $api_key;
     private $model;
@@ -19,15 +19,15 @@ class kidazzle_LLM_Client
 
     public function __construct()
     {
-        $this->api_key = get_option('kidazzle_openai_api_key', '');
-        $this->model = get_option('kidazzle_llm_model', 'gpt-4o-mini');
-        $this->base_url = get_option('kidazzle_llm_base_url', 'https://api.openai.com/v1');
+        $this->api_key = get_option('wimper_openai_api_key', '');
+        $this->model = get_option('wimper_llm_model', 'gpt-4o-mini');
+        $this->base_url = get_option('wimper_llm_base_url', 'https://api.openai.com/v1');
 
         // Register AJAX actions for saving key and testing connection
-        add_action('wp_ajax_kidazzle_save_llm_settings', [$this, 'ajax_save_settings']);
-        add_action('wp_ajax_kidazzle_test_llm_connection', [$this, 'ajax_test_connection']);
-        add_action('wp_ajax_kidazzle_generate_schema', [$this, 'ajax_generate_schema']);
-        add_action('wp_ajax_kidazzle_generate_llm_targeting', [$this, 'ajax_generate_llm_targeting']);
+        add_action('wp_ajax_wimper_save_llm_settings', [$this, 'ajax_save_settings']);
+        add_action('wp_ajax_wimper_test_llm_connection', [$this, 'ajax_test_connection']);
+        add_action('wp_ajax_wimper_generate_schema', [$this, 'ajax_generate_schema']);
+        add_action('wp_ajax_wimper_generate_llm_targeting', [$this, 'ajax_generate_llm_targeting']);
     }
 
     /**
@@ -47,7 +47,7 @@ class kidazzle_LLM_Client
                 <tr>
                     <th scope="row">API Key</th>
                     <td>
-                        <input type="password" id="kidazzle_openai_api_key" value="<?php echo esc_attr($key); ?>"
+                        <input type="password" id="wimper_openai_api_key" value="<?php echo esc_attr($key); ?>"
                             class="regular-text" placeholder="sk-..." autocomplete="off">
                         <p class="description">Your key is stored securely.</p>
                     </td>
@@ -55,7 +55,7 @@ class kidazzle_LLM_Client
                 <tr>
                     <th scope="row">Model Name</th>
                     <td>
-                        <input type="text" id="kidazzle_llm_model" value="<?php echo esc_attr($model); ?>" class="regular-text"
+                        <input type="text" id="wimper_llm_model" value="<?php echo esc_attr($model); ?>" class="regular-text"
                             placeholder="gpt-4o-mini">
                         <p class="description">e.g., <code>gpt-4o</code>, <code>claude-3-sonnet</code> (via OpenRouter),
                             <code>llama-3</code>
@@ -65,7 +65,7 @@ class kidazzle_LLM_Client
                 <tr>
                     <th scope="row">Base URL</th>
                     <td>
-                        <input type="text" id="kidazzle_llm_base_url" value="<?php echo esc_attr($base_url); ?>"
+                        <input type="text" id="wimper_llm_base_url" value="<?php echo esc_attr($base_url); ?>"
                             class="regular-text" placeholder="https://api.openai.com/v1">
                         <p class="description">Default: <code>https://api.openai.com/v1</code>. Change for OpenRouter/LocalAI.
                         </p>
@@ -85,10 +85,10 @@ class kidazzle_LLM_Client
         </div>
 
         <script>     jQuery(document).ready(function ($) {         // Save Settings         $('#kidazzle-save-llm').on('click', function (e) {             e.preventDefault();             var btn = $(this);             btn.prop('disabled', true).text('Saving...');
-                     $.post(ajaxurl, {                 action: 'kidazzle_save_llm_settings',                 api_key: $('#kidazzle_openai_api_key').val(),                 model: $('#kidazzle_llm_model').val(),                 base_url: $('#kidazzle_llm_base_url').val()             }, function (response) {                 btn.prop('disabled', false).text('Save Settings');                 if (response.success) {                     alert('Settings saved!');                 } else {                     alert('Error saving settings.');                 }             });         });
+                     $.post(ajaxurl, {                 action: 'wimper_save_llm_settings',                 api_key: $('#wimper_openai_api_key').val(),                 model: $('#wimper_llm_model').val(),                 base_url: $('#wimper_llm_base_url').val()             }, function (response) {                 btn.prop('disabled', false).text('Save Settings');                 if (response.success) {                     alert('Settings saved!');                 } else {                     alert('Error saving settings.');                 }             });         });
                  // Test Connection         $('#kidazzle-test-llm').on('click', function (e) {             e.preventDefault();             var btn = $(this);             var status = $('#kidazzle-llm-status');
                      btn.prop('disabled', true).text('Testing...');             status.text('').css('color', 'inherit');
-                     $.post(ajaxurl, {                 action: 'kidazzle_test_llm_connection'             }, function (response) {                 btn.prop('disabled', false).text('Test Connection');                 if (response.success) {                     status.text('✅ Connected successfully!').css('color', 'green');                 } else {                     status.text('❌ Connection failed: ' + response.data.message).css('color', 'red');                 }             });         });     });
+                     $.post(ajaxurl, {                 action: 'wimper_test_llm_connection'             }, function (response) {                 btn.prop('disabled', false).text('Test Connection');                 if (response.success) {                     status.text('✅ Connected successfully!').css('color', 'green');                 } else {                     status.text('❌ Connection failed: ' + response.data.message).css('color', 'red');                 }             });         });     });
         </script>
         <?php
     }
@@ -103,16 +103,16 @@ class kidazzle_LLM_Client
         }
 
         if (isset($_POST['api_key'])) {
-            update_option('kidazzle_openai_api_key', sanitize_text_field($_POST['api_key']));
+            update_option('wimper_openai_api_key', sanitize_text_field($_POST['api_key']));
         }
         if (isset($_POST['model'])) {
-            update_option('kidazzle_llm_model', sanitize_text_field($_POST['model']));
+            update_option('wimper_llm_model', sanitize_text_field($_POST['model']));
         }
         if (isset($_POST['base_url'])) {
             $url = esc_url_raw($_POST['base_url']);
             // Remove trailing slash for consistency
             $url = rtrim($url, '/');
-            update_option('kidazzle_llm_base_url', $url);
+            update_option('wimper_llm_base_url', $url);
         }
 
         wp_send_json_success();
@@ -166,7 +166,7 @@ class kidazzle_LLM_Client
         }
 
         // Get schema definition to guide the LLM
-        $definitions = kidazzle_Schema_Types::get_definitions();
+        $definitions = wimper_Schema_Types::get_definitions();
         $expected_keys = [];
         if (isset($definitions[$schema_type]['fields'])) {
             foreach ($definitions[$schema_type]['fields'] as $key => $field) {
@@ -247,7 +247,7 @@ class kidazzle_LLM_Client
      */
     public function ajax_generate_llm_targeting()
     {
-        check_ajax_referer('kidazzle_seo_dashboard_nonce', 'nonce');
+        check_ajax_referer('wimper_seo_dashboard_nonce', 'nonce');
 
         if (!current_user_can('edit_posts')) {
             wp_send_json_error(['message' => 'Permission denied']);

@@ -3,7 +3,7 @@
  * Credential Badges
  * Display trust badges for DECAL, NAEYC, etc.
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Credential_Badges
+class wimper_Credential_Badges
 {
     private static $badges = [
         'ga_decal' => [
@@ -64,7 +64,7 @@ class kidazzle_Credential_Badges
         }
         
         // Try from hasCredential schema
-        $schema_data = get_post_meta($post_id, '_kidazzle_schema_data', true);
+        $schema_data = get_post_meta($post_id, '_wimper_schema_data', true);
         if ($schema_data && isset($schema_data[0]['data']['hasCredential'])) {
             return $schema_data[0]['data']['hasCredential'];
         }
@@ -159,7 +159,7 @@ class kidazzle_Credential_Badges
             return $content;
         }
         
-        if (!get_option('kidazzle_seo_show_credential_badges', true)) {
+        if (!get_option('wimper_seo_show_credential_badges', true)) {
             return $content;
         }
         
@@ -221,4 +221,4 @@ class kidazzle_Credential_Badges
     }
 }
 
-new kidazzle_Credential_Badges();
+new wimper_Credential_Badges();

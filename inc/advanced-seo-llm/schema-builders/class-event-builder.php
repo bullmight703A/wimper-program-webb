@@ -3,7 +3,7 @@
  * Event Schema Builder
  * Generates JSON-LD for Event Schema
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Event_Schema_Builder
+class wimper_Event_Schema_Builder
 {
     /**
      * Build Event schema for a location

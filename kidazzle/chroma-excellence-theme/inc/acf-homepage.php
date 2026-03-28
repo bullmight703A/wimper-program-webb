@@ -150,7 +150,7 @@ function chroma_home_stats()
 /**
  * Prismpath expertise panels
  */
-function chroma_home_kidazzle_panels()
+function chroma_home_wimper_panels()
 {
         $defaults = chroma_home_default_kidazzle();
 

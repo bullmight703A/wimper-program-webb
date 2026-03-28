@@ -3,10 +3,10 @@
  * Template Part: Curriculum (KIDazzle Creative Curriculum)
  * Showcase the proprietary curriculum with multi-card layout
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  */
 
-$curriculum = kidazzle_home_curriculum();
+$curriculum = wimper_home_curriculum();
 if (!$curriculum) {
     return;
 }

@@ -3,7 +3,7 @@
  * Program Page Enhancements
  * FAQ, Testimonials, Gallery, Age Calculator, Sticky CTA
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Program_Enhancements
+class wimper_Program_Enhancements
 {
     public function __construct() {
         add_action('add_meta_boxes', [$this, 'add_meta_boxes']);
@@ -584,4 +584,4 @@ class kidazzle_Program_Enhancements
     }
 }
 
-new kidazzle_Program_Enhancements();
+new wimper_Program_Enhancements();

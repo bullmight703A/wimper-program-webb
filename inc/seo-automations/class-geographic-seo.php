@@ -3,7 +3,7 @@
  * Geographic SEO Suite
  * IP detection, service areas, county/ZIP pages
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Geographic_SEO
+class wimper_Geographic_SEO
 {
     public function __construct() {
         add_action('wp_head', [$this, 'output_geo_meta']);
@@ -178,14 +178,14 @@ class kidazzle_Geographic_SEO
         // County pages: /childcare-in-forsyth-county/
         add_rewrite_rule(
             '^childcare-in-([a-z-]+)-county/?$',
-            'index.php?kidazzle_service_area=county&area_name=$matches[1]',
+            'index.php?wimper_service_area=county&area_name=$matches[1]',
             'top'
         );
         
         // ZIP pages: /daycare-30041/
         add_rewrite_rule(
             '^daycare-(\d{5})/?$',
-            'index.php?kidazzle_service_area=zip&area_name=$matches[1]',
+            'index.php?wimper_service_area=zip&area_name=$matches[1]',
             'top'
         );
     }
@@ -194,7 +194,7 @@ class kidazzle_Geographic_SEO
      * Add query vars
      */
     public function add_query_vars($vars) {
-        $vars[] = 'kidazzle_service_area';
+        $vars[] = 'wimper_service_area';
         $vars[] = 'area_name';
         return $vars;
     }
@@ -203,7 +203,7 @@ class kidazzle_Geographic_SEO
      * Handle service area page
      */
     public function handle_service_area_page() {
-        $area_type = get_query_var('kidazzle_service_area');
+        $area_type = get_query_var('wimper_service_area');
         
         if (!$area_type) {
             return;
@@ -287,4 +287,4 @@ class kidazzle_Geographic_SEO
     }
 }
 
-new kidazzle_Geographic_SEO();
+new wimper_Geographic_SEO();

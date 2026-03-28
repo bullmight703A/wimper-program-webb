@@ -3,7 +3,7 @@
  * Archive Template for City CPT
  * Displays all cities in a filterable grid (Locations Style)
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  */
 
 get_header();
@@ -44,8 +44,8 @@ if ($cities_query->have_posts()) {
  * Handles featured image, meta image (ID or URL), and fallback.
  * Uses wp_get_attachment_image for correct aspect ratio attributes.
  */
-if (!function_exists('kidazzle_get_city_image_html')) {
-    function kidazzle_get_city_image_html($city_post, $fallback_url)
+if (!function_exists('wimper_get_city_image_html')) {
+    function wimper_get_city_image_html($city_post, $fallback_url)
     {
         $img_class = 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500';
 
@@ -139,7 +139,7 @@ if (!function_exists('kidazzle_get_city_image_html')) {
                         $county = get_post_meta($city_id, 'city_county', true) ?: 'Other';
                         $county_slug = sanitize_title($county);
 
-                        $city_html = kidazzle_get_city_image_html($post, $local_fallback);
+                        $city_html = wimper_get_city_image_html($post, $local_fallback);
                         $city_description = get_post_meta($city_id, 'city_intro_text', true);
                         ?>
                         <div class="city-card group" data-county="<?php echo esc_attr($county_slug); ?>"

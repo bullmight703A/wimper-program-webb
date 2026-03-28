@@ -2,7 +2,7 @@
 /**
  * Single Post Template (Stories/Blog)
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 

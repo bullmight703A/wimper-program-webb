@@ -6,7 +6,7 @@
  * @package Chroma_Excellence
  */
 
-$panels = chroma_home_kidazzle_panels();
+$panels = chroma_home_wimper_panels();
 
 $feature = $panels['feature'];
 $cards = $panels['cards'];

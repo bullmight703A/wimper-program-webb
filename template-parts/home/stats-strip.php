@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Try to get stats from Customizer JSON, fallback to defaults
-$stats_json = get_theme_mod('kidazzle_home_stats_json', '');
+$stats_json = get_theme_mod('wimper_home_stats_json', '');
 $stats = array();
 
 if (!empty($stats_json)) {
@@ -40,7 +40,7 @@ if (empty($stats)) {
     );
 }
 
-$stats = apply_filters('kidazzle_home_stats', $stats);
+$stats = apply_filters('wimper_home_stats', $stats);
 ?>
 
 

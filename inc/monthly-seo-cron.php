@@ -2,7 +2,7 @@
 /**
  * Monthly SEO Cron Job
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -14,41 +14,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Add Monthly Cron Interval
  */
-function kidazzle_add_monthly_cron_interval( $schedules ) {
+function wimper_add_monthly_cron_interval( $schedules ) {
 	$schedules['monthly'] = array(
 		'interval' => 30 * DAY_IN_SECONDS,
 		'display'  => __( 'Once Monthly', 'kidazzle-theme' ),
 	);
 	return $schedules;
 }
-add_filter( 'cron_schedules', 'kidazzle_add_monthly_cron_interval' );
+add_filter( 'cron_schedules', 'wimper_add_monthly_cron_interval' );
 
 /**
  * Schedule Monthly SEO Event on Theme Activation
  */
-function kidazzle_activate_monthly_seo_cron() {
-	if ( ! wp_next_scheduled( 'kidazzle_monthly_seo_event' ) ) {
-		wp_schedule_event( time(), 'monthly', 'kidazzle_monthly_seo_event' );
+function wimper_activate_monthly_seo_cron() {
+	if ( ! wp_next_scheduled( 'wimper_monthly_seo_event' ) ) {
+		wp_schedule_event( time(), 'monthly', 'wimper_monthly_seo_event' );
 	}
 }
-add_action( 'after_switch_theme', 'kidazzle_activate_monthly_seo_cron' );
+add_action( 'after_switch_theme', 'wimper_activate_monthly_seo_cron' );
 
 /**
  * Unschedule on Theme Deactivation
  */
-function kidazzle_deactivate_monthly_seo_cron() {
-	$timestamp = wp_next_scheduled( 'kidazzle_monthly_seo_event' );
+function wimper_deactivate_monthly_seo_cron() {
+	$timestamp = wp_next_scheduled( 'wimper_monthly_seo_event' );
 	if ( $timestamp ) {
-		wp_unschedule_event( $timestamp, 'kidazzle_monthly_seo_event' );
+		wp_unschedule_event( $timestamp, 'wimper_monthly_seo_event' );
 	}
 }
-add_action( 'switch_theme', 'kidazzle_deactivate_monthly_seo_cron' );
+add_action( 'switch_theme', 'wimper_deactivate_monthly_seo_cron' );
 
 /**
  * Monthly SEO Callback
  * Pings Google and Bing with sitemap URL
  */
-function kidazzle_monthly_seo_callback() {
+function wimper_monthly_seo_callback() {
 	if ( defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
 		error_log( '[Kidazzle SEO Cron] Monthly SEO event executed at ' . current_time( 'mysql' ) );
 	}
@@ -69,4 +69,4 @@ function kidazzle_monthly_seo_callback() {
 		'sslverify'   => false,
 	) );
 }
-add_action( 'kidazzle_monthly_seo_event', 'kidazzle_monthly_seo_callback' );
+add_action( 'wimper_monthly_seo_event', 'wimper_monthly_seo_callback' );

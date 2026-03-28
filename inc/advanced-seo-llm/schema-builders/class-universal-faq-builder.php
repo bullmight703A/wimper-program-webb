@@ -3,7 +3,7 @@
  * Universal FAQ Schema Builder
  * Generates JSON-LD for FAQPage Schema from universal meta box
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Universal_FAQ_Builder
+class wimper_Universal_FAQ_Builder
 {
     /**
      * Output FAQ schema
@@ -24,7 +24,7 @@ class kidazzle_Universal_FAQ_Builder
         }
 
         $post_id = get_the_ID();
-        $faqs = get_post_meta($post_id, 'kidazzle_faq_items', true);
+        $faqs = get_post_meta($post_id, 'wimper_faq_items', true);
 
         if (empty($faqs) || !is_array($faqs)) {
             return;

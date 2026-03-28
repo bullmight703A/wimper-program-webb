@@ -2,7 +2,7 @@
 /**
  * WordPress Cleanup Functions
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -14,19 +14,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Disable comments on attachments
  */
-function kidazzle_disable_attachment_comments( $open, $post_id ) {
+function wimper_disable_attachment_comments( $open, $post_id ) {
 	$post = get_post( $post_id );
 	if ( $post && $post->post_type === 'attachment' ) {
 		return false;
 	}
 	return $open;
 }
-add_filter( 'comments_open', 'kidazzle_disable_attachment_comments', 10, 2 );
+add_filter( 'comments_open', 'wimper_disable_attachment_comments', 10, 2 );
 
 /**
  * Redirect attachment pages to parent or home
  */
-function kidazzle_redirect_attachment_pages() {
+function wimper_redirect_attachment_pages() {
 	if ( is_attachment() ) {
 		global $post;
 		if ( $post && $post->post_parent ) {
@@ -37,18 +37,18 @@ function kidazzle_redirect_attachment_pages() {
 		exit;
 	}
 }
-add_action( 'template_redirect', 'kidazzle_redirect_attachment_pages' );
+add_action( 'template_redirect', 'wimper_redirect_attachment_pages' );
 
 /**
  * Disable author archives
  */
-function kidazzle_disable_author_archives() {
+function wimper_disable_author_archives() {
 	if ( is_author() ) {
 		wp_safe_redirect( home_url(), 301 );
 		exit;
 	}
 }
-add_action( 'template_redirect', 'kidazzle_disable_author_archives' );
+add_action( 'template_redirect', 'wimper_disable_author_archives' );
 
 /**
  * Disable XML-RPC
@@ -63,19 +63,19 @@ remove_action( 'wp_head', 'wp_generator' );
 /**
  * Disable RSS feeds
  */
-function kidazzle_disable_feeds() {
+function wimper_disable_feeds() {
 	wp_die( __( 'No feed available. Please visit the <a href="' . esc_url( home_url( '/' ) ) . '">homepage</a>!', 'kidazzle-theme' ) );
 }
-add_action( 'do_feed', 'kidazzle_disable_feeds', 1 );
-add_action( 'do_feed_rdf', 'kidazzle_disable_feeds', 1 );
-add_action( 'do_feed_rss', 'kidazzle_disable_feeds', 1 );
-add_action( 'do_feed_rss2', 'kidazzle_disable_feeds', 1 );
-add_action( 'do_feed_atom', 'kidazzle_disable_feeds', 1 );
+add_action( 'do_feed', 'wimper_disable_feeds', 1 );
+add_action( 'do_feed_rdf', 'wimper_disable_feeds', 1 );
+add_action( 'do_feed_rss', 'wimper_disable_feeds', 1 );
+add_action( 'do_feed_rss2', 'wimper_disable_feeds', 1 );
+add_action( 'do_feed_atom', 'wimper_disable_feeds', 1 );
 
 /**
  * Disable emojis to reduce extraneous HTTP requests and inline scripts.
  */
-function kidazzle_disable_emojis() {
+function wimper_disable_emojis() {
         remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
         remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
         remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -83,15 +83,15 @@ function kidazzle_disable_emojis() {
         remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
         remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
         remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-        add_filter( 'tiny_mce_plugins', 'kidazzle_disable_emojis_tinymce' );
-        add_filter( 'wp_resource_hints', 'kidazzle_disable_emojis_dns_prefetch', 10, 2 );
+        add_filter( 'tiny_mce_plugins', 'wimper_disable_emojis_tinymce' );
+        add_filter( 'wp_resource_hints', 'wimper_disable_emojis_dns_prefetch', 10, 2 );
 }
-add_action( 'init', 'kidazzle_disable_emojis' );
+add_action( 'init', 'wimper_disable_emojis' );
 
 /**
  * Filter out the emoji plugin from TinyMCE.
  */
-function kidazzle_disable_emojis_tinymce( $plugins ) {
+function wimper_disable_emojis_tinymce( $plugins ) {
         if ( is_array( $plugins ) ) {
                 return array_diff( $plugins, array( 'wpemoji' ) );
         }
@@ -102,7 +102,7 @@ function kidazzle_disable_emojis_tinymce( $plugins ) {
 /**
  * Remove emoji CDN DNS prefetch.
  */
-function kidazzle_disable_emojis_dns_prefetch( $urls, $relation_type ) {
+function wimper_disable_emojis_dns_prefetch( $urls, $relation_type ) {
         if ( 'dns-prefetch' !== $relation_type ) {
                 return $urls;
         }

@@ -2,7 +2,7 @@
 /**
  * City Slug Logic and Suggestions
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Generate Suggested Slug for Location
  * Pattern: service-areas-{city}-{state}
  */
-function kidazzle_suggest_location_slug( $post_id ) {
+function wimper_suggest_location_slug( $post_id ) {
         $city  = get_post_meta( $post_id, 'location_city', true );
         $state = get_post_meta( $post_id, 'location_state', true ) ?: 'ga';
 
@@ -32,23 +32,23 @@ function kidazzle_suggest_location_slug( $post_id ) {
 /**
  * Add Metabox to Show Slug Suggestions
  */
-function kidazzle_slug_suggestion_metabox() {
+function wimper_slug_suggestion_metabox() {
 	add_meta_box(
-		'kidazzle_slug_suggestion',
+		'wimper_slug_suggestion',
 		__( 'SEO Slug Suggestion', 'kidazzle-theme' ),
-		'kidazzle_slug_suggestion_callback',
+		'wimper_slug_suggestion_callback',
 		'location',
 		'side',
 		'default'
 	);
 }
-add_action( 'add_meta_boxes', 'kidazzle_slug_suggestion_metabox' );
+add_action( 'add_meta_boxes', 'wimper_slug_suggestion_metabox' );
 
 /**
  * Metabox Callback
  */
-function kidazzle_slug_suggestion_callback( $post ) {
-	$suggested_slug = kidazzle_suggest_location_slug( $post->ID );
+function wimper_slug_suggestion_callback( $post ) {
+	$suggested_slug = wimper_suggest_location_slug( $post->ID );
 	$current_slug   = $post->post_name;
 	$full_url       = home_url( '/locations/' . $suggested_slug );
 

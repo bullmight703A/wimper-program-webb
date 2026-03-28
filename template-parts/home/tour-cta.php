@@ -11,9 +11,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$cta_headline = get_theme_mod('kidazzle_cta_headline', 'Ready to Start Your Journey?');
-$cta_subheadline = get_theme_mod('kidazzle_cta_subheadline', 'Schedule a tour today and see why families have trusted us for 31 years.');
-$form_embed_url = get_theme_mod('kidazzle_form_embed_url', 'https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la');
+$cta_headline = get_theme_mod('wimper_cta_headline', 'Ready to Start Your Journey?');
+$cta_subheadline = get_theme_mod('wimper_cta_subheadline', 'Schedule a tour today and see why families have trusted us for 31 years.');
+$form_embed_url = get_theme_mod('wimper_form_embed_url', 'https://api.leadconnectorhq.com/widget/form/N8RYaUY1SuORexcyA6la');
 ?>
 
 <!-- CTA & Embed -->

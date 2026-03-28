@@ -4,7 +4,7 @@
  *
  * Fetches and parses job listings from Acquire4Hire.
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  */
 
 if (!defined('ABSPATH')) {
@@ -16,10 +16,10 @@ if (!defined('ABSPATH')) {
  *
  * @return array Array of job data ['title', 'location', 'url', 'type']
  */
-function kidazzle_get_careers()
+function wimper_get_careers()
 {
     // Check for cached data
-    $cached_jobs = get_transient('kidazzle_careers_data');
+    $cached_jobs = get_transient('wimper_careers_data');
     if (false !== $cached_jobs) {
         return $cached_jobs;
     }
@@ -79,7 +79,7 @@ function kidazzle_get_careers()
 
     // Cache for 1 hour
     if (!empty($jobs)) {
-        set_transient('kidazzle_careers_data', $jobs, HOUR_IN_SECONDS);
+        set_transient('wimper_careers_data', $jobs, HOUR_IN_SECONDS);
     }
 
     return $jobs;

@@ -3,7 +3,7 @@
  * Page Type Schema Builder
  * Generates specific schema for About and Contact pages
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Page_Type_Builder
+class wimper_Page_Type_Builder
 {
     /**
      * Output schema

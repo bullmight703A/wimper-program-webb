@@ -3,7 +3,7 @@
  * Single City Template
  * Hyperlocal landing page for a specific city
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  */
 
 get_header();
@@ -358,7 +358,7 @@ $local_fallback = get_template_directory_uri() . '/assets/images/logo_Kidazzlecr
                         class="text-kidazzle-blue hover:underline">Infant Care</a>) up to 12 years old (<a
                         href="<?php echo esc_url(home_url('/programs/after-school/')); ?>"
                         class="text-kidazzle-blue hover:underline">After School</a>).
-                    We also offer a <a href="<?php echo esc_url(kidazzle_get_page_link('pre-k-prep')); ?>"
+                    We also offer a <a href="<?php echo esc_url(wimper_get_page_link('pre-k-prep')); ?>"
                         class="text-kidazzle-blue hover:underline">Pre-K Prep</a> program.
                 </p>
             </details>

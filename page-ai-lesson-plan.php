@@ -2,7 +2,7 @@
 /**
  * Template Name: AI Lesson Planning Page
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  */
 
 get_header();

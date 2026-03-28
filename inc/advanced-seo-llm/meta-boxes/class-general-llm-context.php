@@ -3,7 +3,7 @@
  * General LLM Context Meta Box
  * Allows editing LLM-specific targeting fields for all post types
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,11 +12,11 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_General_LLM_Context extends kidazzle_Advanced_SEO_Meta_Box_Base
+class wimper_General_LLM_Context extends wimper_Advanced_SEO_Meta_Box_Base
 {
     public function get_id()
     {
-        return 'kidazzle_general_llm_context';
+        return 'wimper_general_llm_context';
     }
 
     public function get_title()
@@ -37,8 +37,8 @@ class kidazzle_General_LLM_Context extends kidazzle_Advanced_SEO_Meta_Box_Base
         $key_differentiators = get_post_meta($post->ID, 'seo_llm_key_differentiators', true) ?: [];
 
         // Get fallbacks
-        $fallback_queries = kidazzle_Fallback_Resolver::get_llm_target_queries($post->ID);
-        $fallback_differentiators = kidazzle_Fallback_Resolver::get_llm_key_differentiators($post->ID);
+        $fallback_queries = wimper_Fallback_Resolver::get_llm_target_queries($post->ID);
+        $fallback_differentiators = wimper_Fallback_Resolver::get_llm_key_differentiators($post->ID);
 
         echo '<div style="margin-bottom: 20px;">';
         echo '<p class="description"><strong>Optimize how AI assistants (ChatGPT, Claude, Perplexity) recommend this page.</strong></p>';
@@ -92,13 +92,13 @@ class kidazzle_General_LLM_Context extends kidazzle_Advanced_SEO_Meta_Box_Base
     {
         // Save primary intent
         if (isset($_POST['seo_llm_primary_intent'])) {
-            $intent = kidazzle_Field_Sanitizer::sanitize_text($_POST['seo_llm_primary_intent']);
+            $intent = wimper_Field_Sanitizer::sanitize_text($_POST['seo_llm_primary_intent']);
             update_post_meta($post_id, 'seo_llm_primary_intent', $intent);
         }
 
         // Save target queries
         if (isset($_POST['seo_llm_target_queries'])) {
-            $queries = kidazzle_Field_Sanitizer::sanitize_text_array($_POST['seo_llm_target_queries']);
+            $queries = wimper_Field_Sanitizer::sanitize_text_array($_POST['seo_llm_target_queries']);
             update_post_meta($post_id, 'seo_llm_target_queries', array_filter($queries));
         } else {
             update_post_meta($post_id, 'seo_llm_target_queries', []);
@@ -106,7 +106,7 @@ class kidazzle_General_LLM_Context extends kidazzle_Advanced_SEO_Meta_Box_Base
 
         // Save key differentiators
         if (isset($_POST['seo_llm_key_differentiators'])) {
-            $differentiators = kidazzle_Field_Sanitizer::sanitize_text_array($_POST['seo_llm_key_differentiators']);
+            $differentiators = wimper_Field_Sanitizer::sanitize_text_array($_POST['seo_llm_key_differentiators']);
             update_post_meta($post_id, 'seo_llm_key_differentiators', array_filter($differentiators));
         } else {
             update_post_meta($post_id, 'seo_llm_key_differentiators', []);

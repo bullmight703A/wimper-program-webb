@@ -4,7 +4,7 @@
  *
  * Ensures all canonical URLs have a trailing slash, resolving mismatch errors in SEO audits.
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 /**
  * Filter Yoast Canonical to Enforce Trailing Slash
  */
-function kidazzle_enforce_trailing_slash_canonical($canonical) {
+function wimper_enforce_trailing_slash_canonical($canonical) {
     // If empty or has file extension (like .html, .xml, .jpg), leave alone
     if (!$canonical || pathinfo($canonical, PATHINFO_EXTENSION)) {
         return $canonical;
@@ -30,4 +30,4 @@ function kidazzle_enforce_trailing_slash_canonical($canonical) {
     // Add slash if missing
     return trailingslashit($canonical);
 }
-add_filter('wpseo_canonical', 'kidazzle_enforce_trailing_slash_canonical', 50);
+add_filter('wpseo_canonical', 'wimper_enforce_trailing_slash_canonical', 50);

@@ -2,7 +2,7 @@
 /**
  * Main Template File (Fallback)
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -30,7 +30,7 @@ get_header();
 				</article>
 			<?php endwhile; ?>
 		</div>
-		<?php kidazzle_archive_pagination(); ?>
+		<?php wimper_archive_pagination(); ?>
 	<?php else: ?>
 		<div class="text-center py-20">
 			<h1 class="text-3xl font-serif text-brand-ink mb-4">Nothing Found</h1>

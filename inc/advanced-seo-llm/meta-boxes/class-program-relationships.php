@@ -3,7 +3,7 @@
  * Program Relationships Meta Box
  * Handles semantic relationships between Programs and Locations
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Program_Relationships extends kidazzle_Advanced_SEO_Meta_Box_Base
+class wimper_Program_Relationships extends wimper_Advanced_SEO_Meta_Box_Base
 {
     /**
      * Get the meta box ID
@@ -21,7 +21,7 @@ class kidazzle_Program_Relationships extends kidazzle_Advanced_SEO_Meta_Box_Base
      */
     public function get_id()
     {
-        return 'kidazzle_program_relationships';
+        return 'wimper_program_relationships';
     }
 
     /**
@@ -75,7 +75,7 @@ class kidazzle_Program_Relationships extends kidazzle_Advanced_SEO_Meta_Box_Base
         $prereqs = get_post_meta($post->ID, 'program_prerequisites', true) ?: [];
         $related = get_post_meta($post->ID, 'program_related', true) ?: [];
 
-        wp_nonce_field('kidazzle_program_relationships_save', 'kidazzle_program_relationships_nonce');
+        wp_nonce_field('wimper_program_relationships_save', 'wimper_program_relationships_nonce');
         ?>
 
         <div class="kidazzle-field-wrapper">
@@ -143,7 +143,7 @@ class kidazzle_Program_Relationships extends kidazzle_Advanced_SEO_Meta_Box_Base
     public function save_fields($post_id)
     {
         // Check nonce
-        if (!isset($_POST['kidazzle_program_relationships_nonce']) || !wp_verify_nonce($_POST['kidazzle_program_relationships_nonce'], 'kidazzle_program_relationships_save')) {
+        if (!isset($_POST['wimper_program_relationships_nonce']) || !wp_verify_nonce($_POST['wimper_program_relationships_nonce'], 'wimper_program_relationships_save')) {
             return;
         }
 

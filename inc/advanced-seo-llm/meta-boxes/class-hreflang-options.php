@@ -3,7 +3,7 @@
  * Hreflang Options Meta Box
  * Allows linking English and Spanish versions of a page
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Hreflang_Options extends kidazzle_Advanced_SEO_Meta_Box_Base
+class wimper_Hreflang_Options extends wimper_Advanced_SEO_Meta_Box_Base
 {
     /**
      * Get the meta box ID
@@ -21,7 +21,7 @@ class kidazzle_Hreflang_Options extends kidazzle_Advanced_SEO_Meta_Box_Base
      */
     public function get_id()
     {
-        return 'kidazzle_hreflang_options';
+        return 'wimper_hreflang_options';
     }
 
     /**

@@ -3,7 +3,7 @@
  * LLM Context Builder
  * Builds LLM context data from meta or fallbacks
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_LLM_Context_Builder
+class wimper_LLM_Context_Builder
 {
     /**
      * Build LLM context array for a location
@@ -32,13 +32,13 @@ class kidazzle_LLM_Context_Builder
         $context['primary_intent'] = $intent;
 
         // Target queries
-        $queries = kidazzle_Fallback_Resolver::get_llm_target_queries($location_id);
+        $queries = wimper_Fallback_Resolver::get_llm_target_queries($location_id);
         if (!empty($queries)) {
             $context['target_queries'] = $queries;
         }
 
         // Key differentiators
-        $differentiators = kidazzle_Fallback_Resolver::get_llm_key_differentiators($location_id);
+        $differentiators = wimper_Fallback_Resolver::get_llm_key_differentiators($location_id);
         if (!empty($differentiators)) {
             $context['key_differentiators'] = $differentiators;
         }
@@ -57,7 +57,7 @@ class kidazzle_LLM_Context_Builder
         $data = [];
 
         // Description
-        $description = kidazzle_Fallback_Resolver::get_llm_description($location_id);
+        $description = wimper_Fallback_Resolver::get_llm_description($location_id);
         if ($description) {
             $data['llm_description'] = $description;
         }
@@ -69,7 +69,7 @@ class kidazzle_LLM_Context_Builder
         }
 
         // Comparison factors
-        $factors = kidazzle_Fallback_Resolver::get_comparison_factors($location_id);
+        $factors = wimper_Fallback_Resolver::get_comparison_factors($location_id);
         if (!empty($factors)) {
             $data['comparisonFactors'] = $factors;
         }

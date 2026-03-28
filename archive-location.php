@@ -3,7 +3,7 @@
  * Locations Archive
  * Displays all locations with search, filtering, and interactive features
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  */
 
 get_header();
@@ -43,11 +43,11 @@ $locations_query = new WP_Query(array(
 
 			<h1 class="font-serif text-[2.8rem] md:text-6xl text-brand-ink mb-6 fade-in-up"
 				style="animation-delay: 0.1s;">
-				<?php echo wp_kses_post(get_theme_mod('kidazzle_locations_archive_title', __('Find your <span class="text-kidazzle-green italic">KIDazzle Community</span> - Our Locations', 'kidazzle-theme'))); ?>
+				<?php echo wp_kses_post(get_theme_mod('wimper_locations_archive_title', __('Find your <span class="text-kidazzle-green italic">KIDazzle Community</span> - Our Locations', 'kidazzle-theme'))); ?>
 			</h1>
 
 			<p class="text-lg text-brand-ink/90 max-w-2xl mx-auto mb-10 fade-in-up" style="animation-delay: 0.2s;">
-				<?php echo has_excerpt() ? get_the_excerpt() : esc_html(get_theme_mod('kidazzle_locations_archive_subtitle', __('Serving families across Metro Atlanta with the same high standards of safety, curriculum, and care at every single location.', 'kidazzle-theme'))); ?>
+				<?php echo has_excerpt() ? get_the_excerpt() : esc_html(get_theme_mod('wimper_locations_archive_subtitle', __('Serving families across Metro Atlanta with the same high standards of safety, curriculum, and care at every single location.', 'kidazzle-theme'))); ?>
 			</p>
 
 			<!-- Filter Bar -->
@@ -63,10 +63,10 @@ $locations_query = new WP_Query(array(
 					<button onclick="filterLocations('all')" data-region="all" data-color-bg="kidazzle-green"
 						data-color-text="white"
 						class="filter-btn px-6 py-3 rounded-full font-semibold bg-kidazzle-green text-white hover:shadow-glow transition-all duration-300 whitespace-nowrap">
-						<?php echo esc_html(get_theme_mod('kidazzle_locations_label', __('All Locations', 'kidazzle-theme'))); ?>
+						<?php echo esc_html(get_theme_mod('wimper_locations_label', __('All Locations', 'kidazzle-theme'))); ?>
 					</button>
 					<?php foreach ($all_regions as $region):
-						$colors = kidazzle_get_region_color_from_term($region->term_id);
+						$colors = wimper_get_region_color_from_term($region->term_id);
 						$btn_bg = $colors['text'];
 						?>
 						<button onclick="filterLocations('<?php echo esc_attr($region->slug); ?>')"
@@ -90,14 +90,14 @@ $locations_query = new WP_Query(array(
 					while ($locations_query->have_posts()):
 						$locations_query->the_post();
 						$location_id = get_the_ID();
-						$location_fields = kidazzle_get_location_fields($location_id);
+						$location_fields = wimper_get_location_fields($location_id);
 						$location_name = get_the_title();
 
 						// Get location meta
 						$city = $location_fields['city'];
 						$state = $location_fields['state'];
 						$zip = $location_fields['zip'];
-						$address = kidazzle_location_address_line($location_id);
+						$address = wimper_location_address_line($location_id);
 						$phone = $location_fields['phone'];
 						$lat = $location_fields['latitude'];
 						$lng = $location_fields['longitude'];
@@ -130,7 +130,7 @@ $locations_query = new WP_Query(array(
 
 						// Dynamic Open Status
 						$hours_string = get_post_meta($location_id, 'location_hours', true);
-						$is_open = kidazzle_is_location_open($hours_string);
+						$is_open = wimper_is_location_open($hours_string);
 
 						// Badge Text Logic
 						$hero_subtitle = get_post_meta($location_id, 'location_hero_subtitle', true);
@@ -139,7 +139,7 @@ $locations_query = new WP_Query(array(
 						} elseif ($is_new) {
 							$badge_text = __('New Campus', 'kidazzle-theme');
 						} else {
-							$badge_text = get_theme_mod('kidazzle_locations_badge_fallback', __('Now Enrolling', 'kidazzle-theme'));
+							$badge_text = get_theme_mod('wimper_locations_badge_fallback', __('Now Enrolling', 'kidazzle-theme'));
 						}
 
 						// Get age ranges/programs
@@ -178,7 +178,7 @@ $locations_query = new WP_Query(array(
 											title="<?php esc_attr_e('Open Now', 'kidazzle-theme'); ?>">
 											<div class="w-2 h-2 rounded-full bg-kidazzle-green animate-pulse"></div>
 											<span
-												class="text-[10px] font-bold text-kidazzle-green uppercase tracking-wide"><?php echo esc_html(get_theme_mod('kidazzle_locations_open_text', __('Open Now', 'kidazzle-theme'))); ?></span>
+												class="text-[10px] font-bold text-kidazzle-green uppercase tracking-wide"><?php echo esc_html(get_theme_mod('wimper_locations_open_text', __('Open Now', 'kidazzle-theme'))); ?></span>
 										</div>
 									<?php endif; ?>
 								</div>

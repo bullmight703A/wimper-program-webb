@@ -3,7 +3,7 @@
  * Admin Help & Documentation
  * Adds a Help tab to the SEO Dashboard
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,15 +12,15 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Admin_Help
+class wimper_Admin_Help
 {
     /**
      * Initialize
      */
     public function init()
     {
-        add_action('kidazzle_seo_dashboard_tabs', [$this, 'add_tab']);
-        add_action('kidazzle_seo_dashboard_content', [$this, 'render_content']);
+        add_action('wimper_seo_dashboard_tabs', [$this, 'add_tab']);
+        add_action('wimper_seo_dashboard_content', [$this, 'render_content']);
     }
 
     /**

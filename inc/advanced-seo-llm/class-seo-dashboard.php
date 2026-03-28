@@ -4,7 +4,7 @@
  * Provides a centralized view of all SEO data
  * Shows manual values vs. fallback values
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_SEO_Dashboard
+class wimper_SEO_Dashboard
 {
     /**
      * Initialize the dashboard
@@ -22,14 +22,14 @@ class kidazzle_SEO_Dashboard
     {
         add_action('admin_menu', [$this, 'register_menu_page']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_assets']);
-        add_action('wp_ajax_kidazzle_fetch_schema_inspector', [$this, 'ajax_fetch_inspector_data']);
-        add_action('wp_ajax_kidazzle_save_schema_inspector', [$this, 'ajax_save_inspector_data']);
-        add_action('wp_ajax_kidazzle_get_schema_fields', [$this, 'ajax_get_schema_fields']);
-        add_action('wp_ajax_kidazzle_fetch_social_preview', [$this, 'ajax_fetch_social_preview']);
-        add_action('wp_ajax_kidazzle_fetch_llm_data', [$this, 'ajax_fetch_llm_data']);
-        add_action('wp_ajax_kidazzle_save_llm_targeting', [$this, 'ajax_save_llm_targeting']);
-        add_action('wp_ajax_kidazzle_generate_llm_targeting', [$this, 'ajax_generate_llm_targeting']);
-        add_action('wp_ajax_kidazzle_generate_schema', [$this, 'ajax_generate_schema']);
+        add_action('wp_ajax_wimper_fetch_schema_inspector', [$this, 'ajax_fetch_inspector_data']);
+        add_action('wp_ajax_wimper_save_schema_inspector', [$this, 'ajax_save_inspector_data']);
+        add_action('wp_ajax_wimper_get_schema_fields', [$this, 'ajax_get_schema_fields']);
+        add_action('wp_ajax_wimper_fetch_social_preview', [$this, 'ajax_fetch_social_preview']);
+        add_action('wp_ajax_wimper_fetch_llm_data', [$this, 'ajax_fetch_llm_data']);
+        add_action('wp_ajax_wimper_save_llm_targeting', [$this, 'ajax_save_llm_targeting']);
+        add_action('wp_ajax_wimper_generate_llm_targeting', [$this, 'ajax_generate_llm_targeting']);
+        add_action('wp_ajax_wimper_generate_schema', [$this, 'ajax_generate_schema']);
         add_action('admin_init', [$this, 'register_settings']);
     }
 
@@ -38,8 +38,8 @@ class kidazzle_SEO_Dashboard
      */
     public function register_settings()
     {
-        register_setting('kidazzle_llm_options', 'kidazzle_llm_brand_voice');
-        register_setting('kidazzle_llm_options', 'kidazzle_llm_brand_context');
+        register_setting('wimper_llm_options', 'wimper_llm_brand_voice');
+        register_setting('wimper_llm_options', 'wimper_llm_brand_context');
     }
 
     /**
@@ -130,7 +130,7 @@ class kidazzle_SEO_Dashboard
                     class="nav-tab <?php echo $active_tab === 'breadcrumbs' ? 'nav-tab-active' : ''; ?>">Breadcrumbs</a>
                 <a href="<?php echo admin_url('admin.php?page=kidazzle-seo-dashboard&tab=social'); ?>"
                     class="nav-tab <?php echo $active_tab === 'social' ? 'nav-tab-active' : ''; ?>">Social Preview</a>
-                <?php do_action('kidazzle_seo_dashboard_tabs'); ?>
+                <?php do_action('wimper_seo_dashboard_tabs'); ?>
             </nav>
 
             <br>
@@ -162,8 +162,8 @@ class kidazzle_SEO_Dashboard
                     $this->render_schema_builder_tab();
                     break;
                 case 'breadcrumbs':
-                    if (class_exists('kidazzle_Breadcrumbs')) {
-                        (new kidazzle_Breadcrumbs())->render_settings();
+                    if (class_exists('wimper_Breadcrumbs')) {
+                        (new wimper_Breadcrumbs())->render_settings();
                     } else {
                         echo '<p>Breadcrumbs module not loaded.</p>';
                     }
@@ -173,8 +173,8 @@ class kidazzle_SEO_Dashboard
                     break;
                 default:
                     // Allow other tabs to render via action
-                    if (has_action('kidazzle_seo_dashboard_content')) {
-                        do_action('kidazzle_seo_dashboard_content');
+                    if (has_action('wimper_seo_dashboard_content')) {
+                        do_action('wimper_seo_dashboard_content');
                     } else {
                         $this->render_overview_tab('location');
                     }
@@ -221,9 +221,9 @@ class kidazzle_SEO_Dashboard
     private function render_llm_tab()
     {
         // Render Global Settings First
-        global $kidazzle_llm_client;
-        if (isset($kidazzle_llm_client) && method_exists($kidazzle_llm_client, 'render_settings')) {
-            $kidazzle_llm_client->render_settings();
+        global $wimper_llm_client;
+        if (isset($wimper_llm_client) && method_exists($wimper_llm_client, 'render_settings')) {
+            $wimper_llm_client->render_settings();
             echo '<hr style="margin: 30px 0; border: 0; border-top: 1px solid #ddd;">';
         }
 
@@ -285,7 +285,7 @@ class kidazzle_SEO_Dashboard
 
         <script>
             jQuery(document).ready(function ($) {
-                var kidazzle_nonce = '<?php echo wp_create_nonce('kidazzle_seo_dashboard_nonce'); ?>';
+                var wimper_nonce = '<?php echo wp_create_nonce('wimper_seo_dashboard_nonce'); ?>';
                 var selectedId = '<?php echo $selected_id; ?>';
 
                 if (selectedId && selectedId != '0') {
@@ -300,8 +300,8 @@ class kidazzle_SEO_Dashboard
                 function loadLLMData(id) {
                     $('#kidazzle-llm-spinner').addClass('is-active');
                     $.post(ajaxurl, {
-                        action: 'kidazzle_fetch_llm_data',
-                        nonce: kidazzle_nonce,
+                        action: 'wimper_fetch_llm_data',
+                        nonce: wimper_nonce,
                         post_id: id
                     }, function (response) {
                         $('#kidazzle-llm-spinner').removeClass('is-active');
@@ -332,8 +332,8 @@ class kidazzle_SEO_Dashboard
                     });
 
                     $.post(ajaxurl, {
-                        action: 'kidazzle_save_llm_targeting',
-                        nonce: kidazzle_nonce,
+                        action: 'wimper_save_llm_targeting',
+                        nonce: wimper_nonce,
                         post_id: $('#kidazzle-llm-post-id').val(),
                         primary_intent: primary_intent,
                         target_queries: target_queries,
@@ -360,8 +360,8 @@ class kidazzle_SEO_Dashboard
                     btn.prop('disabled', true).text('Generating...');
 
                     $.post(ajaxurl, {
-                        action: 'kidazzle_generate_llm_targeting',
-                        nonce: kidazzle_nonce,
+                        action: 'wimper_generate_llm_targeting',
+                        nonce: wimper_nonce,
                         post_id: $('#kidazzle-llm-post-id').val()
                     }, function (response) {
                         btn.prop('disabled', false).html('<span class="dashicons dashicons-superhero" style="font-size: 14px; width: 14px; height: 14px; vertical-align: middle;"></span> Auto-Fill with AI');
@@ -456,9 +456,9 @@ class kidazzle_SEO_Dashboard
                     $id = $p->ID;
                     // LLM Context
                     $intent_manual = get_post_meta($id, 'seo_llm_primary_intent', true);
-                    $desc = kidazzle_Fallback_Resolver::get_llm_description($id);
+                    $desc = wimper_Fallback_Resolver::get_llm_description($id);
                     // Schema
-                    $schemas = get_post_meta($id, '_kidazzle_post_schemas', true);
+                    $schemas = get_post_meta($id, '_wimper_post_schemas', true);
                     $schema_count = is_array($schemas) ? count($schemas) : 0;
 
                     // Health
@@ -611,7 +611,7 @@ class kidazzle_SEO_Dashboard
 
         <script>
             jQuery(document).ready(function ($) {
-                var kidazzle_nonce = '<?php echo wp_create_nonce('kidazzle_seo_dashboard_nonce'); ?>';
+                var wimper_nonce = '<?php echo wp_create_nonce('wimper_seo_dashboard_nonce'); ?>';
                 var selectedId = '<?php echo $selected_id; ?>';
 
                 if (selectedId && selectedId != '0') {
@@ -626,8 +626,8 @@ class kidazzle_SEO_Dashboard
                 function loadInspectorData(id) {
                     $('#kidazzle-inspector-spinner').addClass('is-active');
                     $.post(ajaxurl, {
-                        action: 'kidazzle_fetch_schema_inspector',
-                        nonce: kidazzle_nonce,
+                        action: 'wimper_fetch_schema_inspector',
+                        nonce: wimper_nonce,
                         post_id: id
                     }, function (response) {
                         $('#kidazzle-inspector-spinner').removeClass('is-active');
@@ -678,8 +678,8 @@ class kidazzle_SEO_Dashboard
                     // No, we need the fields. Let's ask the server for the fields for this type.
 
                     $.post(ajaxurl, {
-                        action: 'kidazzle_get_schema_fields',
-                        nonce: kidazzle_nonce,
+                        action: 'wimper_get_schema_fields',
+                        nonce: wimper_nonce,
                         schema_type: type,
                         index: index,
                         post_id: $('#kidazzle-inspector-post-id').val()
@@ -779,8 +779,8 @@ class kidazzle_SEO_Dashboard
                     });
 
                     $.post(ajaxurl, {
-                        action: 'kidazzle_save_schema_inspector',
-                        nonce: kidazzle_nonce,
+                        action: 'wimper_save_schema_inspector',
+                        nonce: wimper_nonce,
                         post_id: $('#kidazzle-inspector-post-id').val(),
                         schemas: schemas
                     }, function (response) {
@@ -807,7 +807,7 @@ class kidazzle_SEO_Dashboard
                     btn.prop('disabled', true).text('Generating...');
 
                     $.post(ajaxurl, {
-                        action: 'kidazzle_generate_schema',
+                        action: 'wimper_generate_schema',
                         post_id: postId,
                         schema_type: type
                     }, function (response) {
@@ -844,20 +844,20 @@ class kidazzle_SEO_Dashboard
      */
     public function ajax_fetch_inspector_data()
     {
-        check_ajax_referer('kidazzle_seo_dashboard_nonce', 'nonce');
+        check_ajax_referer('wimper_seo_dashboard_nonce', 'nonce');
 
         $post_id = intval($_POST['post_id']);
         if (!$post_id)
             wp_send_json_error();
 
         // Get existing schemas
-        $existing_schemas = get_post_meta($post_id, '_kidazzle_post_schemas', true);
+        $existing_schemas = get_post_meta($post_id, '_wimper_post_schemas', true);
         if (!is_array($existing_schemas) || empty($existing_schemas)) {
             $existing_schemas = [];
             // Backwards compatibility: Check for legacy schema data
-            $legacy_type = get_post_meta($post_id, '_kidazzle_schema_type', true);
+            $legacy_type = get_post_meta($post_id, '_wimper_schema_type', true);
             if ($legacy_type && $legacy_type !== 'none') {
-                $legacy_data = get_post_meta($post_id, '_kidazzle_schema_data', true);
+                $legacy_data = get_post_meta($post_id, '_wimper_schema_data', true);
                 if (!is_array($legacy_data))
                     $legacy_data = [];
 
@@ -870,15 +870,15 @@ class kidazzle_SEO_Dashboard
             // If still no schemas, try to load smart defaults based on post type
             if (empty($existing_schemas)) {
                 // Use the Schema Injector to get defaults if available
-                if (class_exists('kidazzle_Schema_Injector')) {
-                    $defaults = kidazzle_Schema_Injector::get_default_schema_for_post_type($post_id);
+                if (class_exists('wimper_Schema_Injector')) {
+                    $defaults = wimper_Schema_Injector::get_default_schema_for_post_type($post_id);
                     if (!empty($defaults)) {
                         $existing_schemas = $defaults;
                     }
                 }
             }
         }
-        $available_types = kidazzle_Schema_Types::get_definitions();
+        $available_types = wimper_Schema_Types::get_definitions();
 
         ob_start();
         ?>
@@ -923,7 +923,7 @@ class kidazzle_SEO_Dashboard
      */
     private function render_schema_block($type, $data = [], $index = 0)
     {
-        $definitions = kidazzle_Schema_Types::get_definitions();
+        $definitions = wimper_Schema_Types::get_definitions();
         if (!isset($definitions[$type]))
             return;
 
@@ -1025,7 +1025,7 @@ class kidazzle_SEO_Dashboard
      */
     public function ajax_get_schema_fields()
     {
-        check_ajax_referer('kidazzle_seo_dashboard_nonce', 'nonce');
+        check_ajax_referer('wimper_seo_dashboard_nonce', 'nonce');
         $type = sanitize_text_field($_POST['schema_type']);
         $index = intval($_POST['index']);
         $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
@@ -1061,7 +1061,7 @@ class kidazzle_SEO_Dashboard
      */
     public function ajax_save_inspector_data()
     {
-        check_ajax_referer('kidazzle_seo_dashboard_nonce', 'nonce');
+        check_ajax_referer('wimper_seo_dashboard_nonce', 'nonce');
 
         if (!current_user_can('edit_posts'))
             wp_send_json_error();
@@ -1107,7 +1107,7 @@ class kidazzle_SEO_Dashboard
             }
         }
 
-        update_post_meta($post_id, '_kidazzle_post_schemas', $clean_schemas);
+        update_post_meta($post_id, '_wimper_post_schemas', $clean_schemas);
 
         wp_send_json_success();
     }
@@ -1164,8 +1164,8 @@ class kidazzle_SEO_Dashboard
                     }
 
                     $.post(ajaxurl, {
-                        action: 'kidazzle_fetch_social_preview',
-                        nonce: '<?php echo wp_create_nonce('kidazzle_seo_dashboard_nonce'); ?>',
+                        action: 'wimper_fetch_social_preview',
+                        nonce: '<?php echo wp_create_nonce('wimper_seo_dashboard_nonce'); ?>',
                         post_id: pid
                     }, function (response) {
                         if (response.success) {
@@ -1194,7 +1194,7 @@ class kidazzle_SEO_Dashboard
      */
     public function ajax_fetch_social_preview()
     {
-        check_ajax_referer('kidazzle_seo_dashboard_nonce', 'nonce');
+        check_ajax_referer('wimper_seo_dashboard_nonce', 'nonce');
         $post_id = intval($_POST['post_id']);
         if (!$post_id)
             wp_send_json_error();
@@ -1208,8 +1208,8 @@ class kidazzle_SEO_Dashboard
 
         // Fallback description
         $desc = '';
-        if (class_exists('kidazzle_Fallback_Resolver')) {
-            $desc = kidazzle_Fallback_Resolver::get_llm_description($post_id);
+        if (class_exists('wimper_Fallback_Resolver')) {
+            $desc = wimper_Fallback_Resolver::get_llm_description($post_id);
         } else {
             $desc = get_post_meta($post_id, 'seo_llm_description', true) ?: wp_trim_words($post->post_content, 25);
         }
@@ -1234,7 +1234,7 @@ class kidazzle_SEO_Dashboard
      */
     public function ajax_fetch_llm_data()
     {
-        check_ajax_referer('kidazzle_seo_dashboard_nonce', 'nonce');
+        check_ajax_referer('wimper_seo_dashboard_nonce', 'nonce');
 
         $post_id = intval($_POST['post_id']);
         if (!$post_id)
@@ -1246,8 +1246,8 @@ class kidazzle_SEO_Dashboard
         $key_differentiators = get_post_meta($post_id, 'seo_llm_key_differentiators', true) ?: [];
 
         // Get fallbacks
-        $fallback_queries = kidazzle_Fallback_Resolver::get_llm_target_queries($post_id);
-        $fallback_differentiators = kidazzle_Fallback_Resolver::get_llm_key_differentiators($post_id);
+        $fallback_queries = wimper_Fallback_Resolver::get_llm_target_queries($post_id);
+        $fallback_differentiators = wimper_Fallback_Resolver::get_llm_key_differentiators($post_id);
 
         ob_start();
         ?>
@@ -1342,7 +1342,7 @@ class kidazzle_SEO_Dashboard
      */
     public function ajax_save_llm_targeting()
     {
-        check_ajax_referer('kidazzle_seo_dashboard_nonce', 'nonce');
+        check_ajax_referer('wimper_seo_dashboard_nonce', 'nonce');
 
         if (!current_user_can('edit_posts'))
             wp_send_json_error();
@@ -1367,19 +1367,19 @@ class kidazzle_SEO_Dashboard
      */
     public function ajax_generate_llm_targeting()
     {
-        check_ajax_referer('kidazzle_seo_dashboard_nonce', 'nonce');
+        check_ajax_referer('wimper_seo_dashboard_nonce', 'nonce');
         $post_id = intval($_POST['post_id']);
         if (!$post_id)
             wp_send_json_error(['message' => 'Invalid Post ID']);
 
-        if (!class_exists('kidazzle_Fallback_Resolver')) {
+        if (!class_exists('wimper_Fallback_Resolver')) {
             wp_send_json_error(['message' => 'Fallback Resolver not found']);
         }
 
         $data = [
             'primary_intent' => 'informational', // Default
-            'target_queries' => kidazzle_Fallback_Resolver::get_llm_target_queries($post_id),
-            'key_differentiators' => kidazzle_Fallback_Resolver::get_llm_key_differentiators($post_id)
+            'target_queries' => wimper_Fallback_Resolver::get_llm_target_queries($post_id),
+            'key_differentiators' => wimper_Fallback_Resolver::get_llm_key_differentiators($post_id)
         ];
 
         wp_send_json_success($data);
@@ -1390,7 +1390,7 @@ class kidazzle_SEO_Dashboard
      */
     public function ajax_generate_schema()
     {
-        check_ajax_referer('kidazzle_seo_dashboard_nonce', 'nonce');
+        check_ajax_referer('wimper_seo_dashboard_nonce', 'nonce');
         $post_id = intval($_POST['post_id']);
         $type = sanitize_text_field($_POST['schema_type']);
 
@@ -1411,7 +1411,7 @@ class kidazzle_SEO_Dashboard
             }
 
             if ($type === 'LocalBusiness' || $type === 'ChildCare') {
-                $data['telephone'] = get_post_meta($post_id, 'location_phone', true) ?: get_theme_mod('kidazzle_phone_number');
+                $data['telephone'] = get_post_meta($post_id, 'location_phone', true) ?: get_theme_mod('wimper_phone_number');
                 $data['address'] = get_post_meta($post_id, 'location_address', true);
             }
         }

@@ -5,7 +5,7 @@
  * This file is not included in the theme but is scanned by Tailwind
  * to ensure dynamic classes are generated.
  * 
- * @package kidazzle_Theme
+ * @package wimper_Theme
  */
 
 /*

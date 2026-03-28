@@ -3,7 +3,7 @@
  * Breadcrumbs Module
  * Handles frontend output and dashboard settings
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -11,18 +11,18 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Breadcrumbs
+class wimper_Breadcrumbs
 {
     /**
      * Initialize
      */
     public function init()
     {
-        // add_action('kidazzle_breadcrumbs', [$this, 'output']);
+        // add_action('wimper_breadcrumbs', [$this, 'output']);
         add_action('wp_head', [$this, 'output_schema']);
-        add_action('wp_ajax_kidazzle_save_breadcrumb_settings', [$this, 'ajax_save_settings']);
-        add_action('wp_ajax_kidazzle_preview_breadcrumbs', [$this, 'ajax_preview_breadcrumbs']);
-        add_action('wp_ajax_kidazzle_get_preview_posts', [$this, 'ajax_get_preview_posts']);
+        add_action('wp_ajax_wimper_save_breadcrumb_settings', [$this, 'ajax_save_settings']);
+        add_action('wp_ajax_wimper_preview_breadcrumbs', [$this, 'ajax_preview_breadcrumbs']);
+        add_action('wp_ajax_wimper_get_preview_posts', [$this, 'ajax_get_preview_posts']);
     }
 
     /**
@@ -34,7 +34,7 @@ class kidazzle_Breadcrumbs
             return;
         }
 
-        $enabled = get_option('kidazzle_breadcrumbs_enabled', 'yes');
+        $enabled = get_option('wimper_breadcrumbs_enabled', 'yes');
         if ($enabled !== 'yes') {
             return;
         }
@@ -122,7 +122,7 @@ class kidazzle_Breadcrumbs
 
         // Home
         $items[] = [
-            'label' => get_option('kidazzle_breadcrumbs_home_text', 'Home'),
+            'label' => get_option('wimper_breadcrumbs_home_text', 'Home'),
             'url' => home_url('/')
         ];
 
@@ -213,8 +213,8 @@ class kidazzle_Breadcrumbs
      */
     public function render_settings()
     {
-        $enabled = get_option('kidazzle_breadcrumbs_enabled', 'yes');
-        $home_text = get_option('kidazzle_breadcrumbs_home_text', 'Home');
+        $enabled = get_option('wimper_breadcrumbs_enabled', 'yes');
+        $home_text = get_option('wimper_breadcrumbs_home_text', 'Home');
         ?>
         <div class="kidazzle-seo-card">
             <h2>Breadcrumbs Configuration</h2>
@@ -225,7 +225,7 @@ class kidazzle_Breadcrumbs
                     <th scope="row">Enable Breadcrumbs</th>
                     <td>
                         <label>
-                            <input type="checkbox" id="kidazzle_breadcrumbs_enabled" value="yes" <?php checked($enabled, 'yes'); ?>>
+                            <input type="checkbox" id="wimper_breadcrumbs_enabled" value="yes" <?php checked($enabled, 'yes'); ?>>
                             Show breadcrumbs on site
                         </label>
                     </td>
@@ -233,7 +233,7 @@ class kidazzle_Breadcrumbs
                 <tr>
                     <th scope="row">Home Link Text</th>
                     <td>
-                        <input type="text" id="kidazzle_breadcrumbs_home_text" value="<?php echo esc_attr($home_text); ?>" class="regular-text">
+                        <input type="text" id="wimper_breadcrumbs_home_text" value="<?php echo esc_attr($home_text); ?>" class="regular-text">
                         <p class="description">The text for the first link in the breadcrumb trail.</p>
                     </td>
                 </tr>
@@ -283,9 +283,9 @@ class kidazzle_Breadcrumbs
                 btn.prop('disabled', true).text('Saving...');
 
                 $.post(ajaxurl, {
-                    action: 'kidazzle_save_breadcrumb_settings',
-                    enabled: $('#kidazzle_breadcrumbs_enabled').is(':checked') ? 'yes' : 'no',
-                    home_text: $('#kidazzle_breadcrumbs_home_text').val()
+                    action: 'wimper_save_breadcrumb_settings',
+                    enabled: $('#wimper_breadcrumbs_enabled').is(':checked') ? 'yes' : 'no',
+                    home_text: $('#wimper_breadcrumbs_home_text').val()
                 }, function(response) {
                     btn.prop('disabled', false).text('Save Settings');
                     if(response.success) {
@@ -310,7 +310,7 @@ class kidazzle_Breadcrumbs
                 $('#kidazzle-breadcrumb-spinner').addClass('is-active');
 
                 $.post(ajaxurl, {
-                    action: 'kidazzle_get_preview_posts',
+                    action: 'wimper_get_preview_posts',
                     post_type: type
                 }, function(response) {
                     $('#kidazzle-breadcrumb-spinner').removeClass('is-active');
@@ -347,7 +347,7 @@ class kidazzle_Breadcrumbs
                 btn.prop('disabled', true).text('Loading...');
                 
                 $.post(ajaxurl, {
-                    action: 'kidazzle_preview_breadcrumbs',
+                    action: 'wimper_preview_breadcrumbs',
                     post_id: id
                 }, function(response) {
                     btn.prop('disabled', false).text('Preview');
@@ -376,8 +376,8 @@ class kidazzle_Breadcrumbs
             wp_send_json_error();
         }
 
-        update_option('kidazzle_breadcrumbs_enabled', sanitize_text_field($_POST['enabled']));
-        update_option('kidazzle_breadcrumbs_home_text', sanitize_text_field($_POST['home_text']));
+        update_option('wimper_breadcrumbs_enabled', sanitize_text_field($_POST['enabled']));
+        update_option('wimper_breadcrumbs_home_text', sanitize_text_field($_POST['home_text']));
 
         wp_send_json_success();
     }

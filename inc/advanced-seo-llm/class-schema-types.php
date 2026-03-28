@@ -3,7 +3,7 @@
  * Schema Types Definition Library
  * Defines supported Schema.org types and their fields for the Modular Schema Builder.
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Schema_Types
+class wimper_Schema_Types
 {
     /**
      * Get all supported schema definitions

@@ -3,7 +3,7 @@
  * Schema Injector
  * Injects Organization, Person, and CourseInstance schema into relevant pages
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Schema_Injector
+class wimper_Schema_Injector
 {
     /**
      * Get Person Schema Data
@@ -110,7 +110,7 @@ class kidazzle_Schema_Injector
             'sameAs' => [],
             'contactPoint' => [
                 '@type' => 'ContactPoint',
-                'telephone' => get_theme_mod('kidazzle_phone_number'),
+                'telephone' => get_theme_mod('wimper_phone_number'),
                 'contactType' => 'customer service'
             ]
         ];
@@ -156,7 +156,7 @@ class kidazzle_Schema_Injector
                         'name' => $location_name,
                         'description' => $description ?: sprintf(__('Quality childcare and early education at %s', 'kidazzle-theme'), $location_name),
                         'address' => $address ?: '',
-                        'telephone' => $phone ?: get_theme_mod('kidazzle_phone_number', ''),
+                        'telephone' => $phone ?: get_theme_mod('wimper_phone_number', ''),
                         'url' => get_permalink($post_id),
                         'priceRange' => '$$',
                     ]
@@ -213,7 +213,7 @@ class kidazzle_Schema_Injector
         }
 
         $post_id = get_the_ID();
-        $schemas = get_post_meta($post_id, '_kidazzle_post_schemas', true);
+        $schemas = get_post_meta($post_id, '_wimper_post_schemas', true);
 
         if (empty($schemas) || !is_array($schemas)) {
             return;

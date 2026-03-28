@@ -3,7 +3,7 @@
  * Advanced SEO/LLM Module - Bootstrap
  * Loads all modules and registers meta boxes / hooks
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -13,44 +13,44 @@ if (!defined('ABSPATH')) {
 }
 
 // Global to track missing files
-global $kidazzle_missing_seo_files;
-$kidazzle_missing_seo_files = [];
+global $wimper_missing_seo_files;
+$wimper_missing_seo_files = [];
 
 /**
  * Helper to safely load files
  */
-function kidazzle_safe_require($path)
+function wimper_safe_require($path)
 {
-	global $kidazzle_missing_seo_files;
+	global $wimper_missing_seo_files;
 	if (file_exists($path)) {
 		require_once $path;
 		return true;
 	}
-	$kidazzle_missing_seo_files[] = basename($path);
+	$wimper_missing_seo_files[] = basename($path);
 	return false;
 }
 
 /**
  * Load Base Classes & Helpers
  */
-kidazzle_safe_require(__DIR__ . '/class-meta-box-base.php');
-kidazzle_safe_require(__DIR__ . '/class-field-sanitizer.php');
-kidazzle_safe_require(__DIR__ . '/class-fallback-resolver.php');
+wimper_safe_require(__DIR__ . '/class-meta-box-base.php');
+wimper_safe_require(__DIR__ . '/class-field-sanitizer.php');
+wimper_safe_require(__DIR__ . '/class-fallback-resolver.php');
 
 /**
  * Load Core Classes
  */
-kidazzle_safe_require(__DIR__ . '/class-seo-dashboard.php');
-kidazzle_safe_require(__DIR__ . '/class-citation-datasets.php');
-kidazzle_safe_require(__DIR__ . '/class-image-alt-automation.php');
-kidazzle_safe_require(__DIR__ . '/class-admin-help.php');
-kidazzle_safe_require(__DIR__ . '/class-breadcrumbs.php');
-kidazzle_safe_require(__DIR__ . '/class-schema-types.php');
-kidazzle_safe_require(__DIR__ . '/class-llm-client.php');
+wimper_safe_require(__DIR__ . '/class-seo-dashboard.php');
+wimper_safe_require(__DIR__ . '/class-citation-datasets.php');
+wimper_safe_require(__DIR__ . '/class-image-alt-automation.php');
+wimper_safe_require(__DIR__ . '/class-admin-help.php');
+wimper_safe_require(__DIR__ . '/class-breadcrumbs.php');
+wimper_safe_require(__DIR__ . '/class-schema-types.php');
+wimper_safe_require(__DIR__ . '/class-llm-client.php');
 
 // Initialize LLM Client
-global $kidazzle_llm_client;
-$kidazzle_llm_client = new kidazzle_LLM_Client();
+global $wimper_llm_client;
+$wimper_llm_client = new wimper_LLM_Client();
 
 /**
  * Load Meta Boxes
@@ -74,7 +74,7 @@ $meta_boxes = [
 
 foreach ($meta_boxes as $file) {
 	// Try loading new name first, then fallback to old name if not renamed yet (during transition)
-	if (!kidazzle_safe_require(__DIR__ . '/meta-boxes/' . $file)) {
+	if (!wimper_safe_require(__DIR__ . '/meta-boxes/' . $file)) {
 		// Fallback for transition period
 		$old_file = str_replace('general-', 'location-', $file);
 		if (file_exists(__DIR__ . '/meta-boxes/' . $old_file)) {
@@ -86,7 +86,7 @@ foreach ($meta_boxes as $file) {
 /**
  * Load Endpoints
  */
-kidazzle_safe_require(__DIR__ . '/endpoints/kml-endpoint.php');
+wimper_safe_require(__DIR__ . '/endpoints/kml-endpoint.php');
 
 /**
  * Load Schema Builders
@@ -102,50 +102,50 @@ $schema_builders = [
 ];
 
 foreach ($schema_builders as $file) {
-	kidazzle_safe_require(__DIR__ . '/schema-builders/' . $file);
+	wimper_safe_require(__DIR__ . '/schema-builders/' . $file);
 }
 
 /**
  * Initialize Modules
  */
-function kidazzle_advanced_seo_init()
+function wimper_advanced_seo_init()
 {
 	// Core Modules
-	if (class_exists('kidazzle_SEO_Dashboard'))
-		(new kidazzle_SEO_Dashboard())->init();
-	if (class_exists('kidazzle_Citation_Datasets'))
-		(new kidazzle_Citation_Datasets())->init();
-	if (class_exists('kidazzle_Image_Alt_Automation'))
-		(new kidazzle_Image_Alt_Automation())->init();
-	if (class_exists('kidazzle_Admin_Help'))
-		(new kidazzle_Admin_Help())->init();
-	if (class_exists('kidazzle_Breadcrumbs'))
-		(new kidazzle_Breadcrumbs())->init();
+	if (class_exists('wimper_SEO_Dashboard'))
+		(new wimper_SEO_Dashboard())->init();
+	if (class_exists('wimper_Citation_Datasets'))
+		(new wimper_Citation_Datasets())->init();
+	if (class_exists('wimper_Image_Alt_Automation'))
+		(new wimper_Image_Alt_Automation())->init();
+	if (class_exists('wimper_Admin_Help'))
+		(new wimper_Admin_Help())->init();
+	if (class_exists('wimper_Breadcrumbs'))
+		(new wimper_Breadcrumbs())->init();
 
 	// Meta Boxes
 	$meta_classes = [
-		'kidazzle_Location_Citation_Facts',
-		'kidazzle_Location_Events',
-		'kidazzle_Location_HowTo',
-		'kidazzle_General_LLM_Context', // Renamed
-		'kidazzle_General_LLM_Prompt',  // Renamed
-		'kidazzle_Location_Media',
-		'kidazzle_Location_Pricing',
-		'kidazzle_Location_Reviews',
-		'kidazzle_Location_Service_Area',
-		'kidazzle_Program_Relationships',
-		'kidazzle_Universal_FAQ',
-		'kidazzle_Hreflang_Options',
-		'kidazzle_City_Landing_Meta',
-		'kidazzle_Post_Newsroom'
+		'wimper_Location_Citation_Facts',
+		'wimper_Location_Events',
+		'wimper_Location_HowTo',
+		'wimper_General_LLM_Context', // Renamed
+		'wimper_General_LLM_Prompt',  // Renamed
+		'wimper_Location_Media',
+		'wimper_Location_Pricing',
+		'wimper_Location_Reviews',
+		'wimper_Location_Service_Area',
+		'wimper_Program_Relationships',
+		'wimper_Universal_FAQ',
+		'wimper_Hreflang_Options',
+		'wimper_City_Landing_Meta',
+		'wimper_Post_Newsroom'
 	];
 
 	// Fallback for class names if files haven't been updated yet
-	if (!class_exists('kidazzle_General_LLM_Context') && class_exists('kidazzle_Location_LLM_Context')) {
-		$meta_classes[] = 'kidazzle_Location_LLM_Context';
+	if (!class_exists('wimper_General_LLM_Context') && class_exists('wimper_Location_LLM_Context')) {
+		$meta_classes[] = 'wimper_Location_LLM_Context';
 	}
-	if (!class_exists('kidazzle_General_LLM_Prompt') && class_exists('kidazzle_Location_LLM_Prompt')) {
-		$meta_classes[] = 'kidazzle_Location_LLM_Prompt';
+	if (!class_exists('wimper_General_LLM_Prompt') && class_exists('wimper_Location_LLM_Prompt')) {
+		$meta_classes[] = 'wimper_Location_LLM_Prompt';
 	}
 
 	foreach ($meta_classes as $class) {
@@ -155,29 +155,29 @@ function kidazzle_advanced_seo_init()
 	}
 
 	// Schema Builders (Hooks)
-	if (class_exists('kidazzle_Event_Schema_Builder'))
-		add_action('wp_head', ['kidazzle_Event_Schema_Builder', 'output']);
-	if (class_exists('kidazzle_HowTo_Schema_Builder'))
-		add_action('wp_head', ['kidazzle_HowTo_Schema_Builder', 'output']);
-	if (class_exists('kidazzle_Schema_Injector'))
-		add_action('wp_head', ['kidazzle_Schema_Injector', 'output_person_schema']);
-	if (class_exists('kidazzle_Universal_FAQ_Builder'))
-		add_action('wp_head', ['kidazzle_Universal_FAQ_Builder', 'output']);
-	if (class_exists('kidazzle_Page_Type_Builder'))
-		add_action('wp_head', ['kidazzle_Page_Type_Builder', 'output']);
+	if (class_exists('wimper_Event_Schema_Builder'))
+		add_action('wp_head', ['wimper_Event_Schema_Builder', 'output']);
+	if (class_exists('wimper_HowTo_Schema_Builder'))
+		add_action('wp_head', ['wimper_HowTo_Schema_Builder', 'output']);
+	if (class_exists('wimper_Schema_Injector'))
+		add_action('wp_head', ['wimper_Schema_Injector', 'output_person_schema']);
+	if (class_exists('wimper_Universal_FAQ_Builder'))
+		add_action('wp_head', ['wimper_Universal_FAQ_Builder', 'output']);
+	if (class_exists('wimper_Page_Type_Builder'))
+		add_action('wp_head', ['wimper_Page_Type_Builder', 'output']);
 
 	// Flush Rewrite Rules if KML rule is missing (One-time check)
-	if (get_option('kidazzle_seo_flush_rewrite') !== 'done') {
+	if (get_option('wimper_seo_flush_rewrite') !== 'done') {
 		flush_rewrite_rules();
-		update_option('kidazzle_seo_flush_rewrite', 'done');
+		update_option('wimper_seo_flush_rewrite', 'done');
 	}
 }
-add_action('init', 'kidazzle_advanced_seo_init');
+add_action('init', 'wimper_advanced_seo_init');
 
 /**
  * Admin Assets
  */
-function kidazzle_advanced_seo_admin_assets($hook)
+function wimper_advanced_seo_admin_assets($hook)
 {
 	// Only load on SEO Dashboard or Post Edit screens
 	$screen = get_current_screen();
@@ -277,19 +277,19 @@ function kidazzle_advanced_seo_admin_assets($hook)
 	<?php
 }
 
-add_action('admin_enqueue_scripts', 'kidazzle_advanced_seo_admin_assets');
+add_action('admin_enqueue_scripts', 'wimper_advanced_seo_admin_assets');
 
 /**
  * Admin Notice for Missing Files
  */
-function kidazzle_seo_missing_files_notice()
+function wimper_seo_missing_files_notice()
 {
-	global $kidazzle_missing_seo_files;
-	if (!empty($kidazzle_missing_seo_files) && current_user_can('manage_options')) {
+	global $wimper_missing_seo_files;
+	if (!empty($wimper_missing_seo_files) && current_user_can('manage_options')) {
 		echo '<div class="notice notice-warning is-dismissible">';
 		echo '<p><strong>Advanced SEO Module Warning:</strong> The following files are missing and could not be loaded:</p>';
 		echo '<ul>';
-		foreach ($kidazzle_missing_seo_files as $file) {
+		foreach ($wimper_missing_seo_files as $file) {
 			echo '<li>' . esc_html($file) . '</li>';
 		}
 		echo '</ul>';
@@ -297,4 +297,4 @@ function kidazzle_seo_missing_files_notice()
 		echo '</div>';
 	}
 }
-add_action('admin_notices', 'kidazzle_seo_missing_files_notice');
+add_action('admin_notices', 'wimper_seo_missing_files_notice');

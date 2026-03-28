@@ -2,7 +2,7 @@
 /**
  * Single Program Template
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  */
 
 get_header();
@@ -258,16 +258,16 @@ while (have_posts()):
 
 		<?php 
 		// Age Calculator Widget
-		kidazzle_program_enhancements::render_age_calculator($program_id);
+		wimper_program_enhancements::render_age_calculator($program_id);
 		
 		// FAQ Section with Schema
-		kidazzle_program_enhancements::render_faq_section($program_id);
+		wimper_program_enhancements::render_faq_section($program_id);
 		
 		// Photo Gallery
-		kidazzle_program_enhancements::render_gallery_section($program_id);
+		wimper_program_enhancements::render_gallery_section($program_id);
 		
 		// Parent Testimonials
-		kidazzle_program_enhancements::render_testimonials_section($program_id);
+		wimper_program_enhancements::render_testimonials_section($program_id);
 		?>
 
 	</main>

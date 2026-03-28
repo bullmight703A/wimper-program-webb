@@ -3,7 +3,7 @@
  * Location Reviews & Rating Meta Box
  * Allows editing review aggregation data
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,11 +12,11 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Location_Reviews_Meta_Box extends kidazzle_Advanced_SEO_Meta_Box_Base
+class wimper_Location_Reviews_Meta_Box extends wimper_Advanced_SEO_Meta_Box_Base
 {
     public function get_id()
     {
-        return 'kidazzle_location_reviews';
+        return 'wimper_location_reviews';
     }
 
     public function get_title()
@@ -93,25 +93,25 @@ class kidazzle_Location_Reviews_Meta_Box extends kidazzle_Advanced_SEO_Meta_Box_
     {
         // Save rating value
         if (isset($_POST['seo_llm_aggregate_rating_value'])) {
-            $value = kidazzle_Field_Sanitizer::sanitize_rating($_POST['seo_llm_aggregate_rating_value']);
+            $value = wimper_Field_Sanitizer::sanitize_rating($_POST['seo_llm_aggregate_rating_value']);
             update_post_meta($post_id, 'seo_llm_aggregate_rating_value', $value);
         }
 
         // Save rating count
         if (isset($_POST['seo_llm_aggregate_rating_count'])) {
-            $count = kidazzle_Field_Sanitizer::sanitize_number($_POST['seo_llm_aggregate_rating_count']);
+            $count = wimper_Field_Sanitizer::sanitize_number($_POST['seo_llm_aggregate_rating_count']);
             update_post_meta($post_id, 'seo_llm_aggregate_rating_count', $count);
         }
 
         // Save best rating
         if (isset($_POST['seo_llm_aggregate_rating_best'])) {
-            $best = kidazzle_Field_Sanitizer::sanitize_number($_POST['seo_llm_aggregate_rating_best']);
+            $best = wimper_Field_Sanitizer::sanitize_number($_POST['seo_llm_aggregate_rating_best']);
             update_post_meta($post_id, 'seo_llm_aggregate_rating_best', $best);
         }
 
         // Save worst rating
         if (isset($_POST['seo_llm_aggregate_rating_worst'])) {
-            $worst = kidazzle_Field_Sanitizer::sanitize_number($_POST['seo_llm_aggregate_rating_worst']);
+            $worst = wimper_Field_Sanitizer::sanitize_number($_POST['seo_llm_aggregate_rating_worst']);
             update_post_meta($post_id, 'seo_llm_aggregate_rating_worst', $worst);
         }
     }

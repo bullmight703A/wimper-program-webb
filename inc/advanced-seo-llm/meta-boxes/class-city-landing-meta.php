@@ -3,7 +3,7 @@
  * City Landing Meta Box
  * Fields for Hyperlocal City Pages
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_City_Landing_Meta extends kidazzle_Advanced_SEO_Meta_Box_Base
+class wimper_City_Landing_Meta extends wimper_Advanced_SEO_Meta_Box_Base
 {
     /**
      * Get the meta box ID
@@ -21,7 +21,7 @@ class kidazzle_City_Landing_Meta extends kidazzle_Advanced_SEO_Meta_Box_Base
      */
     public function get_id()
     {
-        return 'kidazzle_city_landing_meta';
+        return 'wimper_city_landing_meta';
     }
 
     /**

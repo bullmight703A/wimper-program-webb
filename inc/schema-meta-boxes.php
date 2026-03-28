@@ -3,7 +3,7 @@
  * Schema.org Meta Boxes
  * Allows customization of schema.org structured data
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -15,12 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Register Schema Meta Boxes
  */
-function kidazzle_register_schema_meta_boxes() {
+function wimper_register_schema_meta_boxes() {
 	// Homepage/Organization Schema
 	add_meta_box(
 		'kidazzle-schema-organization',
 		__( 'Schema.org - Organization (ChildCare)', 'kidazzle-theme' ),
-		'kidazzle_schema_organization_meta_box',
+		'wimper_schema_organization_meta_box',
 		'page',
 		'normal',
 		'default'
@@ -30,7 +30,7 @@ function kidazzle_register_schema_meta_boxes() {
 	add_meta_box(
 		'kidazzle-schema-location',
 		__( 'Schema.org - LocalBusiness (ChildCare)', 'kidazzle-theme' ),
-		'kidazzle_schema_location_meta_box',
+		'wimper_schema_location_meta_box',
 		'location',
 		'normal',
 		'high'
@@ -40,25 +40,25 @@ function kidazzle_register_schema_meta_boxes() {
 	add_meta_box(
 		'kidazzle-schema-program',
 		__( 'Schema.org - Service', 'kidazzle-theme' ),
-		'kidazzle_schema_program_meta_box',
+		'wimper_schema_program_meta_box',
 		'program',
 		'normal',
 		'high'
 	);
 }
-add_action( 'add_meta_boxes', 'kidazzle_register_schema_meta_boxes' );
+add_action( 'add_meta_boxes', 'wimper_register_schema_meta_boxes' );
 
 /**
  * Organization Schema Meta Box (Homepage)
  */
-function kidazzle_schema_organization_meta_box( $post ) {
+function wimper_schema_organization_meta_box( $post ) {
 	// Only show on homepage
 	if ( get_option( 'page_on_front' ) != $post->ID ) {
 		echo '<p><em>This schema only applies to the page set as homepage in Settings → Reading.</em></p>';
 		return;
 	}
 
-	wp_nonce_field( 'kidazzle_schema_organization', 'kidazzle_schema_organization_nonce' );
+	wp_nonce_field( 'wimper_schema_organization', 'wimper_schema_organization_nonce' );
 
 	// Get existing values or defaults
 	$name        = get_post_meta( $post->ID, 'schema_org_name', true ) ?: get_bloginfo( 'name' );
@@ -151,8 +151,8 @@ function kidazzle_schema_organization_meta_box( $post ) {
 /**
  * Location Schema Meta Box
  */
-function kidazzle_schema_location_meta_box( $post ) {
-	wp_nonce_field( 'kidazzle_schema_location', 'kidazzle_schema_location_nonce' );
+function wimper_schema_location_meta_box( $post ) {
+	wp_nonce_field( 'wimper_schema_location', 'wimper_schema_location_nonce' );
 
 	// Get existing values
 	$name           = get_post_meta( $post->ID, 'schema_loc_name', true ) ?: get_the_title( $post->ID );
@@ -239,8 +239,8 @@ function kidazzle_schema_location_meta_box( $post ) {
 /**
  * Program Schema Meta Box
  */
-function kidazzle_schema_program_meta_box( $post ) {
-	wp_nonce_field( 'kidazzle_schema_program', 'kidazzle_schema_program_nonce' );
+function wimper_schema_program_meta_box( $post ) {
+	wp_nonce_field( 'wimper_schema_program', 'wimper_schema_program_nonce' );
 
 	// Get existing values
 	$name          = get_post_meta( $post->ID, 'schema_prog_name', true ) ?: get_the_title( $post->ID );
@@ -320,13 +320,13 @@ function kidazzle_schema_program_meta_box( $post ) {
 /**
  * Save Organization Schema Meta
  */
-function kidazzle_save_schema_organization_meta( $post_id ) {
+function wimper_save_schema_organization_meta( $post_id ) {
 	// Security checks
-	if ( ! isset( $_POST['kidazzle_schema_organization_nonce'] ) ) {
+	if ( ! isset( $_POST['wimper_schema_organization_nonce'] ) ) {
 		return;
 	}
 
-	if ( ! wp_verify_nonce( $_POST['kidazzle_schema_organization_nonce'], 'kidazzle_schema_organization' ) ) {
+	if ( ! wp_verify_nonce( $_POST['wimper_schema_organization_nonce'], 'wimper_schema_organization' ) ) {
 		return;
 	}
 
@@ -362,18 +362,18 @@ function kidazzle_save_schema_organization_meta( $post_id ) {
 		}
 	}
 }
-add_action( 'save_post_page', 'kidazzle_save_schema_organization_meta' );
+add_action( 'save_post_page', 'wimper_save_schema_organization_meta' );
 
 /**
  * Save Location Schema Meta
  */
-function kidazzle_save_schema_location_meta( $post_id ) {
+function wimper_save_schema_location_meta( $post_id ) {
 	// Security checks
-	if ( ! isset( $_POST['kidazzle_schema_location_nonce'] ) ) {
+	if ( ! isset( $_POST['wimper_schema_location_nonce'] ) ) {
 		return;
 	}
 
-	if ( ! wp_verify_nonce( $_POST['kidazzle_schema_location_nonce'], 'kidazzle_schema_location' ) ) {
+	if ( ! wp_verify_nonce( $_POST['wimper_schema_location_nonce'], 'wimper_schema_location' ) ) {
 		return;
 	}
 
@@ -408,18 +408,18 @@ function kidazzle_save_schema_location_meta( $post_id ) {
 		}
 	}
 }
-add_action( 'save_post_location', 'kidazzle_save_schema_location_meta' );
+add_action( 'save_post_location', 'wimper_save_schema_location_meta' );
 
 /**
  * Save Program Schema Meta
  */
-function kidazzle_save_schema_program_meta( $post_id ) {
+function wimper_save_schema_program_meta( $post_id ) {
 	// Security checks
-	if ( ! isset( $_POST['kidazzle_schema_program_nonce'] ) ) {
+	if ( ! isset( $_POST['wimper_schema_program_nonce'] ) ) {
 		return;
 	}
 
-	if ( ! wp_verify_nonce( $_POST['kidazzle_schema_program_nonce'], 'kidazzle_schema_program' ) ) {
+	if ( ! wp_verify_nonce( $_POST['wimper_schema_program_nonce'], 'wimper_schema_program' ) ) {
 		return;
 	}
 
@@ -452,4 +452,4 @@ function kidazzle_save_schema_program_meta( $post_id ) {
 		}
 	}
 }
-add_action( 'save_post_program', 'kidazzle_save_schema_program_meta' );
+add_action( 'save_post_program', 'wimper_save_schema_program_meta' );

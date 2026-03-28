@@ -3,7 +3,7 @@
  * LLM Sitemaps
  * Generates XML sitemap of machine-readable JSON endpoints
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_LLM_Sitemaps
+class wimper_LLM_Sitemaps
 {
     /**
      * Register rewrite rules for sitemap
@@ -21,7 +21,7 @@ class kidazzle_LLM_Sitemaps
     {
         add_rewrite_rule(
             '^llm-sitemap\.xml$',
-            'index.php?kidazzle_llm_sitemap=1',
+            'index.php?wimper_llm_sitemap=1',
             'top'
         );
     }
@@ -31,7 +31,7 @@ class kidazzle_LLM_Sitemaps
      */
     public static function add_query_vars($vars)
     {
-        $vars[] = 'kidazzle_llm_sitemap';
+        $vars[] = 'wimper_llm_sitemap';
         return $vars;
     }
 
@@ -40,7 +40,7 @@ class kidazzle_LLM_Sitemaps
      */
     public static function maybe_output_sitemap()
     {
-        if (!get_query_var('kidazzle_llm_sitemap')) {
+        if (!get_query_var('wimper_llm_sitemap')) {
             return;
         }
 

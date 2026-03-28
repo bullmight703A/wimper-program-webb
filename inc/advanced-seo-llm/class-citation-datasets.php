@@ -3,7 +3,7 @@
  * Citation Datasets & Global Facts
  * Provides an Options Page for managing global facts and a JSON endpoint for AI
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -12,12 +12,12 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Citation_Datasets
+class wimper_Citation_Datasets
 {
     /**
      * Option name
      */
-    const OPTION_NAME = 'kidazzle_citation_facts';
+    const OPTION_NAME = 'wimper_citation_facts';
 
     /**
      * Initialize the module

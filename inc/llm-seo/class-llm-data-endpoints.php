@@ -4,7 +4,7 @@
  * Provides machine-readable JSON endpoints for each location
  * ENHANCED: Now includes LLM context and comparison factors
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_LLM_Data_Endpoints
+class wimper_LLM_Data_Endpoints
 {
     /**
      * Output FAQ schema for location pages
@@ -63,28 +63,28 @@ class kidazzle_LLM_Data_Endpoints
         // /locations/{slug}/data.json
         add_rewrite_rule(
             '^locations/([^/]+)/data\.json$',
-            'index.php?kidazzle_location_slug=$matches[1]&kidazzle_data_type=data',
+            'index.php?wimper_location_slug=$matches[1]&wimper_data_type=data',
             'top'
         );
 
         // /locations/{slug}/faq.json
         add_rewrite_rule(
             '^locations/([^/]+)/faq\.json$',
-            'index.php?kidazzle_location_slug=$matches[1]&kidazzle_data_type=faq',
+            'index.php?wimper_location_slug=$matches[1]&wimper_data_type=faq',
             'top'
         );
 
         // /programs/{slug}/data.json
         add_rewrite_rule(
             '^programs/([^/]+)/data\.json$',
-            'index.php?kidazzle_program_slug=$matches[1]&kidazzle_data_type=program_data',
+            'index.php?wimper_program_slug=$matches[1]&wimper_data_type=program_data',
             'top'
         );
 
         // /programs/{slug}/faq.json
         add_rewrite_rule(
             '^programs/([^/]+)/faq\.json$',
-            'index.php?kidazzle_program_slug=$matches[1]&kidazzle_data_type=program_faq',
+            'index.php?wimper_program_slug=$matches[1]&wimper_data_type=program_faq',
             'top'
         );
     }
@@ -94,9 +94,9 @@ class kidazzle_LLM_Data_Endpoints
      */
     public static function add_query_vars($vars)
     {
-        $vars[] = 'kidazzle_location_slug';
-        $vars[] = 'kidazzle_program_slug';
-        $vars[] = 'kidazzle_data_type';
+        $vars[] = 'wimper_location_slug';
+        $vars[] = 'wimper_program_slug';
+        $vars[] = 'wimper_data_type';
         return $vars;
     }
 
@@ -105,9 +105,9 @@ class kidazzle_LLM_Data_Endpoints
      */
     public static function maybe_output_json()
     {
-        $location_slug = get_query_var('kidazzle_location_slug');
-        $program_slug = get_query_var('kidazzle_program_slug');
-        $type = get_query_var('kidazzle_data_type');
+        $location_slug = get_query_var('wimper_location_slug');
+        $program_slug = get_query_var('wimper_program_slug');
+        $type = get_query_var('wimper_data_type');
 
         // Handle location endpoints
         if ($location_slug && $type) {
@@ -203,7 +203,7 @@ class kidazzle_LLM_Data_Endpoints
      */
     private static function build_location_data($post_id)
     {
-        $fields = kidazzle_get_location_fields($post_id);
+        $fields = wimper_get_location_fields($post_id);
 
         // Get additional meta
         $hours = get_post_meta($post_id, 'location_hours', true);
@@ -316,14 +316,14 @@ class kidazzle_LLM_Data_Endpoints
         }
 
         // ADVANCED SEO/LLM: Add LLM context
-        if (class_exists('kidazzle_LLM_Context_Builder')) {
-            $llm_context = kidazzle_LLM_Context_Builder::build($post_id);
+        if (class_exists('wimper_LLM_Context_Builder')) {
+            $llm_context = wimper_LLM_Context_Builder::build($post_id);
             if ($llm_context) {
                 $data['llm_context'] = $llm_context;
             }
 
             // Add LLM prompt fields
-            $prompt_fields = kidazzle_LLM_Context_Builder::build_prompt_fields($post_id);
+            $prompt_fields = wimper_LLM_Context_Builder::build_prompt_fields($post_id);
             if (!empty($prompt_fields)) {
                 $data = array_merge($data, $prompt_fields);
             }
@@ -416,8 +416,8 @@ class kidazzle_LLM_Data_Endpoints
     private static function build_program_faq_data($post_id)
     {
         // Use existing helper if available
-        if (function_exists('kidazzle_get_program_faq_items')) {
-            return kidazzle_get_program_faq_items($post_id);
+        if (function_exists('wimper_get_program_faq_items')) {
+            return wimper_get_program_faq_items($post_id);
         }
 
         return [];

@@ -2,13 +2,13 @@
 /**
  * Parents Page Meta Boxes
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  */
 
 /**
  * Register Meta Boxes
  */
-function kidazzle_parents_page_meta_boxes()
+function wimper_parents_page_meta_boxes()
 {
     global $post;
     if ('page-parents.php' !== get_post_meta($post->ID, '_wp_page_template', true)) {
@@ -18,7 +18,7 @@ function kidazzle_parents_page_meta_boxes()
     add_meta_box(
         'kidazzle-parents-hero',
         __('Hero Section', 'kidazzle-theme'),
-        'kidazzle_parents_hero_meta_box_render',
+        'wimper_parents_hero_meta_box_render',
         'page',
         'normal',
         'high'
@@ -27,7 +27,7 @@ function kidazzle_parents_page_meta_boxes()
     add_meta_box(
         'kidazzle-parents-resources',
         __('Quick Links / Resources', 'kidazzle-theme'),
-        'kidazzle_parents_resources_meta_box_render',
+        'wimper_parents_resources_meta_box_render',
         'page',
         'normal',
         'default'
@@ -36,7 +36,7 @@ function kidazzle_parents_page_meta_boxes()
     add_meta_box(
         'kidazzle-parents-events',
         __('Events Section', 'kidazzle-theme'),
-        'kidazzle_parents_events_meta_box_render',
+        'wimper_parents_events_meta_box_render',
         'page',
         'normal',
         'default'
@@ -45,7 +45,7 @@ function kidazzle_parents_page_meta_boxes()
     add_meta_box(
         'kidazzle-parents-gallery',
         __('Moments of Joy Gallery', 'kidazzle-theme'),
-        'kidazzle_parents_gallery_meta_box_render',
+        'wimper_parents_gallery_meta_box_render',
         'page',
         'normal',
         'default'
@@ -54,7 +54,7 @@ function kidazzle_parents_page_meta_boxes()
     add_meta_box(
         'kidazzle-parents-nutrition',
         __('Nutrition Section', 'kidazzle-theme'),
-        'kidazzle_parents_nutrition_meta_box_render',
+        'wimper_parents_nutrition_meta_box_render',
         'page',
         'normal',
         'default'
@@ -63,7 +63,7 @@ function kidazzle_parents_page_meta_boxes()
     add_meta_box(
         'kidazzle-parents-safety',
         __('Safety Section', 'kidazzle-theme'),
-        'kidazzle_parents_safety_meta_box_render',
+        'wimper_parents_safety_meta_box_render',
         'page',
         'normal',
         'default'
@@ -72,7 +72,7 @@ function kidazzle_parents_page_meta_boxes()
     add_meta_box(
         'kidazzle-parents-faq',
         __('FAQ Section', 'kidazzle-theme'),
-        'kidazzle_parents_faq_meta_box_render',
+        'wimper_parents_faq_meta_box_render',
         'page',
         'normal',
         'default'
@@ -81,20 +81,20 @@ function kidazzle_parents_page_meta_boxes()
     add_meta_box(
         'kidazzle-parents-referral',
         __('Referral Banner', 'kidazzle-theme'),
-        'kidazzle_parents_referral_meta_box_render',
+        'wimper_parents_referral_meta_box_render',
         'page',
         'normal',
         'default'
     );
 }
-add_action('add_meta_boxes', 'kidazzle_parents_page_meta_boxes');
+add_action('add_meta_boxes', 'wimper_parents_page_meta_boxes');
 
 /**
  * Hero Section Meta Box
  */
-function kidazzle_parents_hero_meta_box_render($post)
+function wimper_parents_hero_meta_box_render($post)
 {
-    wp_nonce_field('kidazzle_parents_hero_meta', 'kidazzle_parents_hero_nonce');
+    wp_nonce_field('wimper_parents_hero_meta', 'wimper_parents_hero_nonce');
 
     $hero_badge = get_post_meta($post->ID, 'parents_hero_badge', true);
     $hero_title = get_post_meta($post->ID, 'parents_hero_title', true);
@@ -129,9 +129,9 @@ function kidazzle_parents_hero_meta_box_render($post)
 /**
  * Resources Meta Box
  */
-function kidazzle_parents_resources_meta_box_render($post)
+function wimper_parents_resources_meta_box_render($post)
 {
-    wp_nonce_field('kidazzle_parents_resources_meta', 'kidazzle_parents_resources_nonce');
+    wp_nonce_field('wimper_parents_resources_meta', 'wimper_parents_resources_nonce');
 
     $essentials_title = get_post_meta($post->ID, 'parents_essentials_title', true);
 
@@ -203,9 +203,9 @@ function kidazzle_parents_resources_meta_box_render($post)
 /**
  * Events Section Meta Box
  */
-function kidazzle_parents_events_meta_box_render($post)
+function wimper_parents_events_meta_box_render($post)
 {
-    wp_nonce_field('kidazzle_parents_events_meta', 'kidazzle_parents_events_nonce');
+    wp_nonce_field('wimper_parents_events_meta', 'wimper_parents_events_nonce');
 
     $events_badge = get_post_meta($post->ID, 'parents_events_badge', true);
     $events_title = get_post_meta($post->ID, 'parents_events_title', true);
@@ -288,9 +288,9 @@ function kidazzle_parents_events_meta_box_render($post)
 /**
  * Nutrition Section Meta Box
  */
-function kidazzle_parents_nutrition_meta_box_render($post)
+function wimper_parents_nutrition_meta_box_render($post)
 {
-    wp_nonce_field('kidazzle_parents_nutrition_meta', 'kidazzle_parents_nutrition_nonce');
+    wp_nonce_field('wimper_parents_nutrition_meta', 'wimper_parents_nutrition_nonce');
 
     $nutrition_badge = get_post_meta($post->ID, 'parents_nutrition_badge', true);
     $nutrition_title = get_post_meta($post->ID, 'parents_nutrition_title', true);
@@ -382,9 +382,9 @@ function kidazzle_parents_nutrition_meta_box_render($post)
 /**
  * Safety Section Meta Box
  */
-function kidazzle_parents_safety_meta_box_render($post)
+function wimper_parents_safety_meta_box_render($post)
 {
-    wp_nonce_field('kidazzle_parents_safety_meta', 'kidazzle_parents_safety_nonce');
+    wp_nonce_field('wimper_parents_safety_meta', 'wimper_parents_safety_nonce');
 
     $safety_title = get_post_meta($post->ID, 'parents_safety_title', true);
     $safety_description = get_post_meta($post->ID, 'parents_safety_description', true);
@@ -452,9 +452,9 @@ function kidazzle_parents_safety_meta_box_render($post)
 /**
  * FAQ Section Meta Box
  */
-function kidazzle_parents_faq_meta_box_render($post)
+function wimper_parents_faq_meta_box_render($post)
 {
-    wp_nonce_field('kidazzle_parents_faq_meta', 'kidazzle_parents_faq_nonce');
+    wp_nonce_field('wimper_parents_faq_meta', 'wimper_parents_faq_nonce');
 
     $faq_title = get_post_meta($post->ID, 'parents_faq_title', true);
     $faq_description = get_post_meta($post->ID, 'parents_faq_description', true);
@@ -513,9 +513,9 @@ function kidazzle_parents_faq_meta_box_render($post)
 /**
  * Referral Banner Meta Box
  */
-function kidazzle_parents_referral_meta_box_render($post)
+function wimper_parents_referral_meta_box_render($post)
 {
-    wp_nonce_field('kidazzle_parents_referral_meta', 'kidazzle_parents_referral_nonce');
+    wp_nonce_field('wimper_parents_referral_meta', 'wimper_parents_referral_nonce');
 
     $referral_title = get_post_meta($post->ID, 'parents_referral_title', true);
     $referral_description = get_post_meta($post->ID, 'parents_referral_description', true);
@@ -560,9 +560,9 @@ function kidazzle_parents_referral_meta_box_render($post)
 /**
  * Gallery Meta Box
  */
-function kidazzle_parents_gallery_meta_box_render($post)
+function wimper_parents_gallery_meta_box_render($post)
 {
-    wp_nonce_field('kidazzle_parents_gallery_meta', 'kidazzle_parents_gallery_nonce');
+    wp_nonce_field('wimper_parents_gallery_meta', 'wimper_parents_gallery_nonce');
     $gallery = get_post_meta($post->ID, 'parents_moments_gallery', true);
     ?>
     <table class="form-table">
@@ -584,7 +584,7 @@ function kidazzle_parents_gallery_meta_box_render($post)
 /**
  * Save Parents Page Meta
  */
-function kidazzle_save_parents_page_meta($post_id)
+function wimper_save_parents_page_meta($post_id)
 {
     // Check if this is a page
     if (get_post_type($post_id) !== 'page') {
@@ -593,12 +593,12 @@ function kidazzle_save_parents_page_meta($post_id)
 
     // Define all meta fields
     $meta_boxes = array(
-        'kidazzle_parents_hero_nonce' => array(
+        'wimper_parents_hero_nonce' => array(
             'parents_hero_badge' => 'sanitize_text_field',
             'parents_hero_title' => 'sanitize_text_field',
             'parents_hero_description' => 'sanitize_textarea_field',
         ),
-        'kidazzle_parents_resources_nonce' => array(
+        'wimper_parents_resources_nonce' => array(
             'parents_essentials_title' => 'sanitize_text_field',
             // Procare
             'parents_resource_procare_icon' => 'sanitize_text_field',
@@ -631,7 +631,7 @@ function kidazzle_save_parents_page_meta($post_id)
             'parents_resource_waitlist_desc' => 'sanitize_textarea_field',
             'parents_resource_waitlist_url' => 'esc_url_raw',
         ),
-        'kidazzle_parents_events_nonce' => array(
+        'wimper_parents_events_nonce' => array(
             'parents_events_badge' => 'sanitize_text_field',
             'parents_events_title' => 'sanitize_text_field',
             'parents_events_description' => 'sanitize_textarea_field',
@@ -646,10 +646,10 @@ function kidazzle_save_parents_page_meta($post_id)
             'parents_event3_title' => 'sanitize_text_field',
             'parents_event3_desc' => 'sanitize_textarea_field',
         ),
-        'kidazzle_parents_gallery_nonce' => array(
+        'wimper_parents_gallery_nonce' => array(
             'parents_moments_gallery' => 'sanitize_textarea_field',
         ),
-        'kidazzle_parents_nutrition_nonce' => array(
+        'wimper_parents_nutrition_nonce' => array(
             'parents_nutrition_badge' => 'sanitize_text_field',
             'parents_nutrition_title' => 'sanitize_text_field',
             'parents_nutrition_description' => 'sanitize_textarea_field',
@@ -667,7 +667,7 @@ function kidazzle_save_parents_page_meta($post_id)
             'parents_menu3_subtitle' => 'sanitize_text_field',
             'parents_menu3_url' => 'esc_url_raw',
         ),
-        'kidazzle_parents_safety_nonce' => array(
+        'wimper_parents_safety_nonce' => array(
             'parents_safety_title' => 'sanitize_text_field',
             'parents_safety_description' => 'sanitize_textarea_field',
             'parents_safety1_icon' => 'sanitize_text_field',
@@ -680,7 +680,7 @@ function kidazzle_save_parents_page_meta($post_id)
             'parents_safety3_title' => 'sanitize_text_field',
             'parents_safety3_desc' => 'sanitize_textarea_field',
         ),
-        'kidazzle_parents_faq_nonce' => array(
+        'wimper_parents_faq_nonce' => array(
             'parents_faq_title' => 'sanitize_text_field',
             'parents_faq_description' => 'sanitize_textarea_field',
             'parents_faq1_question' => 'sanitize_text_field',
@@ -690,7 +690,7 @@ function kidazzle_save_parents_page_meta($post_id)
             'parents_faq3_question' => 'sanitize_text_field',
             'parents_faq3_answer' => 'sanitize_textarea_field',
         ),
-        'kidazzle_parents_referral_nonce' => array(
+        'wimper_parents_referral_nonce' => array(
             'parents_referral_title' => 'sanitize_text_field',
             'parents_referral_description' => 'sanitize_textarea_field',
             'parents_referral_button_text' => 'sanitize_text_field',
@@ -718,12 +718,12 @@ function kidazzle_save_parents_page_meta($post_id)
         }
     }
 }
-add_action('save_post', 'kidazzle_save_parents_page_meta');
+add_action('save_post', 'wimper_save_parents_page_meta');
 
 /**
  * Seed Default Values on Activation/First Save
  */
-function kidazzle_seed_parents_page_defaults($post_id)
+function wimper_seed_parents_page_defaults($post_id)
 {
     if (get_post_type($post_id) !== 'page') {
         return;
@@ -828,4 +828,4 @@ function kidazzle_seed_parents_page_defaults($post_id)
     // Mark as seeded
     update_post_meta($post_id, '_parents_defaults_seeded', '1');
 }
-add_action('save_post', 'kidazzle_seed_parents_page_defaults', 5);
+add_action('save_post', 'wimper_seed_parents_page_defaults', 5);

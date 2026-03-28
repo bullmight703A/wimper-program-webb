@@ -4,7 +4,7 @@
  * Automatically generates context-aware alt text for images if missing
  * Uses Location Name + Program Context
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class kidazzle_Image_Alt_Automation
+class wimper_Image_Alt_Automation
 {
     /**
      * Initialize the module

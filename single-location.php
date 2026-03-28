@@ -2,21 +2,21 @@
 /**
  * Single Location Template
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  */
 
 get_header();
 
 while (have_posts()):
 	the_post();
-	$location_fields = kidazzle_get_location_fields();
+	$location_fields = wimper_get_location_fields();
 	$location_id = get_the_ID();
 	$location_name = get_the_title();
 
 	// Get location meta
 	$phone = $location_fields['phone'];
 	$email = $location_fields['email'];
-	$address = kidazzle_location_address_line();
+	$address = wimper_location_address_line();
 	$city = $location_fields['city'];
 	$state = $location_fields['state'];
 	$zip = $location_fields['zip'];
@@ -82,7 +82,7 @@ while (have_posts()):
 	// Get Region Colors
 	$location_regions = wp_get_post_terms($location_id, 'location_region');
 	$region_term = !empty($location_regions) && !is_wp_error($location_regions) ? $location_regions[0] : null;
-	$region_colors = $region_term ? kidazzle_get_region_color_from_term($region_term->term_id) : array(
+	$region_colors = $region_term ? wimper_get_region_color_from_term($region_term->term_id) : array(
 		'bg' => 'kidazzle-blueLight',
 		'text' => 'kidazzle-blue',
 		'border' => 'kidazzle-blue',
@@ -158,7 +158,7 @@ while (have_posts()):
 							<?php else: ?>
 								<!-- Fallback to Shortcode Form -->
 								<div class="w-full">
-									<?php echo do_shortcode('[kidazzle_tour_form location_id="' . $location_id . '"]'); ?>
+									<?php echo do_shortcode('[wimper_tour_form location_id="' . $location_id . '"]'); ?>
 								</div>
 							<?php endif; ?>
 						</div>

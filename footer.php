@@ -2,20 +2,20 @@
 /**
  * The template for displaying the footer
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  */
 
 // Get Footer Customizer Settings
-$footer_phone = get_theme_mod('kidazzle_footer_phone', '1 678-940-6099');
-$footer_email = get_theme_mod('kidazzle_footer_email', 'info@thewimperprogram.com');
-$footer_address = get_theme_mod('kidazzle_footer_address', '');
+$footer_phone = get_theme_mod('wimper_footer_phone', '1 678-940-6099');
+$footer_email = get_theme_mod('wimper_footer_email', 'info@thewimperprogram.com');
+$footer_address = get_theme_mod('wimper_footer_address', '');
 
 // Social Links
-$footer_facebook = get_theme_mod('kidazzle_footer_facebook', '');
-$footer_instagram = get_theme_mod('kidazzle_footer_instagram', '');
-$footer_linkedin = get_theme_mod('kidazzle_footer_linkedin', '');
-$footer_twitter = get_theme_mod('kidazzle_footer_twitter', '');
-$footer_youtube = get_theme_mod('kidazzle_footer_youtube', '');
+$footer_facebook = get_theme_mod('wimper_footer_facebook', '');
+$footer_instagram = get_theme_mod('wimper_footer_instagram', '');
+$footer_linkedin = get_theme_mod('wimper_footer_linkedin', '');
+$footer_twitter = get_theme_mod('wimper_footer_twitter', '');
+$footer_youtube = get_theme_mod('wimper_footer_youtube', '');
 
 $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $footer_twitter || $footer_youtube;
 ?>
@@ -104,7 +104,7 @@ $has_social = $footer_facebook || $footer_instagram || $footer_linkedin || $foot
  * add them directly to this file within a <script> tag.
  */
 /*
-$footer_scripts = get_theme_mod('kidazzle_footer_scripts');
+$footer_scripts = get_theme_mod('wimper_footer_scripts');
 if ($footer_scripts) {
 	if (current_user_can('unfiltered_html')) {
 		echo $footer_scripts;

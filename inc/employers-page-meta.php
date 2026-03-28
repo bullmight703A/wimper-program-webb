@@ -2,7 +2,7 @@
 /**
  * Employers Page Meta Boxes
  *
- * @package kidazzle_Excellence
+ * @package wimper_Excellence
  * @since 1.0.0
  */
 
@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Register Employers Page Meta Boxes
  */
-function kidazzle_employers_page_meta_boxes() {
+function wimper_employers_page_meta_boxes() {
 	add_meta_box(
 		'kidazzle-employers-hero',
 		__( 'Hero Section', 'kidazzle-theme' ),
-		'kidazzle_employers_hero_meta_box_render',
+		'wimper_employers_hero_meta_box_render',
 		'page',
 		'normal',
 		'high'
@@ -27,7 +27,7 @@ function kidazzle_employers_page_meta_boxes() {
 	add_meta_box(
 		'kidazzle-employers-solutions',
 		__( 'Solutions Section (3 Cards)', 'kidazzle-theme' ),
-		'kidazzle_employers_solutions_meta_box_render',
+		'wimper_employers_solutions_meta_box_render',
 		'page',
 		'normal',
 		'default'
@@ -36,7 +36,7 @@ function kidazzle_employers_page_meta_boxes() {
 	add_meta_box(
 		'kidazzle-employers-tax',
 		__( 'Tax Incentives Section', 'kidazzle-theme' ),
-		'kidazzle_employers_tax_meta_box_render',
+		'wimper_employers_tax_meta_box_render',
 		'page',
 		'normal',
 		'default'
@@ -45,19 +45,19 @@ function kidazzle_employers_page_meta_boxes() {
 	add_meta_box(
 		'kidazzle-employers-contact',
 		__( 'Contact Section', 'kidazzle-theme' ),
-		'kidazzle_employers_contact_meta_box_render',
+		'wimper_employers_contact_meta_box_render',
 		'page',
 		'normal',
 		'default'
 	);
 }
-add_action( 'add_meta_boxes', 'kidazzle_employers_page_meta_boxes' );
+add_action( 'add_meta_boxes', 'wimper_employers_page_meta_boxes' );
 
 /**
  * Hero Section Meta Box
  */
-function kidazzle_employers_hero_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_employers_hero_meta', 'kidazzle_employers_hero_nonce' );
+function wimper_employers_hero_meta_box_render( $post ) {
+	wp_nonce_field( 'wimper_employers_hero_meta', 'wimper_employers_hero_nonce' );
 
 	$hero_badge       = get_post_meta( $post->ID, 'employers_hero_badge', true );
 	$hero_title       = get_post_meta( $post->ID, 'employers_hero_title', true );
@@ -94,8 +94,8 @@ function kidazzle_employers_hero_meta_box_render( $post ) {
 /**
  * Solutions Section Meta Box
  */
-function kidazzle_employers_solutions_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_employers_solutions_meta', 'kidazzle_employers_solutions_nonce' );
+function wimper_employers_solutions_meta_box_render( $post ) {
+	wp_nonce_field( 'wimper_employers_solutions_meta', 'wimper_employers_solutions_nonce' );
 
 	$solutions = array(
 		1 => 'Solution 1 (Priority Access)',
@@ -138,8 +138,8 @@ function kidazzle_employers_solutions_meta_box_render( $post ) {
 /**
  * Tax Incentives Section Meta Box
  */
-function kidazzle_employers_tax_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_employers_tax_meta', 'kidazzle_employers_tax_nonce' );
+function wimper_employers_tax_meta_box_render( $post ) {
+	wp_nonce_field( 'wimper_employers_tax_meta', 'wimper_employers_tax_nonce' );
 
 	$tax_badge       = get_post_meta( $post->ID, 'employers_tax_badge', true );
 	$tax_title       = get_post_meta( $post->ID, 'employers_tax_title', true );
@@ -311,8 +311,8 @@ function kidazzle_employers_tax_meta_box_render( $post ) {
 /**
  * Contact Section Meta Box
  */
-function kidazzle_employers_contact_meta_box_render( $post ) {
-	wp_nonce_field( 'kidazzle_employers_contact_meta', 'kidazzle_employers_contact_nonce' );
+function wimper_employers_contact_meta_box_render( $post ) {
+	wp_nonce_field( 'wimper_employers_contact_meta', 'wimper_employers_contact_nonce' );
 
 	$contact_title = get_post_meta( $post->ID, 'employers_contact_title', true );
 	?>
@@ -333,7 +333,7 @@ function kidazzle_employers_contact_meta_box_render( $post ) {
 /**
  * Save Employers Page Meta
  */
-function kidazzle_save_employers_page_meta( $post_id ) {
+function wimper_save_employers_page_meta( $post_id ) {
 	// Check if this is a page
 	if ( get_post_type( $post_id ) !== 'page' ) {
 		return;
@@ -341,12 +341,12 @@ function kidazzle_save_employers_page_meta( $post_id ) {
 
 	// Define all meta fields
 	$meta_boxes = array(
-		'kidazzle_employers_hero_nonce' => array(
+		'wimper_employers_hero_nonce' => array(
 			'employers_hero_badge'       => 'sanitize_text_field',
 			'employers_hero_title'       => 'sanitize_text_field',
 			'employers_hero_description' => 'sanitize_textarea_field',
 		),
-		'kidazzle_employers_solutions_nonce' => array(
+		'wimper_employers_solutions_nonce' => array(
 			'employers_solution1_title' => 'sanitize_text_field',
 			'employers_solution1_desc'  => 'sanitize_textarea_field',
 			'employers_solution2_title' => 'sanitize_text_field',
@@ -354,7 +354,7 @@ function kidazzle_save_employers_page_meta( $post_id ) {
 			'employers_solution3_title' => 'sanitize_text_field',
 			'employers_solution3_desc'  => 'sanitize_textarea_field',
 		),
-		'kidazzle_employers_tax_nonce' => array(
+		'wimper_employers_tax_nonce' => array(
 			'employers_tax_badge'          => 'sanitize_text_field',
 			'employers_tax_title'          => 'sanitize_text_field',
 			'employers_tax_description'    => 'sanitize_textarea_field',
@@ -372,7 +372,7 @@ function kidazzle_save_employers_page_meta( $post_id ) {
 			'employers_georgia_link_url'   => 'esc_url_raw',
 			'employers_tax_disclaimer'     => 'sanitize_textarea_field',
 		),
-		'kidazzle_employers_contact_nonce' => array(
+		'wimper_employers_contact_nonce' => array(
 			'employers_contact_title' => 'sanitize_text_field',
 		),
 	);
@@ -397,12 +397,12 @@ function kidazzle_save_employers_page_meta( $post_id ) {
 		}
 	}
 }
-add_action( 'save_post', 'kidazzle_save_employers_page_meta' );
+add_action( 'save_post', 'wimper_save_employers_page_meta' );
 
 /**
  * Seed default values for Employers page when template is first applied
  */
-function kidazzle_seed_employers_page_defaults( $post_id ) {
+function wimper_seed_employers_page_defaults( $post_id ) {
 	// Check if this is a page
 	if ( get_post_type( $post_id ) !== 'page' ) {
 		return;
@@ -466,4 +466,4 @@ function kidazzle_seed_employers_page_defaults( $post_id ) {
 	// Mark as seeded
 	update_post_meta( $post_id, '_employers_defaults_seeded', '1' );
 }
-add_action( 'save_post', 'kidazzle_seed_employers_page_defaults', 5 );
+add_action( 'save_post', 'wimper_seed_employers_page_defaults', 5 );

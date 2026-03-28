@@ -2,7 +2,7 @@
 /**
  * Curriculum Page Meta Boxes
  *
- * @package Kidazzle_Theme
+ * @package Wimper_Theme
  * @since 1.0.0
  */
 

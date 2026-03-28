@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$origin_image = get_theme_mod('kidazzle_origin_image', 'https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/694473359bd664b7796f283c.png');
+$origin_image = get_theme_mod('wimper_origin_image', 'https://storage.googleapis.com/msgsndr/ZR2UvxPL2wlZNSvHjmJD/media/694473359bd664b7796f283c.png');
 ?>
 
 <section class="py-24 bg-white border-t border-brand-ink/5">
