@@ -795,14 +795,14 @@ function wimper_home_locations_preview()
                 $title = get_the_title($post_id);
                 $permalink = get_permalink($post_id);
 
-                $fields = wimper_get_location_fields($post_id);
-                $city = $fields['city'];
-                $state = $fields['state'];
-                $phone = $fields['phone'];
-                $address = $fields['address'];
+                // Safe inline fallback for wimper_get_location_fields
+                $city = get_post_meta($post_id, 'location_city', true) ?: '';
+                $state = get_post_meta($post_id, 'location_state', true) ?: 'GA';
+                $phone = get_post_meta($post_id, 'location_phone', true) ?: '';
+                $address = get_post_meta($post_id, 'location_address', true) ?: '';
 
-                $lat = $fields['latitude'];
-                $lng = $fields['longitude'];
+                $lat = get_post_meta($post_id, 'location_latitude', true) ?: '';
+                $lng = get_post_meta($post_id, 'location_longitude', true) ?: '';
 
                 if ($lat && $lng) {
                         $map_points[] = array(
