@@ -155,6 +155,8 @@ function wimper_advanced_seo_init()
 	}
 
 	// Schema Builders (Hooks)
+	// DISABLED: Removed auto-generated schemas to prevent output conflicts
+	/*
 	if (class_exists('wimper_Event_Schema_Builder'))
 		add_action('wp_head', ['wimper_Event_Schema_Builder', 'output']);
 	if (class_exists('wimper_HowTo_Schema_Builder'))
@@ -165,6 +167,7 @@ function wimper_advanced_seo_init()
 		add_action('wp_head', ['wimper_Universal_FAQ_Builder', 'output']);
 	if (class_exists('wimper_Page_Type_Builder'))
 		add_action('wp_head', ['wimper_Page_Type_Builder', 'output']);
+	*/
 
 	// Flush Rewrite Rules if KML rule is missing (One-time check)
 	if (get_option('wimper_seo_flush_rewrite') !== 'done') {

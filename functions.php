@@ -97,7 +97,8 @@ require_once WIMPER_THEME_DIR . '/inc/monthly-seo-cron.php';
 // require_once WIMPER_THEME_DIR . '/inc/llm-seo/bootstrap.php';
 
 // SEO Automations (Refactored WIMPER Module)
-require_once WIMPER_THEME_DIR . '/inc/seo-automations/bootstrap.php';
+// DISABLED: Removed Search Atlas & auto-generated schemas to prevent output conflicts
+// require_once WIMPER_THEME_DIR . '/inc/seo-automations/bootstrap.php';
 
 // Advanced SEO/LLM Module (Editable Fields)
 require_once WIMPER_THEME_DIR . '/inc/advanced-seo-llm/bootstrap.php';
