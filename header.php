@@ -17,40 +17,9 @@
 
 	<!-- Tailwind CSS CDN with Config -->
 	<script src="https://cdn.tailwindcss.com"></script>
-	<script>
-		tailwind.config = {
-			theme: {
-				extend: {
-					colors: {
-						navy: '#0A192F',
-						gold: '#C5A021',
-					},
-					fontFamily: {
-						serif: ['Playfair Display', 'serif'],
-						sans: ['Inter', 'sans-serif'],
-					}
-				}
-			}
-		}
-	</script>
+	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/tailwind-config.js"></script>
 
-	<!-- Tier 3: Instant Navigation (Speculation Rules API) -->
-	<script type="speculationrules">
-	{
-		"prerender": [
-			{
-				"source": "document",
-				"where": {
-					"and": [
-						{ "href_matches": "/*" },
-						{ "not": { "href_matches": "/wp-admin/*" } }
-					]
-				},
-				"eagerness": "moderate"
-			}
-		]
-	}
-	</script>
+
 
 	<?php
 	// Get Customizer settings
