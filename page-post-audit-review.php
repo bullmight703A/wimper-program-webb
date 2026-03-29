@@ -126,8 +126,7 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
                     </div>
                     <div class="max-h-0 opacity-0 transition-all duration-300 ease-out bg-white border-t border-transparent group-hover:border-slate-100">
                         <div class="flex divide-x divide-slate-100">
-                            <!-- Using standard _blank until trigger link established -->
-                            <a href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/EBITDA-Projections.html" target="_blank" class="flex-[1.2] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">📄 View Document</a>
+                            <a href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/EBITDA-Projections.pdf" target="_blank" class="flex-[1.2] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">📄 Download PDF</a>
                             <a href="#" class="flex-[0.8] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">▶️ Review Video</a>
                         </div>
                     </div>
@@ -144,7 +143,7 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
                     </div>
                     <div class="max-h-0 opacity-0 transition-all duration-300 ease-out bg-white border-t border-transparent group-hover:border-slate-100">
                         <div class="flex divide-x divide-slate-100">
-                            <a href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/Compliance-Framework.html" target="_blank" class="flex-[1.2] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">📄 View Document</a>
+                            <a href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/Compliance-Framework.pdf" target="_blank" class="flex-[1.2] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">📄 Download PDF</a>
                             <a href="#" class="flex-[0.8] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">▶️ Review Video</a>
                         </div>
                     </div>
