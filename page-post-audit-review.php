@@ -99,8 +99,7 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
                     </div>
                 </div>
                 <!-- Actual Video Native HTML5 Element -->
-                <!-- The User will provide the src URL. Currently waiting, but auto-play triggers are bound! -->
-                <video id="mainVideoPlayer" src="" playsinline controls preload="metadata" class="absolute inset-0 w-full h-full object-cover z-0 bg-black"></video>
+                <video id="mainVideoPlayer" src="https://assets.cdn.filesafe.space/0EYrXwSAbw55Hpgu54CD/media/69c94199cd5159f2a1478788.mp4" playsinline controls preload="auto" class="absolute inset-0 w-full h-full object-cover z-0 bg-black"></video>
             </div>
         </div>
     </div>
@@ -299,15 +298,28 @@ document.addEventListener('DOMContentLoaded', () => {
     let overlay = document.getElementById('mainVideoOverlay');
     
     if(mainVid && mainVid.getAttribute('src')) {
-        // Browsers require auto-playing videos to be muted without direct user interaction
-        mainVid.muted = true; 
-        mainVid.play().then(() => {
-            // Auto-play succeeded! Hide the click-overlay.
-            overlay.style.display = 'none';
-        }).catch((err) => {
-            // Auto-play prevented by browser policy. Provide fallback via visible play button overlay.
-            console.log("Strict Autoplay policy prevented playback. Displaying manual overlay.");
-        });
+        // Requested specifications: 50% volume
+        mainVid.volume = 0.5;
+        mainVid.muted = false;
+        
+        // Browsers aggressively block unmuted autoplay. We attempt unmuted first.
+        let tryPlay = mainVid.play();
+        if (tryPlay !== undefined) {
+            tryPlay.then(() => {
+                // Success: Unmuted Autoplay worked
+                overlay.style.display = 'none';
+            }).catch(error => {
+                // Browser Blocked Unmuted Autoplay. Fallback to Muted Autoplay to at least get the motion.
+                console.log("Unmuted autoplay blocked. Falling back to muted visual playback.", error);
+                mainVid.muted = true;
+                mainVid.play().then(() => {
+                    overlay.style.display = 'none';
+                }).catch(err2 => {
+                    // Total block (Safari strict mode). Overlay remains for manual click.
+                    console.log("Total autoplay strict block. Awaiting manual interaction.");
+                });
+            });
+        }
     }
 });
 </script>
