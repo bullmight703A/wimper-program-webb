@@ -79,12 +79,12 @@ WIMP<span class="text-wimper-cyan">ER</span>
     </div>
 
     <!-- 2-Column Content Grid -->
-    <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-start">
+    <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-stretch">
         
         <!-- Left Column: Presenter & Credibility -->
-        <div class="lg:col-span-5 flex flex-col">
+        <div class="lg:col-span-5 flex flex-col h-full">
             <!-- Image Frame -->
-            <div class="rounded-3xl overflow-hidden shadow-xl mb-8 border-4 border-white bg-slate-200 relative aspect-[4/3] group">
+            <div class="rounded-3xl overflow-hidden shadow-xl mb-8 border-4 border-white bg-slate-200 relative aspect-[4/3] group flex-shrink-0">
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/robert-hill.jpg" alt="Robert Hill" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-wimper-blueDark/90 to-transparent p-6 pt-12">
                     <h3 class="text-white font-bold text-xl">Robert Hill</h3>
@@ -92,9 +92,9 @@ WIMP<span class="text-wimper-cyan">ER</span>
                 </div>
             </div>
             
-            <div class="bg-white p-8 rounded-3xl card-shadow border border-slate-100">
+            <div class="bg-white p-8 rounded-3xl card-shadow border border-slate-100 flex-grow flex flex-col justify-center">
                 <h3 class="text-xl font-extrabold text-wimper-blueDark mb-6 border-b border-slate-100 pb-4">Who This Is For</h3>
-                <ul class="space-y-5">
+                <ul class="space-y-6">
                     <li class="flex items-start">
                         <svg class="w-6 h-6 text-wimper-cyan mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         <span class="text-sm font-medium text-wimper-slate leading-relaxed">Business owners currently managing 10+ W-2 employees.</span>
@@ -112,8 +112,8 @@ WIMP<span class="text-wimper-cyan">ER</span>
         </div>
         
         <!-- Right Column: Registration Form -->
-        <div class="lg:col-span-7 mt-12 lg:mt-0 relative">
-            <div class="bg-white p-8 md:p-10 rounded-3xl card-shadow border-2 border-slate-50 relative z-10 w-full flex flex-col">
+        <div class="lg:col-span-7 mt-12 lg:mt-0 relative h-full">
+            <div class="bg-white p-8 md:p-10 rounded-3xl card-shadow border-2 border-slate-50 relative z-10 w-full flex flex-col h-full">
                 <h3 class="text-2xl font-bold text-wimper-blueDark mb-2 text-center">Reserve Your Seat</h3>
                 <p class="text-sm text-wimper-slate text-center mb-6">Limited to 7 attendees per session.</p>
                 
