@@ -23,9 +23,13 @@
                 <h1 class="text-4xl font-extrabold text-slate-900" style="color: #06B6D4;">Compliance Framework</h1>
                 <p class="text-lg text-slate-500 mt-2 font-medium">The Legal Architecture of IRC §125</p>
             </div>
-            <div class="text-right">
+            <div class="text-right flex flex-col items-end">
                 <h2 class="text-2xl font-black tracking-tight" style="color: #2F4858;">WIMP<span style="color: #06B6D4;">ER</span></h2>
-                <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest font-bold">Regulatory Briefing</p>
+                <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest font-bold mb-4">Regulatory Briefing</p>
+                <!-- Watch Explanation Button placed in the white space -->
+                <button onclick="openModal('./Compliance_Framework.mp4', 'Compliance Framework Visual Breakdown')" class="print:hidden flex items-center justify-center bg-[#06B6D4] text-white px-4 py-2 rounded-lg text-[11px] font-bold tracking-widest uppercase hover:bg-[#2F4858] transition shadow-md cursor-pointer">
+                    ▶ Watch Video Breakdown
+                </button>
             </div>
         </div>
 
@@ -74,6 +78,47 @@
             <p><strong>Disclaimer:</strong> All implementations are reviewed and administered by third-party ERISA attorneys. Employers are provided safe harbor documentation. WIMPER acts strictly as the architectural facilitator.</p>
         </div>
 
+        <!-- Universal Iframe Modal Native To The Page -->
+        <div id="wimperAppModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-900/80 backdrop-blur-sm print:hidden">
+            <div class="relative w-[95%] max-w-5xl h-[85vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-slate-200">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50 shrink-0">
+                    <h3 id="wimperModalTitle" class="text-lg font-bold text-[#2F4858]">WIMPER Content</h3>
+                    <button onclick="closeModal()" class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-200 hover:bg-red-500 hover:text-white transition-colors text-slate-500 font-bold">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <!-- Modal Body (Iframe) -->
+                <div class="flex-grow w-full h-full relative" id="wimperModalFrameContainer">
+                    <!-- Javascript will inject the iframe here to prevent background loading -->
+                </div>
+            </div>
+        </div>
+
+        <script>
+        function openModal(url, title) {
+            document.getElementById('wimperModalTitle').innerText = title;
+            const container = document.getElementById('wimperModalFrameContainer');
+            // We use native HTML5 video inside the popup instead of an iframe to handle local MP4 directly
+            if(url.endsWith('.mp4')){
+                container.innerHTML = `<video src="${url}" controls autoplay class="w-full h-full object-contain bg-black"></video>`;
+            } else {
+                container.innerHTML = `<iframe src="${url}" class="absolute inset-0 w-full h-full border-0"></iframe>`;
+            }
+            const modal = document.getElementById('wimperAppModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('wimperAppModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.getElementById('wimperModalFrameContainer').innerHTML = ''; // Destroy frame/video
+            document.body.style.overflow = '';
+        }
+        </script>
     </div>
 </body>
 </html>
