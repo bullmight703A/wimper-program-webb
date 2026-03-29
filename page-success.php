@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Success Page
- * Description: Standalone WIMPER success page (prep room).
+ * Description: Standalone WIMPER success page (post-webinar signup).
  */
 ?>
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
 <head>
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Success | Your Feasibility Audit | WIMPER</title>
+<title>Success | You're Scheduled | WIMPER</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
@@ -49,7 +49,7 @@ WIMP<span class="text-wimper-cyan">ER</span>
 <div class="hidden sm:flex space-x-6 items-center">
 <span class="inline-flex items-center rounded-full bg-green-100 px-4 py-1.5 text-xs font-bold text-green-800 uppercase tracking-widest">
 <svg class="w-3 h-3 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-Success - You're All Set
+Webinar Confirmed
 </span>
 </div>
 </div>
@@ -64,16 +64,17 @@ Success - You're All Set
 <div class="absolute -top-24 -right-24 w-96 h-96 bg-wimper-cyan rounded-full blur-3xl opacity-20"></div>
 
 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+<div class="inline-block bg-wimper-blue text-white px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest mb-6">Step 2 of 3</div>
 <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-4">
-Your Feasibility Audit <span class="text-wimper-cyan">Preparation</span>.
+Congrats! You're Scheduled for the <span class="text-wimper-cyan">Webinar</span>.
 </h1>
-<p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-Watch this 2-minute mandatory briefing from Robert Hill before our call. We dive straight into your exact FICA tax reduction math so we don't waste time on the basics.
+<p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+But do you truly know why you are here? Please watch this quick mandatory briefing before continuing.
 </p>
 </div>
 </header>
 
-<!-- Video / Instructions Section -->
+<!-- Video / Actions Section -->
 <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-20">
 <div class="bg-white rounded-3xl card-shadow border border-slate-100 overflow-hidden">
 <div class="grid lg:grid-cols-5 gap-0">
@@ -86,59 +87,51 @@ Watch this 2-minute mandatory briefing from Robert Hill before our call. We dive
         <path d="M8 5v14l11-7z" />
     </svg>
 </div>
-<p class="text-white/60 font-semibold text-xs tracking-wider uppercase drop-shadow-md">Play Robert's Briefing</p>
+<p class="text-white/60 font-semibold text-xs tracking-wider uppercase drop-shadow-md">Play "Why You're Here" Briefing</p>
 </div>
 </div>
 <!-- Video Transcription / Summary -->
 <div class="p-8">
-<h3 class="text-lg font-bold text-wimper-blueDark mb-3 border-l-4 border-wimper-cyan pl-4 py-1">Why this strategy works immediately</h3>
+<h3 class="text-lg font-bold text-wimper-blueDark mb-3 border-l-4 border-wimper-cyan pl-4 py-1">Why you are really here.</h3>
 <p class="text-sm text-wimper-slate leading-relaxed mb-4">
-We operate as a proactive capital shield. By integrating advanced ERISA frameworks directly into your payroll chassis, we trap capital leaking out to FICA taxes <em>before</em> it leaves your business.
+You are here because you want to keep more of your money with less work, doing exactly what you already do. You employ W-2 staff, and we have a proven, legal system to significantly reduce what you owe.
 </p>
-<p class="text-sm font-semibold text-wimper-blueDark bg-sky-50 px-4 py-3 rounded-lg flex items-start">
-<svg class="h-5 w-5 text-wimper-blue mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-This is immediate, legal EBITDA recapture happening on your very next payroll cycle.
+<p class="text-sm font-semibold text-wimper-blueDark bg-sky-50 px-4 py-3 rounded-lg">
+"My objective is simple: help your company retain capital and keep your employees happy." <br><span class="text-xs font-normal text-wimper-slate mt-1 block">— Robert Hill</span>
 </p>
 </div>
 </div>
 
-<!-- Checklist Column -->
+<!-- Options Column -->
 <div class="lg:col-span-2 p-8 lg:p-10 flex flex-col justify-center bg-white">
-<div class="mb-8">
-<h2 class="text-2xl font-extrabold text-wimper-blueDark mb-6">Before Our Call</h2>
-<ul class="space-y-6">
-<li class="flex items-start">
-    <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-50 flex items-center justify-center border border-slate-200 mt-1">
-        <span class="text-wimper-blue font-bold text-sm">1</span>
+<div class="mb-4">
+<h2 class="text-2xl font-extrabold text-wimper-blueDark mb-3">Choose Your Next Step</h2>
+<p class="text-sm text-wimper-slate mb-8 leading-relaxed">
+If you have questions about how this is legally possible and want to skip the webinar, you have two options below.
+</p>
+
+<!-- Option 1 -->
+<a href="#" class="group relative block mb-5">
+    <div class="absolute inset-0 bg-wimper-blueDark rounded-2xl transition-transform transform group-hover:translate-y-1"></div>
+    <div class="relative bg-wimper-blueDark border border-slate-700 text-white p-5 rounded-2xl transition-transform transform -translate-y-1 group-hover:-translate-y-0 text-center">
+        <svg class="w-6 h-6 mx-auto mb-2 text-wimper-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+        <span class="block font-bold text-lg mb-1">Schedule Discovery Call</span>
+        <span class="block text-xs text-sky-200">Get a private 1-on-1 explanation.</span>
     </div>
-    <div class="ml-4">
-        <h4 class="text-base font-bold text-slate-800">Watch the Briefing</h4>
-        <p class="text-xs text-wimper-slate leading-relaxed mt-1">Understand the fundamental mechanism of how we divert FICA dollars back to your LLC.</p>
-    </div>
-</li>
-<li class="flex items-start">
-    <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-50 flex items-center justify-center border border-slate-200 mt-1">
-        <span class="text-wimper-blue font-bold text-sm">2</span>
-    </div>
-    <div class="ml-4">
-        <h4 class="text-base font-bold text-slate-800">Pull Your Payroll Summary</h4>
-        <p class="text-xs text-wimper-slate leading-relaxed mt-1">Have your most recent company-wide payroll summary in front of you. We need this for exact math.</p>
-    </div>
-</li>
-<li class="flex items-start">
-    <div class="flex-shrink-0 h-8 w-8 rounded-full bg-slate-50 flex items-center justify-center border border-slate-200 mt-1">
-        <span class="text-wimper-blue font-bold text-sm">3</span>
-    </div>
-    <div class="ml-4">
-        <h4 class="text-base font-bold text-slate-800">Bring Your Leadership</h4>
-        <p class="text-xs text-wimper-slate leading-relaxed mt-1">If your CFO or business partner needs to sign off, they must be on this 10-minute call.</p>
-    </div>
-</li>
-</ul>
-</div>
-<a href="<?php echo esc_url(home_url('/')); ?>" class="block w-full py-4 text-center rounded-xl bg-wimper-blueDark text-white font-bold hover:bg-slate-800 transition-colors shadow-lg">
-Return to Homepage
 </a>
+
+<!-- Option 2 -->
+<a href="#" class="group relative block">
+    <div class="absolute inset-0 bg-slate-200 rounded-2xl transition-transform transform group-hover:translate-y-1"></div>
+    <div class="relative bg-white border-2 border-slate-200 text-slate-800 p-5 rounded-2xl transition-transform transform -translate-y-1 group-hover:-translate-y-0 text-center">
+        <svg class="w-6 h-6 mx-auto mb-2 text-wimper-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+        <span class="block font-bold text-lg mb-1">View Information Hub</span>
+        <span class="block text-xs text-wimper-slate">Access our documents & framework videos.</span>
+    </div>
+</a>
+
+</div>
+
 </div>
 </div>
 </div>
