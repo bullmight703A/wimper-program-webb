@@ -166,16 +166,16 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
     <!-- Revive Health -->
     <div class="bg-white rounded-2xl p-5 card-shadow border border-slate-100 flex flex-col h-full">
         <h3 class="font-bold text-sm text-wimper-blueDark mb-3 flex-shrink-0">2. The Revive Health Component</h3>
-        <div class="aspect-video bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center cursor-pointer group flex-grow">
-            <svg class="h-10 w-10 text-slate-300 group-hover:text-wimper-blue transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+        <div class="aspect-video border border-slate-200 rounded-xl overflow-hidden flex-grow shadow-sm">
+            <iframe src="https://drive.google.com/file/d/1xkOrNe-3huxBkU-u-kebkiOCtp_JSkm-/preview" width="100%" height="100%" allow="autoplay; fullscreen" allowfullscreen class="w-full h-full"></iframe>
         </div>
     </div>
     
     <!-- Manhattan Life -->
     <div class="bg-white rounded-2xl p-5 card-shadow border border-slate-100 flex flex-col h-full">
         <h3 class="font-bold text-sm text-wimper-blueDark mb-3 flex-shrink-0">3. Manhattan Life Structure</h3>
-        <div class="aspect-video bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center cursor-pointer group flex-grow">
-            <svg class="h-10 w-10 text-slate-300 group-hover:text-wimper-blue transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+        <div class="aspect-video border border-slate-200 rounded-xl overflow-hidden flex-grow shadow-sm">
+            <iframe src="https://drive.google.com/file/d/1lVgYp75lzkx89D1DFFR86kfZj0KYm6SS/preview" width="100%" height="100%" allow="autoplay; fullscreen" allowfullscreen class="w-full h-full"></iframe>
         </div>
     </div>
     
