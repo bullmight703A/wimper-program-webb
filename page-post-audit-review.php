@@ -170,11 +170,12 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
             
             <!-- SHREMPA Info at bottom -->
             <div class="mt-5 pt-4 border-t border-slate-100 flex-shrink-0">
-                <h4 class="text-sm font-black text-slate-800 mb-2 leading-tight tracking-tight uppercase">Self-Insured Medical Reimbursement Plan (SIMRP)</h4>
-                <!-- Clickable Modal link to Cornell Law, or US House -->
-                <a href="javascript:void(0)" onclick="openModal('https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section105&num=0&edition=prelim', 'IRC § 105 Overview')" class="inline-flex items-center text-xs font-bold text-wimper-cyan hover:text-wimper-blue transition-colors mt-1 bg-slate-50 px-3 py-1.5 border border-slate-100 shadow-sm rounded">
-                    <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    Review US Code Structure
+                <a href="javascript:void(0)" onclick="openModal('https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section105&num=0&edition=prelim', 'IRC § 105 Overview')" class="block group cursor-pointer">
+                    <h4 class="text-sm font-black text-wimper-blueDark group-hover:text-wimper-cyan transition-colors mb-1 leading-tight tracking-tight uppercase">Self-Insured Medical Reimbursement Plan (SIMRP)</h4>
+                    <p class="text-[11px] text-wimper-slate group-hover:text-wimper-blue transition-colors flex items-center">
+                        <svg class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        Review US Code Structure
+                    </p>
                 </a>
             </div>
 
