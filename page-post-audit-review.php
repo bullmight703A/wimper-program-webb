@@ -83,12 +83,12 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
         <!-- Main Audit Briefing Video -->
         <div class="bg-white rounded-3xl card-shadow border border-slate-100 overflow-hidden">
             <div class="p-6 border-b border-slate-100">
-                <h2 class="text-xl font-extrabold text-wimper-blueDark">1. The Immediate ROI Calculation</h2>
-                <p class="text-sm text-wimper-slate mt-1">Watch Robert break down precisely how the Section 125 rules shield your capital.</p>
+                <h2 class="text-xl font-extrabold text-wimper-blueDark">1. How The Mechanism Actually Works</h2>
+                <p class="text-sm text-wimper-slate mt-1">"You know why you're here. Now let me show you how." — Watch Robert break down the exact tax laws shielding your capital.</p>
             </div>
-            <div class="aspect-video bg-slate-800 flex items-center justify-center relative hover:bg-slate-700 transition cursor-pointer">
+            <div class="aspect-video bg-slate-800 flex items-center justify-center relative hover:bg-slate-700 transition cursor-pointer border-b-4 border-wimper-cyan block">
                 <div class="text-center">
-                    <div class="w-16 h-16 bg-wimper-cyan/90 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <div class="w-16 h-16 bg-wimper-cyan/90 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg shadow-wimper-cyan/30">
                         <svg class="h-6 w-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                     </div>
                 </div>
@@ -99,7 +99,7 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
         <div class="grid md:grid-cols-2 gap-6">
             <!-- Revive Health -->
             <div class="bg-white rounded-2xl p-4 card-shadow border border-slate-100">
-                <h3 class="font-bold text-sm text-wimper-blueDark mb-3">2. The Revive Health Mechanism</h3>
+                <h3 class="font-bold text-sm text-wimper-blueDark mb-3">2. The Revive Health Component</h3>
                 <div class="aspect-video bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center cursor-pointer group">
                     <svg class="h-10 w-10 text-slate-300 group-hover:text-wimper-blue transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                 </div>
@@ -124,35 +124,35 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
             
             <div class="space-y-4">
                 <!-- PDF 1 -->
-                <a href="#" class="flex items-center p-3 rounded-xl border border-slate-200 hover:border-wimper-cyan hover:bg-sky-50 transition-all group">
+                <a href="#" class="flex items-center p-3 rounded-xl border border-slate-200 hover:border-wimper-cyan hover:bg-sky-50 transition-all group shadow-sm">
                     <div class="flex-shrink-0 h-10 w-10 rounded bg-red-50 flex items-center justify-center">
                         <svg class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
                     </div>
                     <div class="ml-4">
                         <p class="text-sm font-bold text-wimper-blueDark group-hover:text-wimper-cyan transition-colors">EBITDA Projections</p>
-                        <p class="text-xs text-wimper-slate">PDF Document (.pdf)</p>
+                        <p class="text-[11px] text-wimper-slate">PDF Document (.pdf)</p>
                     </div>
                 </a>
                 
                 <!-- PDF 2 -->
-                <a href="#" class="flex items-center p-3 rounded-xl border border-slate-200 hover:border-wimper-cyan hover:bg-sky-50 transition-all group">
+                <a href="#" class="flex items-center p-3 rounded-xl border border-slate-200 hover:border-wimper-cyan hover:bg-sky-50 transition-all group shadow-sm">
                     <div class="flex-shrink-0 h-10 w-10 rounded bg-red-50 flex items-center justify-center">
                         <svg class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
                     </div>
                     <div class="ml-4">
                         <p class="text-sm font-bold text-wimper-blueDark group-hover:text-wimper-cyan transition-colors">Compliance Framework</p>
-                        <p class="text-xs text-wimper-slate">PDF Document (.pdf)</p>
+                        <p class="text-[11px] text-wimper-slate">PDF Document (.pdf)</p>
                     </div>
                 </a>
 
                 <!-- PDF 3 -->
-                <a href="#" class="flex items-center p-3 rounded-xl border border-slate-200 hover:border-wimper-cyan hover:bg-sky-50 transition-all group">
+                <a href="#" class="flex items-center p-3 rounded-xl border border-slate-200 hover:border-wimper-cyan hover:bg-sky-50 transition-all group shadow-sm">
                     <div class="flex-shrink-0 h-10 w-10 rounded bg-red-50 flex items-center justify-center">
                         <svg class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
                     </div>
                     <div class="ml-4">
                         <p class="text-sm font-bold text-wimper-blueDark group-hover:text-wimper-cyan transition-colors">Executive Summary</p>
-                        <p class="text-xs text-wimper-slate">PDF Document (.pdf)</p>
+                        <p class="text-[11px] text-wimper-slate">PDF Document (.pdf)</p>
                     </div>
                 </a>
             </div>
@@ -161,10 +161,10 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
         
         <!-- Execution Button -->
         <div class="bg-wimper-blueDark p-8 rounded-3xl card-shadow border border-wimper-blue text-center">
-            <h3 class="text-white font-extrabold text-lg mb-2">Ready to Execute?</h3>
-            <p class="text-sky-100 text-sm mb-6">Authorize the integration to begin capturing your FICA tax leakage.</p>
-            <a href="#" class="block w-full py-4 text-center rounded-xl bg-wimper-cyan text-white font-bold hover:bg-wimper-blue transition-colors shadow-lg">
-                Approve Integration
+            <h3 class="text-white font-extrabold text-lg mb-2">Want to skip the reading?</h3>
+            <p class="text-sky-100 text-sm mb-6">If you want a private walkthrough with Robert, we can have this active within 30 days.</p>
+            <a href="#" class="block w-full py-4 text-center rounded-xl bg-wimper-cyan text-white font-extrabold hover:bg-wimper-blue transition-colors shadow-lg">
+                Schedule a Private Call
             </a>
         </div>
         
