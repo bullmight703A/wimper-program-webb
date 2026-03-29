@@ -18,34 +18,8 @@ if (!defined('ABSPATH')) {
  */
 @ini_set('memory_limit', '256M');
 
-/**
- * Cleanup UI: Temporary debug to catch the fatal error.
- */
-@ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-set_exception_handler(function($e) {
-    echo "<div style='background:#f8d7da; color:#721c24; padding:20px; border:2px solid #f5c6cb; margin:20px; font-family:monospace; font-size:16px;'>";
-    echo "<h2>🚨 FATAL EXCEPTION CAUGHT:</h2>";
-    echo "<strong>Message:</strong> " . $e->getMessage() . "<br><br>";
-    echo "<strong>File:</strong> " . $e->getFile() . " (Line " . $e->getLine() . ")<br><br>";
-    echo "<strong>Stack Trace:</strong><br><pre>" . $e->getTraceAsString() . "</pre>";
-    echo "</div>";
-    exit;
-});
-
-register_shutdown_function(function() {
-    $err = error_get_last();
-    if ($err && in_array($err['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR])) {
-        // Clear output buffer that WP might have started
-        while (ob_get_level()) { ob_end_clean(); }
-        echo "<div style='background:#f8d7da; color:#721c24; padding:20px; border:2px solid #f5c6cb; margin:20px; font-family:monospace; font-size:16px;'>";
-        echo "<h2>🚨 FATAL ERROR CAUGHT:</h2>";
-        echo "<pre>"; var_dump($err); echo "</pre>";
-        echo "</div>";
-        exit;
-    }
-});
+// Suppress E_DEPRECATED warnings specifically to fix WP Pusher output bugs
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED & ~E_NOTICE);
 
 /**
  * Define theme constants
