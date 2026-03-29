@@ -89,7 +89,7 @@ WIMP<span class="text-wimper-cyan">ER</span>
                 <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Robert Hill" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-wimper-blueDark/80 to-transparent p-6 pt-12">
                     <h3 class="text-white font-bold text-xl">Robert Hill</h3>
-                    <p class="text-sky-200 text-sm font-medium">Founder, The WIMPER Program</p>
+                    <p class="text-sky-200 text-sm font-medium">Organizer, The WIMPER Program</p>
                 </div>
             </div>
             
@@ -98,7 +98,7 @@ WIMP<span class="text-wimper-cyan">ER</span>
                 <ul class="space-y-5">
                     <li class="flex items-start">
                         <svg class="w-6 h-6 text-wimper-cyan mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span class="text-sm font-medium text-wimper-slate leading-relaxed">Business owners currently managing W-2 employees.</span>
+                        <span class="text-sm font-medium text-wimper-slate leading-relaxed">Business owners currently managing 10+ W-2 employees.</span>
                     </li>
                     <li class="flex items-start">
                         <svg class="w-6 h-6 text-wimper-cyan mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -116,7 +116,7 @@ WIMP<span class="text-wimper-cyan">ER</span>
         <div class="lg:col-span-7 mt-12 lg:mt-0 relative">
             <div class="bg-white p-8 md:p-10 rounded-3xl card-shadow border-2 border-slate-50 relative z-10 w-full flex flex-col">
                 <h3 class="text-2xl font-bold text-wimper-blueDark mb-2 text-center">Reserve Your Seat</h3>
-                <p class="text-sm text-wimper-slate text-center mb-6">Limited to 100 attendees per session.</p>
+                <p class="text-sm text-wimper-slate text-center mb-6">Limited to 7 attendees per session.</p>
                 
                 <!-- GHL Form Embed -->
                 <div class="flex-grow w-full rounded-xl flex items-center justify-center p-2 bg-slate-50/50">
