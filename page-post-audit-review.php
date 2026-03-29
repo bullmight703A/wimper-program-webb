@@ -88,12 +88,18 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
                 <h2 class="text-xl font-extrabold text-wimper-blueDark">1. How The Mechanism Actually Works</h2>
                 <p class="text-sm text-wimper-slate mt-1">"You know why you're here. Now let me show you how." — Watch Robert break down the exact tax laws shielding your capital.</p>
             </div>
-            <div class="aspect-video bg-slate-800 flex items-center justify-center relative hover:bg-slate-700 transition cursor-pointer border-b-4 border-wimper-cyan flex-grow min-h-[250px]">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-wimper-cyan/90 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg shadow-wimper-cyan/30">
-                        <svg class="h-6 w-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+            
+            <div class="relative w-full aspect-video bg-slate-800 border-b-4 border-wimper-cyan flex-grow overflow-hidden group">
+                <!-- Overlay Thumbnail -->
+                <div onclick="this.style.display='none';" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95">
+                    <h2 class="text-4xl font-black tracking-tight text-white mb-2 shadow-sm">WIMP<span class="text-wimper-cyan">ER</span></h2>
+                    <h3 class="text-white font-bold text-lg text-center px-4">The WIMPER Program Overview</h3>
+                    <div class="mt-6 w-16 h-16 bg-wimper-cyan/90 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                        <svg class="h-8 w-8 text-white ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                     </div>
                 </div>
+                <!-- Actual Video Iframe -->
+                <iframe src="" class="absolute inset-0 w-full h-full z-0 border-0" allow="autoplay; fullscreen" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -101,13 +107,16 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
     <!-- Right Column: Extensible Documents -->
     <div class="lg:col-span-1 h-full">
         <div class="bg-white rounded-3xl p-8 card-shadow border border-slate-100 flex flex-col h-full">
-            <h2 class="text-xl font-extrabold text-wimper-blueDark mb-6 flex-shrink-0">Your Audit Documents</h2>
+            <h2 class="text-xl font-extrabold text-wimper-blueDark mb-2 flex-shrink-0">Documents for Understanding</h2>
+            <div class="bg-slate-50 border-l-4 border-wimper-cyan py-2 px-3 mb-5 flex-shrink-0 rounded-r shadow-sm">
+                <p class="text-[11px] font-extrabold text-wimper-blueDark uppercase tracking-wider">The Wimper Program & IRC Tax Code</p>
+            </div>
             
             <div class="space-y-4 flex-grow flex flex-col justify-center">
                 <!-- Dropdown Doc 1 -->
                 <div class="group relative rounded-xl border border-slate-200 bg-white hover:border-wimper-cyan transition-all shadow-sm overflow-hidden">
                     <div class="flex items-center p-3 cursor-pointer bg-slate-50 relative z-10 hover:bg-white transition-colors">
-                        <div class="flex-shrink-0 h-10 w-10 rounded bg-red-50 flex items-center justify-center text-red-500 font-bold">PDF</div>
+                        <div class="flex-shrink-0 h-10 w-10 rounded bg-red-50 flex items-center justify-center text-red-500 font-bold text-xs border border-red-100">DOC</div>
                         <div class="ml-4">
                             <p class="text-sm font-bold text-wimper-blueDark group-hover:text-wimper-cyan transition-colors">EBITDA Projections</p>
                             <p class="text-[11px] text-wimper-slate">Hover for access options &darr;</p>
@@ -115,7 +124,8 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
                     </div>
                     <div class="max-h-0 opacity-0 transition-all duration-300 ease-out bg-white border-t border-transparent group-hover:border-slate-100">
                         <div class="flex divide-x divide-slate-100">
-                            <a href="#" class="flex-[1.2] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">📄 Download PDF</a>
+                            <!-- Using standard _blank until trigger link established -->
+                            <a href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/EBITDA-Projections.html" target="_blank" class="flex-[1.2] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">📄 View Document</a>
                             <a href="#" class="flex-[0.8] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">▶️ Review Video</a>
                         </div>
                     </div>
@@ -124,7 +134,7 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
                 <!-- Dropdown Doc 2 -->
                 <div class="group relative rounded-xl border border-slate-200 bg-white hover:border-wimper-cyan transition-all shadow-sm overflow-hidden">
                     <div class="flex items-center p-3 cursor-pointer bg-slate-50 relative z-10 hover:bg-white transition-colors">
-                        <div class="flex-shrink-0 h-10 w-10 rounded bg-red-50 flex items-center justify-center text-red-500 font-bold">PDF</div>
+                        <div class="flex-shrink-0 h-10 w-10 rounded bg-red-50 flex items-center justify-center text-red-500 font-bold text-xs border border-red-100">DOC</div>
                         <div class="ml-4">
                             <p class="text-sm font-bold text-wimper-blueDark group-hover:text-wimper-cyan transition-colors">Compliance Framework</p>
                             <p class="text-[11px] text-wimper-slate">Hover for access options &darr;</p>
@@ -132,7 +142,7 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
                     </div>
                     <div class="max-h-0 opacity-0 transition-all duration-300 ease-out bg-white border-t border-transparent group-hover:border-slate-100">
                         <div class="flex divide-x divide-slate-100">
-                            <a href="#" class="flex-[1.2] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">📄 Download PDF</a>
+                            <a href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/Compliance-Framework.html" target="_blank" class="flex-[1.2] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">📄 View Document</a>
                             <a href="#" class="flex-[0.8] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">▶️ Review Video</a>
                         </div>
                     </div>
@@ -141,7 +151,7 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
                 <!-- Dropdown Doc 3 -->
                 <div class="group relative rounded-xl border border-slate-200 bg-white hover:border-wimper-cyan transition-all shadow-sm overflow-hidden">
                     <div class="flex items-center p-3 cursor-pointer bg-slate-50 relative z-10 hover:bg-white transition-colors">
-                        <div class="flex-shrink-0 h-10 w-10 rounded bg-red-50 flex items-center justify-center text-red-500 font-bold">PDF</div>
+                        <div class="flex-shrink-0 h-10 w-10 rounded bg-red-50 flex items-center justify-center text-red-500 font-bold text-xs border border-red-100">PDF</div>
                         <div class="ml-4">
                             <p class="text-sm font-bold text-wimper-blueDark group-hover:text-wimper-cyan transition-colors">Executive Summary</p>
                             <p class="text-[11px] text-wimper-slate">Hover for access options &darr;</p>
@@ -149,13 +159,22 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
                     </div>
                     <div class="max-h-0 opacity-0 transition-all duration-300 ease-out bg-white border-t border-transparent group-hover:border-slate-100">
                         <div class="flex divide-x divide-slate-100">
-                            <a href="#" class="flex-[1.2] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">📄 Download PDF</a>
+                            <a href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/Executive_Summary.pdf" target="_blank" class="flex-[1.2] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">📄 Download PDF</a>
                             <a href="#" class="flex-[0.8] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">▶️ Review Video</a>
                         </div>
                     </div>
                 </div>
             </div>
             
+            <!-- SHREMPA Info at bottom -->
+            <div class="mt-5 pt-4 border-t border-slate-100 flex-shrink-0">
+                <h4 class="text-xs font-black text-slate-800 mb-1 leading-tight tracking-tight uppercase">Self-Insured Medical Reimbursement Plan (SIMRP/SHREMPA)</h4>
+                <a href="https://www.law.cornell.edu/uscode/text/26/105" target="_blank" class="inline-flex items-center text-[11px] font-bold text-wimper-cyan hover:text-wimper-blue transition-colors mt-1 bg-slate-50 px-2 py-1 rounded">
+                    <svg class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    View IRS § 105 Source Code
+                </a>
+            </div>
+
         </div>
     </div>
 </div>
@@ -166,16 +185,34 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
     <!-- Revive Health -->
     <div class="bg-white rounded-2xl p-5 card-shadow border border-slate-100 flex flex-col h-full">
         <h3 class="font-bold text-sm text-wimper-blueDark mb-3 flex-shrink-0">2. The Revive Health Component</h3>
-        <div class="aspect-video border border-slate-200 rounded-xl overflow-hidden flex-grow shadow-sm">
-            <iframe src="https://drive.google.com/file/d/1xkOrNe-3huxBkU-u-kebkiOCtp_JSkm-/preview" width="100%" height="100%" allow="autoplay; fullscreen" allowfullscreen class="w-full h-full"></iframe>
+        <div class="relative aspect-video border border-slate-200 rounded-xl overflow-hidden flex-grow shadow-sm group">
+            <!-- Overlay Thumbnail -->
+            <div onclick="this.style.display='none';" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95">
+                <h2 class="text-xl font-black tracking-tight text-white mb-1 shadow-sm">WIMP<span class="text-wimper-cyan">ER</span></h2>
+                <h3 class="text-white font-bold text-[13px] text-center px-4">Revive Health Component</h3>
+                <div class="mt-3 w-10 h-10 bg-wimper-cyan/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <svg class="h-5 w-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                </div>
+            </div>
+            <!-- Iframe -->
+            <iframe src="https://drive.google.com/file/d/1xkOrNe-3huxBkU-u-kebkiOCtp_JSkm-/preview" class="absolute inset-0 w-full h-full border-0 z-0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
     </div>
     
     <!-- Manhattan Life -->
     <div class="bg-white rounded-2xl p-5 card-shadow border border-slate-100 flex flex-col h-full">
         <h3 class="font-bold text-sm text-wimper-blueDark mb-3 flex-shrink-0">3. Manhattan Life Structure</h3>
-        <div class="aspect-video border border-slate-200 rounded-xl overflow-hidden flex-grow shadow-sm">
-            <iframe src="https://drive.google.com/file/d/1lVgYp75lzkx89D1DFFR86kfZj0KYm6SS/preview" width="100%" height="100%" allow="autoplay; fullscreen" allowfullscreen class="w-full h-full"></iframe>
+        <div class="relative aspect-video border border-slate-200 rounded-xl overflow-hidden flex-grow shadow-sm group">
+            <!-- Overlay Thumbnail -->
+            <div onclick="this.style.display='none';" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95">
+                <h2 class="text-xl font-black tracking-tight text-white mb-1 shadow-sm">WIMP<span class="text-wimper-cyan">ER</span></h2>
+                <h3 class="text-white font-bold text-[13px] text-center px-4">Manhattan Life Structure</h3>
+                <div class="mt-3 w-10 h-10 bg-wimper-cyan/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <svg class="h-5 w-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                </div>
+            </div>
+            <!-- Iframe -->
+            <iframe src="https://drive.google.com/file/d/1lVgYp75lzkx89D1DFFR86kfZj0KYm6SS/preview" class="absolute inset-0 w-full h-full border-0 z-0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
     </div>
     
