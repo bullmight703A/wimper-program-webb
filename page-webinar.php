@@ -13,7 +13,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
-tailwnd.config = {
+tailwind.config = {
     theme: {
         extend: {
             fontFamily: { sans: ['Outfit', 'sans-serif'] },
@@ -94,14 +94,26 @@ WIMP<span class="text-wimper-cyan">ER</span>
             <p class="text-sm text-wimper-slate text-center mb-8">Limited to 100 attendees per session.</p>
             
             <!-- Replace with actual GHL form embed snippet -->
-            <div class="flex-grow w-full border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center bg-slate-50 p-6">
-                <div class="text-center">
-                    <svg class="mx-auto h-12 w-12 text-slate-300 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    <p class="text-sm font-medium text-slate-500">GoHighLevel Webinar Form Embed Area</p>
-                    <p class="text-xs text-slate-400 mt-1">Paste your iframe snippet here in WP.</p>
-                </div>
+            <div class="flex-grow w-full rounded-xl flex items-center justify-center p-2">
+                <iframe
+                    src="https://api.leadconnectorhq.com/widget/form/f7ZJkxPhHo9RsgaBkn7b"
+                    style="width:100%;height:100%;min-height:550px;border:none;border-radius:12px"
+                    id="inline-f7ZJkxPhHo9RsgaBkn7b" 
+                    data-layout="{'id':'INLINE'}"
+                    data-trigger-type="alwaysShow"
+                    data-trigger-value=""
+                    data-activation-type="alwaysActivated"
+                    data-activation-value=""
+                    data-deactivation-type="neverDeactivate"
+                    data-deactivation-value=""
+                    data-form-name="Robert X Wojo Media"
+                    data-height="519"
+                    data-layout-iframe-id="inline-f7ZJkxPhHo9RsgaBkn7b"
+                    data-form-id="f7ZJkxPhHo9RsgaBkn7b"
+                    title="Robert X Wojo Media"
+                >
+                </iframe>
+                <script src="https://link.msgsndr.com/js/form_embed.js"></script>
             </div>
         </div>
         
