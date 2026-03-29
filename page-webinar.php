@@ -85,7 +85,7 @@ WIMP<span class="text-wimper-cyan">ER</span>
         <div class="lg:col-span-5 flex flex-col h-full">
             <!-- Image Frame -->
             <div class="rounded-3xl overflow-hidden shadow-xl mb-8 border-4 border-white bg-slate-200 relative aspect-[4/3] group flex-shrink-0">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/robert-hill.jpg?v=<?php echo time(); ?>" alt="Robert Hill" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+                <img src="/wp-content/themes/wimper-program-webb/assets/img/robert-hill.jpg?v=<?php echo time(); ?>" alt="Robert Hill" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-wimper-blueDark/90 to-transparent p-6 pt-12">
                     <h3 class="text-white font-bold text-xl">Robert Hill</h3>
                     <p class="text-sky-200 text-sm font-medium">Organizer, The WIMPER Program</p>

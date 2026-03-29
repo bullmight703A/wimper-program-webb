@@ -99,7 +99,7 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
                     </div>
                 </div>
                 <!-- Actual Video Native HTML5 Element -->
-                <video id="mainVideoPlayer" src="https://assets.cdn.filesafe.space/0EYrXwSAbw55Hpgu54CD/media/69c94199cd5159f2a1478788.mp4" playsinline controls preload="auto" class="absolute inset-0 w-full h-full object-cover z-0 bg-black"></video>
+                <video id="mainVideoPlayer" src="https://assets.cdn.filesafe.space/0EYrXwSAbw55Hpgu54CD/media/69c94199cd5159f2a1478788.mp4" playsinline controls preload="auto" class="absolute inset-0 w-full h-full object-contain z-0 bg-black"></video>
             </div>
         </div>
     </div>
