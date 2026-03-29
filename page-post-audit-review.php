@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Post Audit Review
- * Description: Standalone WIMPER Post Audit Review with Hover PDFs and Bottom CTA Row.
+ * Description: Standalone WIMPER Post Audit Review with Native Video integration and Auto-play Logic.
  */
 ?>
 <!DOCTYPE html>
@@ -91,15 +91,16 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
             
             <div class="relative w-full aspect-video bg-slate-800 border-b-4 border-wimper-cyan flex-grow overflow-hidden group">
                 <!-- Overlay Thumbnail -->
-                <div onclick="playVideo(this)" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95 text-center">
+                <div id="mainVideoOverlay" onclick="playNativeVideo(this)" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95 text-center">
                     <h2 class="text-4xl font-black tracking-tight text-white mb-2 shadow-sm">WIMP<span class="text-wimper-cyan">ER</span></h2>
                     <h3 class="text-white font-bold text-lg px-4">The WIMPER Program Overview</h3>
                     <div class="mt-6 w-16 h-16 bg-wimper-cyan/90 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
                         <svg class="h-8 w-8 text-white ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                     </div>
                 </div>
-                <!-- Actual Video Iframe -->
-                <iframe data-src="" src="" class="absolute inset-0 w-full h-full z-0 border-0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                <!-- Actual Video Native HTML5 Element -->
+                <!-- The User will provide the src URL. Currently waiting, but auto-play triggers are bound! -->
+                <video id="mainVideoPlayer" src="" playsinline controls preload="metadata" class="absolute inset-0 w-full h-full object-cover z-0 bg-black"></video>
             </div>
         </div>
     </div>
@@ -108,9 +109,9 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
     <div class="lg:col-span-1 h-full">
         <div class="bg-white rounded-3xl p-8 card-shadow border border-slate-100 flex flex-col h-full">
             <h2 class="text-xl font-extrabold text-wimper-blueDark mb-2 flex-shrink-0">Documents for Understanding</h2>
-            <div class="bg-slate-50 border-l-4 border-wimper-cyan py-2 px-3 mb-5 flex-shrink-0 rounded-r shadow-sm">
-                <!-- Clickable Link opening the generated Document inside the Modal -->
-                <a href="javascript:void(0)" onclick="openModal('<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/Compliance-Framework.html', 'The WIMPER Program & IRC Tax Code')" class="text-[11px] font-extrabold text-wimper-blueDark uppercase tracking-wider hover:text-wimper-cyan transition-colors">The Wimper Program & IRC Tax Code</a>
+            <div class="bg-slate-50 border-l-4 border-wimper-cyan py-3 px-4 mb-5 flex-shrink-0 rounded-r shadow-sm">
+                <!-- Clickable Link opening the generated Document inside the Modal (Font size increased per request) -->
+                <a href="javascript:void(0)" onclick="openModal('<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/Compliance-Framework.html', 'The WIMPER Program & IRC Tax Code')" class="text-sm font-extrabold text-wimper-blueDark uppercase tracking-wider hover:text-wimper-cyan transition-colors">The Wimper Program &amp; IRC Tax Code</a>
             </div>
             
             <div class="space-y-4 flex-grow flex flex-col justify-center">
@@ -169,10 +170,10 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
             
             <!-- SHREMPA Info at bottom -->
             <div class="mt-5 pt-4 border-t border-slate-100 flex-shrink-0">
-                <h4 class="text-xs font-black text-slate-800 mb-1 leading-tight tracking-tight uppercase">Self-Insured Medical Reimbursement Plan (SIMRP)</h4>
+                <h4 class="text-sm font-black text-slate-800 mb-2 leading-tight tracking-tight uppercase">Self-Insured Medical Reimbursement Plan (SIMRP)</h4>
                 <!-- Clickable Modal link to Cornell Law, or US House -->
-                <a href="javascript:void(0)" onclick="openModal('https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section105&num=0&edition=prelim', 'IRC § 105 Overview')" class="inline-flex items-center text-[11px] font-bold text-wimper-cyan hover:text-wimper-blue transition-colors mt-1 bg-slate-50 px-2 py-1 rounded">
-                    <svg class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                <a href="javascript:void(0)" onclick="openModal('https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section105&num=0&edition=prelim', 'IRC § 105 Overview')" class="inline-flex items-center text-xs font-bold text-wimper-cyan hover:text-wimper-blue transition-colors mt-1 bg-slate-50 px-3 py-1.5 border border-slate-100 shadow-sm rounded">
+                    <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     Review US Code Structure
                 </a>
             </div>
@@ -187,34 +188,34 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
     <!-- Revive Health -->
     <div class="bg-white rounded-2xl p-5 card-shadow border border-slate-100 flex flex-col h-full">
         <h3 class="font-bold text-sm text-wimper-blueDark mb-3 flex-shrink-0">2. The Revive Health Component</h3>
-        <div class="relative aspect-video border border-slate-200 rounded-xl overflow-hidden flex-grow shadow-sm group">
+        <div class="relative aspect-video border border-slate-200 rounded-xl overflow-hidden flex-grow shadow-sm group bg-black">
             <!-- Overlay Thumbnail -->
-            <div onclick="playVideo(this)" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95">
+            <div onclick="playNativeVideo(this)" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95 text-center">
                 <h2 class="text-xl font-black tracking-tight text-white mb-1 shadow-sm">WIMP<span class="text-wimper-cyan">ER</span></h2>
-                <h3 class="text-white font-bold text-[13px] text-center px-4">Revive Health Component</h3>
+                <h3 class="text-white font-bold text-[13px] px-4">Revive Health Component</h3>
                 <div class="mt-3 w-10 h-10 bg-wimper-cyan/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                     <svg class="h-5 w-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                 </div>
             </div>
-            <!-- Iframe (src handled by data-src) -->
-            <iframe data-src="https://drive.google.com/file/d/1xkOrNe-3huxBkU-u-kebkiOCtp_JSkm-/preview" src="" class="absolute inset-0 w-full h-full border-0 z-0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <!-- Native HTML5 Video Element utilizing user-provided direct CDN mp4 link -->
+            <video src="https://assets.cdn.filesafe.space/0EYrXwSAbw55Hpgu54CD/media/699484cdd614c95a5bf12280.mp4" playsinline controls preload="metadata" class="absolute inset-0 w-full h-full object-contain z-0"></video>
         </div>
     </div>
     
     <!-- Manhattan Life -->
     <div class="bg-white rounded-2xl p-5 card-shadow border border-slate-100 flex flex-col h-full">
         <h3 class="font-bold text-sm text-wimper-blueDark mb-3 flex-shrink-0">3. Manhattan Life Structure</h3>
-        <div class="relative aspect-video border border-slate-200 rounded-xl overflow-hidden flex-grow shadow-sm group">
+        <div class="relative aspect-video border border-slate-200 rounded-xl overflow-hidden flex-grow shadow-sm group bg-black">
             <!-- Overlay Thumbnail -->
-            <div onclick="playVideo(this)" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95">
+            <div onclick="playNativeVideo(this)" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95 text-center">
                 <h2 class="text-xl font-black tracking-tight text-white mb-1 shadow-sm">WIMP<span class="text-wimper-cyan">ER</span></h2>
-                <h3 class="text-white font-bold text-[13px] text-center px-4">Manhattan Life Structure</h3>
+                <h3 class="text-white font-bold text-[13px] px-4">Manhattan Life Structure</h3>
                 <div class="mt-3 w-10 h-10 bg-wimper-cyan/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                     <svg class="h-5 w-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                 </div>
             </div>
-            <!-- Iframe (src handled by data-src) -->
-            <iframe data-src="https://drive.google.com/file/d/1lVgYp75lzkx89D1DFFR86kfZj0KYm6SS/preview" src="" class="absolute inset-0 w-full h-full border-0 z-0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <!-- Native HTML5 Video Element utilizing user-provided direct CDN mp4 link -->
+            <video src="https://assets.cdn.filesafe.space/0EYrXwSAbw55Hpgu54CD/media/699484c96bac24f0990245e9.mp4" playsinline controls preload="metadata" class="absolute inset-0 w-full h-full object-contain z-0"></video>
         </div>
     </div>
     
@@ -277,17 +278,38 @@ function closeModal() {
         document.getElementById('wimperModalIframe').src = '';
     }, 300);
 }
-// Video Play Handler to fix double-clicks
-function playVideo(overlayDiv) {
-    overlayDiv.style.display = 'none';
-    let iframe = overlayDiv.nextElementSibling;
-    let trueSrc = iframe.getAttribute('data-src');
-    if (trueSrc && !iframe.getAttribute('src')) {
-        // Appending autoplay parameter (Note: Google Drive may still require interaction depending on browser security, but this sets it up correctly)
-        let playSrc = trueSrc + (trueSrc.indexOf('?') > -1 ? '&' : '?') + 'autoplay=1';
-        iframe.setAttribute('src', playSrc);
+
+// Native Video Play Handler to fix latency and double-clicks perfectly
+function playNativeVideo(overlayDiv) {
+    overlayDiv.style.opacity = '0';
+    setTimeout(() => { overlayDiv.style.display = 'none'; }, 300);
+    
+    let video = overlayDiv.nextElementSibling;
+    if (video && video.tagName === 'VIDEO') {
+        video.muted = false; // ensure it's loud when clicked
+        video.play().catch(function(error) {
+            console.log("Play failed on click: ", error);
+        });
     }
 }
+
+// Auto-play the main video on page load!
+document.addEventListener('DOMContentLoaded', () => {
+    let mainVid = document.getElementById('mainVideoPlayer');
+    let overlay = document.getElementById('mainVideoOverlay');
+    
+    if(mainVid && mainVid.getAttribute('src')) {
+        // Browsers require auto-playing videos to be muted without direct user interaction
+        mainVid.muted = true; 
+        mainVid.play().then(() => {
+            // Auto-play succeeded! Hide the click-overlay.
+            overlay.style.display = 'none';
+        }).catch((err) => {
+            // Auto-play prevented by browser policy. Provide fallback via visible play button overlay.
+            console.log("Strict Autoplay policy prevented playback. Displaying manual overlay.");
+        });
+    }
+});
 </script>
 
 <?php wp_footer(); ?>
