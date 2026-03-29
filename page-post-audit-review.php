@@ -91,15 +91,15 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
             
             <div class="relative w-full aspect-video bg-slate-800 border-b-4 border-wimper-cyan flex-grow overflow-hidden group">
                 <!-- Overlay Thumbnail -->
-                <div onclick="this.style.display='none';" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95">
+                <div onclick="playVideo(this)" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95 text-center">
                     <h2 class="text-4xl font-black tracking-tight text-white mb-2 shadow-sm">WIMP<span class="text-wimper-cyan">ER</span></h2>
-                    <h3 class="text-white font-bold text-lg text-center px-4">The WIMPER Program Overview</h3>
+                    <h3 class="text-white font-bold text-lg px-4">The WIMPER Program Overview</h3>
                     <div class="mt-6 w-16 h-16 bg-wimper-cyan/90 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
                         <svg class="h-8 w-8 text-white ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                     </div>
                 </div>
                 <!-- Actual Video Iframe -->
-                <iframe src="" class="absolute inset-0 w-full h-full z-0 border-0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                <iframe data-src="" src="" class="absolute inset-0 w-full h-full z-0 border-0" allow="autoplay; fullscreen" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -109,7 +109,8 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
         <div class="bg-white rounded-3xl p-8 card-shadow border border-slate-100 flex flex-col h-full">
             <h2 class="text-xl font-extrabold text-wimper-blueDark mb-2 flex-shrink-0">Documents for Understanding</h2>
             <div class="bg-slate-50 border-l-4 border-wimper-cyan py-2 px-3 mb-5 flex-shrink-0 rounded-r shadow-sm">
-                <p class="text-[11px] font-extrabold text-wimper-blueDark uppercase tracking-wider">The Wimper Program & IRC Tax Code</p>
+                <!-- Clickable Link opening the generated Document inside the Modal -->
+                <a href="javascript:void(0)" onclick="openModal('<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/Compliance-Framework.html', 'The WIMPER Program & IRC Tax Code')" class="text-[11px] font-extrabold text-wimper-blueDark uppercase tracking-wider hover:text-wimper-cyan transition-colors">The Wimper Program & IRC Tax Code</a>
             </div>
             
             <div class="space-y-4 flex-grow flex flex-col justify-center">
@@ -168,10 +169,11 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
             
             <!-- SHREMPA Info at bottom -->
             <div class="mt-5 pt-4 border-t border-slate-100 flex-shrink-0">
-                <h4 class="text-xs font-black text-slate-800 mb-1 leading-tight tracking-tight uppercase">Self-Insured Medical Reimbursement Plan (SIMRP/SHREMPA)</h4>
-                <a href="https://www.law.cornell.edu/uscode/text/26/105" target="_blank" class="inline-flex items-center text-[11px] font-bold text-wimper-cyan hover:text-wimper-blue transition-colors mt-1 bg-slate-50 px-2 py-1 rounded">
+                <h4 class="text-xs font-black text-slate-800 mb-1 leading-tight tracking-tight uppercase">Self-Insured Medical Reimbursement Plan (SIMRP)</h4>
+                <!-- Clickable Modal link to Cornell Law, or US House -->
+                <a href="javascript:void(0)" onclick="openModal('https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section105&num=0&edition=prelim', 'IRC § 105 Overview')" class="inline-flex items-center text-[11px] font-bold text-wimper-cyan hover:text-wimper-blue transition-colors mt-1 bg-slate-50 px-2 py-1 rounded">
                     <svg class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    View IRS § 105 Source Code
+                    Review US Code Structure
                 </a>
             </div>
 
@@ -187,15 +189,15 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
         <h3 class="font-bold text-sm text-wimper-blueDark mb-3 flex-shrink-0">2. The Revive Health Component</h3>
         <div class="relative aspect-video border border-slate-200 rounded-xl overflow-hidden flex-grow shadow-sm group">
             <!-- Overlay Thumbnail -->
-            <div onclick="this.style.display='none';" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95">
+            <div onclick="playVideo(this)" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95">
                 <h2 class="text-xl font-black tracking-tight text-white mb-1 shadow-sm">WIMP<span class="text-wimper-cyan">ER</span></h2>
                 <h3 class="text-white font-bold text-[13px] text-center px-4">Revive Health Component</h3>
                 <div class="mt-3 w-10 h-10 bg-wimper-cyan/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                     <svg class="h-5 w-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                 </div>
             </div>
-            <!-- Iframe -->
-            <iframe src="https://drive.google.com/file/d/1xkOrNe-3huxBkU-u-kebkiOCtp_JSkm-/preview" class="absolute inset-0 w-full h-full border-0 z-0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <!-- Iframe (src handled by data-src) -->
+            <iframe data-src="https://drive.google.com/file/d/1xkOrNe-3huxBkU-u-kebkiOCtp_JSkm-/preview" src="" class="absolute inset-0 w-full h-full border-0 z-0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
     </div>
     
@@ -204,23 +206,25 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
         <h3 class="font-bold text-sm text-wimper-blueDark mb-3 flex-shrink-0">3. Manhattan Life Structure</h3>
         <div class="relative aspect-video border border-slate-200 rounded-xl overflow-hidden flex-grow shadow-sm group">
             <!-- Overlay Thumbnail -->
-            <div onclick="this.style.display='none';" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95">
+            <div onclick="playVideo(this)" class="absolute inset-0 z-10 bg-wimper-blueDark flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300 hover:bg-opacity-95">
                 <h2 class="text-xl font-black tracking-tight text-white mb-1 shadow-sm">WIMP<span class="text-wimper-cyan">ER</span></h2>
                 <h3 class="text-white font-bold text-[13px] text-center px-4">Manhattan Life Structure</h3>
                 <div class="mt-3 w-10 h-10 bg-wimper-cyan/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                     <svg class="h-5 w-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                 </div>
             </div>
-            <!-- Iframe -->
-            <iframe src="https://drive.google.com/file/d/1lVgYp75lzkx89D1DFFR86kfZj0KYm6SS/preview" class="absolute inset-0 w-full h-full border-0 z-0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <!-- Iframe (src handled by data-src) -->
+            <iframe data-src="https://drive.google.com/file/d/1lVgYp75lzkx89D1DFFR86kfZj0KYm6SS/preview" src="" class="absolute inset-0 w-full h-full border-0 z-0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
     </div>
     
-    <!-- Removed from Right Col -> Pushed to Bottom Row -->
-    <div class="bg-wimper-blueDark p-6 flex flex-col justify-center rounded-2xl card-shadow border border-wimper-blue text-center h-full">
-        <h3 class="text-white font-extrabold text-xl mb-1">Skip the reading?</h3>
-        <p class="text-sky-100 text-xs mb-5 leading-relaxed px-2">Private walkthroughs can have this legally active in 30 days.</p>
-        <a href="#" class="block w-full py-3.5 text-center mt-auto rounded-xl bg-wimper-cyan text-white text-sm font-extrabold hover:bg-wimper-blue transition-colors shadow-lg">
+    <!-- CTA to Open Modal -->
+    <div class="bg-wimper-blueDark p-6 flex flex-col justify-center rounded-2xl card-shadow border border-wimper-blue text-center h-full relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')] opacity-20"></div>
+        <h3 class="relative z-10 text-white font-extrabold text-xl mb-1">Skip the reading?</h3>
+        <p class="relative z-10 text-sky-100 text-xs mb-5 leading-relaxed px-2">Private walkthroughs can have this legally active in 30 days.</p>
+        <!-- Clicking opens GHL booking calendar in modal, tailored with primaryColor parameter -->
+        <a href="javascript:void(0)" onclick="openModal('https://api.leadconnectorhq.com/widget/booking/VNIKFQp8UXtGVcCV3s7v?primaryColor=%2306B6D4&backgroundColor=%23ffffff', 'Schedule Private Call')" class="relative z-10 block w-full py-3.5 text-center mt-auto rounded-xl bg-wimper-cyan text-white text-sm font-extrabold hover:bg-wimper-blue transition-colors shadow-lg cursor-pointer">
             Schedule Private Call
         </a>
     </div>
@@ -236,6 +240,55 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
 <p class="text-xs mt-3 text-slate-500 max-w-2xl mx-auto">Not a CPA or tax advisory firm. The WIMPER mechanism leverages Section 125 of the IRC governing cafeteria plans.</p>
 </div>
 </footer>
+
+<!-- Universal Modal System -->
+<div id="wimperAppModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-wimper-blueDark/80 opacity-0 invisible transition-all duration-300 backdrop-blur-sm px-4">
+    <div class="bg-white w-full max-w-4xl h-[85vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden transform scale-95 transition-transform duration-300" id="wimperModalContent">
+        <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+            <h3 class="font-extrabold text-wimper-blueDark" id="wimperModalTitle">Information</h3>
+            <button onclick="closeModal()" class="text-slate-400 hover:text-red-500 transition-colors focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex-grow w-full relative bg-slate-100/50">
+            <div id="modalLoading" class="absolute inset-0 flex items-center justify-center">
+                <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-wimper-cyan"></div>
+            </div>
+            <iframe id="wimperModalIframe" src="" class="absolute inset-0 w-full h-full border-0 relative z-10" onload="document.getElementById('modalLoading').style.display='none'"></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+function openModal(url, title) {
+    document.getElementById('wimperModalTitle').innerText = title;
+    document.getElementById('modalLoading').style.display = 'flex';
+    document.getElementById('wimperModalIframe').src = url;
+    const modal = document.getElementById('wimperAppModal');
+    modal.classList.remove('invisible', 'opacity-0');
+    document.getElementById('wimperModalContent').classList.remove('scale-95');
+}
+function closeModal() {
+    const modal = document.getElementById('wimperAppModal');
+    modal.classList.add('opacity-0');
+    document.getElementById('wimperModalContent').classList.add('scale-95');
+    setTimeout(() => {
+        modal.classList.add('invisible');
+        document.getElementById('wimperModalIframe').src = '';
+    }, 300);
+}
+// Video Play Handler to fix double-clicks
+function playVideo(overlayDiv) {
+    overlayDiv.style.display = 'none';
+    let iframe = overlayDiv.nextElementSibling;
+    let trueSrc = iframe.getAttribute('data-src');
+    if (trueSrc && !iframe.getAttribute('src')) {
+        // Appending autoplay parameter (Note: Google Drive may still require interaction depending on browser security, but this sets it up correctly)
+        let playSrc = trueSrc + (trueSrc.indexOf('?') > -1 ? '&' : '?') + 'autoplay=1';
+        iframe.setAttribute('src', playSrc);
+    }
+}
+</script>
 
 <?php wp_footer(); ?>
 </body>
