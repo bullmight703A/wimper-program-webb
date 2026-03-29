@@ -58,33 +58,21 @@ WIMP<span class="text-wimper-cyan">ER</span>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-start">
     
-    <!-- Left Column: Content & Video -->
-    <div>
-        <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-50 text-wimper-blue text-xs font-bold uppercase tracking-widest mb-6">
+    <!-- Left Column: Content -->
+    <div class="flex flex-col justify-center h-full pt-8">
+        <div class="inline-flex items-center self-start px-4 py-1.5 rounded-full bg-blue-50 text-wimper-blue text-xs font-bold uppercase tracking-widest mb-6 border border-blue-100 shadow-sm">
             <span class="relative flex h-2 w-2 mr-2">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-wimper-blue opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-wimper-blue"></span>
             </span>
             Live Weekly Training
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-5xl font-extrabold text-wimper-blueDark leading-[1.15] mb-6">
-            The Blueprint to <span class="text-wimper-cyan">Lowering FICA Taxes</span> on Auto-Pilot.
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-wimper-blueDark leading-[1.1] mb-6">
+            The Blueprint to <span class="text-wimper-cyan text-transparent bg-clip-text bg-gradient-to-r from-wimper-cyan to-wimper-blue">Lowering FICA Taxes</span> on Auto-Pilot.
         </h1>
-        <p class="text-lg text-wimper-slate mb-8 max-w-lg leading-relaxed">
+        <p class="text-lg md:text-xl text-wimper-slate mb-8 max-w-lg leading-relaxed font-medium">
             Join our exclusive live webinar to see exactly how Robert Hill helps business owners reclaim thousands in payroll taxes while enhancing employee health coverage.
         </p>
-        
-        <!-- Video Embedded directly beneath text -->
-        <div class="relative rounded-2xl overflow-hidden card-shadow bg-wimper-blueDark border-4 border-white mt-8">
-            <div class="aspect-video bg-slate-800 flex flex-col items-center justify-center relative hover:bg-slate-700 transition cursor-pointer">
-                <svg class="w-16 h-16 text-white opacity-80 mb-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
-                <span class="text-white/60 text-xs font-bold tracking-widest uppercase">Play Briefing File</span>
-                <div class="absolute bottom-3 left-4 right-4 flex justify-between items-center text-white/50 text-[10px] font-bold uppercase">
-                    <span>Host: Robert Hill</span>
-                    <span>The WIMPER Advantage</span>
-                </div>
-            </div>
-        </div>
     </div>
     
     <!-- Right Column: Registration Form -->
