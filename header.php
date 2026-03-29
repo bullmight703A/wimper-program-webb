@@ -8,9 +8,7 @@
 	<!-- Google Fonts: Inter and Playfair Display for WIMPER -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 	<!-- FontAwesome -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -52,11 +50,8 @@
 			<div class="flex justify-between h-24">
 				<div class="flex items-center cursor-pointer"
 					onclick="<?php echo is_front_page() ? "navigateTo('home')" : "window.location.href='" . home_url('/') . "'"; ?>">
-					<div class="flex flex-col border-l-4 border-gold pl-4 transition hover:border-navy">
-						<span
-							class="text-xl font-bold text-slate-900 tracking-tight font-serif leading-none">W.I.M.P.E.R.</span>
-						<span class="text-[9px] uppercase tracking-[0.1em] text-slate-500 font-semibold mt-1">Wellness &
-							Integrated Medical Plan Expense Reimbursement</span>
+					<div class="flex items-center">
+						<span class="text-[28px] font-black tracking-tight text-wimper-blueDark">WIMP<span class="text-wimper-cyan">ER</span></span>
 					</div>
 				</div>
 
