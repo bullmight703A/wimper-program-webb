@@ -125,8 +125,7 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
                     </div>
                     <div class="max-h-0 opacity-0 transition-all duration-300 ease-out bg-white border-t border-transparent group-hover:border-slate-100">
                         <div class="flex divide-x divide-slate-100">
-                            <a href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/EBITDA-Projections.pdf" target="_blank" class="flex-[1.2] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">📄 Download PDF</a>
-                            <a href="javascript:void(0)" onclick="openModal('https://assets.cdn.filesafe.space/0EYrXwSAbw55Hpgu54CD/media/69c95429655c9b3dcb5046ff.mp4', 'EBITDA Projections Flow')" class="flex-[0.8] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition cursor-pointer">▶️ Review Video</a>
+                            <a href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/EBITDA-Projections.pdf" target="_blank" class="w-full py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition block">📄 Download PDF</a>
                         </div>
                     </div>
                 </div>
@@ -142,8 +141,7 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
                     </div>
                     <div class="max-h-0 opacity-0 transition-all duration-300 ease-out bg-white border-t border-transparent group-hover:border-slate-100">
                         <div class="flex divide-x divide-slate-100">
-                            <a href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/Compliance-Framework.pdf" target="_blank" class="flex-[1.2] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">📄 Download PDF</a>
-                            <a href="javascript:void(0)" onclick="openModal('https://assets.cdn.filesafe.space/0EYrXwSAbw55Hpgu54CD/media/69c954213204cc07d56b19fb.mp4', 'Compliance Framework Overview')" class="flex-[0.8] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition cursor-pointer">▶️ Review Video</a>
+                            <a href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/Compliance-Framework.pdf" target="_blank" class="w-full py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition block">📄 Download PDF</a>
                         </div>
                     </div>
                 </div>
@@ -159,8 +157,7 @@ Review your calculated savings, deep-dive into the legal mechanism, and access y
                     </div>
                     <div class="max-h-0 opacity-0 transition-all duration-300 ease-out bg-white border-t border-transparent group-hover:border-slate-100">
                         <div class="flex divide-x divide-slate-100">
-                            <a href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/Executive_Summary.pdf" target="_blank" class="flex-[1.2] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">📄 Download PDF</a>
-                            <a href="#" class="flex-[0.8] py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition">▶️ Review Video</a>
+                            <a href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/docs/Executive_Summary.pdf" target="_blank" class="w-full py-3.5 text-center text-xs font-bold text-wimper-slate hover:text-wimper-cyan hover:bg-blue-50 transition block">📄 Download PDF</a>
                         </div>
                     </div>
                 </div>
