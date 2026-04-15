@@ -28,8 +28,6 @@
     <!-- React & ReactDOM -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <!-- Supabase Client -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!-- Babel -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
@@ -47,12 +45,7 @@
 
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
-        const API_BASE = 'https://michigan-reader-clearing-ethernet.trycloudflare.com';
-        
-        // Surgical Supabase Injection
-        const supabaseUrl = 'https://ccbnwxmybualtwhshcpc.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNjYm53eG15YnVhbHR3aHNoY3BjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyMDkyMDQsImV4cCI6MjA5MTc4NTIwNH0.NJHq3jnJLdoJ38GkLoAsrMx9T0AxWZ_pDZb88Srd3ik';
-        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+        const API_BASE = 'https://iro-bullmight-bridge16.loca.lt';
         
         // Hardcore Dedicated Tunnels (Replace API_BASE with HTTPS Cloudflare tunnel URLs when bound to ports)
         const TUNNELS = {
@@ -137,18 +130,6 @@
           const [telemetryData, setTelemetryData] = useState({ seo: { matrix: [] }, kidazzle: { lessonPlans: [] } });
           const [n8nErrors, setN8nErrors] = useState([]);
           const messagesEndRef = useRef(null);
-
-          // Realtime Supabase Telemetry Listener
-          useEffect(() => {
-              const sub = supabase.channel('agent-telemetry')
-                  .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'agent_telemetry' }, payload => {
-                      console.log('Surgical Supabase Trigger!', payload);
-                      if (payload.new && payload.new.status) {
-                          setN8nErrors(prev => [{ workflowId: 'REALTIME_TELEMETRY', message: payload.new.status }, ...(prev||[])].slice(0, 3));
-                      }
-                  }).subscribe();
-              return () => window.supabase.removeChannel(sub);
-          }, []);
 
           useEffect(() => {
               messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
