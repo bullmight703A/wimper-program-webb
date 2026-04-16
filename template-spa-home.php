@@ -454,25 +454,132 @@ get_header();
 <!-- ================================================================================= -->
 <!-- VIEW 8: BLOG / INSIGHTS                                                           -->
 <!-- ================================================================================= -->
-<div id="blog" class="page-view flex-grow bg-white text-slate-900">
-    <header class="pt-40 pb-20 bg-slate-900 text-white text-center">
-        <h1 class="text-5xl font-black mb-6" style="font-family: 'Plus Jakarta Sans', sans-serif;">The Executive Digest</h1>
-        <p class="text-xl text-slate-400">Tax code updates and EBITDA strategy briefings.</p>
+<div id="blog" class="page-view flex-grow bg-slate-50 text-slate-900 relative">
+    <header class="pt-40 pb-20 bg-brand text-center">
+        <h1 class="text-5xl font-black mb-6 text-white" style="font-family: 'Plus Jakarta Sans', sans-serif;">The Executive Digest</h1>
+        <p class="text-xl text-white font-medium">Tax code updates and EBITDA strategy briefings.</p>
     </header>
-    <div class="max-w-5xl mx-auto px-4 py-24 space-y-12">
-        <article
-            class="flex flex-col md:flex-row bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer">
-            <div class="md:w-1/3 bg-slate-100 h-48 md:h-auto"></div>
-            <div class="p-8 md:w-2/3">
-                <span class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-2 block">Tax Strategy</span>
+    <div class="max-w-5xl mx-auto px-4 py-24 space-y-8">
+        
+        <!-- Blog 1 -->
+        <article onclick="openBlogModal('/blog-section-125-plan-2026.html')" class="flex flex-col md:flex-row bg-white rounded-3xl border border-slate-200 overflow-hidden card-shadow hover:-translate-y-1 transition-all cursor-pointer group">
+            <div class="md:w-1/3 bg-slate-100 h-64 md:h-auto overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Executive CFO" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-8 md:w-2/3 flex flex-col justify-center">
+                <span class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-3 block inline-block bg-blue-50 px-3 py-1 rounded-full w-fit">Tax Strategy</span>
                 <h3 class="text-2xl font-black text-slate-900 mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">Why the CFO is the New Chief Wellness Officer</h3>
-                <p class="text-slate-500 mb-6">How Section 125 compliance is redefining boardroom priorities for EBITDA
-                    growth in 2025.</p>
-                <button class="text-brand font-bold text-sm uppercase tracking-widest hover:text-blue-600">Read Briefing <i
-                        class="fas fa-arrow-right ml-2"></i></button>
+                <p class="text-slate-600 mb-6 leading-relaxed">How Section 125 compliance is redefining boardroom priorities for EBITDA growth in 2025.</p>
+                <div class="text-brand font-bold text-sm uppercase tracking-widest flex items-center gap-2 group-hover:text-blue-500">Read Briefing <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
             </div>
         </article>
+
+        <!-- Blog 2 -->
+        <article onclick="openBlogModal('/blog-fica-reduction-2026.html')" class="flex flex-col md:flex-row bg-white rounded-3xl border border-slate-200 overflow-hidden card-shadow hover:-translate-y-1 transition-all cursor-pointer group">
+            <div class="md:w-1/3 bg-slate-100 h-64 md:h-auto overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Audit paperwork" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-8 md:w-2/3 flex flex-col justify-center">
+                <span class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-3 block inline-block bg-blue-50 px-3 py-1 rounded-full w-fit">Compliance Analysis</span>
+                <h3 class="text-2xl font-black text-slate-900 mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">Decoding the IRS Section 125 Safe Harbor</h3>
+                <p class="text-slate-600 mb-6 leading-relaxed">A technical overview of the cafeteria plan architecture and the mechanics behind guaranteed payroll tax exemption.</p>
+                <div class="text-brand font-bold text-sm uppercase tracking-widest flex items-center gap-2 group-hover:text-blue-500">Read Briefing <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </div>
+        </article>
+
+        <!-- Blog 3 -->
+        <article onclick="openBlogModal('/blog-section-125-plan-2026.html')" class="flex flex-col md:flex-row bg-white rounded-3xl border border-slate-200 overflow-hidden card-shadow hover:-translate-y-1 transition-all cursor-pointer group">
+            <div class="md:w-1/3 bg-slate-100 h-64 md:h-auto overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boardroom meeting" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-8 md:w-2/3 flex flex-col justify-center">
+                <span class="text-emerald-600 text-xs font-bold uppercase tracking-widest mb-3 block inline-block bg-emerald-50 px-3 py-1 rounded-full w-fit">Case Study</span>
+                <h3 class="text-2xl font-black text-slate-900 mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">The Overlooked FICA Loophole for Mid-Market Firms</h3>
+                <p class="text-slate-600 mb-6 leading-relaxed">Why the majority of 50-person organizations are leaving high five-figure savings on the table, and how to claim them retroactively if eligible.</p>
+                <div class="text-brand font-bold text-sm uppercase tracking-widest flex items-center gap-2 group-hover:text-blue-500">Read Briefing <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </div>
+        </article>
+
+        <!-- Blog 4 -->
+        <article onclick="openBlogModal('/blog-fica-reduction-2026.html')" class="flex flex-col md:flex-row bg-white rounded-3xl border border-slate-200 overflow-hidden card-shadow hover:-translate-y-1 transition-all cursor-pointer group">
+            <div class="md:w-1/3 bg-slate-100 h-64 md:h-auto overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Healthcare digital" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-8 md:w-2/3 flex flex-col justify-center">
+                <span class="text-purple-600 text-xs font-bold uppercase tracking-widest mb-3 block inline-block bg-purple-50 px-3 py-1 rounded-full w-fit">Health Tech</span>
+                <h3 class="text-2xl font-black text-slate-900 mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">How Virtual Primary Care Reduces Absenteeism by 40%</h3>
+                <p class="text-slate-600 mb-6 leading-relaxed">Explore the empirical data connecting zero co-pay telemedicine to massive decreases in sick days and employee burnout.</p>
+                <div class="text-brand font-bold text-sm uppercase tracking-widest flex items-center gap-2 group-hover:text-blue-500">Read Briefing <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </div>
+        </article>
+        
+        <!-- Blog 5 -->
+        <article onclick="openBlogModal('/blog-section-125-plan-2026.html')" class="flex flex-col md:flex-row bg-white rounded-3xl border border-slate-200 overflow-hidden card-shadow hover:-translate-y-1 transition-all cursor-pointer group">
+            <div class="md:w-1/3 bg-slate-100 h-64 md:h-auto overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Calculations" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-8 md:w-2/3 flex flex-col justify-center">
+                <span class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-3 block inline-block bg-blue-50 px-3 py-1 rounded-full w-fit">Tax Strategy</span>
+                <h3 class="text-2xl font-black text-slate-900 mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">Stop Overpaying: The Ultimate Guide to Pre-Tax Healthcare</h3>
+                <p class="text-slate-600 mb-6 leading-relaxed">Why paying for healthcare with post-tax dollars is the most inefficient methodology in the modern corporate playbook.</p>
+                <div class="text-brand font-bold text-sm uppercase tracking-widest flex items-center gap-2 group-hover:text-blue-500">Read Briefing <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </div>
+        </article>
+
+        <!-- Blog 6 -->
+        <article onclick="openBlogModal('/blog-fica-reduction-2026.html')" class="flex flex-col md:flex-row bg-white rounded-3xl border border-slate-200 overflow-hidden card-shadow hover:-translate-y-1 transition-all cursor-pointer group">
+            <div class="md:w-1/3 bg-slate-100 h-64 md:h-auto overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern corporate building skyline" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-8 md:w-2/3 flex flex-col justify-center">
+                <span class="text-yellow-600 text-xs font-bold uppercase tracking-widest mb-3 block inline-block bg-yellow-50 px-3 py-1 rounded-full w-fit">Market Outlook</span>
+                <h3 class="text-2xl font-black text-slate-900 mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">Why Employers are Shifting to the W.I.M.P.E.R. Architecture</h3>
+                <p class="text-slate-600 mb-6 leading-relaxed">With rising inflation and talent acquisition battles, businesses are leaning on wellness recapture programs to fund their offensive growth strategies.</p>
+                <div class="text-brand font-bold text-sm uppercase tracking-widest flex items-center gap-2 group-hover:text-blue-500">Read Briefing <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </div>
+        </article>
+
     </div>
+
+    <!-- Blog Iframe Modal -->
+    <div id="blogModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white w-[95%] h-[90%] max-w-6xl rounded-3xl overflow-hidden shadow-2xl relative flex flex-col transform scale-95 transition-transform duration-300" id="blogModalContent">
+            <div class="bg-slate-100 px-6 py-4 border-b border-slate-200 flex justify-between items-center shrink-0">
+                <h3 class="font-bold text-slate-900 text-lg" style="font-family: 'Plus Jakarta Sans', sans-serif;">Executive Digest</h3>
+                <button onclick="closeBlogModal()" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-900 hover:text-white transition shadow-sm border border-slate-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <iframe id="blogIframe" src="" class="w-full flex-1 border-0" title="Executive Briefing Document"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function openBlogModal(url) {
+            document.getElementById('blogIframe').src = url;
+            const modal = document.getElementById('blogModal');
+            const modalContent = document.getElementById('blogModalContent');
+            modal.classList.remove('hidden');
+            // Trigger animation on next frame
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+            });
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+        function closeBlogModal() {
+            const modal = document.getElementById('blogModal');
+            const modalContent = document.getElementById('blogModalContent');
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.getElementById('blogIframe').src = '';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+    </script>
 </div>
 
 <!-- ================================================================================= -->
