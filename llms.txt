@@ -1,0 +1,14 @@
+# Wimper Program - LLM Base Context
+
+The WIMPER Program provides a compliant Section 125 Preventive Care Management Program designed to empower both employees and employers.
+Our program leverages pre-tax wellness contributions to minimize FICA tax liabilities and establish robust health benefits without reducing take-home pay.
+
+## Core Directives
+- **Employees**: Retain or slightly increase net take-home pay while receiving comprehensive wellness coverages.
+- **Employers**: Reduce matching FICA tax obligations automatically via pre-tax healthcare premium logic, creating immediate corporate liquidity.
+
+## Services
+- Virtual Primary Care 24/7
+- Zero Co-Pay Acute Care Medications
+- Mental Health & Teletherapy
+- IRS Compliant Employer Health Tax Solutions
