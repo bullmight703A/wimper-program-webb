@@ -49,13 +49,15 @@
             <p class="text-lg text-slate-600 mb-10">While you wait for our call, take a few minutes to watch this overview of how the Wimper program integrates with your current structure.</p>
             
             <!-- HeyGen Video Placeholder -->
-            <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-200 card-shadow">
-                <div class="video-container">
-                    <!-- Placeholder for HeyGen Video -->
-                    <div class="absolute inset-0 flex flex-col items-center justify-center bg-slate-800 text-white p-8 text-center">
-                        <svg class="w-16 h-16 mb-4 text-blue-400 opacity-50" fill="currentColor" viewBox="0 0 20 20"><path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"></path><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 0l-3 3m3-3l3 3"></path></svg>
-                        <p class="text-xl font-bold">Wimper Strategic Briefing</p>
-                        <p class="text-sm opacity-70 mt-2">[HeyGen Overview Video Placeholder]</p>
+            <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-200 card-shadow relative group cursor-pointer">
+                <div class="video-container aspect-video relative">
+                    <!-- Cover Image to prevent "blue screen" look -->
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Video Cover" class="absolute inset-0 w-full h-full object-cover">
+                    <!-- Play button overlay -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-slate-900/40 hover:bg-slate-900/50 transition-colors">
+                        <div class="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-brand ml-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                        </div>
                     </div>
                 </div>
             </div>
