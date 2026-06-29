@@ -120,14 +120,13 @@
             { id: 1, name: 'Hampton', url: 'https://localfalcon.com/scans?q=Hampton+Kidazzle' },
             { id: 2, name: 'College Pk', url: 'https://localfalcon.com/scans?q=College+Park+Kidazzle' },
             { id: 3, name: 'West End', url: 'https://localfalcon.com/scans?q=West+End+Kidazzle' },
-            { id: 4, name: 'Midtown', url: 'https://localfalcon.com/scans?q=Midtown+Kidazzle' },
-            { id: 5, name: 'Decatur', url: 'https://localfalcon.com/scans?q=Decatur+Kidazzle' },
-            { id: 6, name: 'Buckhead', url: 'https://localfalcon.com/scans?q=Buckhead+Kidazzle' },
-            { id: 7, name: 'Roswell', url: 'https://localfalcon.com/scans?q=Roswell+Kidazzle' },
-            { id: 8, name: 'Sandy Spr', url: 'https://localfalcon.com/scans?q=Sandy+Springs+Kidazzle' },
+            { id: 4, name: 'Summit', url: 'https://localfalcon.com/scans?q=Summit+Kidazzle' },
+            { id: 5, name: 'Memphis', url: 'https://localfalcon.com/scans?q=Memphis+Kidazzle' },
+            { id: 6, name: 'AFC', url: 'https://localfalcon.com/scans?q=Atlanta+Federal+Center+Kidazzle' },
+            { id: 7, name: 'Miami', url: 'https://localfalcon.com/scans?q=Miami+Kidazzle' },
           ];
 
-          const [telemetryData, setTelemetryData] = useState({ seo: { matrix: [] }, kidazzle: { lessonPlans: [] } });
+          const [telemetryData, setTelemetryData] = useState({ seo: { matrix: [] }, kidazzle: { lessonPlans: [] }, social: [] });
           const [n8nErrors, setN8nErrors] = useState([]);
           const messagesEndRef = useRef(null);
 
@@ -153,11 +152,17 @@
                       // SEO array
                       const resS = await fetch(`${TUNNELS.SYSTEM}/api/seo-matrix`);
                       const dataS = await resS.json();
+
+                      // Social array
+                      const resSoc = await fetch(`${TUNNELS.SYSTEM}/deliverables/social_telemetry.json`);
+                      let dataSoc = [];
+                      if(resSoc.ok) dataSoc = await resSoc.json();
                       
                       setTelemetryData(prev => ({
                           ...prev, 
                           kidazzle: { ...prev.kidazzle, lessonPlans: dataK },
-                          seo: { ...prev.seo, matrix: dataS }
+                          seo: { ...prev.seo, matrix: dataS },
+                          social: Array.isArray(dataSoc) ? dataSoc : []
                       }));
                   } catch(e) {}
               };
@@ -343,7 +348,7 @@
                   {/* Dynamic Middle Area Box */}
                   <section className="flex-1 flex flex-col bg-slate-900/10 border border-slate-800/60 rounded overflow-hidden min-h-0">
                     <div className="flex flex-none border-b border-slate-800 bg-slate-950/20 overflow-x-auto scrollbar-hide">
-                      {['CHAT', 'BRAIN', 'GROWTH', 'SEO', 'KIDAZZLE', 'WIMPER', 'NOTES'].map(tab => (
+                      {['CHAT', 'BRAIN', 'GROWTH', 'SEO', 'KIDAZZLE', 'WIMPER', 'CRUCIX', 'NOTES', 'ARCHITECTURE'].map(tab => (
                         <button key={tab} onClick={() => setActiveTab(tab)} className={`flex-1 sm:flex-none px-4 sm:px-8 py-3 text-[10px] font-bold tracking-widest transition-all whitespace-nowrap ${activeTab === tab ? 'text-cyan-400 bg-slate-950 border-b-2 border-cyan-400' : 'text-slate-500 hover:text-slate-300'}`}>
                           {tab}
                         </button>
@@ -464,32 +469,25 @@
                                   <span><Eye size={12} className="inline mr-2"/> Generated Content Approval Queue</span>
                                </p>
                                <div className="flex-1 bg-slate-950/50 p-3 rounded border border-slate-800/40 overflow-y-auto space-y-4 font-mono text-[10px]">
-                                   {/* Kidazzle Post */}
-                                   <div className="p-3 border border-slate-800 bg-slate-900/60 rounded">
-                                       <div className="flex justify-between items-center mb-2">
-                                           <span className="text-cyan-400 font-bold uppercase">TARGET: KIDAZZLE (FB/IG)</span>
-                                           <span className="text-green-500 bg-green-900/30 px-2 rounded border border-green-800">READY IN GHL</span>
+                                   {Array.isArray(telemetryData?.social) && telemetryData.social.length > 0 ? (
+                                       telemetryData.social.map((post, idx) => (
+                                           <div key={idx} className="p-3 border border-slate-800 bg-slate-900/60 rounded">
+                                               <div className="flex justify-between items-center mb-2">
+                                                   <span className={post.target === 'WIMPER' ? "text-yellow-400 font-bold uppercase" : "text-cyan-400 font-bold uppercase"}>TARGET: {post.target}</span>
+                                                   <span className="text-green-500 bg-green-900/30 px-2 rounded border border-green-800 uppercase">{post.status} IN GHL</span>
+                                               </div>
+                                               <p className="text-slate-300 leading-relaxed truncate">{post.content || "(No Caption)"}</p>
+                                               <div className="flex gap-2 mt-2">
+                                                   <span className="text-[8px] text-slate-500 bg-slate-800 px-1.5 rounded uppercase">Type: {post.type}</span>
+                                                   <span className="text-[8px] text-slate-500 bg-slate-800 px-1.5 rounded uppercase">Media: {post.media ? post.media.type : 'None'}</span>
+                                               </div>
+                                           </div>
+                                       ))
+                                   ) : (
+                                       <div className="text-center text-[10px] text-slate-500 font-mono animate-pulse p-4">
+                                           AWAITING LIVE SOCIAL TELEMETRY...
                                        </div>
-                                       <p className="text-slate-300 leading-relaxed">"At Kidazzle, we don't just watch your children—we help them shine. Discover early education that feels like family in Hampton and College Park."</p>
-                                       <div className="flex gap-2 mt-2">
-                                           <span className="text-[8px] text-slate-500 bg-slate-800 px-1.5 rounded">Asset: ltx_test.mp4 (LTX-2/Minimax)</span>
-                                           <span className="text-[8px] text-slate-500 bg-slate-800 px-1.5 rounded">SEO Keyword: Childcare Hampton</span>
-                                       </div>
-                                   </div>
-
-                                   {/* Wimper Post */}
-                                   <div className="p-3 border border-slate-800 bg-slate-900/60 rounded">
-                                       <div className="flex justify-between items-center mb-2">
-                                           <span className="text-yellow-400 font-bold uppercase">TARGET: WIMPER (LINKEDIN)</span>
-                                           <span className="text-green-500 bg-green-900/30 px-2 rounded border border-green-800">READY IN GHL</span>
-                                       </div>
-                                       <p className="text-slate-300 leading-relaxed">"Stop leaving earned capital on the table. WIMPER runs an automated compliance check to unlock Section 125 tax advantages you didn't know you qualified for."</p>
-                                       <div className="flex gap-2 mt-2">
-                                           <span className="text-[8px] text-slate-500 bg-slate-800 px-1.5 rounded">Asset: wimper_expert.png (DALL-E)</span>
-                                           <span className="text-[8px] text-slate-500 bg-slate-800 px-1.5 rounded">SEO Keyword: Section 125 Calculators</span>
-                                       </div>
-                                   </div>
-
+                                   )}
                                </div>
                            </div>
                         </div>
@@ -683,6 +681,18 @@
                         </div>
                       )}
                       
+                      {/* CRUCIX TAB */}
+                      {activeTab === 'CRUCIX' && (
+                        <div className="h-full flex flex-col p-1 bg-black/20">
+                          <iframe 
+                            src="https://iro.bullmight.com/crucix/" 
+                            className="w-full h-full border-0 rounded flex-grow" 
+                            style={{ minHeight: '65vh', height: '100%' }}
+                            sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                          />
+                        </div>
+                      )}
+                      
                       {/* NOTES TAB */}
                       {activeTab === 'NOTES' && (
                         <div className="p-4 h-full flex flex-col">
@@ -698,6 +708,72 @@
                                onChange={handleNotesChange}
                              />
                           </div>
+                        </div>
+                      )}
+
+                      {/* ARCHITECTURE TAB */}
+                      {activeTab === 'ARCHITECTURE' && (
+                        <div className="p-4 h-full overflow-y-auto space-y-6 scrollbar-hide flex flex-col font-mono">
+                           <div className="bg-slate-900/40 border border-slate-800 rounded p-4 shrink-0">
+                               <p className="text-[10px] text-cyan-500 uppercase font-bold tracking-widest mb-4 flex items-center justify-between">
+                                  <span><Layers size={12} className="inline mr-2"/> AGI Content Generation Flow</span>
+                                  <span className="text-[8px] bg-cyan-900/30 text-cyan-400 px-2 py-0.5 rounded">Live Pipeline</span>
+                               </p>
+                               <div className="space-y-4 relative">
+                                   {/* Connecting Line */}
+                                   <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-slate-800"></div>
+
+                                   <div className="relative flex items-center gap-4 z-10">
+                                       <div className="w-12 h-12 rounded bg-slate-950 border border-cyan-800 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(34,211,238,0.2)]">
+                                           <Users size={20} className="text-cyan-400" />
+                                       </div>
+                                       <div className="bg-slate-950/60 border border-slate-800 rounded p-3 flex-1">
+                                           <h4 className="text-[10px] font-bold text-cyan-400 uppercase mb-1">1. The Brain (Llama 3.2 3B)</h4>
+                                           <p className="text-[9px] text-slate-400">IRO runs 100% locally on the D-Drive. He parses your Telegram request, checks his memory, and uses the <span className="text-cyan-300">generate_quote_drafts</span> tool.</p>
+                                       </div>
+                                   </div>
+
+                                   <div className="relative flex items-center gap-4 z-10">
+                                       <div className="w-12 h-12 rounded bg-slate-950 border border-purple-800 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(168,85,247,0.2)]">
+                                           <Zap size={20} className="text-purple-400" />
+                                       </div>
+                                       <div className="bg-slate-950/60 border border-slate-800 rounded p-3 flex-1">
+                                           <h4 className="text-[10px] font-bold text-purple-400 uppercase mb-1">2. The Copywriter (Gemini 2.5 Flash API)</h4>
+                                           <p className="text-[9px] text-slate-400">The Node.js script wakes up Gemini to dynamically invent 3 brand new, highly engaging social media quotes and hashtags based on Kidazzle's core themes.</p>
+                                       </div>
+                                   </div>
+
+                                   <div className="relative flex items-center gap-4 z-10">
+                                       <div className="w-12 h-12 rounded bg-slate-950 border border-yellow-800 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(234,179,8,0.2)]">
+                                           <Video size={20} className="text-yellow-400" />
+                                       </div>
+                                       <div className="bg-slate-950/60 border border-slate-800 rounded p-3 flex-1">
+                                           <h4 className="text-[10px] font-bold text-yellow-400 uppercase mb-1">3. The Image Creator (Puppeteer)</h4>
+                                           <p className="text-[9px] text-slate-400">The script injects Gemini's text into the exact HTML/CSS torn-paper template. Puppeteer snaps a high-res 1080x1920 screenshot of the HTML to create the final image.</p>
+                                       </div>
+                                   </div>
+
+                                   <div className="relative flex items-center gap-4 z-10">
+                                       <div className="w-12 h-12 rounded bg-slate-950 border border-green-800 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(34,197,94,0.2)]">
+                                           <Send size={20} className="text-green-400" />
+                                       </div>
+                                       <div className="bg-slate-950/60 border border-slate-800 rounded p-3 flex-1">
+                                           <h4 className="text-[10px] font-bold text-green-400 uppercase mb-1">4. The Publisher (GHL API)</h4>
+                                           <p className="text-[9px] text-slate-400">The script uploads the generated images directly to GoHighLevel's media library and schedules the posts for 9:00 AM, 1:00 PM, and 7:00 PM.</p>
+                                       </div>
+                                   </div>
+
+                                   <div className="relative flex items-center gap-4 z-10">
+                                       <div className="w-12 h-12 rounded bg-slate-950 border border-slate-600 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(71,85,105,0.2)]">
+                                           <Database size={20} className="text-slate-300" />
+                                       </div>
+                                       <div className="bg-slate-950/60 border border-slate-800 rounded p-3 flex-1">
+                                           <h4 className="text-[10px] font-bold text-slate-300 uppercase mb-1">5. Local Telemetry (D Drive JSON)</h4>
+                                           <p className="text-[9px] text-slate-400">GHL Post IDs and content are appended to <span className="text-slate-300">D:\OpenClaw_Analytics\social_posts.json</span> so IRO can analyze performance and rewrite scripts later.</p>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
                         </div>
                       )}
                     </div>
