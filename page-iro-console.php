@@ -126,7 +126,7 @@
             { id: 7, name: 'Miami', url: 'https://localfalcon.com/scans?q=Miami+Kidazzle' },
           ];
 
-          const [telemetryData, setTelemetryData] = useState({ seo: { matrix: [] }, kidazzle: { lessonPlans: [] }, social: [] });
+           const [telemetryData, setTelemetryData] = useState({ seo: { matrix: [] }, kidazzle: { lessonPlans: [] }, social: [], ebayStores: [] });
           const [n8nErrors, setN8nErrors] = useState([]);
           const messagesEndRef = useRef(null);
 
@@ -158,11 +158,20 @@
                       let dataSoc = [];
                       if(resSoc.ok) dataSoc = await resSoc.json();
                       
+                      // eBay array
+                      let ebayData = [];
+                      try {
+                        const resE = await fetch(`${TUNNELS.SYSTEM}/api/ebay/stores`);
+                        const dataE = await resE.json();
+                        if (dataE && dataE.success) ebayData = dataE.stores;
+                      } catch(e) {}
+                      
                       setTelemetryData(prev => ({
                           ...prev, 
                           kidazzle: { ...prev.kidazzle, lessonPlans: dataK },
                           seo: { ...prev.seo, matrix: dataS },
-                          social: Array.isArray(dataSoc) ? dataSoc : []
+                          social: Array.isArray(dataSoc) ? dataSoc : [],
+                          ebayStores: ebayData
                       }));
                   } catch(e) {}
               };
@@ -676,6 +685,58 @@
                                    <br />[RES] 4,201 records indexed
                                 </div>
                               </div>
+                            </div>
+                          </div>
+
+                          {/* eBay Store Integration Card */}
+                          <div className="bg-slate-900/40 border border-slate-800 rounded overflow-hidden mt-4 p-4">
+                            <div className="flex justify-between items-center mb-4">
+                              <h3 className="text-[10px] text-cyan-400 uppercase tracking-widest flex items-center gap-2 font-bold">
+                                <Database size={12} /> Active eBay Stores Integration
+                              </h3>
+                              <a href={`${API_BASE}/api/ebay/authorize`} target="_blank" className="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 hover:bg-cyan-500 hover:text-black rounded text-[9px] font-bold uppercase tracking-wide transition-all flex items-center gap-1.5">
+                                <ExternalLink size={10} /> Link New Store
+                              </a>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                              {Array.isArray(telemetryData?.ebayStores) && telemetryData.ebayStores.length > 0 ? (
+                                telemetryData.ebayStores.map((store) => (
+                                  <div key={store.id} className="p-3 bg-slate-950/50 border border-slate-800/80 rounded hover:border-cyan-900 transition-all flex flex-col justify-between">
+                                    <div className="flex justify-between items-center mb-2">
+                                      <span className="text-xs font-bold text-slate-200 uppercase">{store.store_name}</span>
+                                      <span className="text-[8px] bg-green-900/30 text-green-400 border border-green-800/40 px-2 rounded uppercase font-bold tracking-widest">ACTIVE</span>
+                                    </div>
+                                    <div className="space-y-1 font-mono text-[10px] text-slate-400">
+                                      <div className="flex justify-between"><span>Active Listings:</span><strong className="text-cyan-400">{store.active_listings_count}</strong></div>
+                                      <div className="flex justify-between"><span>Total Orders:</span><strong className="text-yellow-500">{store.orders_count}</strong></div>
+                                      <div className="flex justify-between"><span>Total Sales:</span><strong className="text-green-400">${store.total_sales.toFixed(2)}</strong></div>
+                                    </div>
+                                    <div className="mt-3 flex justify-between items-center text-[8px] text-slate-500 uppercase">
+                                      <span>Sync: {store.last_sync_timestamp ? new Date(store.last_sync_timestamp).toLocaleTimeString() : 'Never'}</span>
+                                      <button 
+                                        onClick={async () => {
+                                          try {
+                                            await fetch(`${API_BASE}/api/ebay/sync`, {
+                                              method: 'POST',
+                                              headers: {'Content-Type': 'application/json'},
+                                              body: JSON.stringify({ storeId: store.id })
+                                            });
+                                            alert('Sync request sent!');
+                                          } catch(e) {}
+                                        }}
+                                        className="text-cyan-500 hover:underline font-bold"
+                                      >
+                                        Sync Now
+                                      </button>
+                                    </div>
+                                  </div>
+                                ))
+                              ) : (
+                                <div className="col-span-full text-center text-[10px] text-slate-500 font-mono py-4 border border-dashed border-slate-800 rounded">
+                                  NO EBAY STORES LINKED. USE "LINK NEW STORE" BUTTON TO AUTHORIZE.
+                                </div>
+                              )}
                             </div>
                           </div>
                         </div>
