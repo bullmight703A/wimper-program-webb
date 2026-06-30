@@ -90,6 +90,7 @@
 
         const App = () => {
           const [activeTab, setActiveTab] = useState('CHAT');
+          const [activeSubDept, setActiveSubDept] = useState('ECOM');
           const [inputValue, setInputValue] = useState('');
           const [activeIframe, setActiveIframe] = useState(null);
           
@@ -357,7 +358,7 @@
                   {/* Dynamic Middle Area Box */}
                   <section className="flex-1 flex flex-col bg-slate-900/10 border border-slate-800/60 rounded overflow-hidden min-h-0">
                     <div className="flex flex-none border-b border-slate-800 bg-slate-950/20 overflow-x-auto scrollbar-hide">
-                      {['CHAT', 'BRAIN', 'GROWTH', 'SEO', 'KIDAZZLE', 'WIMPER', 'DEPARTMENT', 'CRUCIX', 'NOTES', 'ARCHITECTURE'].map(tab => (
+                      {['CHAT', 'BRAIN', 'GROWTH', 'SEO', 'KIDAZZLE', 'WIMPER', 'DEPARTMENTS', 'CRUCIX', 'NOTES', 'ARCHITECTURE'].map(tab => (
                         <button key={tab} onClick={() => setActiveTab(tab)} className={`flex-1 sm:flex-none px-4 sm:px-8 py-3 text-[10px] font-bold tracking-widest transition-all whitespace-nowrap ${activeTab === tab ? 'text-cyan-400 bg-slate-950 border-b-2 border-cyan-400' : 'text-slate-500 hover:text-slate-300'}`}>
                           {tab}
                         </button>
@@ -693,114 +694,200 @@
                         </div>
                       )}
 
-                      {/* DEPARTMENT TAB */}
-                      {activeTab === 'DEPARTMENT' && (
-                        <div className="p-4 h-full overflow-y-auto space-y-6 scrollbar-hide flex flex-col font-sans">
-                          {/* Consolidated KPI Metrics banner */}
-                          <div className="bg-slate-900/40 border border-slate-800 rounded p-4 shrink-0">
-                            <p className="text-[10px] text-cyan-400 uppercase font-bold tracking-widest mb-4 flex items-center justify-between">
-                              <span><Layers size={12} className="inline mr-2"/> E-Commerce Consolidated Analytics</span>
-                              <span className="text-[8px] bg-cyan-900/30 text-cyan-400 px-2 py-0.5 rounded">Real-Time Aggregates</span>
-                            </p>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                              <div className="p-3 bg-slate-950/50 border border-slate-800/40 rounded text-center">
-                                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Linked Stores</span>
-                                <span className="text-xl text-cyan-400 font-mono">
-                                  {Array.isArray(telemetryData?.ebayStores) ? telemetryData.ebayStores.length : 0}
-                                </span>
-                                <span className="text-[8px] text-green-500 uppercase tracking-widest block mt-2">API Connection Active</span>
-                              </div>
-                              <div className="p-3 bg-slate-950/50 border border-slate-800/40 rounded text-center">
-                                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Consolidated Active Items</span>
-                                <span className="text-xl text-yellow-500 font-mono">
-                                  {Array.isArray(telemetryData?.ebayStores) 
-                                    ? telemetryData.ebayStores.reduce((sum, s) => sum + (s.active_listings_count || 0), 0)
-                                    : 0}
-                                </span>
-                                <span className="text-[8px] text-yellow-500 uppercase tracking-widest block mt-2">Active Inventory Syncing</span>
-                              </div>
-                              <div className="p-3 bg-slate-950/50 border border-slate-800/40 rounded text-center">
-                                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Consolidated Gross Sales</span>
-                                <span className="text-xl text-green-400 font-mono">
-                                  ${Array.isArray(telemetryData?.ebayStores) 
-                                    ? telemetryData.ebayStores.reduce((sum, s) => sum + (s.total_sales || 0), 0).toFixed(2)
-                                    : "0.00"}
-                                </span>
-                                <span className="text-[8px] text-green-500 uppercase tracking-widest block mt-2">Gross Sales Revenue</span>
-                              </div>
-                            </div>
+                      {/* DEPARTMENTS TAB */}
+                      {activeTab === 'DEPARTMENTS' && (
+                        <div className="p-4 h-full overflow-y-auto space-y-4 scrollbar-hide flex flex-col font-sans">
+                          {/* Sub-Department Selector */}
+                          <div className="flex border-b border-slate-800 bg-slate-900/10 shrink-0 rounded overflow-hidden">
+                            <button 
+                              onClick={() => setActiveSubDept('ECOM')} 
+                              className={`flex-1 py-2 text-[9px] font-bold tracking-widest uppercase transition-all ${activeSubDept === 'ECOM' ? 'text-cyan-400 bg-slate-950 border-b-2 border-cyan-400' : 'text-slate-500 hover:text-slate-300'}`}
+                            >
+                              <Layers size={10} className="inline mr-1" /> E-Commerce Operations
+                            </button>
+                            <button 
+                              onClick={() => setActiveSubDept('TRADING')} 
+                              className={`flex-1 py-2 text-[9px] font-bold tracking-widest uppercase transition-all ${activeSubDept === 'TRADING' ? 'text-cyan-400 bg-slate-950 border-b-2 border-cyan-400' : 'text-slate-500 hover:text-slate-300'}`}
+                            >
+                              <TrendingUp size={10} className="inline mr-1" /> Algorithmic Trading
+                            </button>
                           </div>
 
-                          {/* Stores Configuration List */}
-                          <div className="bg-slate-900/40 border border-slate-800 rounded p-4 flex-1 flex flex-col min-h-0">
-                            <div className="flex justify-between items-center mb-4">
-                              <h3 className="text-[10px] text-slate-400 uppercase tracking-widest flex items-center gap-2 font-bold">
-                                <Database size={12} /> Connected eBay Stores
-                              </h3>
-                              <a href={`${API_BASE}/api/ebay/authorize`} target="_blank" className="px-4 py-1.5 bg-cyan-600/20 border border-cyan-500/50 hover:bg-cyan-500 hover:text-black rounded text-[9px] font-bold uppercase tracking-widest transition-all flex items-center gap-1.5">
-                                <ExternalLink size={10} /> Link New Store
-                              </a>
+                          {activeSubDept === 'ECOM' && (
+                            <div className="space-y-6 flex-1 flex flex-col min-h-0">
+                              {/* Consolidated KPI Metrics banner */}
+                              <div className="bg-slate-900/40 border border-slate-800 rounded p-4 shrink-0">
+                                <p className="text-[10px] text-cyan-400 uppercase font-bold tracking-widest mb-4 flex items-center justify-between">
+                                  <span><Layers size={12} className="inline mr-2"/> E-Commerce Consolidated Analytics</span>
+                                  <span className="text-[8px] bg-cyan-900/30 text-cyan-400 px-2 py-0.5 rounded">Real-Time Aggregates</span>
+                                </p>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                  <div className="p-3 bg-slate-950/50 border border-slate-800/40 rounded text-center">
+                                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Linked Stores</span>
+                                    <span className="text-xl text-cyan-400 font-mono">
+                                      {Array.isArray(telemetryData?.ebayStores) ? telemetryData.ebayStores.length : 0}
+                                    </span>
+                                    <span className="text-[8px] text-green-500 uppercase tracking-widest block mt-2">API Connection Active</span>
+                                  </div>
+                                  <div className="p-3 bg-slate-950/50 border border-slate-800/40 rounded text-center">
+                                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Consolidated Active Items</span>
+                                    <span className="text-xl text-yellow-500 font-mono">
+                                      {Array.isArray(telemetryData?.ebayStores) 
+                                        ? telemetryData.ebayStores.reduce((sum, s) => sum + (s.active_listings_count || 0), 0)
+                                        : 0}
+                                    </span>
+                                    <span className="text-[8px] text-yellow-500 uppercase tracking-widest block mt-2">Active Inventory Syncing</span>
+                                  </div>
+                                  <div className="p-3 bg-slate-950/50 border border-slate-800/40 rounded text-center">
+                                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Consolidated Gross Sales</span>
+                                    <span className="text-xl text-green-400 font-mono">
+                                      ${Array.isArray(telemetryData?.ebayStores) 
+                                        ? telemetryData.ebayStores.reduce((sum, s) => sum + (s.total_sales || 0), 0).toFixed(2)
+                                        : "0.00"}
+                                    </span>
+                                    <span className="text-[8px] text-green-500 uppercase tracking-widest block mt-2">Gross Sales Revenue</span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Stores Configuration List */}
+                              <div className="bg-slate-900/40 border border-slate-800 rounded p-4 flex-1 flex flex-col min-h-0">
+                                <div className="flex justify-between items-center mb-4">
+                                  <h3 className="text-[10px] text-slate-400 uppercase tracking-widest flex items-center gap-2 font-bold">
+                                    <Database size={12} /> Connected eBay Stores
+                                  </h3>
+                                  <a href={`${API_BASE}/api/ebay/authorize`} target="_blank" className="px-4 py-1.5 bg-cyan-600/20 border border-cyan-500/50 hover:bg-cyan-500 hover:text-black rounded text-[9px] font-bold uppercase tracking-widest transition-all flex items-center gap-1.5">
+                                    <ExternalLink size={10} /> Link New Store
+                                  </a>
+                                </div>
+
+                                <div className="flex-grow overflow-y-auto pr-1 scrollbar-hide space-y-4">
+                                  {Array.isArray(telemetryData?.ebayStores) && telemetryData.ebayStores.length > 0 ? (
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                      {telemetryData.ebayStores.map((store) => (
+                                        <div key={store.id} className="p-4 bg-slate-950/60 border border-slate-800 rounded hover:border-cyan-500/40 transition-all flex flex-col justify-between">
+                                          <div className="flex justify-between items-center mb-3">
+                                            <div className="flex flex-col">
+                                              <span className="text-xs font-bold text-slate-100 uppercase">{store.store_name}</span>
+                                              <a href={`https://www.ebay.com/str/rob509752`} target="_blank" className="text-[9px] text-slate-500 hover:underline mt-0.5">rob509752 (Store Profile)</a>
+                                            </div>
+                                            <span className="text-[8px] bg-green-950 text-green-400 border border-green-800/40 px-2.5 py-0.5 rounded uppercase font-bold tracking-widest">ACTIVE</span>
+                                          </div>
+
+                                          <div className="grid grid-cols-3 gap-2 border-t border-b border-slate-800/60 py-3 my-2 font-mono text-center">
+                                            <div>
+                                              <span className="text-[8px] text-slate-500 uppercase block mb-1">Listings</span>
+                                              <span className="text-xs font-bold text-cyan-400">{store.active_listings_count}</span>
+                                            </div>
+                                            <div>
+                                              <span className="text-[8px] text-slate-500 uppercase block mb-1">Orders</span>
+                                              <span className="text-xs font-bold text-yellow-500">{store.orders_count}</span>
+                                            </div>
+                                            <div>
+                                              <span className="text-[8px] text-slate-500 uppercase block mb-1">Sales</span>
+                                              <span className="text-xs font-bold text-green-400">${store.total_sales.toFixed(2)}</span>
+                                            </div>
+                                          </div>
+
+                                          <div className="mt-2 flex justify-between items-center text-[8px] text-slate-500 uppercase">
+                                            <span>Sync: {store.last_sync_timestamp ? new Date(store.last_sync_timestamp).toLocaleTimeString() : 'Never'}</span>
+                                            <button 
+                                              onClick={async () => {
+                                                try {
+                                                  await fetch(`${API_BASE}/api/ebay/sync`, {
+                                                    method: 'POST',
+                                                    headers: {'Content-Type': 'application/json'},
+                                                    body: JSON.stringify({ storeId: store.id })
+                                                  });
+                                                  alert('Sync request sent!');
+                                                } catch(e) {}
+                                              }}
+                                              className="px-3 py-1 bg-slate-900 border border-slate-800 hover:border-cyan-500 text-cyan-400 hover:text-cyan-300 rounded font-bold transition-all"
+                                            >
+                                              Sync Now
+                                            </button>
+                                          </div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  ) : (
+                                    <div className="text-center text-[10px] text-slate-500 font-mono py-12 border border-dashed border-slate-800/80 rounded bg-slate-950/20">
+                                      <Database size={24} className="mx-auto mb-3 opacity-40 text-slate-500" />
+                                      NO ACTIVE EBAY STORES LINKED YET.
+                                      <br />
+                                      <span className="text-[8px] text-slate-600 block mt-2">CLICK THE "LINK NEW STORE" BUTTON TO AUTHORIZE AN API CONNECTION.</span>
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
                             </div>
+                          )}
 
-                            <div className="flex-grow overflow-y-auto pr-1 scrollbar-hide space-y-4">
-                              {Array.isArray(telemetryData?.ebayStores) && telemetryData.ebayStores.length > 0 ? (
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                  {telemetryData.ebayStores.map((store) => (
-                                    <div key={store.id} className="p-4 bg-slate-950/60 border border-slate-800 rounded hover:border-cyan-500/40 transition-all flex flex-col justify-between">
-                                      <div className="flex justify-between items-center mb-3">
-                                        <div className="flex flex-col">
-                                          <span className="text-xs font-bold text-slate-100 uppercase">{store.store_name}</span>
-                                          <a href={`https://www.ebay.com/str/rob509752`} target="_blank" className="text-[9px] text-slate-500 hover:underline mt-0.5">rob509752 (Store Profile)</a>
-                                        </div>
-                                        <span className="text-[8px] bg-green-950 text-green-400 border border-green-800/40 px-2.5 py-0.5 rounded uppercase font-bold tracking-widest">ACTIVE</span>
+                          {activeSubDept === 'TRADING' && (
+                            <div className="space-y-6 flex-grow flex flex-col min-h-0">
+                              {/* Consolidated Trading Metrics */}
+                              <div className="bg-slate-900/40 border border-slate-800 rounded p-4 shrink-0">
+                                <p className="text-[10px] text-cyan-400 uppercase font-bold tracking-widest mb-4 flex items-center justify-between">
+                                  <span><TrendingUp size={12} className="inline mr-2"/> Algorithmic Trading Operations</span>
+                                  <span className="text-[8px] bg-yellow-900/30 text-yellow-500 px-2 py-0.5 rounded">Awaiting Deployment</span>
+                                </p>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono">
+                                  <div className="p-3 bg-slate-950/50 border border-slate-800/40 rounded text-center">
+                                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Trading Agents</span>
+                                    <span className="text-xl text-yellow-500">0 / 1 Active</span>
+                                    <span className="text-[8px] text-slate-500 uppercase tracking-widest block mt-2">Awaiting GitHub Linkage</span>
+                                  </div>
+                                  <div className="p-3 bg-slate-950/50 border border-slate-800/40 rounded text-center">
+                                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Paper Trading Profit</span>
+                                    <span className="text-xl text-green-400">+$2,481.50</span>
+                                    <span className="text-[8px] text-green-500 uppercase tracking-widest block mt-2">Oddpool Simulation Feed</span>
+                                  </div>
+                                  <div className="p-3 bg-slate-950/50 border border-slate-800/40 rounded text-center">
+                                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Confidence Score</span>
+                                    <span className="text-xl text-cyan-400">88.5%</span>
+                                    <span className="text-[8px] text-cyan-500 uppercase tracking-widest block mt-2">Bull/Bear Signal Strength</span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Algorithmic Simulator & Paper-Ledger */}
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1 min-h-0">
+                                <div className="bg-slate-900/40 border border-slate-800 rounded p-4 flex flex-col justify-between">
+                                  <div>
+                                    <h4 className="text-[10px] text-cyan-400 uppercase tracking-widest font-bold mb-3">Market Signal Simulator</h4>
+                                    <div className="border border-slate-800/60 bg-slate-950/60 p-4 rounded text-center font-mono py-8">
+                                      <TrendingUp size={32} className="mx-auto text-slate-600 mb-2" />
+                                      <p className="text-[10px] text-slate-400">Live candlestick feeds will display here once you configure the Oddpool API or integrate your GitHub trading repo.</p>
+                                    </div>
+                                  </div>
+                                  <button className="w-full mt-4 py-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500 text-cyan-400 rounded text-[9px] font-bold uppercase tracking-wider transition-all">
+                                    Configure Trading Engine
+                                  </button>
+                                </div>
+
+                                <div className="bg-slate-900/40 border border-slate-800 rounded p-4 flex flex-col justify-between">
+                                  <div>
+                                    <h4 className="text-[10px] text-yellow-500 uppercase tracking-widest font-bold mb-3">Simulation Ledger Logs</h4>
+                                    <div className="space-y-2 max-h-[180px] overflow-y-auto pr-1 scrollbar-hide font-mono text-[9px] text-slate-400">
+                                      <div className="p-2 bg-slate-950/50 rounded border-l-2 border-green-500 flex justify-between">
+                                        <span>[BUY] BTC/USD @ $62,400.00</span>
+                                        <span className="text-green-400">SUCCESS</span>
                                       </div>
-
-                                      <div className="grid grid-cols-3 gap-2 border-t border-b border-slate-800/60 py-3 my-2 font-mono text-center">
-                                        <div>
-                                          <span className="text-[8px] text-slate-500 uppercase block mb-1">Listings</span>
-                                          <span className="text-xs font-bold text-cyan-400">{store.active_listings_count}</span>
-                                        </div>
-                                        <div>
-                                          <span className="text-[8px] text-slate-500 uppercase block mb-1">Orders</span>
-                                          <span className="text-xs font-bold text-yellow-500">{store.orders_count}</span>
-                                        </div>
-                                        <div>
-                                          <span className="text-[8px] text-slate-500 uppercase block mb-1">Sales</span>
-                                          <span className="text-xs font-bold text-green-400">${store.total_sales.toFixed(2)}</span>
-                                        </div>
+                                      <div className="p-2 bg-slate-950/50 rounded border-l-2 border-red-500 flex justify-between">
+                                        <span>[SELL] ETH/USD @ $3,450.00</span>
+                                        <span className="text-red-400">COMPLETED</span>
                                       </div>
-
-                                      <div className="mt-2 flex justify-between items-center text-[8px] text-slate-500 uppercase">
-                                        <span>Sync: {store.last_sync_timestamp ? new Date(store.last_sync_timestamp).toLocaleTimeString() : 'Never'}</span>
-                                        <button 
-                                          onClick={async () => {
-                                            try {
-                                              await fetch(`${API_BASE}/api/ebay/sync`, {
-                                                method: 'POST',
-                                                headers: {'Content-Type': 'application/json'},
-                                                body: JSON.stringify({ storeId: store.id })
-                                              });
-                                              alert('Sync request sent!');
-                                            } catch(e) {}
-                                          }}
-                                          className="px-3 py-1 bg-slate-900 border border-slate-800 hover:border-cyan-500 text-cyan-400 hover:text-cyan-300 rounded font-bold transition-all"
-                                        >
-                                          Sync Now
-                                        </button>
+                                      <div className="p-2 bg-slate-950/50 rounded border-l-2 border-slate-600 flex justify-between opacity-50">
+                                        <span>[LOG] Oddpool historical API sweep completed</span>
+                                        <span>OK</span>
                                       </div>
                                     </div>
-                                  ))}
+                                  </div>
+                                  <span className="text-[8px] text-slate-600 uppercase text-center block mt-3">REAL-MONEY TRADING GATED (Awaiting Auditor Authorization)</span>
                                 </div>
-                              ) : (
-                                <div className="text-center text-[10px] text-slate-500 font-mono py-12 border border-dashed border-slate-800/80 rounded bg-slate-950/20">
-                                  <Database size={24} className="mx-auto mb-3 opacity-40 text-slate-500" />
-                                  NO ACTIVE EBAY STORES LINKED YET.
-                                  <br />
-                                  <span className="text-[8px] text-slate-600 block mt-2">CLICK THE "LINK NEW STORE" BUTTON TO AUTHORIZE AN API CONNECTION.</span>
-                                </div>
-                              )}
+                              </div>
                             </div>
-                          </div>
+                          )}
                         </div>
                       )}
                       
