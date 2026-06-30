@@ -357,7 +357,7 @@
                   {/* Dynamic Middle Area Box */}
                   <section className="flex-1 flex flex-col bg-slate-900/10 border border-slate-800/60 rounded overflow-hidden min-h-0">
                     <div className="flex flex-none border-b border-slate-800 bg-slate-950/20 overflow-x-auto scrollbar-hide">
-                      {['CHAT', 'BRAIN', 'GROWTH', 'SEO', 'KIDAZZLE', 'WIMPER', 'CRUCIX', 'NOTES', 'ARCHITECTURE'].map(tab => (
+                      {['CHAT', 'BRAIN', 'GROWTH', 'SEO', 'KIDAZZLE', 'WIMPER', 'ECOM', 'CRUCIX', 'NOTES', 'ARCHITECTURE'].map(tab => (
                         <button key={tab} onClick={() => setActiveTab(tab)} className={`flex-1 sm:flex-none px-4 sm:px-8 py-3 text-[10px] font-bold tracking-widest transition-all whitespace-nowrap ${activeTab === tab ? 'text-cyan-400 bg-slate-950 border-b-2 border-cyan-400' : 'text-slate-500 hover:text-slate-300'}`}>
                           {tab}
                         </button>
@@ -688,53 +688,115 @@
                             </div>
                           </div>
 
-                          {/* eBay Store Integration Card */}
-                          <div className="bg-slate-900/40 border border-slate-800 rounded overflow-hidden mt-4 p-4">
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* ECOM TAB */}
+                      {activeTab === 'ECOM' && (
+                        <div className="p-4 h-full overflow-y-auto space-y-6 scrollbar-hide flex flex-col font-sans">
+                          {/* Consolidated KPI Metrics banner */}
+                          <div className="bg-slate-900/40 border border-slate-800 rounded p-4 shrink-0">
+                            <p className="text-[10px] text-cyan-400 uppercase font-bold tracking-widest mb-4 flex items-center justify-between">
+                              <span><Layers size={12} className="inline mr-2"/> E-Commerce Consolidated Analytics</span>
+                              <span className="text-[8px] bg-cyan-900/30 text-cyan-400 px-2 py-0.5 rounded">Real-Time Aggregates</span>
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                              <div className="p-3 bg-slate-950/50 border border-slate-800/40 rounded text-center">
+                                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Linked Stores</span>
+                                <span className="text-xl text-cyan-400 font-mono">
+                                  {Array.isArray(telemetryData?.ebayStores) ? telemetryData.ebayStores.length : 0}
+                                </span>
+                                <span className="text-[8px] text-green-500 uppercase tracking-widest block mt-2">API Connection Active</span>
+                              </div>
+                              <div className="p-3 bg-slate-950/50 border border-slate-800/40 rounded text-center">
+                                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Consolidated Active Items</span>
+                                <span className="text-xl text-yellow-500 font-mono">
+                                  {Array.isArray(telemetryData?.ebayStores) 
+                                    ? telemetryData.ebayStores.reduce((sum, s) => sum + (s.active_listings_count || 0), 0)
+                                    : 0}
+                                </span>
+                                <span className="text-[8px] text-yellow-500 uppercase tracking-widest block mt-2">Active Inventory Syncing</span>
+                              </div>
+                              <div className="p-3 bg-slate-950/50 border border-slate-800/40 rounded text-center">
+                                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Consolidated Gross Sales</span>
+                                <span className="text-xl text-green-400 font-mono">
+                                  ${Array.isArray(telemetryData?.ebayStores) 
+                                    ? telemetryData.ebayStores.reduce((sum, s) => sum + (s.total_sales || 0), 0).toFixed(2)
+                                    : "0.00"}
+                                </span>
+                                <span className="text-[8px] text-green-500 uppercase tracking-widest block mt-2">Gross Sales Revenue</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Stores Configuration List */}
+                          <div className="bg-slate-900/40 border border-slate-800 rounded p-4 flex-1 flex flex-col min-h-0">
                             <div className="flex justify-between items-center mb-4">
-                              <h3 className="text-[10px] text-cyan-400 uppercase tracking-widest flex items-center gap-2 font-bold">
-                                <Database size={12} /> Active eBay Stores Integration
+                              <h3 className="text-[10px] text-slate-400 uppercase tracking-widest flex items-center gap-2 font-bold">
+                                <Database size={12} /> Connected eBay Stores
                               </h3>
-                              <a href={`${API_BASE}/api/ebay/authorize`} target="_blank" className="px-3 py-1 bg-cyan-600/20 border border-cyan-500/50 hover:bg-cyan-500 hover:text-black rounded text-[9px] font-bold uppercase tracking-wide transition-all flex items-center gap-1.5">
+                              <a href={`${API_BASE}/api/ebay/authorize`} target="_blank" className="px-4 py-1.5 bg-cyan-600/20 border border-cyan-500/50 hover:bg-cyan-500 hover:text-black rounded text-[9px] font-bold uppercase tracking-widest transition-all flex items-center gap-1.5">
                                 <ExternalLink size={10} /> Link New Store
                               </a>
                             </div>
-                            
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+
+                            <div className="flex-grow overflow-y-auto pr-1 scrollbar-hide space-y-4">
                               {Array.isArray(telemetryData?.ebayStores) && telemetryData.ebayStores.length > 0 ? (
-                                telemetryData.ebayStores.map((store) => (
-                                  <div key={store.id} className="p-3 bg-slate-950/50 border border-slate-800/80 rounded hover:border-cyan-900 transition-all flex flex-col justify-between">
-                                    <div className="flex justify-between items-center mb-2">
-                                      <span className="text-xs font-bold text-slate-200 uppercase">{store.store_name}</span>
-                                      <span className="text-[8px] bg-green-900/30 text-green-400 border border-green-800/40 px-2 rounded uppercase font-bold tracking-widest">ACTIVE</span>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  {telemetryData.ebayStores.map((store) => (
+                                    <div key={store.id} className="p-4 bg-slate-950/60 border border-slate-800 rounded hover:border-cyan-500/40 transition-all flex flex-col justify-between">
+                                      <div className="flex justify-between items-center mb-3">
+                                        <div className="flex flex-col">
+                                          <span className="text-xs font-bold text-slate-100 uppercase">{store.store_name}</span>
+                                          <a href={`https://www.ebay.com/str/rob509752`} target="_blank" className="text-[9px] text-slate-500 hover:underline mt-0.5">rob509752 (Store Profile)</a>
+                                        </div>
+                                        <span className="text-[8px] bg-green-950 text-green-400 border border-green-800/40 px-2.5 py-0.5 rounded uppercase font-bold tracking-widest">ACTIVE</span>
+                                      </div>
+
+                                      <div className="grid grid-cols-3 gap-2 border-t border-b border-slate-800/60 py-3 my-2 font-mono text-center">
+                                        <div>
+                                          <span className="text-[8px] text-slate-500 uppercase block mb-1">Listings</span>
+                                          <span className="text-xs font-bold text-cyan-400">{store.active_listings_count}</span>
+                                        </div>
+                                        <div>
+                                          <span className="text-[8px] text-slate-500 uppercase block mb-1">Orders</span>
+                                          <span className="text-xs font-bold text-yellow-500">{store.orders_count}</span>
+                                        </div>
+                                        <div>
+                                          <span className="text-[8px] text-slate-500 uppercase block mb-1">Sales</span>
+                                          <span className="text-xs font-bold text-green-400">${store.total_sales.toFixed(2)}</span>
+                                        </div>
+                                      </div>
+
+                                      <div className="mt-2 flex justify-between items-center text-[8px] text-slate-500 uppercase">
+                                        <span>Sync: {store.last_sync_timestamp ? new Date(store.last_sync_timestamp).toLocaleTimeString() : 'Never'}</span>
+                                        <button 
+                                          onClick={async () => {
+                                            try {
+                                              await fetch(`${API_BASE}/api/ebay/sync`, {
+                                                method: 'POST',
+                                                headers: {'Content-Type': 'application/json'},
+                                                body: JSON.stringify({ storeId: store.id })
+                                              });
+                                              alert('Sync request sent!');
+                                            } catch(e) {}
+                                          }}
+                                          className="px-3 py-1 bg-slate-900 border border-slate-800 hover:border-cyan-500 text-cyan-400 hover:text-cyan-300 rounded font-bold transition-all"
+                                        >
+                                          Sync Now
+                                        </button>
+                                      </div>
                                     </div>
-                                    <div className="space-y-1 font-mono text-[10px] text-slate-400">
-                                      <div className="flex justify-between"><span>Active Listings:</span><strong className="text-cyan-400">{store.active_listings_count}</strong></div>
-                                      <div className="flex justify-between"><span>Total Orders:</span><strong className="text-yellow-500">{store.orders_count}</strong></div>
-                                      <div className="flex justify-between"><span>Total Sales:</span><strong className="text-green-400">${store.total_sales.toFixed(2)}</strong></div>
-                                    </div>
-                                    <div className="mt-3 flex justify-between items-center text-[8px] text-slate-500 uppercase">
-                                      <span>Sync: {store.last_sync_timestamp ? new Date(store.last_sync_timestamp).toLocaleTimeString() : 'Never'}</span>
-                                      <button 
-                                        onClick={async () => {
-                                          try {
-                                            await fetch(`${API_BASE}/api/ebay/sync`, {
-                                              method: 'POST',
-                                              headers: {'Content-Type': 'application/json'},
-                                              body: JSON.stringify({ storeId: store.id })
-                                            });
-                                            alert('Sync request sent!');
-                                          } catch(e) {}
-                                        }}
-                                        className="text-cyan-500 hover:underline font-bold"
-                                      >
-                                        Sync Now
-                                      </button>
-                                    </div>
-                                  </div>
-                                ))
+                                  ))}
+                                </div>
                               ) : (
-                                <div className="col-span-full text-center text-[10px] text-slate-500 font-mono py-4 border border-dashed border-slate-800 rounded">
-                                  NO EBAY STORES LINKED. USE "LINK NEW STORE" BUTTON TO AUTHORIZE.
+                                <div className="text-center text-[10px] text-slate-500 font-mono py-12 border border-dashed border-slate-800/80 rounded bg-slate-950/20">
+                                  <Database size={24} className="mx-auto mb-3 opacity-40 text-slate-500" />
+                                  NO ACTIVE EBAY STORES LINKED YET.
+                                  <br />
+                                  <span className="text-[8px] text-slate-600 block mt-2">CLICK THE "LINK NEW STORE" BUTTON TO AUTHORIZE AN API CONNECTION.</span>
                                 </div>
                               )}
                             </div>
