@@ -357,7 +357,7 @@
                   {/* Dynamic Middle Area Box */}
                   <section className="flex-1 flex flex-col bg-slate-900/10 border border-slate-800/60 rounded overflow-hidden min-h-0">
                     <div className="flex flex-none border-b border-slate-800 bg-slate-950/20 overflow-x-auto scrollbar-hide">
-                      {['CHAT', 'BRAIN', 'GROWTH', 'SEO', 'KIDAZZLE', 'WIMPER', 'ECOM', 'CRUCIX', 'NOTES', 'ARCHITECTURE'].map(tab => (
+                      {['CHAT', 'BRAIN', 'GROWTH', 'SEO', 'KIDAZZLE', 'WIMPER', 'DEPARTMENT', 'CRUCIX', 'NOTES', 'ARCHITECTURE'].map(tab => (
                         <button key={tab} onClick={() => setActiveTab(tab)} className={`flex-1 sm:flex-none px-4 sm:px-8 py-3 text-[10px] font-bold tracking-widest transition-all whitespace-nowrap ${activeTab === tab ? 'text-cyan-400 bg-slate-950 border-b-2 border-cyan-400' : 'text-slate-500 hover:text-slate-300'}`}>
                           {tab}
                         </button>
@@ -693,8 +693,8 @@
                         </div>
                       )}
 
-                      {/* ECOM TAB */}
-                      {activeTab === 'ECOM' && (
+                      {/* DEPARTMENT TAB */}
+                      {activeTab === 'DEPARTMENT' && (
                         <div className="p-4 h-full overflow-y-auto space-y-6 scrollbar-hide flex flex-col font-sans">
                           {/* Consolidated KPI Metrics banner */}
                           <div className="bg-slate-900/40 border border-slate-800 rounded p-4 shrink-0">
