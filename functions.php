@@ -18,6 +18,16 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+if (isset($_GET['debug_wimper'])) {
+    header('Content-Type: text/plain');
+    echo "WIMPER DEBUG MODE ACTIVE\n";
+    echo "Theme directory: " . __DIR__ . "\n";
+    echo "get_template_directory(): " . get_template_directory() . "\n";
+    echo "Files in inc/:\n";
+    print_r(scandir(__DIR__ . '/inc'));
+    exit;
+}
+
 /**
  * Increase Memory Limit for SEO Engine
  */
