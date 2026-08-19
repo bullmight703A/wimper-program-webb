@@ -27,12 +27,42 @@ if (!is_admin()) {
     error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE);
 }
 
+// Force display errors for debugging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+if (isset($_GET['debug_wimper'])) {
+    header('Content-Type: text/plain');
+    echo "WIMPER DEBUG MODE ACTIVE\n";
+    echo "Theme directory: " . __DIR__ . "\n";
+    echo "get_template_directory(): " . get_template_directory() . "\n";
+    echo "Files in inc/:\n";
+    if (file_exists(__DIR__ . '/inc')) {
+        print_r(scandir(__DIR__ . '/inc'));
+    } else {
+        echo "inc directory does not exist!\n";
+    }
+    exit;
+}
+
 /**
  * Define theme constants
  */
 define('WIMPER_VERSION', '2.0.0');
-define('WIMPER_THEME_DIR', get_template_directory());
+define('WIMPER_THEME_DIR', __DIR__);
 define('WIMPER_THEME_URI', get_template_directory_uri());
+
+/**
+ * Safely require a file if it exists, otherwise log warning and bypass crash
+ */
+function wimper_safe_require($file_path) {
+    if (file_exists($file_path)) {
+        require_once $file_path;
+    } else {
+        error_log("WIMPER THEME WARNING: Missing require file: " . $file_path);
+    }
+}
 
 /**
  * Load core theme functionality
@@ -40,74 +70,67 @@ define('WIMPER_THEME_URI', get_template_directory_uri());
  */
 
 // Core setup and configuration
-require_once WIMPER_THEME_DIR . '/inc/setup.php';
-require_once WIMPER_THEME_DIR . '/inc/critical-css.php';
-require_once WIMPER_THEME_DIR . '/inc/enqueue.php';
-require_once WIMPER_THEME_DIR . '/inc/program-settings.php';
-require_once WIMPER_THEME_DIR . '/inc/nav-menus.php';
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/setup.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/critical-css.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/enqueue.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/program-settings.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/nav-menus.php');
 
 // Custom Post Types
-require_once WIMPER_THEME_DIR . '/inc/cpt-programs.php';
-require_once WIMPER_THEME_DIR . '/inc/cpt-locations.php';
-require_once WIMPER_THEME_DIR . '/inc/cpt-cities.php';
-require_once WIMPER_THEME_DIR . '/inc/cpt-team-members.php';
-require_once WIMPER_THEME_DIR . '/inc/class-program-enhancements.php';
-require_once WIMPER_THEME_DIR . '/inc/class-amp-blog.php';
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/cpt-programs.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/cpt-locations.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/cpt-cities.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/cpt-team-members.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/class-program-enhancements.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/class-amp-blog.php');
 
 // API Handlers
-require_once WIMPER_THEME_DIR . '/inc/careers-api.php';
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/careers-api.php');
 
 // Page Meta Boxes
-require_once WIMPER_THEME_DIR . '/inc/about-page-meta.php';
-require_once WIMPER_THEME_DIR . '/inc/curriculum-page-meta.php';
-require_once WIMPER_THEME_DIR . '/inc/contact-page-meta.php';
-require_once WIMPER_THEME_DIR . '/inc/stories-page-meta.php';
-require_once WIMPER_THEME_DIR . '/inc/parents-page-meta.php';
-require_once WIMPER_THEME_DIR . '/inc/careers-page-meta.php';
-require_once WIMPER_THEME_DIR . '/inc/employers-page-meta.php';
-require_once WIMPER_THEME_DIR . '/inc/privacy-page-meta.php';
-require_once WIMPER_THEME_DIR . '/inc/schema-meta-boxes.php';
-require_once WIMPER_THEME_DIR . '/inc/general-seo-meta.php';
-
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/about-page-meta.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/curriculum-page-meta.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/contact-page-meta.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/stories-page-meta.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/parents-page-meta.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/careers-page-meta.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/employers-page-meta.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/privacy-page-meta.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/schema-meta-boxes.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/general-seo-meta.php');
 
 // Utility Functions
-require_once WIMPER_THEME_DIR . '/inc/template-tags.php';
-require_once WIMPER_THEME_DIR . '/inc/fix-alt-text.php';
-require_once WIMPER_THEME_DIR . '/inc/dynamic-links.php';
-require_once WIMPER_THEME_DIR . '/inc/about-seo.php';
-require_once WIMPER_THEME_DIR . '/inc/customizer-home.php';
-require_once WIMPER_THEME_DIR . '/inc/customizer-header.php';
-require_once WIMPER_THEME_DIR . '/inc/customizer-footer.php';
-require_once WIMPER_THEME_DIR . '/inc/customizer-locations.php';
-require_once WIMPER_THEME_DIR . '/inc/customizer-seo.php';
-require_once WIMPER_THEME_DIR . '/inc/customizer-scripts.php';
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/template-tags.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/fix-alt-text.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/dynamic-links.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/about-seo.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/customizer-home.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/customizer-header.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/customizer-footer.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/customizer-locations.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/customizer-seo.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/customizer-scripts.php');
 
 // Legacy helper files (ACF plugin optional; helpers run on core WP functions only)
-require_once WIMPER_THEME_DIR . '/inc/acf-options.php';
-require_once WIMPER_THEME_DIR . '/inc/acf-homepage.php';
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/acf-options.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/acf-homepage.php');
 
-require_once WIMPER_THEME_DIR . '/inc/cleanup.php';
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/cleanup.php');
 
 // SEO and Internationalization
-require_once WIMPER_THEME_DIR . '/inc/seo-engine.php';
-require_once WIMPER_THEME_DIR . '/inc/city-slug-logic.php';
-require_once WIMPER_THEME_DIR . '/inc/spanish-variant-generator.php';
-require_once WIMPER_THEME_DIR . '/inc/monthly-seo-cron.php';
-
-// LLM SEO / Citation Module (Legacy - Disabled to prevent conflict with Advanced SEO/LLM)
-// require_once WIMPER_THEME_DIR . '/inc/llm-seo/bootstrap.php';
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/seo-engine.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/city-slug-logic.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/spanish-variant-generator.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/monthly-seo-cron.php');
 
 // SEO Automations (Refactored WIMPER Module)
-require_once WIMPER_THEME_DIR . '/inc/seo-automations/bootstrap.php';
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/seo-automations/bootstrap.php');
 
 // Advanced SEO/LLM Module (Editable Fields)
-require_once WIMPER_THEME_DIR . '/inc/advanced-seo-llm/bootstrap.php';
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/advanced-seo-llm/bootstrap.php');
 
-// SEO Automations (Internal Linking, Geo SEO, etc.)
-require_once WIMPER_THEME_DIR . '/inc/seo-automations/bootstrap.php';
-
-require_once WIMPER_THEME_DIR . '/inc/security.php';
-require_once WIMPER_THEME_DIR . '/inc/force-trailing-slashes.php';
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/security.php');
+wimper_safe_require(WIMPER_THEME_DIR . '/inc/force-trailing-slashes.php');
 
 /**
  * Remove Legacy JavaScript & Styles
